@@ -304,6 +304,7 @@
 // @match         http://www.hostpic.org/view*
 // @match         http://imagik.fr/view*
 // @match         http://www.image-load.net/show*
+// @match         http://imghost.us.to/?v=*
 // ==/UserScript==
 
 if(document.id == 44) // bad monkey, bad, no more!
@@ -935,6 +936,7 @@ function makeworld()
 	case "sexyxpixels.com":
 	case "hostpic.org":
 	case "zapodaj.net":
+	case "imghost.us.to":
 		i = ev('.//img[contains(@src,"' + iurl + '/images/")]');
 		break;
 	case "shareimages.com":
