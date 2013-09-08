@@ -305,6 +305,7 @@
 // @match         http://imagik.fr/view*
 // @match         http://www.image-load.net/show*
 // @match         http://imghost.us.to/?v=*
+// @match         http://*.sxpics.nl/img-*
 // ==/UserScript==
 
 if(document.id == 44) // bad monkey, bad, no more!
@@ -719,6 +720,7 @@ function makeworld()
 	case "imgboo.me":
 	case "imgpay.me":
 	case "xximg.net":
+	case "sxpics.nl":
 		i = ev('//input[@type="submit"]');
 		if(i) 
 		{
@@ -741,6 +743,7 @@ function makeworld()
 	case "hotimages.eu":
 	case "xximg.net":
 	case "fotoszok.pl":
+	case "sxpics.nl":
 		i = ev('.//img[contains(@src,"/upload/")]');
 		break;
 	case "imgpay.me":
