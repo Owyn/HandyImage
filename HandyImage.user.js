@@ -9,8 +9,6 @@
 // @description   Shows just fullsize Image with hotkeys & without pop-ups on many image-hosting sites
 // @run-at        document-start
 // @grant         none
-// @match         http://img.deli.sh/viewer.php?file=*
-// @match         http://www.webm6.com/op-*.host
 // @match         http://www.imagebam.com/image/*
 // @match         http://imgchili.net/show/*
 // @match         http://imgchili.com/show/*
@@ -311,6 +309,8 @@
 // @match         http://*.uploadedpictures.com/share.php?id=*
 // @match         http://*.gallerycloud.net/img-*
 // @match         http://*.tryimg.com/?v=*
+// @match         http://img.deli.sh/viewer.php?file=*
+// @match         http://www.webm6.com/op-*.host
 // ==/UserScript==
 
 if(document.id == 44) // bad monkey, bad, no more!
