@@ -307,6 +307,7 @@
 // @match         http://imghost.us.to/?v=*
 // @match         http://*.sxpics.nl/img-*
 // @match         http://*.uploadedpictures.com/share.php?id=*
+// @match         http://*.gallerycloud.net/img-*
 // ==/UserScript==
 
 if(document.id == 44) // bad monkey, bad, no more!
@@ -746,6 +747,7 @@ function makeworld()
 	case "xximg.net":
 	case "fotoszok.pl":
 	case "sxpics.nl":
+	case "gallerycloud.net":
 		i = ev('.//img[contains(@src,"/upload/")]');
 		break;
 	case "imgpay.me":
