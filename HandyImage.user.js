@@ -9,6 +9,8 @@
 // @description   Shows just fullsize Image with hotkeys & without pop-ups on many image-hosting sites
 // @run-at        document-start
 // @grant         none
+// @match         http://img.deli.sh/viewer.php?file=*
+// @match         http://www.webm6.com/op-*.host
 // @match         http://www.imagebam.com/image/*
 // @match         http://imgchili.net/show/*
 // @match         http://imgchili.com/show/*
@@ -840,6 +842,7 @@ function makeworld()
 	case "pixtn.com":
 	case "postimg.net":
 	case "freeporndumpster.com":
+	case "img.deli.sh":	
 		i = ev('//img[contains(@src,"images/")]');
 		break;
 	case "fotosik.pl":
@@ -861,6 +864,7 @@ function makeworld()
 	case "goimagehost.com":
 	case "picturevip.com":
 	case "image-load.net":
+	case "webm6.com":	
 		i = ev('.//img[contains(@src,"/images/")]');
 		break;
 	case "someimage.com":
