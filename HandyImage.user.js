@@ -1228,7 +1228,7 @@ function cancelEvent(a)
 
 function scroll_space(a, b)
 {
-	var by = Math.round((b ? window.innerHeight : window.innerWidth) * 0.75 * (a ? -1 : 1));
+	var by = Math.round((b ? window.innerHeight : window.innerWidth) * 0.50 * (a ? -1 : 1));
 	if(!b)
 	{
 		window.scrollBy(0, by);
