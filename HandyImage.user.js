@@ -308,6 +308,7 @@
 // @match         http://*.sxpics.nl/img-*
 // @match         http://*.uploadedpictures.com/share.php?id=*
 // @match         http://*.gallerycloud.net/img-*
+// @match         http://*.tryimg.com/?v=*
 // ==/UserScript==
 
 if(document.id == 44) // bad monkey, bad, no more!
@@ -376,6 +377,9 @@ function makeworld()
 	case "dumpyourphoto.com":
 	case "imageno.com":
 		i = ev('.//a/img');
+		break;
+	case "tryimg.com":
+		i = ev('.//a[not(contains(@href,"' + iurl + '"))]/img');
 		break;
 	case "img.3ezy.net":
 		i = ev('.//link[@rel="image_src"]');
