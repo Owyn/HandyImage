@@ -306,7 +306,7 @@
 // @match         http://www.image-load.net/show*
 // @match         http://imghost.us.to/?v=*
 // @match         http://*.sxpics.nl/img-*
-// @match         http://*.gallerycloud.net/img-*
+// @match         http://*.uploadedpictures.com/share.php?id=*
 // ==/UserScript==
 
 if(document.id == 44) // bad monkey, bad, no more!
@@ -447,6 +447,7 @@ function makeworld()
 	case "freeimage.us":
 	case "xxx.freeimage.us":
 	case "pixsor.com":
+	case "uploadedpictures.com":
 		//i = ev('//*[@id="iimg"]');
 		var fn;
 		var f = document.getElementsByTagName("script");
@@ -696,7 +697,6 @@ function makeworld()
 	case "imgmoney.com":
 	case "imagecorn.com":
 	case "imgcloud.co":
-	case "gallerycloud.net":
 		i = ev('.//img[contains(@src,"/upload/")]');
 		var c;
 		if(!i)
