@@ -320,6 +320,7 @@
 // @match         http://imgbin.me/view/*
 // @match         http://*.fotoo.pl/show.php?img=*.html
 // @match         http://*.rapid-img.de/img.php?f=*
+// @match         http://*.images.vyjimecny.cz/share.php?id=*
 // ==/UserScript==
 
 if(document.id == 44) // bad monkey, bad, no more!
@@ -465,6 +466,7 @@ function makeworld()
 	case "xxx.freeimage.us":
 	case "pixsor.com":
 	case "uploadedpictures.com":
+	case "images.vyjimecny.cz":
 		//i = ev('//*[@id="iimg"]');
 		var fn;
 		var f = document.getElementsByTagName("script");
