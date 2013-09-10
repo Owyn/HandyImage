@@ -318,6 +318,8 @@
 // @match         http://*.funextra.hostzi.com/viewer.php?file=*
 // @match         http://*.freakimage.com/view.php?filename=*
 // @match         http://imgbin.me/view/*
+// @match         http://*.fotoo.pl/show.php?img=*.html
+// @match         http://*.rapid-img.de/img.php?f=*
 // ==/UserScript==
 
 if(document.id == 44) // bad monkey, bad, no more!
@@ -423,6 +425,7 @@ function makeworld()
 	case "hornyimage.com":
 	case "imgcarry.com":
 	case "pornbus.org":
+	case "fotoo.pl":
 		i = ev('//*[@id="img_obj"]');
 		break;
 	case "pimpandhost.com":
@@ -856,6 +859,7 @@ function makeworld()
 	case "postimg.net":
 	case "freeporndumpster.com":
 	case "img.deli.sh":	
+	case "rapid-img.de":
 		i = ev('//img[contains(@src,"images/")]');
 		break;
 	case "fotosik.pl":
