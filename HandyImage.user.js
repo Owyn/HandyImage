@@ -321,6 +321,7 @@
 // @match         http://*.fotoo.pl/show.php?img=*.html
 // @match         http://*.rapid-img.de/img.php?f=*
 // @match         http://*.images.vyjimecny.cz/share.php?id=*
+// @match         http://*.1pics.ru//view-*
 // ==/UserScript==
 
 if(document.id == 44) // bad monkey, bad, no more!
@@ -562,6 +563,7 @@ function makeworld()
 	case "bilder.nixhelp.de":
 	case "funextra.hostzi.com":
 	case "freakimage.com":
+	case "1pics.ru":
 		i = ev('.//a[contains(@href,"images/")]');
 		if(i){i.src = i.href;}
 		break;
