@@ -552,7 +552,7 @@ function makeworld()
 	case "imagevau.eu":
 	case "up.sukrbnat.com":
 	case "bilder.nixhelp.de":
-    case "funextra.hostzi.com":
+	case "funextra.hostzi.com":
 		i = ev('.//a[contains(@href,"images/")]');
 		if(i){i.src = i.href;}
 		break;
