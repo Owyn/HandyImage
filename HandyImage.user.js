@@ -2,7 +2,7 @@
 // @name          Handy Image
 // @namespace     handyimage
 // @author        Owyn
-// @version       4.5
+// @version       4.5.1
 // @updateURL     https://userscripts.org/scripts/source/166494.user.js
 // @downloadURL   https://userscripts.org/scripts/source/166494.user.js
 // @homepage      https://userscripts.org/scripts/show/166494
@@ -314,6 +314,8 @@
 // @match         http://*.picturespk.pk/viewer.php?id=*
 // @match         http://*.imagevau.eu/viewer.php?file=*
 // @match         http://up.sukrbnat.com/viewer.php?file=* 
+// @match         http://bilder.nixhelp.de/viewer.php?file=*
+// @match         http://*.funextra.hostzi.com/viewer.php?file=*
 // ==/UserScript==
 
 if(document.id == 44) // bad monkey, bad, no more!
@@ -549,6 +551,8 @@ function makeworld()
 	case "q3.cz":
 	case "imagevau.eu":
 	case "up.sukrbnat.com":
+	case "bilder.nixhelp.de":
+    case "funextra.hostzi.com":
 		i = ev('.//a[contains(@href,"images/")]');
 		if(i){i.src = i.href;}
 		break;
@@ -1248,14 +1252,14 @@ function scroll_space(a, b)
 function onkeydown (b)
 {
 	var a = (window.event) ? b.keyCode : b.which;
-	
+
 	if (a != KeyEvent.DOM_VK_SPACE && (b.altKey || b.ctrlKey || b.metaKey))
 	{
 		return;
 	}
-	
+
 	var by = Math.round(window.innerHeight * 0.10);
-	
+
 	switch (a)
 	{
 	case KeyEvent.DOM_VK_RIGHT:
