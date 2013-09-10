@@ -318,6 +318,8 @@
 // @match         http://*.funextra.hostzi.com/viewer.php?file=*
 // @match         http://*.freakimage.com/view.php?filename=*
 // @match         http://imgbin.me/view/*
+// @match         http://*.fotoo.pl/show.php?img=*.html
+// @match         http://*.rapid-img.de/img.php?f=*
 // ==/UserScript==
 
 if(document.id == 44) // bad monkey, bad, no more!
@@ -423,6 +425,7 @@ function makeworld()
 	case "hornyimage.com":
 	case "imgcarry.com":
 	case "pornbus.org":
+	case "fotoo.pl":
 		i = ev('//*[@id="img_obj"]');
 		break;
 	case "pimpandhost.com":
@@ -555,9 +558,9 @@ function makeworld()
 	case "imagevau.eu":
 	case "up.sukrbnat.com":
 	case "bilder.nixhelp.de":
-	case "funextra.hostzi.com":
-	case "freakimage.com":
-		i = ev('.//a[contains(@href,"images/")]');
+    case "funextra.hostzi.com":
+    case "freakimage.com":
+        i = ev('.//a[contains(@href,"images/")]');
 		if(i){i.src = i.href;}
 		break;
 	case "subefotos.com":
@@ -856,6 +859,7 @@ function makeworld()
 	case "postimg.net":
 	case "freeporndumpster.com":
 	case "img.deli.sh":	
+	case "rapid-img.de":
 		i = ev('//img[contains(@src,"images/")]');
 		break;
 	case "fotosik.pl":
@@ -918,7 +922,7 @@ function makeworld()
 		i = ev('.//img[contains(@src,"/i/")]');
 		break;
 	case "howtohemorrhoidscure.com":
-		i = ev('.//a[contains(@href,"' + iurl + '/images/")]');
+	    i = ev('.//a[contains(@href,"' + iurl + '/images/")]');
 		if(i){i.src = i.href.substr(i.href.indexOf("http://", 1));}
 		break;
 	case "shareimage.ro":
@@ -966,7 +970,7 @@ function makeworld()
 	case "hostpic.org":
 	case "zapodaj.net":
 	case "imghost.us.to":
-		i = ev('.//img[contains(@src,"' + iurl + '/images/")]');
+     	i = ev('.//img[contains(@src,"' + iurl + '/images/")]');
 		break;
 	case "shareimages.com":
 		i = ev('.//img[contains(@src,"' + iurl + '/images")]');
