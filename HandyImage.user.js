@@ -2,7 +2,7 @@
 // @name          Handy Image
 // @namespace     handyimage
 // @author        Owyn
-// @version       4.4
+// @version       4.5
 // @updateURL     https://userscripts.org/scripts/source/166494.user.js
 // @downloadURL   https://userscripts.org/scripts/source/166494.user.js
 // @homepage      https://userscripts.org/scripts/show/166494
@@ -311,6 +311,9 @@
 // @match         http://*.tryimg.com/?v=*
 // @match         http://img.deli.sh/viewer.php?file=*
 // @match         http://www.webm6.com/op-*.host
+// @match         http://*.picturespk.pk/viewer.php?id=*
+// @match         http://*.imagevau.eu/viewer.php?file=*
+// @match         http://up.sukrbnat.com/viewer.php?file=* 
 // ==/UserScript==
 
 if(document.id == 44) // bad monkey, bad, no more!
@@ -544,6 +547,8 @@ function makeworld()
 	case "beeimg.com":
 	case "unhidefreepic.com":
 	case "q3.cz":
+	case "imagevau.eu":
+	case "up.sukrbnat.com":
 		i = ev('.//a[contains(@href,"images/")]');
 		if(i){i.src = i.href;}
 		break;
@@ -865,7 +870,8 @@ function makeworld()
 	case "picturevip.com":
 	case "image-load.net":
 	case "webm6.com":	
-		i = ev('.//img[contains(@src,"/images/")]');
+	case "picturespk.pk":
+        i = ev('.//img[contains(@src,"/images/")]');
 		break;
 	case "someimage.com":
 		i = ev('.//img[@id="viewimage"]');
