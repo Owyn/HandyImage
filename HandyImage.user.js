@@ -555,8 +555,8 @@ function makeworld()
 	case "imagevau.eu":
 	case "up.sukrbnat.com":
 	case "bilder.nixhelp.de":
-    case "funextra.hostzi.com":
-    case "freakimage.com":
+	case "funextra.hostzi.com":
+	case "freakimage.com":
 		i = ev('.//a[contains(@href,"images/")]');
 		if(i){i.src = i.href;}
 		break;
@@ -918,7 +918,7 @@ function makeworld()
 		i = ev('.//img[contains(@src,"/i/")]');
 		break;
 	case "howtohemorrhoidscure.com":
-	    i = ev('.//a[contains(@href,"' + iurl + '/images/")]');
+		i = ev('.//a[contains(@href,"' + iurl + '/images/")]');
 		if(i){i.src = i.href.substr(i.href.indexOf("http://", 1));}
 		break;
 	case "shareimage.ro":
@@ -966,7 +966,7 @@ function makeworld()
 	case "hostpic.org":
 	case "zapodaj.net":
 	case "imghost.us.to":
-     	i = ev('.//img[contains(@src,"' + iurl + '/images/")]');
+		i = ev('.//img[contains(@src,"' + iurl + '/images/")]');
 		break;
 	case "shareimages.com":
 		i = ev('.//img[contains(@src,"' + iurl + '/images")]');
