@@ -330,6 +330,7 @@
 // @match         http://img.pereslavl.ru/share-*.html
 // @match         http://images.maxigame.by/share-*.html
 // @match         http://*.dwimg.com/viewer.php?file=* 
+// @match         http://www.quickmeme.com/meme/*
 // ==/UserScript==
 
 if(document.id == 44) // bad monkey, bad, no more!
@@ -391,6 +392,9 @@ function makeworld()
 	// per-host image detection
 	switch (iurl)
 	{
+	case "quickmeme.com":
+		i = ev('.//img[@id="img"]');
+		break;
 	case "vvcap.net":
 	case "simplest-image-hosting.net":
 		i = ev('.//img');
