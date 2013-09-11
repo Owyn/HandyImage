@@ -394,6 +394,11 @@ function makeworld()
 	{
 	case "quickmeme.com":
 		i = ev('.//img[@id="img"]');
+		if(i)
+		{
+			window.location.assign(i.src);
+			return;
+		}
 		break;
 	case "vvcap.net":
 	case "simplest-image-hosting.net":
