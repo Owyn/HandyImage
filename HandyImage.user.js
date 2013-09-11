@@ -2,7 +2,7 @@
 // @name          Handy Image
 // @namespace     handyimage
 // @author        Owyn
-// @version       4.5.1
+// @version       4.5.2
 // @updateURL     https://userscripts.org/scripts/source/166494.user.js
 // @downloadURL   https://userscripts.org/scripts/source/166494.user.js
 // @homepage      https://userscripts.org/scripts/show/166494
@@ -321,6 +321,8 @@
 // @match         http://*.fotoo.pl/show.php?img=*.html
 // @match         http://*.rapid-img.de/img.php?f=*
 // @match         http://*.images.vyjimecny.cz/share.php?id=*
+// @match         http://*.1pics.ru//view-*
+// @match         http://*.picthost.net/v.php?id=*
 // ==/UserScript==
 
 if(document.id == 44) // bad monkey, bad, no more!
@@ -562,6 +564,7 @@ function makeworld()
 	case "bilder.nixhelp.de":
 	case "funextra.hostzi.com":
 	case "freakimage.com":
+	case "1pics.ru":
 		i = ev('.//a[contains(@href,"images/")]');
 		if(i){i.src = i.href;}
 		break;
@@ -580,6 +583,7 @@ function makeworld()
 		break;
 	case "imgtheif.com":
 	case "fotolink.su":
+	case "picthost.net":   
 		i = ev('.//img[contains(@src,"/pic")]');
 		break;
 	case "d69.in":
