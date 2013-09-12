@@ -883,7 +883,6 @@ function makeworld()
 	case "rapid-img.de":
 	case "imghostr.me":
 	case "ushareimg.com": 
-	case "picdir.net": 
 		i = ev('//img[contains(@src,"images/")]');
 		break;
 	case "fotosik.pl":
@@ -908,6 +907,7 @@ function makeworld()
 	case "webm6.com":	
 	case "picturespk.pk":
 	case "upload.djmaster.fr": 
+	case "picdir.net":
 		i = ev('.//img[contains(@src,"/images/")]');
 		break;
 	case "someimage.com":
