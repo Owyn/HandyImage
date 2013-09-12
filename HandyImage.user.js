@@ -341,6 +341,7 @@
 // @match         http://*.myminifile.com/?v=*
 // @match         http://*.superkipje.com/viewer.php?file=*
 // @match         http://www.2i.sk/*
+// @match         http://*.digitalfrenzy.net/share-*
 // ==/UserScript==
 
 if(document.id == 44) // bad monkey, bad, no more!
@@ -489,7 +490,8 @@ function makeworld()
 	case "uploadedpictures.com":
 	case "images.vyjimecny.cz":
 	case "img.pereslavl.ru":
-	case "images.maxigame.by": 
+	case "images.maxigame.by":
+	case "digitalfrenzy.net":
 		//i = ev('//*[@id="iimg"]');
 		var fn;
 		var f = document.getElementsByTagName("script");
@@ -584,9 +586,9 @@ function makeworld()
 	case "up.sukrbnat.com":
 	case "bilder.nixhelp.de":
 	case "funextra.hostzi.com":
-	case "freakimage.com": 
-	case "1pics.ru": 
-	case "imageurlhost.com": 
+	case "freakimage.com":
+	case "1pics.ru":
+	case "imageurlhost.com":
 	case "vietchecker.com":
 	case "superkipje.com":
 		i = ev('.//a[contains(@href,"images/")]');
@@ -602,13 +604,13 @@ function makeworld()
 	case "pics-hosting.com":
 	case "pictureshoster.com":
 	case "zaslike.com":
-	case "dwimg.com": 
+	case "dwimg.com":
 		i = ev('.//a[contains(@href,"files/")]');
 		if(i){i.src = i.href;}
 		break;
 	case "imgtheif.com":
-	case "fotolink.su": 			
-	case "picthost.net": 
+	case "fotolink.su":
+	case "picthost.net":
 	case "blackcatpix.com":
 		i = ev('.//img[contains(@src,"/pic")]');
 		break;
@@ -833,7 +835,7 @@ function makeworld()
 	case "picload.org":
 	case "imagecross.com":
 	case "npicture.net":
-	case "uprapide.com": 
+	case "uprapide.com":
 		i = ev('.//img[contains(@src,"' + iurl + '/image")]');
 		break;
 	case "imgjav.tk":
@@ -893,10 +895,10 @@ function makeworld()
 	case "pixtn.com":
 	case "postimg.net":
 	case "freeporndumpster.com":
-	case "img.deli.sh":	
+	case "img.deli.sh":
 	case "rapid-img.de":
 	case "imghostr.me":
-	case "ushareimg.com": 
+	case "ushareimg.com":
 		i = ev('//img[contains(@src,"images/")]');
 		break;
 	case "fotosik.pl":
@@ -918,9 +920,9 @@ function makeworld()
 	case "goimagehost.com":
 	case "picturevip.com":
 	case "image-load.net":
-	case "webm6.com":	
+	case "webm6.com":
 	case "picturespk.pk":
-	case "upload.djmaster.fr": 
+	case "upload.djmaster.fr":
 	case "picdir.net":
 	case "myminifile.com":
 		i = ev('.//img[contains(@src,"/images/")]');
@@ -934,7 +936,7 @@ function makeworld()
 	case "instaimagehost.com":
 	case "saveimg.ru":
 	case "imglink.ru":
-	case "tinyphoto.net": 
+	case "tinyphoto.net":
 		i = ev('.//img[contains(@src,"pictures/")]');
 		break;
 	case "imageporter.com":
