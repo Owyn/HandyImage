@@ -335,6 +335,7 @@
 // @match         http://*.picdir.net/show/*
 // @match         http://*.uploadyourimages.org/*.html
 // @match         http://*.imagesup.net/* 
+// @match         http://*.digitalfrenzy.net/share-*
 // ==/UserScript==
 
 if(document.id == 44) // bad monkey, bad, no more!
@@ -483,6 +484,7 @@ function makeworld()
 	case "images.vyjimecny.cz":
 	case "img.pereslavl.ru":
 	case "images.maxigame.by": 
+	case "digitalfrenzy.net":
 		//i = ev('//*[@id="iimg"]');
 		var fn;
 		var f = document.getElementsByTagName("script");
