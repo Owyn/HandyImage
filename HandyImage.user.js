@@ -2,7 +2,7 @@
 // @name          Handy Image
 // @namespace     handyimage
 // @author        Owyn
-// @version       4.5.3
+// @version       4.5.4
 // @updateURL     https://userscripts.org/scripts/source/166494.user.js
 // @downloadURL   https://userscripts.org/scripts/source/166494.user.js
 // @homepage      https://userscripts.org/scripts/show/166494
@@ -333,6 +333,8 @@
 // @match         http://uprapide.com/* 
 // @match         http://www.imageurlhost.com/viewer.php?file=*
 // @match         http://*.picdir.net/show/*
+// @match         http://*.uploadyourimages.org/*.html
+// @match         http://*.imagesup.net/* 
 // ==/UserScript==
 
 if(document.id == 44) // bad monkey, bad, no more!
@@ -740,6 +742,7 @@ function makeworld()
 	case "imgmoney.com":
 	case "imagecorn.com":
 	case "imgcloud.co":
+	case "uploadyourimages.org":
 		i = ev('.//img[contains(@src,"/upload/")]');
 		var c;
 		if(!i)
@@ -842,6 +845,7 @@ function makeworld()
 		break;
 	case "imgns.com":
 	case "mypixxx.lonestarnaughtygirls.com":
+	case "imagesup.net":
 		i = ev('.//img[contains(@src,"dt")]');
 		if(i)
 		{
