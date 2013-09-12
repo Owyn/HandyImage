@@ -342,6 +342,8 @@
 // @match         http://*.superkipje.com/viewer.php?file=*
 // @match         http://www.2i.sk/*
 // @match         http://*.digitalfrenzy.net/share-*
+// @match         http://www.imagefruit.com/img.php?img=*
+// @match         http://www.imgadult.com/img-*
 // ==/UserScript==
 
 if(document.id == 44) // bad monkey, bad, no more!
@@ -448,6 +450,7 @@ function makeworld()
 	case "imgcarry.com":
 	case "pornbus.org":
 	case "fotoo.pl":
+	case "imagefruit.com":
 		i = ev('//*[@id="img_obj"]');
 		break;
 	case "pimpandhost.com":
@@ -773,6 +776,19 @@ function makeworld()
 		{
 			break;
 		}
+	case "imgadult.com":
+		i = ev('.//a[@class="clicked"]');
+		if(i)
+		{
+			var now = new Date();
+			var time = now.getTime();
+			time += 30000;
+			now.setTime(time);
+			document.cookie = 'user=' + 'true' + '; expires=' + now.toGMTString() + '; path=/';
+			setTimeout(function(){window.location.href = window.location.pathname + "?imgContinue=1";},500);
+			img = i;
+			break;
+		}
 	case "pixup.us":
 	case "imgtube.net":
 	case "imgcorn.com":
@@ -805,6 +821,7 @@ function makeworld()
 	case "fotoszok.pl":
 	case "sxpics.nl":
 	case "gallerycloud.net":
+	case "imgadult.com":
 		i = ev('.//img[contains(@src,"/upload/")]');
 		break;
 	case "imgpay.me":
