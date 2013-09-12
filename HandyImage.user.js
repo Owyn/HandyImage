@@ -2,7 +2,7 @@
 // @name          Handy Image
 // @namespace     handyimage
 // @author        Owyn
-// @version       4.5.4
+// @version       4.5.5
 // @updateURL     https://userscripts.org/scripts/source/166494.user.js
 // @downloadURL   https://userscripts.org/scripts/source/166494.user.js
 // @homepage      https://userscripts.org/scripts/show/166494
@@ -335,7 +335,12 @@
 // @match         http://*.picdir.net/show/*
 // @match         http://*.uploadyourimages.org/*.html
 // @match         http://*.imagesup.net/* 
-// @match         http://*.digitalfrenzy.net/share-*
+// @match         http://*.blackcatpix.com/v.php?id=*
+// @match         http://*.picgarage.net/public/*
+// @match         http://*.vietchecker.com/file/viewer.php?file=*
+// @match         http://*.myminifile.com/?v=*
+// @match         http://*.superkipje.com/viewer.php?file=*
+// @match         http://www.2i.sk/*
 // ==/UserScript==
 
 if(document.id == 44) // bad monkey, bad, no more!
@@ -453,6 +458,7 @@ function makeworld()
 		j = true;
 		break;
 	case "bayimg.com":
+	case "picgarage.net":
 		i = ev('//*[@id="mainImage"]');
 		break;
 	case "depic.me":
@@ -484,7 +490,6 @@ function makeworld()
 	case "images.vyjimecny.cz":
 	case "img.pereslavl.ru":
 	case "images.maxigame.by": 
-	case "digitalfrenzy.net":
 		//i = ev('//*[@id="iimg"]');
 		var fn;
 		var f = document.getElementsByTagName("script");
@@ -579,9 +584,11 @@ function makeworld()
 	case "up.sukrbnat.com":
 	case "bilder.nixhelp.de":
 	case "funextra.hostzi.com":
-	case "freakimage.com":
+	case "freakimage.com": 
 	case "1pics.ru": 
 	case "imageurlhost.com": 
+	case "vietchecker.com":
+	case "superkipje.com":
 		i = ev('.//a[contains(@href,"images/")]');
 		if(i){i.src = i.href;}
 		break;
@@ -602,6 +609,7 @@ function makeworld()
 	case "imgtheif.com":
 	case "fotolink.su": 			
 	case "picthost.net": 
+	case "blackcatpix.com":
 		i = ev('.//img[contains(@src,"/pic")]');
 		break;
 	case "d69.in":
@@ -914,6 +922,7 @@ function makeworld()
 	case "picturespk.pk":
 	case "upload.djmaster.fr": 
 	case "picdir.net":
+	case "myminifile.com":
 		i = ev('.//img[contains(@src,"/images/")]');
 		break;
 	case "someimage.com":
@@ -945,6 +954,7 @@ function makeworld()
 		i = ev('.//img[contains(@src,"/s/")]');
 		break;
 	case "2imgs.com":
+	case "2i.sk":
 		i = ev('.//a[contains(@href,"/i/")]');
 		if(i)
 		{
