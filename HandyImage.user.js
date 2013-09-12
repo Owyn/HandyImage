@@ -2,7 +2,7 @@
 // @name          Handy Image
 // @namespace     handyimage
 // @author        Owyn
-// @version       4.5.2
+// @version       4.5.3
 // @updateURL     https://userscripts.org/scripts/source/166494.user.js
 // @downloadURL   https://userscripts.org/scripts/source/166494.user.js
 // @homepage      https://userscripts.org/scripts/show/166494
@@ -330,6 +330,9 @@
 // @match         http://img.pereslavl.ru/share-*.html
 // @match         http://images.maxigame.by/share-*.html
 // @match         http://*.dwimg.com/viewer.php?file=* 
+// @match         http://uprapide.com/* 
+// @match         http://www.imageurlhost.com/viewer.php?file=*
+// @match         http://*.picdir.net/show/*
 // ==/UserScript==
 
 if(document.id == 44) // bad monkey, bad, no more!
@@ -574,6 +577,7 @@ function makeworld()
 	case "funextra.hostzi.com":
 	case "freakimage.com":
 	case "1pics.ru": 
+	case "imageurlhost.com": 
 		i = ev('.//a[contains(@href,"images/")]');
 		if(i){i.src = i.href;}
 		break;
@@ -816,6 +820,7 @@ function makeworld()
 	case "picload.org":
 	case "imagecross.com":
 	case "npicture.net":
+	case "uprapide.com": 
 		i = ev('.//img[contains(@src,"' + iurl + '/image")]');
 		break;
 	case "imgjav.tk":
@@ -878,6 +883,7 @@ function makeworld()
 	case "rapid-img.de":
 	case "imghostr.me":
 	case "ushareimg.com": 
+	case "picdir.net": 
 		i = ev('//img[contains(@src,"images/")]');
 		break;
 	case "fotosik.pl":
