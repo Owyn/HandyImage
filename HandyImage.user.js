@@ -347,6 +347,8 @@
 // @match         http://www.picshot.pl/public/view/*
 // @match         http://*.imageho.st/*
 // @match         http://*.imagesmax.de/display-*
+// @match         http://*.ifotos.pl/zobacz/*
+// @match         http://*.voila.pl/index.php?f=*
 // ==/UserScript==
 
 if(document.id == 44) // bad monkey, bad, no more!
@@ -703,6 +705,7 @@ function makeworld()
 	case "upsimple.com":
 	case "pixhub.eu":
 	case "fotos-hochladen.net":
+	case "voila.pl":	
 		i = ev('.//img[contains(@src,"uploads/")]');
 		break;
 	case "xtremeshack.com":
@@ -731,6 +734,7 @@ function makeworld()
 	case "imageshost.ru":
 	case "imagebanana.com":
 	case "deffe.com":
+	case "ifotos.pl":
 		i = ev('.//img[contains(@src,"/img/")]');
 		break;
 	case "imagenetz.de":
