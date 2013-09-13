@@ -2,7 +2,7 @@
 // @name          Handy Image
 // @namespace     handyimage
 // @author        Owyn
-// @version       4.5.7
+// @version       4.5.8
 // @updateURL     https://userscripts.org/scripts/source/166494.user.js
 // @downloadURL   https://userscripts.org/scripts/source/166494.user.js
 // @homepage      https://userscripts.org/scripts/show/166494
@@ -349,6 +349,8 @@
 // @match         http://*.imagesmax.de/display-*
 // @match         http://*.ifotos.pl/zobacz/*
 // @match         http://*.voila.pl/index.php?f=*
+// @match         http://www.zimage.fr/photo.php?id=*
+// @match         http://www.zimage.fr/taillereel.php?id=*
 // ==/UserScript==
 
 if(document.id == 44) // bad monkey, bad, no more!
@@ -925,6 +927,13 @@ function makeworld()
 			i.src = i.href;
 		}
 		break;
+	case "zimage.fr":
+		i = ev('.//img[contains(@src,"images.php")]');
+		if(i)
+		{
+			i.src = i.src.replace('.php?nom=', '/');
+			break;
+		}
 	case "dumppix.com":
 		i = ev('.//a[contains(@href,"enter")]');
 		if(i)
@@ -945,6 +954,7 @@ function makeworld()
 	case "imghostr.me":
 	case "ushareimg.com":
 	case "pix-x.net":
+	case "zimage.fr":
 		i = ev('//img[contains(@src,"images/")]');
 		break;
 	case "fotosik.pl":
