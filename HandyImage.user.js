@@ -2,7 +2,7 @@
 // @name          Handy Image
 // @namespace     handyimage
 // @author        Owyn
-// @version       4.5.6
+// @version       4.5.7
 // @updateURL     https://userscripts.org/scripts/source/166494.user.js
 // @downloadURL   https://userscripts.org/scripts/source/166494.user.js
 // @homepage      https://userscripts.org/scripts/show/166494
@@ -345,6 +345,8 @@
 // @match         http://*.digitalfrenzy.net/share-*
 // @match         http://www.imgadult.com/img-*
 // @match         http://www.picshot.pl/public/view/*
+// @match         http://*.imageho.st/*
+// @match         http://*.imagesmax.de/display-*
 // ==/UserScript==
 
 if(document.id == 44) // bad monkey, bad, no more!
@@ -863,6 +865,7 @@ function makeworld()
 		break;
 	case "image-share.com":
 	case "ima.so":
+	case "imageho.st":
 		i = ev('.//img[contains(@src,"upload/")]');
 		break;
 	case "bilder-upload.eu":
@@ -1056,6 +1059,7 @@ function makeworld()
 		i = ev('.//img[contains(@src,"' + iurl + '/images/")]');
 		break;
 	case "shareimages.com":
+	case "imagesmax.de":
 		i = ev('.//img[contains(@src,"' + iurl + '/images")]');
 		break;
 	case "imgfantasy.com":
