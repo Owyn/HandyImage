@@ -2,7 +2,7 @@
 // @name          Handy Image
 // @namespace     handyimage
 // @author        Owyn
-// @version       4.5.5
+// @version       4.5.6
 // @updateURL     https://userscripts.org/scripts/source/166494.user.js
 // @downloadURL   https://userscripts.org/scripts/source/166494.user.js
 // @homepage      https://userscripts.org/scripts/show/166494
@@ -344,6 +344,9 @@
 // @match         http://*.digitalfrenzy.net/share-*
 // @match         http://www.imagefruit.com/img.php?img=*
 // @match         http://www.imgadult.com/img-*
+// @match         http://*.free-picload.de/pics/*.html
+// @match         http://image-upload.de/file/*/*
+// @match         http://www.zimage.fr/taillereel.php?id=*
 // ==/UserScript==
 
 if(document.id == 44) // bad monkey, bad, no more!
@@ -594,7 +597,7 @@ function makeworld()
 	case "imageurlhost.com":
 	case "vietchecker.com":
 	case "superkipje.com":
-		i = ev('.//a[contains(@href,"images/")]');
+        i = ev('.//a[contains(@href,"images/")]');
 		if(i){i.src = i.href;}
 		break;
 	case "subefotos.com":
@@ -701,6 +704,7 @@ function makeworld()
 	case "ibunker.us":
 	case "hostingpics.net":
 	case "pixentral.com":
+	case "free-picload.de":
 		i = ev('.//img[contains(@src,"pics/")]');
 		break;
 	case "casimages.com":
@@ -916,6 +920,7 @@ function makeworld()
 	case "rapid-img.de":
 	case "imghostr.me":
 	case "ushareimg.com":
+	case "zimage.fr":
 		i = ev('//img[contains(@src,"images/")]');
 		break;
 	case "fotosik.pl":
