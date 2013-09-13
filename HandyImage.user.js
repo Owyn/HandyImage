@@ -2,7 +2,7 @@
 // @name          Handy Image
 // @namespace     handyimage
 // @author        Owyn
-// @version       4.5.5
+// @version       4.5.6
 // @updateURL     https://userscripts.org/scripts/source/166494.user.js
 // @downloadURL   https://userscripts.org/scripts/source/166494.user.js
 // @homepage      https://userscripts.org/scripts/show/166494
@@ -133,6 +133,7 @@
 // @match         http://*.imagepremium.com/viewer.php?*
 // @match         http://*.shareimage.ro/viewer.php?*
 // @match         http://howtohemorrhoidscure.com/viewer.php?*
+// @match         http://*.imagefruit.com/img*
 // @match         http://*.imagefruit.com/show*
 // @match         http://*.hentai-hosting.com/viewer.php?*
 // @match         http://*.gallery.jpavgod.com/viewer.php?*
@@ -342,8 +343,8 @@
 // @match         http://*.superkipje.com/viewer.php?file=*
 // @match         http://www.2i.sk/*
 // @match         http://*.digitalfrenzy.net/share-*
-// @match         http://www.imagefruit.com/img.php?img=*
 // @match         http://www.imgadult.com/img-*
+// @match         http://www.picshot.pl/public/view/*
 // ==/UserScript==
 
 if(document.id == 44) // bad monkey, bad, no more!
@@ -376,12 +377,31 @@ if(iurl.indexOf("www.") == 0)
 	iurl = iurl.substr(4);
 }
 
+function ws()
+{
+	if(navigator.userAgent.indexOf('Firefox') == -1 || (navigator.userAgent.indexOf('Firefox') != -1 && isrc.lastIndexOf(".gif") == -1)) // firefox + gif = bug
+	{
+		window.stop();
+	}
+}
+
 function sanitize() // lol I'm such a hacker
 {
 	for(var i = lasttask; i > 0; i--)
 	{
 		clearTimeout(i);
 	}
+}
+
+function onscript(e) 
+{
+	if(e.target.innerHTML.indexOf(".innerHTML") != -1)
+	{
+		console.warn( "BLOCKED: " + e.target.src + e.target.innerHTML);
+	}
+	//console.warn( "STOPPED: " + e.target.src + e.target.innerHTML);
+	e.preventDefault();
+	e.stopPropagation();
 }
 
 function makeimage()
@@ -450,13 +470,14 @@ function makeworld()
 	case "imgcarry.com":
 	case "pornbus.org":
 	case "fotoo.pl":
-	case "imagefruit.com":
 		i = ev('//*[@id="img_obj"]');
 		break;
 	case "pimpandhost.com":
 	case "pixdir.net":
 	case "fastpic.ru":
 	case "abload.de":
+		i = ev('//img[@id="image"]');
+		break;
 	case "pikucha.ru":
 		i = ev('//img[@id="image"]');
 		j = true;
@@ -519,7 +540,6 @@ function makeworld()
 	case "images-host.biz":
 	case "pic2profit.com":
 	case "galhost.ru":
-	case "pix-x.net":
 		i = ev('.//img[contains(@src,"thumb")]');
 		if(i){i.src = i.src.replace('-thumb', '');
 		i.src = i.src.replace('img_thumb', 'img_full');}
@@ -532,6 +552,7 @@ function makeworld()
 		i = ev('//*[@id="imgElement"]');
 		break;
 	case "flickcabin.com":
+	case "picshot.pl":
 		i = ev('.//img[contains(@src,"' + iurl + '/p")]');
 		if(i){i.src = i.src.replace('thumb', 'file');}
 		break;
@@ -916,6 +937,7 @@ function makeworld()
 	case "rapid-img.de":
 	case "imghostr.me":
 	case "ushareimg.com":
+	case "pix-x.net":
 		i = ev('//img[contains(@src,"images/")]');
 		break;
 	case "fotosik.pl":
@@ -1089,15 +1111,7 @@ function makeworld()
 	if(!j)
 	{
 		j = true;
-		window.addEventListener('beforescriptexecute', function(e) 
-		{
-			if(e.target.innerHTML.indexOf("clr_pgn()") == -1 && e.target.innerHTML.indexOf(".innerHTML") == -1)
-			{
-				//console.warn( "STOPPED: " + e.target.src + e.target.innerHTML);
-				e.preventDefault();
-				e.stopPropagation();
-			}
-		}, true);
+		window.addEventListener('beforescriptexecute', onscript, true);
 	}
 	//
 	if(i && i.src)
@@ -1119,17 +1133,16 @@ function makeworld()
 			document.write('<html><head></head><body></body></html>'); // clears tasks also
 			document.close();
 		}
+		window.removeEventListener('beforescriptexecute', onscript, true);
 		inject(clr_pgn);
-		if(navigator.userAgent.indexOf('Firefox') == -1 && isrc.lastIndexOf(".gif") == -1) // firefox + gif = bug
-		{
-			window.stop();
-		}
+		ws();
 		document.head.innerHTML = "";
 		lasttask = setTimeout(function() {},0);
 		sanitize();
 		setTimeout(function() // else there will be scary bugs
 		{
 			inject(clr_pgn);
+			ws();
 			makeimage();
 		}, 0);
 	}
@@ -1230,9 +1243,10 @@ function rescale(event)
 	}
 }
 
+var ARC = 0;
 function autoresize()
 {
-	if(img.naturalHeight != 0 && img.naturalWidth != 0)
+	if(img.naturalWidth != 0)
 	{
 		var title = img.src.substr(img.src.lastIndexOf("/")+1);
 		if(title.indexOf("?") != -1)
@@ -1256,6 +1270,11 @@ function autoresize()
 	}
 	else
 	{
+		ARC++;
+		if(ARC == 250)
+		{
+			img.src = img.src; // lol fix
+		}
 		setTimeout(function() { autoresize(); }, 10);
 	}
 }
