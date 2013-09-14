@@ -552,6 +552,7 @@ function makeworld()
 	case "images-host.biz":
 	case "pic2profit.com":
 	case "galhost.ru":
+	case "pix-x.net":
 		i = ev('.//img[contains(@src,"thumb")]');
 		if(i){i.src = i.src.replace('-thumb', '');
 		i.src = i.src.replace('img_thumb', 'img_full');}
@@ -962,7 +963,6 @@ function makeworld()
 	case "rapid-img.de":
 	case "imghostr.me":
 	case "ushareimg.com":
-	case "pix-x.net":
 	case "zimage.fr":
 	case "ngarko.online.fr":
 		i = ev('//img[contains(@src,"images/")]');
