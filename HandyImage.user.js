@@ -2,7 +2,7 @@
 // @name          Handy Image
 // @namespace     handyimage
 // @author        Owyn
-// @version       4.5.8
+// @version       4.5.9
 // @updateURL     https://userscripts.org/scripts/source/166494.user.js
 // @downloadURL   https://userscripts.org/scripts/source/166494.user.js
 // @homepage      https://userscripts.org/scripts/show/166494
@@ -351,6 +351,11 @@
 // @match         http://*.voila.pl/index.php?f=*
 // @match         http://www.zimage.fr/photo.php?id=*
 // @match         http://www.zimage.fr/taillereel.php?id=*
+// @match         http://ngarko.online.fr/viewer.php?file=*
+// @match         http://*.b4he.com/?v=*
+// @match         http://*.fullimg.com/?v=*
+// @match         http://*.oxily.com/?pt=*
+// @match         http://ghanaimages.co/?pt=* 
 // ==/UserScript==
 
 if(document.id == 44) // bad monkey, bad, no more!
@@ -921,6 +926,8 @@ function makeworld()
 	case "theimghost.com":
 	case "imagehost.thasnasty.com":
 	case "thepornfeeds.com":
+	case "oxily.com":
+	case "ghanaimages.co": 	
 		i = ev('.//a[contains(@href,"?di=")]');
 		if(i)
 		{
@@ -955,6 +962,9 @@ function makeworld()
 	case "ushareimg.com":
 	case "pix-x.net":
 	case "zimage.fr":
+	case "ngarko.online.fr":
+	case "b4he.com":
+	case "fullimg.com": 
 		i = ev('//img[contains(@src,"images/")]');
 		break;
 	case "fotosik.pl":
