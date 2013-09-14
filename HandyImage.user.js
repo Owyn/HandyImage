@@ -2,7 +2,7 @@
 // @name          Handy Image
 // @namespace     handyimage
 // @author        Owyn
-// @version       4.5.9
+// @version       4.6
 // @updateURL     https://userscripts.org/scripts/source/166494.user.js
 // @downloadURL   https://userscripts.org/scripts/source/166494.user.js
 // @homepage      https://userscripts.org/scripts/show/166494
@@ -355,7 +355,8 @@
 // @match         http://*.b4he.com/?v=*
 // @match         http://*.fullimg.com/?v=*
 // @match         http://*.oxily.com/?pt=*
-// @match         http://ghanaimages.co/?pt=* 
+// @match         http://ghanaimages.co/?pt=*
+// @match         http://*.imgplus.info/view*
 // ==/UserScript==
 
 if(document.id == 44) // bad monkey, bad, no more!
@@ -599,7 +600,8 @@ function makeworld()
 		if(i){i.src = i.href;}
 		break;
 	case "imgxc.com":
-		i = ev('.//img[contains(@src,"/fullimage/")]');
+	case "imgplus.info":
+		i = ev('.//img[contains(@src,"full")]');
 		break;
 	case "wstaw.org":
 		i = ev('.//a[contains(@href,"/m/")]');
