@@ -963,8 +963,6 @@ function makeworld()
 	case "pix-x.net":
 	case "zimage.fr":
 	case "ngarko.online.fr":
-	case "b4he.com":
-	case "fullimg.com": 
 		i = ev('//img[contains(@src,"images/")]');
 		break;
 	case "fotosik.pl":
@@ -991,6 +989,8 @@ function makeworld()
 	case "upload.djmaster.fr":
 	case "picdir.net":
 	case "myminifile.com":
+	case "fullimg.com":
+	case "b4he.com":
 		i = ev('.//img[contains(@src,"/images/")]');
 		break;
 	case "someimage.com":
