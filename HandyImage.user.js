@@ -2,7 +2,7 @@
 // @name          Handy Image
 // @namespace     handyimage
 // @author        Owyn
-// @version       4.6.2
+// @version       4.6.3
 // @updateURL     https://userscripts.org/scripts/source/166494.user.js
 // @downloadURL   https://userscripts.org/scripts/source/166494.user.js
 // @homepage      https://userscripts.org/scripts/show/166494
@@ -324,7 +324,6 @@
 // @match         http://*.images.vyjimecny.cz/share.php?id=*
 // @match         http://*.1pics.ru//view-*
 // @match         http://*.picthost.net/v.php?id=*
-// @match         http://*.imghostr.me/image/*
 // @match         http://*.imghostr.me/*
 // @match         http://*.tinyphoto.net/show-image.php?id=*
 // @match         http://*.ushareimg.com/view.php?filename=*
@@ -358,7 +357,8 @@
 // @match         http://*.oxily.com/?pt=*
 // @match         http://ghanaimages.co/?pt=*
 // @match         http://*.imgplus.info/view*
-// @match         http://*.x45x.info/?pt=* 
+// @match         http://*.x45x.info/?pt=*
+// @match         http://firepic.org/?v=*
 // ==/UserScript==
 
 if(document.id == 44) // bad monkey, bad, no more!
@@ -999,6 +999,7 @@ function makeworld()
 	case "myminifile.com":
 	case "fullimg.com":
 	case "b4he.com":
+	case "firepic.org":
 		i = ev('.//img[contains(@src,"/images/")]');
 		break;
 	case "someimage.com":
