@@ -357,6 +357,7 @@
 // @match         http://*.oxily.com/?pt=*
 // @match         http://ghanaimages.co/?pt=*
 // @match         http://*.imgplus.info/view*
+// @match         http://*.x45x.info/?pt=* 
 // ==/UserScript==
 
 if(document.id == 44) // bad monkey, bad, no more!
@@ -916,6 +917,7 @@ function makeworld()
 	case "imgns.com":
 	case "mypixxx.lonestarnaughtygirls.com":
 	case "imagesup.net":
+	case "x45x.info":
 		i = ev('.//img[contains(@src,"dt")]');
 		if(i)
 		{
