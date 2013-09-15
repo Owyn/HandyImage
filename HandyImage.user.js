@@ -2,7 +2,7 @@
 // @name          Handy Image
 // @namespace     handyimage
 // @author        Owyn
-// @version       4.6
+// @version       4.6.1
 // @updateURL     https://userscripts.org/scripts/source/166494.user.js
 // @downloadURL   https://userscripts.org/scripts/source/166494.user.js
 // @homepage      https://userscripts.org/scripts/show/166494
@@ -441,10 +441,6 @@ function makeworld()
 	case "simplest-image-hosting.net":
 		i = ev('.//img');
 		break;
-	case "dumpyourphoto.com":
-	case "imageno.com":
-		i = ev('.//a/img');
-		break;
 	case "tryimg.com":
 		i = ev('.//a[not(contains(@href,"' + iurl + '"))]/img');
 		break;
@@ -458,6 +454,10 @@ function makeworld()
 		break;
 	case "noelshack.com":
 		i = ev('.//a[@target="_blank"]/img');
+		if(i){i.src = i.parentNode.href;}
+		break;
+	case "dumpyourphoto.com":
+		i = ev('.//a/img');
 		if(i){i.src = i.parentNode.href;}
 		break;
 	case "thumbsnap.com":
@@ -610,6 +610,9 @@ function makeworld()
 		break;
 	case "hostpornpics.net":
 		i = ev('.//img[contains(@src,"img.php")]');
+		break;
+	case "imageno.com":
+		i = ev('.//img[contains(@src,"image.php")]');
 		break;
 	case "imagebin.org":
 	case "imgbin.me":
