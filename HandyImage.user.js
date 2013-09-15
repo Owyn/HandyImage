@@ -2,7 +2,7 @@
 // @name          Handy Image
 // @namespace     handyimage
 // @author        Owyn
-// @version       4.6.1
+// @version       4.6.2
 // @updateURL     https://userscripts.org/scripts/source/166494.user.js
 // @downloadURL   https://userscripts.org/scripts/source/166494.user.js
 // @homepage      https://userscripts.org/scripts/show/166494
@@ -325,6 +325,7 @@
 // @match         http://*.1pics.ru//view-*
 // @match         http://*.picthost.net/v.php?id=*
 // @match         http://*.imghostr.me/image/*
+// @match         http://*.imghostr.me/*
 // @match         http://*.tinyphoto.net/show-image.php?id=*
 // @match         http://*.ushareimg.com/view.php?filename=*
 // @match         http://*.upload.djmaster.fr/?v=*
@@ -357,6 +358,7 @@
 // @match         http://*.oxily.com/?pt=*
 // @match         http://ghanaimages.co/?pt=*
 // @match         http://*.imgplus.info/view*
+// @match         http://*.x45x.info/?pt=* 
 // ==/UserScript==
 
 if(document.id == 44) // bad monkey, bad, no more!
@@ -916,6 +918,7 @@ function makeworld()
 	case "imgns.com":
 	case "mypixxx.lonestarnaughtygirls.com":
 	case "imagesup.net":
+	case "x45x.info":
 		i = ev('.//img[contains(@src,"dt")]');
 		if(i)
 		{
