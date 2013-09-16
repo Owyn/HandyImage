@@ -2,7 +2,7 @@
 // @name          Handy Image
 // @namespace     handyimage
 // @author        Owyn
-// @version       4.6.4
+// @version       4.6.5
 // @updateURL     https://userscripts.org/scripts/source/166494.user.js
 // @downloadURL   https://userscripts.org/scripts/source/166494.user.js
 // @homepage      https://userscripts.org/scripts/show/166494
@@ -23,10 +23,8 @@
 // @match         http://www.pixhost.org/show/*
 // @match         http://picpicture.com/share.php?id=*
 // @match         http://*.pic5you.ru/*/*/
-// @match         http://*.megaimg.ru/*/*/
 // @match         http://tinypic.com/view.php?pic=*
 // @match         http://radical-foto.ru/*
-// @match         http://pics-hosting.com/viewer.php?file=*
 // @match         http://www.fotolink.su/v.php?id=*
 // @match         http://www.stooorage.com/show/*/*
 // @match         http://*.pimpandhost.com/image/*
@@ -40,7 +38,7 @@
 // @match         http://imagecurl.org/view*
 // @match         http://*.euro-pic.eu/share*
 // @match         http://amateurfreak.org/share*
-// @match         http://*.imagescream.com/?v=*
+// @match         http://*.imagescream.com/*
 // @match         http://picturescream.asia/*
 // @match         http://imagepdb.com/?*
 // @match         http://xxxhost.me/viewer.php?*
@@ -113,6 +111,7 @@
 // @match         http://*.imgpo.st/*
 // @match         http://*.imgjav.tk/?pm=*
 // @match         http://*.imgurban.info/?pm=*
+// @match         http://*.imgurban.info/?pt=* 
 // @match         http://*.imagecherry.com/*
 // @match         http://*.funkyimg.com/view*
 // @match         http://*.abload.de/image.php?*
@@ -551,7 +550,6 @@ function makeworld()
 	case "picp2.com":
 	case "picforall.ru":
 	case "piccash.net":
-	case "megaimg.ru":
 	case "picage.ru":
 	case "images-host.biz":
 	case "pic2profit.com":
@@ -646,7 +644,6 @@ function makeworld()
 	case "uppix.com":
 		i = ev('.//img[contains(@src,"/f")]');
 		break;
-	case "pics-hosting.com":
 	case "pictureshoster.com":
 	case "zaslike.com":
 	case "dwimg.com":
@@ -902,7 +899,6 @@ function makeworld()
 		break;
 	case "imgjav.tk":
 	case "imgwiev.tk":
-	case "imgurban.info":
 	case "unlimitedpicture.com":
 		i = ev('.//img[contains(@src,"?dm=")]');
 		if(i)
@@ -933,6 +929,7 @@ function makeworld()
 	case "thepornfeeds.com":
 	case "oxily.com":
 	case "ghanaimages.co": 	
+	case "imgurban.info": 	
 		i = ev('.//a[contains(@href,"?di=")]');
 		if(i)
 		{
