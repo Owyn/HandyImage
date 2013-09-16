@@ -2,7 +2,7 @@
 // @name          Handy Image
 // @namespace     handyimage
 // @author        Owyn
-// @version       4.6.5
+// @version       4.6.6
 // @updateURL     https://userscripts.org/scripts/source/166494.user.js
 // @downloadURL   https://userscripts.org/scripts/source/166494.user.js
 // @homepage      https://userscripts.org/scripts/show/166494
@@ -151,8 +151,7 @@
 // @match         http://*.imageup.ru/img*
 // @match         http://*.casimages.com/photos/*/*/*
 // @match         http://*.casimages.com/img*
-// @match         http://*.cyberpics.net/pm/*
-// @match         http://*.cyberpics.net/pt/*
+// @match         http://*.cyberpics.net/p*
 // @match         http://*.vvcap.net/db/*
 // @match         http://*.freeimage.us/share*
 // @match         http://*.your-files.ru/*.html
@@ -360,6 +359,7 @@
 // @match         http://*.x45x.info/?p*
 // @match         http://firepic.org/?v=*
 // @match         http://*.nium.co/*
+// @match         http://*.seeit.bz/*
 // ==/UserScript==
 
 if(document.id == 44) // bad monkey, bad, no more!
@@ -897,18 +897,8 @@ function makeworld()
 	case "uprapide.com":
 		i = ev('.//img[contains(@src,"' + iurl + '/image")]');
 		break;
-	case "imgjav.tk":
-	case "unlimitedpicture.com":
-		i = ev('.//img[contains(@src,"?dm=")]');
-		if(i)
-		{
-			i.src = i.src.replace('dm', 'di');
-		}
-		break;
 	case "imgns.com":
-	case "mypixxx.lonestarnaughtygirls.com":
 	case "imagesup.net":
-	case "x45x.info":
 		i = ev('.//img[contains(@src,"dt")]');
 		if(i)
 		{
@@ -930,6 +920,10 @@ function makeworld()
 	case "ghanaimages.co":
 	case "imgurban.info":
 	case "imgwiev.tk":
+	case "imgjav.tk":
+	case "unlimitedpicture.com":
+	case "mypixxx.lonestarnaughtygirls.com":
+	case "x45x.info":
 		i = ev('.//a[contains(@href,"?di=")]');
 		if(i)
 		{
@@ -993,6 +987,7 @@ function makeworld()
 	case "fullimg.com":
 	case "b4he.com":
 	case "firepic.org":
+	case "seeit.bz":
 		i = ev('.//img[contains(@src,"/images/")]');
 		break;
 	case "someimage.com":
