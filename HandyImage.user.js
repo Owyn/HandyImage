@@ -156,7 +156,7 @@
 // @match         http://*.freeimage.us/share*
 // @match         http://*.your-files.ru/*.html
 // @match         http://*.your-files.ru/full/
-// @match         http://*.pix-x.net/*/*
+// @match         http://*.pix-x.net/free_img/v.php?id=* 
 // @match         http://subimg.net/jpg?*
 // @match         http://*.shareimages.com/image*
 // @match         http://upsimple.com/view/*
@@ -562,7 +562,6 @@ function makeworld()
 	case "images-host.biz":
 	case "pic2profit.com":
 	case "galhost.ru":
-	case "pix-x.net":
 		i = ev('.//img[contains(@src,"thumb")]');
 		if(i){i.src = i.src.replace('-thumb', '');
 		i.src = i.src.replace('img_thumb', 'img_full');}
@@ -967,6 +966,7 @@ function makeworld()
 	case "ushareimg.com":
 	case "zimage.fr":
 	case "ngarko.online.fr":
+	case "pix-x.net":
 		i = ev('//img[contains(@src,"images/")]');
 		break;
 	case "fotosik.pl":
