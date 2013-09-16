@@ -153,6 +153,7 @@
 // @match         http://*.casimages.com/photos/*/*/*
 // @match         http://*.casimages.com/img*
 // @match         http://*.cyberpics.net/pm/*
+// @match         http://*.cyberpics.net/pt/*
 // @match         http://*.vvcap.net/db/*
 // @match         http://*.freeimage.us/share*
 // @match         http://*.your-files.ru/*.html
@@ -909,13 +910,6 @@ function makeworld()
 			i.src = i.src.replace('dm', 'di');
 		}
 		break;
-	case "cyberpics.net":
-		i = ev('.//img[contains(@src,"/dm/")]');
-		if(i)
-		{
-			i.src = i.src.replace('dm', 'di');
-		}
-		break;
 	case "imgns.com":
 	case "mypixxx.lonestarnaughtygirls.com":
 	case "imagesup.net":
@@ -927,6 +921,7 @@ function makeworld()
 		}
 		break;
 	case "rapidjoy.com":
+	case "cyberpics.net":
 		i = ev('.//a[contains(@href,"/di/")]');
 		if(i)
 		{
