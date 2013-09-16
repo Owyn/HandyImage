@@ -85,7 +85,7 @@
 // @match         http://*.screenlist.ru/details.php?image_id=*
 // @match         http://qrrro.com/images/*
 // @match         http://*.imgnip.com/viewer.php?*
-// @match         http://*.imgwiev.tk/?p*
+// @match         http://*.imgwiev.tk/?p*/
 // @match         http://*.javelite.tk/viewer.php?id=*
 // @match         http://www.pic-upload.de/view-*
 // @match         http://picshare.geenza.com/pics/*
@@ -110,8 +110,8 @@
 // @match         http://imagepong.info/view-image/*
 // @match         http://imageback.info/view-image/*
 // @match         http://*.imgpo.st/*
-// @match         http://*.imgjav.tk/?p*
-// @match         http://*.imgurban.info/?p*
+// @match         http://*.imgjav.tk/?p*/
+// @match         http://*.imgurban.info/?p*/
 // @match         http://*.imagecherry.com/*
 // @match         http://*.funkyimg.com/view*
 // @match         http://*.abload.de/image.php?*
@@ -190,7 +190,7 @@
 // @match         http://www.2imgs.com/*
 // @exclude       http://www.2imgs.com/uploaded/*
 // @match         http://*.overpic.net/view*
-// @match         http://*.unlimitedpicture.com/?p*
+// @match         http://*.unlimitedpicture.com/?p*/
 // @match         http://*.imagecross.com/d/image*
 // @match         http://*.mojoimage.com/*
 // @match         http://www.use.com/*
@@ -246,7 +246,7 @@
 // @match         http://*.imgpay.me/img*
 // @match         http://*.imgnip.com/view*
 // @match         http://*.imageupper.com/i/*
-// @match         http://*.mypixxx.lonestarnaughtygirls.com/?p*
+// @match         http://*.mypixxx.lonestarnaughtygirls.com/?p*/
 // @match         http://*.ifap.co/?v=*
 // @match         http://*.pixtn.com/view*
 // @match         http://beeimg.com/view*
@@ -260,14 +260,14 @@
 // @match         http://*.imgnook.com/*
 // @match         http://*.imageno.com/*.html
 // @match         http://*.imagehousing.com/image/*
-// @match         http://www.rapidjoy.com/p*
+// @match         http://www.rapidjoy.com/p*/
 // @match         http://pixpipeline.com/d/*
 // @match         http://www.picfront.org/d/*
-// @match         http://*.theimghost.com/?p*
+// @match         http://*.theimghost.com/?p*/
 // @match         http://*.instaimagehost.com/*.html
-// @match         http://*.imagehost.thasnasty.com/?p*
+// @match         http://*.imagehost.thasnasty.com/?p*/
 // @match         http://*.imagilive.com/*.htm*
-// @match         http://*.thepornfeeds.com/?p*
+// @match         http://*.thepornfeeds.com/?p*/
 // @match         http://*.piratescreen.com/image/*
 // @match         http://*.hotimages.eu/img-*
 // @match         http://*.picturevip.com/?v*
@@ -354,10 +354,10 @@
 // @match         http://ngarko.online.fr/viewer.php?file=*
 // @match         http://*.b4he.com/?v=*
 // @match         http://*.fullimg.com/?v=*
-// @match         http://*.oxily.com/?p*
-// @match         http://ghanaimages.co/?p*
+// @match         http://*.oxily.com/?p*/
+// @match         http://ghanaimages.co/?p*/
 // @match         http://*.imgplus.info/view*
-// @match         http://*.x45x.info/?p*
+// @match         http://*.x45x.info/?p*/
 // @match         http://firepic.org/?v=*
 // @match         http://*.nium.co/*
 // ==/UserScript==
