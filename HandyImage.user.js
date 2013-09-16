@@ -23,10 +23,8 @@
 // @match         http://www.pixhost.org/show/*
 // @match         http://picpicture.com/share.php?id=*
 // @match         http://*.pic5you.ru/*/*/
-// @match         http://*.megaimg.ru/*/*/
 // @match         http://tinypic.com/view.php?pic=*
 // @match         http://radical-foto.ru/*
-// @match         http://pics-hosting.com/viewer.php?file=*
 // @match         http://www.fotolink.su/v.php?id=*
 // @match         http://www.stooorage.com/show/*/*
 // @match         http://*.pimpandhost.com/image/*
@@ -552,7 +550,6 @@ function makeworld()
 	case "picp2.com":
 	case "picforall.ru":
 	case "piccash.net":
-	case "megaimg.ru":
 	case "picage.ru":
 	case "images-host.biz":
 	case "pic2profit.com":
@@ -647,7 +644,6 @@ function makeworld()
 	case "uppix.com":
 		i = ev('.//img[contains(@src,"/f")]');
 		break;
-	case "pics-hosting.com":
 	case "pictureshoster.com":
 	case "zaslike.com":
 	case "dwimg.com":
