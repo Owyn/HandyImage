@@ -2,7 +2,7 @@
 // @name          Handy Image
 // @namespace     handyimage
 // @author        Owyn
-// @version       4.6.4
+// @version       4.6.5
 // @updateURL     https://userscripts.org/scripts/source/166494.user.js
 // @downloadURL   https://userscripts.org/scripts/source/166494.user.js
 // @homepage      https://userscripts.org/scripts/show/166494
@@ -41,6 +41,7 @@
 // @match         http://*.euro-pic.eu/share*
 // @match         http://amateurfreak.org/share*
 // @match         http://*.imagescream.com/?v=*
+// @match         http://*.imagescream.com/img/soft/image*
 // @match         http://picturescream.asia/*
 // @match         http://imagepdb.com/?*
 // @match         http://xxxhost.me/viewer.php?*
@@ -86,7 +87,7 @@
 // @match         http://*.screenlist.ru/details.php?image_id=*
 // @match         http://qrrro.com/images/*
 // @match         http://*.imgnip.com/viewer.php?*
-// @match         http://*.imgwiev.tk/?pm=*
+// @match         http://*.imgwiev.tk/?p*
 // @match         http://*.javelite.tk/viewer.php?id=*
 // @match         http://www.pic-upload.de/view-*
 // @match         http://picshare.geenza.com/pics/*
@@ -111,8 +112,8 @@
 // @match         http://imagepong.info/view-image/*
 // @match         http://imageback.info/view-image/*
 // @match         http://*.imgpo.st/*
-// @match         http://*.imgjav.tk/?pm=*
-// @match         http://*.imgurban.info/?pm=*
+// @match         http://*.imgjav.tk/?p*
+// @match         http://*.imgurban.info/?p*
 // @match         http://*.imagecherry.com/*
 // @match         http://*.funkyimg.com/view*
 // @match         http://*.abload.de/image.php?*
@@ -191,7 +192,7 @@
 // @match         http://www.2imgs.com/*
 // @exclude       http://www.2imgs.com/uploaded/*
 // @match         http://*.overpic.net/view*
-// @match         http://*.unlimitedpicture.com/?pm=*
+// @match         http://*.unlimitedpicture.com/?p*
 // @match         http://*.imagecross.com/d/image*
 // @match         http://*.mojoimage.com/*
 // @match         http://www.use.com/*
@@ -247,7 +248,7 @@
 // @match         http://*.imgpay.me/img*
 // @match         http://*.imgnip.com/view*
 // @match         http://*.imageupper.com/i/*
-// @match         http://*.mypixxx.lonestarnaughtygirls.com/?pt=*
+// @match         http://*.mypixxx.lonestarnaughtygirls.com/?p*
 // @match         http://*.ifap.co/?v=*
 // @match         http://*.pixtn.com/view*
 // @match         http://beeimg.com/view*
@@ -264,9 +265,9 @@
 // @match         http://www.rapidjoy.com/p*
 // @match         http://pixpipeline.com/d/*
 // @match         http://www.picfront.org/d/*
-// @match         http://*.theimghost.com/?pt=*
+// @match         http://*.theimghost.com/?p*
 // @match         http://*.instaimagehost.com/*.html
-// @match         http://*.imagehost.thasnasty.com/?pt=*
+// @match         http://*.imagehost.thasnasty.com/?p*
 // @match         http://*.imagilive.com/*.htm*
 // @match         http://*.thepornfeeds.com/?p*
 // @match         http://*.piratescreen.com/image/*
@@ -355,10 +356,10 @@
 // @match         http://ngarko.online.fr/viewer.php?file=*
 // @match         http://*.b4he.com/?v=*
 // @match         http://*.fullimg.com/?v=*
-// @match         http://*.oxily.com/?pt=*
-// @match         http://ghanaimages.co/?pt=*
+// @match         http://*.oxily.com/?p*
+// @match         http://ghanaimages.co/?p*
 // @match         http://*.imgplus.info/view*
-// @match         http://*.x45x.info/?pt=*
+// @match         http://*.x45x.info/?p*
 // @match         http://firepic.org/?v=*
 // @match         http://*.nium.co/*
 // ==/UserScript==
@@ -901,8 +902,6 @@ function makeworld()
 		i = ev('.//img[contains(@src,"' + iurl + '/image")]');
 		break;
 	case "imgjav.tk":
-	case "imgwiev.tk":
-	case "imgurban.info":
 	case "unlimitedpicture.com":
 		i = ev('.//img[contains(@src,"?dm=")]');
 		if(i)
@@ -932,7 +931,9 @@ function makeworld()
 	case "imagehost.thasnasty.com":
 	case "thepornfeeds.com":
 	case "oxily.com":
-	case "ghanaimages.co": 	
+	case "ghanaimages.co":
+	case "imgurban.info":
+	case "imgwiev.tk":
 		i = ev('.//a[contains(@href,"?di=")]');
 		if(i)
 		{
