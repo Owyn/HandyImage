@@ -2,7 +2,7 @@
 // @name          Handy Image
 // @namespace     handyimage
 // @author        Owyn
-// @version       4.6.6
+// @version       4.6.7
 // @updateURL     https://userscripts.org/scripts/source/166494.user.js
 // @downloadURL   https://userscripts.org/scripts/source/166494.user.js
 // @homepage      https://userscripts.org/scripts/show/166494
@@ -144,7 +144,7 @@
 // @match         http://*.keptarolo.hu/*
 // @match         http://www.uploadhouse.com/viewfile.php?*
 // @match         http://*.x05.org/show.php*
-// @match         http://*.dumpt.com/img*
+// @match         http://*.dumpt.com/img/view*
 // @match         http://*.fotohosting.net/image*
 // @match         http://imagebunk.com/*
 // @match         http://imagezilla.net/show/*
