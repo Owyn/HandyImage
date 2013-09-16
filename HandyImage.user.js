@@ -2,7 +2,7 @@
 // @name          Handy Image
 // @namespace     handyimage
 // @author        Owyn
-// @version       4.6.7
+// @version       4.6.8
 // @updateURL     https://userscripts.org/scripts/source/166494.user.js
 // @downloadURL   https://userscripts.org/scripts/source/166494.user.js
 // @homepage      https://userscripts.org/scripts/show/166494
@@ -81,7 +81,7 @@
 // @match         http://*.imgbunk.com/image/*
 // @match         http://pzy.be/v/*
 // @match         http://www.turboimagehost.com/p/*
-// @match         http://*.subirimagenes.com/*
+// @match         http://*.subirimagenes.com/*.html
 // @match         http://*.screenlist.ru/details.php?image_id=*
 // @match         http://qrrro.com/images/*
 // @match         http://*.imgnip.com/viewer.php?*
@@ -1086,6 +1086,7 @@ function makeworld()
 		break;
 	case "imgfantasy.com":
 	case "imagedomino.com":
+	case "imagepdb.com":
 		j = true;
 		i = ev('//input[@value="YES"]');
 		if(i){i.click();img = i;}
