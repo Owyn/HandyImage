@@ -2,7 +2,7 @@
 // @name          Handy Image
 // @namespace     handyimage
 // @author        Owyn
-// @version       4.6.8
+// @version       2013.09.16
 // @updateURL     https://userscripts.org/scripts/source/166494.user.js
 // @downloadURL   https://userscripts.org/scripts/source/166494.user.js
 // @homepage      https://userscripts.org/scripts/show/166494
@@ -360,6 +360,11 @@
 // @match         http://firepic.org/?v=*
 // @match         http://*.nium.co/*
 // @match         http://*.seeit.bz/*
+// @match         http://*.flickimg.com/*
+// @match         http://savepic.org/*.htm
+// @match         http://*.fastimages.ru/p*
+// @match         http://ipic.su/?page=img&pic=*
+// @match         http://*.jpegshare.net/*.html
 // ==/UserScript==
 
 if(document.id == 44) // bad monkey, bad, no more!
@@ -446,6 +451,9 @@ function makeworld()
 		break;
 	case "tryimg.com":
 		i = ev('.//a[not(contains(@href,"' + iurl + '"))]/img');
+		break;
+	case "savepic.org":
+		i = ev('.//a/img[not(contains(@src,"/images/"))]');
 		break;
 	case "img.3ezy.net":
 		i = ev('.//link[@rel="image_src"]');
@@ -907,6 +915,7 @@ function makeworld()
 		break;
 	case "rapidjoy.com":
 	case "cyberpics.net":
+	case "fastimages.ru":
 		i = ev('.//a[contains(@href,"/di/")]');
 		if(i)
 		{
@@ -1048,6 +1057,10 @@ function makeworld()
 		i = ev('.//input[contains(@value,"' + iurl + '/image")]');
 		if(i){i.src = i.value;}
 		break;
+	case "ipic.su":
+		i = ev('.//input[contains(@value,"' + iurl + '/img/")]');
+		if(i){i.src = i.value;}
+		break;
 	case "qrrro.com":
 		i = ev('//form[@name="F1"]');
 		if(i)
@@ -1078,6 +1091,8 @@ function makeworld()
 	case "zapodaj.net":
 	case "imghost.us.to":
 	case "nium.co":
+	case "flickimg.com":
+	case "jpegshare.net":
 		i = ev('.//img[contains(@src,"' + iurl + '/images/")]');
 		break;
 	case "shareimages.com":
@@ -1298,7 +1313,7 @@ function autoresize()
 	else
 	{
 		ARC++;
-		if(ARC == 250)
+		if(ARC == 25 || ARC == 250)
 		{
 			img.src = img.src; // lol fix
 		}
