@@ -33,7 +33,7 @@
 // @exclude       http://piccash.net/cabinets/upl/
 // @exclude       http://www.piccash.net/cabinets/upl/
 // @match         http://*.picforall.ru/*/*/
-// @match         http://pron-pix.com/image/*
+// @match         http://pron-pix.com/*
 // @match         http://imagecurl.com/view*
 // @match         http://imagecurl.org/view*
 // @match         http://*.euro-pic.eu/share*
