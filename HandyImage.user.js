@@ -2,7 +2,7 @@
 // @name          Handy Image
 // @namespace     handyimage
 // @author        Owyn
-// @version       4.6.3
+// @version       4.6.4
 // @updateURL     https://userscripts.org/scripts/source/166494.user.js
 // @downloadURL   https://userscripts.org/scripts/source/166494.user.js
 // @homepage      https://userscripts.org/scripts/show/166494
@@ -359,6 +359,7 @@
 // @match         http://*.imgplus.info/view*
 // @match         http://*.x45x.info/?pt=*
 // @match         http://firepic.org/?v=*
+// @match         http://*.nium.co/*
 // ==/UserScript==
 
 if(document.id == 44) // bad monkey, bad, no more!
@@ -1089,6 +1090,7 @@ function makeworld()
 	case "hostpic.org":
 	case "zapodaj.net":
 	case "imghost.us.to":
+	case "nium.co":
 		i = ev('.//img[contains(@src,"' + iurl + '/images/")]');
 		break;
 	case "shareimages.com":
