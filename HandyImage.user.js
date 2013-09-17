@@ -2,13 +2,17 @@
 // @name          Handy Image
 // @namespace     handyimage
 // @author        Owyn
+// @contributors  U Bless
 // @version       2013.09.17
 // @updateURL     https://userscripts.org/scripts/source/166494.user.js
 // @downloadURL   https://userscripts.org/scripts/source/166494.user.js
 // @homepage      https://userscripts.org/scripts/show/166494
 // @description   Shows just fullsize Image with hotkeys & without pop-ups on many image-hosting sites
 // @run-at        document-start
-// @grant         none
+// @grant         GM_getValue
+// @grant         GM_setValue
+// @grant         GM_registerMenuCommand
+// @match         https://userscripts.org/scripts/show/166494/configuration
 // @match         http://www.imagebam.com/image/*
 // @match         http://imgchili.net/show/*
 // @match         http://imgchili.com/show/*
@@ -381,6 +385,8 @@ if(document.id == 44) // bad monkey, bad, no more!
 }
 document.id = 44;
 
+GM_registerMenuCommand("Handy Image Configuration", cfg, "C");
+
 if(document.referrer && document.referrer.lastIndexOf(window.location.hostname) != -1 && document.referrer.lastIndexOf(window.location.hostname) +1 == document.referrer.length - window.location.hostname.length)
 {
 	console.warn("you have just uploaded a picture, didn't you?");
@@ -393,6 +399,11 @@ if(window.location.href.lastIndexOf(window.location.hostname) + window.location.
 }
 
 function ev(q,root){return document.evaluate(q,root?root:document,null,9,null).singleNodeValue;}
+var cfg_direct;
+var cfg_bgclr;
+var cfg_fitWH = true;
+var cfg_fitB;
+var cfg_fitS;
 var rescaled = false;
 var lasttask;
 var isrc;
@@ -433,12 +444,15 @@ function onscript(e)
 
 function makeimage()
 {
+	loadCfg();
+	if(cfg_direct){window.location.href = img.src;return false;}
+	if(cfg_bgclr){document.body.bgColor = cfg_bgclr;}
+	document.body.style.margin = "0px";
 	document.body.innerHTML = "<style>img { position: absolute; top: 0; right: 0; bottom: 0; left: 0; }</style>"; // center image
 	img = document.createElement("img");
 	img.src = isrc;
 	img.id = "resizing";
 	img.style.margin = "auto"; // center image
-	document.body.style.margin = "0px";
 	document.body.appendChild(img);
 	img.addEventListener("click", rescale, true);
 	window.addEventListener("keydown", onkeydown, true);
@@ -452,6 +466,8 @@ function makeworld()
 	// per-host image detection
 	switch (iurl)
 	{
+	case "userscripts.org":
+		cfg();img=1;break;
 	case "vvcap.net":
 	case "simplest-image-hosting.net":
 		i = ev('.//img');
@@ -547,7 +563,7 @@ function makeworld()
 	case "images.maxigame.by":
 	case "digitalfrenzy.net":
 	case "uppic.xgn.in.th":
- 	case "pic.2x4.ru":
+	case "pic.2x4.ru":
 	case "rupict.ru": 	
 		//i = ev('//*[@id="iimg"]');
 		var fn;
@@ -1126,7 +1142,7 @@ function makeworld()
 	case "pohrani.com":
 		i = ev('.//img[contains(@onclick,"(this")]');
 		break;
-	default:
+	default: // dynamic subdomain
 		switch(iurl.substr(iurl.indexOf(".")+1))
 		{
 		case "imagevenue.com":
@@ -1312,13 +1328,24 @@ function autoresize()
 		link.rel = 'shortcut icon';
 		link.href = img.src;
 		document.getElementsByTagName('head')[0].appendChild(link);
-		if((document.body.clientHeight != document.body.scrollHeight) && (document.body.clientWidth != document.body.scrollWidth)) // both scrollbars detected
+		if(cfg_fitWH && (document.body.clientHeight != document.body.scrollHeight) && (document.body.clientWidth != document.body.scrollWidth)) // both scrollbars detected
 		{
 			rescale(0);
 		}
-		else
+		else if(cfg_fitB && ((document.body.clientHeight != document.body.scrollHeight) || (document.body.clientWidth != document.body.scrollWidth))) // one scrollbar
 		{
-			changecursor();
+			rescale(0);
+		}
+		else // no scrollbars
+		{
+			if(cfg_fitS)
+			{
+				rescale(0);
+			}
+			else
+			{
+				changecursor();
+			}
 		}
 	}
 	else
@@ -1349,6 +1376,7 @@ if (typeof KeyEvent === "undefined")
 		DOM_VK_DOWN: 40,
 		DOM_VK_A: 65,
 		DOM_VK_D: 68,
+		DOM_VK_P: 80,
 		DOM_VK_Q: 81,
 		DOM_VK_S: 83,
 		DOM_VK_W: 87,
@@ -1434,5 +1462,70 @@ function onkeydown (b)
 		rescale(0);
 		cancelEvent(b);
 		break;
+	case KeyEvent.DOM_VK_P:
+		cfg();
+		cancelEvent(b);
+		break;
+	}
+}
+
+function $(id) // for StupidFox
+{
+	return document.getElementById(id);
+}
+
+function cfg()
+{
+	if (typeof GM_setValue !== "undefined")
+	{
+		function saveCfg()
+		{
+			GM_setValue("directImage", $("hji_cfg_1_direct").checked);
+			GM_setValue("bgColor", $("hji_cfg_2_bgclr").value);
+			GM_setValue("fitWH", $("hji_cfg_3_fitWH").checked);
+			GM_setValue("fitB", $("hji_cfg_4_fitB").checked);
+			GM_setValue("fitS", $("hji_cfg_5_fitS").checked);
+			alert("Configuration Saved");
+		}
+		ws();
+		if(img){img.removeEventListener("click", rescale, true);}
+		window.removeEventListener("keydown", onkeydown, true);
+		document.head.innerHTML = "";
+		document.body.innerHTML = "";
+		var div = document.createElement("div");
+		div.style.margin = "11% auto";
+		div.style.width = "444px";
+		div.style.border = "solid 1px black";
+		div.style.background = "silver";
+		div.innerHTML = "<b><center>Configuration</center></b><br><input id='hji_cfg_1_direct' type='checkbox'> Open images directly with browser"
+		+ "<br><br><input id='hji_cfg_2_bgclr' type='text' size='6'> Background color (empty = default)"
+		+ "<br><br>Fit images to window:"
+		+ "<br><br><input id='hji_cfg_3_fitWH' type='checkbox'> Larger than window both vertically and horizontally"
+		+ "<br><br><input id='hji_cfg_4_fitB' type='checkbox'> Larger than window either vertically or horizontally"
+		+ "<br><br><input id='hji_cfg_5_fitS' type='checkbox'> Smaller than window"
+		+ "<br><br><center><input id='hji_cfg_save' type='button' value='Save configuration'></center>";
+		document.body.appendChild(div);
+		$("hji_cfg_1_direct").checked = GM_getValue("directImage");
+		$("hji_cfg_2_bgclr").value = GM_getValue("bgColor", "");
+		$("hji_cfg_3_fitWH").checked = GM_getValue("fitWH", true);
+		$("hji_cfg_4_fitB").checked = GM_getValue("fitB");
+		$("hji_cfg_5_fitS").checked = GM_getValue("fitS");
+		$("hji_cfg_save").addEventListener("click", saveCfg, true);
+	}
+	else
+	{
+		alert("Sorry, Chrome userscripts in native mode can't have configurations! Install TamperMonkey extension. (it's very good)");
+	}
+}
+
+function loadCfg()
+{
+	if (typeof GM_getValue !== "undefined")
+	{
+		cfg_direct = GM_getValue("directImage");
+		cfg_bgclr = GM_getValue("bgColor");
+		cfg_fitWH = GM_getValue("fitWH", true);
+		cfg_fitB = GM_getValue("fitB");
+		cfg_fitS = GM_getValue("fitS");
 	}
 }
