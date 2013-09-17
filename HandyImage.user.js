@@ -862,7 +862,6 @@ function makeworld()
 	case "zeljeimage.com":
 	case "imgplate.com":
 	case "myhotimage.com":
-	case "imgboo.me":
 	case "picstwist.com":
 	case "hotimages.eu":
 	case "xximg.net":
@@ -871,9 +870,6 @@ function makeworld()
 	case "gallerycloud.net":
 	case "imgadult.com":
 		i = ev('.//img[contains(@src,"/upload/")]');
-		break;
-	case "imgpay.me":
-		i = ev('.//img[contains(@src,"/upload/")][@alt]');
 		break;
 	case "ruleimg.com":
 		i = ev('//img[@alt="image"]');
