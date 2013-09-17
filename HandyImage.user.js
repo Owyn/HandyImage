@@ -364,6 +364,14 @@
 // @match         http://*.fastimages.ru/p*
 // @match         http://ipic.su/?page=img&pic=*
 // @match         http://*.jpegshare.net/*.html
+// @match         http://*.overdream.cz/*
+// @match         http://uppic.xgn.in.th/share*
+// @match         http://*.fastpics.net/?v=*
+// @match         http://www.ii4.ru/image-*
+// @match         http://*.picuploader.de/*
+// @match         http://pic.2x4.ru/share*
+// @match         http://*.rupict.ru/share*
+// @match         http://bildr.no/view/* 
 // ==/UserScript==
 
 if(document.id == 44) // bad monkey, bad, no more!
@@ -538,6 +546,9 @@ function makeworld()
 	case "img.pereslavl.ru":
 	case "images.maxigame.by":
 	case "digitalfrenzy.net":
+	case "uppic.xgn.in.th":
+ 	case "pic.2x4.ru":
+	case "rupict.ru": 	
 		//i = ev('//*[@id="iimg"]');
 		var fn;
 		var f = document.getElementsByTagName("script");
@@ -627,6 +638,7 @@ function makeworld()
 		break;
 	case "imagebin.org":
 	case "imgbin.me":
+	case "bildr.no": 	
 		i = ev('.//img[contains(@src,"image")]');
 		break;
 	case "iv.pl":
@@ -992,6 +1004,10 @@ function makeworld()
 	case "b4he.com":
 	case "firepic.org":
 	case "seeit.bz":
+	case "overdream.cz":
+	case "fastpics.net":  
+	case "ii4.ru":
+	case "picuploader.de": 	
 		i = ev('.//img[contains(@src,"/images/")]');
 		break;
 	case "someimage.com":
