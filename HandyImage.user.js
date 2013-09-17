@@ -2,7 +2,7 @@
 // @name          Handy Image
 // @namespace     handyimage
 // @author        Owyn
-// @version       2013.09.16
+// @version       2013.09.17
 // @updateURL     https://userscripts.org/scripts/source/166494.user.js
 // @downloadURL   https://userscripts.org/scripts/source/166494.user.js
 // @homepage      https://userscripts.org/scripts/show/166494
@@ -267,8 +267,8 @@
 // @match         http://*.thepornfeeds.com/?p*
 // @match         http://*.piratescreen.com/*
 // @match         http://*.hotimages.eu/img-*
-// @match         http://*.picturevip.com/?v*
-// @match         http://*.picturevip.com/x/clean/*
+// @match         http://*.picturevip.com/*
+// @exclude       http://*.picturevip.com/x/clean/
 // @match         http://*.emptypix.com/*
 // @match         http://*.hornyimage.com/show*
 // @match         http://img.3ezy.net/*.htm
@@ -552,6 +552,8 @@ function makeworld()
 			}
 		}
 		break;
+	case "pix-x.net":
+		i = ev('//img[contains(@src,"images/")]');if(i){break;}
 	case "pic5you.ru":
 	case "pic4you.ru":
 	case "picp2.com":
@@ -561,6 +563,7 @@ function makeworld()
 	case "images-host.biz":
 	case "pic2profit.com":
 	case "galhost.ru":
+	case "pix-x.net":
 		i = ev('.//img[contains(@src,"thumb")]');
 		if(i){i.src = i.src.replace('-thumb', '');
 		i.src = i.src.replace('img_thumb', 'img_full');}
@@ -963,7 +966,6 @@ function makeworld()
 	case "ushareimg.com":
 	case "zimage.fr":
 	case "ngarko.online.fr":
-	case "pix-x.net":
 		i = ev('//img[contains(@src,"images/")]');
 		break;
 	case "fotosik.pl":
