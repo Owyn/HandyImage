@@ -385,7 +385,10 @@ if(document.id == 44) // bad monkey, bad, no more!
 }
 document.id = 44;
 
-GM_registerMenuCommand("Handy Image Configuration", cfg, "C");
+if (typeof GM_registerMenuCommand !== "undefined")
+{
+	GM_registerMenuCommand("Handy Image Configuration", cfg, "C");
+}
 
 if(document.referrer && document.referrer.lastIndexOf(window.location.hostname) != -1 && document.referrer.lastIndexOf(window.location.hostname) +1 == document.referrer.length - window.location.hostname.length)
 {
