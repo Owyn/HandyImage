@@ -1478,7 +1478,6 @@ function $(id) // for StupidFox
 
 function cfg()
 {
-	alert(cfg)
 	if (typeof GM_setValue !== "undefined")
 	{
 		function saveCfg()
