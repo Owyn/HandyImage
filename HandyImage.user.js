@@ -3,7 +3,7 @@
 // @namespace     handyimage
 // @author        Owyn
 // @contributors  U Bless
-// @version       2013.09.18
+// @version       2013.09.19
 // @updateURL     https://userscripts.org/scripts/source/166494.user.js
 // @downloadURL   https://userscripts.org/scripts/source/166494.user.js
 // @homepage      https://userscripts.org/scripts/show/166494
@@ -1501,7 +1501,6 @@ function $(id) {return document.getElementById(id);} // for StupidFox
 
 function cfg()
 {
-	alert("CFG");
 	if (typeof GM_setValue !== "undefined")
 	{
 		function saveCfg()
