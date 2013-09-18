@@ -374,7 +374,13 @@
 // @match         http://*.picuploader.de/*
 // @match         http://pic.2x4.ru/share*
 // @match         http://*.rupict.ru/share*
-// @match         http://bildr.no/view/* 
+// @match         http://bildr.no/view/*
+// @match         http://*.hosttrain.org/share-*
+// @match         http://www.imagestorming.com/*
+// @match         http://*.photolair.net/images/*.html
+// @match         http://*.tuspics.net/*
+// @match         http://*.imagewix.com/img-*
+// @match         http://*.freepicninja.com/*
 // ==/UserScript==
 
 if(document.id == 44) // bad monkey, bad, no more!
@@ -562,7 +568,8 @@ function makeworld()
 	case "digitalfrenzy.net":
 	case "uppic.xgn.in.th":
 	case "pic.2x4.ru":
-	case "rupict.ru": 	
+	case "rupict.ru":
+	case "hosttrain.org":
 		//i = ev('//*[@id="iimg"]');
 		var fn;
 		var f = document.getElementsByTagName("script");
@@ -644,6 +651,18 @@ function makeworld()
 		i = ev('.//a[contains(@href,"/m/")]');
 		if(i){i.src = i.href;}
 		break;
+	case "freepicninja.com":
+		if(window.location.href.indexOf("ads-cookie.php") != -1)
+		{
+			i = ev('.//a[contains(@href,"view.php?picture=")]');
+			if(i)
+			{
+				img = i;
+				window.location.href = i.href;
+			}
+			break;
+		}
+	case "freepicninja.com":
 	case "hostpornpics.net":
 		i = ev('.//img[contains(@src,"img.php")]');
 		break;
@@ -834,6 +853,7 @@ function makeworld()
 	case "imagecorn.com":
 	case "imgcloud.co":
 	case "uploadyourimages.org":
+	case "imagewix.com":
 		i = ev('.//img[contains(@src,"/upload/")]');
 		var c;
 		if(!i)
@@ -971,7 +991,8 @@ function makeworld()
 		i = ev('.//a[contains(@href,"enter")]');
 		if(i)
 		{
-			i.click();
+			img = i;
+			window.location.href = i.href;
 			break;
 		}
 	case "imgnip.com":
@@ -1047,6 +1068,7 @@ function makeworld()
 	case "zupmage.eu":
 	case "pictureturn.com":
 	case "pixic.ru":
+	case "tuspics.net":
 		i = ev('.//img[contains(@src,"/i/")]');
 		break;
 	case "pixpipeline.com":
@@ -1118,6 +1140,8 @@ function makeworld()
 	case "nium.co":
 	case "flickimg.com":
 	case "jpegshare.net":
+	case "imagestorming.com":
+	case "photolair.net":
 		i = ev('.//img[contains(@src,"' + iurl + '/images/")]');
 		break;
 	case "shareimages.com":
