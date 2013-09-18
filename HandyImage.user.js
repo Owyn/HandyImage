@@ -435,10 +435,6 @@ function sanitize() // lol I'm such a hacker
 
 function onscript(e) 
 {
-	if(e.target.innerHTML.indexOf(".innerHTML") != -1)
-	{
-		console.warn( "BLOCKED: " + e.target.src + e.target.innerHTML);
-	}
 	//console.warn( "STOPPED: " + e.target.src + e.target.innerHTML);
 	e.preventDefault();
 	e.stopPropagation();
@@ -1489,8 +1485,7 @@ function cfg()
 			GM_setValue("fitS", $("hji_cfg_5_fitS").checked);
 			alert("Configuration Saved");
 		}
-		ws();
-		if(img){img.removeEventListener("click", rescale, true);}
+		if(img && img.src){img.removeEventListener("click", rescale, true);}
 		window.removeEventListener("keydown", onkeydown, true);
 		document.head.innerHTML = "";
 		document.body.innerHTML = "";
@@ -1499,7 +1494,7 @@ function cfg()
 		div.style.width = "444px";
 		div.style.border = "solid 1px black";
 		div.style.background = "silver";
-		div.innerHTML = "<b><center>Configuration</center></b><br><input id='hji_cfg_1_direct' type='checkbox'> Open images directly with browser"
+		div.innerHTML = "<style>#content {display:none;}</style><b><center>Configuration</center></b><br><input id='hji_cfg_1_direct' type='checkbox'> Open images directly with browser"
 		+ "<br><br><input id='hji_cfg_2_bgclr' type='text' size='6'> Background color (empty = default)"
 		+ "<br><br>Fit images to window:"
 		+ "<br><br><input id='hji_cfg_3_fitWH' type='checkbox'> Larger than window both vertically and horizontally"
