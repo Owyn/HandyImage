@@ -1467,10 +1467,7 @@ function onkeydown (b)
 	}
 }
 
-function $(id) // for StupidFox
-{
-	return document.getElementById(id);
-}
+function $(id) {return document.getElementById(id);} // for StupidFox
 
 function cfg()
 {
@@ -1484,6 +1481,7 @@ function cfg()
 			GM_setValue("fitB", $("hji_cfg_4_fitB").checked);
 			GM_setValue("fitS", $("hji_cfg_5_fitS").checked);
 			alert("Configuration Saved");
+			if($("hji_cfg_2_bgclr").value){document.body.bgColor = $("hji_cfg_2_bgclr").value;}else{document.body.removeAttribute("bgColor");}
 		}
 		if(img && img.src){img.removeEventListener("click", rescale, true);}
 		window.removeEventListener("keydown", onkeydown, true);
