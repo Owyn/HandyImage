@@ -3,7 +3,7 @@
 // @namespace     handyimage
 // @author        Owyn
 // @contributors  U Bless
-// @version       2013.09.17
+// @version       2013.09.18
 // @updateURL     https://userscripts.org/scripts/source/166494.user.js
 // @downloadURL   https://userscripts.org/scripts/source/166494.user.js
 // @homepage      https://userscripts.org/scripts/show/166494
@@ -51,7 +51,6 @@
 // @match         http://d69.in/?*
 // @match         http://*.pixdir.net/show/*
 // @match         http://postimg.org/image/*
-// @exclude       http://postimg.org/image/*/*/
 // @match         http://niceimage.pl/*.html
 // @match         http://picbank.pl/*.html
 // @match         http://*.pics-money.ru/v.php?id=*
@@ -1479,6 +1478,7 @@ function $(id) // for StupidFox
 
 function cfg()
 {
+	alert(cfg)
 	if (typeof GM_setValue !== "undefined")
 	{
 		function saveCfg()
