@@ -12,6 +12,7 @@
 // @grant         GM_getValue
 // @grant         GM_setValue
 // @grant         GM_registerMenuCommand
+// @grant         unsafeWindow
 // @match         https://userscripts.org/scripts/show/166494/configuration
 // @match         http://www.imagebam.com/image/*
 // @match         http://imgchili.net/show/*
@@ -383,12 +384,17 @@
 // @match         http://*.freepicninja.com/*
 // ==/UserScript==
 
-if(document.id == 44) // bad monkey, bad, no more!
+if (typeof unsafeWindow === "undefined")
+{
+	unsafeWindow = window;
+}
+
+if(unsafeWindow.document.id == 44) // bad monkey, bad, no more!
 {
 	console.warn("stopped bad monkey");
 	return false;
 }
-document.id = 44;
+unsafeWindow.document.id = 44;
 
 if (typeof GM_registerMenuCommand !== "undefined")
 {
@@ -1495,6 +1501,7 @@ function $(id) {return document.getElementById(id);} // for StupidFox
 
 function cfg()
 {
+	alert("CFG");
 	if (typeof GM_setValue !== "undefined")
 	{
 		function saveCfg()
