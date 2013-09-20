@@ -3,7 +3,7 @@
 // @namespace     handyimage
 // @author        Owyn
 // @contributors  U Bless
-// @version       2013.09.19
+// @version       2013.09.20
 // @updateURL     https://userscripts.org/scripts/source/166494.user.js
 // @downloadURL   https://userscripts.org/scripts/source/166494.user.js
 // @homepage      https://userscripts.org/scripts/show/166494
@@ -30,6 +30,7 @@
 // @match         http://*.pic5you.ru/*/*/
 // @match         http://tinypic.com/view.php?pic=*
 // @match         http://radical-foto.ru/*
+// @match         http://radikal-foto.ru/*
 // @match         http://www.fotolink.su/v.php?id=*
 // @match         http://www.stooorage.com/show/*/*
 // @match         http://*.pimpandhost.com/image/*
@@ -54,7 +55,7 @@
 // @match         http://postimg.org/image/*
 // @match         http://niceimage.pl/*.html
 // @match         http://picbank.pl/*.html
-// @match         http://*.pics-money.ru/v.php?id=*
+// @match         http://*.pics-money.ru/*/*
 // @match         http://imgcloud.co/img*.html
 // @match         http://*.freeimgup.com/*.*
 // @match         http://imgtiger.com/viewer.php?*
@@ -431,9 +432,9 @@ if(iurl.indexOf("www.") == 0)
 
 function ws()
 {
-	if(navigator.userAgent.indexOf('Firefox') == -1 || (navigator.userAgent.indexOf('Firefox') != -1 && isrc.lastIndexOf(".gif") == -1)) // firefox + gif = bug
+	if(navigator.userAgent.indexOf('Firefox') != -1 && isrc.lastIndexOf(".gif") == -1) // firefox + gif = bug
 	{
-		window.stop();
+		unsafeWindow.stop();
 	}
 }
 
@@ -560,6 +561,10 @@ function makeworld()
 		i = ev('//a[@class="thumb"]');
 		if(i){i.src = i.title;}
 		break;
+	case "jpegbay.com":
+		i = ev('//a[@class]');
+		if(i){i.src = i.href;}
+		break;
 	case "amateurfreak.org":
 	case "euro-pic.eu":
 	case "picpicture.com":
@@ -602,6 +607,7 @@ function makeworld()
 	case "pic2profit.com":
 	case "galhost.ru":
 	case "pix-x.net":
+	case "pics-money.ru":
 		i = ev('.//img[contains(@src,"thumb")]');
 		if(i){i.src = i.src.replace('-thumb', '');
 		i.src = i.src.replace('img_thumb', 'img_full');}
@@ -619,6 +625,7 @@ function makeworld()
 		if(i){i.src = i.src.replace('thumb', 'file');}
 		break;
 	case "radical-foto.ru":
+	case "radikal-foto.ru":
 		var fn;
 		var f = document.getElementsByTagName("script");
 		for(c=0;c<f.length;c++) 
@@ -755,7 +762,6 @@ function makeworld()
 	case "hotchyx.com":
 	case "imagehousing.com":
 	case "cubeupload.com":
-	case "jpegbay.com":
 		i = ev('.//img[contains(@src,"' + iurl + '")]');
 		break;
 	case "picfront.org":
@@ -783,8 +789,11 @@ function makeworld()
 		i = ev('.//img[contains(@src,"uploads/")]');
 		break;
 	case "xtremeshack.com":
+		i = ev('.//img[contains(@src,"/photos/")]');
+		break;
 	case "imagerocket.net":
-		i = ev('.//img[contains(@src,"photos/")]');
+		i = ev('.//a[contains(@href,"/photos/")]');
+		if(i){i.src = i.href};
 		break;
 	case "keptarolo.hu":
 		i = ev('.//img[contains(@src,"/kep/")]');
@@ -831,7 +840,6 @@ function makeworld()
 		i = ev('.//img[contains(@src,"/file/")]');
 		break;
 	case "imagepix.org":
-	case "pics-money.ru":
 	case "hostingfailov.com":
 	case "zimagez.com":
 		i = ev('.//img[contains(@src,"/full/")]');
@@ -1491,7 +1499,14 @@ function onkeydown (b)
 		cancelEvent(b);
 		break;
 	case KeyEvent.DOM_VK_P:
-		cfg();
+		if(img && navigator.userAgent.indexOf('Firefox') == -1) // Chrome bug
+		{
+			window.location.href = "https://userscripts.org/scripts/show/166494/configuration";
+		}
+		else
+		{
+			cfg();
+		}
 		cancelEvent(b);
 		break;
 	}
