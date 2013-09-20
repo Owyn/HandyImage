@@ -432,7 +432,7 @@ if(iurl.indexOf("www.") == 0)
 
 function ws()
 {
-	if(navigator.userAgent.indexOf('Firefox') != -1 && isrc.lastIndexOf(".gif") == -1) // firefox + gif = bug
+	if(!(navigator.userAgent.indexOf('Firefox') != -1 && isrc.lastIndexOf(".gif") != -1)) // NOT firefox + gif = bug
 	{
 		unsafeWindow.stop();
 	}
