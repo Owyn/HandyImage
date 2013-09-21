@@ -150,7 +150,7 @@
 // @match         http://www.uploadhouse.com/viewfile.php?*
 // @match         http://*.x05.org/show.php*
 // @match         http://*.dumpt.com/img/view*
-// @match         http://*.fotohosting.net/image*
+// @match         http://*.fotohosting.net/*
 // @match         http://imagebunk.com/*
 // @match         http://imagezilla.net/show/*
 // @match         http://*.imageup.ru/img*
