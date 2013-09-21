@@ -3,7 +3,7 @@
 // @namespace     handyimage
 // @author        Owyn
 // @contributors  U Bless
-// @version       2013.09.20
+// @version       2013.09.21
 // @updateURL     https://userscripts.org/scripts/source/166494.user.js
 // @downloadURL   https://userscripts.org/scripts/source/166494.user.js
 // @homepage      https://userscripts.org/scripts/show/166494
@@ -1253,8 +1253,8 @@ function makeworld()
 	}
 	else // try again
 	{
-		//console.warn("Didnt find image, trying again in 100ms");
-		setTimeout(function() { makeworld(); }, 100);
+		//console.warn("Didnt find image, trying again in 2 sec");
+		setTimeout(function() { makeworld(); }, 2000);
 	}
 }
 
