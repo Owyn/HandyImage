@@ -3,7 +3,7 @@
 // @namespace     handyimage
 // @author        Owyn
 // @contributors  U Bless
-// @version       2013.09.21
+// @version       2013.09.22
 // @updateURL     https://userscripts.org/scripts/source/166494.user.js
 // @downloadURL   https://userscripts.org/scripts/source/166494.user.js
 // @homepage      https://userscripts.org/scripts/show/166494
@@ -1037,7 +1037,6 @@ function makeworld()
 	case "ushareimg.com":
 	case "zimage.fr":
 	case "ngarko.online.fr":
-	case "screenshot.ru":
 	case "picrak.com":   	
 		i = ev('//img[contains(@src,"images/")]');
 		break;
@@ -1172,6 +1171,7 @@ function makeworld()
 	case "jpegshare.net":
 	case "imagestorming.com":
 	case "photolair.net":
+	case "screenshot.ru":
 		i = ev('.//img[contains(@src,"' + iurl + '/images/")]');
 		break;
 	case "shareimages.com":
