@@ -383,6 +383,14 @@
 // @match         http://*.tuspics.net/*
 // @match         http://*.imagewix.com/img-*
 // @match         http://*.freepicninja.com/*
+// @match         http://www.subeimagenes.com/img*
+// @match         http://www.fotosupload.com/mostrar.php?imagen=*
+// @match         http://screenshot.ru/*
+// @match         http://*.picrak.com/viewer.php?file=*
+// @match         http://*.picspider.de/show.php*
+// @match         http://*.hostpix.de/show.php?img* 
+// @match         http://*.ld-host.de/show*
+// @match         http://*.flexhost.de/photo* 
 // ==/UserScript==
 
 if (typeof unsafeWindow === "undefined")
@@ -511,6 +519,7 @@ function makeworld()
 		break;
 	case "imgbox.com":
 	case "imageupper.com":
+	case "fotosupload.com":   	
 		i = ev('//*[@id="img"]');
 		break;
 	case "imageban.ru":
@@ -527,6 +536,8 @@ function makeworld()
 	case "imgcarry.com":
 	case "pornbus.org":
 	case "fotoo.pl":
+	case "picspider.de":
+	case "hostpix.de":    	
 		i = ev('//*[@id="img_obj"]');
 		break;
 	case "pimpandhost.com":
@@ -785,7 +796,8 @@ function makeworld()
 	case "upsimple.com":
 	case "pixhub.eu":
 	case "fotos-hochladen.net":
-	case "voila.pl":	
+	case "voila.pl":
+	case "ld-host.de":    	
 		i = ev('.//img[contains(@src,"uploads/")]');
 		break;
 	case "xtremeshack.com":
@@ -818,6 +830,7 @@ function makeworld()
 	case "imagebanana.com":
 	case "deffe.com":
 	case "ifotos.pl":
+	case "subeimagenes.com":    	
 		i = ev('.//img[contains(@src,"/img/")]');
 		break;
 	case "imagenetz.de":
@@ -947,6 +960,7 @@ function makeworld()
 	case "image-share.com":
 	case "ima.so":
 	case "imageho.st":
+	case "flexhost.de": 	
 		i = ev('.//img[contains(@src,"upload/")]');
 		break;
 	case "bilder-upload.eu":
@@ -1023,6 +1037,8 @@ function makeworld()
 	case "ushareimg.com":
 	case "zimage.fr":
 	case "ngarko.online.fr":
+	case "screenshot.ru":
+	case "picrak.com":   	
 		i = ev('//img[contains(@src,"images/")]');
 		break;
 	case "fotosik.pl":
