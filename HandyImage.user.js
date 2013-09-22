@@ -519,7 +519,7 @@ function makeworld()
 		break;
 	case "imgbox.com":
 	case "imageupper.com":
-	case "fotosupload.com":   	
+	case "fotosupload.com":
 		i = ev('//*[@id="img"]');
 		break;
 	case "imageban.ru":
@@ -537,7 +537,7 @@ function makeworld()
 	case "pornbus.org":
 	case "fotoo.pl":
 	case "picspider.de":
-	case "hostpix.de":    	
+	case "hostpix.de":
 		i = ev('//*[@id="img_obj"]');
 		break;
 	case "pimpandhost.com":
@@ -695,7 +695,7 @@ function makeworld()
 		break;
 	case "imagebin.org":
 	case "imgbin.me":
-	case "bildr.no": 	
+	case "bildr.no":
 		i = ev('.//img[contains(@src,"image")]');
 		break;
 	case "iv.pl":
@@ -797,7 +797,7 @@ function makeworld()
 	case "pixhub.eu":
 	case "fotos-hochladen.net":
 	case "voila.pl":
-	case "ld-host.de":    	
+	case "ld-host.de":
 		i = ev('.//img[contains(@src,"uploads/")]');
 		break;
 	case "xtremeshack.com":
@@ -830,7 +830,7 @@ function makeworld()
 	case "imagebanana.com":
 	case "deffe.com":
 	case "ifotos.pl":
-	case "subeimagenes.com":    	
+	case "subeimagenes.com":
 		i = ev('.//img[contains(@src,"/img/")]');
 		break;
 	case "imagenetz.de":
@@ -960,7 +960,7 @@ function makeworld()
 	case "image-share.com":
 	case "ima.so":
 	case "imageho.st":
-	case "flexhost.de": 	
+	case "flexhost.de":
 		i = ev('.//img[contains(@src,"upload/")]');
 		break;
 	case "bilder-upload.eu":
@@ -1037,7 +1037,7 @@ function makeworld()
 	case "ushareimg.com":
 	case "zimage.fr":
 	case "ngarko.online.fr":
-	case "picrak.com":   	
+	case "picrak.com":
 		i = ev('//img[contains(@src,"images/")]');
 		break;
 	case "fotosik.pl":
@@ -1069,9 +1069,9 @@ function makeworld()
 	case "firepic.org":
 	case "seeit.bz":
 	case "overdream.cz":
-	case "fastpics.net":  
+	case "fastpics.net":
 	case "ii4.ru":
-	case "picuploader.de": 	
+	case "picuploader.de":
 		i = ev('.//img[contains(@src,"/images/")]');
 		break;
 	case "someimage.com":
