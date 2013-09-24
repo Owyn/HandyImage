@@ -391,6 +391,7 @@
 // @match         http://*.hostpix.de/show.php?img* 
 // @match         http://*.ld-host.de/show*
 // @match         http://*.flexhost.de/photo* 
+// @match         http://*.freeuploadimages.org/viewer.php?file=*
 // ==/UserScript==
 
 if (typeof unsafeWindow === "undefined")
@@ -1038,6 +1039,7 @@ function makeworld()
 	case "zimage.fr":
 	case "ngarko.online.fr":
 	case "picrak.com":
+	case "freeuploadimages.org":
 		i = ev('//img[contains(@src,"images/")]');
 		break;
 	case "fotosik.pl":
