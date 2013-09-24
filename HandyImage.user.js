@@ -3,7 +3,7 @@
 // @namespace     handyimage
 // @author        Owyn
 // @contributors  U Bless
-// @version       2013.09.22
+// @version       2013.09.24
 // @updateURL     https://userscripts.org/scripts/source/166494.user.js
 // @downloadURL   https://userscripts.org/scripts/source/166494.user.js
 // @homepage      https://userscripts.org/scripts/show/166494
@@ -392,6 +392,7 @@
 // @match         http://*.ld-host.de/show*
 // @match         http://*.flexhost.de/photo* 
 // @match         http://*.freeuploadimages.org/viewer.php?file=*
+// @match         http://*.javimage.us/view*
 // ==/UserScript==
 
 if (typeof unsafeWindow === "undefined")
@@ -1116,6 +1117,7 @@ function makeworld()
 		i = ev('.//img[contains(@src,"/i/")]');
 		break;
 	case "howtohemorrhoidscure.com":
+	case "javimage.us":
 		i = ev('.//a[contains(@href,"' + iurl + '/images/")]');
 		if(i){i.src = i.href.substr(i.href.indexOf("http://", 1));}
 		break;
