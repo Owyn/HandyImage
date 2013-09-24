@@ -377,7 +377,7 @@
 // @match         http://pic.2x4.ru/share*
 // @match         http://*.rupict.ru/share*
 // @match         http://bildr.no/view/*
-// @match         http://*.hosttrain.org/share-*
+// @match         http://*.hosttrain.org/share*
 // @match         http://www.imagestorming.com/*
 // @match         http://*.photolair.net/images/*.html
 // @match         http://*.tuspics.net/*
@@ -399,6 +399,15 @@
 // @match         http://*.4put.ru/view-max-picture.php?id=*
 // @match         http://*.goload.ru/?v=*
 // @match         http://www.pictureshack.ru/view*
+// @match         http://*.host99.byethost4.com/share.php?id=*
+// @match         http://upanh.depmely.com/share*
+// @match         http://*.eazypics.net/share*
+// @match         http://*.image.sabyjai.org/share*
+// @match         http://*.image.shabab20.net/share*
+// @match         http://xtupload.com/share.php?id=*
+// @match         http://t.williamgates.net/share*
+// @match         http://*.coolnspicy.com/share*
+// @match         http://*.upload.fpsthailand.com/share.php?id=* 
 // ==/UserScript==
 
 if (typeof unsafeWindow === "undefined")
@@ -600,6 +609,15 @@ function makeworld()
 	case "pic.2x4.ru":
 	case "rupict.ru":
 	case "hosttrain.org":
+	case "host99.byethost4.com":
+	case "upanh.depmely.com":
+	case "eazypics.net":
+	case "image.sabyjai.org":
+	case "image.shabab20.net":
+	case "xtupload.com":
+	case "t.williamgates.net":
+	case "coolnspicy.com":
+	case "upload.fpsthailand.com": 	
 		//i = ev('//*[@id="iimg"]');
 		var fn;
 		var f = document.getElementsByTagName("script");
