@@ -55,7 +55,7 @@
 // @match         http://postimg.org/image/*
 // @match         http://niceimage.pl/*.html
 // @match         http://picbank.pl/*.html
-// @match         http://*.pics-money.ru/*/*
+// @match         http://*.pics-money.ru/*
 // @match         http://imgcloud.co/img*.html
 // @match         http://*.freeimgup.com/*.*
 // @match         http://imgtiger.com/viewer.php?*
@@ -634,6 +634,8 @@ function makeworld()
 		break;
 	case "pix-x.net":
 		i = ev('//img[contains(@src,"images/")]');if(i){break;}
+	case "pics-money.ru":
+		i = ev('//img[contains(@src,"/full/")]');if(i){break;}
 	case "pic5you.ru":
 	case "pic4you.ru":
 	case "picp2.com":
@@ -948,6 +950,7 @@ function makeworld()
 		if(i) 
 		{
 			i.click();
+			img = 1;
 			break;
 		}
 	case "imgonion.com":
