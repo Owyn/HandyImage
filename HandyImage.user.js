@@ -55,7 +55,7 @@
 // @match         http://postimg.org/image/*
 // @match         http://niceimage.pl/*.html
 // @match         http://picbank.pl/*.html
-// @match         http://*.pics-money.ru/*/*
+// @match         http://*.pics-money.ru/v.php?id=*
 // @match         http://imgcloud.co/img*.html
 // @match         http://*.freeimgup.com/*.*
 // @match         http://imgtiger.com/viewer.php?*
@@ -377,7 +377,7 @@
 // @match         http://pic.2x4.ru/share*
 // @match         http://*.rupict.ru/share*
 // @match         http://bildr.no/view/*
-// @match         http://*.hosttrain.org/share-*
+// @match         http://*.hosttrain.org/share*
 // @match         http://www.imagestorming.com/*
 // @match         http://*.photolair.net/images/*.html
 // @match         http://*.tuspics.net/*
@@ -626,7 +626,6 @@ function makeworld()
 	case "pic2profit.com":
 	case "galhost.ru":
 	case "pix-x.net":
-	case "pics-money.ru":
 		i = ev('.//img[contains(@src,"thumb")]');
 		if(i){i.src = i.src.replace('-thumb', '');
 		i.src = i.src.replace('img_thumb', 'img_full');}
@@ -677,6 +676,7 @@ function makeworld()
 		break;
 	case "imgxc.com":
 	case "imgplus.info":
+	case "pics-money.ru":
 		i = ev('.//img[contains(@src,"full")]');
 		break;
 	case "wstaw.org":
