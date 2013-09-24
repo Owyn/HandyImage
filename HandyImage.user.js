@@ -393,6 +393,12 @@
 // @match         http://*.flexhost.de/photo* 
 // @match         http://*.freeuploadimages.org/viewer.php?file=*
 // @match         http://*.javimage.us/view*
+// @match         http://smages.com/?v=*
+// @match         http://image.auditory.ru/viewer.php?id=*
+// @match         http://*.hostingkartinok.com/show-image.php?id=*
+// @match         http://*.4put.ru/view-max-picture.php?id=*
+// @match         http://*.goload.ru/?v=*
+// @match         http://www.pictureshack.ru/view*
 // ==/UserScript==
 
 if (typeof unsafeWindow === "undefined")
@@ -1075,6 +1081,11 @@ function makeworld()
 	case "fastpics.net":
 	case "ii4.ru":
 	case "picuploader.de":
+	case "smages.com":
+	case "image.auditory.ru":
+	case "hostingkartinok.com":
+	case "goload.ru":
+	case "pictureshack.ru":
 		i = ev('.//img[contains(@src,"/images/")]');
 		break;
 	case "someimage.com":
@@ -1087,6 +1098,7 @@ function makeworld()
 	case "saveimg.ru":
 	case "imglink.ru":
 	case "tinyphoto.net":
+	case "4put.ru":
 		i = ev('.//img[contains(@src,"pictures/")]');
 		break;
 	case "imageporter.com":
