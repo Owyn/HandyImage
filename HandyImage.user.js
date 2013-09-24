@@ -59,7 +59,7 @@
 // @match         http://imgcloud.co/img*.html
 // @match         http://*.freeimgup.com/*.*
 // @match         http://imgtiger.com/viewer.php?*
-// @match         http://*.imageporter.com/*.html
+// @match         http://*.imageporter.com/*
 // @match         http://ruleimg.com/img*
 // @match         http://*.picage.ru/*/*
 // @match         http://*.imgserve.net/img*
