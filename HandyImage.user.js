@@ -188,7 +188,6 @@
 // @match         http://*.imgtheif.com/image/*
 // @match         http://*.image-share.com/i*html
 // @match         http://*.uaimage.com/*
-// @exclude       http://*.uaimage.com/gallery/*
 // @match         http://*.npicture.net/share-*
 // @match         http://*.img.acianetmedia.com/*
 // @match         http://www.filedump.net/index.php?pic=*
@@ -800,12 +799,14 @@ function makeworld()
 	case "picturedip.com":
 	case "imagezilla.net":
 	case "imageup.ru":
-	case "uaimage.com":
 	case "seedimage.com":
 	case "hotchyx.com":
 	case "imagehousing.com":
 	case "cubeupload.com":
 		i = ev('.//img[contains(@src,"' + iurl + '")]');
+		break;
+	case "uaimage.com":
+	i = ev('.//img[contains(@src,"' + iurl + '")][@id]');
 		break;
 	case "picfront.org":
 		j = true;
