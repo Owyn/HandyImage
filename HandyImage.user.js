@@ -187,7 +187,7 @@
 // @match         http://*.pixsor.com/XXX/share*
 // @match         http://*.imgtheif.com/image/*
 // @match         http://*.image-share.com/i*html
-// @match         http://*.uaimage.com/image/*
+// @match         http://*.uaimage.com/*
 // @match         http://*.npicture.net/share-*
 // @match         http://*.img.acianetmedia.com/*
 // @match         http://www.filedump.net/index.php?pic=*
@@ -195,7 +195,7 @@
 // @exclude       http://www.2imgs.com/uploaded/*
 // @match         http://*.overpic.net/view*
 // @match         http://*.unlimitedpicture.com/?p*
-// @match         http://*.imagecross.com/d/image*
+// @match         http://*.imagecross.com/*
 // @match         http://*.mojoimage.com/*
 // @match         http://www.use.com/*
 // @match         http://www.imgjoe.com/?v=*
@@ -408,6 +408,8 @@
 // @match         http://t.williamgates.net/share*
 // @match         http://*.coolnspicy.com/share*
 // @match         http://*.upload.fpsthailand.com/share.php?id=* 
+// @match         http://*.fapomatic.com/v*
+// @match         http://photosex.biz/v.php?id=*
 // ==/UserScript==
 
 if (typeof unsafeWindow === "undefined")
@@ -506,6 +508,7 @@ function makeworld()
 		cfg();img=1;break;
 	case "vvcap.net":
 	case "simplest-image-hosting.net":
+	case "photosex.biz":
 		i = ev('.//img');
 		break;
 	case "tryimg.com":
@@ -826,6 +829,7 @@ function makeworld()
 	case "fotos-hochladen.net":
 	case "voila.pl":
 	case "ld-host.de":
+	case "fapomatic.com":
 		i = ev('.//img[contains(@src,"uploads/")]');
 		break;
 	case "xtremeshack.com":
