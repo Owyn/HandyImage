@@ -188,6 +188,7 @@
 // @match         http://*.imgtheif.com/image/*
 // @match         http://*.image-share.com/i*html
 // @match         http://*.uaimage.com/*
+// @exclude       http://*.uaimage.com/gallery/*
 // @match         http://*.npicture.net/share-*
 // @match         http://*.img.acianetmedia.com/*
 // @match         http://www.filedump.net/index.php?pic=*
