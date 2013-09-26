@@ -18,6 +18,7 @@
 // @match         http://imgchili.net/show/*
 // @match         http://imgchili.com/show/*
 // @match         http://imgbox.com/*
+// @exclude       http://imgbox.com/g/*
 // @match         http://imagetwist.com/*/*
 // @match         http://*.imagevenue.com/img.php?*
 // @match         http://imageshack.us/photo/*
@@ -414,6 +415,12 @@
 // @match         http://*.imageteam.org/img-*
 // @match         http://*.fotoshara.pl/*.html
 // @match         http://*.screencity.pl/*.html
+// @match         http://*.x.thebestpichost.com/*
+// @match         http://*.hostimage.ru/photo/*
+// @match         http://*.5pics.de/?b=*
+// @match         http://hostpic.de/?b=*
+// @match         http://www.yourimage24.de/view*
+// @match         http://www.loaditup.de/*.html
 // ==/UserScript==
 
 if (typeof unsafeWindow === "undefined")
@@ -513,6 +520,9 @@ function makeworld()
 	case "vvcap.net":
 	case "simplest-image-hosting.net":
 	case "photosex.biz":
+	case "hostpic.de":
+	case "5pics.de":
+	case "hostimage.ru":
 		i = ev('.//img');
 		break;
 	case "tryimg.com":
@@ -711,9 +721,10 @@ function makeworld()
 		if(i){i.src = i.href;}
 		break;
 	case "freepicninja.com":
+	case "x.thebestpichost.com":
 		if(window.location.href.indexOf("ads-cookie.php") != -1)
 		{
-			i = ev('.//a[contains(@href,"view.php?picture=")]');
+			i = ev('.//a');
 			if(i)
 			{
 				img = i;
@@ -721,7 +732,11 @@ function makeworld()
 			}
 			break;
 		}
-	case "freepicninja.com":
+		else
+		{
+			iurl += 2;
+		}
+	case "freepicninja.com2":
 	case "hostpornpics.net":
 		i = ev('.//img[contains(@src,"img.php")]');
 		break;
@@ -747,6 +762,7 @@ function makeworld()
 	case "imageurlhost.com":
 	case "vietchecker.com":
 	case "superkipje.com":
+	case "yourimage24.de":
 		i = ev('.//a[contains(@href,"images/")]');
 		if(i){i.src = i.href;}
 		break;
@@ -869,6 +885,7 @@ function makeworld()
 	case "deffe.com":
 	case "ifotos.pl":
 	case "subeimagenes.com":
+	case "x.thebestpichost.com2":
 		i = ev('.//img[contains(@src,"/img/")]');
 		break;
 	case "imagenetz.de":
@@ -885,6 +902,7 @@ function makeworld()
 	case "bilder-hochladen.net":
 	case "dumpt.com":
 	case "imgsin.com":
+	case "loaditup.de":
 		i = ev('.//img[contains(@src,"/files/")]');
 		break;
 	case "image18.org":
