@@ -3,7 +3,7 @@
 // @namespace     handyimage
 // @author        Owyn
 // @contributors  U Bless
-// @version       2013.09.24
+// @version       2013.09.26
 // @updateURL     https://userscripts.org/scripts/source/166494.user.js
 // @downloadURL   https://userscripts.org/scripts/source/166494.user.js
 // @homepage      https://userscripts.org/scripts/show/166494
@@ -1081,7 +1081,6 @@ function makeworld()
 	case "ngarko.online.fr":
 	case "picrak.com":
 	case "freeuploadimages.org":
-	case "celebimg.com":
 		i = ev('//img[contains(@src,"images/")]');
 		break;
 	case "fotosik.pl":
@@ -1121,6 +1120,7 @@ function makeworld()
 	case "hostingkartinok.com":
 	case "goload.ru":
 	case "pictureshack.ru":
+	case "celebimg.com":
 		i = ev('.//img[contains(@src,"/images/")]');
 		break;
 	case "someimage.com":
