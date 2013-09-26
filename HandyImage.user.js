@@ -18,6 +18,7 @@
 // @match         http://imgchili.net/show/*
 // @match         http://imgchili.com/show/*
 // @match         http://imgbox.com/*
+// @exclude       http://imgbox.com/g/*
 // @match         http://imagetwist.com/*/*
 // @match         http://*.imagevenue.com/img.php?*
 // @match         http://imageshack.us/photo/*
@@ -379,8 +380,10 @@
 // @match         http://bildr.no/view/*
 // @match         http://*.hosttrain.org/share*
 // @match         http://www.imagestorming.com/*
+// @exclude       http://www.imagestorming.com
 // @match         http://*.photolair.net/images/*.html
 // @match         http://*.tuspics.net/*
+// @exclude       http://tuspics.net
 // @match         http://*.imagewix.com/img-*
 // @match         http://*.freepicninja.com/*
 // @match         http://www.subeimagenes.com/img*
