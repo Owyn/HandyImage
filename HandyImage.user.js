@@ -53,8 +53,8 @@
 // @match         http://d69.in/?*
 // @match         http://*.pixdir.net/show/*
 // @match         http://postimg.org/image/*
-// @match         http://niceimage.pl/*.html
-// @match         http://picbank.pl/*.html
+// @match         http://*.niceimage.pl/*.html
+// @match         http://*.picbank.pl/*.html
 // @match         http://*.pics-money.ru/*
 // @match         http://imgcloud.co/img*.html
 // @match         http://*.freeimgup.com/*.*
@@ -109,7 +109,7 @@
 // @match         http://www.bilder-hochladen.net/file*
 // @match         http://www.bild.me/bild.php?*
 // @match         http://www.imagesnake.com/show*
-// @match         http://www.freebunker.com/show*
+// @match         http://www.freebunker.com/*
 // @match         http://bayimg.com/*
 // @match         http://*.directupload.net/file*
 // @match         http://imagepong.info/view-image/*
@@ -410,6 +410,10 @@
 // @match         http://*.upload.fpsthailand.com/share.php?id=* 
 // @match         http://*.fapomatic.com/v*
 // @match         http://photosex.biz/v.php?id=*
+// @match         http://*.celebimg.com/2*
+// @match         http://*.imageteam.org/img-*
+// @match         http://*.fotoshara.pl/*.html
+// @match         http://*.screencity.pl/*.html
 // ==/UserScript==
 
 if (typeof unsafeWindow === "undefined")
@@ -893,6 +897,8 @@ function makeworld()
 		break;
 	case "picbank.pl":
 	case "niceimage.pl":
+	case "screencity.pl":
+	case "fotoshara.pl":
 		i = ev('.//img[contains(@src,"/uploaded/")]');
 		break;
 	case "imgbunk.com":
@@ -915,6 +921,7 @@ function makeworld()
 	case "imgcloud.co":
 	case "uploadyourimages.org":
 	case "imagewix.com":
+	case "imageteam.org":
 		i = ev('.//img[contains(@src,"/upload/")]');
 		var c;
 		if(!i)
@@ -1074,6 +1081,7 @@ function makeworld()
 	case "ngarko.online.fr":
 	case "picrak.com":
 	case "freeuploadimages.org":
+	case "celebimg.com":
 		i = ev('//img[contains(@src,"images/")]');
 		break;
 	case "fotosik.pl":
