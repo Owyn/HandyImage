@@ -730,12 +730,12 @@ function makeworld()
 				img = i;
 				window.location.href = i.href;
 			}
-			break;
 		}
 		else
 		{
 			iurl += 2;
 		}
+		break;
 	case "freepicninja.com2":
 	case "hostpornpics.net":
 		i = ev('.//img[contains(@src,"img.php")]');
