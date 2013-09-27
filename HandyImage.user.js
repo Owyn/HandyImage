@@ -421,6 +421,7 @@
 // @match         http://hostpic.de/?b=*
 // @match         http://www.yourimage24.de/view*
 // @match         http://www.loaditup.de/*.html
+// @match         http://*.uploadimage.ro/viewer.php?file=*
 // ==/UserScript==
 
 if (typeof unsafeWindow === "undefined")
@@ -738,6 +739,7 @@ function makeworld()
 		break;
 	case "freepicninja.com2":
 	case "hostpornpics.net":
+	case "uploadimage.ro":
 		i = ev('.//img[contains(@src,"img.php")]');
 		break;
 	case "imageno.com":
