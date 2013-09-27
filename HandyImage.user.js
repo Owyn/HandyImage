@@ -422,6 +422,7 @@
 // @match         http://www.yourimage24.de/view*
 // @match         http://www.loaditup.de/*.html
 // @match         http://*.uploadimage.ro/viewer.php?file=*
+// @match         http://*.chickupload.com/showpicture*
 // ==/UserScript==
 
 if (typeof unsafeWindow === "undefined")
@@ -653,6 +654,7 @@ function makeworld()
 	case "pix-x.net":
 		i = ev('//img[contains(@src,"images/")]');if(i){break;}
 	case "pics-money.ru":
+	case "chickupload.com":
 		i = ev('//img[contains(@src,"/full/")]');if(i){break;}
 	case "pic5you.ru":
 	case "pic4you.ru":
