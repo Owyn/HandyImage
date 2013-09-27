@@ -1143,6 +1143,7 @@ function makeworld()
 	case "goload.ru":
 	case "pictureshack.ru":
 	case "celebimg.com":
+	case "sharenxs.com":
 		i = ev('.//img[contains(@src,"/images/")]');
 		break;
 	case "someimage.com":
@@ -1227,7 +1228,6 @@ function makeworld()
 	case "qrrro.com":
 	case "fotohosting.net":
 	case "overpic.net":
-	case "sharenxs.com":
 	case "imagesocket.com":
 	case "flickimg.com":
 	case "sexseeimage.com":
