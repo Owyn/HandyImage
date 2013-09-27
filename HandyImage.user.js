@@ -423,6 +423,7 @@
 // @match         http://www.loaditup.de/*.html
 // @match         http://*.uploadimage.ro/viewer.php?file=*
 // @match         http://*.chickupload.com/showpicture*
+// @match         http://www.images.woh.to/?p*
 // ==/UserScript==
 
 if (typeof unsafeWindow === "undefined")
@@ -1066,6 +1067,7 @@ function makeworld()
 	case "unlimitedpicture.com":
 	case "mypixxx.lonestarnaughtygirls.com":
 	case "x45x.info":
+	case "images.woh.to":
 		i = ev('.//a[contains(@href,"?di=")]');
 		if(i)
 		{
