@@ -3,7 +3,7 @@
 // @namespace     handyimage
 // @author        Owyn
 // @contributors  U Bless
-// @version       2013.09.26
+// @version       2013.09.27
 // @updateURL     https://userscripts.org/scripts/source/166494.user.js
 // @downloadURL   https://userscripts.org/scripts/source/166494.user.js
 // @homepage      https://userscripts.org/scripts/show/166494
@@ -210,7 +210,7 @@
 // @match         http://*.imageshost.ru/photo/*
 // @match         http://www.imagebanana.com/view*
 // @match         http://*.imagestime.com/show*
-// @match         http://sharenxs.com/view*
+// @match         http://*.sharenxs.com/view*
 // @match         http://img4.imagetitan.com/img*
 // @match         http://*.imagenpic.com/*
 // @match         http://*.stuffed.ru/images*
@@ -422,6 +422,7 @@
 // @match         http://www.yourimage24.de/view*
 // @match         http://www.loaditup.de/*.html
 // @match         http://*.uploadimage.ro/viewer.php?file=*
+// @match         http://*.chickupload.com/showpicture*
 // ==/UserScript==
 
 if (typeof unsafeWindow === "undefined")
@@ -520,7 +521,6 @@ function makeworld()
 		cfg();img=1;break;
 	case "vvcap.net":
 	case "simplest-image-hosting.net":
-	case "photosex.biz":
 	case "hostpic.de":
 	case "5pics.de":
 	case "hostimage.ru":
@@ -785,6 +785,7 @@ function makeworld()
 	case "fotolink.su":
 	case "picthost.net":
 	case "blackcatpix.com":
+	case "photosex.biz":
 		i = ev('.//img[contains(@src,"/pic")]');
 		break;
 	case "d69.in":
@@ -913,6 +914,7 @@ function makeworld()
 	case "imagepix.org":
 	case "hostingfailov.com":
 	case "zimagez.com":
+	case "chickupload.com":
 		i = ev('.//img[contains(@src,"/full/")]');
 		break;
 	case "picbank.pl":
@@ -1141,7 +1143,6 @@ function makeworld()
 	case "goload.ru":
 	case "pictureshack.ru":
 	case "celebimg.com":
-	case "sharenxs.com":
 		i = ev('.//img[contains(@src,"/images/")]');
 		break;
 	case "someimage.com":
@@ -1226,6 +1227,7 @@ function makeworld()
 	case "qrrro.com":
 	case "fotohosting.net":
 	case "overpic.net":
+	case "sharenxs.com":
 	case "imagesocket.com":
 	case "flickimg.com":
 	case "sexseeimage.com":
