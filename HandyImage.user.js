@@ -171,6 +171,7 @@
 // @match         http://*.ipicture.ru/Gallery/Viewfull/*
 // @match         http://*.itmages.ru/image/view/*
 // @match         http://*.pohrani.com/*
+// @match         http://shrani.najdi.si/*
 // @match         http://*.iv.pl/viewer.php?file=*
 // @match         http://*.hostingfailov.com/photo/*
 // @match         http://www.picamatic.com/view/*
@@ -423,6 +424,13 @@
 // @match         http://www.loaditup.de/*.html
 // @match         http://*.uploadimage.ro/viewer.php?file=*
 // @match         http://*.chickupload.com/showpicture*
+// @match         http://www.images.woh.to/?p*
+// @match         http://*.imgbox.de/show/img*
+// @match         http://*.upmyphoto.com/image*
+// @match         http://*.picszone.net/viewer.php?file=*
+// @match         http://*.p1c.in/p*
+// @match         http://*.images.share-films.net/viewer.php?file=*
+// @match         http://www.uploadking.biz/show.php*
 // ==/UserScript==
 
 if (typeof unsafeWindow === "undefined")
@@ -573,6 +581,7 @@ function makeworld()
 	case "fotoo.pl":
 	case "picspider.de":
 	case "hostpix.de":
+	case "uploadking.biz":
 		i = ev('//*[@id="img_obj"]');
 		break;
 	case "pimpandhost.com":
@@ -1049,6 +1058,7 @@ function makeworld()
 	case "rapidjoy.com":
 	case "cyberpics.net":
 	case "fastimages.ru":
+	case "p1c.in":
 		i = ev('.//a[contains(@href,"/di/")]');
 		if(i)
 		{
@@ -1066,6 +1076,7 @@ function makeworld()
 	case "unlimitedpicture.com":
 	case "mypixxx.lonestarnaughtygirls.com":
 	case "x45x.info":
+	case "images.woh.to":
 		i = ev('.//a[contains(@href,"?di=")]');
 		if(i)
 		{
@@ -1103,6 +1114,8 @@ function makeworld()
 	case "ngarko.online.fr":
 	case "picrak.com":
 	case "freeuploadimages.org":
+	case "picszone.net":
+	case "images.share-films.net":
 		i = ev('//img[contains(@src,"images/")]');
 		break;
 	case "fotosik.pl":
@@ -1144,6 +1157,7 @@ function makeworld()
 	case "pictureshack.ru":
 	case "celebimg.com":
 	case "sharenxs.com":
+	case "imgbox.de":
 		i = ev('.//img[contains(@src,"/images/")]');
 		break;
 	case "someimage.com":
@@ -1245,6 +1259,7 @@ function makeworld()
 	case "imagestorming.com":
 	case "photolair.net":
 	case "screenshot.ru":
+	case "upmyphoto.com":
 		i = ev('.//img[contains(@src,"' + iurl + '/images/")]');
 		break;
 	case "shareimages.com":
@@ -1265,6 +1280,7 @@ function makeworld()
 	case "imgchili.com":
 	case "pic-upload.de":
 	case "pohrani.com":
+	case "shrani.najdi.si":
 		i = ev('.//img[contains(@onclick,"(this")]');
 		break;
 	default: // dynamic subdomain
