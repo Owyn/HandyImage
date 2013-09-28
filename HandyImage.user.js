@@ -423,6 +423,8 @@
 // @match         http://www.loaditup.de/*.html
 // @match         http://*.uploadimage.ro/viewer.php?file=*
 // @match         http://*.chickupload.com/showpicture*
+// @match         http://www.images.woh.to/?p*
+// @match         http://*.imgbox.de/show/img*
 // ==/UserScript==
 
 if (typeof unsafeWindow === "undefined")
@@ -1066,6 +1068,7 @@ function makeworld()
 	case "unlimitedpicture.com":
 	case "mypixxx.lonestarnaughtygirls.com":
 	case "x45x.info":
+	case "images.woh.to":
 		i = ev('.//a[contains(@href,"?di=")]');
 		if(i)
 		{
@@ -1144,6 +1147,7 @@ function makeworld()
 	case "pictureshack.ru":
 	case "celebimg.com":
 	case "sharenxs.com":
+	case "imgbox.de":
 		i = ev('.//img[contains(@src,"/images/")]');
 		break;
 	case "someimage.com":
