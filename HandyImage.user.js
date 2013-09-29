@@ -3,7 +3,7 @@
 // @namespace     handyimage
 // @author        Owyn
 // @contributors  U Bless
-// @version       2013.09.28
+// @version       2013.09.29
 // @updateURL     https://userscripts.org/scripts/source/166494.user.js
 // @downloadURL   https://userscripts.org/scripts/source/166494.user.js
 // @homepage      https://userscripts.org/scripts/show/166494
@@ -564,9 +564,6 @@ function makeworld()
 		i = ev('.//img[@id="thepic"]');
 		if(i && i.parentNode.href){i.src = i.src.replace('/s/', '/i/');}
 		break;
-	case "roboimages.com":
-	    i = ev('.//img[@id="thepic"]');
-	    break;
 	case "imgbox.com":
 	case "imageupper.com":
 	case "fotosupload.com":
@@ -1054,6 +1051,7 @@ function makeworld()
 	case "imagecross.com":
 	case "npicture.net":
 	case "uprapide.com":
+	case "roboimages.com":
 		i = ev('.//img[contains(@src,"' + iurl + '/image")]');
 		break;
 	case "imgns.com":
@@ -1134,7 +1132,6 @@ function makeworld()
 		i = ev('//img[contains(@src,"images/")][@onload]');
 		break;
 	case "hostpics.info":
-	case "imagefile.org":
 		i = ev('//*[@id="photo"]');
 		break;
 	case "picamatic.com":
@@ -1270,6 +1267,7 @@ function makeworld()
 	case "photolair.net":
 	case "screenshot.ru":
 	case "upmyphoto.com":
+	case "imagefile.org":
 		i = ev('.//img[contains(@src,"' + iurl + '/images/")]');
 		break;
 	case "shareimages.com":
