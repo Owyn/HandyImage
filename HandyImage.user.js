@@ -435,6 +435,10 @@
 // @match         http://foto.xhost.lv/show.php?img=*
 // @match         http://*.imagenic.net/viewer.php?file=*
 // @match         http://*.imagefile.org/view.php?filename=*
+// @match         http://*.onimage.net/show.php*
+// @match         http://*.uploadagent.de/show*
+// @match         http://www.pixoload.de/?p*
+// @match         http://*.bildjunkies.de/viewer.php?file=*
 // ==/UserScript==
 
 if (typeof unsafeWindow === "undefined")
@@ -587,6 +591,7 @@ function makeworld()
 	case "hostpix.de":
 	case "uploadking.biz":
 	case "foto.xhost.lv":
+	case "onimage.net":
 		i = ev('//*[@id="img_obj"]');
 		break;
 	case "pimpandhost.com":
@@ -793,6 +798,7 @@ function makeworld()
 	case "pictureshoster.com":
 	case "zaslike.com":
 	case "dwimg.com":
+	case "uploadagent.de":
 		i = ev('.//a[contains(@href,"files/")]');
 		if(i){i.src = i.href;}
 		break;
@@ -1084,6 +1090,7 @@ function makeworld()
 	case "mypixxx.lonestarnaughtygirls.com":
 	case "x45x.info":
 	case "images.woh.to":
+	case "pixoload.de":
 		i = ev('.//a[contains(@href,"?di=")]');
 		if(i)
 		{
@@ -1123,6 +1130,7 @@ function makeworld()
 	case "freeuploadimages.org":
 	case "picszone.net":
 	case "images.share-films.net":
+	case "bildjunkies.de":
 		i = ev('//img[contains(@src,"images/")]');
 		break;
 	case "fotosik.pl":
