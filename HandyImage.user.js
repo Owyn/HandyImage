@@ -431,6 +431,10 @@
 // @match         http://*.p1c.in/p*
 // @match         http://*.images.share-films.net/viewer.php?file=*
 // @match         http://www.uploadking.biz/show.php*
+// @match         http://*.roboimages.com/view*
+// @match         http://foto.xhost.lv/show.php?img=*
+// @match         http://*.imagenic.net/viewer.php?file=*
+// @match         http://*.imagefile.org/view.php?filename=*
 // ==/UserScript==
 
 if (typeof unsafeWindow === "undefined")
@@ -560,6 +564,9 @@ function makeworld()
 		i = ev('.//img[@id="thepic"]');
 		if(i && i.parentNode.href){i.src = i.src.replace('/s/', '/i/');}
 		break;
+	case "roboimages.com":
+	    i = ev('.//img[@id="thepic"]');
+	    break;
 	case "imgbox.com":
 	case "imageupper.com":
 	case "fotosupload.com":
@@ -582,12 +589,14 @@ function makeworld()
 	case "picspider.de":
 	case "hostpix.de":
 	case "uploadking.biz":
+	case "foto.xhost.lv":
 		i = ev('//*[@id="img_obj"]');
 		break;
 	case "pimpandhost.com":
 	case "pixdir.net":
 	case "fastpic.ru":
 	case "abload.de":
+	case "imagenic.net":
 		i = ev('//img[@id="image"]');
 		break;
 	case "pikucha.ru":
@@ -1125,6 +1134,7 @@ function makeworld()
 		i = ev('//img[contains(@src,"images/")][@onload]');
 		break;
 	case "hostpics.info":
+	case "imagefile.org":
 		i = ev('//*[@id="photo"]');
 		break;
 	case "picamatic.com":
