@@ -439,6 +439,7 @@
 // @match         http://*.uploadagent.de/show*
 // @match         http://www.pixoload.de/?p*
 // @match         http://*.bildjunkies.de/viewer.php?file=*
+// @match         http://*.imagetotal.de/image.php?fileID=*
 // ==/UserScript==
 
 if (typeof unsafeWindow === "undefined")
@@ -768,6 +769,7 @@ function makeworld()
 	case "imagebin.org":
 	case "imgbin.me":
 	case "bildr.no":
+	case "imagetotal.de":
 		i = ev('.//img[contains(@src,"image")]');
 		break;
 	case "iv.pl":
