@@ -769,7 +769,6 @@ function makeworld()
 	case "imagebin.org":
 	case "imgbin.me":
 	case "bildr.no":
-	case "imagetotal.de":
 		i = ev('.//img[contains(@src,"image")]');
 		break;
 	case "iv.pl":
@@ -1029,6 +1028,7 @@ function makeworld()
 	case "sxpics.nl":
 	case "gallerycloud.net":
 	case "imgadult.com":
+	case "imagetotal.de":
 		i = ev('.//img[contains(@src,"/upload/")]');
 		break;
 	case "ruleimg.com":
