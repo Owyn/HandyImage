@@ -454,6 +454,12 @@
 // @match         http://*.poopr.org/viewer.php?file=*
 // @match         http://*.xp-images.hi2.ro/viewer.php?file=*
 // @match         http://*.dayzeddesigns.com/viewer.php?file=*
+// @match         http://*.freeimghosting.co.uk/viewer.php?file=*
+// @match         http://*.123poze.3x.ro/viewer.php?file=*
+// @match         http://*.photostand.co.za/viewer.php?file=*
+// @match         http://*.upload.removed.us/viewer.php?file=*
+// @match         http://*.sharepic.antahjutasb.com.my/viewer.php?file=*
+// @match         http://*.images-hosting.tk/viewer.php?file=*
 // ==/UserScript==
 
 if (typeof unsafeWindow === "undefined")
@@ -943,6 +949,7 @@ function makeworld()
 	case "dumpt.com":
 	case "imgsin.com":
 	case "loaditup.de":
+	case "123poze.3x.ro":
 		i = ev('.//img[contains(@src,"/files/")]');
 		break;
 	case "image18.org":
@@ -1160,6 +1167,11 @@ function makeworld()
 	case "poopr.org":
 	case "xp-images.hi2.ro":
 	case "dayzeddesigns.com":
+	case "freeimghosting.co.uk":
+	case "photostand.co.za":
+	case "upload.removed.us":
+	case "sharepic.antahjutasb.com.my":
+	case "images-hosting.tk":
 		i = ev('//img[contains(@src,"images/")]');
 		break;
 	case "fotosik.pl":
