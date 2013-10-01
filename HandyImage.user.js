@@ -460,6 +460,10 @@
 // @match         http://*.upload.removed.us/viewer.php?file=*
 // @match         http://*.sharepic.antahjutasb.com.my/viewer.php?file=*
 // @match         http://*.images-hosting.tk/viewer.php?file=*
+// @match         http://demo.chevereto.com/*
+// @match         http://*.imagewoof.com/view_image*
+// @match         http://*.image-hoster.org/share*
+// @match         http://*.hostimg.org/show-image.php?id=*
 // ==/UserScript==
 
 if (typeof unsafeWindow === "undefined")
@@ -677,6 +681,7 @@ function makeworld()
 	case "t.williamgates.net":
 	case "coolnspicy.com":
 	case "upload.fpsthailand.com": 	
+	case "image-hoster.org":
 		//i = ev('//*[@id="iimg"]');
 		var fn;
 		var f = document.getElementsByTagName("script");
@@ -785,6 +790,7 @@ function makeworld()
 		i = ev('.//img[contains(@src,"img.php")]');
 		break;
 	case "imageno.com":
+	case "imagewoof.com":
 		i = ev('.//img[contains(@src,"image.php")]');
 		break;
 	case "imagebin.org":
@@ -1227,6 +1233,7 @@ function makeworld()
 	case "imglink.ru":
 	case "tinyphoto.net":
 	case "4put.ru":
+	case "hostimg.org":
 		i = ev('.//img[contains(@src,"pictures/")]');
 		break;
 	case "imageporter.com":
@@ -1318,6 +1325,7 @@ function makeworld()
 	case "upmyphoto.com":
 	case "imagefile.org":
 	case "pix.hostux.net":
+	case "demo.chevereto.com":
 		i = ev('.//img[contains(@src,"' + iurl + '/images/")]');
 		break;
 	case "shareimages.com":
