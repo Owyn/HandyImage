@@ -440,6 +440,20 @@
 // @match         http://www.pixoload.de/?p*
 // @match         http://*.bildjunkies.de/viewer.php?file=*
 // @match         http://*.imagetotal.de/image.php?fileID=*
+// @match         http://pix.hostux.net/*
+// @match         http://*.uppic.ilovemyshopping.com/viewer.php?file=*
+// @match         http://*.marmolak.net/viewer.php?file=*
+// @match         http://*.foto.hcfor.pl/viewer.php?file=*
+// @match         http://*.iuploader.com/viewer.php?file=*
+// @match         http://*.up.daniyalonline.com/viewer.php?file=*
+// @match         http://*.slikosef.pajek.net/viewer.php?file=*
+// @match         http://*.imagegecko.com/viewer.php?file=*
+// @match         http://*.imagesticky.com/viewer.php?file=*
+// @match         http://*.pic.tooptarinha.com/viewer.php?file=* 
+// @match         http://*.up.dlu3at.net/viewer.php?file=*
+// @match         http://*.poopr.org/viewer.php?file=*
+// @match         http://*.xp-images.hi2.ro/viewer.php?file=*
+// @match         http://*.dayzeddesigns.com/viewer.php?file=*
 // ==/UserScript==
 
 if (typeof unsafeWindow === "undefined")
@@ -761,6 +775,7 @@ function makeworld()
 	case "freepicninja.com2":
 	case "hostpornpics.net":
 	case "uploadimage.ro":
+	case "marmolak.net":
 		i = ev('.//img[contains(@src,"img.php")]');
 		break;
 	case "imageno.com":
@@ -1133,6 +1148,18 @@ function makeworld()
 	case "picszone.net":
 	case "images.share-films.net":
 	case "bildjunkies.de":
+	case "uppic.ilovemyshopping.com":
+	case "foto.hcfor.pl":
+	case "iuploader.com":
+	case "up.daniyalonline.com":
+	case "slikosef.pajek.net":
+	case "imagegecko.com":
+	case "imagesticky.com":
+	case "pic.tooptarinha.com":
+	case "up.dlu3at.net":
+	case "poopr.org":
+	case "xp-images.hi2.ro":
+	case "dayzeddesigns.com":
 		i = ev('//img[contains(@src,"images/")]');
 		break;
 	case "fotosik.pl":
@@ -1278,6 +1305,7 @@ function makeworld()
 	case "screenshot.ru":
 	case "upmyphoto.com":
 	case "imagefile.org":
+	case "pix.hostux.net":
 		i = ev('.//img[contains(@src,"' + iurl + '/images/")]');
 		break;
 	case "shareimages.com":
