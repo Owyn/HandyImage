@@ -1209,6 +1209,8 @@ function makeworld()
 		i = ev('//img[contains(@src,"images/")][@onload]');
 		break;
 	case "hostpics.info":
+	case "bien-vue.com":
+	case "imagerule.com":	
 		i = ev('//*[@id="photo"]');
 		break;
 	case "picamatic.com":
@@ -1348,8 +1350,6 @@ function makeworld()
 	case "imagefile.org":
 	case "pix.hostux.net":
 	case "demo.chevereto.com":
-	case "bien-vue.com":
-	case "imagerule.com":
 		i = ev('.//img[contains(@src,"' + iurl + '/images/")]');
 		break;
 	case "shareimages.com":
