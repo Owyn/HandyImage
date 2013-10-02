@@ -3,7 +3,7 @@
 // @namespace     handyimage
 // @author        Owyn
 // @contributors  U Bless
-// @version       2013.09.29
+// @version       2013.10.02
 // @updateURL     https://userscripts.org/scripts/source/166494.user.js
 // @downloadURL   https://userscripts.org/scripts/source/166494.user.js
 // @homepage      https://userscripts.org/scripts/show/166494
@@ -826,9 +826,7 @@ function makeworld()
 	case "yourimage24.de":
 	case "ximg.co.uk":	
 	case "sl-images.ath.cx":  
-	case "imagerule.com":   
 	case "imagepussy.com": 
-	case "bien-vue.com":  	
 		i = ev('.//a[contains(@href,"images/")]');
 		if(i){i.src = i.href;}
 		break;
@@ -1350,6 +1348,8 @@ function makeworld()
 	case "imagefile.org":
 	case "pix.hostux.net":
 	case "demo.chevereto.com":
+	case "bien-vue.com":
+	case "imagerule.com":
 		i = ev('.//img[contains(@src,"' + iurl + '/images/")]');
 		break;
 	case "shareimages.com":
