@@ -473,7 +473,15 @@
 // @match         http://*.7image.ru/v.php?id=*
 // @match         http://www.picshare.ru/view*
 // @match         http://*.bien-vue.com/view.php?filename=*
-// @match         http://www.e-loader.net/i*  
+// @match         http://www.e-loader.net/i* 
+// @match         http://*.pics.tam.in.ua/showpic.php?p=*
+// @match         http://*.xc5.ru/v.php?id=*
+// @match         http://*.pikczery.pl/view.php?filename=*
+// @match         http://*.tuxi.pl/view.php?filename=*
+// @match         http://*.imghost.pl/index.php?id=*
+// @match         http://*.udostepniaj.pl/viewer.php?file=*
+// @match         http://*.hosting-zdjec.pl/view.php?filename=*
+// @match         http://*.zapisz.net/view.php?filename=*
 // ==/UserScript==
 
 if (typeof unsafeWindow === "undefined")
@@ -828,6 +836,8 @@ function makeworld()
 	case "sl-images.ath.cx":  
 	case "imagepussy.com": 
 	case "bien-vue.com":
+	case "pikczery.pl":
+	case "tuxi.pl":
 		i = ev('.//a[contains(@href,"images/")]');
 		if(i){i.src = i.href;}
 		break;
@@ -1000,6 +1010,7 @@ function makeworld()
 	case "imgah.com":
 	case "imgpo.st":
 	case "imagecherry.com":
+	case "pics.tam.in.ua":
 		i = ev('.//img[contains(@onload,"(this")]');
 		if(i){break;}
 	case "imgbar.net":
@@ -1201,6 +1212,9 @@ function makeworld()
 	case "upload.removed.us":
 	case "sharepic.antahjutasb.com.my":
 	case "images-hosting.tk":
+	case "xc5.ru":
+	case "imghost.pl":
+	case "udostepniaj.pl":
 		i = ev('//img[contains(@src,"images/")]');
 		break;
 	case "fotosik.pl":
@@ -1211,6 +1225,7 @@ function makeworld()
 		break;
 	case "hostpics.info":
 	case "imagerule.com":
+	case "hosting-zdjec.pl":
 		i = ev('//img[@id="photo"]');
 		break;
 	case "picamatic.com":
@@ -1350,6 +1365,7 @@ function makeworld()
 	case "imagefile.org":
 	case "pix.hostux.net":
 	case "demo.chevereto.com":
+	case "zapisz.net":
 		i = ev('.//img[contains(@src,"' + iurl + '/images/")]');
 		break;
 	case "shareimages.com":
