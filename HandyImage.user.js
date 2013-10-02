@@ -464,6 +464,16 @@
 // @match         http://*.imagewoof.com/view_image*
 // @match         http://*.image-hoster.org/share*
 // @match         http://*.hostimg.org/show-image.php?id=*
+// @match         http://*.ximg.co.uk/viewer.php?file=* 
+// @match         http://sl-images.ath.cx/view.php?filename=* 
+// @match         http://*.picatom.com/* 
+// @match         http://*.picmoe.net/d.php?id=* 
+// @match         http://*.imagerule.com/view.php?filename=*
+// @match         http://*.imagepussy.com/view.php?filename=*
+// @match         http://*.7image.ru/v.php?id=*
+// @match         http://www.picshare.ru/view*
+// @match         http://*.bien-vue.com/view.php?filename=*
+// @match         http://www.e-loader.net/i*  
 // ==/UserScript==
 
 if (typeof unsafeWindow === "undefined")
@@ -596,6 +606,7 @@ function makeworld()
 	case "imgbox.com":
 	case "imageupper.com":
 	case "fotosupload.com":
+	case "e-loader.net":  	
 		i = ev('//*[@id="img"]');
 		break;
 	case "imageban.ru":
@@ -813,6 +824,7 @@ function makeworld()
 	case "vietchecker.com":
 	case "superkipje.com":
 	case "yourimage24.de":
+	case "ximg.co.uk":	
 		i = ev('.//a[contains(@href,"images/")]');
 		if(i){i.src = i.href;}
 		break;
@@ -925,9 +937,13 @@ function makeworld()
 	case "ichan.org":
 		i = ev('.//img[contains(@src,"/src/")]');
 		break;
+	case "picmoe.net": 
+		i = ev('.//img[contains(@src,"src/")]');   
+		break;
 	case "ibunker.us":
 	case "hostingpics.net":
 	case "pixentral.com":
+	case "7image.ru": 	
 		i = ev('.//img[contains(@src,"pics/")]');
 		break;
 	case "casimages.com":
@@ -942,6 +958,9 @@ function makeworld()
 		break;
 	case "imagenetz.de":
 		i = ev('.//img[contains(@src,"/img")]');
+		break;
+	case "picatom.com": 
+		i = ev('.//img[contains(@src,"img/")]');
 		break;
 	case "filedump.net":
 		i = ev('.//img[contains(@src,"/dumped/")]');
@@ -1076,6 +1095,7 @@ function makeworld()
 	case "ima.so":
 	case "imageho.st":
 	case "flexhost.de":
+	case "picshare.ru": 	
 		i = ev('.//img[contains(@src,"upload/")]');
 		break;
 	case "bilder-upload.eu":
@@ -1187,6 +1207,10 @@ function makeworld()
 		i = ev('//img[contains(@src,"images/")][@onload]');
 		break;
 	case "hostpics.info":
+	case "sl-images.ath.cx":  
+	case "imagerule.com":  
+	case "imagepussy.com":  
+	case "bien-vue.com":	
 		i = ev('//*[@id="photo"]');
 		break;
 	case "picamatic.com":
