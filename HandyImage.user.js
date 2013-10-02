@@ -827,6 +827,7 @@ function makeworld()
 	case "ximg.co.uk":	
 	case "sl-images.ath.cx":  
 	case "imagepussy.com": 
+	case "bien-vue.com":
 		i = ev('.//a[contains(@href,"images/")]');
 		if(i){i.src = i.href;}
 		break;
@@ -1209,7 +1210,8 @@ function makeworld()
 		i = ev('//img[contains(@src,"images/")][@onload]');
 		break;
 	case "hostpics.info":
-		i = ev('//*[@id="photo"]');
+	case "imagerule.com":
+		i = ev('//img[@id="photo"]');
 		break;
 	case "picamatic.com":
 		i = ev('.//img[contains(@src,"/show/")]');
@@ -1348,8 +1350,6 @@ function makeworld()
 	case "imagefile.org":
 	case "pix.hostux.net":
 	case "demo.chevereto.com":
-	case "bien-vue.com":
-	case "imagerule.com":
 		i = ev('.//img[contains(@src,"' + iurl + '/images/")]');
 		break;
 	case "shareimages.com":
