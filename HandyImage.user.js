@@ -460,6 +460,13 @@
 // @match         http://*.upload.removed.us/viewer.php?file=*
 // @match         http://*.sharepic.antahjutasb.com.my/viewer.php?file=*
 // @match         http://*.images-hosting.tk/viewer.php?file=*
+// @match         http://*.picmoe.net/d.php?id=*
+// @match         http://*.imagerule.com/view.php?filename=*
+// @match         http://*.imagepussy.com/view.php?filename=*
+// @match         http://*.7image.ru/v.php?id=*
+// @match         http://www.picshare.ru/view*
+// @match         http://*.bien-vue.com/view.php?filename=*
+// @match         http://www.e-loader.net/i*
 // ==/UserScript==
 
 if (typeof unsafeWindow === "undefined")
@@ -592,6 +599,7 @@ function makeworld()
 	case "imgbox.com":
 	case "imageupper.com":
 	case "fotosupload.com":
+	case "e-loader.net":
 		i = ev('//*[@id="img"]');
 		break;
 	case "imageban.ru":
@@ -620,6 +628,7 @@ function makeworld()
 	case "fastpic.ru":
 	case "abload.de":
 	case "imagenic.net":
+	case "picshare.ru":
 		i = ev('//img[@id="image"]');
 		break;
 	case "pikucha.ru":
@@ -919,9 +928,13 @@ function makeworld()
 	case "ichan.org":
 		i = ev('.//img[contains(@src,"/src/")]');
 		break;
+    case "picmoe.net":
+        i = ev('.//img[contains(@src,"src/")]');
+		break;
 	case "ibunker.us":
 	case "hostingpics.net":
 	case "pixentral.com":
+	case "7image.ru":
 		i = ev('.//img[contains(@src,"pics/")]');
 		break;
 	case "casimages.com":
@@ -1181,6 +1194,9 @@ function makeworld()
 		i = ev('//img[contains(@src,"images/")][@onload]');
 		break;
 	case "hostpics.info":
+	case "imagerule.com":
+	case "imagepussy.com":
+	case "bien-vue.com":
 		i = ev('//*[@id="photo"]');
 		break;
 	case "picamatic.com":
