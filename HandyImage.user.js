@@ -229,7 +229,7 @@
 // @match         http://*.upix.me/files/*
 // @match         http://*.pixelup.net/image*
 // @match         http://*.pixelup.net/image*
-// @match         http://picsee.net/*
+// @match         http://*.picsee.net/*
 // @match         http://www.fotosik.pl/pokaz_obrazek/pelny/*
 // @match         http://imagebin.org/*
 // @match         https://dumpyourphoto.com/photo/*
@@ -483,6 +483,30 @@
 // @match         http://*.hosting-zdjec.pl/view.php?filename=*
 // @match         http://*.zapisz.net/view.php?filename=*
 // @match         http://www.imagehosting.cz/?v=* 
+// @match         http://*.totalsimage.com/site/*
+// @match         http://www.dumparump.com/view*
+// @match         http://*.myxpic.com/showpic*
+// @match         http://*.picness.com/image/*
+// @match         http://*.upfoto.us/view*
+// @match         http://h4z.it/View*
+// @match         http://*.free-picload.de/pics/*
+// @match         http://server5.upload69.net/view*
+// @match         http://s6.snapgram.co/*
+// @match         http://*.s1.pixmax.ru/view*
+// @match         http://*.freeamateurteens.net/view*
+// @match         http://*.gluner.de/*.html
+// @match         http://*.fotoshack.us/foto*
+// @match         http://*.xxx.image-server.ru/view*
+// @match         http://*.image-server.ru/view*
+// @match         http://*.lgx.im/g/*.html
+// @match         http://orzz.us/image/*
+// @match         http://images.orzzso.com/image/*
+// @match         http://*.imagebin.ca/v/*
+// @match         http://*.loadpix.de/*.html
+// @match         http://*.bilderhosten.de/archiv.php?*
+// @match         http://www.public-pic.de/image/show/*
+// @match         http://*.imgbox.in/index.php?m=display*
+// @match         http://*.img-vidiklub.com/view*
 // ==/UserScript==
 
 if (typeof unsafeWindow === "undefined")
@@ -513,7 +537,7 @@ if(window.location.href.lastIndexOf(window.location.hostname) + window.location.
 	return false;
 }
 
-function ev(q,root){return document.evaluate(q,root?root:document,null,9,null).singleNodeValue;}
+function ev(q){return document.evaluate(q,document,null,9,null).singleNodeValue;}
 var cfg_direct;
 var cfg_bgclr;
 var cfg_fitWH = true;
@@ -584,6 +608,8 @@ function makeworld()
 	case "hostpic.de":
 	case "5pics.de":
 	case "hostimage.ru":
+	case "gluner.de":
+	case "imagebin.ca":
 		i = ev('.//img');
 		break;
 	case "tryimg.com":
@@ -597,6 +623,7 @@ function makeworld()
 		if(i){i.src = i.href;}
 		break;
 	case "imgnook.com":
+	case "h4z.it":
 		i = ev('.//a/img[contains(@src,"' + iurl + '")]');
 		if(i){i.src = i.parentNode.href;}
 		break;
@@ -770,13 +797,23 @@ function makeworld()
 		i = ev('.//img[@class="picture"]');
 		break;
 	case "lostpic.net":
-	case "pix.toile-libre.org":
-	case "photo-host.org":
 		i = ev('.//a[contains(@href,"/orig")]');
 		if(i){i.src = i.href;}
 		break;
+	case "pix.toile-libre.org":
+	case "photo-host.org":
+	case "myxpic.com":
+	case "picness.com":
+		i = ev('.//a[contains(@href,"original")]');
+		if(i){i.src = i.href;}
+		break;
 	case "picsee.net":
-		i = ev('.//a[contains(@href,"/upload/")]');
+	case "imgbox.in":
+		i = ev('.//a[contains(@href,"/upload")]');
+		if(i){i.src = i.href;}
+		break;
+	case "totalsimage.com":
+		i = ev('.//a[@id="image"]');
 		if(i){i.src = i.href;}
 		break;
 	case "imgxc.com":
@@ -813,6 +850,10 @@ function makeworld()
 	case "imagewoof.com":
 		i = ev('.//img[contains(@src,"image.php")]');
 		break;
+	case "loadpix.de":
+	case "bilderhosten.de":
+		i = ev('.//img[contains(@src,"bild.php")]');
+		break;
 	case "imagebin.org":
 	case "imgbin.me":
 	case "bildr.no":
@@ -842,6 +883,9 @@ function makeworld()
 	case "hosting-zdjec.pl":
 		i = ev('.//a[contains(@href,"images/")]');
 		if(i){i.src = i.href;}
+		break;
+	case "fotoshack.us":
+		i = ev('.//img[contains(@src,"/fotos/")]');
 		break;
 	case "subefotos.com":
 		j = true;
@@ -902,6 +946,8 @@ function makeworld()
 	case "hotchyx.com":
 	case "imagehousing.com":
 	case "cubeupload.com":
+	case "dumparump.com":
+	case "lgx.im":
 		i = ev('.//img[contains(@src,"' + iurl + '")]');
 		break;
 	case "uaimage.com":
@@ -935,7 +981,8 @@ function makeworld()
 		i = ev('.//img[contains(@src,"uploads/")]');
 		break;
 	case "xtremeshack.com":
-		i = ev('.//img[contains(@src,"/photos/")]');
+	case "images.orzzso.com":
+		i = ev('.//img[contains(@src,"/photo")]');
 		break;
 	case "imagerocket.net":
 		i = ev('.//a[contains(@href,"/photos/")]');
@@ -960,6 +1007,7 @@ function makeworld()
 	case "hostingpics.net":
 	case "pixentral.com":
 	case "7image.ru": 	
+	case "free-picload.de":
 		i = ev('.//img[contains(@src,"pics/")]');
 		break;
 	case "casimages.com":
@@ -978,6 +1026,9 @@ function makeworld()
 	case "picatom.com":  
 		i = ev('.//img[contains(@src,"img/")]'); 
 		break;
+	case "orzz.us":
+		i = ev('.//img[contains(@src,"/img/")][@title]'); 
+		break;
 	case "filedump.net":
 		i = ev('.//img[contains(@src,"/dumped/")]');
 		break;
@@ -995,6 +1046,9 @@ function makeworld()
 		break;
 	case "image18.org":
 		i = ev('.//img[contains(@src,"/file/")]');
+		break;
+	case "upfoto.us":
+		i = ev('.//img[contains(@src,"files/")]');
 		break;
 	case "imagepix.org":
 	case "hostingfailov.com":
@@ -1095,6 +1149,10 @@ function makeworld()
 	case "imagetotal.de":
 		i = ev('.//img[contains(@src,"/upload/")]');
 		break;
+	case "xxx.image-server.ru":
+	case "image-server.ru":
+		i = ev('.//img[contains(@src,"/upload")]');
+		break;
 	case "ruleimg.com":
 		i = ev('//img[@alt="image"]');
 		break;
@@ -1124,6 +1182,7 @@ function makeworld()
 	case "npicture.net":
 	case "uprapide.com":
 	case "roboimages.com":
+	case "public-pic.de":
 		i = ev('.//img[contains(@src,"' + iurl + '/image")]');
 		break;
 	case "imgns.com":
@@ -1217,6 +1276,7 @@ function makeworld()
 	case "xc5.ru":
 	case "imghost.pl":
 	case "udostepniaj.pl":
+	case "s1.pixmax.ru":
 		i = ev('//img[contains(@src,"images/")]');
 		break;
 	case "fotosik.pl":
@@ -1261,6 +1321,7 @@ function makeworld()
 	case "sharenxs.com":
 	case "imgbox.de":
 	case "imagehosting.cz": 	
+	case "server5.upload69.net":
 		i = ev('.//img[contains(@src,"/images/")]');
 		break;
 	case "someimage.com":
@@ -1368,6 +1429,7 @@ function makeworld()
 	case "pix.hostux.net":
 	case "demo.chevereto.com":
 	case "zapisz.net":
+	case "s6.snapgram.co":
 		i = ev('.//img[contains(@src,"' + iurl + '/images/")]');
 		break;
 	case "shareimages.com":
@@ -1398,7 +1460,9 @@ function makeworld()
 			i = ev('.//img[contains(@src,"/loc")]');
 			break;
 		case "directupload.net":
-			i = ev('.//img[contains(@src,"/images/")]');
+		case "freeamateurteens.net":
+		case "img-vidiklub.com":
+			i = ev('.//img[contains(@src,"images/")]');
 			break;
 		case "ipicture.ru":
 			i = ev('.//img[contains(@src,"/uploads/")]');
