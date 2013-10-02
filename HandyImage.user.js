@@ -482,6 +482,7 @@
 // @match         http://*.udostepniaj.pl/viewer.php?file=*
 // @match         http://*.hosting-zdjec.pl/view.php?filename=*
 // @match         http://*.zapisz.net/view.php?filename=*
+// @match         http://www.imagehosting.cz/?v=* 
 // ==/UserScript==
 
 if (typeof unsafeWindow === "undefined")
@@ -1259,6 +1260,7 @@ function makeworld()
 	case "celebimg.com":
 	case "sharenxs.com":
 	case "imgbox.de":
+	case "imagehosting.cz": 	
 		i = ev('.//img[contains(@src,"/images/")]');
 		break;
 	case "someimage.com":
