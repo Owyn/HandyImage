@@ -620,7 +620,7 @@ function makeworld()
 		break;
 	case "imgnook.com":
 	case "h4z.it":
-		i = ev('.//a/img[contains(@src,"' + iurl + '")]');
+		i = document.images[2];
 		if(i){i.src = i.parentNode.href;}
 		break;
 	case "noelshack.com":
