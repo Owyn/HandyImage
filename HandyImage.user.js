@@ -460,6 +460,9 @@
 // @match         http://*.upload.removed.us/viewer.php?file=*
 // @match         http://*.sharepic.antahjutasb.com.my/viewer.php?file=*
 // @match         http://*.images-hosting.tk/viewer.php?file=*
+// @match         http://*.ximg.co.uk/viewer.php?file=*
+// @match         http://sl-images.ath.cx/view.php?filename=*
+// @match         http://*.picatom.com/*
 // ==/UserScript==
 
 if (typeof unsafeWindow === "undefined")
@@ -807,6 +810,7 @@ function makeworld()
 	case "vietchecker.com":
 	case "superkipje.com":
 	case "yourimage24.de":
+	case "ximg.co.uk":
 		i = ev('.//a[contains(@href,"images/")]');
 		if(i){i.src = i.href;}
 		break;
@@ -937,6 +941,9 @@ function makeworld()
 	case "imagenetz.de":
 		i = ev('.//img[contains(@src,"/img")]');
 		break;
+    case "picatom.com":
+        i = ev('.//img[contains(@src,"img/")]');
+		break;  
 	case "filedump.net":
 		i = ev('.//img[contains(@src,"/dumped/")]');
 		break;
@@ -1181,6 +1188,7 @@ function makeworld()
 		i = ev('//img[contains(@src,"images/")][@onload]');
 		break;
 	case "hostpics.info":
+	case "sl-images.ath.cx":
 		i = ev('//*[@id="photo"]');
 		break;
 	case "picamatic.com":
