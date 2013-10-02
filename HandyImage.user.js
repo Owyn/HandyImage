@@ -1752,7 +1752,7 @@ function cfg()
 		div.style.background = "silver";
 		div.innerHTML = "<style>#content {display:none;}</style><b><center>Configuration</center></b><br><input id='hji_cfg_1_direct' type='checkbox'> Open images directly with browser"
 		+ "<br><br><input id='hji_cfg_2_bgclr' type='text' size='6'> Background color (empty = default)"
-		+ "<br><br>Fit images to window:"
+		+ "<br><br>Fit to window images:"
 		+ "<br><br><input id='hji_cfg_3_fitWH' type='checkbox'> Larger than window both vertically and horizontally"
 		+ "<br><br><input id='hji_cfg_4_fitB' type='checkbox'> Larger than window either vertically or horizontally"
 		+ "<br><br><input id='hji_cfg_5_fitS' type='checkbox'> Smaller than window"
