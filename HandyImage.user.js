@@ -537,7 +537,7 @@ if(window.location.href.lastIndexOf(window.location.hostname) + window.location.
 	return false;
 }
 
-function ev(q){return document.evaluate(q,document,null,9,null).singleNodeValue;}
+function ev(q){return document.evaluate(q,document.body,null,9,null).singleNodeValue;}
 var cfg_direct;
 var cfg_bgclr;
 var cfg_fitWH = true;
@@ -618,10 +618,6 @@ function makeworld()
 	case "savepic.org":
 		i = ev('.//a/img[not(contains(@src,"/images/"))]');
 		break;
-	case "img.3ezy.net":
-		i = ev('.//link[@rel="image_src"]');
-		if(i){i.src = i.href;}
-		break;
 	case "imgnook.com":
 	case "h4z.it":
 		i = ev('.//a/img[contains(@src,"' + iurl + '")]');
@@ -643,7 +639,7 @@ function makeworld()
 	case "imageupper.com":
 	case "fotosupload.com":
 	case "e-loader.net":  	
-		i = ev('//*[@id="img"]');
+		i = ev('.//img[@id="img"]');
 		break;
 	case "imageban.ru":
 	case "imageban.net":
@@ -664,43 +660,43 @@ function makeworld()
 	case "uploadking.biz":
 	case "foto.xhost.lv":
 	case "onimage.net":
-		i = ev('//*[@id="img_obj"]');
+		i = ev('.//img[@id="img_obj"]');
 		break;
 	case "pimpandhost.com":
 	case "pixdir.net":
 	case "fastpic.ru":
 	case "abload.de":
 	case "imagenic.net":
-		i = ev('//img[@id="image"]');
+		i = ev('.//img[@id="image"]');
 		break;
 	case "pikucha.ru":
-		i = ev('//img[@id="image"]');
+		i = ev('.//img[@id="image"]');
 		j = true;
 		break;
 	case "bayimg.com":
 	case "picgarage.net":
-		i = ev('//*[@id="mainImage"]');
+		i = ev('.//img[@id="mainImage"]');
 		break;
 	case "depic.me":
-		i = ev('//*[@id="pic"]');
+		i = ev('.//img[@id="pic"]');
 		break;
 	case "xup.in":
 		i = ev('.//img[contains(@src,"/exec/")]');
 		break;
 	case "imageshack.us":
-		i = ev('//*[@id="direct-link"]');
+		i = ev('.//input[@id="direct-link"]');
 		if(i){i.src = i.value;}
 		break;
 	case "image2you.ru":
-		i = ev('//*[@id="formitem"]/img');
+		i = ev('.//img[contains(@src,"images/")]')
 		if(i){i.src = i.src.replace('2_', '');}
 		break;
 	case "upix.me":
-		i = ev('//a[@class="thumb"]');
+		i = ev('.//a[@class="thumb"]');
 		if(i){i.src = i.title;}
 		break;
 	case "jpegbay.com":
-		i = ev('//a[@class]');
+		i = ev('.//a[@class]');
 		if(i){i.src = i.href;}
 		break;
 	case "amateurfreak.org":
@@ -729,7 +725,7 @@ function makeworld()
 	case "coolnspicy.com":
 	case "upload.fpsthailand.com": 	
 	case "image-hoster.org":
-		//i = ev('//*[@id="iimg"]');
+		//i = ev('.//img[@id="iimg"]');
 		var fn;
 		var f = document.getElementsByTagName("script");
 		for(c=0;c<f.length;c++) 
@@ -744,9 +740,9 @@ function makeworld()
 		}
 		break;
 	case "pix-x.net":
-		i = ev('//img[contains(@src,"images/")]');if(i){break;}
+		i = ev('.//img[contains(@src,"images/")]');if(i){break;}
 	case "pics-money.ru":
-		i = ev('//img[contains(@src,"/full/")]');if(i){break;}
+		i = ev('.//img[contains(@src,"/full/")]');if(i){break;}
 	case "pic5you.ru":
 	case "pic4you.ru":
 	case "picp2.com":
@@ -767,7 +763,7 @@ function makeworld()
 		if(i){i.src = i.src.replace('thumb_', '');}
 		break;
 	case "tinypic.com":
-		i = ev('//*[@id="imgElement"]');
+		i = ev('.//img[@id="imgElement"]');
 		break;
 	case "flickcabin.com":
 	case "picshot.pl":
@@ -790,7 +786,7 @@ function makeworld()
 		}
 		break;
 	case "subimg.net":
-		i = ev('//img[@class="magnify"]');
+		i = ev('.//img[@class="magnify"]');
 		break;
 	case "bilder-space.de":
 	case "imagesup.de":
@@ -948,6 +944,7 @@ function makeworld()
 	case "cubeupload.com":
 	case "dumparump.com":
 	case "lgx.im":
+	case "img.3ezy.net":
 		i = ev('.//img[contains(@src,"' + iurl + '")]');
 		break;
 	case "uaimage.com":
@@ -1121,7 +1118,7 @@ function makeworld()
 	case "imgonion.com":
 	case "xximg.net":
 	case "sxpics.nl":
-		i = ev('//input[@type="submit"]');
+		i = ev('.//input[@type="submit"]');
 		if(i) 
 		{
 			i.click();
@@ -1154,10 +1151,10 @@ function makeworld()
 		i = ev('.//img[contains(@src,"/upload")]');
 		break;
 	case "ruleimg.com":
-		i = ev('//img[@alt="image"]');
+		i = ev('.//img[@alt="image"]');
 		break;
 	case "subirimagenes.com":
-		i = ev('//input[@type="submit"][@id="boton"]');
+		i = ev('.//input[@type="submit"][@id="boton"]');
 		if(i) 
 		{
 			i.click();
@@ -1277,17 +1274,17 @@ function makeworld()
 	case "imghost.pl":
 	case "udostepniaj.pl":
 	case "s1.pixmax.ru":
-		i = ev('//img[contains(@src,"images/")]');
+		i = ev('.//img[contains(@src,"images/")]');
 		break;
 	case "fotosik.pl":
-		i = ev('//img[contains(@src,"images")][contains(@src,iurl)][@style]');
+		i = ev('.//img[contains(@src,"images")][contains(@src,iurl)][@style]');
 		break;
 	case "use.com":
-		i = ev('//img[contains(@src,"images/")][@onload]');
+		i = ev('.//img[contains(@src,"images/")][@onload]');
 		break;
 	case "hostpics.info":
 	case "imagerule.com":
-		i = ev('//img[@id="photo"]');
+		i = ev('.//img[@id="photo"]');
 		break;
 	case "picamatic.com":
 		i = ev('.//img[contains(@src,"/show/")]');
@@ -1391,7 +1388,7 @@ function makeworld()
 		if(i){i.src = i.value;}
 		break;
 	case "qrrro.com":
-		i = ev('//form[@name="F1"]');
+		i = ev('.//form[@name="F1"]');
 		if(i)
 		{
 			i.submit();
@@ -1440,7 +1437,7 @@ function makeworld()
 	case "imagedomino.com":
 	case "imagepdb.com":
 		j = true;
-		i = ev('//input[@value="YES"]');
+		i = ev('.//input[@value="YES"]');
 		if(i){i.click();img = i;}
 	case "imagepdb.com":
 	case "imagebam.com":
