@@ -838,6 +838,7 @@ function makeworld()
 	case "bien-vue.com":
 	case "pikczery.pl":
 	case "tuxi.pl":
+	case "hosting-zdjec.pl":
 		i = ev('.//a[contains(@href,"images/")]');
 		if(i){i.src = i.href;}
 		break;
@@ -1225,7 +1226,6 @@ function makeworld()
 		break;
 	case "hostpics.info":
 	case "imagerule.com":
-	case "hosting-zdjec.pl":
 		i = ev('//img[@id="photo"]');
 		break;
 	case "picamatic.com":
