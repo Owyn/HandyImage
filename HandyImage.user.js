@@ -1291,6 +1291,7 @@ function makeworld()
 		break;
 	case "use.com":
 		i = ev('.//img[contains(@src,"images/")][@onload]');
+		if(i){i.src = i.src.replace('/s_2/', '/s_5/');}		
 		break;
 	case "imagerule.com":
 		i = ev('.//img[@id="photo"]');
