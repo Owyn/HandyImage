@@ -75,7 +75,6 @@
 // @exclude       http://*.pic2profit.com/cabinet/*
 // @match         http://imgdino.com/viewer.php*
 // @match         http://*.anonpic.com/?v=*
-// @match         http://*.galhost.ru/*/*
 // @match         http://*.pic-money.ru/*.html
 // @match         http://*.pic-money.ru/full/
 // @match         http://*.imgcandy.net/img-*
@@ -100,7 +99,6 @@
 // @match         http://*.goimagehost.com/xxx/*.*
 // @exclude       http://goimagehost.com/xxx/?v=*
 // @exclude       http://www.goimagehost.com/xxx/?v=*
-// @match         http://*.hostpics.info/view.php?*
 // @match         http://*.hotimg.com/image/*
 // @match         http://ibunker.us/f*
 // @match         http://ichan.org/image.php?path=*
@@ -160,8 +158,6 @@
 // @match         http://*.cyberpics.net/p*
 // @match         http://*.vvcap.net/db/*
 // @match         http://*.freeimage.us/share*
-// @match         http://*.your-files.ru/*.html
-// @match         http://*.your-files.ru/full/
 // @match         http://*.pix-x.net/*/*
 // @match         http://subimg.net/jpg?*
 // @match         http://*.shareimages.com/image*
@@ -236,7 +232,6 @@
 // @match         http://dumpyourphoto.com/photo/*
 // @match         http://*.depic.me/*
 // @match         http://www.xup.in/dl*
-// @match         http://*.foto-save.ru/*.html
 // @match         http://*.foto-save.ru/full/
 // @match         http://hostpornpics.net/view*
 // @match         http://*.flickimg.com/image/*
@@ -246,7 +241,6 @@
 // @match         http://*.ultraimg.com/*
 // @match         http://ima.so/*
 // @match         http://*.kinkypic.net/show*
-// @match         http://*.eropix.me/view*
 // @match         http://*.imagerocket.net/view*
 // @match         http://*.imgnip.com/view*
 // @match         http://*.imageupper.com/i/*
@@ -287,7 +281,6 @@
 // @match         http://*.postimg.net/view*
 // @match         http://*.unhidefreepic.com/?v=*
 // @match         http://*.imagedomino.com/?v=*
-// @match         http://*.freeporndumpster.com/show*
 // @match         http://*.pixhub.eu/images/show*
 // @match         http://*.pictureturn.com/*.html
 // @match         http://*.cubeupload.com/im/*
@@ -507,6 +500,18 @@
 // @match         http://www.public-pic.de/image/show/*
 // @match         http://*.imgbox.in/index.php?m=display*
 // @match         http://*.img-vidiklub.com/view*
+// @match         http://*.9foto.ru/photo*
+// @match         http://uploads.ru/*
+// @match         http://*.picmania.com.ua/?v=*
+// @match         http://*.storepic.com/show.php*
+// @match         http://*.img-uploader.de/p*
+// @match         http://www.myimg.de/?img=*
+// @match         http://*.root-space.eu/file*
+// @match         http://photodok.com/show.php*
+// @match         http://*.hot-file.org/p*
+// @match         http://*.hostarea.de/show.php*
+// @match         http://*.pokazal.ru/v.php?id=*
+// @match         http://mepic.ru/view/?id=*
 // ==/UserScript==
 
 if (typeof unsafeWindow === "undefined")
@@ -660,6 +665,9 @@ function makeworld()
 	case "uploadking.biz":
 	case "foto.xhost.lv":
 	case "onimage.net":
+	case "storepic.com":
+	case "photodok.com":
+	case "hostarea.de":
 		i = ev('.//img[@id="img_obj"]');
 		break;
 	case "pimpandhost.com":
@@ -751,7 +759,6 @@ function makeworld()
 	case "picage.ru":
 	case "images-host.biz":
 	case "pic2profit.com":
-	case "galhost.ru":
 	case "pix-x.net":
 	case "pics-money.ru":
 		i = ev('.//img[contains(@src,"thumb")]');
@@ -856,7 +863,6 @@ function makeworld()
 		i = ev('.//img[contains(@src,"image")]');
 		break;
 	case "iv.pl":
-	case "eropix.me":
 	case "beeimg.com":
 	case "unhidefreepic.com":
 	case "q3.cz":
@@ -945,6 +951,11 @@ function makeworld()
 	case "dumparump.com":
 	case "lgx.im":
 	case "img.3ezy.net":
+	case "uploads.ru":
+	case "myimg.de":
+	case "root-space.eu":
+	case "pokazal.ru":
+	case "mepic.ru":
 		i = ev('.//img[contains(@src,"' + iurl + '")]');
 		break;
 	case "uaimage.com":
@@ -956,8 +967,6 @@ function makeworld()
 		break;
 	case "platimzafoto.ru":
 	case "pic-money.ru":
-	case "your-files.ru":
-	case "foto-save.ru":
 		var f = document.getElementsByTagName("button");
 		if(f.length != 0) 
 		{
@@ -1194,6 +1203,8 @@ function makeworld()
 	case "cyberpics.net":
 	case "fastimages.ru":
 	case "p1c.in":
+	case "img-uploader.de":
+	case "hot-file.org":
 		i = ev('.//a[contains(@href,"/di/")]');
 		if(i)
 		{
@@ -1241,7 +1252,6 @@ function makeworld()
 	case "imgnip.com":
 	case "pixtn.com":
 	case "postimg.net":
-	case "freeporndumpster.com":
 	case "img.deli.sh":
 	case "rapid-img.de":
 	case "imghostr.me":
@@ -1282,7 +1292,6 @@ function makeworld()
 	case "use.com":
 		i = ev('.//img[contains(@src,"images/")][@onload]');
 		break;
-	case "hostpics.info":
 	case "imagerule.com":
 		i = ev('.//img[@id="photo"]');
 		break;
@@ -1319,6 +1328,8 @@ function makeworld()
 	case "imgbox.de":
 	case "imagehosting.cz": 	
 	case "server5.upload69.net":
+	case "9foto.ru":
+	case "picmania.com.ua":
 		i = ev('.//img[contains(@src,"/images/")]');
 		break;
 	case "someimage.com":
