@@ -507,6 +507,18 @@
 // @match         http://www.public-pic.de/image/show/*
 // @match         http://*.imgbox.in/index.php?m=display*
 // @match         http://*.img-vidiklub.com/view*
+// @match         http://*.9foto.ru/photo*
+// @match         http://uploads.ru/*
+// @match         http://*.picmania.com.ua/?v=*
+// @match         http://*.storepic.com/show.php*
+// @match         http://*.img-uploader.de/p*
+// @match         http://www.myimg.de/?img=*
+// @match         http://*.root-space.eu/file*
+// @match         http://photodok.com/show.php*
+// @match         http://*.hot-file.org/p*
+// @match         http://*.hostarea.de/show.php*
+// @match         http://*.pokazal.ru/v.php?id=*
+// @match         http://mepic.ru/view/?id=*
 // ==/UserScript==
 
 if (typeof unsafeWindow === "undefined")
@@ -660,6 +672,9 @@ function makeworld()
 	case "uploadking.biz":
 	case "foto.xhost.lv":
 	case "onimage.net":
+	case "storepic.com":
+	case "photodok.com":
+	case "hostarea.de":
 		i = ev('.//img[@id="img_obj"]');
 		break;
 	case "pimpandhost.com":
@@ -945,6 +960,11 @@ function makeworld()
 	case "dumparump.com":
 	case "lgx.im":
 	case "img.3ezy.net":
+	case "uploads.ru":
+	case "myimg.de":
+	case "root-space.eu":
+	case "pokazal.ru":
+	case "mepic.ru":
 		i = ev('.//img[contains(@src,"' + iurl + '")]');
 		break;
 	case "uaimage.com":
@@ -1194,6 +1214,8 @@ function makeworld()
 	case "cyberpics.net":
 	case "fastimages.ru":
 	case "p1c.in":
+	case "img-uploader.de":
+	case "hot-file.org":
 		i = ev('.//a[contains(@href,"/di/")]');
 		if(i)
 		{
@@ -1319,6 +1341,8 @@ function makeworld()
 	case "imgbox.de":
 	case "imagehosting.cz": 	
 	case "server5.upload69.net":
+	case "9foto.ru":
+	case "picmania.com.ua":
 		i = ev('.//img[contains(@src,"/images/")]');
 		break;
 	case "someimage.com":
