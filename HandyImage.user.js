@@ -512,6 +512,7 @@
 // @match         http://*.hostarea.de/show.php*
 // @match         http://*.pokazal.ru/v.php?id=*
 // @match         http://mepic.ru/view/?id=*
+// @match         http://*.imgcandy.com/p*
 // ==/UserScript==
 
 if (typeof unsafeWindow === "undefined")
@@ -1205,6 +1206,7 @@ function makeworld()
 	case "p1c.in":
 	case "img-uploader.de":
 	case "hot-file.org":
+	case "imgcandy.com":
 		i = ev('.//a[contains(@href,"/di/")]');
 		if(i)
 		{
