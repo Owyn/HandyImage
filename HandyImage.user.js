@@ -512,6 +512,8 @@
 // @match         http://*.hostarea.de/show.php*
 // @match         http://*.pokazal.ru/v.php?id=*
 // @match         http://mepic.ru/view/?id=*
+// @match         http://*.imgcandy.com/p*
+// @match         http://*.4owl.info/viewer.php?id=*
 // ==/UserScript==
 
 if (typeof unsafeWindow === "undefined")
@@ -1205,6 +1207,7 @@ function makeworld()
 	case "p1c.in":
 	case "img-uploader.de":
 	case "hot-file.org":
+	case "imgcandy.com":
 		i = ev('.//a[contains(@href,"/di/")]');
 		if(i)
 		{
@@ -1331,6 +1334,7 @@ function makeworld()
 	case "server5.upload69.net":
 	case "9foto.ru":
 	case "picmania.com.ua":
+	case "4owl.info":
 		i = ev('.//img[contains(@src,"/images/")]');
 		break;
 	case "someimage.com":
