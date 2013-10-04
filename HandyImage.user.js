@@ -513,6 +513,7 @@
 // @match         http://*.pokazal.ru/v.php?id=*
 // @match         http://mepic.ru/view/?id=*
 // @match         http://*.imgcandy.com/p*
+// @match         http://*.4owl.info/viewer.php?id=*
 // ==/UserScript==
 
 if (typeof unsafeWindow === "undefined")
@@ -1333,6 +1334,7 @@ function makeworld()
 	case "server5.upload69.net":
 	case "9foto.ru":
 	case "picmania.com.ua":
+	case "4owl.info":
 		i = ev('.//img[contains(@src,"/images/")]');
 		break;
 	case "someimage.com":
