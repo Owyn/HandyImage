@@ -543,7 +543,7 @@ if(window.location.href.lastIndexOf(window.location.hostname) + window.location.
 	console.warn("we are on website's main page, aren't we?");
 	return false;
 }
-if(window.opener && window.opener.location.href == window.location.href)
+if(window.opener && window.opener == window)
 {
 	console.warn("you just don't want the script to run now, do you?");
 	unsafeWindow.opener = null; // let it work after F5
@@ -557,7 +557,6 @@ var cfg_fitWH = true;
 var cfg_fitB;
 var cfg_fitS;
 var rescaled = false;
-var lasttask;
 var isrc;
 var img;
 var j;
@@ -577,6 +576,7 @@ function ws()
 
 function sanitize() // lol I'm such a hacker
 {
+	var lasttask = setTimeout(function() {},0);
 	for(var i = lasttask; i > 0; i--)
 	{
 		clearTimeout(i);
@@ -1528,7 +1528,7 @@ function makeworld()
 			var source = func.toString();
 			var script = document.createElement('script');
 			script.text = "("+ source +")()";
-			document.head.appendChild(script);
+			document.body.appendChild(script);
 		}
 		function clr_pgn() 
 		{
@@ -1541,7 +1541,6 @@ function makeworld()
 		inject(clr_pgn);
 		ws();
 		document.head.innerHTML = "";
-		lasttask = setTimeout(function() {},0);
 		sanitize();
 		setTimeout(function() // else there will be scary bugs
 		{
@@ -1810,7 +1809,7 @@ function onkeydown (b)
 		cancelEvent(b);
 		break;
 	case KeyEvent.DOM_VK_R:
-		window.open(window.location.href, "_self")
+		window.open(window.location.href, "_self");
 		cancelEvent(b);
 		break;
 	}
