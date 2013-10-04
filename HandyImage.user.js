@@ -3,7 +3,7 @@
 // @namespace     handyimage
 // @author        Owyn
 // @contributors  U Bless
-// @version       2013.10.03
+// @version       2013.10.04
 // @updateURL     https://userscripts.org/scripts/source/166494.user.js
 // @downloadURL   https://userscripts.org/scripts/source/166494.user.js
 // @homepage      https://userscripts.org/scripts/show/166494
@@ -829,6 +829,10 @@ function makeworld()
 		i = ev('.//a[contains(@href,"/m/")]');
 		if(i){i.src = i.href;}
 		break;
+	case "imageshost.ru":
+		i = ev('.//a[contains(@href,"/img/")]');
+		if(i){i.src = i.href;}
+		break;
 	case "freepicninja.com":
 	case "x.thebestpichost.com":
 		if(window.location.href.indexOf("ads-cookie.php") != -1)
@@ -1020,7 +1024,6 @@ function makeworld()
 		break;
 	case "casimages.com":
 	case "thebestpichost.com":
-	case "imageshost.ru":
 	case "imagebanana.com":
 	case "deffe.com":
 	case "ifotos.pl":
