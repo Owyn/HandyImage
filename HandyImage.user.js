@@ -1528,7 +1528,7 @@ function makeworld()
 			var source = func.toString();
 			var script = document.createElement('script');
 			script.text = "("+ source +")()";
-			document.body.appendChild(script);
+			document.head.appendChild(script);
 		}
 		function clr_pgn() 
 		{
