@@ -543,6 +543,12 @@ if(window.location.href.lastIndexOf(window.location.hostname) + window.location.
 	console.warn("we are on website's main page, aren't we?");
 	return false;
 }
+if(window.opener && window.opener.location.href == window.location.href)
+{
+	console.warn("you just don't want the script to run now, do you?");
+	unsafeWindow.opener = null; // let it work after F5
+	return false;
+}
 
 function ev(q){return document.evaluate(q,document.body,null,9,null).singleNodeValue;}
 var cfg_direct;
@@ -1707,6 +1713,7 @@ if (typeof KeyEvent === "undefined")
 		DOM_VK_D: 68,
 		DOM_VK_P: 80,
 		DOM_VK_Q: 81,
+		DOM_VK_R: 82,
 		DOM_VK_S: 83,
 		DOM_VK_W: 87,
 		DOM_VK_NUMPAD2: 98,
@@ -1800,6 +1807,10 @@ function onkeydown (b)
 		{
 			cfg();
 		}
+		cancelEvent(b);
+		break;
+	case KeyEvent.DOM_VK_R:
+		window.open(window.location.href, "_self")
 		cancelEvent(b);
 		break;
 	}
