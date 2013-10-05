@@ -519,6 +519,36 @@
 // @match         http://*.up.iranfilm70.com/viewer.php*
 // @match         http://*.upload.qoonal.com/show.php?id=*
 // @match         http://*.add-screen.com/viewer.php*
+// @match         http://*.elitecore.us/img/viewer.php*
+// @match         http://*.image-upload.net/p*
+// @match         http://image.siroro.co.uk/p*
+// @match         http://into.na.tl/viewer.php?file=*
+// @match         http://shell.na.tl/viewer.php?file=*
+// @match         http://thaisharing.online.fr/viewer.php?file=*
+// @match         http://*.images.collectiontricks.it/viewer.php*
+// @match         http://*.my-collection.ru/viewer.php*
+// @match         http://img.schattorie.nl/viewer.php*
+// @match         http://*.vipsforum.com/h/viewer.php*
+// @match         http://*.forexrainbow.com/viewer.php*
+// @match         http://*.imgupload.pl/viewer.php*
+// @match         http://*.1y9y.com/view.php?filename=*
+// @match         http://*.addpix.net/viewer.php*
+// @match         http://*.tennis-image.com/viewer.php*
+// @match         http://*.imagetoupload.com/show.php*
+// @match         http://www.myuploadedimages.com/viewer.php*
+// @match         http://*.imageupload.sketchupthai.com/viewer.php?file=*
+// @match         http://*.php-bb.ir/pic/viewer.php*
+// @match         http://multihoster.saxonia-fighter.de/viewer.php*
+// @match         http://*.img.mdy.ro/?p*
+// @match         http://*.ammarihsan.com/image/?p*
+// @match         http://*.railroadempire.com/ih/?p*
+// @match         http://*.mkerala.com/u/?p*
+// @match         http://knecht.novarata.net/?p*
+// @match         http://*.yadeller.biz/resimyolla/?p*
+// @match         http://*.img.delux.lv/?p*
+// @match         http://*.lordbost.com/images/?p*
+// @match         http://imagehosting.skem9.co.uk/p*
+// @match         http://*.plusgamer.ir/img4up/?p*
 // ==/UserScript==
 
 if (typeof unsafeWindow === "undefined")
@@ -681,6 +711,7 @@ function makeworld()
 	case "storepic.com":
 	case "photodok.com":
 	case "hostarea.de":
+	case "imagetoupload.com":
 		i = ev('.//img[@id="img_obj"]');
 		break;
 	case "pimpandhost.com":
@@ -864,6 +895,7 @@ function makeworld()
 	case "hostpornpics.net":
 	case "uploadimage.ro":
 	case "marmolak.net":
+	case "elitecore.us":
 		i = ev('.//img[contains(@src,"img.php")]');
 		break;
 	case "imageno.com":
@@ -903,6 +935,19 @@ function makeworld()
 	case "upislam.com":
 	case "up.iranfilm70.com":
 	case "add-screen.com":
+	case "into.na.tl":
+	case "shell.na.tl":
+	case "my-collection.ru":
+	case "img.schattorie.nl":
+	case "vipsforum.com":
+	case "forexrainbow.com":
+	case "imgupload.pl":
+	case "addpix.net":
+	case "tennis-image.com":
+	case "myuploadedimages.com":
+	case "imageupload.sketchupthai.com":
+	case "php-bb.ir":
+	case "multihoster.saxonia-fighter.de":
 		i = ev('.//a[contains(@href,"images/")]');
 		if(i){i.src = i.href;}
 		break;
@@ -1068,6 +1113,7 @@ function makeworld()
 	case "imgsin.com":
 	case "loaditup.de":
 	case "123poze.3x.ro":
+	case "thaisharing.online.fr":
 		i = ev('.//img[contains(@src,"/files/")]');
 		break;
 	case "image18.org":
@@ -1226,6 +1272,9 @@ function makeworld()
 	case "img-uploader.de":
 	case "hot-file.org":
 	case "imgcandy.com":
+	case "image-upload.net":
+	case "image.siroro.co.uk":
+	case "imagehosting.skem9.co.uk":
 		i = ev('.//a[contains(@href,"/di/")]');
 		if(i)
 		{
@@ -1245,6 +1294,15 @@ function makeworld()
 	case "x45x.info":
 	case "images.woh.to":
 	case "pixoload.de":
+	case "img.mdy.ro":
+	case "ammarihsan.com":
+	case "railroadempire.com":
+	case "mkerala.com":
+	case "knecht.novarata.net":
+	case "yadeller.biz":
+	case "img.delux.lv":
+	case "lordbost.com":
+	case "plusgamer.ir":
 		i = ev('.//a[contains(@href,"?di=")]');
 		if(i)
 		{
@@ -1306,6 +1364,7 @@ function makeworld()
 	case "udostepniaj.pl":
 	case "s1.pixmax.ru":
 	case "ngarko.free.fr":
+	case "images.collectiontricks.it":
 		i = ev('.//img[contains(@src,"images/")]');
 		break;
 	case "fotosik.pl":
@@ -1316,6 +1375,7 @@ function makeworld()
 		if(i){i.src = i.src.replace('/s_2/', '/s_5/');}		
 		break;
 	case "imagerule.com":
+	case "1y9y.com":
 		i = ev('.//img[@id="photo"]');
 		break;
 	case "picamatic.com":
