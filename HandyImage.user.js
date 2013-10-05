@@ -3,7 +3,7 @@
 // @namespace     handyimage
 // @author        Owyn
 // @contributors  U Bless
-// @version       2013.10.04
+// @version       2013.10.05
 // @updateURL     https://userscripts.org/scripts/source/166494.user.js
 // @downloadURL   https://userscripts.org/scripts/source/166494.user.js
 // @homepage      https://userscripts.org/scripts/show/166494
@@ -1879,7 +1879,23 @@ function onkeydown (b)
 		cancelEvent(b);
 		break;
 	case KeyEvent.DOM_VK_R:
-		window.open(window.location.href, "_self");
+		var nurl = window.location.href;
+		if(nurl.indexOf("#") != -1) // bug if # sign is in url
+		{
+			if(nurl.indexOf("?#") != -1)
+			{
+				nurl = nurl.replace('?#', '#');
+			}
+			else
+			{
+				nurl = nurl.replace('#', '?#');
+			}
+		}
+		else if(navigator.userAgent.indexOf('Firefox') == -1) // Chrome bug
+		{
+			nurl += '?';
+		}
+		window.open(nurl, "_self");
 		cancelEvent(b);
 		break;
 	}
