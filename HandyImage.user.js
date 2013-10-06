@@ -18,7 +18,7 @@
 // @match         http://imgchili.net/show/*
 // @match         http://imgchili.com/show/*
 // @match         http://imgbox.com/*
-// @exclude       http://imgbox.com/g/*
+// @exclude       http://imgbox.com/g*
 // @match         http://imagetwist.com/*/*
 // @match         http://*.imagevenue.com/img.php?*
 // @match         http://imageshack.us/photo/*
