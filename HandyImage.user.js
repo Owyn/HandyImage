@@ -7,7 +7,7 @@
 // @updateURL     https://userscripts.org/scripts/source/166494.user.js
 // @downloadURL   https://userscripts.org/scripts/source/166494.user.js
 // @homepage      https://userscripts.org/scripts/show/166494
-// @icon          http://i.imgur.com/Q5TTIjV.png
+// @icon          http://i.imgur.com/UIAdkbe.png
 // @description   Shows just fullsize Image with hotkeys & without pop-ups on many image-hosting sites
 // @run-at        document-start
 // @grant         GM_getValue
