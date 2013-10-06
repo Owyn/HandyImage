@@ -7,7 +7,7 @@
 // @updateURL     https://userscripts.org/scripts/source/166494.user.js
 // @downloadURL   https://userscripts.org/scripts/source/166494.user.js
 // @homepage      https://userscripts.org/scripts/show/166494
-// @icon          http://i.imgur.com/Q5TTIjV.png
+// @icon          http://i.imgur.com/Q5TTIjV.png 
 // @description   Shows just fullsize Image with hotkeys & without pop-ups on many image-hosting sites
 // @run-at        document-start
 // @grant         GM_getValue
@@ -224,17 +224,17 @@
 // @match         http://*.pixelup.net/image*
 // @match         http://*.pixelup.net/image*
 // @match         http://*.picsee.net/*
-// @match         http://www.fotosik.pl/pokaz_obrazek/pelny/*
+// @match         http://www.fotosik.pl/pokaz_obrazek/pelny*
 // @match         http://imagebin.org/*
-// @match         https://dumpyourphoto.com/photo/*
-// @match         http://dumpyourphoto.com/photo/*
+// @match         https://dumpyourphoto.com/photo*
+// @match         http://dumpyourphoto.com/photo*
 // @match         http://*.depic.me/*
 // @match         http://www.xup.in/dl*
 // @match         http://*.foto-save.ru/full/
 // @match         http://*.hostpornpics.net/view*
-// @match         http://*.flickimg.com/image/*
-// @match         http://*.sexseeimage.com/image/*
-// @match         http://*.hotchyx.com/d/*
+// @match         http://*.flickimg.com/image*
+// @match         http://*.sexseeimage.com/image*
+// @match         http://*.hotchyx.com/d*
 // @match         http://*.imgns.com/pt*
 // @match         http://*.ultraimg.com/*
 // @match         http://ima.so/*
@@ -250,12 +250,12 @@
 // @match         http://www.zupmage.eu/image*
 // @match         http://*.picstwist.com/img*
 // @match         http://thumbsnap.com/*
-// @match         http://*.deffe.com/image/*
+// @match         http://*.deffe.com/image*
 // @match         http://flickcabin.com/*/view*
 // @match         http://*.image-shed.com/show*
 // @match         http://*.imgnook.com/*
 // @match         http://*.imageno.com/*.html
-// @match         http://*.imagehousing.com/image/*
+// @match         http://*.imagehousing.com/image*
 // @match         http://www.rapidjoy.com/p*
 // @match         http://pixpipeline.com/d/*
 // @match         http://www.picfront.org/d/*
@@ -273,7 +273,7 @@
 // @match         http://img.3ezy.net/*.htm
 // @match         http://*.xximg.net/img-*
 // @match         http://*.zaslike.com/view*
-// @match         http://www.zimagez.com/zimage/*
+// @match         http://www.zimagez.com/zimage*
 // @match         http://*.someimage.com/*
 // @match         http://*.sexyxpixels.com/?v=*
 // @match         http://*.postimg.net/view*
