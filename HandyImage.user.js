@@ -575,6 +575,7 @@
 // @match         http://pic.dnjc8.com/?*
 // @match         http://*.image.pantyhosemania.info/?*
 // @match         http://*.addyourpics.com/image*
+// @match         http://*.imgnext.com/img-*
 // ==/UserScript==
 
 if (typeof unsafeWindow === "undefined")
@@ -1181,6 +1182,7 @@ function makeworld()
 	case "uploadyourimages.org":
 	case "imagewix.com":
 	case "imageteam.org":
+	case "imgnext.com":
 		i = ev('.//img[contains(@src,"/upload/")]');
 		var c;
 		if(!i)
