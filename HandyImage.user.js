@@ -575,6 +575,8 @@
 // @match         http://pic.dnjc8.com/?*
 // @match         http://*.image.pantyhosemania.info/?*
 // @match         http://*.addyourpics.com/image*
+// @match         http://*.imgnext.com/img-*
+// @match         http://*.vippix.com/share*
 // ==/UserScript==
 
 if (typeof unsafeWindow === "undefined")
@@ -803,6 +805,7 @@ function makeworld()
 	case "coolnspicy.com":
 	case "upload.fpsthailand.com": 	
 	case "image-hoster.org":
+	case "vippix.com":
 		//i = ev('.//img[@id="iimg"]');
 		var fn;
 		var f = document.getElementsByTagName("script");
@@ -1181,6 +1184,7 @@ function makeworld()
 	case "uploadyourimages.org":
 	case "imagewix.com":
 	case "imageteam.org":
+	case "imgnext.com":
 		i = ev('.//img[contains(@src,"/upload/")]');
 		var c;
 		if(!i)
