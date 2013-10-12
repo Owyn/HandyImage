@@ -3,7 +3,7 @@
 // @namespace     handyimage
 // @author        Owyn
 // @contributors  U Bless
-// @version       2013.10.11
+// @version       2013.10.12
 // @updateURL     https://userscripts.org/scripts/source/166494.user.js
 // @downloadURL   https://userscripts.org/scripts/source/166494.user.js
 // @homepage      https://userscripts.org/scripts/show/166494
@@ -1288,7 +1288,6 @@ function makeworld()
 		i = ev('.//img[contains(@src,"' + iurl + '/image")]');
 		break;
 	case "imgns.com":
-	case "imagesup.net":
 		i = ev('.//img[contains(@src,"dt")]');
 		if(i)
 		{
@@ -1362,7 +1361,8 @@ function makeworld()
 	case "codefuture-co-uk.best-products-shop.com":
 	case "pic.dnjc8.com":
 	case "image.pantyhosemania.info":
-	case "vmei.info": 	
+	case "vmei.info":
+	case "imagesup.net":
 		i = ev('.//a[contains(@href,"?di=")]');
 		if(i)
 		{
