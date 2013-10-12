@@ -1294,6 +1294,13 @@ function makeworld()
 			i.src = i.src.replace('dt', 'di');
 		}
 		break;
+	case "imagesup.net":
+		i = ev('.//a[contains(@href,"/di-")]');
+		if(i)
+		{
+			i.src = i.href;
+		}
+		break;
 	case "rapidjoy.com":
 	case "cyberpics.net":
 	case "fastimages.ru":
@@ -1362,7 +1369,6 @@ function makeworld()
 	case "pic.dnjc8.com":
 	case "image.pantyhosemania.info":
 	case "vmei.info":
-	case "imagesup.net":
 		i = ev('.//a[contains(@href,"?di=")]');
 		if(i)
 		{
