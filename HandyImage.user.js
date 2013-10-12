@@ -577,6 +577,9 @@
 // @match         http://*.addyourpics.com/image*
 // @match         http://*.imgnext.com/img-*
 // @match         http://*.vippix.com/share*
+// @match         http://*.qattach.com/p*
+// @match         http://*.urimage.net/*
+// @match         http://vmei.info/?p* 
 // ==/UserScript==
 
 if (typeof unsafeWindow === "undefined")
@@ -1310,6 +1313,7 @@ function makeworld()
 	case "dump.omertabeyond.com":
 	case "img.tfktech.com":
 	case "up.w3b0.com":
+	case "qattach.com": 	
 		i = ev('.//a[contains(@href,"/di/")]');
 		if(i)
 		{
@@ -1358,6 +1362,7 @@ function makeworld()
 	case "codefuture-co-uk.best-products-shop.com":
 	case "pic.dnjc8.com":
 	case "image.pantyhosemania.info":
+	case "vmei.info": 	
 		i = ev('.//a[contains(@href,"?di=")]');
 		if(i)
 		{
@@ -1578,6 +1583,7 @@ function makeworld()
 	case "zapisz.net":
 	case "s6.snapgram.co":
 	case "addyourpics.com":
+	case "urimage.net": 	
 		i = ev('.//img[contains(@src,"' + iurl + '/images/")]');
 		break;
 	case "shareimages.com":
