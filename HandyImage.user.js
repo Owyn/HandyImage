@@ -579,7 +579,13 @@
 // @match         http://*.vippix.com/share*
 // @match         http://*.qattach.com/p*
 // @match         http://*.urimage.net/*
-// @match         http://vmei.info/?p* 
+// @match         http://vmei.info/?* 
+// @match         http://*.picfree.org/p*
+// @match         http://*.imghs.teamfreewill.net/p*
+// @match         http://*.imgant.com/p*
+// @match         http://*.videoforall.org/p*
+// @match         http://medias.allforever.net/p*
+// @match         http://2tu.me/view*
 // ==/UserScript==
 
 if (typeof unsafeWindow === "undefined")
@@ -1295,6 +1301,11 @@ function makeworld()
 		}
 		break;
 	case "imagesup.net":
+	case "picfree.org":
+	case "imghs.teamfreewill.net":
+	case "imgant.com":
+	case "videoforall.org":
+	case "medias.allforever.net":
 		i = ev('.//a[contains(@href,"/di-")]');
 		if(i)
 		{
@@ -1442,6 +1453,7 @@ function makeworld()
 		break;
 	case "imagerule.com":
 	case "1y9y.com":
+	case "2tu.me":
 		i = ev('.//img[@id="photo"]');
 		break;
 	case "picamatic.com":
