@@ -579,7 +579,9 @@
 // @match         http://*.vippix.com/share*
 // @match         http://*.qattach.com/p*
 // @match         http://*.urimage.net/*
-// @match         http://vmei.info/?p* 
+// @match         http://vmei.info/?* 
+// @match         http://*.picfree.org/p*
+// @match         http://*.imghs.teamfreewill.net/p*
 // ==/UserScript==
 
 if (typeof unsafeWindow === "undefined")
@@ -1295,6 +1297,8 @@ function makeworld()
 		}
 		break;
 	case "imagesup.net":
+	case "picfree.org":
+	case "imghs.teamfreewill.net":
 		i = ev('.//a[contains(@href,"/di-")]');
 		if(i)
 		{
