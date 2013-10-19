@@ -202,7 +202,7 @@
 // @match         http://*.imgplate.com/img-*
 // @match         http://*.myhotimage.com/img-*
 // @match         http://*.pictureshoster.com/view*
-// @match         http://*.imageshost.ru/photo/*
+// @match         http://*.imageshost.ru/photo*
 // @match         http://www.imagebanana.com/view*
 // @match         http://*.imagestime.com/show*
 // @match         http://*.sharenxs.com/view*
@@ -212,14 +212,15 @@
 // @match         http://*.wstaw.org/w/*
 // @match         http://pikucha.ru/*
 // @match         http://www.imagesocket.com/photos*
+// @match         http://www.imagesocket.com/social*
 // @match         http://*.youpic.ru/view*
 // @match         http://imageban.net/show*
 // @match         http://*.otofotki.pl/*
 // @match         http://*.imgsin.com/view*
 // @match         http://*.imagenetz.de/*
-// @match         http://pix.toile-libre.org/?img=*
-// @match         http://uppix.com/s-*
-// @match         http://www.servimg.com/image_preview*
+// @match         http://pix.toile-libre.org/?img*
+// @match         http://uppix.com/s*
+// @match         http://www.servimg.com/image*
 // @match         http://*.upix.me/files/*
 // @match         http://*.pixelup.net/image*
 // @match         http://*.pixelup.net/image*
@@ -586,6 +587,9 @@
 // @match         http://*.videoforall.org/p*
 // @match         http://medias.allforever.net/p*
 // @match         http://2tu.me/view*
+// @match         http://*.host4images.com/view*
+// @match         http://*.imgbank.cz/*
+// @match         http://hosting.tidus.eu/?v=*
 // ==/UserScript==
 
 if (typeof unsafeWindow === "undefined")
@@ -1454,6 +1458,7 @@ function makeworld()
 	case "imagerule.com":
 	case "1y9y.com":
 	case "2tu.me":
+	case "host4images.com":
 		i = ev('.//img[@id="photo"]');
 		break;
 	case "picamatic.com":
@@ -1492,6 +1497,7 @@ function makeworld()
 	case "9foto.ru":
 	case "picmania.com.ua":
 	case "4owl.info":
+	case "hosting.tidus.eu":
 		i = ev('.//img[contains(@src,"/images/")]');
 		break;
 	case "someimage.com":
@@ -1602,6 +1608,7 @@ function makeworld()
 	case "s6.snapgram.co":
 	case "addyourpics.com":
 	case "urimage.net": 	
+	case "imgbank.cz":
 		i = ev('.//img[contains(@src,"' + iurl + '/images/")]');
 		break;
 	case "shareimages.com":
