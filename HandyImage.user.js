@@ -604,6 +604,39 @@
 // @match         http://*.imagesloading.altervista.org/?v=*
 // @match         http://*.showmyimage.com/*
 // @match         http://*.phpbbmods.it/immaggini* 
+// @match         http://img.dulieu.net/*
+// @match         http://*.givme.de/*
+// @match         http://upload.crazycraft.pl/*
+// @match         http://*.omgdb.net/*
+// @match         http://*.mynameismiz.com/*
+// @match         http://upload.supreme-elite.fr/?v=*
+// @match         http://image.vsemrole.ru/*
+// @match         http://up.vn-hello.com/*
+// @match         http://*.oksee.pp.ua/*
+// @match         http://*.resmin.tk/* 
+// @match         http://*.imagefluff.com/?v=*
+// @match         http://upimg.the-dea.ru/*
+// @match         http://*.img.androidteclive.com/*
+// @match         http://*.resimupload.org/*
+// @match         http://*.fotohelp.kz/image*
+// @match         https://*.myimg.me/*
+// @match         http://caps.incitorrent.com/*
+// @match         http://i.ruspotting.net/*
+// @match         http://*.upic.kz/*
+// @match         http://imguploda.inamurajane.info/*
+// @match         http://*.hosting.webspell.fr/*
+// @match         http://*.photo.vietnamlib.net/?v=*
+// @match         http://*.heberg-hush.org/?v=*
+// @match         http://zuly.de/*
+// @match         http://*.uplomax.com/*
+// @match         http://*.planet-upload.eu/*
+// @match         http://*.oltaciyukle.com/*
+// @match         http://*.picto.lt/*
+// @match         http://www.3intro.com/*
+// @match         http://*.slikomanija.net/*
+// @match         http://*.kaise123.com/img*
+// @match         http://upload.vstanced.com/*
+// @match         http://*.gurin.ee/*
 // ==/UserScript==
 
 if (typeof unsafeWindow === "undefined")
@@ -1172,6 +1205,7 @@ function makeworld()
 		i = ev('.//img[contains(@src,"/files/")]');
 		break;
 	case "image18.org":
+	case "imguploda.inamurajane.info":
 		i = ev('.//img[contains(@src,"/file/")]');
 		break;
 	case "upfoto.us":
@@ -1348,7 +1382,8 @@ function makeworld()
 	case "dump.omertabeyond.com":
 	case "img.tfktech.com":
 	case "up.w3b0.com":
-	case "qattach.com": 	
+	case "qattach.com":
+	case "fotohelp.kz":
 		i = ev('.//a[contains(@href,"/di/")]');
 		if(i)
 		{
@@ -1514,6 +1549,9 @@ function makeworld()
 	case "hosting.tidus.eu":
 	case "imagesloading.altervista.org":
 	case "phpbbmods.it": 	
+	case "photo.vietnamlib.net":	
+	case "kaise123.com":
+	case "gurin.ee":
 		i = ev('.//img[contains(@src,"/images/")]');
 		break;
 	case "someimage.com":
@@ -1545,6 +1583,7 @@ function makeworld()
 	case "nyanimg.com":
 	case "geekpics.in":
 	case "ownimg.com": 
+	case "imagefluff.com":
 		i = ev('.//img[contains(@src,"/i/")]');
 		break;
 	case "pixpipeline.com":
@@ -1637,6 +1676,33 @@ function makeworld()
 	case "imagesturk.net":
 	case "one.ilikecamera.com":
 	case "showmyimage.com": 	
+	case "img.dulieu.net":
+	case "givme.de":
+	case "upload.crazycraft.pl":
+	case "omgdb.net":
+	case "mynameismiz.com":
+	case "upload.supreme-elite.fr":
+	case "image.vsemrole.ru":
+	case "up.vn-hello.com":
+	case "oksee.pp.ua":
+	case "resmin.tk":
+	case "upimg.the-dea.ru":
+	case "img.androidteclive.com":
+	case "resimupload.org":
+	case "myimg.me":
+	case "caps.incitorrent.com":
+	case "i.ruspotting.net":
+	case "upic.kz":
+	case "hosting.webspell.fr":
+	case "heberg-hush.org":
+	case "zuly.de":
+	case "uplomax.com":
+	case "planet-upload.eu":
+	case "oltaciyukle.com":
+	case "picto.lt":
+	case "3intro.com":
+	case "slikomanija.net":
+	case "upload.vstanced.com":
 		i = ev('.//img[contains(@src,"' + iurl + '/images/")]');
 		break;
 	case "shareimages.com":
