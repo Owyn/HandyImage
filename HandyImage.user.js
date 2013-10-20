@@ -637,6 +637,7 @@
 // @match         http://*.kaise123.com/img*
 // @match         http://upload.vstanced.com/*
 // @match         http://*.gurin.ee/*
+// @match         http://*.up.hayah.cc/*
 // ==/UserScript==
 
 if (typeof unsafeWindow === "undefined")
@@ -1703,6 +1704,7 @@ function makeworld()
 	case "3intro.com":
 	case "slikomanija.net":
 	case "upload.vstanced.com":
+	case "up.hayah.cc":
 		i = ev('.//img[contains(@src,"' + iurl + '/images/")]');
 		break;
 	case "shareimages.com":
