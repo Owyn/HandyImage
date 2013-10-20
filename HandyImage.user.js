@@ -590,6 +590,20 @@
 // @match         http://*.host4images.com/view*
 // @match         http://*.imgbank.cz/*
 // @match         http://hosting.tidus.eu/?v=*
+// @match         http://*.zinimg.com/*
+// @match         http://*.nyanimg.com/*
+// @match         http://*.alex-pic.com/*
+// @match         http://*.picr.ws/*
+// @match         http://*.geekpics.in/*
+// @match         http://*.pikz.co/*
+// @match         http://www.ownimg.com/*
+// @match         http://*.liolink.com/*
+// @match         http://*.fastpics.altervista.org/?v=*
+// @match         http://*.imagesturk.net/*
+// @match         http://one.ilikecamera.com/*
+// @match         http://*.imagesloading.altervista.org/?v=*
+// @match         http://*.showmyimage.com/*
+// @match         http://*.phpbbmods.it/immaggini* 
 // ==/UserScript==
 
 if (typeof unsafeWindow === "undefined")
@@ -1498,6 +1512,8 @@ function makeworld()
 	case "picmania.com.ua":
 	case "4owl.info":
 	case "hosting.tidus.eu":
+	case "imagesloading.altervista.org":
+	case "phpbbmods.it": 	
 		i = ev('.//img[contains(@src,"/images/")]');
 		break;
 	case "someimage.com":
@@ -1526,6 +1542,9 @@ function makeworld()
 	case "pictureturn.com":
 	case "pixic.ru":
 	case "tuspics.net":
+	case "nyanimg.com":
+	case "geekpics.in":
+	case "ownimg.com": 
 		i = ev('.//img[contains(@src,"/i/")]');
 		break;
 	case "pixpipeline.com":
@@ -1609,6 +1628,15 @@ function makeworld()
 	case "addyourpics.com":
 	case "urimage.net": 	
 	case "imgbank.cz":
+	case "zinimg.com":
+	case "alex-pic.com":
+	case "picr.ws":
+	case "pikz.co":
+	case "liolink.com":
+	case "fastpics.altervista.org":
+	case "imagesturk.net":
+	case "one.ilikecamera.com":
+	case "showmyimage.com": 	
 		i = ev('.//img[contains(@src,"' + iurl + '/images/")]');
 		break;
 	case "shareimages.com":
