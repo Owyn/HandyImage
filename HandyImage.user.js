@@ -589,7 +589,7 @@
 // @match         http://2tu.me/view*
 // @match         http://*.host4images.com/view*
 // @match         http://*.imgbank.cz/*
-// @match         http://hosting.tidus.eu/?v=*
+// @match         http://hosting.tidus.eu/?*
 // @match         http://*.zinimg.com/*
 // @match         http://*.nyanimg.com/*
 // @match         http://*.alex-pic.com/*
@@ -598,10 +598,10 @@
 // @match         http://*.pikz.co/*
 // @match         http://www.ownimg.com/*
 // @match         http://*.liolink.com/*
-// @match         http://*.fastpics.altervista.org/?v=*
+// @match         http://*.fastpics.altervista.org/?*
 // @match         http://*.imagesturk.net/*
 // @match         http://one.ilikecamera.com/*
-// @match         http://*.imagesloading.altervista.org/?v=*
+// @match         http://*.imagesloading.altervista.org/?*
 // @match         http://*.showmyimage.com/*
 // @match         http://*.phpbbmods.it/immaggini* 
 // @match         http://img.dulieu.net/*
@@ -609,12 +609,12 @@
 // @match         http://upload.crazycraft.pl/*
 // @match         http://*.omgdb.net/*
 // @match         http://*.mynameismiz.com/*
-// @match         http://upload.supreme-elite.fr/?v=*
+// @match         http://upload.supreme-elite.fr/?*
 // @match         http://image.vsemrole.ru/*
 // @match         http://up.vn-hello.com/*
 // @match         http://*.oksee.pp.ua/*
 // @match         http://*.resmin.tk/* 
-// @match         http://*.imagefluff.com/?v=*
+// @match         http://*.imagefluff.com/?*
 // @match         http://upimg.the-dea.ru/*
 // @match         http://*.img.androidteclive.com/*
 // @match         http://*.resimupload.org/*
@@ -625,8 +625,8 @@
 // @match         http://*.upic.kz/*
 // @match         http://imguploda.inamurajane.info/*
 // @match         http://*.hosting.webspell.fr/*
-// @match         http://*.photo.vietnamlib.net/?v=*
-// @match         http://*.heberg-hush.org/?v=*
+// @match         http://*.photo.vietnamlib.net/?*
+// @match         http://*.heberg-hush.org/?*
 // @match         http://zuly.de/*
 // @match         http://*.uplomax.com/*
 // @match         http://*.planet-upload.eu/*
@@ -649,7 +649,7 @@
 // @match         http://peach.warosu.org/*
 // @match         http://*.fsfiles.org/*
 // @match         http://*.giveimg.net/*
-// @match         http://*.evopikz.net/?v=*
+// @match         http://*.evopikz.net/?*
 // @match         http://*.linkmypic.com/*
 // @match         http://www.sxfoto.com/*
 // @match         http://*.upanh.biz/*
@@ -658,10 +658,23 @@
 // @match         http://*.i-pict.ru/*
 // @match         http://*.imagend.com/*
 // @match         http://brightpic.tk/*
-// @match         http://*.ilimdunyasi.net/?v=*
+// @match         http://*.ilimdunyasi.net/?*
 // @match         http://*.imagerocket.com/*
 // @match         http://*.piczhub.com/*
-// @match         http://*.sharebreezy.com/?v=*
+// @match         http://*.sharebreezy.com/?*
+// @match         http://*.hyyathost.com/*
+// @match         http://*.imghaze.com/*
+// @match         http://*.imgratis.com/*
+// @match         http://www.stfimages.com/*
+// @match         http://strikeys-pic.com/*
+// @match         http://*.picture.ms/*
+// @match         http://*.compartirfoto.com/*
+// @match         http://*.qoou.net/*
+// @match         http://image.yhjkj.com/*
+// @match         http://upimages.slideweb.fr/?*
+// @match         http://*.bbspics.com/*
+// @match         http://images.reptilescanada.com/*
+// @match         http://*.imgcode.com/*
 // ==/UserScript==
 
 if (typeof unsafeWindow === "undefined")
@@ -1202,6 +1215,7 @@ function makeworld()
 	case "ifotos.pl":
 	case "subeimagenes.com":
 	case "x.thebestpichost.com2":
+	case "imgcode.com":
 		i = ev('.//img[contains(@src,"/img/")]');
 		break;
 	case "imagenetz.de":
@@ -1753,6 +1767,18 @@ function makeworld()
 	case "imagend.com":
 	case "imagerocket.com":
 	case "piczhub.com":
+	case "hyyathost.com":
+	case "imghaze.com":
+	case "imgratis.com":
+	case "stfimages.com":
+	case "strikeys-pic.com":
+	case "picture.ms":
+	case "compartirfoto.com":
+	case "qoou.net":
+	case "image.yhjkj.com":
+	case "upimages.slideweb.fr":
+	case "bbspics.com":
+	case "images.reptilescanada.com":
 		i = ev('.//img[contains(@src,"' + iurl + '/images/")]');
 		break;
 	case "shareimages.com":
