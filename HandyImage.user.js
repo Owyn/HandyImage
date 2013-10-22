@@ -3,7 +3,7 @@
 // @namespace     handyimage
 // @author        Owyn
 // @contributors  U Bless
-// @version       2013.10.12
+// @version       2013.10.22
 // @updateURL     https://userscripts.org/scripts/source/166494.user.js
 // @downloadURL   https://userscripts.org/scripts/source/166494.user.js
 // @homepage      https://userscripts.org/scripts/show/166494
@@ -675,6 +675,13 @@
 // @match         http://*.bbspics.com/*
 // @match         http://images.reptilescanada.com/*
 // @match         http://*.imgcode.com/*
+// @match         http://*.lakhdaria.net/imagebank/?v=*
+// @match         http://*.webjardiner.com/hebergement_images_photos/image/*
+// @match         http://*.zagruzitfoto.com/image/*
+// @match         http://www.cweb-pix.com/image/*
+// @match         http://*.i39.org/img/image/*
+// @match         http://*.intergranada.com/images/?v=*
+// @match         http://*.partizansk.eu/foto/image/*
 // ==/UserScript==
 
 if (typeof unsafeWindow === "undefined")
@@ -854,6 +861,10 @@ function makeworld()
 	case "bayimg.com":
 	case "picgarage.net":
 		i = ev('.//img[@id="mainImage"]');
+		break;
+	case "zagruzitfoto.com":
+	case "cweb-pix.com":
+		i = ev('.//img[@id="full_image"]');
 		break;
 	case "depic.me":
 		i = ev('.//img[@id="pic"]');
@@ -1595,7 +1606,15 @@ function makeworld()
 	case "giveimg.net":
 	case "ilimdunyasi.net":
 	case "sharebreezy.com":
+	case "lakhdaria.net":
+	case "ebjardiner.com":
+	case "i39.org":
+	case "partizansk.eu":
+	case "webjardiner.com":
 		i = ev('.//img[contains(@src,"/images/")]');
+		break;
+	case "intergranada.com":
+		i = ev('.//img[contains(@src,"/images/images/")]');
 		break;
 	case "someimage.com":
 		i = ev('.//img[@id="viewimage"]');
