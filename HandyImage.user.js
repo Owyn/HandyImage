@@ -649,6 +649,19 @@
 // @match         http://peach.warosu.org/*
 // @match         http://*.fsfiles.org/*
 // @match         http://*.giveimg.net/*
+// @match         http://*.evopikz.net/?v=*
+// @match         http://*.linkmypic.com/*
+// @match         http://www.sxfoto.com/*
+// @match         http://*.upanh.biz/*
+// @match         http://*.1ahar.net/*
+// @match         http://*.host-my-image.de/*
+// @match         http://*.i-pict.ru/*
+// @match         http://*.imagend.com/*
+// @match         http://brightpic.tk/*
+// @match         http://*.ilimdunyasi.net/?v=*
+// @match         http://*.imagerocket.com/*
+// @match         http://*.piczhub.com/*
+// @match         http://*.sharebreezy.com/?v=*
 // ==/UserScript==
 
 if (typeof unsafeWindow === "undefined")
@@ -1566,6 +1579,8 @@ function makeworld()
 	case "gurin.ee":
 	case "fsfiles.org":
 	case "giveimg.net":
+	case "ilimdunyasi.net":
+	case "sharebreezy.com":
 		i = ev('.//img[contains(@src,"/images/")]');
 		break;
 	case "someimage.com":
@@ -1600,6 +1615,7 @@ function makeworld()
 	case "imagefluff.com":
 	case "picstorage.eu":
 	case "peach.warosu.org":
+	case "brightpic.tk":
 		i = ev('.//img[contains(@src,"/i/")]');
 		break;
 	case "pixpipeline.com":
@@ -1727,6 +1743,16 @@ function makeworld()
 	case "img.dayzland.eu":
 	case "egoterrorist.com":
 	case "pixit.hu":
+	case "evopikz.net":
+	case "linkmypic.com":
+	case "sxfoto.com":
+	case "upanh.biz":
+	case "1ahar.net":
+	case "host-my-image.de":
+	case "i-pict.ru":
+	case "imagend.com":
+	case "imagerocket.com":
+	case "piczhub.com":
 		i = ev('.//img[contains(@src,"' + iurl + '/images/")]');
 		break;
 	case "shareimages.com":
