@@ -1206,9 +1206,9 @@ function makeworld()
 		i = ev('.//img[contains(@src,"uploads/")]');
 		break;
 	case "xtremeshack.com":
-	case "images.orzzso.com":
-		i = ev('.//img[contains(@src,"/photo")]');
+		i = ev('.//img[contains(@src,"/photos/")]');
 		break;
+	case "images.orzzso.com":
 	case "picturepush.com":	
 	    i = ev('.//img[contains(@src,"/photo/")]');
 		break;
