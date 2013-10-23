@@ -409,7 +409,7 @@
 // @match         http://*.fotoshara.pl/*.html
 // @match         http://*.screencity.pl/*.html
 // @match         http://*.x.thebestpichost.com/*
-// @match         http://*.hostimage.ru/photo/*
+// @match         http://*.hostimage.ru/photo*
 // @match         http://*.5pics.de/?b=*
 // @match         http://hostpic.de/?b=*
 // @match         http://www.yourimage24.de/view*
@@ -675,13 +675,29 @@
 // @match         http://*.bbspics.com/*
 // @match         http://images.reptilescanada.com/*
 // @match         http://*.imgcode.com/*
-// @match         http://*.lakhdaria.net/imagebank/?v=*
-// @match         http://*.webjardiner.com/hebergement_images_photos/image/*
-// @match         http://*.zagruzitfoto.com/image/*
-// @match         http://www.cweb-pix.com/image/*
-// @match         http://*.i39.org/img/image/*
-// @match         http://*.intergranada.com/images/?v=*
-// @match         http://*.partizansk.eu/foto/image/*
+// @match         http://*.lakhdaria.net/imagebank/?*
+// @match         http://*.webjardiner.com/hebergement_images_photos/image*
+// @match         http://*.zagruzitfoto.com/image*
+// @match         http://www.cweb-pix.com/image*
+// @match         http://*.i39.org/img/image*
+// @match         http://*.intergranada.com/images/?*
+// @match         http://*.partizansk.eu/foto/image*
+// @match         http://*.xenopix.com/?*
+// @match         http://*.wepic.ru/*
+// @match         http://photo.goicam.vn/*
+// @match         http://*.naeamysig.com/*
+// @match         http://*.filezep.com/*
+// @match         http://*.microforma.ru/*
+// @match         http://*.gsmimagehost.com/*
+// @match         http://tinysnaps.com/*
+// @match         http://*.imgup.com/images*
+// @match         http://*.goshimage.com/*
+// @match         http://*.hippopic.com/beta*
+// @match         http://*.razol.ru/?*
+// @match         http://*.myimageshare.com/*
+// @match         http://*.picgro.com/*
+// @match         http://*.zoneupload.net/*
+// @match         http://*.picturepush.com/public*
 // ==/UserScript==
 
 if (typeof unsafeWindow === "undefined")
@@ -1193,6 +1209,9 @@ function makeworld()
 	case "images.orzzso.com":
 		i = ev('.//img[contains(@src,"/photo")]');
 		break;
+	case "picturepush.com":	
+	    i = ev('.//img[contains(@src,"/photo/")]');
+		break;
 	case "imagerocket.net":
 		i = ev('.//a[contains(@href,"/photos/")]');
 		if(i){i.src = i.href};
@@ -1611,6 +1630,8 @@ function makeworld()
 	case "i39.org":
 	case "partizansk.eu":
 	case "webjardiner.com":
+	case "imgup.com":
+	case "hippopic.com":
 		i = ev('.//img[contains(@src,"/images/")]');
 		break;
 	case "intergranada.com":
@@ -1629,6 +1650,9 @@ function makeworld()
 	case "4put.ru":
 	case "hostimg.org":
 		i = ev('.//img[contains(@src,"pictures/")]');
+		break;
+	case "xenopix.com":
+	    i = ev('.//img[contains(@src,"/pix/")]');
 		break;
 	case "imageporter.com":
 	case "imagetwist.com":
@@ -1798,6 +1822,18 @@ function makeworld()
 	case "upimages.slideweb.fr":
 	case "bbspics.com":
 	case "images.reptilescanada.com":
+	case "wepic.ru":
+	case "photo.goicam.vn":
+	case "naeamysig.com":
+	case "filezep.com":
+	case "microforma.ru":
+	case "gsmimagehost.com":
+	case "tinysnaps.com":
+	case "goshimage.com":
+	case "razol.ru":
+	case "myimageshare.com":
+	case "picgro.com":
+	case "zoneupload.net":
 		i = ev('.//img[contains(@src,"' + iurl + '/images/")]');
 		break;
 	case "shareimages.com":
