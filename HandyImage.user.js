@@ -698,6 +698,16 @@
 // @match         http://*.picgro.com/*
 // @match         http://*.zoneupload.net/*
 // @match         http://*.picturepush.com/public*
+// @match         http://imgur.my/*
+// @match         http://*.upload.sh3bawy.com/*
+// @match         http://*.asan-gsm.com/picture*
+// @match         http://www.pixelspeicher.com/*
+// @match         http://*.graphicupload.com/*
+// @match         http://*.imagenaked.com/?*
+// @match         http://*.upload-image.fr/*
+// @match         http://*.picselio.com/*
+// @match         http://*.t4up.net/*
+// @match         http://*.iezz.com/?*
 // ==/UserScript==
 
 if (typeof unsafeWindow === "undefined")
@@ -1632,6 +1642,8 @@ function makeworld()
 	case "webjardiner.com":
 	case "imgup.com":
 	case "hippopic.com":
+	case "asan-gsm.com":
+	case "iezz.com":
 		i = ev('.//img[contains(@src,"/images/")]');
 		break;
 	case "intergranada.com":
@@ -1834,6 +1846,14 @@ function makeworld()
 	case "myimageshare.com":
 	case "picgro.com":
 	case "zoneupload.net":
+	case "imgur.my":
+	case "upload.sh3bawy.com":
+	case "pixelspeicher.com":
+	case "graphicupload.com":
+	case "imagenaked.com":
+	case "upload-image.fr":
+	case "picselio.com":
+	case "t4up.net":
 		i = ev('.//img[contains(@src,"' + iurl + '/images/")]');
 		break;
 	case "shareimages.com":
