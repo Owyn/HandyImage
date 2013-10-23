@@ -709,6 +709,14 @@
 // @match         http://*.t4up.net/*
 // @match         http://*.iezz.com/?*
 // @match         http://*.xostpics.com/*
+// @match         http://*.fileaimage.com/?*
+// @match         http://*.images.gamewind.de/?*
+// @match         https://*.images.baconbits.org/?*
+// @match         http://*.pic.sheep7.com/*
+// @match         http://*.kuvajako.com/*
+// @match         http://*.upanh.ovo.vn/*
+// @match         http://*.obrazki.hqsite.org/*
+// @match         http://*.uploads.li/*
 // ==/UserScript==
 
 if (typeof unsafeWindow === "undefined")
@@ -1645,6 +1653,7 @@ function makeworld()
 	case "hippopic.com":
 	case "asan-gsm.com":
 	case "iezz.com":
+	case "fileaimage.com":
 		i = ev('.//img[contains(@src,"/images/")]');
 		break;
 	case "intergranada.com":
@@ -1856,6 +1865,13 @@ function makeworld()
 	case "picselio.com":
 	case "t4up.net":
 	case "xostpics.com":
+	case "images.gamewind.de":
+	case "images.baconbits.org":
+	case "pic.sheep7.com":
+	case "kuvajako.com":
+	case "upanh.ovo.vn":
+	case "obrazki.hqsite.org":
+	case "uploads.li":
 		i = ev('.//img[contains(@src,"' + iurl + '/images/")]');
 		break;
 	case "shareimages.com":
