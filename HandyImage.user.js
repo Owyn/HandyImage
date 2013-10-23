@@ -708,6 +708,7 @@
 // @match         http://*.picselio.com/*
 // @match         http://*.t4up.net/*
 // @match         http://*.iezz.com/?*
+// @match         http://*.xostpics.com/*
 // ==/UserScript==
 
 if (typeof unsafeWindow === "undefined")
@@ -1854,6 +1855,7 @@ function makeworld()
 	case "upload-image.fr":
 	case "picselio.com":
 	case "t4up.net":
+	case "xostpics.com":
 		i = ev('.//img[contains(@src,"' + iurl + '/images/")]');
 		break;
 	case "shareimages.com":
