@@ -3,7 +3,7 @@
 // @namespace     handyimage
 // @author        Owyn
 // @contributors  U Bless
-// @version       2013.10.22
+// @version       2013.10.26
 // @updateURL     https://userscripts.org/scripts/source/166494.user.js
 // @downloadURL   https://userscripts.org/scripts/source/166494.user.js
 // @homepage      https://userscripts.org/scripts/show/166494
@@ -793,6 +793,11 @@ function onscript(e)
 	e.stopPropagation();
 }
 
+function onbeforeunload(e) 
+{
+	setTimeout(function() { window.history.go(-3);  }, 0);
+}
+
 function makeimage()
 {
 	loadCfg();
@@ -808,6 +813,10 @@ function makeimage()
 	img.addEventListener("click", rescale, true);
 	window.addEventListener("keydown", onkeydown, true);
 	setTimeout(function() { autoresize(); }, 0);
+	if(navigator.userAgent.indexOf('Firefox') != -1) // firefox makes 3 history entries for current page instead of one
+	{
+		window.addEventListener("beforeunload", onbeforeunload, true);
+	}
 }
 
 function makeworld()
@@ -2236,6 +2245,7 @@ function onkeydown (b)
 			ar[ar.length-1] = "/" + ar[ar.length-1];
 			nurl = ar.join("/");
 		}
+		window.removeEventListener("beforeunload", onbeforeunload, true);
 		window.open(nurl, "_self");
 		cancelEvent(b);
 		break;
