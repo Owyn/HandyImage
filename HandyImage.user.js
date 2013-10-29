@@ -3,7 +3,7 @@
 // @namespace     handyimage
 // @author        Owyn
 // @contributors  U Bless
-// @version       2013.10.26
+// @version       2013.10.29
 // @updateURL     https://userscripts.org/scripts/source/166494.user.js
 // @downloadURL   https://userscripts.org/scripts/source/166494.user.js
 // @homepage      https://userscripts.org/scripts/show/166494
@@ -793,11 +793,6 @@ function onscript(e)
 	e.stopPropagation();
 }
 
-function onbeforeunload(e) 
-{
-	setTimeout(function() { window.history.go(-3);  }, 0);
-}
-
 function makeimage()
 {
 	loadCfg();
@@ -813,10 +808,6 @@ function makeimage()
 	img.addEventListener("click", rescale, true);
 	window.addEventListener("keydown", onkeydown, true);
 	setTimeout(function() { autoresize(); }, 0);
-	if(navigator.userAgent.indexOf('Firefox') != -1) // firefox makes 3 history entries for current page instead of one
-	{
-		window.addEventListener("beforeunload", onbeforeunload, true);
-	}
 }
 
 function makeworld()
@@ -2132,6 +2123,7 @@ observer.observe(document, {subtree: true, childList: true});
 if (typeof KeyEvent === "undefined")
 {
 	var KeyEvent = {
+		DOM_VK_BACK_SPACE: 8,
 		DOM_VK_SPACE: 32,
 		DOM_VK_LEFT: 37,
 		DOM_VK_UP: 38,
@@ -2226,6 +2218,13 @@ function onkeydown (b)
 		rescale(0);
 		cancelEvent(b);
 		break;
+	case KeyEvent.DOM_VK_BACK_SPACE:
+		if(navigator.userAgent.indexOf('Firefox') != -1) // firefox makes 3 history entries for current page instead of one
+		{
+			window.history.go(-3);
+			cancelEvent(b);
+		}
+		break;
 	case KeyEvent.DOM_VK_P:
 		if(img && navigator.userAgent.indexOf('Firefox') == -1) // Chrome bug
 		{
@@ -2245,7 +2244,6 @@ function onkeydown (b)
 			ar[ar.length-1] = "/" + ar[ar.length-1];
 			nurl = ar.join("/");
 		}
-		window.removeEventListener("beforeunload", onbeforeunload, true);
 		window.open(nurl, "_self");
 		cancelEvent(b);
 		break;
