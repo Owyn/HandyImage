@@ -717,6 +717,10 @@
 // @match         http://*.upanh.ovo.vn/*
 // @match         http://*.obrazki.hqsite.org/*
 // @match         http://*.uploads.li/*
+// @match         http://imgsavvy.com/img-*
+// @match         http://*.imagesaur.com/*
+// @match         http://*.wrzucaj.net/*
+// @match         http://*.api.picx.me/?*
 // ==/UserScript==
 
 if (typeof unsafeWindow === "undefined")
@@ -1397,6 +1401,7 @@ function makeworld()
 	case "gallerycloud.net":
 	case "imgadult.com":
 	case "imagetotal.de":
+	case "imgsavvy.com":
 		i = ev('.//img[contains(@src,"/upload/")]');
 		break;
 	case "xxx.image-server.ru":
@@ -1872,6 +1877,9 @@ function makeworld()
 	case "upanh.ovo.vn":
 	case "obrazki.hqsite.org":
 	case "uploads.li":
+	case "imagesaur.com":
+	case "wrzucaj.net":
+	case "api.picx.me":
 		i = ev('.//img[contains(@src,"' + iurl + '/images/")]');
 		break;
 	case "shareimages.com":
