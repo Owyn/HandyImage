@@ -721,6 +721,9 @@
 // @match         http://*.imagesaur.com/*
 // @match         http://*.wrzucaj.net/*
 // @match         http://*.api.picx.me/?*
+// @match         http://*.heberge-images.com/?*
+// @match         http://*.yehpic.com/*
+// @match         http://*.joepler.com/*
 // ==/UserScript==
 
 if (typeof unsafeWindow === "undefined")
@@ -1880,6 +1883,9 @@ function makeworld()
 	case "imagesaur.com":
 	case "wrzucaj.net":
 	case "api.picx.me":
+	case "heberge-images.com":
+	case "yehpic.com":
+	case "joepler.com":
 		i = ev('.//img[contains(@src,"' + iurl + '/images/")]');
 		break;
 	case "shareimages.com":
