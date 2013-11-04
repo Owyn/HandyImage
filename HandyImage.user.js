@@ -724,6 +724,9 @@
 // @match         http://*.heberge-images.com/?*
 // @match         http://*.yehpic.com/*
 // @match         http://*.joepler.com/*
+// @match         http://*.givme.de/*
+// @match         http://www.image.kg/*
+// @match         http://*.imgdark.com/?*
 // ==/UserScript==
 
 if (typeof unsafeWindow === "undefined")
@@ -1886,6 +1889,9 @@ function makeworld()
 	case "heberge-images.com":
 	case "yehpic.com":
 	case "joepler.com":
+	case "givme.de":
+	case "image.kg":
+	case "imgdark.com":
 		i = ev('.//img[contains(@src,"' + iurl + '/images/")]');
 		break;
 	case "shareimages.com":
