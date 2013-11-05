@@ -727,6 +727,7 @@
 // @match         http://*.givme.de/*
 // @match         http://www.image.kg/*
 // @match         http://*.imgdark.com/?*
+// @match         http://*.primeimg.co/*
 // ==/UserScript==
 
 if (typeof unsafeWindow === "undefined")
@@ -1892,6 +1893,7 @@ function makeworld()
 	case "givme.de":
 	case "image.kg":
 	case "imgdark.com":
+	case "primeimg.co":
 		i = ev('.//img[contains(@src,"' + iurl + '/images/")]');
 		break;
 	case "shareimages.com":
