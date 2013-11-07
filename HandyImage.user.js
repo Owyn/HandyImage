@@ -728,6 +728,12 @@
 // @match         http://www.image.kg/*
 // @match         http://*.imgdark.com/?*
 // @match         http://*.primeimg.co/*
+// @match         http://*.picshome.ru/?*
+// @match         http://*.savemyimage.com/*
+// @match         http://*.subeme.net/*
+// @match         http://*.tndupload.com/*
+// @match         http://pic.xtream-reallife.de/*
+// @match         http://*.img.dramacafe.tv/*
 // ==/UserScript==
 
 if (typeof unsafeWindow === "undefined")
@@ -1894,6 +1900,12 @@ function makeworld()
 	case "image.kg":
 	case "imgdark.com":
 	case "primeimg.co":
+	case "picshome.ru":
+	case "savemyimage.com":
+	case "subeme.net":
+	case "tndupload.com":
+	case "pic.xtream-reallife.de":
+	case "img.dramacafe.tv":
 		i = ev('.//img[contains(@src,"' + iurl + '/images/")]');
 		break;
 	case "shareimages.com":
