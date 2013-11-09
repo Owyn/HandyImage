@@ -3,7 +3,7 @@
 // @namespace     handyimage
 // @author        Owyn
 // @contributors  U Bless
-// @version       2013.10.29
+// @version       2013.11.09
 // @updateURL     https://userscripts.org/scripts/source/166494.user.js
 // @downloadURL   https://userscripts.org/scripts/source/166494.user.js
 // @homepage      https://userscripts.org/scripts/show/166494
@@ -734,6 +734,7 @@
 // @match         http://*.tndupload.com/*
 // @match         http://pic.xtream-reallife.de/*
 // @match         http://*.img.dramacafe.tv/*
+// @match         http://*.hosturimage.com/img-*
 // ==/UserScript==
 
 if (typeof unsafeWindow === "undefined")
@@ -1351,6 +1352,7 @@ function makeworld()
 	case "imagewix.com":
 	case "imageteam.org":
 	case "imgnext.com":
+	case "hosturimage.com":
 		i = ev('.//img[contains(@src,"/upload/")]');
 		var c;
 		if(!i)
