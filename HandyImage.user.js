@@ -3,7 +3,7 @@
 // @namespace     handyimage
 // @author        Owyn
 // @contributors  U Bless
-// @version       2013.11.09
+// @version       2013.11.10
 // @updateURL     https://userscripts.org/scripts/source/166494.user.js
 // @downloadURL   https://userscripts.org/scripts/source/166494.user.js
 // @homepage      https://userscripts.org/scripts/show/166494
@@ -735,6 +735,7 @@
 // @match         http://pic.xtream-reallife.de/*
 // @match         http://*.img.dramacafe.tv/*
 // @match         http://*.hosturimage.com/img-*
+// @match         http://*.xlocker.net/*.html
 // ==/UserScript==
 
 if (typeof unsafeWindow === "undefined")
@@ -1308,6 +1309,7 @@ function makeworld()
 	case "loaditup.de":
 	case "123poze.3x.ro":
 	case "thaisharing.online.fr":
+	case "xlocker.net":
 		i = ev('.//img[contains(@src,"/files/")]');
 		break;
 	case "image18.org":
