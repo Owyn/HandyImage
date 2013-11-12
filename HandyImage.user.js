@@ -3,7 +3,7 @@
 // @namespace     handyimage
 // @author        Owyn
 // @contributors  U Bless
-// @version       2013.11.10
+// @version       2013.11.11
 // @updateURL     https://userscripts.org/scripts/source/166494.user.js
 // @downloadURL   https://userscripts.org/scripts/source/166494.user.js
 // @homepage      https://userscripts.org/scripts/show/166494
@@ -935,7 +935,7 @@ function makeworld()
 		if(i){i.src = i.src.replace('2_', '');}
 		break;
 	case "upix.me":
-		i = ev('.//a[@class="thumb"]');
+		i = ev('.//a[contains(@onclick,"switchB")]');
 		if(i){i.src = i.title;}
 		break;
 	case "jpegbay.com":
