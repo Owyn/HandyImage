@@ -3,7 +3,7 @@
 // @namespace     handyimage
 // @author        Owyn
 // @contributors  U Bless
-// @version       2013.11.11
+// @version       2013.11.13
 // @updateURL     https://userscripts.org/scripts/source/166494.user.js
 // @downloadURL   https://userscripts.org/scripts/source/166494.user.js
 // @homepage      https://userscripts.org/scripts/show/166494
@@ -736,6 +736,8 @@
 // @match         http://*.img.dramacafe.tv/*
 // @match         http://*.hosturimage.com/img-*
 // @match         http://*.xlocker.net/*.html
+// @match         http://*.picup.in/*.html
+// @match         http://*.love69.org/i/view*
 // ==/UserScript==
 
 if (typeof unsafeWindow === "undefined")
@@ -1734,8 +1736,10 @@ function makeworld()
 		break;
 	case "howtohemorrhoidscure.com":
 	case "javimage.us":
-		i = ev('.//a[contains(@href,"' + iurl + '/images/")]');
-		if(i){i.src = i.href.substr(i.href.indexOf("http://", 1));}
+	case "love69.org":
+	case "picup.in":
+		i = ev('.//a[contains(@href,"/images/")]');
+		if(i){i.src = i.href.substr(i.href.lastIndexOf("http://"));}
 		break;
 	case "shareimage.ro":
 	case "imagepremium.com":
