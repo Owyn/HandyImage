@@ -3,7 +3,7 @@
 // @namespace     handyimage
 // @author        Owyn
 // @contributors  U Bless
-// @version       2013.11.13
+// @version       2013.11.16
 // @updateURL     https://userscripts.org/scripts/source/166494.user.js
 // @downloadURL   https://userscripts.org/scripts/source/166494.user.js
 // @homepage      https://userscripts.org/scripts/show/166494
@@ -738,6 +738,7 @@
 // @match         http://*.xlocker.net/*.html
 // @match         http://*.picup.in/*.html
 // @match         http://*.love69.org/i/view*
+// @match         http://*.pic-mir.ru/*/*
 // ==/UserScript==
 
 if (typeof unsafeWindow === "undefined")
@@ -999,6 +1000,7 @@ function makeworld()
 	case "pic2profit.com":
 	case "pix-x.net":
 	case "pics-money.ru":
+	case "pic-mir.ru":
 		i = ev('.//img[contains(@src,"thumb")]');
 		if(i){i.src = i.src.replace('-thumb', '');
 		i.src = i.src.replace('img_thumb', 'img_full');}
