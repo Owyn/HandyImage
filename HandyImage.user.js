@@ -3,7 +3,7 @@
 // @namespace     handyimage
 // @author        Owyn
 // @contributors  U Bless
-// @version       2013.11.16
+// @version       2013.11.18
 // @updateURL     https://userscripts.org/scripts/source/166494.user.js
 // @downloadURL   https://userscripts.org/scripts/source/166494.user.js
 // @homepage      https://userscripts.org/scripts/show/166494
@@ -768,10 +768,10 @@ if(window.location.href.lastIndexOf(window.location.hostname) + window.location.
 	console.warn("we are on website's main page, aren't we?");
 	return false;
 }
-if(window.opener && window.opener == window)
+if(document.cookie.indexOf("hji=" + window.location.href) != -1)
 {
 	console.warn("you just don't want the script to run now, do you?");
-	unsafeWindow.opener = null; // let it work after F5
+	document.cookie = "hji=; expires=Thu, 01 Jan 1970 00:00:01 GMT;";
 	return false;
 }
 
@@ -2281,14 +2281,15 @@ function onkeydown (b)
 		cancelEvent(b);
 		break;
 	case KeyEvent.DOM_VK_R:
-		var nurl = window.location.href;
-		if(navigator.userAgent.indexOf('Firefox') == -1 || window.location.hash) // Chrome bug || // bug if # sign is in url - both browsers
+		document.cookie= "hji=" + window.location.href;
+		if(navigator.userAgent.indexOf('Firefox') == -1) // FireFox can not into reload
 		{
-			var ar = nurl.split("/");
-			ar[ar.length-1] = "/" + ar[ar.length-1];
-			nurl = ar.join("/");
+			window.location.reload();
 		}
-		window.open(nurl, "_self");
+		else
+		{
+			window.open(window.location.href, "_self");
+		}
 		cancelEvent(b);
 		break;
 	}
