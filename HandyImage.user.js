@@ -3,7 +3,7 @@
 // @namespace     handyimage
 // @author        Owyn
 // @contributors  U Bless
-// @version       2013.11.18
+// @version       2013.11.20
 // @updateURL     https://userscripts.org/scripts/source/166494.user.js
 // @downloadURL   https://userscripts.org/scripts/source/166494.user.js
 // @homepage      https://userscripts.org/scripts/show/166494
@@ -758,11 +758,6 @@ if (typeof GM_registerMenuCommand !== "undefined")
 	GM_registerMenuCommand("Handy Image Configuration", cfg, "C");
 }
 
-if(document.referrer && document.referrer.lastIndexOf(window.location.hostname) != -1 && document.referrer.lastIndexOf(window.location.hostname) +1 == document.referrer.length - window.location.hostname.length)
-{
-	console.warn("you have just uploaded a picture, didn't you?");
-	return false;
-}
 if(window.location.href.lastIndexOf(window.location.hostname) + window.location.hostname.length + 1 == window.location.href.length)
 {
 	console.warn("we are on website's main page, aren't we?");
@@ -773,6 +768,16 @@ if(document.cookie.indexOf("hji=" + window.location.href) != -1)
 	console.warn("you just don't want the script to run now, do you?");
 	document.cookie = "hji=; expires=Thu, 01 Jan 1970 00:00:01 GMT;";
 	return false;
+}
+var ref;
+if(document.referrer)
+{
+	if(document.referrer.lastIndexOf(window.location.hostname) != -1 && document.referrer.lastIndexOf(window.location.hostname) +1 == document.referrer.length - window.location.hostname.length)
+	{
+		console.warn("you have just uploaded a picture, haven't you?");
+		return false;
+	}
+	ref = document.referrer;
 }
 
 function ev(q){return document.evaluate(q,document.body,null,9,null).singleNodeValue;}
@@ -1407,7 +1412,6 @@ function makeworld()
 	case "pixup.us":
 	case "imgtube.net":
 	case "imgcorn.com":
-	case "imageontime.com":
 	case "zonezeedimage.com":
 	case "croftimage.com":
 	case "imagedecode.com":
@@ -1428,6 +1432,9 @@ function makeworld()
 	case "xxx.image-server.ru":
 	case "image-server.ru":
 		i = ev('.//img[contains(@src,"/upload")]');
+		break;
+	case "imageontime.com":
+		i = ev('.//img[contains(@src,"/big/")]');
 		break;
 	case "ruleimg.com":
 		i = ev('.//img[@alt="image"]');
@@ -2263,9 +2270,10 @@ function onkeydown (b)
 		cancelEvent(b);
 		break;
 	case KeyEvent.DOM_VK_BACK_SPACE:
-		if(navigator.userAgent.indexOf('Firefox') != -1) // firefox makes 3 history entries for current page instead of one
+		if(navigator.userAgent.indexOf('Firefox') != -1 && ref) // firefox makes 3 history entries for current page instead of one
 		{
-			window.history.go(-3);
+			//window.history.go(-3);
+			window.location.replace(ref);
 			cancelEvent(b);
 		}
 		break;
