@@ -739,6 +739,8 @@
 // @match         http://*.picup.in/*.html
 // @match         http://*.love69.org/i/view*
 // @match         http://*.pic-mir.ru/*/*
+// @match         http://*.244pix.com/view*
+// @match         http://*.imageview.me/view*
 // ==/UserScript==
 
 if (typeof unsafeWindow === "undefined")
@@ -1616,6 +1618,8 @@ function makeworld()
 	case "s1.pixmax.ru":
 	case "ngarko.free.fr":
 	case "images.collectiontricks.it":
+	case "244pix.com":
+	case "imageview.me":
 		i = ev('.//img[contains(@src,"images/")]');
 		break;
 	case "fotosik.pl":
