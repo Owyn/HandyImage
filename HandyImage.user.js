@@ -741,6 +741,7 @@
 // @match         http://*.pic-mir.ru/*/*
 // @match         http://*.244pix.com/view*
 // @match         http://*.imageview.me/view*
+// @match         http://*.uploadimage.ro/view*
 // ==/UserScript==
 
 if (typeof unsafeWindow === "undefined")
