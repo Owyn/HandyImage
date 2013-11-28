@@ -3,7 +3,7 @@
 // @namespace     handyimage
 // @author        Owyn
 // @contributors  U Bless
-// @version       2013.11.20
+// @version       2013.11.28
 // @updateURL     https://userscripts.org/scripts/source/166494.user.js
 // @downloadURL   https://userscripts.org/scripts/source/166494.user.js
 // @homepage      https://userscripts.org/scripts/show/166494
@@ -1241,6 +1241,7 @@ function makeworld()
 		if(f.length != 0) 
 		{
 			f[0].click();
+			history.replaceState(0, "", "/");
 			break;
 		}
 		i = ev('.//img[contains(@src,"/pic.jpeg")]');
@@ -1377,6 +1378,7 @@ function makeworld()
 				if(f[c].type == "submit" && f[c].value != "Premium Download")
 				{
 					f[c].click();
+					history.replaceState(0, "", "/");
 					c = 999;
 				}
 			}
@@ -1408,6 +1410,7 @@ function makeworld()
 		if(i) 
 		{
 			i.click();
+			history.replaceState(0, "", "/");
 			img = 1;
 			break;
 		}
@@ -1447,6 +1450,7 @@ function makeworld()
 		if(i) 
 		{
 			i.click();
+			history.replaceState(0, "", "/");
 			break;
 		}
 	case "subirimagenes.com":
@@ -1780,6 +1784,7 @@ function makeworld()
 		if(i)
 		{
 			i.submit();
+			history.replaceState(0, "", "/");
 			break;
 		}
 	case "pixhost.org":
@@ -1939,7 +1944,7 @@ function makeworld()
 	case "imagepdb.com":
 		j = true;
 		i = ev('.//input[@value="YES"]');
-		if(i){i.click();img = i;}
+		if(i){i.click();history.replaceState(0, "", "/");img = i;}
 	case "imagepdb.com":
 	case "imagebam.com":
 	case "imgfantasy.com":
@@ -1976,6 +1981,7 @@ function makeworld()
 			if(i)
 			{
 				i.click();
+				history.replaceState(0, "", "/");
 				break;
 			}
 		case "imagilive.com":
