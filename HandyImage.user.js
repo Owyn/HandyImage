@@ -3,7 +3,7 @@
 // @namespace     handyimage
 // @author        Owyn
 // @contributors  U Bless
-// @version       2013.11.29
+// @version       2013.12.02
 // @updateURL     https://userscripts.org/scripts/source/166494.user.js
 // @downloadURL   https://userscripts.org/scripts/source/166494.user.js
 // @homepage      https://userscripts.org/scripts/show/166494
@@ -742,6 +742,7 @@
 // @match         http://*.244pix.com/view*
 // @match         http://*.imageview.me/view*
 // @match         http://*.uploadimage.ro/view*
+// @match         http://*.3xvintage.com/img-*
 // ==/UserScript==
 
 if (typeof unsafeWindow === "undefined")
@@ -1433,6 +1434,7 @@ function makeworld()
 	case "imgadult.com":
 	case "imagetotal.de":
 	case "imgsavvy.com":
+	case "3xvintage.com":
 		i = ev('.//img[contains(@src,"/upload/")]');
 		break;
 	case "xxx.image-server.ru":
