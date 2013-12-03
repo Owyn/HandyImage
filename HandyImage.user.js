@@ -3,7 +3,7 @@
 // @namespace     handyimage
 // @author        Owyn
 // @contributors  U Bless
-// @version       2013.12.02
+// @version       2013.12.03
 // @updateURL     https://userscripts.org/scripts/source/166494.user.js
 // @downloadURL   https://userscripts.org/scripts/source/166494.user.js
 // @homepage      https://userscripts.org/scripts/show/166494
@@ -743,6 +743,7 @@
 // @match         http://*.imageview.me/view*
 // @match         http://*.uploadimage.ro/view*
 // @match         http://*.3xvintage.com/img-*
+// @match         http://imgmaster.net/img-*
 // ==/UserScript==
 
 if (typeof unsafeWindow === "undefined")
@@ -1242,7 +1243,6 @@ function makeworld()
 		if(f.length != 0) 
 		{
 			f[0].click();
-			history.replaceState(0, "", "/");
 			break;
 		}
 		i = ev('.//img[contains(@src,"/pic.jpeg")]');
@@ -1369,6 +1369,7 @@ function makeworld()
 	case "imageteam.org":
 	case "imgnext.com":
 	case "hosturimage.com":
+	case "imgmaster.net":
 		i = ev('.//img[contains(@src,"/upload/")]');
 		var c;
 		if(!i)
@@ -1379,7 +1380,6 @@ function makeworld()
 				if(f[c].type == "submit" && f[c].value != "Premium Download")
 				{
 					f[c].click();
-					history.replaceState(0, "", "/");
 					c = 999;
 				}
 			}
@@ -1411,7 +1411,6 @@ function makeworld()
 		if(i) 
 		{
 			i.click();
-			history.replaceState(0, "", "/");
 			img = 1;
 			break;
 		}
@@ -1452,7 +1451,6 @@ function makeworld()
 		if(i) 
 		{
 			i.click();
-			history.replaceState(0, "", "/");
 			break;
 		}
 	case "subirimagenes.com":
@@ -1786,7 +1784,6 @@ function makeworld()
 		if(i)
 		{
 			i.submit();
-			history.replaceState(0, "", "/");
 			break;
 		}
 	case "pixhost.org":
@@ -1946,7 +1943,7 @@ function makeworld()
 	case "imagepdb.com":
 		j = true;
 		i = ev('.//input[@value="YES"]');
-		if(i){i.click();history.replaceState(0, "", "/");img = i;}
+		if(i){i.click();img = i;}
 	case "imagepdb.com":
 	case "imagebam.com":
 	case "imgfantasy.com":
@@ -1983,7 +1980,6 @@ function makeworld()
 			if(i)
 			{
 				i.click();
-				history.replaceState(0, "", "/");
 				break;
 			}
 		case "imagilive.com":
@@ -2017,6 +2013,7 @@ function makeworld()
 		function clr_pgn() 
 		{
 			window.onbeforeunload = null;
+			window.open = null;
 			delete document.write;
 			document.write('<html><head></head><body></body></html>'); // clears tasks also
 			document.close();
@@ -2283,6 +2280,12 @@ function onkeydown (b)
 		cancelEvent(b);
 		break;
 	case KeyEvent.DOM_VK_BACK_SPACE:
+		var now = new Date();
+		var time = now.getTime();
+		time += 4000; // 4 sec to help quit double-pages
+		now.setTime(time);
+		now.toGMTString();
+		document.cookie = 'hji=' + window.location.href + '; expires=' + now.toGMTString() + '; path=/';
 		if(navigator.userAgent.indexOf('Firefox') != -1 && ref) // firefox makes 3 history entries for current page instead of one
 		{
 			//window.history.go(-3);
