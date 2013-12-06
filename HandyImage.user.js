@@ -747,6 +747,8 @@
 // @match         http://*.thro.bz/*
 // ==/UserScript==
 console.warn("Script started running");
+console.warn("Location: " + window.location.href + "cookies: " + document.cookie);
+console.warn("Cookies: " + document.cookie);
 if (typeof unsafeWindow === "undefined")
 {
 	unsafeWindow = window;
@@ -844,6 +846,7 @@ function onscript(e)
 
 function onbeforeunload(e) // back helper
 {
+	console.warn("setting hji cookie before unloading page");
 	var now = new Date();
 	var time = now.getTime();
 	time += 3000; // 3 sec to help quit double-pages & StupidFoxes
