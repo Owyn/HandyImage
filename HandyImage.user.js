@@ -747,6 +747,7 @@
 // @match         http://*.thro.bz/*
 // ==/UserScript==
 console.warn("Script started running");
+console.warn("Title: " + document.title);
 console.warn("Location: " + window.location.href + "cookies: " + document.cookie);
 console.warn("Cookies: " + document.cookie);
 if (typeof unsafeWindow === "undefined")
@@ -779,12 +780,12 @@ if(document.referrer)
 		return false;
 	}
 }
-if(document.cookie.indexOf("hji=") != -1)
+if(document.cookie.indexOf("hji=") != -1 || document.title=="StupidFox")
 {
 	console.warn("found hji cookie");
 	if(document.cookie.indexOf("hji=" + window.location.href) != -1)
 	{
-		if(document.cookie.indexOf("hji=" + window.location.href + "back") != -1)
+		if(document.cookie.indexOf("hji=" + window.location.href + "back") != -1 || document.title=="StupidFox")
 		{
 			console.warn("looks like you've just encountered a wild StupidFox. Turning back.");
 			window.history.go(-1);
@@ -796,12 +797,12 @@ if(document.cookie.indexOf("hji=") != -1)
 		}
 		return false;
 	}
-	console.warn("hji cookie doesn't match, ignoring & erasing it. curAddr: " + window.location.href + "cookies: " + document.cookie);
+	console.warn("found a weird cookie, let's eat it");
 	document.cookie = "hji=; expires=Thu, 01 Jan 1970 00:00:01 GMT;"; // stealth mode
 }
 else
 {
-	console.warn("no hji cookie found");
+	console.warn("no hji cookie or title found");
 }
 
 function ev(q){return document.evaluate(q,document.body,null,9,null).singleNodeValue;}
@@ -846,7 +847,7 @@ function onscript(e)
 
 function onbeforeunload(e) // back helper
 {
-	console.warn("setting hji cookie before unloading page");
+	//console.warn("setting hji cookie before unloading page");
 	var now = new Date();
 	var time = now.getTime();
 	time += 3000; // 3 sec to help quit double-pages & StupidFoxes
@@ -2047,7 +2048,7 @@ function makeworld()
 			window.onbeforeunload = null;
 			window.open = null;
 			delete document.write;
-			document.write('<html><head></head><body></body></html>'); // clears tasks also
+			document.write('<html><head><title>StupidFox</title></head><body></body></html>'); // clears tasks also
 			document.close();
 		}
 		window.removeEventListener('beforescriptexecute', onscript, true);
