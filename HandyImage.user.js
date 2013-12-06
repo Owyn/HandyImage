@@ -3,7 +3,7 @@
 // @namespace     handyimage
 // @author        Owyn
 // @contributors  U Bless
-// @version       2013.12.03
+// @version       2013.12.06
 // @updateURL     https://userscripts.org/scripts/source/166494.user.js
 // @downloadURL   https://userscripts.org/scripts/source/166494.user.js
 // @homepage      https://userscripts.org/scripts/show/166494
@@ -768,13 +768,16 @@ if(window.location.href.lastIndexOf(window.location.hostname) + window.location.
 	console.warn("we are on website's main page, aren't we?");
 	return false;
 }
-if(document.cookie.indexOf("hji=" + window.location.href) != -1)
+if(document.cookie.indexOf("hji=") != -1)
 {
-	console.warn("you just don't want the script to run now, do you?");
-	document.cookie = "hji=; expires=Thu, 01 Jan 1970 00:00:01 GMT;";
-	return false;
+	if(document.cookie.indexOf("hji=" + window.location.href) != -1)
+	{
+		console.warn("you just don't want the script to run now, do you?");
+		document.cookie = "hji=; expires=Thu, 01 Jan 1970 00:00:01 GMT;";
+		return false;
+	}
+	document.cookie = "hji=; expires=Thu, 01 Jan 1970 00:00:01 GMT;"; // stealth mode
 }
-var ref;
 if(document.referrer)
 {
 	if(document.referrer.lastIndexOf(window.location.hostname) != -1 && document.referrer.lastIndexOf(window.location.hostname) +1 == document.referrer.length - window.location.hostname.length)
@@ -782,7 +785,6 @@ if(document.referrer)
 		console.warn("you have just uploaded a picture, haven't you?");
 		return false;
 	}
-	ref = document.referrer;
 }
 
 function ev(q){return document.evaluate(q,document.body,null,9,null).singleNodeValue;}
@@ -825,6 +827,16 @@ function onscript(e)
 	e.stopPropagation();
 }
 
+function onbeforeunload(e) 
+{
+	var now = new Date();
+	var time = now.getTime();
+	time += 3000; // 3 sec to help quit double-pages
+	now.setTime(time);
+	now.toGMTString();
+	document.cookie = 'hji=' + window.location.href + '; expires=' + now.toGMTString() + '; path=/';
+}
+
 function makeimage()
 {
 	loadCfg();
@@ -839,6 +851,7 @@ function makeimage()
 	document.body.appendChild(img);
 	img.addEventListener("click", rescale, true);
 	window.addEventListener("keydown", onkeydown, true);
+	window.addEventListener("beforeunload", onbeforeunload, true);
 	setTimeout(function() { autoresize(); }, 0);
 }
 
@@ -2280,16 +2293,9 @@ function onkeydown (b)
 		cancelEvent(b);
 		break;
 	case KeyEvent.DOM_VK_BACK_SPACE:
-		var now = new Date();
-		var time = now.getTime();
-		time += 4000; // 4 sec to help quit double-pages
-		now.setTime(time);
-		now.toGMTString();
-		document.cookie = 'hji=' + window.location.href + '; expires=' + now.toGMTString() + '; path=/';
-		if(navigator.userAgent.indexOf('Firefox') != -1 && ref) // firefox makes 3 history entries for current page instead of one
+		if(navigator.userAgent.indexOf('Firefox') != -1) // firefox makes 3 history entries for current page instead of one
 		{
-			//window.history.go(-3);
-			window.location.replace(ref);
+			window.history.go(-3);
 			cancelEvent(b);
 		}
 		break;
