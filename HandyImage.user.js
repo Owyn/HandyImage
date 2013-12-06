@@ -746,7 +746,7 @@
 // @match         http://imgmaster.net/img-*
 // @match         http://*.thro.bz/*
 // ==/UserScript==
-
+console.warn("Script started running");
 if (typeof unsafeWindow === "undefined")
 {
 	unsafeWindow = window;
@@ -779,13 +779,13 @@ if(document.referrer)
 }
 if(document.cookie.indexOf("hji=") != -1)
 {
+	console.warn("found hji cookie");
 	if(document.cookie.indexOf("hji=" + window.location.href) != -1)
 	{
 		if(document.cookie.indexOf("hji=" + window.location.href + "back") != -1)
 		{
 			console.warn("looks like you've just encountered a wild StupidFox. Turning back.");
 			window.history.go(-1);
-			setTimeout(function() { window.history.go(-1); }, 1000); // for laggy guys
 		}
 		else
 		{
@@ -794,7 +794,12 @@ if(document.cookie.indexOf("hji=") != -1)
 		}
 		return false;
 	}
+	console.warn("hji cookie doesn't match, ignoring & erasing it. curAddr: " + window.location.href + "cookies: " + document.cookie);
 	document.cookie = "hji=; expires=Thu, 01 Jan 1970 00:00:01 GMT;"; // stealth mode
+}
+else
+{
+	console.warn("no hji cookie found");
 }
 
 function ev(q){return document.evaluate(q,document.body,null,9,null).singleNodeValue;}
