@@ -784,7 +784,8 @@ if(document.cookie.indexOf("hji=") != -1)
 		if(document.cookie.indexOf("hji=" + window.location.href + "back") != -1)
 		{
 			console.warn("looks like you've just encountered a wild StupidFox. Turning back.");
-			setTimeout(function() { window.history.go(-1); }, 0); // for laggy guys
+			window.history.go(-1);
+			setTimeout(function() { window.history.go(-1); }, 10); // for laggy guys
 		}
 		else
 		{
