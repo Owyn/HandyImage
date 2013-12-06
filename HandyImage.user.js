@@ -748,7 +748,7 @@
 // ==/UserScript==
 console.warn("Script started running");
 console.warn("Title: " + document.title);
-console.warn("Location: " + window.location.href + "cookies: " + document.cookie);
+console.warn("Location: " + window.location.href);
 console.warn("Cookies: " + document.cookie);
 if (typeof unsafeWindow === "undefined")
 {
@@ -783,7 +783,7 @@ if(document.referrer)
 if(document.cookie.indexOf("hji=") != -1 || document.title=="StupidFox")
 {
 	console.warn("found hji cookie");
-	if(document.cookie.indexOf("hji=" + window.location.href) != -1)
+	if(document.cookie.indexOf("hji=" + window.location.href) != -1 || document.title=="StupidFox")
 	{
 		if(document.cookie.indexOf("hji=" + window.location.href + "back") != -1 || document.title=="StupidFox")
 		{
@@ -797,7 +797,7 @@ if(document.cookie.indexOf("hji=") != -1 || document.title=="StupidFox")
 		}
 		return false;
 	}
-	console.warn("found a weird cookie, let's eat it");
+	console.warn("you have found a weird cookie, let's eat it");
 	document.cookie = "hji=; expires=Thu, 01 Jan 1970 00:00:01 GMT;"; // stealth mode
 }
 else
