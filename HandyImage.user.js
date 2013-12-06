@@ -3,7 +3,7 @@
 // @namespace     handyimage
 // @author        Owyn
 // @contributors  U Bless
-// @version       2013.12.06
+// @version       2013.12.07
 // @updateURL     https://userscripts.org/scripts/source/166494.user.js
 // @downloadURL   https://userscripts.org/scripts/source/166494.user.js
 // @homepage      https://userscripts.org/scripts/show/166494
@@ -744,6 +744,7 @@
 // @match         http://*.uploadimage.ro/view*
 // @match         http://*.3xvintage.com/img-*
 // @match         http://imgmaster.net/img-*
+// @match         http://*.thro.bz/*
 // ==/UserScript==
 
 if (typeof unsafeWindow === "undefined")
@@ -768,16 +769,6 @@ if(window.location.href.lastIndexOf(window.location.hostname) + window.location.
 	console.warn("we are on website's main page, aren't we?");
 	return false;
 }
-if(document.cookie.indexOf("hji=") != -1)
-{
-	if(document.cookie.indexOf("hji=" + window.location.href) != -1)
-	{
-		console.warn("you just don't want the script to run now, do you?");
-		document.cookie = "hji=; expires=Thu, 01 Jan 1970 00:00:01 GMT;";
-		return false;
-	}
-	document.cookie = "hji=; expires=Thu, 01 Jan 1970 00:00:01 GMT;"; // stealth mode
-}
 if(document.referrer)
 {
 	if(document.referrer.lastIndexOf(window.location.hostname) != -1 && document.referrer.lastIndexOf(window.location.hostname) +1 == document.referrer.length - window.location.hostname.length)
@@ -785,6 +776,24 @@ if(document.referrer)
 		console.warn("you have just uploaded a picture, haven't you?");
 		return false;
 	}
+}
+if(document.cookie.indexOf("hji=") != -1)
+{
+	if(document.cookie.indexOf("hji=" + window.location.href) != -1)
+	{
+		if(document.cookie.indexOf("hji=" + window.location.href + "back") != -1)
+		{
+			console.warn("looks like you've just encountered a wild StupidFox. Turning back.");
+			window.history.go(-1);
+		}
+		else
+		{
+			console.warn("you just don't want the script to run now, do you?");
+			document.cookie = "hji=; expires=Thu, 01 Jan 1970 00:00:01 GMT;";
+		}
+		return false;
+	}
+	document.cookie = "hji=; expires=Thu, 01 Jan 1970 00:00:01 GMT;"; // stealth mode
 }
 
 function ev(q){return document.evaluate(q,document.body,null,9,null).singleNodeValue;}
@@ -827,14 +836,14 @@ function onscript(e)
 	e.stopPropagation();
 }
 
-function onbeforeunload(e) 
+function onbeforeunload(e) // back helper
 {
 	var now = new Date();
 	var time = now.getTime();
-	time += 3000; // 3 sec to help quit double-pages
+	time += 3000; // 3 sec to help quit double-pages & StupidFoxes
 	now.setTime(time);
 	now.toGMTString();
-	document.cookie = 'hji=' + window.location.href + '; expires=' + now.toGMTString() + '; path=/';
+	document.cookie = 'hji=' + window.location.href + "back" + '; expires=' + now.toGMTString() + '; path=/';
 }
 
 function makeimage()
@@ -1945,6 +1954,7 @@ function makeworld()
 	case "tndupload.com":
 	case "pic.xtream-reallife.de":
 	case "img.dramacafe.tv":
+	case "thro.bz":
 		i = ev('.//img[contains(@src,"' + iurl + '/images/")]');
 		break;
 	case "shareimages.com":
@@ -2197,7 +2207,6 @@ observer.observe(document, {subtree: true, childList: true});
 if (typeof KeyEvent === "undefined")
 {
 	var KeyEvent = {
-		DOM_VK_BACK_SPACE: 8,
 		DOM_VK_SPACE: 32,
 		DOM_VK_LEFT: 37,
 		DOM_VK_UP: 38,
@@ -2291,13 +2300,6 @@ function onkeydown (b)
 	case KeyEvent.DOM_VK_NUMPAD5:
 		rescale(0);
 		cancelEvent(b);
-		break;
-	case KeyEvent.DOM_VK_BACK_SPACE:
-		if(navigator.userAgent.indexOf('Firefox') != -1) // firefox makes 3 history entries for current page instead of one
-		{
-			window.history.go(-3);
-			cancelEvent(b);
-		}
 		break;
 	case KeyEvent.DOM_VK_P:
 		if(img && navigator.userAgent.indexOf('Firefox') == -1) // Chrome bug
