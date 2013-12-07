@@ -3,7 +3,7 @@
 // @namespace     handyimage
 // @author        Owyn
 // @contributors  U Bless
-// @version       2013.12.07.15
+// @version       2013.12.07.18
 // @updateURL     https://userscripts.org/scripts/source/166494.user.js
 // @downloadURL   https://userscripts.org/scripts/source/166494.user.js
 // @homepage      https://userscripts.org/scripts/show/166494
@@ -34,6 +34,7 @@
 // @match         http://tinypic.com/view*
 // @match         http://radical-foto.ru/*
 // @match         http://radikal-foto.ru/*
+// @match         http://f-page.ru/*
 // @match         http://www.fotolink.su/v.php?id=*
 // @match         http://www.stooorage.com/show*
 // @match         http://*.pimpandhost.com/image*
@@ -777,21 +778,20 @@ if(document.referrer)
 		return false;
 	}
 }
-if(document.cookie.indexOf("hji=") != -1 || document.title=="StupidFox")
+if(document.cookie.indexOf("hji=") != -1)
 {
-	if(document.cookie.indexOf("hji=" + window.location.href) != -1 || document.title=="StupidFox")
+	if(document.cookie.indexOf("hji=" + window.location.href) != -1)
 	{
-		if(document.cookie.indexOf("hji=" + window.location.href + "back") != -1 || document.title=="StupidFox")
-		{
-			console.warn("looks like you've just encountered a wild StupidFox. Turning back.");
-			window.history.go(-1);
-		}
-		else
-		{
-			console.warn("you just don't want the script to run now, do you?");
-			document.cookie = "hji=; expires=Thu, 01 Jan 1970 00:00:01 GMT;";
-		}
+		console.warn("you just don't want the script to run now, do you?");
+		document.cookie = "hji=; expires=Thu, 01 Jan 1970 00:00:01 GMT;";
 		return false;
+	}
+	else if(document.cookie.indexOf("backhji=") != -1)
+	{
+		console.warn("you have found a time machine, now you are traveling back in history");
+		window.history.go(-1);
+		document.cookie = "hji=; expires=Thu, 01 Jan 1970 00:00:01 GMT;";
+		return false
 	}
 	console.warn("found a weird cookie, let's eat it");
 	document.cookie = "hji=; expires=Thu, 01 Jan 1970 00:00:01 GMT;"; // stealth mode
@@ -804,9 +804,9 @@ var cfg_bgclr;
 var cfg_fitWH = true;
 var cfg_fitB;
 var cfg_fitS;
+var dp = false;
 var rescaled = false;
 var FireFox = ((navigator.userAgent.indexOf('Firefox') != -1) ? true : false);
-var isrc;
 var img;
 var j;
 var iurl = window.location.hostname;
@@ -817,7 +817,7 @@ if(iurl.indexOf("www.") == 0)
 
 function ws()
 {
-	if(!(FireFox && isrc.lastIndexOf(".gif") != -1)) // NOT firefox + gif = bug
+	if(!(FireFox && img.src.lastIndexOf(".gif") != -1)) // NOT firefox + gif = no animation
 	{
 		unsafeWindow.stop();
 	}
@@ -844,11 +844,10 @@ function onbeforeunload(e) // back helper
 	//console.warn("setting hji cookie before unloading page");
 	var now = new Date();
 	var time = now.getTime();
-	time += 3000; // 3 sec to help quit double-pages & StupidFoxes
+	time += 3000; // 3 sec to help quit double-pages
 	now.setTime(time);
 	now.toGMTString();
-	document.cookie = 'hji=' + window.location.href + "back" + '; expires=' + now.toGMTString() + '; path=/';
-	setTimeout(function() { if(document.readyState=="interactive"){window.history.go(-3);}}, 1000); // not StupidFoxes should be gone by now
+	document.cookie = 'backhji=; expires=' + now.toGMTString() + '; path=/';
 }
 
 function makeimage()
@@ -858,6 +857,7 @@ function makeimage()
 	if(cfg_bgclr){document.body.bgColor = cfg_bgclr;}
 	document.body.style.margin = "0px";
 	document.body.innerHTML = "<style>img { position: absolute; top: 0; right: 0; bottom: 0; left: 0; }</style>"; // center image
+	var isrc = img.src;
 	img = document.createElement("img");
 	img.src = isrc;
 	img.id = "resizing";
@@ -865,7 +865,7 @@ function makeimage()
 	document.body.appendChild(img);
 	img.addEventListener("click", rescale, true);
 	window.addEventListener("keydown", onkeydown, true);
-	window.addEventListener("beforeunload", onbeforeunload, true);
+	if(dp){window.addEventListener("beforeunload", onbeforeunload, true);}
 	setTimeout(function() { autoresize(); }, 0);
 }
 
@@ -913,7 +913,7 @@ function makeworld()
 	case "imgbox.com":
 	case "imageupper.com":
 	case "fotosupload.com":
-	case "e-loader.net":  	
+	case "e-loader.net":
 		i = ev('.//img[@id="img"]');
 		break;
 	case "imageban.ru":
@@ -1006,7 +1006,7 @@ function makeworld()
 	case "xtupload.com":
 	case "t.williamgates.net":
 	case "coolnspicy.com":
-	case "upload.fpsthailand.com": 	
+	case "upload.fpsthailand.com":
 	case "image-hoster.org":
 	case "vippix.com":
 		//i = ev('.//img[@id="iimg"]');
@@ -1056,6 +1056,7 @@ function makeworld()
 		break;
 	case "radical-foto.ru":
 	case "radikal-foto.ru":
+	case "f-page.ru":
 		var fn;
 		var f = document.getElementsByTagName("script");
 		for(c=0;c<f.length;c++) 
@@ -1269,6 +1270,7 @@ function makeworld()
 		var f = document.getElementsByTagName("button");
 		if(f.length != 0) 
 		{
+			dp=true;
 			f[0].click();
 			break;
 		}
@@ -1281,7 +1283,7 @@ function makeworld()
 	case "voila.pl":
 	case "ld-host.de":
 	case "fapomatic.com":
-	case "picshare.ru": 	
+	case "picshare.ru":
 		i = ev('.//img[contains(@src,"uploads/")]');
 		break;
 	case "xtremeshack.com":
@@ -1313,7 +1315,7 @@ function makeworld()
 	case "ibunker.us":
 	case "hostingpics.net":
 	case "pixentral.com":
-	case "7image.ru": 	
+	case "7image.ru":
 	case "free-picload.de":
 		i = ev('.//img[contains(@src,"pics/")]');
 		break;
@@ -1406,6 +1408,7 @@ function makeworld()
 			{
 				if(f[c].type == "submit" && f[c].value != "Premium Download")
 				{
+					dp=true;
 					f[c].click();
 					c = 999;
 				}
@@ -1437,6 +1440,7 @@ function makeworld()
 		i = ev('.//input[@type="submit"]');
 		if(i) 
 		{
+			dp=true;
 			i.click();
 			img = 1;
 			break;
@@ -1477,6 +1481,7 @@ function makeworld()
 		i = ev('.//input[@type="submit"][@id="boton"]');
 		if(i) 
 		{
+			dp=true;
 			i.click();
 			break;
 		}
@@ -1698,14 +1703,14 @@ function makeworld()
 	case "celebimg.com":
 	case "sharenxs.com":
 	case "imgbox.de":
-	case "imagehosting.cz": 	
+	case "imagehosting.cz":
 	case "server5.upload69.net":
 	case "9foto.ru":
 	case "picmania.com.ua":
 	case "4owl.info":
 	case "hosting.tidus.eu":
 	case "imagesloading.altervista.org":
-	case "phpbbmods.it": 	
+	case "phpbbmods.it":
 	case "photo.vietnamlib.net":	
 	case "kaise123.com":
 	case "gurin.ee":
@@ -1810,6 +1815,7 @@ function makeworld()
 		i = ev('.//form[@name="F1"]');
 		if(i)
 		{
+			dp=true;
 			i.submit();
 			break;
 		}
@@ -1847,7 +1853,7 @@ function makeworld()
 	case "zapisz.net":
 	case "s6.snapgram.co":
 	case "addyourpics.com":
-	case "urimage.net": 	
+	case "urimage.net":
 	case "imgbank.cz":
 	case "zinimg.com":
 	case "alex-pic.com":
@@ -1857,7 +1863,7 @@ function makeworld()
 	case "fastpics.altervista.org":
 	case "imagesturk.net":
 	case "one.ilikecamera.com":
-	case "showmyimage.com": 	
+	case "showmyimage.com":
 	case "img.dulieu.net":
 	case "givme.de":
 	case "upload.crazycraft.pl":
@@ -1971,7 +1977,7 @@ function makeworld()
 	case "imagepdb.com":
 		j = true;
 		i = ev('.//input[@value="YES"]');
-		if(i){i.click();img = i;}
+		if(i){dp=true;i.click();img = i;}
 	case "imagepdb.com":
 	case "imagebam.com":
 	case "imgfantasy.com":
@@ -2007,6 +2013,7 @@ function makeworld()
 			i = ev('.//a[@class="button"]');
 			if(i)
 			{
+				dp=true;
 				i.click();
 				break;
 			}
@@ -2028,33 +2035,32 @@ function makeworld()
 	//
 	if(i && i.src)
 	{
-		isrc = i.src;
 		img = i;
 		observer.disconnect();
-		function inject(func) 
+		function clr_pgn()
 		{
-			var source = func.toString();
-			var script = document.createElement('script');
-			script.text = "("+ source +")()";
-			document.head.appendChild(script);
+			unsafeWindow.open = null;
+			unsafeWindow.onbeforeunload = null;
+			if(!FireFox)
+			{
+				delete document.write;
+				document.write('<html><head></head><body></body></html>');
+				document.close();
+			}
+			else
+			{
+				document.replaceChild (document.importNode (document.implementation.createHTMLDocument ("").documentElement, true), document.documentElement);
+			}
 		}
-		function clr_pgn() 
-		{
-			window.onbeforeunload = null;
-			window.open = null;
-			delete document.write;
-			document.write('<html><head><title>StupidFox</title></head><body></body></html>'); // clears tasks also
-			document.close();
-		}
-		window.removeEventListener('beforescriptexecute', onscript, true);
-		inject(clr_pgn);
+		clr_pgn();
 		ws();
 		document.head.innerHTML = "";
 		sanitize();
 		setTimeout(function() // else there will be scary bugs
 		{
-			inject(clr_pgn);
+			clr_pgn();
 			ws();
+			window.removeEventListener('beforescriptexecute', onscript, true);
 			makeimage();
 		}, 0);
 	}
@@ -2068,12 +2074,13 @@ function makeworld()
 function changecursor()
 {
 	img.style.margin = "auto";
-	var CH = Math.max(document.documentElement.clientHeight, document.body.clientHeight); // die firefox
-	if(!rescaled && ((img.naturalHeight == CH) || (img.naturalWidth == document.body.clientWidth)) && ((CH == document.body.scrollHeight) && (document.body.clientWidth == document.body.scrollWidth)) ) // no scrollbars and one img dimension is equal to screen
+	var root = document.compatMode=='BackCompat'? document.body : document.documentElement;
+	var CH = Math.max(document.documentElement.clientHeight, document.body.clientHeight); // StupidFox
+	if(!rescaled && ((img.naturalHeight == CH) || (img.naturalWidth == root.clientWidth)) && ((CH == root.scrollHeight) && (root.clientWidth == root.scrollWidth)) ) // no scrollbars and one img dimension is equal to screen
 	{
 		img.style.cursor = "";
 	}
-	else if((img.naturalHeight > CH) || (img.naturalWidth > document.body.clientWidth))
+	else if((img.naturalHeight > CH) || (img.naturalWidth > root.clientWidth))
 	{
 		if(rescaled)
 		{
@@ -2086,7 +2093,7 @@ function changecursor()
 			img.style.cursor = "-webkit-zoom-out";
 			if(img.naturalHeight > CH) // chrome bug fuuuuu
 			{
-				img.style.margin = "0 auto";
+				img.style.margin = "0px auto";
 			}
 		}
 	}
@@ -2142,7 +2149,8 @@ function rescale(event)
 			img.style.width = window.innerWidth + "px";
 			rescaled = true;
 		}
-		if((document.body.clientHeight != document.body.scrollHeight) || (document.body.clientWidth != document.body.scrollWidth)) // scrollbars detected
+		var root = document.compatMode=='BackCompat'? document.body : document.documentElement;
+		if((root.scrollHeight != root.clientHeight) || (root.scrollWidth != root.clientWidth))
 		{
 			img.removeAttribute("style");
 			if(img.naturalHeight != window.innerHeight)
@@ -2212,7 +2220,6 @@ observer.observe(document, {subtree: true, childList: true});
 if (typeof KeyEvent === "undefined")
 {
 	var KeyEvent = {
-		DOM_VK_BACK_SPACE: 8,
 		DOM_VK_SPACE: 32,
 		DOM_VK_LEFT: 37,
 		DOM_VK_UP: 38,
@@ -2229,7 +2236,8 @@ if (typeof KeyEvent === "undefined")
 		DOM_VK_NUMPAD4: 100,
 		DOM_VK_NUMPAD5: 101,
 		DOM_VK_NUMPAD6: 102,
-		DOM_VK_NUMPAD8: 104
+		DOM_VK_NUMPAD8: 104,
+		DOM_VK_F5: 116
 	};
 }
 
@@ -2267,7 +2275,7 @@ function onkeydown (b)
 {
 	var a = (window.event) ? b.keyCode : b.which;
 
-	if (a != KeyEvent.DOM_VK_SPACE && (b.altKey || b.ctrlKey || b.metaKey))
+	if (b.altKey || b.metaKey || (b.ctrlKey && a != KeyEvent.DOM_VK_SPACE && a != KeyEvent.DOM_VK_F5 && a != KeyEvent.DOM_VK_R))
 	{
 		return;
 	}
@@ -2307,13 +2315,6 @@ function onkeydown (b)
 		rescale(0);
 		cancelEvent(b);
 		break;
-	case KeyEvent.DOM_VK_BACK_SPACE:
-		if(FireFox) // firefox makes 3 history entries for current page instead of one and have whitescreen of noescape
-		{
-			window.history.go(-3);
-			cancelEvent(b);
-		}
-		break;
 	case KeyEvent.DOM_VK_P:
 		if(img && !FireFox) // Chrome nosave bug
 		{
@@ -2326,16 +2327,19 @@ function onkeydown (b)
 		cancelEvent(b);
 		break;
 	case KeyEvent.DOM_VK_R:
-		document.cookie= "hji=" + window.location.href;
-		if(!FireFox) // FireFox can not into reload
+		if(!b.ctrlKey)
 		{
+			document.cookie= "hji=" + window.location.href;
 			window.location.reload();
+			cancelEvent(b);
 		}
 		else
 		{
-			window.open(window.location.href, "_self");
+			window.removeEventListener("beforeunload", onbeforeunload, true);
 		}
-		cancelEvent(b);
+		break;
+	case KeyEvent.DOM_VK_F5:
+		window.removeEventListener("beforeunload", onbeforeunload, true);
 		break;
 	}
 }
