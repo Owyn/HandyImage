@@ -3,7 +3,7 @@
 // @namespace     handyimage
 // @author        Owyn
 // @contributors  U Bless
-// @version       2013.12.07.21
+// @version       2013.12.07.22
 // @updateURL     https://userscripts.org/scripts/source/166494.user.js
 // @downloadURL   https://userscripts.org/scripts/source/166494.user.js
 // @homepage      https://userscripts.org/scripts/show/166494
@@ -844,7 +844,7 @@ function onbeforeunload(e) // back helper
 	//console.warn("setting hji cookie before unloading page");
 	var now = new Date();
 	var time = now.getTime();
-	time += 5000; // 3 sec to help quit double-pages
+	time += 3000; // 3 sec to help quit double-pages
 	now.setTime(time);
 	now.toGMTString();
 	document.cookie = 'backhji=; expires=' + now.toGMTString() + '; path=/';
