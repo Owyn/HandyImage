@@ -841,7 +841,7 @@ function onscript(e)
 
 function onbeforeunload(e) // back helper
 {
-	console.warn("setting hji cookie before unloading page");
+	//console.warn("setting hji cookie before unloading page");
 	var now = new Date();
 	var time = now.getTime();
 	time += 5000; // 3 sec to help quit double-pages
@@ -865,7 +865,7 @@ function makeimage()
 	document.body.appendChild(img);
 	img.addEventListener("click", rescale, true);
 	window.addEventListener("keydown", onkeydown, true);
-	if(dp){console.warn("setting unload listener");window.addEventListener("beforeunload", onbeforeunload, true);}
+	if(dp){console.warn("you are on a double-page image hosting (probably)");window.addEventListener("beforeunload", onbeforeunload, true);}
 	setTimeout(function() { autoresize(); }, 0);
 }
 
