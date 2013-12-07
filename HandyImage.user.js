@@ -3,7 +3,7 @@
 // @namespace     handyimage
 // @author        Owyn
 // @contributors  U Bless
-// @version       2013.12.07.18
+// @version       2013.12.07.21
 // @updateURL     https://userscripts.org/scripts/source/166494.user.js
 // @downloadURL   https://userscripts.org/scripts/source/166494.user.js
 // @homepage      https://userscripts.org/scripts/show/166494
@@ -841,10 +841,10 @@ function onscript(e)
 
 function onbeforeunload(e) // back helper
 {
-	//console.warn("setting hji cookie before unloading page");
+	console.warn("setting hji cookie before unloading page");
 	var now = new Date();
 	var time = now.getTime();
-	time += 3000; // 3 sec to help quit double-pages
+	time += 5000; // 3 sec to help quit double-pages
 	now.setTime(time);
 	now.toGMTString();
 	document.cookie = 'backhji=; expires=' + now.toGMTString() + '; path=/';
@@ -865,7 +865,7 @@ function makeimage()
 	document.body.appendChild(img);
 	img.addEventListener("click", rescale, true);
 	window.addEventListener("keydown", onkeydown, true);
-	if(dp){window.addEventListener("beforeunload", onbeforeunload, true);}
+	if(dp){console.warn("setting unload listener");window.addEventListener("beforeunload", onbeforeunload, true);}
 	setTimeout(function() { autoresize(); }, 0);
 }
 
@@ -1270,10 +1270,10 @@ function makeworld()
 		var f = document.getElementsByTagName("button");
 		if(f.length != 0) 
 		{
-			dp=true;
 			f[0].click();
 			break;
 		}
+		dp=true;
 		i = ev('.//img[contains(@src,"/pic.jpeg")]');
 		break;
 	case "freeimagehosting.net":
@@ -1400,6 +1400,7 @@ function makeworld()
 	case "hosturimage.com":
 	case "imgmaster.net":
 		i = ev('.//img[contains(@src,"/upload/")]');
+		dp=true;
 		var c;
 		if(!i)
 		{
@@ -1408,7 +1409,6 @@ function makeworld()
 			{
 				if(f[c].type == "submit" && f[c].value != "Premium Download")
 				{
-					dp=true;
 					f[c].click();
 					c = 999;
 				}
@@ -1438,9 +1438,9 @@ function makeworld()
 	case "xximg.net":
 	case "sxpics.nl":
 		i = ev('.//input[@type="submit"]');
+		dp=true;
 		if(i) 
 		{
-			dp=true;
 			i.click();
 			img = 1;
 			break;
@@ -1479,9 +1479,9 @@ function makeworld()
 		break;
 	case "subirimagenes.com":
 		i = ev('.//input[@type="submit"][@id="boton"]');
+		dp=true;
 		if(i) 
 		{
-			dp=true;
 			i.click();
 			break;
 		}
@@ -1813,9 +1813,9 @@ function makeworld()
 		break;
 	case "qrrro.com":
 		i = ev('.//form[@name="F1"]');
+		dp=true;
 		if(i)
 		{
-			dp=true;
 			i.submit();
 			break;
 		}
@@ -1976,8 +1976,9 @@ function makeworld()
 	case "imagedomino.com":
 	case "imagepdb.com":
 		j = true;
+		dp=true;
 		i = ev('.//input[@value="YES"]');
-		if(i){dp=true;i.click();img = i;}
+		if(i){i.click();img = i;}
 	case "imagepdb.com":
 	case "imagebam.com":
 	case "imgfantasy.com":
