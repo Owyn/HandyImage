@@ -3,7 +3,7 @@
 // @namespace     handyimage
 // @author        Owyn
 // @contributors  U Bless
-// @version       2013.12.07
+// @version       2013.12.07.15
 // @updateURL     https://userscripts.org/scripts/source/166494.user.js
 // @downloadURL   https://userscripts.org/scripts/source/166494.user.js
 // @homepage      https://userscripts.org/scripts/show/166494
@@ -746,10 +746,7 @@
 // @match         http://imgmaster.net/img-*
 // @match         http://*.thro.bz/*
 // ==/UserScript==
-console.warn("Script started running");
-console.warn("Title: " + document.title);
-console.warn("Location: " + window.location.href);
-console.warn("Cookies: " + document.cookie);
+
 if (typeof unsafeWindow === "undefined")
 {
 	unsafeWindow = window;
@@ -782,7 +779,6 @@ if(document.referrer)
 }
 if(document.cookie.indexOf("hji=") != -1 || document.title=="StupidFox")
 {
-	console.warn("found hji cookie");
 	if(document.cookie.indexOf("hji=" + window.location.href) != -1 || document.title=="StupidFox")
 	{
 		if(document.cookie.indexOf("hji=" + window.location.href + "back") != -1 || document.title=="StupidFox")
@@ -797,13 +793,10 @@ if(document.cookie.indexOf("hji=") != -1 || document.title=="StupidFox")
 		}
 		return false;
 	}
-	console.warn("you have found a weird cookie, let's eat it");
+	console.warn("found a weird cookie, let's eat it");
 	document.cookie = "hji=; expires=Thu, 01 Jan 1970 00:00:01 GMT;"; // stealth mode
 }
-else
-{
-	console.warn("no hji cookie or title found");
-}
+//else{	console.warn("no hji cookie found");}
 
 function ev(q){return document.evaluate(q,document.body,null,9,null).singleNodeValue;}
 var cfg_direct;
@@ -854,6 +847,7 @@ function onbeforeunload(e) // back helper
 	now.setTime(time);
 	now.toGMTString();
 	document.cookie = 'hji=' + window.location.href + "back" + '; expires=' + now.toGMTString() + '; path=/';
+	setTimeout(function() { if(document.readyState=="interactive"){window.history.go(-3);}}, 1000); // not StupidFoxes should be gone by now
 }
 
 function makeimage()
@@ -2217,6 +2211,7 @@ observer.observe(document, {subtree: true, childList: true});
 if (typeof KeyEvent === "undefined")
 {
 	var KeyEvent = {
+		DOM_VK_BACK_SPACE: 8,
 		DOM_VK_SPACE: 32,
 		DOM_VK_LEFT: 37,
 		DOM_VK_UP: 38,
@@ -2311,8 +2306,15 @@ function onkeydown (b)
 		rescale(0);
 		cancelEvent(b);
 		break;
+	case KeyEvent.DOM_VK_BACK_SPACE:
+		if(navigator.userAgent.indexOf('Firefox') != -1) // firefox makes 3 history entries for current page instead of one and have whitescreen of noescape
+		{
+			window.history.go(-3);
+			cancelEvent(b);
+		}
+		break;
 	case KeyEvent.DOM_VK_P:
-		if(img && navigator.userAgent.indexOf('Firefox') == -1) // Chrome bug
+		if(img && navigator.userAgent.indexOf('Firefox') == -1) // Chrome nosave bug
 		{
 			window.location.href = "https://userscripts.org/scripts/show/166494/configuration";
 		}
