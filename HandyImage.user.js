@@ -805,6 +805,7 @@ var cfg_fitWH = true;
 var cfg_fitB;
 var cfg_fitS;
 var rescaled = false;
+var FireFox = ((navigator.userAgent.indexOf('Firefox') != -1) ? true : false);
 var isrc;
 var img;
 var j;
@@ -816,7 +817,7 @@ if(iurl.indexOf("www.") == 0)
 
 function ws()
 {
-	if(!(navigator.userAgent.indexOf('Firefox') != -1 && isrc.lastIndexOf(".gif") != -1)) // NOT firefox + gif = bug
+	if(!(FireFox && isrc.lastIndexOf(".gif") != -1)) // NOT firefox + gif = bug
 	{
 		unsafeWindow.stop();
 	}
@@ -2307,14 +2308,14 @@ function onkeydown (b)
 		cancelEvent(b);
 		break;
 	case KeyEvent.DOM_VK_BACK_SPACE:
-		if(navigator.userAgent.indexOf('Firefox') != -1) // firefox makes 3 history entries for current page instead of one and have whitescreen of noescape
+		if(FireFox) // firefox makes 3 history entries for current page instead of one and have whitescreen of noescape
 		{
 			window.history.go(-3);
 			cancelEvent(b);
 		}
 		break;
 	case KeyEvent.DOM_VK_P:
-		if(img && navigator.userAgent.indexOf('Firefox') == -1) // Chrome nosave bug
+		if(img && !FireFox) // Chrome nosave bug
 		{
 			window.location.href = "https://userscripts.org/scripts/show/166494/configuration";
 		}
@@ -2326,7 +2327,7 @@ function onkeydown (b)
 		break;
 	case KeyEvent.DOM_VK_R:
 		document.cookie= "hji=" + window.location.href;
-		if(navigator.userAgent.indexOf('Firefox') == -1) // FireFox can not into reload
+		if(!FireFox) // FireFox can not into reload
 		{
 			window.location.reload();
 		}
