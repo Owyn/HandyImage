@@ -2076,12 +2076,11 @@ function changecursor()
 {
 	img.style.margin = "auto";
 	var root = document.compatMode=='BackCompat'? document.body : document.documentElement;
-	var CH = Math.max(document.documentElement.clientHeight, document.body.clientHeight); // StupidFox
-	if(!rescaled && ((img.naturalHeight == CH) || (img.naturalWidth == root.clientWidth)) && ((CH == root.scrollHeight) && (root.clientWidth == root.scrollWidth)) ) // no scrollbars and one img dimension is equal to screen
+	if(!rescaled && ((img.naturalHeight == root.clientHeight) || (img.naturalWidth == root.clientWidth)) && ((root.clientHeight == root.scrollHeight) && (root.clientWidth == root.scrollWidth)) ) // no scrollbars and one img dimension is equal to screen
 	{
 		img.style.cursor = "";
 	}
-	else if((img.naturalHeight > CH) || (img.naturalWidth > root.clientWidth))
+	else if((img.naturalHeight > root.clientHeight) || (img.naturalWidth > root.clientWidth))
 	{
 		if(rescaled)
 		{
@@ -2092,7 +2091,7 @@ function changecursor()
 		{
 			img.style.cursor = "-moz-zoom-out";
 			img.style.cursor = "-webkit-zoom-out";
-			if(img.naturalHeight > CH) // chrome bug fuuuuu
+			if(img.naturalHeight > root.clientHeight) // chrome bug fuuuuu
 			{
 				img.style.margin = "0px auto";
 			}
@@ -2189,22 +2188,19 @@ function autoresize()
 		{
 			rescale(0);
 		}
-		else // no scrollbars
+		else if(cfg_fitS && (root.clientHeight == root.scrollHeight) && (root.clientWidth == root.scrollWidth)) // no scrollbars
 		{
-			if(cfg_fitS)
-			{
-				rescale(0);
-			}
-			else
-			{
-				changecursor();
-			}
+			rescale(0);
+		}
+		else
+		{
+			changecursor();
 		}
 	}
 	else
 	{
 		ARC++;
-		if(ARC == 25 || ARC == 250)
+		if(ARC == 25 || ARC == 250 || ARC == 750)
 		{
 			img.src = img.src; // lol fix
 		}
