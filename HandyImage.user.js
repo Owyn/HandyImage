@@ -3,7 +3,7 @@
 // @namespace     handyimage
 // @author        Owyn
 // @contributors  U Bless
-// @version       2013.12.07.22
+// @version       2013.12.08
 // @updateURL     https://userscripts.org/scripts/source/166494.user.js
 // @downloadURL   https://userscripts.org/scripts/source/166494.user.js
 // @homepage      https://userscripts.org/scripts/show/166494
@@ -2180,11 +2180,12 @@ function autoresize()
 		link.rel = 'shortcut icon';
 		link.href = img.src;
 		document.getElementsByTagName('head')[0].appendChild(link);
-		if(cfg_fitWH && (document.body.clientHeight != document.body.scrollHeight) && (document.body.clientWidth != document.body.scrollWidth)) // both scrollbars detected
+		var root = document.compatMode=='BackCompat'? document.body : document.documentElement;
+		if(cfg_fitWH && (root.clientHeight != root.scrollHeight) && (root.clientWidth != root.scrollWidth)) // both scrollbars detected
 		{
 			rescale(0);
 		}
-		else if(cfg_fitB && ((document.body.clientHeight != document.body.scrollHeight) || (document.body.clientWidth != document.body.scrollWidth))) // one scrollbar
+		else if(cfg_fitB && ((root.clientHeight != root.scrollHeight) || (root.clientWidth != root.scrollWidth))) // one scrollbar
 		{
 			rescale(0);
 		}
