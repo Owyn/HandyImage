@@ -3,7 +3,7 @@
 // @namespace     handyimage
 // @author        Owyn
 // @contributors  U Bless
-// @version       2013.12.08
+// @version       2013.12.14
 // @updateURL     https://userscripts.org/scripts/source/166494.user.js
 // @downloadURL   https://userscripts.org/scripts/source/166494.user.js
 // @homepage      https://userscripts.org/scripts/show/166494
@@ -13,6 +13,7 @@
 // @grant         GM_getValue
 // @grant         GM_setValue
 // @grant         GM_registerMenuCommand
+// @grant         GM_unregisterMenuCommand
 // @grant         unsafeWindow
 // @match         https://userscripts.org/scripts/show/166494/configuration
 // @match         http://www.imagebam.com/image*
@@ -753,16 +754,10 @@ if (typeof unsafeWindow === "undefined")
 	unsafeWindow = window;
 }
 
-if(unsafeWindow.document.id == 44) // bad monkey, bad, no more!
-{
-	console.warn("stopped bad monkey");
-	return false;
-}
-unsafeWindow.document.id = 44;
-
+var menuID;
 if (typeof GM_registerMenuCommand !== "undefined")
 {
-	GM_registerMenuCommand("Handy Image Configuration", cfg, "C");
+	menuID = GM_registerMenuCommand("Handy Image Configuration", cfg, "C");
 }
 
 if(window.location.href.lastIndexOf(window.location.hostname) + window.location.hostname.length + 1 == window.location.href.length)
@@ -2050,7 +2045,14 @@ function makeworld()
 			}
 			else
 			{
-				document.replaceChild (document.importNode (document.implementation.createHTMLDocument ("").documentElement, true), document.documentElement);
+				document.replaceChild(document.importNode(document.implementation.createHTMLDocument("").documentElement, true), document.documentElement);
+			}
+		}
+		if(!FireFox) // Then it is Chrome
+		{
+			if (typeof GM_unregisterMenuCommand !== "undefined" && menuID)
+			{
+				GM_unregisterMenuCommand(menuID);
 			}
 		}
 		clr_pgn();
