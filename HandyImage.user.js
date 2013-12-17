@@ -3,7 +3,7 @@
 // @namespace     handyimage
 // @author        Owyn
 // @contributors  U Bless
-// @version       2013.12.14.17
+// @version       2013.12.17
 // @updateURL     https://userscripts.org/scripts/source/166494.user.js
 // @downloadURL   https://userscripts.org/scripts/source/166494.user.js
 // @homepage      https://userscripts.org/scripts/show/166494
@@ -748,6 +748,7 @@
 // @match         http://imgmaster.net/img-*
 // @match         http://*.thro.bz/*
 // @match         http://*.imggoo.com/img-*
+// @match         http://*.pixtreat.com/show.php/*
 // ==/UserScript==
 
 if (typeof unsafeWindow === "undefined")
@@ -935,6 +936,7 @@ function makeworld()
 	case "photodok.com":
 	case "hostarea.de":
 	case "imagetoupload.com":
+	case "pixtreat.com":
 		i = ev('.//img[@id="img_obj"]');
 		break;
 	case "pimpandhost.com":
