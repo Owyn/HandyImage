@@ -3,7 +3,7 @@
 // @namespace     handyimage
 // @author        Owyn
 // @contributors  U Bless
-// @version       2013.12.25
+// @version       2013.12.25.21
 // @updateURL     https://userscripts.org/scripts/source/166494.user.js
 // @downloadURL   https://userscripts.org/scripts/source/166494.user.js
 // @homepage      https://userscripts.org/scripts/show/166494
@@ -753,6 +753,7 @@
 // @match         http://www.imagefap.com/photo/*
 // @match         http://filefap.com/view*
 // @match         http://imgur.com/*
+// @match         http://motherless.com/*/*
 // ==/UserScript==
 
 if (typeof unsafeWindow === "undefined")
@@ -893,6 +894,9 @@ function makeworld()
 		break;
 	case "savepic.org":
 		i = ev('.//a/img[not(contains(@src,"/images/"))]');
+		break;
+	case "motherless.com":
+		i = ev('.//div[@id="media-media"]/div/a/img');
 		break;
 	case "imgnook.com":
 	case "h4z.it":
@@ -1153,7 +1157,6 @@ function makeworld()
 	case "q3.cz":
 	case "imagevau.eu":
 	case "up.sukrbnat.com":
-	case "bilder.nixhelp.de":
 	case "funextra.hostzi.com":
 	case "freakimage.com":
 	case "1pics.ru":
@@ -1977,6 +1980,7 @@ function makeworld()
 		break;
 	case "shareimages.com":
 	case "imagesmax.de":
+	case "bilder.nixhelp.de":
 		i = ev('.//img[contains(@src,"' + iurl + '/images")]');
 		break;
 	case "imgfantasy.com":
