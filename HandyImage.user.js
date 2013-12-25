@@ -748,7 +748,8 @@
 // @match         http://imgmaster.net/img-*
 // @match         http://*.thro.bz/*
 // @match         http://*.imggoo.com/img-*
-// @match         http://*.pixtreat.com/show.php/*
+// @match         http://*.pixtreat.com/show.php*
+// @match         http://*.imgflare.com/*/*
 // ==/UserScript==
 
 if (typeof unsafeWindow === "undefined")
@@ -1351,6 +1352,7 @@ function makeworld()
 	case "123poze.3x.ro":
 	case "thaisharing.online.fr":
 	case "xlocker.net":
+	case "imgflare.com":
 		i = ev('.//img[contains(@src,"/files/")]');
 		break;
 	case "image18.org":
