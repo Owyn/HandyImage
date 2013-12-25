@@ -3,7 +3,7 @@
 // @namespace     handyimage
 // @author        Owyn
 // @contributors  U Bless
-// @version       2013.12.17
+// @version       2013.12.25
 // @updateURL     https://userscripts.org/scripts/source/166494.user.js
 // @downloadURL   https://userscripts.org/scripts/source/166494.user.js
 // @homepage      https://userscripts.org/scripts/show/166494
@@ -314,7 +314,7 @@
 // @match         http://*.picturespk.pk/view*
 // @match         http://*.imagevau.eu/view*
 // @match         http://up.sukrbnat.com/view*
-// @match         http://bilder.nixhelp.de/view*
+// @match         http://bilder.nixhelp.de/display-*
 // @match         http://*.funextra.hostzi.com/view*
 // @match         http://*.freakimage.com/view*
 // @match         http://imgbin.me/view*
@@ -750,6 +750,9 @@
 // @match         http://*.imggoo.com/img-*
 // @match         http://*.pixtreat.com/show.php*
 // @match         http://*.imgflare.com/*/*
+// @match         http://www.imagefap.com/photo/*
+// @match         http://filefap.com/view*
+// @match         http://imgur.com/*
 // ==/UserScript==
 
 if (typeof unsafeWindow === "undefined")
@@ -1255,6 +1258,7 @@ function makeworld()
 	case "pokazal.ru":
 	case "mepic.ru":
 	case "upload.qoonal.com":
+	case "imgur.com":
 		i = ev('.//img[contains(@src,"' + iurl + '")]');
 		break;
 	case "uaimage.com":
@@ -1353,6 +1357,7 @@ function makeworld()
 	case "thaisharing.online.fr":
 	case "xlocker.net":
 	case "imgflare.com":
+	case "filefap.com":
 		i = ev('.//img[contains(@src,"/files/")]');
 		break;
 	case "image18.org":
@@ -1366,6 +1371,7 @@ function makeworld()
 	case "hostingfailov.com":
 	case "zimagez.com":
 	case "chickupload.com":
+	case "imagefap.com":
 		i = ev('.//img[contains(@src,"/full/")]');
 		break;
 	case "picbank.pl":
