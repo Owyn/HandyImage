@@ -3,7 +3,7 @@
 // @namespace     handyimage
 // @author        Owyn
 // @contributors  U Bless
-// @version       2013.12.25.21
+// @version       2013.12.26
 // @updateURL     https://userscripts.org/scripts/source/166494.user.js
 // @downloadURL   https://userscripts.org/scripts/source/166494.user.js
 // @homepage      https://userscripts.org/scripts/show/166494
@@ -810,6 +810,7 @@ var dp = false;
 var rescaled = false;
 var FireFox = ((navigator.userAgent.indexOf('Firefox') != -1) ? true : false);
 var img;
+var tb;
 var j;
 var iurl = window.location.hostname;
 if(iurl.indexOf("www.") == 0)
@@ -897,6 +898,26 @@ function makeworld()
 		break;
 	case "motherless.com":
 		i = ev('.//div[@id="media-media"]/div/a/img');
+		break;
+	case "imgur.com":
+		if(window.location.href.indexOf("/gallery/") != -1)
+		{
+			if(ev('.//div[@id="under-image"]')) // loaded
+			{
+				if(ev('.//div[@class="album-image"]'))
+				{
+					console.warn("found more than one image on the page, so we shouldn't do anything, right?");
+					img = 1;
+					return;
+				}
+				i = ev('//link[@rel="image_src"]');
+			}
+		}
+		else
+		{
+			i = ev('//link[@rel="image_src"]');
+		}
+		if(i){i.src = i.href;}
 		break;
 	case "imgnook.com":
 	case "h4z.it":
@@ -1261,7 +1282,6 @@ function makeworld()
 	case "pokazal.ru":
 	case "mepic.ru":
 	case "upload.qoonal.com":
-	case "imgur.com":
 		i = ev('.//img[contains(@src,"' + iurl + '")]');
 		break;
 	case "uaimage.com":
@@ -2086,7 +2106,8 @@ function makeworld()
 	else // try again
 	{
 		//console.warn("Didnt find image, trying again in 2 sec");
-		setTimeout(function() { makeworld(); }, 2000);
+		if(tb){clearTimeout(tb);}
+		tb = setTimeout(function() { makeworld(); }, 2000);
 	}
 }
 
