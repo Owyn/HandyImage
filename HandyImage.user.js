@@ -3,7 +3,7 @@
 // @namespace     handyimage
 // @author        Owyn
 // @contributors  U Bless
-// @version       2013.12.26
+// @version       2013.12.28
 // @updateURL     https://userscripts.org/scripts/source/166494.user.js
 // @downloadURL   https://userscripts.org/scripts/source/166494.user.js
 // @homepage      https://userscripts.org/scripts/show/166494
@@ -402,7 +402,6 @@
 // @match         http://*.image.shabab20.net/share*
 // @match         http://xtupload.com/share.php?id=*
 // @match         http://t.williamgates.net/share*
-// @match         http://*.coolnspicy.com/share*
 // @match         http://*.upload.fpsthailand.com/share.php?id=* 
 // @match         http://*.fapomatic.com/v*
 // @match         http://photosex.biz/v.php?id=*
@@ -412,7 +411,6 @@
 // @match         http://*.screencity.pl/*.html
 // @match         http://*.x.thebestpichost.com/*
 // @match         http://*.hostimage.ru/photo*
-// @match         http://*.5pics.de/?b=*
 // @match         http://hostpic.de/?b=*
 // @match         http://www.yourimage24.de/view*
 // @match         http://www.loaditup.de/*.html
@@ -540,7 +538,6 @@
 // @match         http://*.php-bb.ir/pic/view*
 // @match         http://multihoster.saxonia-fighter.de/view*
 // @match         http://*.img.mdy.ro/?*
-// @match         http://*.ammarihsan.com/image/?*
 // @match         http://*.railroadempire.com/ih/?*
 // @match         http://*.mkerala.com/u/?*
 // @match         http://knecht.novarata.net/?*
@@ -567,7 +564,6 @@
 // @match         http://*.img.tfktech.com/p*
 // @match         http://imagehost.freddyferdianjaya.com/?*
 // @match         http://pic.freelian.com/?*
-// @match         http://*.depot4u.ca/images/de/?*
 // @match         http://up.w3b0.com/p*
 // @match         http://*.image.alesher.com/?*
 // @match         http://ch.1798.in/?*
@@ -588,13 +584,11 @@
 // @match         http://*.imgant.com/p*
 // @match         http://*.videoforall.org/p*
 // @match         http://medias.allforever.net/p*
-// @match         http://2tu.me/view*
 // @match         http://*.host4images.com/view*
 // @match         http://*.imgbank.cz/*
 // @match         http://hosting.tidus.eu/?*
 // @match         http://*.zinimg.com/*
 // @match         http://*.nyanimg.com/*
-// @match         http://*.alex-pic.com/*
 // @match         http://*.picr.ws/*
 // @match         http://*.geekpics.in/*
 // @match         http://*.pikz.co/*
@@ -674,7 +668,6 @@
 // @match         http://*.qoou.net/*
 // @match         http://image.yhjkj.com/*
 // @match         http://upimages.slideweb.fr/?*
-// @match         http://*.bbspics.com/*
 // @match         http://images.reptilescanada.com/*
 // @match         http://*.imgcode.com/*
 // @match         http://*.lakhdaria.net/imagebank/?*
@@ -885,7 +878,6 @@ function makeworld()
 	case "vvcap.net":
 	case "simplest-image-hosting.net":
 	case "hostpic.de":
-	case "5pics.de":
 	case "hostimage.ru":
 	case "gluner.de":
 	case "imagebin.ca":
@@ -901,6 +893,7 @@ function makeworld()
 		i = ev('.//div[@id="media-media"]/div/a/img');
 		break;
 	case "imgur.com":
+		j = true;
 		if(window.location.href.indexOf("/gallery/") != -1)
 		{
 			if(ev('.//div[@id="under-image"]')) // loaded
@@ -1033,7 +1026,6 @@ function makeworld()
 	case "image.shabab20.net":
 	case "xtupload.com":
 	case "t.williamgates.net":
-	case "coolnspicy.com":
 	case "upload.fpsthailand.com":
 	case "image-hoster.org":
 	case "vippix.com":
@@ -1596,7 +1588,6 @@ function makeworld()
 	case "images.woh.to":
 	case "pixoload.de":
 	case "img.mdy.ro":
-	case "ammarihsan.com":
 	case "railroadempire.com":
 	case "mkerala.com":
 	case "knecht.novarata.net":
@@ -1615,7 +1606,6 @@ function makeworld()
 	case "imaa.hebergratuit.com":
 	case "imagehost.freddyferdianjaya.com":
 	case "pic.freelian.com":
-	case "depot4u.ca":
 	case "image.alesher.com":
 	case "ch.1798.in":
 	case "i.shawnjiang.com":
@@ -1700,7 +1690,6 @@ function makeworld()
 		break;
 	case "imagerule.com":
 	case "1y9y.com":
-	case "2tu.me":
 	case "host4images.com":
 		i = ev('.//img[@id="photo"]');
 		break;
@@ -1888,7 +1877,6 @@ function makeworld()
 	case "urimage.net":
 	case "imgbank.cz":
 	case "zinimg.com":
-	case "alex-pic.com":
 	case "picr.ws":
 	case "pikz.co":
 	case "liolink.com":
@@ -1951,7 +1939,6 @@ function makeworld()
 	case "qoou.net":
 	case "image.yhjkj.com":
 	case "upimages.slideweb.fr":
-	case "bbspics.com":
 	case "images.reptilescanada.com":
 	case "wepic.ru":
 	case "photo.goicam.vn":
