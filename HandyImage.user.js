@@ -64,7 +64,7 @@
 // @match         http://imgcloud.co/img*.html
 // @match         http://*.freeimgup.com/*.*
 // @match         http://imgtiger.com/view*
-// @match         http://*.imageporter.com/*.html
+// @match         http://*.imgspice.com/*.html
 // @match         http://*.ruleimg.com/img*
 // @match         http://*.picage.ru/*/*
 // @match         http://*.imgserve.net/img*
@@ -754,6 +754,7 @@
 // @match         http://filefap.com/view*
 // @match         http://imgur.com/*
 // @match         http://motherless.com/*/*
+// @match         http://www.imgult.com/img-*
 // ==/UserScript==
 
 if (typeof unsafeWindow === "undefined")
@@ -1495,6 +1496,7 @@ function makeworld()
 	case "imagetotal.de":
 	case "imgsavvy.com":
 	case "3xvintage.com":
+	case "imgult.com":
 		i = ev('.//img[contains(@src,"/upload/")]');
 		break;
 	case "xxx.image-server.ru":
@@ -1780,7 +1782,7 @@ function makeworld()
 	case "xenopix.com":
 	    i = ev('.//img[contains(@src,"/pix/")]');
 		break;
-	case "imageporter.com":
+	case "imgspice.com":
 	case "imagetwist.com":
 	case "pixroute.com":
 	case "pzy.be":
