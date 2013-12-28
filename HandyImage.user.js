@@ -748,6 +748,7 @@
 // @match         http://imgur.com/*
 // @match         http://motherless.com/*/*
 // @match         http://www.imgult.com/img-*
+// @match         http://*.lustimages.net/*/*/
 // ==/UserScript==
 
 if (typeof unsafeWindow === "undefined")
@@ -1058,6 +1059,7 @@ function makeworld()
 	case "pix-x.net":
 	case "pics-money.ru":
 	case "pic-mir.ru":
+	case "lustimages.net":
 		i = ev('.//img[contains(@src,"thumb")]');
 		if(i){i.src = i.src.replace('-thumb', '');
 		i.src = i.src.replace('img_thumb', 'img_full');}
