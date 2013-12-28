@@ -3,7 +3,7 @@
 // @namespace     handyimage
 // @author        Owyn
 // @contributors  U Bless
-// @version       2013.12.28
+// @version       2013.12.29
 // @updateURL     https://userscripts.org/scripts/source/166494.user.js
 // @downloadURL   https://userscripts.org/scripts/source/166494.user.js
 // @homepage      https://userscripts.org/scripts/show/166494
@@ -752,6 +752,7 @@
 // @match         http://*.send-up.ru/*
 // @match         http://*.xpic.biz/*/view*
 // @match         http://pictraff.ru/*/*/
+// @match         http://*.tumblr.com/image/*
 // ==/UserScript==
 
 if (typeof unsafeWindow === "undefined")
@@ -2020,6 +2021,9 @@ function makeworld()
 	default: // dynamic subdomain
 		switch(iurl.substr(iurl.indexOf(".")+1))
 		{
+		case "tumblr.com":
+			i = ev('.//img[not(contains(@src,"data:"))][@id]');
+			break;
 		case "imagevenue.com":
 			i = ev('.//img[contains(@src,"/loc")]');
 			break;
