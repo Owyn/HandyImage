@@ -749,6 +749,9 @@
 // @match         http://motherless.com/*/*
 // @match         http://www.imgult.com/img-*
 // @match         http://*.lustimages.net/*/*/
+// @match         http://*.send-up.ru/*
+// @match         http://*.xpic.biz/*/view*
+// @match         http://pictraff.ru/*/*/
 // ==/UserScript==
 
 if (typeof unsafeWindow === "undefined")
@@ -1060,9 +1063,9 @@ function makeworld()
 	case "pics-money.ru":
 	case "pic-mir.ru":
 	case "lustimages.net":
+	case "pictraff.ru":
 		i = ev('.//img[contains(@src,"thumb")]');
-		if(i){i.src = i.src.replace('-thumb', '');
-		i.src = i.src.replace('img_thumb', 'img_full');}
+		if(i){i.src = i.src.replace('-thumb', '');i.src = i.src.replace('img_thumb', 'img_full');}
 		break;
 	case "imagik.fr":
 		i = ev('.//img[contains(@src,"/uploads/")]');
@@ -1518,6 +1521,7 @@ function makeworld()
 	case "ima.so":
 	case "imageho.st":
 	case "flexhost.de":
+	case "xpic.biz":
 		i = ev('.//img[contains(@src,"upload/")]');
 		break;
 	case "bilder-upload.eu":
@@ -1987,6 +1991,7 @@ function makeworld()
 	case "pic.xtream-reallife.de":
 	case "img.dramacafe.tv":
 	case "thro.bz":
+	case "send-up.ru":
 		i = ev('.//img[contains(@src,"' + iurl + '/images/")]');
 		break;
 	case "shareimages.com":
