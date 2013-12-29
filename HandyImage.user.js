@@ -3,7 +3,7 @@
 // @namespace     handyimage
 // @author        Owyn
 // @contributors  U Bless
-// @version       2013.12.29
+// @version       2013.12.30
 // @updateURL     https://userscripts.org/scripts/source/166494.user.js
 // @downloadURL   https://userscripts.org/scripts/source/166494.user.js
 // @homepage      https://userscripts.org/scripts/show/166494
@@ -188,7 +188,6 @@
 // @match         http://*.uaimage.com/*
 // @match         http://*.npicture.net/share-*
 // @match         http://*.img.acianetmedia.com/*
-// @match         http://www.filedump.net/index.php?pic=*
 // @match         http://www.2imgs.com/*
 // @exclude       http://www.2imgs.com/uploaded/*
 // @match         http://*.overpic.net/view*
@@ -640,7 +639,6 @@
 // @match         http://*.imgzi.com/*
 // @match         http://*.22.io/*
 // @match         http://*.img.dayzland.eu/*
-// @match         http://*.egoterrorist.com/*
 // @match         http://*.pixit.hu/*
 // @match         http://peach.warosu.org/*
 // @match         http://*.fsfiles.org/*
@@ -681,7 +679,6 @@
 // @match         http://*.wepic.ru/*
 // @match         http://photo.goicam.vn/*
 // @match         http://*.naeamysig.com/*
-// @match         http://*.filezep.com/*
 // @match         http://*.microforma.ru/*
 // @match         http://*.gsmimagehost.com/*
 // @match         http://tinysnaps.com/*
@@ -1363,9 +1360,6 @@ function makeworld()
 	case "orzz.us":
 		i = ev('.//img[contains(@src,"/img/")][@title]'); 
 		break;
-	case "filedump.net":
-		i = ev('.//img[contains(@src,"/dumped/")]');
-		break;
 	case "imgjoe.com":
 		i = ev('.//img[contains(@src,"/x/")]');
 		break;
@@ -1924,7 +1918,6 @@ function makeworld()
 	case "imgzi.com":
 	case "22.io":
 	case "img.dayzland.eu":
-	case "egoterrorist.com":
 	case "pixit.hu":
 	case "evopikz.net":
 	case "linkmypic.com":
@@ -1950,7 +1943,6 @@ function makeworld()
 	case "wepic.ru":
 	case "photo.goicam.vn":
 	case "naeamysig.com":
-	case "filezep.com":
 	case "microforma.ru":
 	case "gsmimagehost.com":
 	case "tinysnaps.com":
