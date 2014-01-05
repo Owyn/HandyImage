@@ -3,9 +3,9 @@
 // @namespace     handyimage
 // @author        Owyn
 // @contributors  U Bless
-// @version       2013.12.30
-// @updateURL     https://userscripts.org/scripts/source/166494.user.js
-// @downloadURL   https://userscripts.org/scripts/source/166494.user.js
+// @version       2014.01.05
+// @updateURL     https://github.com/Owyn/HandyImage/raw/master/HandyImage.user.js
+// @downloadURL   https://github.com/Owyn/HandyImage/raw/master/HandyImage.user.js
 // @homepage      https://userscripts.org/scripts/show/166494
 // @icon          http://i.imgur.com/Q5TTIjV.png
 // @description   Shows just fullsize Image with hotkeys & without pop-ups on many image-hosting sites
@@ -743,6 +743,10 @@
 // @match         http://www.imagefap.com/photo/*
 // @match         http://filefap.com/view*
 // @match         http://imgur.com/*
+// @exclude       http://imgur.com/gallery/*
+// @exclude       http://imgur.com/g/*
+// @exclude       http://imgur.com/a/*
+// @exclude       http://imgur.com/memege*
 // @match         http://motherless.com/*/*
 // @match         http://www.imgult.com/img-*
 // @match         http://*.lustimages.net/*/*/
@@ -896,23 +900,7 @@ function makeworld()
 		break;
 	case "imgur.com":
 		j = true;
-		if(window.location.href.indexOf("/gallery/") != -1)
-		{
-			if(ev('.//div[@id="under-image"]')) // loaded
-			{
-				if(ev('.//div[@class="album-image"]'))
-				{
-					console.warn("found more than one image on the page, so we shouldn't do anything, right?");
-					img = 1;
-					return;
-				}
-				i = ev('//link[@rel="image_src"]');
-			}
-		}
-		else
-		{
-			i = ev('//link[@rel="image_src"]');
-		}
+		i = ev('//link[@rel="image_src"]');
 		if(i){i.src = i.href;}
 		break;
 	case "imgnook.com":
