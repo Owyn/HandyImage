@@ -6,7 +6,7 @@ This script opens fullsized image right after page load in <strong>many image ho
 <li><strong>autofit</strong> to screen big images by default (larger than screen both vertically and horizontally)</li>
 <li><strong>address</strong> of page doesn't change so you still can copy\share it</li>
 <li><strong>image centering</strong> (like in firefox) - pretty usefull on wide monitors</li>
-<li><strong>configurable</strong> - choose background color and what images to fit to screen when opened, or <a href="https://userscripts.org/topics/177503">change hotkeys</a></li>
+<li><strong>configurable</strong> - choose background color and what images to fit to screen when opened, or <a href="https://userscripts.org/topics/177503">run your js</a></li>
 <li><strong>fast</strong> - does its job before page loads its resources (or run JavaScripts in FireFox)</li>
 <li><strong>fail-safe</strong> - if it didn't find image to fullsize - it won't do anything to mess the page up and will try again in few sec.</li></ul>
 
