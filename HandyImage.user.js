@@ -3,7 +3,7 @@
 // @namespace     handyimage
 // @author        Owyn
 // @contributors  U Bless
-// @version       2014.01.05
+// @version       2014.01.08
 // @updateURL     https://github.com/Owyn/HandyImage/raw/master/HandyImage.user.js
 // @downloadURL   https://github.com/Owyn/HandyImage/raw/master/HandyImage.user.js
 // @homepage      https://userscripts.org/scripts/show/166494
@@ -15,7 +15,7 @@
 // @grant         GM_registerMenuCommand
 // @grant         GM_unregisterMenuCommand
 // @grant         unsafeWindow
-// @match         https://userscripts.org/scripts/show/166494/configuration
+// @match         https://github.com/Owyn/HandyImage/configuration
 // @match         http://www.imagebam.com/image*
 // @match         http://imgchili.net/show*
 // @match         http://imgchili.com/show*
@@ -754,6 +754,7 @@
 // @match         http://*.xpic.biz/*/view*
 // @match         http://pictraff.ru/*/*/
 // @match         http://*.tumblr.com/image/*
+// @match         http://*.imgearn.net/*
 // ==/UserScript==
 
 if (typeof unsafeWindow === "undefined")
@@ -806,6 +807,7 @@ var cfg_bgclr;
 var cfg_fitWH = true;
 var cfg_fitB;
 var cfg_fitS;
+var cfg_js;
 var dp = false;
 var rescaled = false;
 var FireFox = ((navigator.userAgent.indexOf('Firefox') != -1) ? true : false);
@@ -879,7 +881,7 @@ function makeworld()
 	// per-host image detection
 	switch (iurl)
 	{
-	case "userscripts.org":
+	case "github.com":
 		cfg();img=1;break;
 	case "vvcap.net":
 	case "simplest-image-hosting.net":
@@ -1294,6 +1296,7 @@ function makeworld()
 	case "ld-host.de":
 	case "fapomatic.com":
 	case "picshare.ru":
+	case "imgearn.net":
 		i = ev('.//img[contains(@src,"uploads/")]');
 		break;
 	case "xtremeshack.com":
@@ -2215,6 +2218,7 @@ function autoresize()
 		{
 			changecursor();
 		}
+		if(cfg_js){eval(cfg_js);}
 	}
 	else
 	{
@@ -2335,7 +2339,7 @@ function onkeydown (b)
 	case KeyEvent.DOM_VK_P:
 		if(img && !FireFox) // Chrome nosave bug
 		{
-			window.location.href = "https://userscripts.org/scripts/show/166494/configuration";
+			window.location.href = "https://github.com/Owyn/HandyImage/configuration";
 		}
 		else
 		{
@@ -2374,6 +2378,7 @@ function cfg()
 			GM_setValue("fitWH", $("hji_cfg_3_fitWH").checked);
 			GM_setValue("fitB", $("hji_cfg_4_fitB").checked);
 			GM_setValue("fitS", $("hji_cfg_5_fitS").checked);
+			GM_setValue("js", $("hji_cfg_6_js").value);
 			alert("Configuration Saved");
 			if($("hji_cfg_2_bgclr").value){document.body.bgColor = $("hji_cfg_2_bgclr").value;}else{document.body.removeAttribute("bgColor");}
 		}
@@ -2381,6 +2386,7 @@ function cfg()
 		window.removeEventListener("keydown", onkeydown, true);
 		document.head.innerHTML = "";
 		document.body.innerHTML = "";
+		ws();
 		var div = document.createElement("div");
 		div.style.margin = "11% auto";
 		div.style.width = "444px";
@@ -2392,13 +2398,15 @@ function cfg()
 		+ "<br><br><input id='hji_cfg_3_fitWH' type='checkbox'> Larger than window both vertically and horizontally"
 		+ "<br><br><input id='hji_cfg_4_fitB' type='checkbox'> Larger than window either vertically or horizontally"
 		+ "<br><br><input id='hji_cfg_5_fitS' type='checkbox'> Smaller than window"
-		+ "<br><br><center><input id='hji_cfg_save' type='button' value='Save configuration'></center>";
+		+ "<br><br><center>Custom JS Action:<textarea id='hji_cfg_6_js' style='margin: 0px; width: 400px; height: 50px;'></textarea>"
+		+ "<br><input id='hji_cfg_save' type='button' value='Save configuration'></center>";
 		document.body.appendChild(div);
 		$("hji_cfg_1_direct").checked = GM_getValue("directImage");
 		$("hji_cfg_2_bgclr").value = GM_getValue("bgColor", "");
 		$("hji_cfg_3_fitWH").checked = GM_getValue("fitWH", true);
 		$("hji_cfg_4_fitB").checked = GM_getValue("fitB");
 		$("hji_cfg_5_fitS").checked = GM_getValue("fitS");
+		$("hji_cfg_6_js").value = GM_getValue("js", "");
 		$("hji_cfg_save").addEventListener("click", saveCfg, true);
 	}
 	else
@@ -2416,5 +2424,6 @@ function loadCfg()
 		cfg_fitWH = GM_getValue("fitWH", true);
 		cfg_fitB = GM_getValue("fitB");
 		cfg_fitS = GM_getValue("fitS");
+		cfg_js = GM_getValue("js");
 	}
 }
