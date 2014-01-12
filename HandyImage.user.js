@@ -3,7 +3,7 @@
 // @namespace     handyimage
 // @author        Owyn
 // @contributors  U Bless
-// @version       2014.01.08
+// @version       2014.01.13
 // @updateURL     https://github.com/Owyn/HandyImage/raw/master/HandyImage.user.js
 // @downloadURL   https://github.com/Owyn/HandyImage/raw/master/HandyImage.user.js
 // @homepage      https://userscripts.org/scripts/show/166494
@@ -755,6 +755,7 @@
 // @match         http://pictraff.ru/*/*/
 // @match         http://*.tumblr.com/image/*
 // @match         http://*.imgearn.net/*
+// @match         http://*.imgheat.com/*.html
 // ==/UserScript==
 
 if (typeof unsafeWindow === "undefined")
@@ -1365,6 +1366,7 @@ function makeworld()
 	case "xlocker.net":
 	case "imgflare.com":
 	case "filefap.com":
+	case "imgheat.com":
 		i = ev('.//img[contains(@src,"/files/")]');
 		break;
 	case "image18.org":
