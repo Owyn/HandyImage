@@ -3,7 +3,7 @@
 // @namespace     handyimage
 // @author        Owyn
 // @contributors  U Bless
-// @version       2014.01.13
+// @version       2014.01.17
 // @updateURL     https://github.com/Owyn/HandyImage/raw/master/HandyImage.user.js
 // @downloadURL   https://github.com/Owyn/HandyImage/raw/master/HandyImage.user.js
 // @homepage      https://userscripts.org/scripts/show/166494
@@ -905,6 +905,10 @@ function makeworld()
 		j = true;
 		i = ev('//link[@rel="image_src"]');
 		if(i){i.src = i.href;}
+		break;
+	case "directupload.net":
+		i = ev('//meta[@property="og:image"]');
+		if(i){i.src = i.content;}
 		break;
 	case "imgnook.com":
 	case "h4z.it":
@@ -2012,7 +2016,6 @@ function makeworld()
 		case "imagevenue.com":
 			i = ev('.//img[contains(@src,"/loc")]');
 			break;
-		case "directupload.net":
 		case "freeamateurteens.net":
 		case "img-vidiklub.com":
 			i = ev('.//img[contains(@src,"images/")]');
