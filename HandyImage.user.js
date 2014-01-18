@@ -3,7 +3,7 @@
 // @namespace     handyimage
 // @author        Owyn
 // @contributors  U Bless
-// @version       2014.01.17
+// @version       2014.01.18
 // @updateURL     https://github.com/Owyn/HandyImage/raw/master/HandyImage.user.js
 // @downloadURL   https://github.com/Owyn/HandyImage/raw/master/HandyImage.user.js
 // @homepage      https://userscripts.org/scripts/show/166494
@@ -756,6 +756,7 @@
 // @match         http://*.tumblr.com/image/*
 // @match         http://*.imgearn.net/*
 // @match         http://*.imgheat.com/*.html
+// @match         http://*.imageporter.com/*.html
 // ==/UserScript==
 
 if (typeof unsafeWindow === "undefined")
@@ -1788,6 +1789,7 @@ function makeworld()
 	case "picstorage.eu":
 	case "peach.warosu.org":
 	case "brightpic.tk":
+	case "imageporter.com":
 		i = ev('.//img[contains(@src,"/i/")]');
 		break;
 	case "pixpipeline.com":
@@ -2397,7 +2399,7 @@ function cfg()
 		div.style.width = "444px";
 		div.style.border = "solid 1px black";
 		div.style.background = "silver";
-		div.innerHTML = "<style>#content {display:none;}</style><b><center>Configuration</center></b><br><input id='hji_cfg_1_direct' type='checkbox'> Open images directly with browser"
+		div.innerHTML = "<b><center>Configuration</center></b><br><input id='hji_cfg_1_direct' type='checkbox'> Open images directly with browser"
 		+ "<br><br><input id='hji_cfg_2_bgclr' type='text' size='6'> Background color (empty = default)"
 		+ "<br><br>Fit to window images:"
 		+ "<br><br><input id='hji_cfg_3_fitWH' type='checkbox'> Larger than window both vertically and horizontally"
