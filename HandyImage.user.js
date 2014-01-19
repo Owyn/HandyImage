@@ -3,7 +3,7 @@
 // @namespace     handyimage
 // @author        Owyn
 // @contributors  U Bless
-// @version       2014.01.18
+// @version       2014.01.19
 // @updateURL     https://github.com/Owyn/HandyImage/raw/master/HandyImage.user.js
 // @downloadURL   https://github.com/Owyn/HandyImage/raw/master/HandyImage.user.js
 // @homepage      https://userscripts.org/scripts/show/166494
@@ -757,6 +757,7 @@
 // @match         http://*.imgearn.net/*
 // @match         http://*.imgheat.com/*.html
 // @match         http://*.imageporter.com/*.html
+// @match         http://*.damimage.com/img-*
 // ==/UserScript==
 
 if (typeof unsafeWindow === "undefined")
@@ -1487,6 +1488,7 @@ function makeworld()
 	case "imgsavvy.com":
 	case "3xvintage.com":
 	case "imgult.com":
+	case "damimage.com":
 		i = ev('.//img[contains(@src,"/upload/")]');
 		break;
 	case "xxx.image-server.ru":
