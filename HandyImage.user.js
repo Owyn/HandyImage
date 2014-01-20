@@ -734,10 +734,15 @@
 // @match         http://www.imagefap.com/photo/*
 // @match         http://filefap.com/view*
 // @match         http://imgur.com/*
+// @match         https://imgur.com/*
 // @exclude       http://imgur.com/gallery/*
 // @exclude       http://imgur.com/g/*
 // @exclude       http://imgur.com/a/*
 // @exclude       http://imgur.com/memege*
+// @exclude       https://imgur.com/gallery/*
+// @exclude       https://imgur.com/g/*
+// @exclude       https://imgur.com/a/*
+// @exclude       https://imgur.com/memege*
 // @match         http://motherless.com/*/*
 // @match         http://www.imgult.com/img-*
 // @match         http://*.lustimages.net/*/*/
