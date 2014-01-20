@@ -3,7 +3,7 @@
 // @namespace     handyimage
 // @author        Owyn
 // @contributors  U Bless
-// @version       2014.01.19
+// @version       2014.01.20
 // @updateURL     https://github.com/Owyn/HandyImage/raw/master/HandyImage.user.js
 // @downloadURL   https://github.com/Owyn/HandyImage/raw/master/HandyImage.user.js
 // @homepage      https://userscripts.org/scripts/show/166494
@@ -23,10 +23,8 @@
 // @exclude       http://imgbox.com/g*
 // @match         http://*.imagetwist.com/*/*
 // @match         http://*.imagevenue.com/img.php?*
-// @match         http://*.imageshack.us/photo*
-// @match         http://*.imageshack.us/f*
-// @match         https://*.imageshack.us/photo*
-// @match         https://*.imageshack.us/f*
+// @match         *://*.imageshack.us/photo*
+// @match         *://*.imageshack.us/f*
 // @match         http://imagepix.org/image*
 // @match         http://image2you.ru/*/*/
 // @match         http://imageban.ru/show*
@@ -230,8 +228,7 @@
 // @match         http://*.picsee.net/*
 // @match         http://www.fotosik.pl/pokaz_obrazek/pelny*
 // @match         http://imagebin.org/*
-// @match         https://dumpyourphoto.com/photo*
-// @match         http://dumpyourphoto.com/photo*
+// @match         *://dumpyourphoto.com/photo*
 // @match         http://*.depic.me/*
 // @match         http://www.xup.in/dl*
 // @match         http://*.foto-save.ru/full/
@@ -733,8 +730,7 @@
 // @match         http://*.imgflare.com/*/*
 // @match         http://www.imagefap.com/photo/*
 // @match         http://filefap.com/view*
-// @match         http://imgur.com/*
-// @match         https://imgur.com/*
+// @match         *://imgur.com/*
 // @exclude       http://imgur.com/gallery/*
 // @exclude       http://imgur.com/g/*
 // @exclude       http://imgur.com/a/*
