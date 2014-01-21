@@ -3,7 +3,7 @@
 // @namespace     handyimage
 // @author        Owyn
 // @contributors  U Bless
-// @version       2014.01.20
+// @version       2014.01.21
 // @updateURL     https://github.com/Owyn/HandyImage/raw/master/HandyImage.user.js
 // @downloadURL   https://github.com/Owyn/HandyImage/raw/master/HandyImage.user.js
 // @homepage      https://userscripts.org/scripts/show/166494
@@ -746,6 +746,7 @@
 // @match         http://*.imgheat.com/*.html
 // @match         http://*.imageporter.com/*.html
 // @match         http://*.damimage.com/img-*
+// @match         http://fapping.empornium.sx/*
 // ==/UserScript==
 
 if (typeof unsafeWindow === "undefined")
@@ -1960,6 +1961,7 @@ function makeworld()
 	case "img.dramacafe.tv":
 	case "thro.bz":
 	case "send-up.ru":
+	case "fapping.empornium.sx":
 		i = ev('.//img[contains(@src,"' + iurl + '/images/")]');
 		break;
 	case "shareimages.com":
