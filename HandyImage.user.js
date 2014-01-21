@@ -10,7 +10,6 @@
 // @icon          http://i.imgur.com/Q5TTIjV.png
 // @description   Shows just fullsize Image with hotkeys & without pop-ups on many image-hosting sites
 // @run-at        document-start
-// @noframes
 // @grant         GM_getValue
 // @grant         GM_setValue
 // @grant         GM_registerMenuCommand
@@ -748,8 +747,6 @@
 // @match         http://*.imageporter.com/*.html
 // @match         http://*.damimage.com/img-*
 // ==/UserScript==
-
-console.warn("Started my script on " + window.location.href);
 
 if (typeof unsafeWindow === "undefined")
 {
