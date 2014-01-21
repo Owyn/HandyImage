@@ -23,8 +23,10 @@
 // @exclude       http://imgbox.com/g*
 // @match         http://*.imagetwist.com/*/*
 // @match         http://*.imagevenue.com/img.php?*
-// @match         *://*.imageshack.us/photo*
-// @match         *://*.imageshack.us/f*
+// @match         http://*.imageshack.us/photo*
+// @match         http://*.imageshack.us/f*
+// @match         https://*.imageshack.us/photo*
+// @match         https://*.imageshack.us/f*
 // @match         http://imagepix.org/image*
 // @match         http://image2you.ru/*/*/
 // @match         http://imageban.ru/show*
@@ -345,6 +347,8 @@
 // @match         http://*.voila.pl/index.php?f=*
 // @match         http://www.zimage.fr/photo.php?id=*
 // @match         http://www.zimage.fr/taillereel.php?id=*
+// @match         https://www.zimage.fr/photo.php?id=*
+// @match         https://www.zimage.fr/taillereel.php?id=*          
 // @match         http://ngarko.online.fr/view*
 // @match         http://*.b4he.com/?v=*
 // @match         http://*.fullimg.com/?v=*
@@ -443,13 +447,13 @@
 // @match         http://*.123poze.3x.ro/view*
 // @match         http://*.photostand.co.za/view*
 // @match         http://*.upload.removed.us/view*
-// @match         http://*.sharepic.antahjutasb.com.my/view*
 // @match         http://*.images-hosting.tk/view*
 // @match         http://demo.chevereto.com/*
 // @match         http://*.imagewoof.com/view_image*
 // @match         http://*.image-hoster.org/share*
 // @match         http://*.hostimg.org/show-image.php?id=*
 // @match         http://*.ximg.co.uk/view*
+// @match         https://*.ximg.co.uk/*
 // @match         http://sl-images.ath.cx/view* 
 // @match         http://*.picatom.com/* 
 // @match         http://*.picmoe.net/d.php?id=* 
@@ -534,6 +538,7 @@
 // @match         http://*.mkerala.com/u/?*
 // @match         http://knecht.novarata.net/?*
 // @match         http://*.yadeller.biz/resimyolla/?*
+// @match         https://*.yadeller.biz/resimyolla/?*
 // @match         http://*.img.delux.lv/?*
 // @match         http://*.lordbost.com/images/?*
 // @match         http://imagehosting.skem9.co.uk/p*
@@ -1654,7 +1659,6 @@ function makeworld()
 	case "freeimghosting.co.uk":
 	case "photostand.co.za":
 	case "upload.removed.us":
-	case "sharepic.antahjutasb.com.my":
 	case "images-hosting.tk":
 	case "xc5.ru":
 	case "imghost.pl":
