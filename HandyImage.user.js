@@ -10,6 +10,7 @@
 // @icon          http://i.imgur.com/Q5TTIjV.png
 // @description   Shows just fullsize Image with hotkeys & without pop-ups on many image-hosting sites
 // @run-at        document-start
+// @noframes
 // @grant         GM_getValue
 // @grant         GM_setValue
 // @grant         GM_registerMenuCommand
@@ -443,7 +444,6 @@
 // @match         http://*.123poze.3x.ro/view*
 // @match         http://*.photostand.co.za/view*
 // @match         http://*.upload.removed.us/view*
-// @match         http://*.sharepic.antahjutasb.com.my/view*
 // @match         http://*.images-hosting.tk/view*
 // @match         http://demo.chevereto.com/*
 // @match         http://*.imagewoof.com/view_image*
@@ -731,14 +731,11 @@
 // @match         http://www.imagefap.com/photo/*
 // @match         http://filefap.com/view*
 // @match         *://imgur.com/*
-// @exclude       http://imgur.com/gallery/*
-// @exclude       http://imgur.com/g/*
-// @exclude       http://imgur.com/a/*
-// @exclude       http://imgur.com/memege*
-// @exclude       https://imgur.com/gallery/*
-// @exclude       https://imgur.com/g/*
-// @exclude       https://imgur.com/a/*
-// @exclude       https://imgur.com/memege*
+// @exclude       *://imgur.com/gallery/*
+// @exclude       *://imgur.com/g/*
+// @exclude       *://imgur.com/a/*
+// @exclude       *://imgur.com/memege*
+// @exclude       *://imgur.com/include*
 // @match         http://motherless.com/*/*
 // @match         http://www.imgult.com/img-*
 // @match         http://*.lustimages.net/*/*/
@@ -751,6 +748,8 @@
 // @match         http://*.imageporter.com/*.html
 // @match         http://*.damimage.com/img-*
 // ==/UserScript==
+
+console.warn("Started my script on " + window.location.href);
 
 if (typeof unsafeWindow === "undefined")
 {
@@ -1654,7 +1653,6 @@ function makeworld()
 	case "freeimghosting.co.uk":
 	case "photostand.co.za":
 	case "upload.removed.us":
-	case "sharepic.antahjutasb.com.my":
 	case "images-hosting.tk":
 	case "xc5.ru":
 	case "imghost.pl":
