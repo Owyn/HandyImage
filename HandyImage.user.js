@@ -457,7 +457,6 @@
 // @match         http://*.7image.ru/v.php?id=*
 // @match         http://www.picshare.ru/view*
 // @match         http://*.bien-vue.com/view*
-// @match         http://www.e-loader.net/i* 
 // @match         http://*.pics.tam.in.ua/showpic.php?p=*
 // @match         http://*.xc5.ru/v.php?id=*
 // @match         http://*.pikczery.pl/view*
@@ -476,6 +475,7 @@
 // @match         http://server5.upload69.net/view*
 // @match         http://s6.snapgram.co/*
 // @match         http://*.s1.pixmax.ru/view*
+// @match         http://*.s1.pixmaxx.ru/view*
 // @match         http://*.freeamateurteens.net/view*
 // @match         http://*.gluner.de/*.html
 // @match         http://*.fotoshack.us/foto*
@@ -529,7 +529,6 @@
 // @match         http://*.php-bb.ir/pic/view*
 // @match         http://multihoster.saxonia-fighter.de/view*
 // @match         http://*.img.mdy.ro/?*
-// @match         http://*.railroadempire.com/ih/?*
 // @match         http://*.mkerala.com/u/?*
 // @match         http://knecht.novarata.net/?*
 // @match         http://*.yadeller.biz/resimyolla/?*
@@ -598,7 +597,6 @@
 // @match         http://image.vsemrole.ru/*
 // @match         http://up.vn-hello.com/*
 // @match         http://*.oksee.pp.ua/*
-// @match         http://*.resmin.tk/* 
 // @match         http://*.imagefluff.com/?*
 // @match         http://*.img.androidteclive.com/*
 // @match         http://*.resimupload.org/*
@@ -921,7 +919,6 @@ function makeworld()
 	case "imgbox.com":
 	case "imageupper.com":
 	case "fotosupload.com":
-	case "e-loader.net":
 		i = ev('.//img[@id="img"]');
 		break;
 	case "imageban.ru":
@@ -1570,7 +1567,6 @@ function makeworld()
 	case "images.woh.to":
 	case "pixoload.de":
 	case "img.mdy.ro":
-	case "railroadempire.com":
 	case "mkerala.com":
 	case "knecht.novarata.net":
 	case "yadeller.biz":
@@ -1656,6 +1652,7 @@ function makeworld()
 	case "imghost.pl":
 	case "udostepniaj.pl":
 	case "s1.pixmax.ru":
+	case "s1.pixmaxx.ru":
 	case "ngarko.free.fr":
 	case "images.collectiontricks.it":
 	case "244pix.com":
@@ -1873,7 +1870,6 @@ function makeworld()
 	case "image.vsemrole.ru":
 	case "up.vn-hello.com":
 	case "oksee.pp.ua":
-	case "resmin.tk":
 	case "img.androidteclive.com":
 	case "resimupload.org":
 	case "myimg.me":
