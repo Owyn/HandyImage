@@ -745,6 +745,7 @@
 // @match         http://*.imageporter.com/*.html
 // @match         http://*.damimage.com/img-*
 // @match         http://fapping.empornium.sx/*
+// @match         http://*.imagehovel.com/view*
 // ==/UserScript==
 
 if (typeof unsafeWindow === "undefined")
@@ -1257,6 +1258,7 @@ function makeworld()
 	case "pokazal.ru":
 	case "mepic.ru":
 	case "upload.qoonal.com":
+	case "imagehovel.com":
 		i = ev('.//img[contains(@src,"' + iurl + '")]');
 		break;
 	case "uaimage.com":
