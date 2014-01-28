@@ -3,7 +3,7 @@
 // @namespace     handyimage
 // @author        Owyn
 // @contributors  U Bless
-// @version       2014.01.21
+// @version       2014.01.28
 // @updateURL     https://github.com/Owyn/HandyImage/raw/master/HandyImage.user.js
 // @downloadURL   https://github.com/Owyn/HandyImage/raw/master/HandyImage.user.js
 // @homepage      https://userscripts.org/scripts/show/166494
@@ -746,6 +746,7 @@
 // @match         http://*.damimage.com/img-*
 // @match         http://fapping.empornium.sx/*
 // @match         http://*.imagehovel.com/view*
+// @match         http://cloudimg.net/img-*
 // ==/UserScript==
 
 if (typeof unsafeWindow === "undefined")
@@ -1478,6 +1479,19 @@ function makeworld()
 		break;
 	case "imageontime.com":
 		i = ev('.//img[contains(@src,"/big/")]');
+		break;
+	case "cloudimg.net":
+		i = ev('.//input[@value="Continue to image"]');
+		dp=true;
+		if(i) 
+		{
+			i.click();
+			img = 1;
+		}
+		else
+		{
+			i = ev('.//img[contains(@src,"/uploads/")]');
+		}
 		break;
 	case "ruleimg.com":
 		i = ev('.//img[@alt="image"]');
