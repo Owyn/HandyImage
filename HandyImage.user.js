@@ -3,7 +3,7 @@
 // @namespace     handyimage
 // @author        Owyn
 // @contributors  U Bless
-// @version       2014.01.28
+// @version       2014.01.29
 // @updateURL     https://github.com/Owyn/HandyImage/raw/master/HandyImage.user.js
 // @downloadURL   https://github.com/Owyn/HandyImage/raw/master/HandyImage.user.js
 // @homepage      https://userscripts.org/scripts/show/166494
@@ -206,7 +206,7 @@
 // @match         http://*.imageshost.ru/photo*
 // @match         http://www.imagebanana.com/view*
 // @match         http://*.imagestime.com/show*
-// @match         http://*.sharenxs.com/view*
+// @match         http://sharenxs.com/view*
 // @match         http://img4.imagetitan.com/img*
 // @match         http://*.imagenpic.com/*
 // @match         http://*.stuffed.ru/images*
@@ -747,6 +747,7 @@
 // @match         http://fapping.empornium.sx/*
 // @match         http://*.imagehovel.com/view*
 // @match         http://cloudimg.net/img-*
+// @match         http://*.imgfap.net/img-*
 // ==/UserScript==
 
 if (typeof unsafeWindow === "undefined")
@@ -1060,6 +1061,12 @@ function makeworld()
 	case "picshot.pl":
 		i = ev('.//img[contains(@src,"' + iurl + '/p")]');
 		if(i){i.src = i.src.replace('thumb', 'file');}
+		break;
+	case "sharenxs.com":
+		i = ev('.//img[contains(@src,"/thumbnails/")]');
+		if(i){i.src = i.src.replace('/thumbnails/', '/images/');
+		i.src = i.src.replace('/tn-', '/');
+		i.src = i.src.replace('/mid/', '/wz/');}
 		break;
 	case "radical-foto.ru":
 	case "radikal-foto.ru":
@@ -1471,6 +1478,7 @@ function makeworld()
 	case "3xvintage.com":
 	case "imgult.com":
 	case "damimage.com":
+	case "imgfap.net":
 		i = ev('.//img[contains(@src,"/upload/")]');
 		break;
 	case "xxx.image-server.ru":
@@ -1716,7 +1724,6 @@ function makeworld()
 	case "goload.ru":
 	case "pictureshack.ru":
 	case "celebimg.com":
-	case "sharenxs.com":
 	case "imgbox.de":
 	case "imagehosting.cz":
 	case "server5.upload69.net":
