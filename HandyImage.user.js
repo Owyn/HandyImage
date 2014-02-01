@@ -3,7 +3,7 @@
 // @namespace     handyimage
 // @author        Owyn
 // @contributors  U Bless
-// @version       2014.01.29
+// @version       2014.02.01
 // @updateURL     https://github.com/Owyn/HandyImage/raw/master/HandyImage.user.js
 // @downloadURL   https://github.com/Owyn/HandyImage/raw/master/HandyImage.user.js
 // @homepage      https://userscripts.org/scripts/show/166494
@@ -748,6 +748,7 @@
 // @match         http://*.imagehovel.com/view*
 // @match         http://cloudimg.net/img-*
 // @match         http://*.imgfap.net/img-*
+// @match         http://*.imageheli.com/img-*
 // ==/UserScript==
 
 if (typeof unsafeWindow === "undefined")
@@ -1499,6 +1500,19 @@ function makeworld()
 		else
 		{
 			i = ev('.//img[contains(@src,"/uploads/")]');
+		}
+		break;
+	case "imageheli.com":
+		i = ev('.//input[@value="Continue to image"]');
+		dp=true;
+		if(i) 
+		{
+			i.click();
+			img = 1;
+		}
+		else
+		{
+			i = ev('.//img[contains(@src,"/images/")]');
 		}
 		break;
 	case "ruleimg.com":
