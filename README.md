@@ -766,4 +766,4 @@ In the topic title, write "fix" if the site is already on the list or "add" if i
 </tr>
 </table>
 <br>
-<h4><a href="http://userscripts.org/topics/130153">Sample Links</a> & <a href="https://userscripts.org/topics/125955">Changelog</a></h4>
+<h4><a href="https://userscripts.org/topics/130153">Sample Links</a> & <a href="https://userscripts.org/topics/125955">Changelog</a></h4>
