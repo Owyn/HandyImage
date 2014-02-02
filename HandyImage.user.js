@@ -749,6 +749,14 @@
 // @match         http://cloudimg.net/img-*
 // @match         http://*.imgfap.net/img-*
 // @match         http://*.imageheli.com/img-*
+// @match         http://*.img-zone.com/img-*
+// @match         http://*.imageback.info/view*
+// @match         http://*.imagepong.info/view*
+// @match         http://*.bulkimg.info/img-*
+// @match         http://*.img.spicyzilla.com/img-*
+// @match         http://*.imgstudio.org/img-*
+// @match         http://*.imgsure.com/img-*
+// @match         http://*.onlinepic.net/share*
 // ==/UserScript==
 
 if (typeof unsafeWindow === "undefined")
@@ -1017,6 +1025,7 @@ function makeworld()
 	case "upload.fpsthailand.com":
 	case "image-hoster.org":
 	case "vippix.com":
+	case "onlinepic.net":
 		//i = ev('.//img[@id="iimg"]');
 		var fn;
 		var f = document.getElementsByTagName("script");
@@ -1449,6 +1458,7 @@ function makeworld()
 	case "imgonion.com":
 	case "xximg.net":
 	case "sxpics.nl":
+	case "img.spicyzilla.com":
 		i = ev('.//input[@type="submit"]');
 		dp=true;
 		if(i) 
@@ -1480,6 +1490,9 @@ function makeworld()
 	case "imgult.com":
 	case "damimage.com":
 	case "imgfap.net":
+	case "img-zone.com":
+	case "bulkimg.info":
+	case "imgstudio.org":
 		i = ev('.//img[contains(@src,"/upload/")]');
 		break;
 	case "xxx.image-server.ru":
@@ -1503,6 +1516,7 @@ function makeworld()
 		}
 		break;
 	case "imageheli.com":
+	case "imgsure.com":
 		i = ev('.//input[@value="Continue to image"]');
 		dp=true;
 		if(i) 
@@ -1695,6 +1709,8 @@ function makeworld()
 	case "images.collectiontricks.it":
 	case "244pix.com":
 	case "imageview.me":
+	case "imageback.info":
+	case "imagepong.info":
 		i = ev('.//img[contains(@src,"images/")]');
 		break;
 	case "fotosik.pl":
