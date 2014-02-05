@@ -3,7 +3,7 @@
 // @namespace     handyimage
 // @author        Owyn
 // @contributors  U Bless
-// @version       2014.02.01
+// @version       2014.02.05
 // @updateURL     https://github.com/Owyn/HandyImage/raw/master/HandyImage.user.js
 // @downloadURL   https://github.com/Owyn/HandyImage/raw/master/HandyImage.user.js
 // @homepage      https://userscripts.org/scripts/show/166494
@@ -757,6 +757,13 @@
 // @match         http://*.imgstudio.org/img-*
 // @match         http://*.imgsure.com/img-*
 // @match         http://*.onlinepic.net/share*
+// @match         http://imgboxxx.com/view*
+// @match         http://*.imghere.net/view*
+// @match         http://www.torrentzet.com/view*
+// @match         http://*.xxxces.com/view*
+// @match         http://*.imghash.com/?v=*
+// @match         http://*.imagedomino.net/?v=*
+// @match         http://*.sharepic.biz/show-image.php?id=*
 // ==/UserScript==
 
 if (typeof unsafeWindow === "undefined")
@@ -867,7 +874,6 @@ function makeimage()
 	var isrc = img.src;
 	img = document.createElement("img");
 	img.src = isrc;
-	img.id = "resizing";
 	img.style.margin = "auto"; // center image
 	document.body.appendChild(img);
 	img.addEventListener("click", rescale, true);
@@ -1375,6 +1381,7 @@ function makeworld()
 	case "imgflare.com":
 	case "filefap.com":
 	case "imgheat.com":
+	case "xxxces.com":
 		i = ev('.//img[contains(@src,"/files/")]');
 		break;
 	case "image18.org":
@@ -1711,6 +1718,8 @@ function makeworld()
 	case "imageview.me":
 	case "imageback.info":
 	case "imagepong.info":
+	case "imgboxxx.com":
+	case "imghere.net":
 		i = ev('.//img[contains(@src,"images/")]');
 		break;
 	case "fotosik.pl":
@@ -1797,6 +1806,7 @@ function makeworld()
 	case "tinyphoto.net":
 	case "4put.ru":
 	case "hostimg.org":
+	case "sharepic.biz":
 		i = ev('.//img[contains(@src,"pictures/")]');
 		break;
 	case "xenopix.com":
@@ -2011,6 +2021,7 @@ function makeworld()
 	case "thro.bz":
 	case "send-up.ru":
 	case "fapping.empornium.sx":
+	case "torrentzet.com":
 		i = ev('.//img[contains(@src,"' + iurl + '/images/")]');
 		break;
 	case "shareimages.com":
@@ -2021,6 +2032,8 @@ function makeworld()
 	case "imgfantasy.com":
 	case "imagedomino.com":
 	case "imagepdb.com":
+	case "imghash.com":
+	case "imagedomino.net":
 		j = true;
 		dp=true;
 		i = ev('.//input[@value="YES"]');
