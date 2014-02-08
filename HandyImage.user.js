@@ -3,7 +3,7 @@
 // @namespace     handyimage
 // @author        Owyn
 // @contributors  U Bless
-// @version       2014.02.05
+// @version       2014.02.08
 // @updateURL     https://github.com/Owyn/HandyImage/raw/master/HandyImage.user.js
 // @downloadURL   https://github.com/Owyn/HandyImage/raw/master/HandyImage.user.js
 // @homepage      https://userscripts.org/scripts/show/166494
@@ -764,6 +764,8 @@
 // @match         http://*.imghash.com/?v=*
 // @match         http://*.imagedomino.net/?v=*
 // @match         http://*.sharepic.biz/show-image.php?id=*
+// @match         http://*.photoup.biz/view*
+// @match         http://*.imgcoco.com/img-*
 // ==/UserScript==
 
 if (typeof unsafeWindow === "undefined")
@@ -1427,6 +1429,7 @@ function makeworld()
 	case "hosturimage.com":
 	case "imgmaster.net":
 	case "imggoo.com":
+	case "imgcoco.com":
 		i = ev('.//img[contains(@src,"/upload/")]');
 		dp=true;
 		var c;
@@ -1851,6 +1854,7 @@ function makeworld()
 	case "javimage.us":
 	case "love69.org":
 	case "picup.in":
+	case "photoup.biz":
 		i = ev('.//a[contains(@href,"/images/")]');
 		if(i){i.src = i.href.substr(i.href.lastIndexOf("http://"));}
 		break;
