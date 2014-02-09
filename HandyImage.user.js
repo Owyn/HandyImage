@@ -3,7 +3,7 @@
 // @namespace     handyimage
 // @author        Owyn
 // @contributors  U Bless
-// @version       2014.02.08
+// @version       2014.02.09
 // @updateURL     https://github.com/Owyn/HandyImage/raw/master/HandyImage.user.js
 // @downloadURL   https://github.com/Owyn/HandyImage/raw/master/HandyImage.user.js
 // @homepage      https://userscripts.org/scripts/show/166494
@@ -23,8 +23,8 @@
 // @exclude       http://imgbox.com/g*
 // @match         http://*.imagetwist.com/*/*
 // @match         http://*.imagevenue.com/img.php?*
-// @match         *://*.imageshack.us/photo*
-// @match         *://*.imageshack.us/f*
+// @match         *://*.imageshack.com/photo*
+// @match         *://*.imageshack.com/i/*
 // @match         http://imagepix.org/image*
 // @match         http://image2you.ru/*/*/
 // @match         http://imageban.ru/show*
@@ -821,9 +821,11 @@ var cfg_fitS;
 var cfg_js;
 var dp = false;
 var rescaled = false;
+var tb;
+var to = false;
+var timeout = 1000;
 var FireFox = ((navigator.userAgent.indexOf('Firefox') != -1) ? true : false);
 var img;
-var tb;
 var j;
 var iurl = window.location.hostname;
 if(iurl.indexOf("www.") == 0)
@@ -916,6 +918,7 @@ function makeworld()
 		if(i){i.src = i.href;}
 		break;
 	case "directupload.net":
+	case "imageshack.com":
 		i = ev('//meta[@property="og:image"]');
 		if(i){i.src = i.content;}
 		break;
@@ -991,10 +994,6 @@ function makeworld()
 		break;
 	case "xup.in":
 		i = ev('.//img[contains(@src,"/exec/")]');
-		break;
-	case "imageshack.us":
-		i = ev('.//input[@id="direct-link"]');
-		if(i){i.src = i.value;}
 		break;
 	case "image2you.ru":
 		i = ev('.//img[contains(@src,"images/")]')
@@ -1432,23 +1431,18 @@ function makeworld()
 	case "imgcoco.com":
 		i = ev('.//img[contains(@src,"/upload/")]');
 		dp=true;
-		var c;
 		if(!i)
 		{
 			var f = document.getElementsByTagName("input");
 			for(c=0;c<f.length;c++) 
 			{
-				if(f[c].type == "submit" && f[c].value != "Premium Download")
+				if(f[c].type == "submit" && f[c].style.display != "none" && f[c].value != "Premium Download")
 				{
 					f[c].click();
-					c = 999;
 				}
 			}
 		}
-		if(i || c==999)
-		{
-			break;
-		}
+		break;
 	case "imgadult.com":
 		i = ev('.//a[@class="clicked"]');
 		if(i)
@@ -1474,7 +1468,6 @@ function makeworld()
 		if(i) 
 		{
 			i.click();
-			img = 1;
 			break;
 		}
 	case "imgonion.com":
@@ -1518,7 +1511,6 @@ function makeworld()
 		if(i) 
 		{
 			i.click();
-			img = 1;
 		}
 		else
 		{
@@ -1532,7 +1524,6 @@ function makeworld()
 		if(i) 
 		{
 			i.click();
-			img = 1;
 		}
 		else
 		{
@@ -2041,7 +2032,7 @@ function makeworld()
 		j = true;
 		dp=true;
 		i = ev('.//input[@value="YES"]');
-		if(i){i.click();img = i;}
+		if(i){i.click()}
 	case "imagepdb.com":
 	case "imagebam.com":
 	case "imgfantasy.com":
@@ -2139,9 +2130,10 @@ function makeworld()
 	}
 	else // try again
 	{
-		//console.warn("Didnt find image, trying again in 2 sec");
-		if(tb){clearTimeout(tb);}
-		tb = setTimeout(function() { makeworld(); }, 2000);
+		//console.warn("Didnt find image, trying again in " + timeout + " ms");
+		if(to){to=false;tb=0;}
+		if(tb){clearTimeout(tb);}else{timeout=+1000;}
+		tb = setTimeout(function() { to=true; makeworld(); }, timeout);
 	}
 }
 
