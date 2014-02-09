@@ -1468,6 +1468,7 @@ function makeworld()
 		if(i) 
 		{
 			i.click();
+			img = 1;
 			break;
 		}
 	case "imgonion.com":
@@ -1511,6 +1512,7 @@ function makeworld()
 		if(i) 
 		{
 			i.click();
+			img = 1;
 		}
 		else
 		{
@@ -1524,6 +1526,7 @@ function makeworld()
 		if(i) 
 		{
 			i.click();
+			img = 1;
 		}
 		else
 		{
@@ -2032,7 +2035,7 @@ function makeworld()
 		j = true;
 		dp=true;
 		i = ev('.//input[@value="YES"]');
-		if(i){i.click()}
+		if(i){i.click();img = i;}
 	case "imagepdb.com":
 	case "imagebam.com":
 	case "imgfantasy.com":
