@@ -3,7 +3,7 @@
 // @namespace     handyimage
 // @author        Owyn
 // @contributors  U Bless
-// @version       2014.02.09
+// @version       2014.02.10
 // @updateURL     https://github.com/Owyn/HandyImage/raw/master/HandyImage.user.js
 // @downloadURL   https://github.com/Owyn/HandyImage/raw/master/HandyImage.user.js
 // @homepage      https://userscripts.org/scripts/show/166494
@@ -23,7 +23,6 @@
 // @exclude       http://imgbox.com/g*
 // @match         http://*.imagetwist.com/*/*
 // @match         http://*.imagevenue.com/img.php?*
-// @match         *://*.imageshack.com/photo*
 // @match         *://*.imageshack.com/i/*
 // @match         http://imagepix.org/image*
 // @match         http://image2you.ru/*/*/
@@ -766,6 +765,7 @@
 // @match         http://*.sharepic.biz/show-image.php?id=*
 // @match         http://*.photoup.biz/view*
 // @match         http://*.imgcoco.com/img-*
+// @match         http://f-lite.ru/*
 // ==/UserScript==
 
 if (typeof unsafeWindow === "undefined")
@@ -918,9 +918,11 @@ function makeworld()
 		if(i){i.src = i.href;}
 		break;
 	case "directupload.net":
-	case "imageshack.com":
 		i = ev('//meta[@property="og:image"]');
 		if(i){i.src = i.content;}
+		break;
+	case "imageshack.com":
+		i = ev('.//img[@data-width]');
 		break;
 	case "imgnook.com":
 	case "h4z.it":
@@ -1088,6 +1090,7 @@ function makeworld()
 	case "radical-foto.ru":
 	case "radikal-foto.ru":
 	case "f-page.ru":
+	case "f-lite.ru":
 		var fn;
 		var f = document.getElementsByTagName("script");
 		for(c=0;c<f.length;c++) 
