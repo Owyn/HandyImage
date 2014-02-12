@@ -3,7 +3,7 @@
 // @namespace     handyimage
 // @author        Owyn
 // @contributors  U Bless
-// @version       2014.02.10
+// @version       2014.02.12
 // @updateURL     https://github.com/Owyn/HandyImage/raw/master/HandyImage.user.js
 // @downloadURL   https://github.com/Owyn/HandyImage/raw/master/HandyImage.user.js
 // @homepage      https://userscripts.org/scripts/show/166494
@@ -766,6 +766,7 @@
 // @match         http://*.photoup.biz/view*
 // @match         http://*.imgcoco.com/img-*
 // @match         http://f-lite.ru/*
+// @match         http://*.mkerala.com/u/p*
 // ==/UserScript==
 
 if (typeof unsafeWindow === "undefined")
@@ -1606,6 +1607,7 @@ function makeworld()
 	case "img.tfktech.com":
 	case "qattach.com":
 	case "fotohelp.kz":
+	case "mkerala.com":
 		i = ev('.//a[contains(@href,"/di/")]');
 		if(i)
 		{
