@@ -3,7 +3,7 @@
 // @namespace     handyimage
 // @author        Owyn
 // @contributors  U Bless
-// @version       2014.02.12
+// @version       2014.02.14
 // @updateURL     https://github.com/Owyn/HandyImage/raw/master/HandyImage.user.js
 // @downloadURL   https://github.com/Owyn/HandyImage/raw/master/HandyImage.user.js
 // @homepage      https://userscripts.org/scripts/show/166494
@@ -767,6 +767,7 @@
 // @match         http://*.imgcoco.com/img-*
 // @match         http://f-lite.ru/*
 // @match         http://*.mkerala.com/u/p*
+// @match         http://*.imgup.nl/*
 // ==/UserScript==
 
 if (typeof unsafeWindow === "undefined")
@@ -2025,6 +2026,7 @@ function makeworld()
 	case "send-up.ru":
 	case "fapping.empornium.sx":
 	case "torrentzet.com":
+	case "imgup.nl":
 		i = ev('.//img[contains(@src,"' + iurl + '/images/")]');
 		break;
 	case "shareimages.com":
