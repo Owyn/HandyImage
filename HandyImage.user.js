@@ -769,6 +769,7 @@
 // @match         http://*.mkerala.com/u/p*
 // @match         http://*.imgup.nl/*
 // @match         http://*.pixel.so/*
+// @match         http://*.kuvapankki.in/*
 // ==/UserScript==
 
 if (typeof unsafeWindow === "undefined")
@@ -2029,6 +2030,7 @@ function makeworld()
 	case "torrentzet.com":
 	case "imgup.nl":
 	case "pixel.so":
+	case "kuvapankki.in":
 		i = ev('.//img[contains(@src,"' + iurl + '/images/")]');
 		break;
 	case "shareimages.com":
