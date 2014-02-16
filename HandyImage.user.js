@@ -770,6 +770,7 @@
 // @match         http://*.imgup.nl/*
 // @match         http://*.pixel.so/*
 // @match         http://*.kuvapankki.in/*
+// @match         http://*.picify.com/?v=*
 // ==/UserScript==
 
 if (typeof unsafeWindow === "undefined")
@@ -1794,6 +1795,7 @@ function makeworld()
 	case "asan-gsm.com":
 	case "iezz.com":
 	case "fileaimage.com":
+	case "picify.com":
 		i = ev('.//img[contains(@src,"/images/")]');
 		break;
 	case "intergranada.com":
