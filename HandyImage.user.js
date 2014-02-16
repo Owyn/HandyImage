@@ -3,7 +3,7 @@
 // @namespace     handyimage
 // @author        Owyn
 // @contributors  U Bless
-// @version       2014.02.15
+// @version       2014.02.16
 // @updateURL     https://github.com/Owyn/HandyImage/raw/master/HandyImage.user.js
 // @downloadURL   https://github.com/Owyn/HandyImage/raw/master/HandyImage.user.js
 // @homepage      https://userscripts.org/scripts/show/166494
@@ -772,6 +772,7 @@
 // @match         http://*.kuvapankki.in/*
 // @match         http://*.picify.com/?v=*
 // @match         http://img.titank.com/*
+// @match         http://*.vipeep.com/*
 // ==/UserScript==
 
 if (typeof unsafeWindow === "undefined")
@@ -2035,6 +2036,7 @@ function makeworld()
 	case "pixel.so":
 	case "kuvapankki.in":
 	case "img.titank.com":
+	case "vipeep.com":
 		i = ev('.//img[contains(@src,"' + iurl + '/images/")]');
 		break;
 	case "shareimages.com":
