@@ -771,6 +771,7 @@
 // @match         http://*.pixel.so/*
 // @match         http://*.kuvapankki.in/*
 // @match         http://*.picify.com/?v=*
+// @match         http://img.titank.com/*
 // ==/UserScript==
 
 if (typeof unsafeWindow === "undefined")
@@ -2033,6 +2034,7 @@ function makeworld()
 	case "imgup.nl":
 	case "pixel.so":
 	case "kuvapankki.in":
+	case "img.titank.com":
 		i = ev('.//img[contains(@src,"' + iurl + '/images/")]');
 		break;
 	case "shareimages.com":
