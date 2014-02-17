@@ -775,6 +775,7 @@
 // @match         http://*.vipeep.com/*
 // @match         http://*.imgskull.info/img-*
 // @match         http://*.imagehost.thehateugave.com/*
+// @match         http://*.pixit.hu/*
 // ==/UserScript==
 
 if (typeof unsafeWindow === "undefined")
@@ -2042,6 +2043,7 @@ function makeworld()
 	case "kuvapankki.in":
 	case "img.titank.com":
 	case "vipeep.com":
+	case "pixit.hu"	
 		i = ev('.//img[contains(@src,"' + iurl + '/images/")]');
 		break;
 	case "shareimages.com":
