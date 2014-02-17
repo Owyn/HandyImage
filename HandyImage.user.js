@@ -773,6 +773,7 @@
 // @match         http://*.picify.com/?v=*
 // @match         http://img.titank.com/*
 // @match         http://*.vipeep.com/*
+// @match         http://*.imgskull.info/img-*
 // ==/UserScript==
 
 if (typeof unsafeWindow === "undefined")
@@ -1473,6 +1474,7 @@ function makeworld()
 	case "xximg.net":
 	case "sxpics.nl":
 	case "img.spicyzilla.com":
+	case "imgskull.info":
 		i = ev('.//input[@type="submit"]');
 		dp=true;
 		if(i) 
@@ -1507,6 +1509,7 @@ function makeworld()
 	case "img-zone.com":
 	case "bulkimg.info":
 	case "imgstudio.org":
+	case "imgskull.info":
 		i = ev('.//img[contains(@src,"/upload/")]');
 		break;
 	case "xxx.image-server.ru":
