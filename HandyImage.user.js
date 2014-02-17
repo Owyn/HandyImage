@@ -3,7 +3,7 @@
 // @namespace     handyimage
 // @author        Owyn
 // @contributors  U Bless
-// @version       2014.02.16
+// @version       2014.02.17
 // @updateURL     https://github.com/Owyn/HandyImage/raw/master/HandyImage.user.js
 // @downloadURL   https://github.com/Owyn/HandyImage/raw/master/HandyImage.user.js
 // @homepage      https://userscripts.org/scripts/show/166494
@@ -774,6 +774,7 @@
 // @match         http://img.titank.com/*
 // @match         http://*.vipeep.com/*
 // @match         http://*.imgskull.info/img-*
+// @match         http://*.imagehost.thehateugave.com/*
 // ==/UserScript==
 
 if (typeof unsafeWindow === "undefined")
@@ -997,6 +998,7 @@ function makeworld()
 		break;
 	case "zagruzitfoto.com":
 	case "cweb-pix.com":
+	case "imagehost.thehateugave.com":
 		i = ev('.//img[@id="full_image"]');
 		break;
 	case "depic.me":
