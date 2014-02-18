@@ -232,7 +232,7 @@
 // @match         http://www.xup.in/dl*
 // @match         http://*.foto-save.ru/full/
 // @match         http://*.hostpornpics.net/view*
-// @match         http://*.flickimg.com/image*
+// @match         http://*.flickimg.com/*
 // @match         http://*.sexseeimage.com/image*
 // @match         http://*.hotchyx.com/d*
 // @match         http://*.imgns.com/pt*
@@ -240,7 +240,6 @@
 // @match         http://ima.so/*
 // @match         http://*.kinkypic.net/show*
 // @match         http://*.imagerocket.net/view*
-// @match         http://*.imgnip.com/view*
 // @match         http://*.imageupper.com/i/*
 // @match         http://*.mypixxx.lonestarnaughtygirls.com/?*
 // @match         http://*.ifap.co/?v=*
@@ -354,7 +353,6 @@
 // @match         http://firepic.org/?v=*
 // @match         http://*.nium.co/*
 // @match         http://*.seeit.bz/*
-// @match         http://*.flickimg.com/*
 // @match         http://savepic.org/*.htm
 // @match         http://*.fastimages.ru/p*
 // @match         http://ipic.su/?page=img&pic=*
@@ -528,7 +526,7 @@
 // @match         http://*.php-bb.ir/pic/view*
 // @match         http://multihoster.saxonia-fighter.de/view*
 // @match         http://*.img.mdy.ro/?*
-// @match         http://*.mkerala.com/u/?*
+// @match         http://*.mkerala.com/u/p*
 // @match         http://knecht.novarata.net/?*
 // @match         http://*.yadeller.biz/resimyolla/?*
 // @match         http://*.img.delux.lv/?*
@@ -700,7 +698,6 @@
 // @match         http://*.heberge-images.com/?*
 // @match         http://*.yehpic.com/*
 // @match         http://*.joepler.com/*
-// @match         http://*.givme.de/*
 // @match         http://www.image.kg/*
 // @match         http://*.imgdark.com/?*
 // @match         http://*.primeimg.co/*
@@ -766,7 +763,6 @@
 // @match         http://*.photoup.biz/view*
 // @match         http://*.imgcoco.com/img-*
 // @match         http://f-lite.ru/*
-// @match         http://*.mkerala.com/u/p*
 // @match         http://*.imgup.nl/*
 // @match         http://*.pixel.so/*
 // @match         http://*.kuvapankki.in/*
@@ -1639,7 +1635,6 @@ function makeworld()
 	case "images.woh.to":
 	case "pixoload.de":
 	case "img.mdy.ro":
-	case "mkerala.com":
 	case "knecht.novarata.net":
 	case "yadeller.biz":
 	case "img.delux.lv":
@@ -1690,7 +1685,6 @@ function makeworld()
 	case "dumppix.com":
 	case "mrjh.org":
 	case "stuffed.ru":
-	case "imgnip.com":
 	case "pixtn.com":
 	case "postimg.net":
 	case "img.deli.sh":
@@ -1919,7 +1913,6 @@ function makeworld()
 	case "zapodaj.net":
 	case "imghost.us.to":
 	case "nium.co":
-	case "flickimg.com":
 	case "jpegshare.net":
 	case "imagestorming.com":
 	case "photolair.net":
@@ -2023,7 +2016,6 @@ function makeworld()
 	case "heberge-images.com":
 	case "yehpic.com":
 	case "joepler.com":
-	case "givme.de":
 	case "image.kg":
 	case "imgdark.com":
 	case "primeimg.co":
