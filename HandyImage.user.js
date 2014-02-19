@@ -631,7 +631,6 @@
 // @match         http://*.linkmypic.com/*
 // @match         http://www.sxfoto.com/*
 // @match         http://*.upanh.biz/*
-// @match         http://*.1ahar.net/*
 // @match         http://*.host-my-image.de/*
 // @match         http://*.i-pict.ru/*
 // @match         http://*.imagend.com/*
@@ -1968,7 +1967,6 @@ function makeworld()
 	case "linkmypic.com":
 	case "sxfoto.com":
 	case "upanh.biz":
-	case "1ahar.net":
 	case "host-my-image.de":
 	case "i-pict.ru":
 	case "imagend.com":
