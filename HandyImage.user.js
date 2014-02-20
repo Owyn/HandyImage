@@ -610,7 +610,7 @@
 // @match         http://*.planet-upload.eu/*
 // @match         http://*.oltaciyukle.com/*
 // @match         http://*.picto.lt/*
-// @match         http://www.3intro.com/images/*
+// @match         http://www.3intro.com/image/*
 // @match         http://*.slikomanija.net/*
 // @match         http://*.kaise123.com/img*
 // @match         http://upload.vstanced.com/*
