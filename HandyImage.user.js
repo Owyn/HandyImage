@@ -487,7 +487,7 @@
 // @match         http://www.public-pic.de/image/show/*
 // @match         http://*.imgbox.in/index.php?m=display*
 // @match         http://*.img-vidiklub.com/view*
-// @match         http://*.9foto.ru/photo*
+// @match         http://*.9foto.ru/photo/*
 // @match         http://uploads.ru/*
 // @match         http://*.picmania.com.ua/?v=*
 // @match         http://*.storepic.com/show*
