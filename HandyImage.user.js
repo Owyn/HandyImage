@@ -770,6 +770,13 @@
 // @match         http://*.vipeep.com/*
 // @match         http://*.imgskull.info/img-*
 // @match         http://*.imagehost.thehateugave.com/*
+// @match         http://*.picturescream.com/?*
+// @match         http://*.imgleech.com/?*
+// @match         http://*.imgdone.com/view*
+// @match         http://*.imghoney.com/view*
+// @match         http://*.pictureupl.info/?*
+// @match         http://*.4ufrom.me/view*
+// @match         http://*.img3x.net/picture*
 // ==/UserScript==
 
 if (typeof unsafeWindow === "undefined")
@@ -1217,6 +1224,7 @@ function makeworld()
 	case "imageupload.sketchupthai.com":
 	case "php-bb.ir":
 	case "multihoster.saxonia-fighter.de":
+	case "imgdone.com":
 		i = ev('.//a[contains(@href,"images/")]');
 		if(i){i.src = i.href;}
 		break;
@@ -1391,6 +1399,7 @@ function makeworld()
 	case "filefap.com":
 	case "imgheat.com":
 	case "xxxces.com":
+	case "4ufrom.me":
 		i = ev('.//img[contains(@src,"/files/")]');
 		break;
 	case "image18.org":
@@ -1555,6 +1564,7 @@ function makeworld()
 			break;
 		}
 	case "subirimagenes.com":
+	case "img3x.net":
 		i = ev('.//img[contains(@onclick,"scale")]');
 		break;
 	case "image-share.com":
@@ -1726,6 +1736,8 @@ function makeworld()
 	case "imagepong.info":
 	case "imgboxxx.com":
 	case "imghere.net":
+	case "imgleech.com":
+	case "imghoney.com":
 		i = ev('.//img[contains(@src,"images/")]');
 		break;
 	case "fotosik.pl":
@@ -1796,6 +1808,7 @@ function makeworld()
 	case "iezz.com":
 	case "fileaimage.com":
 	case "picify.com":
+	case "picturescream.com":
 		i = ev('.//img[contains(@src,"/images/")]');
 		break;
 	case "intergranada.com":
@@ -2032,6 +2045,7 @@ function makeworld()
 	case "kuvapankki.in":
 	case "img.titank.com":
 	case "vipeep.com":
+	case "pictureupl.info":
 		i = ev('.//img[contains(@src,"' + iurl + '/images/")]');
 		break;
 	case "shareimages.com":
