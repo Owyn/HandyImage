@@ -3,7 +3,7 @@
 // @namespace     handyimage
 // @author        Owyn
 // @contributors  U Bless
-// @version       2014.02.18
+// @version       2014.02.20
 // @updateURL     https://github.com/Owyn/HandyImage/raw/master/HandyImage.user.js
 // @downloadURL   https://github.com/Owyn/HandyImage/raw/master/HandyImage.user.js
 // @homepage      https://userscripts.org/scripts/show/166494
@@ -450,7 +450,7 @@
 // @match         http://*.picmoe.net/d.php?id=* 
 // @match         http://*.imagerule.com/view*
 // @match         http://*.imagepussy.com/view*
-// @match         http://*.7image.ru/v.php?id=*
+// @match         http://*.7image.ru/v*
 // @match         http://www.picshare.ru/view*
 // @match         http://*.bien-vue.com/view*
 // @match         http://*.pics.tam.in.ua/showpic.php?p=*
