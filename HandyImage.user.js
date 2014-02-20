@@ -188,7 +188,6 @@
 // @match         http://*.npicture.net/share-*
 // @match         http://*.img.acianetmedia.com/*
 // @match         http://www.2imgs.com/*
-// @exclude       http://www.2imgs.com/uploaded/*
 // @match         http://*.overpic.net/view*
 // @match         http://*.unlimitedpicture.com/?*
 // @match         http://*.imagecross.com/*
@@ -384,7 +383,7 @@
 // @match         http://smages.com/?v=*
 // @match         http://image.auditory.ru/view*
 // @match         http://*.hostingkartinok.com/show-image.php?id=*
-// @match         http://*.4put.ru/view-max-picture.php?id=*
+// @match         http://*.4put.ru/*max*
 // @match         http://*.goload.ru/?v=*
 // @match         http://www.pictureshack.ru/view*
 // @match         http://*.host99.byethost4.com/share.php?id=*
@@ -611,7 +610,7 @@
 // @match         http://*.planet-upload.eu/*
 // @match         http://*.oltaciyukle.com/*
 // @match         http://*.picto.lt/*
-// @match         http://www.3intro.com/*
+// @match         http://www.3intro.com/images/*
 // @match         http://*.slikomanija.net/*
 // @match         http://*.kaise123.com/img*
 // @match         http://upload.vstanced.com/*
@@ -714,7 +713,6 @@
 // @match         http://*.244pix.com/view*
 // @match         http://*.imageview.me/view*
 // @match         http://*.uploadimage.ro/view*
-// @match         http://*.3xvintage.com/img-*
 // @match         http://imgmaster.net/img-*
 // @match         http://*.thro.bz/*
 // @match         http://*.imggoo.com/img-*
@@ -777,6 +775,7 @@
 // @match         http://*.pictureupl.info/?*
 // @match         http://*.4ufrom.me/view*
 // @match         http://*.img3x.net/picture*
+// @match         http://www.2i.cz/*
 // ==/UserScript==
 
 if (typeof unsafeWindow === "undefined")
@@ -1859,6 +1858,7 @@ function makeworld()
 		break;
 	case "2imgs.com":
 	case "2i.sk":
+	case "2i.cz":	
 		i = ev('.//a[contains(@href,"/i/")]');
 		if(i)
 		{
