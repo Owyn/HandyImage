@@ -3,7 +3,7 @@
 // @namespace     handyimage
 // @author        Owyn
 // @contributors  U Bless
-// @version       2014.02.18
+// @version       2014.02.21
 // @updateURL     https://github.com/Owyn/HandyImage/raw/master/HandyImage.user.js
 // @downloadURL   https://github.com/Owyn/HandyImage/raw/master/HandyImage.user.js
 // @homepage      https://userscripts.org/scripts/show/166494
@@ -47,7 +47,6 @@
 // @match         http://*.imagecurl.com/view*
 // @match         http://*.imagecurl.org/view*
 // @match         http://*.euro-pic.eu/share*
-// @match         http://*.amateurfreak.org/share*
 // @match         http://*.imagescream.com/?v=*
 // @match         http://*.imagescream.com/img/soft/image*
 // @match         http://*.picturescream.asia/*
@@ -77,7 +76,7 @@
 // @exclude       http://pic2profit.com/cabinet/*
 // @exclude       http://www.pic2profit.com/cabinet/*
 // @match         http://imgdino.com/view*
-// @match         http://*.anonpic.com/?v=*
+// @match         http://*.anonpic.com/?*
 // @match         http://*.pic-money.ru/*.html
 // @match         http://*.pic-money.ru/full/
 // @match         http://*.imgcandy.net/img*
@@ -1020,7 +1019,6 @@ function makeworld()
 		i = ev('.//a[@class]');
 		if(i){i.src = i.href;}
 		break;
-	case "amateurfreak.org":
 	case "euro-pic.eu":
 	case "picpicture.com":
 	case "picfox.org":
