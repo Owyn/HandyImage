@@ -243,7 +243,7 @@
 // @match         http://*.mypixxx.lonestarnaughtygirls.com/?*
 // @match         http://*.ifap.co/?v=*
 // @match         http://*.pixtn.com/view*
-// @match         http://beeimg.com/view*
+// @match         *://beeimg.com/view*
 // @match         http://www.noelshack.com/*.*
 // @match         http://www.zupmage.eu/image*
 // @match         http://*.picstwist.com/img*
@@ -1191,7 +1191,6 @@ function makeworld()
 		i = ev('.//img[contains(@src,"image")]');
 		break;
 	case "iv.pl":
-	case "beeimg.com":
 	case "q3.cz":
 	case "imagevau.eu":
 	case "up.sukrbnat.com":
@@ -2046,6 +2045,7 @@ function makeworld()
 	case "img.titank.com":
 	case "vipeep.com":
 	case "pictureupl.info":
+	case "beeimg.com":	
 		i = ev('.//img[contains(@src,"' + iurl + '/images/")]');
 		break;
 	case "shareimages.com":
