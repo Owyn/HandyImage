@@ -111,7 +111,6 @@
 // @match         http://www.bild.me/bild.php?*
 // @match         http://www.imagesnake.com/show*
 // @match         http://www.freebunker.com/show*
-// @match         http://bayimg.com/*
 // @match         http://*.directupload.net/file*
 // @match         http://*.imgpo.st/*
 // @match         http://*.imgjav.tk/?*
@@ -243,7 +242,7 @@
 // @match         http://*.mypixxx.lonestarnaughtygirls.com/?*
 // @match         http://*.ifap.co/?v=*
 // @match         http://*.pixtn.com/view*
-// @match         http://beeimg.com/view*
+// @match         *://beeimg.com/view*
 // @match         http://www.noelshack.com/*.*
 // @match         http://www.zupmage.eu/image*
 // @match         http://*.picstwist.com/img*
@@ -993,7 +992,6 @@ function makeworld()
 		i = ev('.//img[@id="image"]');
 		j = true;
 		break;
-	case "bayimg.com":
 	case "picgarage.net":
 		i = ev('.//img[@id="mainImage"]');
 		break;
@@ -1191,7 +1189,6 @@ function makeworld()
 		i = ev('.//img[contains(@src,"image")]');
 		break;
 	case "iv.pl":
-	case "beeimg.com":
 	case "q3.cz":
 	case "imagevau.eu":
 	case "up.sukrbnat.com":
@@ -2046,6 +2043,7 @@ function makeworld()
 	case "img.titank.com":
 	case "vipeep.com":
 	case "pictureupl.info":
+	case "beeimg.com":	
 		i = ev('.//img[contains(@src,"' + iurl + '/images/")]');
 		break;
 	case "shareimages.com":
