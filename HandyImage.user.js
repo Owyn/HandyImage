@@ -3,7 +3,7 @@
 // @namespace     handyimage
 // @author        Owyn
 // @contributors  U Bless
-// @version       2014.02.18
+// @version       2014.02.23
 // @updateURL     https://github.com/Owyn/HandyImage/raw/master/HandyImage.user.js
 // @downloadURL   https://github.com/Owyn/HandyImage/raw/master/HandyImage.user.js
 // @homepage      https://userscripts.org/scripts/show/166494
@@ -1479,6 +1479,7 @@ function makeworld()
 	case "sxpics.nl":
 	case "img.spicyzilla.com":
 	case "imgskull.info":
+	case "bulkimg.info":	
 		i = ev('.//input[@type="submit"]');
 		dp=true;
 		if(i) 
