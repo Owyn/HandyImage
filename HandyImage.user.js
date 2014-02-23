@@ -1529,6 +1529,7 @@ function makeworld()
 		dp=true;
 		if(i) 
 		{
+			$("browser_fingerprint").value = unsafeWindow.pstfgrpnt(true);
 			i.click();
 			img = 1;
 		}
