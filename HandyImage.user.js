@@ -3,7 +3,7 @@
 // @namespace     handyimage
 // @author        Owyn
 // @contributors  U Bless
-// @version       2014.02.23
+// @version       2014.02.24
 // @updateURL     https://github.com/Owyn/HandyImage/raw/master/HandyImage.user.js
 // @downloadURL   https://github.com/Owyn/HandyImage/raw/master/HandyImage.user.js
 // @homepage      https://userscripts.org/scripts/show/166494
@@ -405,7 +405,7 @@
 // @match         http://hostpic.de/?b=*
 // @match         http://www.yourimage24.de/view*
 // @match         http://www.loaditup.de/*.html
-// @match         http://*.chickupload.com/showpicture*
+// @match         http://*.chickupload.com/show*
 // @match         http://www.images.woh.to/?*
 // @match         http://*.imgbox.de/show/img*
 // @match         http://*.picszone.net/view*
@@ -555,7 +555,6 @@
 // @match         http://i.shawnjiang.com/?*
 // @match         http://*.images.tapasilo.org/?*
 // @match         http://upload.khontai.com/?*
-// @match         http://*.codefuture-co-uk.best-products-shop.com/?*
 // @match         http://pic.dnjc8.com/?*
 // @match         http://*.image.pantyhosemania.info/?*
 // @match         http://*.addyourpics.com/image*
@@ -598,7 +597,6 @@
 // @match         http://*.resimupload.org/*
 // @match         http://*.fotohelp.kz/image*
 // @match         https://*.myimg.me/*
-// @match         http://caps.incitorrent.com/*
 // @match         http://i.ruspotting.net/*
 // @match         http://*.upic.kz/*
 // @match         http://imguploda.inamurajane.info/*
@@ -651,8 +649,8 @@
 // @match         http://*.imgcode.com/*
 // @match         http://*.lakhdaria.net/imagebank/?*
 // @match         http://*.webjardiner.com/hebergement_images_photos/image*
-// @match         http://*.zagruzitfoto.com/image*
-// @match         http://www.cweb-pix.com/image*
+// @match         http://*.zagruzitfoto.com/*
+// @match         http://www.cweb-pix.com/*
 // @match         http://*.i39.org/img/image*
 // @match         http://*.intergranada.com/images/?*
 // @match         http://*.partizansk.eu/foto/image*
@@ -776,6 +774,7 @@
 // @match         http://*.4ufrom.me/view*
 // @match         http://*.img3x.net/picture*
 // @match         http://www.2i.cz/*
+// @match         http://2tu.me/view*
 // ==/UserScript==
 
 if (typeof unsafeWindow === "undefined")
@@ -1665,7 +1664,6 @@ function makeworld()
 	case "i.shawnjiang.com":
 	case "images.tapasilo.org":
 	case "upload.khontai.com":
-	case "codefuture-co-uk.best-products-shop.com":
 	case "pic.dnjc8.com":
 	case "image.pantyhosemania.info":
 	case "vmei.info":
@@ -1750,6 +1748,7 @@ function makeworld()
 	case "imagerule.com":
 	case "1y9y.com":
 	case "host4images.com":
+	case "2tu.me":	
 		i = ev('.//img[@id="photo"]');
 		break;
 	case "picamatic.com":
@@ -1957,7 +1956,6 @@ function makeworld()
 	case "img.androidteclive.com":
 	case "resimupload.org":
 	case "myimg.me":
-	case "caps.incitorrent.com":
 	case "i.ruspotting.net":
 	case "upic.kz":
 	case "hosting.webspell.fr":
