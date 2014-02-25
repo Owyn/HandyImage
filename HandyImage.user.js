@@ -3,7 +3,7 @@
 // @namespace     handyimage
 // @author        Owyn
 // @contributors  U Bless
-// @version       2014.02.24
+// @version       2014.02.25
 // @updateURL     https://github.com/Owyn/HandyImage/raw/master/HandyImage.user.js
 // @downloadURL   https://github.com/Owyn/HandyImage/raw/master/HandyImage.user.js
 // @homepage      https://userscripts.org/scripts/show/166494
@@ -47,7 +47,6 @@
 // @match         http://*.imagecurl.com/view*
 // @match         http://*.imagecurl.org/view*
 // @match         http://*.euro-pic.eu/share*
-// @match         http://*.amateurfreak.org/share*
 // @match         http://*.imagescream.com/?v=*
 // @match         http://*.imagescream.com/img/soft/image*
 // @match         http://*.picturescream.asia/*
@@ -284,7 +283,6 @@
 // @match         http://www.fotoszok.pl/show*
 // @match         http://*.imglink.ru/show*
 // @match         http://zapodaj.net/*.html
-// @match         http://q3.cz/view*
 // @match         http://www.pixic.ru/view*
 // @match         http://www.imagesup.de/picture.php?code=*
 // @match         http://www.pornbus.org/show*
@@ -504,7 +502,6 @@
 // @match         http://*.ngarko.free.fr/view*
 // @match         http://*.upload.qoonal.com/show*
 // @match         http://*.add-screen.com/view*
-// @match         http://*.elitecore.us/img/view*
 // @match         http://*.image-upload.net/p*
 // @match         http://image.siroro.co.uk/p*
 // @match         http://into.na.tl/view*
@@ -552,7 +549,6 @@
 // @match         http://pic.freelian.com/?*
 // @match         http://*.image.alesher.com/?*
 // @match         http://ch.1798.in/?*
-// @match         http://i.shawnjiang.com/?*
 // @match         http://*.images.tapasilo.org/?*
 // @match         http://upload.khontai.com/?*
 // @match         http://pic.dnjc8.com/?*
@@ -651,7 +647,7 @@
 // @match         http://*.webjardiner.com/hebergement_images_photos/image*
 // @match         http://*.zagruzitfoto.com/*
 // @match         http://www.cweb-pix.com/*
-// @match         http://*.i39.org/img/image*
+// @match         http://*.i39.org/img/*
 // @match         http://*.intergranada.com/images/?*
 // @match         http://*.partizansk.eu/foto/image*
 // @match         http://*.xenopix.com/?*
@@ -1019,7 +1015,6 @@ function makeworld()
 		i = ev('.//a[@class]');
 		if(i){i.src = i.href;}
 		break;
-	case "amateurfreak.org":
 	case "euro-pic.eu":
 	case "picpicture.com":
 	case "picfox.org":
@@ -1173,7 +1168,6 @@ function makeworld()
 	case "hostpornpics.net":
 	case "uploadimage.ro":
 	case "marmolak.net":
-	case "elitecore.us":
 		i = ev('.//img[contains(@src,"img.php")]');
 		break;
 	case "imageno.com":
@@ -1190,7 +1184,6 @@ function makeworld()
 		i = ev('.//img[contains(@src,"image")]');
 		break;
 	case "iv.pl":
-	case "q3.cz":
 	case "imagevau.eu":
 	case "up.sukrbnat.com":
 	case "funextra.hostzi.com":
@@ -1661,7 +1654,6 @@ function makeworld()
 	case "pic.freelian.com":
 	case "image.alesher.com":
 	case "ch.1798.in":
-	case "i.shawnjiang.com":
 	case "images.tapasilo.org":
 	case "upload.khontai.com":
 	case "pic.dnjc8.com":
