@@ -715,6 +715,7 @@
 // @match         http://www.imagefap.com/photo/*
 // @match         http://filefap.com/view*
 // @match         *://imgur.com/*
+// @exclude       *://imgur.com/*,*
 // @exclude       *://imgur.com/gallery/*
 // @exclude       *://imgur.com/g/*
 // @exclude       *://imgur.com/a/*
