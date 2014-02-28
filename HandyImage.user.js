@@ -3,7 +3,7 @@
 // @namespace     handyimage
 // @author        Owyn
 // @contributors  U Bless
-// @version       2014.02.25
+// @version       2014.02.28
 // @updateURL     https://github.com/Owyn/HandyImage/raw/master/HandyImage.user.js
 // @downloadURL   https://github.com/Owyn/HandyImage/raw/master/HandyImage.user.js
 // @homepage      https://userscripts.org/scripts/show/166494
@@ -219,7 +219,7 @@
 // @match         http://pix.toile-libre.org/?img*
 // @match         http://uppix.com/s*
 // @match         http://www.servimg.com/image*
-// @match         http://*.upix.me/files/*
+// @match         http://*.upix.me/files*
 // @match         http://*.pixelup.net/image*
 // @match         http://*.pixelup.net/image*
 // @match         http://*.picsee.net/*
