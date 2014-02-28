@@ -440,7 +440,6 @@
 // @match         http://*.images-hosting.tk/view*
 // @match         http://demo.chevereto.com/*
 // @match         http://*.imagewoof.com/view_image*
-// @match         http://*.image-hoster.org/share*
 // @match         http://*.hostimg.org/show-image.php?id=*
 // @match         http://*.ximg.co.uk/view*
 // @match         http://sl-images.ath.cx/view* 
@@ -543,7 +542,6 @@
 // @match         http://*.fmsecond.com/p*
 // @match         http://*.up.kfesfahan.com/?*
 // @match         http://*.dump.omertabeyond.com/p*
-// @match         http://*.imaa.hebergratuit.com/?*
 // @match         http://*.img.tfktech.com/p*
 // @match         http://imagehost.freddyferdianjaya.com/?*
 // @match         http://pic.freelian.com/?*
@@ -575,7 +573,6 @@
 // @match         http://*.liolink.com/*
 // @match         http://*.fastpics.altervista.org/?*
 // @match         http://*.imagesturk.net/*
-// @match         http://one.ilikecamera.com/*
 // @match         http://*.imagesloading.altervista.org/?*
 // @match         http://*.showmyimage.com/*
 // @match         http://*.phpbbmods.it/immaggini* 
@@ -681,7 +678,6 @@
 // @match         http://*.pic.sheep7.com/*
 // @match         http://*.kuvajako.com/*
 // @match         http://*.upanh.ovo.vn/*
-// @match         http://*.obrazki.hqsite.org/*
 // @match         http://*.uploads.li/*
 // @match         http://imgsavvy.com/img-*
 // @match         http://*.imagesaur.com/*
@@ -1038,7 +1034,6 @@ function makeworld()
 	case "xtupload.com":
 	case "t.williamgates.net":
 	case "upload.fpsthailand.com":
-	case "image-hoster.org":
 	case "vippix.com":
 	case "onlinepic.net":
 		//i = ev('.//img[@id="iimg"]');
@@ -1650,7 +1645,6 @@ function makeworld()
 	case "fragcap.com":
 	case "img.wangolds.com":
 	case "up.kfesfahan.com":
-	case "imaa.hebergratuit.com":
 	case "imagehost.freddyferdianjaya.com":
 	case "pic.freelian.com":
 	case "image.alesher.com":
@@ -1935,7 +1929,6 @@ function makeworld()
 	case "liolink.com":
 	case "fastpics.altervista.org":
 	case "imagesturk.net":
-	case "one.ilikecamera.com":
 	case "showmyimage.com":
 	case "img.dulieu.net":
 	case "givme.de":
@@ -2011,7 +2004,6 @@ function makeworld()
 	case "pic.sheep7.com":
 	case "kuvajako.com":
 	case "upanh.ovo.vn":
-	case "obrazki.hqsite.org":
 	case "uploads.li":
 	case "imagesaur.com":
 	case "wrzucaj.net":
