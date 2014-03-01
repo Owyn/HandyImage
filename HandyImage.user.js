@@ -3,7 +3,7 @@
 // @namespace     handyimage
 // @author        Owyn
 // @contributors  U Bless
-// @version       2014.02.28
+// @version       2014.03.01
 // @updateURL     https://github.com/Owyn/HandyImage/raw/master/HandyImage.user.js
 // @downloadURL   https://github.com/Owyn/HandyImage/raw/master/HandyImage.user.js
 // @homepage      https://userscripts.org/scripts/show/166494
@@ -768,6 +768,7 @@
 // @match         http://*.img3x.net/picture*
 // @match         http://www.2i.cz/*
 // @match         http://2tu.me/view*
+// @match         http://awesomescreenshot.com/*
 // ==/UserScript==
 
 if (typeof unsafeWindow === "undefined")
@@ -914,6 +915,9 @@ function makeworld()
 	case "motherless.com":
 		i = ev('.//div[@id="media-media"]/div/a/img');
 		break;
+	case "awesomescreenshot.com":
+	    	i = ev('.//img[@id="screenshot"]');
+		break;	
 	case "imgur.com":
 		j = true;
 		i = ev('//link[@rel="image_src"]');
