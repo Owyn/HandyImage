@@ -739,7 +739,7 @@
 // @match         http://*.bulkimg.info/img-*
 // @match         http://*.img.spicyzilla.com/img-*
 // @match         http://*.imgstudio.org/img-*
-// @match         http://*.imgsure.com/img-*
+// @match         http://*.imgsure.com/*
 // @match         http://*.onlinepic.net/share*
 // @match         http://imgboxxx.com/view*
 // @match         http://*.imghere.net/view*
@@ -1532,8 +1532,20 @@ function makeworld()
 			i = ev('.//img[contains(@src,"/uploads/")]');
 		}
 		break;
-	case "imageheli.com":
 	case "imgsure.com":
+		i = ev('.//input[@value="Continue to image"]');
+		dp=true;
+		if(i) 
+		{
+			i.click();
+			img = 1;
+		}
+		else
+		{
+			i = ev('.//img[contains(@src,"uploads/")]');
+		}
+		break;
+	case "imageheli.com":
 		i = ev('.//input[@value="Continue to image"]');
 		dp=true;
 		if(i) 
