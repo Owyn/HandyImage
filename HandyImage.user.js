@@ -875,7 +875,7 @@ function onbeforeunload(e) // back helper
 function makeimage()
 {
 	loadCfg();
-	if(cfg_direct){onbeforeunload(); window.location.href = img.src;return false;}
+	if(cfg_direct){document.cookie= "hji=" + img.src; window.location.href = img.src;return false;}
 	if(cfg_bgclr){document.body.bgColor = cfg_bgclr;}
 	document.body.style.margin = "0px";
 	document.body.innerHTML = "<style>img { position: absolute; top: 0; right: 0; bottom: 0; left: 0; }</style>"; // center image
