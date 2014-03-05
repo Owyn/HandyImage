@@ -3,7 +3,7 @@
 // @namespace     handyimage
 // @author        Owyn
 // @contributors  U Bless
-// @version       2014.03.04
+// @version       2014.03.05
 // @updateURL     https://github.com/Owyn/HandyImage/raw/master/HandyImage.user.js
 // @downloadURL   https://github.com/Owyn/HandyImage/raw/master/HandyImage.user.js
 // @homepage      https://userscripts.org/scripts/show/166494
@@ -770,6 +770,7 @@
 // @match         http://2tu.me/view*
 // @match         http://awesomescreenshot.com/*
 // @match         http://*.istoreimg.com/i/*
+// @match         http://*.catpic.biz/view*
 // ==/UserScript==
 
 if (typeof unsafeWindow === "undefined")
@@ -1877,6 +1878,7 @@ function makeworld()
 	case "love69.org":
 	case "picup.in":
 	case "photoup.biz":
+	case "catpic.biz":
 		i = ev('.//a[contains(@href,"/images/")]');
 		if(i){i.src = i.href.substr(i.href.lastIndexOf("http://"));}
 		break;
