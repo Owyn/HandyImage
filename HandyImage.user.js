@@ -773,6 +773,7 @@
 // @match         http://*.catpic.biz/view*
 // @match         http://*.imgcoin.net/img-*
 // @match         http://*.08lkk.com/Image/img-*
+// @match         *://*.flickr.com/photos/*
 // ==/UserScript==
 
 if (typeof unsafeWindow === "undefined")
@@ -897,6 +898,20 @@ function makeworld()
 {
 	if(img){return false;}
 	var i;
+	function find_text_in_scripts(a, b)
+	{
+		var s = document.getElementsByTagName("script");
+		for(var c=0;c<s.length;c++) 
+		{
+			var start_pos = s[c].innerHTML.indexOf(a);
+			if(start_pos == -1){continue;}
+			start_pos += a.length;
+			i = s[c];
+			i.src = decodeURIComponent(s[c].innerHTML.substring(start_pos,s[c].innerHTML.indexOf(b,start_pos)));
+			return true;
+		}
+		return false;
+	}
 	// per-host image detection
 	switch (iurl)
 	{
@@ -1045,18 +1060,11 @@ function makeworld()
 	case "vippix.com":
 	case "onlinepic.net":
 		//i = ev('.//img[@id="iimg"]');
-		var fn;
-		var f = document.getElementsByTagName("script");
-		for(c=0;c<f.length;c++) 
-		{
-			fn = f[c].innerHTML.indexOf("<img src=");
-			if(fn != -1)
-			{
-				i = f[c];
-				i.src = f[c].innerHTML.substr(fn+10, f[c].innerHTML.indexOf("'", fn+10)-fn-10);
-				break;
-			}
-		}
+		find_text_in_scripts("<img src='", "'");
+		break;
+	case "flickr.com":
+	case "secure.flickr.com":
+		find_text_in_scripts('"o":{"url":"', '"');
 		break;
 	case "pix-x.net":
 		i = ev('.//img[contains(@src,"images/")]');if(i){break;}
@@ -1100,18 +1108,7 @@ function makeworld()
 	case "radikal-foto.ru":
 	case "f-page.ru":
 	case "f-lite.ru":
-		var fn;
-		var f = document.getElementsByTagName("script");
-		for(c=0;c<f.length;c++) 
-		{
-			fn = f[c].innerHTML.indexOf('"Url":"');
-			if(fn != -1)
-			{
-				i = f[c];
-				i.src = f[c].innerHTML.substr(fn+7, f[c].innerHTML.indexOf('"', fn+7)-fn-7);
-				break;
-			}
-		}
+		find_text_in_scripts('"Url":"', '"');
 		break;
 	case "subimg.net":
 		i = ev('.//img[@class="magnify"]');
