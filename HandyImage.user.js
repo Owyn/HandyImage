@@ -3,7 +3,7 @@
 // @namespace     handyimage
 // @author        Owyn
 // @contributors  U Bless
-// @version       2014.03.06
+// @version       2014.03.07
 // @updateURL     https://github.com/Owyn/HandyImage/raw/master/HandyImage.user.js
 // @downloadURL   https://github.com/Owyn/HandyImage/raw/master/HandyImage.user.js
 // @homepage      https://userscripts.org/scripts/show/166494
@@ -772,6 +772,7 @@
 // @match         http://*.istoreimg.com/i/*
 // @match         http://*.catpic.biz/view*
 // @match         http://*.imgcoin.net/img-*
+// @match         http://*.08lkk.com/Image/img-*
 // ==/UserScript==
 
 if (typeof unsafeWindow === "undefined")
@@ -1440,6 +1441,7 @@ function makeworld()
 	case "imggoo.com":
 	case "imgcoco.com":
 	case "imgcoin.net":
+	case "08lkk.com":
 		i = ev('.//img[contains(@src,"/upload/")]');
 		dp=true;
 		if(!i)
