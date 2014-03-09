@@ -904,7 +904,7 @@ function find_text_in_scripts(a, b)
 		if(start_pos == -1){continue;}
 		start_pos += a.length;
 		i = s[c];
-		i.src = decodeURIComponent(s[c].innerHTML.substring(start_pos,s[c].innerHTML.indexOf(b,start_pos)));
+		i.src = decodeURIComponent(s[c].innerHTML.substring(start_pos,s[c].innerHTML.indexOf(b,start_pos)).split("\\").join("")); // slpit\join fix for stupidfox GreaseMonkey
 		return true;
 	}
 	return false;
