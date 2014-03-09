@@ -774,6 +774,7 @@
 // @match         http://*.imgcoin.net/img-*
 // @match         http://*.08lkk.com/Image/img-*
 // @match         *://*.flickr.com/photos/*
+// @match         http://*.imgrex.com/view*
 // ==/UserScript==
 
 if (typeof unsafeWindow === "undefined")
@@ -1742,6 +1743,7 @@ function makeworld()
 	case "imghere.net":
 	case "imgleech.com":
 	case "imghoney.com":
+	case "imgrex.com":
 		i = ev('.//img[contains(@src,"images/")]');
 		break;
 	case "fotosik.pl":
