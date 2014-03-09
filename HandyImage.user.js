@@ -2,8 +2,8 @@
 // @name          Handy Image
 // @namespace     handyimage
 // @author        Owyn
-// @contributors  U Bless
-// @version       2014.03.07
+// @contributors  U BLESS
+// @version       2014.03.09
 // @updateURL     https://github.com/Owyn/HandyImage/raw/master/HandyImage.user.js
 // @downloadURL   https://github.com/Owyn/HandyImage/raw/master/HandyImage.user.js
 // @homepage      https://userscripts.org/scripts/show/166494
@@ -1467,7 +1467,6 @@ function makeworld()
 			break;
 		}
 	case "pixup.us":
-	case "imgtube.net":
 	case "imgcorn.com":
 	case "imgonion.com":
 	case "xximg.net":
@@ -1485,7 +1484,6 @@ function makeworld()
 		}
 	case "imgonion.com":
 	case "pixup.us":
-	case "imgtube.net":
 	case "imgcorn.com":
 	case "zonezeedimage.com":
 	case "croftimage.com":
@@ -1521,6 +1519,7 @@ function makeworld()
 		i = ev('.//img[contains(@src,"/big/")]');
 		break;
 	case "cloudimg.net":
+	case "imgtube.net":	
 		i = ev('.//input[@value="Continue to image"]');
 		dp=true;
 		if(i) 
