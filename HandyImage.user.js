@@ -834,7 +834,7 @@ var tb;
 var to = false;
 var timeout = 1000;
 var FireFox = ((navigator.userAgent.indexOf('Firefox') != -1) ? true : false);
-var img;
+var i;
 var j;
 var iurl = window.location.hostname;
 if(iurl.indexOf("www.") == 0)
@@ -844,7 +844,7 @@ if(iurl.indexOf("www.") == 0)
 
 function ws()
 {
-	if(!(FireFox && img.src.lastIndexOf(".gif") != -1)) // NOT firefox + gif = no animation
+	if(!(FireFox && i.src.lastIndexOf(".gif") != -1)) // NOT firefox + gif = no animation
 	{
 		unsafeWindow.stop();
 	}
@@ -853,9 +853,9 @@ function ws()
 function sanitize() // lol I'm such a hacker
 {
 	var lasttask = setTimeout(function() {},0);
-	for(var i = lasttask; i > 0; i--)
+	for(var n = lasttask; n > 0; n--)
 	{
-		clearTimeout(i);
+		clearTimeout(n);
 	}
 }
 
@@ -880,44 +880,44 @@ function onbeforeunload(e) // back helper
 function makeimage()
 {
 	loadCfg();
-	if(cfg_direct){document.cookie= "hji=" + img.src; window.location.href = img.src;return false;}
+	if(cfg_direct){document.cookie= "hji=" + i.src; window.location.href = i.src;return false;}
 	if(cfg_bgclr){document.body.bgColor = cfg_bgclr;}
 	document.body.style.margin = "0px";
 	document.body.innerHTML = "<style>img { position: absolute; top: 0; right: 0; bottom: 0; left: 0; }</style>"; // center image
-	var isrc = img.src;
-	img = document.createElement("img");
-	img.src = isrc;
-	img.style.margin = "auto"; // center image
-	document.body.appendChild(img);
-	img.addEventListener("click", rescale, true);
+	var isrc = i.src;
+	i = document.createElement("img");
+	i.src = isrc;
+	i.style.margin = "auto"; // center image
+	document.body.appendChild(i);
+	i.addEventListener("click", rescale, true);
 	window.addEventListener("keydown", onkeydown, true);
 	if(dp){console.warn("you are on a double-page image hosting (probably)");window.addEventListener("beforeunload", onbeforeunload, true);}
 	setTimeout(function() { autoresize(); }, 0);
 }
 
+function find_text_in_scripts(a, b)
+{
+	var s = document.getElementsByTagName("script");
+	for(var c=0;c<s.length;c++) 
+	{
+		var start_pos = s[c].innerHTML.indexOf(a);
+		if(start_pos == -1){continue;}
+		start_pos += a.length;
+		i = s[c];
+		i.src = decodeURIComponent(s[c].innerHTML.substring(start_pos,s[c].innerHTML.indexOf(b,start_pos)));
+		return true;
+	}
+	return false;
+}
+
 function makeworld()
 {
-	if(img){return false;}
-	var i;
-	function find_text_in_scripts(a, b)
-	{
-		var s = document.getElementsByTagName("script");
-		for(var c=0;c<s.length;c++) 
-		{
-			var start_pos = s[c].innerHTML.indexOf(a);
-			if(start_pos == -1){continue;}
-			start_pos += a.length;
-			i = s[c];
-			i.src = decodeURIComponent(s[c].innerHTML.substring(start_pos,s[c].innerHTML.indexOf(b,start_pos)));
-			return true;
-		}
-		return false;
-	}
+	if(i){return false;}
 	// per-host image detection
 	switch (iurl)
 	{
 	case "github.com":
-		cfg();img=1;break;
+		cfg();break;
 	case "vvcap.net":
 	case "simplest-image-hosting.net":
 	case "hostpic.de":
@@ -1157,7 +1157,6 @@ function makeworld()
 			i = ev('.//a');
 			if(i)
 			{
-				img = i;
 				window.location.href = i.href;
 			}
 		}
@@ -1464,7 +1463,6 @@ function makeworld()
 			now.setTime(time);
 			document.cookie = 'user=' + 'true' + '; expires=' + now.toGMTString() + '; path=/';
 			setTimeout(function(){window.location.href = window.location.pathname + "?imgContinue=1";},500);
-			img = i;
 			break;
 		}
 	case "pixup.us":
@@ -1480,7 +1478,6 @@ function makeworld()
 		if(i) 
 		{
 			i.click();
-			img = 1;
 			break;
 		}
 	case "imgonion.com":
@@ -1527,7 +1524,6 @@ function makeworld()
 		{
 			$("browser_fingerprint").value = unsafeWindow.pstfgrpnt(true);
 			i.click();
-			img = 1;
 		}
 		else
 		{
@@ -1540,7 +1536,6 @@ function makeworld()
 		if(i) 
 		{
 			i.click();
-			img = 1;
 		}
 		else
 		{
@@ -1553,7 +1548,6 @@ function makeworld()
 		if(i) 
 		{
 			i.click();
-			img = 1;
 		}
 		else
 		{
@@ -1691,7 +1685,6 @@ function makeworld()
 		i = ev('.//a[contains(@href,"enter")]');
 		if(i)
 		{
-			img = i;
 			window.location.href = i.href;
 			break;
 		}
@@ -1743,7 +1736,6 @@ function makeworld()
 	case "imghere.net":
 	case "imgleech.com":
 	case "imghoney.com":
-	case "imgrex.com":
 		i = ev('.//img[contains(@src,"images/")]');
 		break;
 	case "fotosik.pl":
@@ -1904,8 +1896,19 @@ function makeworld()
 		i = ev('.//input[contains(@value,"' + iurl + '/img/")]');
 		if(i){i.src = i.value;}
 		break;
+	case "imgrex.com":
+		i = ev('.//form[@action="' + window.location.pathname.substr(1) + window.location.search + '"]');
+		if(i)
+		{
+			i.submit();
+		}
+		else
+		{
+			i = ev('.//img[contains(@src,"images/")]');
+		}
+		break;
 	case "qrrro.com":
-		i = ev('.//form[@name="F1"]');
+		i = ev('.//form');
 		dp=true;
 		if(i)
 		{
@@ -2068,7 +2071,7 @@ function makeworld()
 		j = true;
 		dp=true;
 		i = ev('.//input[@value="YES"]');
-		if(i){i.click();img = i;}
+		if(i){i.click();}
 	case "imagepdb.com":
 	case "imagebam.com":
 	case "imgfantasy.com":
@@ -2128,7 +2131,6 @@ function makeworld()
 	//
 	if(i && i.src)
 	{
-		img = i;
 		observer.disconnect();
 		function clr_pgn()
 		{
@@ -2175,26 +2177,26 @@ function makeworld()
 
 function changecursor()
 {
-	img.style.margin = "auto";
+	i.style.margin = "auto";
 	var root = document.compatMode=='BackCompat'? document.body : document.documentElement;
-	if(!rescaled && ((img.naturalHeight == root.clientHeight) || (img.naturalWidth == root.clientWidth)) && ((root.clientHeight == root.scrollHeight) && (root.clientWidth == root.scrollWidth)) ) // no scrollbars and one img dimension is equal to screen
+	if(!rescaled && ((i.naturalHeight == root.clientHeight) || (i.naturalWidth == root.clientWidth)) && ((root.clientHeight == root.scrollHeight) && (root.clientWidth == root.scrollWidth)) ) // no scrollbars and one img dimension is equal to screen
 	{
-		img.style.cursor = "";
+		i.style.cursor = "";
 	}
-	else if((img.naturalHeight > root.clientHeight) || (img.naturalWidth > root.clientWidth))
+	else if((i.naturalHeight > root.clientHeight) || (i.naturalWidth > root.clientWidth))
 	{
 		if(rescaled)
 		{
-			img.style.cursor = "-moz-zoom-in";
-			img.style.cursor = "-webkit-zoom-in";
+			i.style.cursor = "-moz-zoom-in";
+			i.style.cursor = "-webkit-zoom-in";
 		}
 		else
 		{
-			img.style.cursor = "-moz-zoom-out";
-			img.style.cursor = "-webkit-zoom-out";
-			if(img.naturalHeight > root.clientHeight) // chrome bug fuuuuu
+			i.style.cursor = "-moz-zoom-out";
+			i.style.cursor = "-webkit-zoom-out";
+			if(i.naturalHeight > root.clientHeight) // chrome bug fuuuuu
 			{
-				img.style.margin = "0px auto";
+				i.style.margin = "0px auto";
 			}
 		}
 	}
@@ -2202,13 +2204,13 @@ function changecursor()
 	{
 		if(rescaled)
 		{
-			img.style.cursor = "-moz-zoom-out";
-			img.style.cursor = "-webkit-zoom-out";
+			i.style.cursor = "-moz-zoom-out";
+			i.style.cursor = "-webkit-zoom-out";
 		}
 		else
 		{
-			img.style.cursor = "-moz-zoom-in";
-			img.style.cursor = "-webkit-zoom-in";
+			i.style.cursor = "-moz-zoom-in";
+			i.style.cursor = "-webkit-zoom-in";
 		}
 	}
 }
@@ -2231,11 +2233,11 @@ function rescale(event)
 				ex = event.x;
 				ey = event.y;
 			}
-			ex -= img.offsetLeft;
-			ey -= img.offsetTop;
-			scale = Math.min((window.innerWidth / img.naturalWidth), (window.innerHeight / img.naturalHeight));
+			ex -= i.offsetLeft;
+			ey -= i.offsetTop;
+			scale = Math.min((window.innerWidth / i.naturalWidth), (window.innerHeight / i.naturalHeight));
 		}
-		img.removeAttribute("style");
+		i.removeAttribute("style");
 		changecursor();
 		if(event != 0)
 		{
@@ -2244,19 +2246,19 @@ function rescale(event)
 	}
 	else
 	{
-		img.removeAttribute("style");
-		if(img.naturalWidth != window.innerWidth)
+		i.removeAttribute("style");
+		if(i.naturalWidth != window.innerWidth)
 		{
-			img.style.width = window.innerWidth + "px";
+			i.style.width = window.innerWidth + "px";
 			rescaled = true;
 		}
 		var root = document.compatMode=='BackCompat'? document.body : document.documentElement;
 		if((root.scrollHeight != root.clientHeight) || (root.scrollWidth != root.clientWidth))
 		{
-			img.removeAttribute("style");
-			if(img.naturalHeight != window.innerHeight)
+			i.removeAttribute("style");
+			if(i.naturalHeight != window.innerHeight)
 			{
-				img.style.height = window.innerHeight + "px";
+				i.style.height = window.innerHeight + "px";
 				rescaled = true;
 			}
 		}
@@ -2267,18 +2269,18 @@ function rescale(event)
 var ARC = 0;
 function autoresize()
 {
-	if(img.naturalWidth != 0)
+	if(i.naturalWidth != 0)
 	{
-		var title = img.src.substr(img.src.lastIndexOf("/")+1);
+		var title = i.src.substr(i.src.lastIndexOf("/")+1);
 		if(title.indexOf("?") != -1)
 		{
 			title = title.substr(0, title.indexOf("?"));
 		}
-		document.title = title + " (" + img.naturalWidth + "x" + img.naturalHeight + ")"; // title
+		document.title = title + " (" + i.naturalWidth + "x" + i.naturalHeight + ")"; // title
 		var link = document.createElement('link');
 		link.type = 'image/x-icon';
 		link.rel = 'shortcut icon';
-		link.href = img.src;
+		link.href = i.src;
 		document.getElementsByTagName('head')[0].appendChild(link);
 		var root = document.compatMode=='BackCompat'? document.body : document.documentElement;
 		if(cfg_fitWH && (root.clientHeight != root.scrollHeight) && (root.clientWidth != root.scrollWidth)) // both scrollbars detected
@@ -2304,7 +2306,7 @@ function autoresize()
 		ARC++;
 		if(ARC == 25 || ARC == 250 || ARC == 750)
 		{
-			img.src = img.src; // lol fix
+			i.src = i.src; // lol fix
 		}
 		setTimeout(function() { autoresize(); }, 10);
 	}
@@ -2416,7 +2418,7 @@ function onkeydown (b)
 		cancelEvent(b);
 		break;
 	case KeyEvent.DOM_VK_P:
-		if(img && !FireFox) // Chrome nosave bug
+		if(i && !FireFox) // Chrome nosave bug
 		{
 			window.location.href = "https://github.com/Owyn/HandyImage/configuration";
 		}
@@ -2461,7 +2463,7 @@ function cfg()
 			alert("Configuration Saved");
 			if($("hji_cfg_2_bgclr").value){document.body.bgColor = $("hji_cfg_2_bgclr").value;}else{document.body.removeAttribute("bgColor");}
 		}
-		if(img && img.src){img.removeEventListener("click", rescale, true);}
+		if(i && i.src){i.removeEventListener("click", rescale, true);}
 		window.removeEventListener("keydown", onkeydown, true);
 		document.head.innerHTML = "";
 		document.body.innerHTML = "";
