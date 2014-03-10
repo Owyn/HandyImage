@@ -1189,7 +1189,6 @@ function makeworld()
 	case "up.sukrbnat.com":
 	case "funextra.hostzi.com":
 	case "freakimage.com":
-	case "1pics.ru":
 	case "imageurlhost.com":
 	case "superkipje.com":
 	case "yourimage24.de":
@@ -2056,6 +2055,7 @@ function makeworld()
 	case "vipeep.com":
 	case "pictureupl.info":
 	case "beeimg.com":	
+	case "1pics.ru":	
 		i = ev('.//img[contains(@src,"' + iurl + '/images/")]');
 		break;
 	case "shareimages.com":
