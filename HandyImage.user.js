@@ -777,6 +777,7 @@
 // @match         http://*.08lkk.com/Image/img-*
 // @match         *://*.flickr.com/photos/*
 // @match         http://*.imgrex.com/view*
+// @match         http://www.amateri.cz/g*/*
 // ==/UserScript==
 
 if (typeof unsafeWindow === "undefined")
@@ -1072,6 +1073,12 @@ function makeworld()
 	case "flickr.com":
 	case "secure.flickr.com":
 		find_text_in_scripts('"o":{"url":"', '"');
+		break;
+	case "amateri.cz":
+		if(find_text_in_scripts('var orig_url="', '"'))
+		{
+			i.src = i.src.replace('http://www.amateri.cz/orig.php?&img=', 'http://img2.amateri.cz/users/');
+		}
 		break;
 	case "pix-x.net":
 		i = ev('.//img[contains(@src,"images/")]');if(i){break;}
