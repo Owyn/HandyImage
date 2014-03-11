@@ -3,7 +3,7 @@
 // @namespace     handyimage
 // @author        Owyn
 // @contributors  U BLESS
-// @version       2014.03.10
+// @version       2014.03.11
 // @updateURL     https://github.com/Owyn/HandyImage/raw/master/HandyImage.user.js
 // @downloadURL   https://github.com/Owyn/HandyImage/raw/master/HandyImage.user.js
 // @homepage      https://userscripts.org/scripts/show/166494
@@ -936,8 +936,12 @@ function makeworld()
 		i = ev('.//div[@id="media-media"]/div/a/img');
 		break;
 	case "awesomescreenshot.com":
-	    	i = ev('.//img[@id="screenshot"]');
-		break;	
+	    i = ev('.//img[@id="screenshot"]');
+		break;
+	case "imagefap.com":
+		i = ev('.//a[@imageid="'+window.location.pathname.substring(7,window.location.pathname.lastIndexOf("/"))+'"]');
+		if(i){i.src = i.href;}
+		break;
 	case "imgur.com":
 		j = true;
 		i = ev('//link[@rel="image_src"]');
@@ -1400,7 +1404,6 @@ function makeworld()
 	case "hostingfailov.com":
 	case "zimagez.com":
 	case "chickupload.com":
-	case "imagefap.com":
 		i = ev('.//img[contains(@src,"/full/")]');
 		break;
 	case "picbank.pl":
