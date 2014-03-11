@@ -109,7 +109,9 @@
 // @match         http://www.bilder-hochladen.net/file*
 // @match         http://www.bild.me/bild.php?*
 // @match         http://www.imagesnake.com/show*
+// @match         http://www.imagesnake.com/img*
 // @match         http://www.freebunker.com/show*
+// @match         http://www.freebunker.com/img*
 // @match         http://bayimg.com/*
 // @match         http://*.directupload.net/file*
 // @match         http://*.imgpo.st/*
