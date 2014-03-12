@@ -779,6 +779,8 @@
 // @match         http://*.imgrex.com/view*
 // @match         http://www.amateri.cz/g*/*
 // @match         http://*.imgshow.me/*
+// @match         *://*.wikipedia.org/wiki/File:*.jp*
+// @match         *://*.wikipedia.org/wiki/File:*.png
 // ==/UserScript==
 
 if (typeof unsafeWindow === "undefined")
@@ -1145,6 +1147,7 @@ function makeworld()
 		break;
 	case "picsee.net":
 	case "imgbox.in":
+	case "wikipedia.org":
 		i = ev('.//a[contains(@href,"/upload")]');
 		if(i){i.src = i.href;}
 		break;
