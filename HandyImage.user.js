@@ -1147,7 +1147,6 @@ function makeworld()
 		break;
 	case "picsee.net":
 	case "imgbox.in":
-	case "wikipedia.org":
 		i = ev('.//a[contains(@href,"/upload")]');
 		if(i){i.src = i.href;}
 		break;
@@ -2108,6 +2107,10 @@ function makeworld()
 			break;
 		case "imagevenue.com":
 			i = ev('.//img[contains(@src,"/loc")]');
+			break;
+		case "wikipedia.org":
+			i = ev('.//a[contains(@href,"/upload")]');
+			if(i){i.src = i.href;}
 			break;
 		case "freeamateurteens.net":
 		case "img-vidiklub.com":
