@@ -778,6 +778,7 @@
 // @match         *://*.flickr.com/photos/*
 // @match         http://*.imgrex.com/view*
 // @match         http://www.amateri.cz/g*/*
+// @match         http://*.imgshow.me/*
 // ==/UserScript==
 
 if (typeof unsafeWindow === "undefined")
@@ -2068,6 +2069,7 @@ function makeworld()
 	case "pictureupl.info":
 	case "beeimg.com":	
 	case "1pics.ru":	
+	case "imgshow.me":
 		i = ev('.//img[contains(@src,"' + iurl + '/images/")]');
 		break;
 	case "shareimages.com":
