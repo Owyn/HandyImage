@@ -923,7 +923,7 @@ function makeworld()
 	switch (iurl)
 	{
 	case "github.com":
-		cfg();break;
+		i=1;cfg();break;
 	case "vvcap.net":
 	case "simplest-image-hosting.net":
 	case "hostpic.de":
