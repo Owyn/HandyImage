@@ -48,7 +48,7 @@
 // @match         http://*.imagecurl.org/view*
 // @match         http://*.euro-pic.eu/share*
 // @match         http://*.imagescream.com/?v=*
-// @match         http://*.imagescream.com/img/soft/image*
+// @match         http://*.imagescream.com/img/*
 // @match         http://*.picturescream.asia/*
 // @match         http://*.imagepdb.com/?*
 // @match         http://*.xxxhost.me/view*
