@@ -3,7 +3,7 @@
 // @namespace     handyimage
 // @author        Owyn
 // @contributors  U BLESS
-// @version       2014.03.11
+// @version       2014.03.16
 // @updateURL     https://github.com/Owyn/HandyImage/raw/master/HandyImage.user.js
 // @downloadURL   https://github.com/Owyn/HandyImage/raw/master/HandyImage.user.js
 // @homepage      https://userscripts.org/scripts/show/166494
@@ -91,6 +91,7 @@
 // @match         http://*.subirimagenes.com/*.html
 // @match         http://*.screenlist.ru/details.php?image_id=*
 // @match         http://qrrro.com/images*
+// @match         http://imgmade.com/images*
 // @match         http://*.imgnip.com/view*
 // @match         http://*.imgwiev.tk/?*
 // @match         http://*.javelite.tk/view*
@@ -1922,6 +1923,7 @@ function makeworld()
 		}
 		break;
 	case "qrrro.com":
+	case "imgmade.com":
 		i = ev('.//form');
 		dp=true;
 		if(i)
