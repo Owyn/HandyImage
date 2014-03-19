@@ -714,11 +714,7 @@
 // @match         http://filefap.com/view*
 // @match         *://imgur.com/*
 // @exclude       *://imgur.com/*,*
-// @exclude       *://imgur.com/gallery/*
-// @exclude       *://imgur.com/g/*
-// @exclude       *://imgur.com/a/*
 // @exclude       *://imgur.com/memege*
-// @exclude       *://imgur.com/include*
 // @match         http://motherless.com/*/*
 // @match         http://www.imgult.com/img-*
 // @match         http://*.lustimages.net/*/*/
@@ -952,8 +948,8 @@ function makeworld()
 		break;
 	case "imgur.com":
 		j = true;
-		i = ev('//link[@rel="image_src"]');
-		if(i){i.src = i.href;}
+		i = ev('//meta[@name="twitter:image"]');
+		if(i){i.src = i.content;}
 		break;
 	case "directupload.net":
 		i = ev('//meta[@property="og:image"]');
