@@ -1072,6 +1072,7 @@ function makeworld()
 		break;
 	case "flickr.com":
 	case "secure.flickr.com":
+		j = true; // for flickr non-beta
 		find_text_in_scripts('"o":{"url":"', '"');
 		break;
 	case "amateri.cz":
