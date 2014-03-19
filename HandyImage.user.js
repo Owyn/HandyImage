@@ -3,7 +3,7 @@
 // @namespace     handyimage
 // @author        Owyn
 // @contributors  U BLESS
-// @version       2014.03.17
+// @version       2014.03.19
 // @updateURL     https://github.com/Owyn/HandyImage/raw/master/HandyImage.user.js
 // @downloadURL   https://github.com/Owyn/HandyImage/raw/master/HandyImage.user.js
 // @homepage      https://userscripts.org/scripts/show/166494
@@ -20,7 +20,6 @@
 // @match         http://imgchili.net/show*
 // @match         http://imgchili.com/show*
 // @match         http://imgbox.com/*
-// @exclude       http://imgbox.com/g*
 // @match         http://*.imagetwist.com/*/*
 // @match         http://*.imagevenue.com/img.php?*
 // @match         *://*.imageshack.com/i/*
@@ -782,6 +781,8 @@
 // @match         http://*.imgshow.me/*
 // @match         *://*.wikipedia.org/wiki/File:*.jp*
 // @match         *://*.wikipedia.org/wiki/File:*.png
+// @match         http://*.imgking.us/view*
+// @match         http://*.dragimage.org/img-*
 // ==/UserScript==
 
 if (typeof unsafeWindow === "undefined")
@@ -1521,6 +1522,7 @@ function makeworld()
 	case "imgskull.info":
 	case "istoreimg.com":
 	case "08lkk.com":	
+	case "dragimage.org":
 		i = ev('.//img[contains(@src,"/upload/")]');
 		break;
 	case "xxx.image-server.ru":
@@ -1750,6 +1752,7 @@ function makeworld()
 	case "imghere.net":
 	case "imgleech.com":
 	case "imghoney.com":
+	case "imgking.us":
 		i = ev('.//img[contains(@src,"images/")]');
 		break;
 	case "fotosik.pl":
