@@ -3,7 +3,7 @@
 // @namespace     handyimage
 // @author        Owyn
 // @contributors  U BLESS
-// @version       2014.03.19
+// @version       2014.03.20
 // @updateURL     https://github.com/Owyn/HandyImage/raw/master/HandyImage.user.js
 // @downloadURL   https://github.com/Owyn/HandyImage/raw/master/HandyImage.user.js
 // @homepage      https://userscripts.org/scripts/show/166494
@@ -952,7 +952,9 @@ function makeworld()
 		if(i){i.src = i.content;}
 		break;
 	case "directupload.net":
-		i = ev('//meta[@property="og:image"]');
+	case "flickr.com":
+	case "secure.flickr.com":
+		i = ev('//meta[@property="og:image" or @name="og:image"]');
 		if(i){i.src = i.content;}
 		break;
 	case "imageshack.com":
@@ -1069,11 +1071,6 @@ function makeworld()
 	case "onlinepic.net":
 		//i = ev('.//img[@id="iimg"]');
 		find_text_in_scripts("<img src='", "'");
-		break;
-	case "flickr.com":
-	case "secure.flickr.com":
-		j = true; // for flickr non-beta
-		find_text_in_scripts('"o":{"url":"', '"');
 		break;
 	case "amateri.cz":
 		if(find_text_in_scripts('var orig_url="', '"'))
