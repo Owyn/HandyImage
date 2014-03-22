@@ -3,7 +3,7 @@
 // @namespace     handyimage
 // @author        Owyn
 // @contributors  U BLESS
-// @version       2014.03.20
+// @version       2014.03.22
 // @updateURL     https://github.com/Owyn/HandyImage/raw/master/HandyImage.user.js
 // @downloadURL   https://github.com/Owyn/HandyImage/raw/master/HandyImage.user.js
 // @homepage      https://userscripts.org/scripts/show/166494
@@ -130,7 +130,6 @@
 // @match         http://*.piclambo.net/*/*
 // @match         http://*.picleet.com/*/*
 // @match         http://*.yankoimages.net/*/*
-// @match         http://*.zonezeedimage.com/img-*
 // @match         http://*.picturedip.com/*/*
 // @match         http://*.croftimage.com/img-*
 // @match         http://*.imagedecode.com/img-*
@@ -142,7 +141,6 @@
 // @match         http://*.hentai-hosting.com/view*
 // @match         http://*.gallery.jpavgod.com/view*
 // @match         http://*.imgonion.com/img*
-// @match         http://*.zeljeimage.com/img-*
 // @match         http://*.miragepics.com/view*
 // @match         http://*.freeimagehosting.net/*
 // @match         http://*.gratisimage.dk/share*
@@ -1491,10 +1489,8 @@ function makeworld()
 	case "imgonion.com":
 	case "pixup.us":
 	case "imgcorn.com":
-	case "zonezeedimage.com":
 	case "croftimage.com":
 	case "imagedecode.com":
-	case "zeljeimage.com":
 	case "imgplate.com":
 	case "myhotimage.com":
 	case "picstwist.com":
