@@ -1563,6 +1563,9 @@ function makeworld()
 	case "ruleimg.com":
 		i = ev('.//img[@alt="image"]');
 		break;
+	case "zagruzitfoto.com":
+		i = ev('.//img[contains(@src,"' + iurl + '/images/")][@alt]');
+		break;
 	case "subirimagenes.com":
 		i = ev('.//input[@type="submit"][@id="boton"]');
 		dp=true;
@@ -2066,7 +2069,6 @@ function makeworld()
 	case "beeimg.com":	
 	case "1pics.ru":	
 	case "imgshow.me":
-	case "zagruzitfoto.com":
 		i = ev('.//img[contains(@src,"' + iurl + '/images/")]');
 		break;
 	case "shareimages.com":
