@@ -3,7 +3,7 @@
 // @namespace     handyimage
 // @author        Owyn
 // @contributors  U BLESS
-// @version       2014.03.22
+// @version       2014.03.23
 // @updateURL     https://github.com/Owyn/HandyImage/raw/master/HandyImage.user.js
 // @downloadURL   https://github.com/Owyn/HandyImage/raw/master/HandyImage.user.js
 // @homepage      https://userscripts.org/scripts/show/166494
@@ -777,6 +777,8 @@
 // @match         *://*.wikipedia.org/wiki/File:*.png
 // @match         http://*.imgking.us/view*
 // @match         http://*.dragimage.org/img-*
+// @match         http://*.xxxscreens.com//img-*
+// @match         http://*.trikyimg.com//img-*
 // ==/UserScript==
 
 if (typeof unsafeWindow === "undefined")
@@ -938,7 +940,7 @@ function makeworld()
 		i = ev('.//div[@id="media-media"]/div/a/img');
 		break;
 	case "awesomescreenshot.com":
-	    i = ev('.//img[@id="screenshot"]');
+		i = ev('.//img[@id="screenshot"]');
 		break;
 	case "imagefap.com":
 		i = ev('.//a[@imageid="'+window.location.pathname.substring(7,window.location.pathname.lastIndexOf("/"))+'"]');
@@ -1202,7 +1204,7 @@ function makeworld()
 	case "superkipje.com":
 	case "yourimage24.de":
 	case "ximg.co.uk":	
-	case "sl-images.ath.cx":  
+	case "sl-images.ath.cx":
 	case "imagepussy.com": 
 	case "bien-vue.com":
 	case "pikczery.pl":
@@ -1335,7 +1337,7 @@ function makeworld()
 		break;
 	case "images.orzzso.com":
 	case "picturepush.com":	
-	    i = ev('.//img[contains(@src,"/photo/")]');
+		i = ev('.//img[contains(@src,"/photo/")]');
 		break;
 	case "imagerocket.net":
 		i = ev('.//a[contains(@href,"/photos/")]');
@@ -1354,7 +1356,7 @@ function makeworld()
 		i = ev('.//img[contains(@src,"/src/")]');
 		break;
 	case "picmoe.net": 
-		i = ev('.//img[contains(@src,"src/")]');    
+		i = ev('.//img[contains(@src,"src/")]');
 		break;
 	case "ibunker.us":
 	case "hostingpics.net":
@@ -1376,7 +1378,7 @@ function makeworld()
 	case "imagenetz.de":
 		i = ev('.//img[contains(@src,"/img")]');
 		break;
-	case "picatom.com":  
+	case "picatom.com":
 		i = ev('.//img[contains(@src,"img/")]'); 
 		break;
 	case "orzz.us":
@@ -1478,7 +1480,10 @@ function makeworld()
 	case "sxpics.nl":
 	case "img.spicyzilla.com":
 	case "imgskull.info":
-	case "bulkimg.info":	
+	case "bulkimg.info":
+	case "img-zone.com":
+	case "xxxscreens.com":
+	case "trikyimg.com":
 		i = ev('.//input[@type="submit"]');
 		dp=true;
 		if(i) 
@@ -1489,8 +1494,6 @@ function makeworld()
 	case "imgonion.com":
 	case "pixup.us":
 	case "imgcorn.com":
-	case "croftimage.com":
-	case "imagedecode.com":
 	case "imgplate.com":
 	case "myhotimage.com":
 	case "picstwist.com":
@@ -1504,16 +1507,22 @@ function makeworld()
 	case "imgsavvy.com":
 	case "3xvintage.com":
 	case "imgult.com":
-	case "damimage.com":
-	case "imgfap.net":
 	case "img-zone.com":
 	case "bulkimg.info":
-	case "imgstudio.org":
 	case "imgskull.info":
 	case "istoreimg.com":
 	case "08lkk.com":	
 	case "dragimage.org":
+	case "xxxscreens.com":
+	case "trikyimg.com":
 		i = ev('.//img[contains(@src,"/upload/")]');
+		break;
+	case "imgstudio.org":
+	case "imgfap.net":
+	case "croftimage.com":
+	case "damimage.com":
+	case "imagedecode.com":
+		i = ev('.//div/img[contains(@src,"/upload/")]');
 		break;
 	case "xxx.image-server.ru":
 	case "image-server.ru":
@@ -1839,7 +1848,7 @@ function makeworld()
 		i = ev('.//img[contains(@src,"pictures/")]');
 		break;
 	case "xenopix.com":
-	    i = ev('.//img[contains(@src,"/pix/")]');
+		i = ev('.//img[contains(@src,"/pix/")]');
 		break;
 	case "imgspice.com":
 	case "imagetwist.com":
@@ -2333,7 +2342,7 @@ var observer = new MutationObserver(function(mutations)
 {
 	makeworld();
 });
-observer.observe(document, {subtree: true, childList: true});  
+observer.observe(document, {subtree: true, childList: true});
 
 // hotkeys
 if (typeof KeyEvent === "undefined")
