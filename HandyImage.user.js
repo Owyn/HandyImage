@@ -779,6 +779,7 @@
 // @match         http://*.dragimage.org/img-*
 // @match         http://*.xxxscreens.com//img-*
 // @match         http://*.trikyimg.com//img-*
+// @match         http://*.pixpal.net/*.html
 // ==/UserScript==
 
 if (typeof unsafeWindow === "undefined")
@@ -1373,6 +1374,7 @@ function makeworld()
 	case "subeimagenes.com":
 	case "x.thebestpichost.com2":
 	case "imgcode.com":
+	case "pixpal.net":
 		i = ev('.//img[contains(@src,"/img/")]');
 		break;
 	case "imagenetz.de":
