@@ -3,7 +3,7 @@
 // @namespace     handyimage
 // @author        Owyn
 // @contributors  U BLESS
-// @version       2014.03.23
+// @version       2014.03.24
 // @updateURL     https://github.com/Owyn/HandyImage/raw/master/HandyImage.user.js
 // @downloadURL   https://github.com/Owyn/HandyImage/raw/master/HandyImage.user.js
 // @homepage      https://userscripts.org/scripts/show/166494
@@ -780,6 +780,7 @@
 // @match         http://*.xxxscreens.com//img-*
 // @match         http://*.trikyimg.com//img-*
 // @match         http://*.pixpal.net/*.html
+// @match         http://*.imagehost.eu/*
 // ==/UserScript==
 
 if (typeof unsafeWindow === "undefined")
@@ -1030,6 +1031,9 @@ function makeworld()
 		break;
 	case "depic.me":
 		i = ev('.//img[@id="pic"]');
+		break;
+	case "imagehost.eu":
+		i = ev('.//img[contains(@src,"/medium/")]');
 		break;
 	case "xup.in":
 		i = ev('.//img[contains(@src,"/exec/")]');
