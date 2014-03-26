@@ -3,7 +3,7 @@
 // @namespace     handyimage
 // @author        Owyn
 // @contributors  U BLESS
-// @version       2014.03.23
+// @version       2014.03.26
 // @updateURL     https://github.com/Owyn/HandyImage/raw/master/HandyImage.user.js
 // @downloadURL   https://github.com/Owyn/HandyImage/raw/master/HandyImage.user.js
 // @homepage      https://userscripts.org/scripts/show/166494
@@ -780,6 +780,7 @@
 // @match         http://*.xxxscreens.com//img-*
 // @match         http://*.trikyimg.com//img-*
 // @match         http://*.pixpal.net/*.html
+// @match         http://avenuexxx.com/*-*
 // ==/UserScript==
 
 if (typeof unsafeWindow === "undefined")
@@ -796,6 +797,11 @@ if (typeof GM_registerMenuCommand !== "undefined")
 if(window.location.href.lastIndexOf(window.location.hostname) + window.location.hostname.length + 1 == window.location.href.length)
 {
 	console.warn("we are on website's main page, aren't we?");
+	return false;
+}
+if (document.images.length == 1 && document.images[0].src == window.location.href) 
+{
+	console.warn("handy isn't needed for directly opened images");
 	return false;
 }
 if(document.referrer)
@@ -885,7 +891,7 @@ function onbeforeunload(e) // back helper
 function makeimage()
 {
 	loadCfg();
-	if(cfg_direct){document.cookie= "hji=" + i.src; window.location.href = i.src;return false;}
+	if(cfg_direct){window.location.href = i.src;return false;}
 	if(cfg_bgclr){document.body.bgColor = cfg_bgclr;}
 	document.body.style.margin = "0px";
 	document.body.innerHTML = "<style>img { position: absolute; top: 0; right: 0; bottom: 0; left: 0; }</style>"; // center image
@@ -1528,6 +1534,7 @@ function makeworld()
 		break;
 	case "xxx.image-server.ru":
 	case "image-server.ru":
+	case "avenuexxx.com":
 		i = ev('.//img[contains(@src,"/upload")]');
 		break;
 	case "imageontime.com":
