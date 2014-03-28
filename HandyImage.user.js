@@ -3,7 +3,7 @@
 // @namespace     handyimage
 // @author        Owyn
 // @contributors  U BLESS
-// @version       2014.03.28
+// @version       2014.03.29
 // @updateURL     https://github.com/Owyn/HandyImage/raw/master/HandyImage.user.js
 // @downloadURL   https://github.com/Owyn/HandyImage/raw/master/HandyImage.user.js
 // @homepage      https://userscripts.org/scripts/show/166494
@@ -788,6 +788,8 @@
 // @match         http://*.xxxscreens.com/img-*
 // @match         http://*.imgdope.com/view*
 // @match         http://*.imagehost.eu/*
+// @match         http://*.sexyimage.imagepool.in/share-*
+// @match         http://*.picbank.org/image/*
 // ==/UserScript==
 
 if (typeof unsafeWindow === "undefined")
@@ -1085,6 +1087,7 @@ function makeworld()
 	case "upload.fpsthailand.com":
 	case "vippix.com":
 	case "onlinepic.net":
+	case "sexyimage.imagepool.in":
 		//i = ev('.//img[@id="iimg"]');
 		find_text_in_scripts("<img src='", "'");
 		break;
@@ -1350,6 +1353,7 @@ function makeworld()
 		i = ev('.//img[contains(@src,"uploads/")]');
 		break;
 	case "xtremeshack.com":
+	case "picbank.org":
 		i = ev('.//img[contains(@src,"/photos/")]');
 		break;
 	case "images.orzzso.com":
