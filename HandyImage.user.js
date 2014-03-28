@@ -781,6 +781,12 @@
 // @match         http://*.trikyimg.com//img-*
 // @match         http://*.pixpal.net/*.html
 // @match         http://avenuexxx.com/*-*
+// @match         http://www.bilderhoster.net/*.html
+// @match         http://*.imgfun.biz/img-*
+// @match         http://iceimg.com/*/*
+// @match         http://*.dtpics.biz/img-*
+// @match         http://*.xxxscreens.com/img-*
+// @match         http://*.imgdope.com/view*
 // ==/UserScript==
 
 if (typeof unsafeWindow === "undefined")
@@ -935,6 +941,7 @@ function makeworld()
 	case "hostimage.ru":
 	case "gluner.de":
 	case "imagebin.ca":
+	case "iceimg.com":
 		i = ev('.//img');
 		break;
 	case "tryimg.com":
@@ -959,10 +966,11 @@ function makeworld()
 		if(i){i.src = i.content;}
 		break;
 	case "directupload.net":
-	case "flickr.com":
+	case "flickr.com": // _z.
 	case "secure.flickr.com":
+	case "bilderhoster.net":
 		i = ev('//meta[@property="og:image" or @name="og:image"]');
-		if(i){i.src = i.content;}
+		if(i){i.src = i.content.replace('_z.', '_b.');}
 		break;
 	case "imageshack.com":
 		i = ev('.//img[@data-width]');
@@ -1455,6 +1463,8 @@ function makeworld()
 	case "imggoo.com":
 	case "imgcoco.com":
 	case "imgcoin.net":
+	case "dtpics.biz":
+	case "xxxscreens.com":
 		i = ev('.//img[contains(@src,"/upload/")]');
 		dp=true;
 		if(!i)
@@ -1523,6 +1533,7 @@ function makeworld()
 	case "dragimage.org":
 	case "xxxscreens.com":
 	case "trikyimg.com":
+	case "imgfun.biz":
 		i = ev('.//img[contains(@src,"/upload/")]');
 		break;
 	case "imgstudio.org":
@@ -1764,6 +1775,7 @@ function makeworld()
 	case "imgleech.com":
 	case "imghoney.com":
 	case "imgking.us":
+	case "imgdope.com":
 		i = ev('.//img[contains(@src,"images/")]');
 		break;
 	case "fotosik.pl":
