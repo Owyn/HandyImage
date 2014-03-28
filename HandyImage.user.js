@@ -3,7 +3,7 @@
 // @namespace     handyimage
 // @author        Owyn
 // @contributors  U BLESS
-// @version       2014.03.26
+// @version       2014.03.28
 // @updateURL     https://github.com/Owyn/HandyImage/raw/master/HandyImage.user.js
 // @downloadURL   https://github.com/Owyn/HandyImage/raw/master/HandyImage.user.js
 // @homepage      https://userscripts.org/scripts/show/166494
@@ -787,6 +787,7 @@
 // @match         http://*.dtpics.biz/img-*
 // @match         http://*.xxxscreens.com/img-*
 // @match         http://*.imgdope.com/view*
+// @match         http://*.imagehost.eu/*
 // ==/UserScript==
 
 if (typeof unsafeWindow === "undefined")
@@ -1161,6 +1162,7 @@ function makeworld()
 		if(i){i.src = i.href;}
 		break;
 	case "totalsimage.com":
+	case "imagehost.eu":
 		i = ev('.//a[@id="image"]');
 		if(i){i.src = i.href;}
 		break;
