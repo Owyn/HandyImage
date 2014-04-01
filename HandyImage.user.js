@@ -3,7 +3,7 @@
 // @namespace     handyimage
 // @author        Owyn
 // @contributors  U BLESS
-// @version       2014.03.30
+// @version       2014.04.01
 // @updateURL     https://github.com/Owyn/HandyImage/raw/master/HandyImage.user.js
 // @downloadURL   https://github.com/Owyn/HandyImage/raw/master/HandyImage.user.js
 // @homepage      https://userscripts.org/scripts/show/166494
@@ -791,6 +791,7 @@
 // @match         http://*.sexyimage.imagepool.in/share-*
 // @match         http://*.picbank.org/image/*
 // @match         http://*.storeimgs.net/img-*
+// @match         http://*.imgpaying.com/*/*
 // ==/UserScript==
 
 if (typeof unsafeWindow === "undefined")
@@ -1396,6 +1397,7 @@ function makeworld()
 	case "x.thebestpichost.com2":
 	case "imgcode.com":
 	case "pixpal.net":
+	case "imgpaying.com":
 		i = ev('.//img[contains(@src,"/img/")]');
 		break;
 	case "imagenetz.de":
