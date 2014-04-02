@@ -3,7 +3,7 @@
 // @namespace     handyimage
 // @author        Owyn
 // @contributors  U BLESS
-// @version       2014.04.01
+// @version       2014.04.02
 // @updateURL     https://github.com/Owyn/HandyImage/raw/master/HandyImage.user.js
 // @downloadURL   https://github.com/Owyn/HandyImage/raw/master/HandyImage.user.js
 // @homepage      https://userscripts.org/scripts/show/166494
@@ -770,6 +770,7 @@
 // @match         http://*.imgcoin.net/img-*
 // @match         http://*.08lkk.com/Image/img-*
 // @match         *://*.flickr.com/photos/*
+// @exclude       *://*.flickr.com/photos/*/sets/*/
 // @match         http://*.imgrex.com/view*
 // @match         http://www.amateri.cz/g*/*
 // @match         http://*.imgshow.me/*
@@ -792,6 +793,8 @@
 // @match         http://*.picbank.org/image/*
 // @match         http://*.storeimgs.net/img-*
 // @match         http://*.imgpaying.com/*/*
+// @match         http://*.aveimage.com/view*
+// @match         http://*.fappic.com/*
 // ==/UserScript==
 
 if (typeof unsafeWindow === "undefined")
@@ -912,9 +915,9 @@ function makeimage()
 	i.style.margin = "auto"; // center image
 	document.body.appendChild(i);
 	i.addEventListener("click", rescale, true);
-	window.addEventListener("keydown", onkeydown, true);
-	if(dp){console.warn("you are on a double-page image hosting (probably)");window.addEventListener("beforeunload", onbeforeunload, true);}
-	setTimeout(function() { autoresize(); }, 0);
+	unsafeWindow.addEventListener("keydown", onkeydown, true);
+	if(dp){console.warn("you are on a double-page image hosting (probably)");unsafeWindow.addEventListener("beforeunload", onbeforeunload, true);}
+	autoresize();
 }
 
 function find_text_in_scripts(a, b)
@@ -1168,6 +1171,7 @@ function makeworld()
 		break;
 	case "totalsimage.com":
 	case "imagehost.eu":
+	case "fappic.com":
 		i = ev('.//a[@id="image"]');
 		if(i){i.src = i.href;}
 		break;
@@ -1489,15 +1493,17 @@ function makeworld()
 		}
 		break;
 	case "imgadult.com":
-		i = ev('.//a[@class="clicked"]');
+		i = ev('.//a[@class="overlay_ad_link"]');
 		if(i)
 		{
 			var now = new Date();
 			var time = now.getTime();
-			time += 30000;
+			time += 360 * 1000;
 			now.setTime(time);
-			document.cookie = 'user=' + 'true' + '; expires=' + now.toGMTString() + '; path=/';
-			setTimeout(function(){window.location.href = window.location.pathname + "?imgContinue=1";},500);
+			document.cookie = 'user=' + 'true' + 
+				'; expires=' + now.toGMTString() + 
+				'; path=/';
+			window.location.href = window.location.pathname + "?imgContinue=1";
 			break;
 		}
 	case "pixup.us":
@@ -1799,6 +1805,7 @@ function makeworld()
 	case "1y9y.com":
 	case "host4images.com":
 	case "2tu.me":	
+	case "aveimage.com":
 		i = ev('.//img[@id="photo"]');
 		break;
 	case "picamatic.com":
@@ -2109,6 +2116,7 @@ function makeworld()
 	case "beeimg.com":	
 	case "1pics.ru":	
 	case "imgshow.me":
+	case "aveimage.com":
 		i = ev('.//img[contains(@src,"' + iurl + '/images/")]');
 		break;
 	case "shareimages.com":
@@ -2183,7 +2191,7 @@ function makeworld()
 	if(!j)
 	{
 		j = true;
-		window.addEventListener('beforescriptexecute', onscript, true);
+		unsafeWindow.addEventListener('beforescriptexecute', onscript, true);
 	}
 	//
 	if(i && i.src)
@@ -2215,13 +2223,8 @@ function makeworld()
 		ws();
 		document.head.innerHTML = "";
 		sanitize();
-		setTimeout(function() // else there will be scary bugs
-		{
-			clr_pgn();
-			ws();
-			window.removeEventListener('beforescriptexecute', onscript, true);
-			makeimage();
-		}, 0);
+		unsafeWindow.removeEventListener('beforescriptexecute', onscript, true);
+		makeimage();
 	}
 	else // try again
 	{
@@ -2494,11 +2497,11 @@ function onkeydown (b)
 		}
 		else
 		{
-			window.removeEventListener("beforeunload", onbeforeunload, true);
+			unsafeWindow.removeEventListener("beforeunload", onbeforeunload, true);
 		}
 		break;
 	case KeyEvent.DOM_VK_F5:
-		window.removeEventListener("beforeunload", onbeforeunload, true);
+		unsafeWindow.removeEventListener("beforeunload", onbeforeunload, true);
 		break;
 	}
 }
@@ -2521,7 +2524,7 @@ function cfg()
 			if($("hji_cfg_2_bgclr").value){document.body.bgColor = $("hji_cfg_2_bgclr").value;}else{document.body.removeAttribute("bgColor");}
 		}
 		if(i && i.src){i.removeEventListener("click", rescale, true);}
-		window.removeEventListener("keydown", onkeydown, true);
+		unsafeWindow.removeEventListener("keydown", onkeydown, true);
 		document.head.innerHTML = "";
 		document.body.innerHTML = "";
 		ws();
