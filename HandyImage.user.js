@@ -795,6 +795,7 @@
 // @match         http://*.imgpaying.com/*/*
 // @match         http://*.aveimage.com/view*
 // @match         http://*.fappic.com/*
+// @match         http://*.imagenimage.com/*/*
 // ==/UserScript==
 
 if (typeof unsafeWindow === "undefined")
@@ -1908,6 +1909,7 @@ function makeworld()
 	case "peach.warosu.org":
 	case "brightpic.tk":
 	case "imageporter.com":
+	case "imagenimage.com":
 		i = ev('.//img[contains(@src,"/i/")]');
 		break;
 	case "pixpipeline.com":
