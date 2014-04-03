@@ -910,6 +910,7 @@ function makeimage()
 	if(cfg_bgclr){document.body.bgColor = cfg_bgclr;}
 	document.body.style.margin = "0px";
 	document.body.innerHTML = "<style>img { position: absolute; top: 0; right: 0; bottom: 0; left: 0; }</style>"; // center image
+	ws();
 	var isrc = i.src;
 	i = document.createElement("img");
 	i.src = isrc;
@@ -2203,6 +2204,7 @@ function makeworld()
 		{
 			unsafeWindow.open = null;
 			unsafeWindow.onbeforeunload = null;
+			unsafeWindow.document.appendChild = null;
 			if(!FireFox)
 			{
 				delete document.write;
@@ -2224,6 +2226,7 @@ function makeworld()
 		clr_pgn();
 		ws();
 		document.head.innerHTML = "";
+		document.body.innerHTML = "";
 		sanitize();
 		unsafeWindow.removeEventListener('beforescriptexecute', onscript, true);
 		makeimage();
