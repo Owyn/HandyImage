@@ -3,7 +3,7 @@
 // @namespace     handyimage
 // @author        Owyn
 // @contributors  U BLESS
-// @version       2014.04.02
+// @version       2014.04.03
 // @updateURL     https://github.com/Owyn/HandyImage/raw/master/HandyImage.user.js
 // @downloadURL   https://github.com/Owyn/HandyImage/raw/master/HandyImage.user.js
 // @homepage      https://userscripts.org/scripts/show/166494
@@ -769,8 +769,8 @@
 // @match         http://*.catpic.biz/view*
 // @match         http://*.imgcoin.net/img-*
 // @match         http://*.08lkk.com/Image/img-*
-// @match         *://*.flickr.com/photos/*
-// @exclude       *://*.flickr.com/photos/*/sets/*/
+// @match         *://*.flickr.com/photos/*/*
+// @exclude       /^https?://(www\.)?flickr\.com/photos/([^/]+)/(sets/.*|page.*)?$/
 // @match         http://*.imgrex.com/view*
 // @match         http://www.amateri.cz/g*/*
 // @match         http://*.imgshow.me/*
@@ -1550,12 +1550,12 @@ function makeworld()
 	case "trikyimg.com":
 	case "imgfun.biz":
 	case "storeimgs.net":
+	case "damimage.com":
 		i = ev('.//img[contains(@src,"/upload/")]');
 		break;
 	case "imgstudio.org":
 	case "imgfap.net":
 	case "croftimage.com":
-	case "damimage.com":
 	case "imagedecode.com":
 		i = ev('.//div/img[contains(@src,"/upload/")]');
 		break;
