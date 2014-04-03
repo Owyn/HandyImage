@@ -2204,7 +2204,6 @@ function makeworld()
 		{
 			unsafeWindow.open = null;
 			unsafeWindow.onbeforeunload = null;
-			unsafeWindow.document.appendChild = null;
 			if(!FireFox)
 			{
 				delete document.write;
@@ -2226,7 +2225,6 @@ function makeworld()
 		clr_pgn();
 		ws();
 		document.head.innerHTML = "";
-		document.body.innerHTML = "";
 		sanitize();
 		unsafeWindow.removeEventListener('beforescriptexecute', onscript, true);
 		makeimage();
