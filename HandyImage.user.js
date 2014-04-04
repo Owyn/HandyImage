@@ -3,7 +3,7 @@
 // @namespace     handyimage
 // @author        Owyn
 // @contributors  U BLESS
-// @version       2014.04.03
+// @version       2014.04.04
 // @updateURL     https://github.com/Owyn/HandyImage/raw/master/HandyImage.user.js
 // @downloadURL   https://github.com/Owyn/HandyImage/raw/master/HandyImage.user.js
 // @homepage      https://userscripts.org/scripts/show/166494
@@ -796,6 +796,8 @@
 // @match         http://*.aveimage.com/view*
 // @match         http://*.fappic.com/*
 // @match         http://*.imagenimage.com/*/*
+// @match         http://*.adultur.com/img-*
+// @match         http://*.imageshimage.com/*/*
 // ==/UserScript==
 
 if (typeof unsafeWindow === "undefined")
@@ -1553,6 +1555,7 @@ function makeworld()
 	case "imgfun.biz":
 	case "storeimgs.net":
 	case "damimage.com":
+	case "adultur.com":
 		i = ev('.//img[contains(@src,"/upload/")]');
 		break;
 	case "imgstudio.org":
@@ -1911,6 +1914,7 @@ function makeworld()
 	case "brightpic.tk":
 	case "imageporter.com":
 	case "imagenimage.com":
+	case "imageshimage.com":
 		i = ev('.//img[contains(@src,"/i/")]');
 		break;
 	case "pixpipeline.com":
