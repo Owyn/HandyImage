@@ -313,7 +313,6 @@
 // @match         http://*.rapid-img.de/img.php?f=*
 // @match         http://*.images.vyjimecny.cz/share.php?id=*
 // @match         http://*.1pics.ru/view-*
-// @match         http://*.1pics.ru//view-*
 // @match         http://*.picthost.net/v.php?id=*
 // @match         http://*.imghostr.me/*
 // @match         http://*.tinyphoto.net/show-image.php?id=*
@@ -801,6 +800,8 @@
 // @match         http://*.imageshimage.com/*/*
 // @match         http://www.urpichost.com/?v=*
 // @match         http://*.imgswift.com/*/*
+// @match         http://*.imgdoze.com/share.php?*
+// @match         http://*.imageporn.eu/?v=*
 // ==/UserScript==
 
 if (typeof unsafeWindow === "undefined")
@@ -1100,6 +1101,7 @@ function makeworld()
 	case "vippix.com":
 	case "onlinepic.net":
 	case "sexyimage.imagepool.in":
+	case "imgdoze.com":
 		//i = ev('.//img[@id="iimg"]');
 		find_text_in_scripts("<img src='", "'");
 		break;
@@ -2141,6 +2143,7 @@ function makeworld()
 	case "imagepdb.com":
 	case "imghash.com":
 	case "imagedomino.net":
+	case "imageporn.eu":
 		j = true;
 		dp=true;
 		i = ev('.//input[@value="YES"]');
@@ -2154,6 +2157,7 @@ function makeworld()
 	case "pic-upload.de":
 	case "pohrani.com":
 	case "shrani.najdi.si":
+	case "imageporn.eu":
 		i = ev('.//img[contains(@onclick,"(this")]');
 		break;
 	default: // dynamic subdomain
