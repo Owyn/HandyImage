@@ -313,6 +313,7 @@
 // @match         http://*.rapid-img.de/img.php?f=*
 // @match         http://*.images.vyjimecny.cz/share.php?id=*
 // @match         http://*.1pics.ru/view-*
+// @match         http://*.1pics.ru//view-*
 // @match         http://*.picthost.net/v.php?id=*
 // @match         http://*.imghostr.me/*
 // @match         http://*.tinyphoto.net/show-image.php?id=*
