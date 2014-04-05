@@ -3,7 +3,7 @@
 // @namespace     handyimage
 // @author        Owyn
 // @contributors  U BLESS
-// @version       2014.04.04
+// @version       2014.04.05
 // @updateURL     https://github.com/Owyn/HandyImage/raw/master/HandyImage.user.js
 // @downloadURL   https://github.com/Owyn/HandyImage/raw/master/HandyImage.user.js
 // @homepage      https://userscripts.org/scripts/show/166494
@@ -798,6 +798,8 @@
 // @match         http://*.imagenimage.com/*/*
 // @match         http://*.adultur.com/img-*
 // @match         http://*.imageshimage.com/*/*
+// @match         http://www.urpichost.com/?v=*
+// @match         http://*.imgswift.com/*/*
 // ==/UserScript==
 
 if (typeof unsafeWindow === "undefined")
@@ -1434,6 +1436,7 @@ function makeworld()
 	case "imgheat.com":
 	case "xxxces.com":
 	case "4ufrom.me":
+	case "imgswift.com":
 		i = ev('.//img[contains(@src,"/files/")]');
 		break;
 	case "image18.org":
@@ -1870,6 +1873,7 @@ function makeworld()
 	case "fileaimage.com":
 	case "picify.com":
 	case "picturescream.com":
+	case "urpichost.com":
 		i = ev('.//img[contains(@src,"/images/")]');
 		break;
 	case "intergranada.com":
