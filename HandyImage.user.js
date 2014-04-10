@@ -3,7 +3,7 @@
 // @namespace     handyimage
 // @author        Owyn
 // @contributors  U BLESS
-// @version       2014.04.05
+// @version       2014.04.10
 // @updateURL     https://github.com/Owyn/HandyImage/raw/master/HandyImage.user.js
 // @downloadURL   https://github.com/Owyn/HandyImage/raw/master/HandyImage.user.js
 // @homepage      https://userscripts.org/scripts/show/166494
@@ -803,6 +803,7 @@
 // @match         http://*.imgswift.com/*/*
 // @match         http://*.imgdoze.com/share.php?*
 // @match         http://*.imageporn.eu/?v=*
+// @match         http://500px.com/photo/*
 // ==/UserScript==
 
 if (typeof unsafeWindow === "undefined")
@@ -1111,6 +1112,9 @@ function makeworld()
 		{
 			i.src = i.src.replace('http://www.amateri.cz/orig.php?&img=', 'http://img2.amateri.cz/users/');
 		}
+		break;
+	case "500px.com":
+		find_text_in_scripts('"image_url":["', '"');
 		break;
 	case "pix-x.net":
 		i = ev('.//img[contains(@src,"images/")]');if(i){break;}
