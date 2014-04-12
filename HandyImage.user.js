@@ -3,7 +3,7 @@
 // @namespace     handyimage
 // @author        Owyn
 // @contributors  U BLESS
-// @version       2014.04.10
+// @version       2014.04.12
 // @updateURL     https://github.com/Owyn/HandyImage/raw/master/HandyImage.user.js
 // @downloadURL   https://github.com/Owyn/HandyImage/raw/master/HandyImage.user.js
 // @homepage      https://userscripts.org/scripts/show/166494
@@ -15,7 +15,6 @@
 // @grant         GM_registerMenuCommand
 // @grant         GM_unregisterMenuCommand
 // @grant         unsafeWindow
-// @match         http://www.piking.us/show.php/*
 // @match         https://github.com/Owyn/HandyImage/configuration
 // @match         http://www.imagebam.com/image*
 // @match         http://imgchili.net/show*
@@ -805,6 +804,7 @@
 // @match         http://*.imgdoze.com/share.php?*
 // @match         http://*.imageporn.eu/?v=*
 // @match         http://500px.com/photo/*
+// @match         http://www.piking.us/show.php/*
 // ==/UserScript==
 
 if (typeof unsafeWindow === "undefined")
@@ -1040,6 +1040,7 @@ function makeworld()
 	case "hostarea.de":
 	case "imagetoupload.com":
 	case "pixtreat.com":
+	case "piking.us":
 		i = ev('.//img[@id="img_obj"]');
 		break;
 	case "pimpandhost.com":
@@ -1066,9 +1067,6 @@ function makeworld()
 		break;
 	case "xup.in":
 		i = ev('.//img[contains(@src,"/exec/")]');
-		break;
-	case "piking.us":
-		i = ev('.//img[contains(@src,"/out.php/")]');
 		break;
 	case "image2you.ru":
 		i = ev('.//img[contains(@src,"images/")]')
