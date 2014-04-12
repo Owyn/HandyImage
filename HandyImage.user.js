@@ -15,6 +15,7 @@
 // @grant         GM_registerMenuCommand
 // @grant         GM_unregisterMenuCommand
 // @grant         unsafeWindow
+// @match         http://www.piking.us/show.php/*
 // @match         https://github.com/Owyn/HandyImage/configuration
 // @match         http://www.imagebam.com/image*
 // @match         http://imgchili.net/show*
@@ -1065,6 +1066,9 @@ function makeworld()
 		break;
 	case "xup.in":
 		i = ev('.//img[contains(@src,"/exec/")]');
+		break;
+	case "piking.us":
+		i = ev('.//img[contains(@src,"/out.php/")]');
 		break;
 	case "image2you.ru":
 		i = ev('.//img[contains(@src,"images/")]')
