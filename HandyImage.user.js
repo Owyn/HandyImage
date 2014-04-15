@@ -3,7 +3,7 @@
 // @namespace     handyimage
 // @author        Owyn
 // @contributors  U BLESS
-// @version       2014.04.12
+// @version       2014.04.15
 // @updateURL     https://github.com/Owyn/HandyImage/raw/master/HandyImage.user.js
 // @downloadURL   https://github.com/Owyn/HandyImage/raw/master/HandyImage.user.js
 // @homepage      https://userscripts.org/scripts/show/166494
@@ -1569,11 +1569,11 @@ function makeworld()
 	case "storeimgs.net":
 	case "damimage.com":
 	case "adultur.com":
+	case "croftimage.com":
 		i = ev('.//img[contains(@src,"/upload/")]');
 		break;
 	case "imgstudio.org":
 	case "imgfap.net":
-	case "croftimage.com":
 	case "imagedecode.com":
 		i = ev('.//div/img[contains(@src,"/upload/")]');
 		break;
