@@ -3,7 +3,7 @@
 // @namespace     handyimage
 // @author        Owyn
 // @contributors  U BLESS
-// @version       2014.04.15
+// @version       2014.04.18
 // @updateURL     https://github.com/Owyn/HandyImage/raw/master/HandyImage.user.js
 // @downloadURL   https://github.com/Owyn/HandyImage/raw/master/HandyImage.user.js
 // @homepage      https://userscripts.org/scripts/show/166494
@@ -805,6 +805,7 @@
 // @match         http://*.imageporn.eu/?v=*
 // @match         http://500px.com/photo/*
 // @match         http://www.piking.us/show.php/*
+// @match         http://*.gokoimage.com/img-*
 // ==/UserScript==
 
 if (typeof unsafeWindow === "undefined")
@@ -1495,6 +1496,7 @@ function makeworld()
 	case "imgcoin.net":
 	case "dtpics.biz":
 	case "xxxscreens.com":
+	case "gokoimage.com":
 		i = ev('.//img[contains(@src,"/upload/")]');
 		dp=true;
 		if(!i)
