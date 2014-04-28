@@ -3,7 +3,7 @@
 // @namespace     handyimage
 // @author        Owyn
 // @contributors  U BLESS
-// @version       2014.04.21
+// @version       2014.04.28
 // @updateURL     https://github.com/Owyn/HandyImage/raw/master/HandyImage.user.js
 // @downloadURL   https://github.com/Owyn/HandyImage/raw/master/HandyImage.user.js
 // @homepage      https://userscripts.org/scripts/show/166494
@@ -807,6 +807,7 @@
 // @match         http://www.piking.us/show.php/*
 // @match         http://*.gokoimage.com/img-*
 // @match         http://*.greenpiccs.com/images/*.html
+// @match         http://*.hostmat.eu/view*
 // ==/UserScript==
 
 if (typeof unsafeWindow === "undefined")
@@ -1813,6 +1814,7 @@ function makeworld()
 	case "imghoney.com":
 	case "imgking.us":
 	case "imgdope.com":
+	case "hostmat.eu":
 		i = ev('.//img[contains(@src,"images/")]');
 		break;
 	case "fotosik.pl":
