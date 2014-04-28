@@ -3,7 +3,7 @@
 // @namespace     handyimage
 // @author        Owyn
 // @contributors  U BLESS
-// @version       2014.04.28
+// @version       2014.04.29
 // @updateURL     https://github.com/Owyn/HandyImage/raw/master/HandyImage.user.js
 // @downloadURL   https://github.com/Owyn/HandyImage/raw/master/HandyImage.user.js
 // @homepage      https://userscripts.org/scripts/show/166494
@@ -939,7 +939,7 @@ function find_text_in_scripts(a, b)
 	var s = document.getElementsByTagName("script");
 	for(var c=0;c<s.length;c++) 
 	{
-		var start_pos = s[c].innerHTML.indexOf(a);
+		var start_pos = s[c].innerHTML.lastIndexOf(a);
 		if(start_pos == -1){continue;}
 		start_pos += a.length;
 		i = s[c];
@@ -988,11 +988,18 @@ function makeworld()
 		if(i){i.src = i.content;}
 		break;
 	case "directupload.net":
-	case "flickr.com": // _z.
-	case "secure.flickr.com":
 	case "bilderhoster.net":
 		i = ev('//meta[@property="og:image" or @name="og:image"]');
-		if(i){i.src = i.content.replace('_z.', '_b.');}
+		break;
+	case "flickr.com":
+	case "secure.flickr.com":
+		if(!find_text_in_scripts('"url":"', '"'))
+		{
+			if(i = document.getElementById("share-options-embed-textarea-o-bbcode"))
+			{
+				i.src = i.value.substring(i.value.indexOf("[img]")+5, i.value.indexOf("[/img]"));
+			}
+		}
 		break;
 	case "imageshack.com":
 		i = ev('.//img[@data-width]');
