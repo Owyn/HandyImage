@@ -3,7 +3,7 @@
 // @namespace     handyimage
 // @author        Owyn
 // @contributors  U BLESS
-// @version       2014.04.29
+// @version       2014.04.30
 // @updateURL     https://github.com/Owyn/HandyImage/raw/master/HandyImage.user.js
 // @downloadURL   https://github.com/Owyn/HandyImage/raw/master/HandyImage.user.js
 // @homepage      https://userscripts.org/scripts/show/166494
@@ -1538,6 +1538,7 @@ function makeworld()
 	case "imgcorn.com":
 	case "imgonion.com":
 	case "xximg.net":
+	case "x.xximg.net":
 	case "sxpics.nl":
 	case "img.spicyzilla.com":
 	case "imgskull.info":
@@ -1560,6 +1561,7 @@ function makeworld()
 	case "picstwist.com":
 	case "hotimages.eu":
 	case "xximg.net":
+	case "x.xximg.net":
 	case "fotoszok.pl":
 	case "sxpics.nl":
 	case "gallerycloud.net":
