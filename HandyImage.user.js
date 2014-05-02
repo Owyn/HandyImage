@@ -298,6 +298,7 @@
 // @match         http://www.image-load.net/show*
 // @match         http://imghost.us.to/?v=*
 // @match         http://*.sxpics.nl/img-*
+// @match         http://*.sxpics.net/img-*
 // @match         http://*.gallerycloud.net/img-*
 // @match         http://*.tryimg.com/?v=*
 // @match         http://img.deli.sh/view*
@@ -1542,6 +1543,7 @@ function makeworld()
 	case "xximg.net":
 	case "x.xximg.net":
 	case "sxpics.nl":
+	case "sxpics.net":
 	case "img.spicyzilla.com":
 	case "imgskull.info":
 	case "bulkimg.info":
@@ -1566,6 +1568,7 @@ function makeworld()
 	case "x.xximg.net":
 	case "fotoszok.pl":
 	case "sxpics.nl":
+	case "sxpics.net":
 	case "gallerycloud.net":
 	case "imgadult.com":
 	case "imagetotal.de":
