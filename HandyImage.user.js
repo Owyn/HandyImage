@@ -768,6 +768,7 @@
 // @match         http://awesomescreenshot.com/*
 // @match         http://*.istoreimg.com/i/*
 // @match         http://*.catpic.biz/view*
+// @match         http://*.catpic.biz/x/view*
 // @match         http://*.imgcoin.net/img-*
 // @match         http://*.08lkk.com/Image/img-*
 // @match         *://*.flickr.com/photos/*/*
