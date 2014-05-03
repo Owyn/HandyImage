@@ -811,6 +811,7 @@
 // @match         http://*.hostmat.eu/view*
 // @match         http://*.pic.apollon-fervor.com/img-*
 // @match         http://*.image.adlock.in/img-*
+// @match         http://*.photobucket.com/user/*/media/*.htm*
 // ==/UserScript==
 
 if (typeof unsafeWindow === "undefined")
@@ -993,6 +994,7 @@ function makeworld()
 	case "directupload.net":
 	case "bilderhoster.net":
 		i = ev('//meta[@property="og:image" or @name="og:image"]');
+		if(i){i.src = i.content;}
 		break;
 	case "flickr.com":
 	case "secure.flickr.com":
@@ -2181,7 +2183,6 @@ function makeworld()
 	case "imgfantasy.com":
 	case "imagedomino.com":
 	case "imgchili.net":
-	case "imgchili.com":
 	case "pic-upload.de":
 	case "pohrani.com":
 	case "shrani.najdi.si":
@@ -2200,6 +2201,10 @@ function makeworld()
 		case "wikipedia.org":
 			i = ev('.//a[contains(@href,"/upload")]');
 			if(i){i.src = i.href;}
+			break;
+		case "photobucket.com":
+			i = ev('//meta[@property="og:image" or @name="og:image"]');
+			if(i){i.src = i.content;}
 			break;
 		case "freeamateurteens.net":
 		case "img-vidiklub.com":
