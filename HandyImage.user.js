@@ -3,7 +3,7 @@
 // @namespace     handyimage
 // @author        Owyn
 // @contributors  U BLESS
-// @version       2014.05.02
+// @version       2014.05.03
 // @updateURL     https://github.com/Owyn/HandyImage/raw/master/HandyImage.user.js
 // @downloadURL   https://github.com/Owyn/HandyImage/raw/master/HandyImage.user.js
 // @homepage      https://userscripts.org/scripts/show/166494
@@ -18,7 +18,6 @@
 // @match         https://github.com/Owyn/HandyImage/configuration
 // @match         http://www.imagebam.com/image*
 // @match         http://imgchili.net/show*
-// @match         http://imgchili.com/show*
 // @match         http://imgbox.com/*
 // @match         http://*.imagetwist.com/*/*
 // @match         http://*.imagevenue.com/img.php?*
@@ -716,7 +715,7 @@
 // @exclude       *://imgur.com/*,*
 // @exclude       *://imgur.com/memege*
 // @match         http://motherless.com/*/*
-// @match         http://www.imgult.com/img-*
+// @match         http://*.imgult.com/img-*
 // @match         http://*.lustimages.net/*/*/
 // @match         http://*.send-up.ru/*
 // @match         http://*.xpic.biz/*/view*
@@ -811,6 +810,7 @@
 // @match         http://*.greenpiccs.com/images/*.html
 // @match         http://*.hostmat.eu/view*
 // @match         http://*.pic.apollon-fervor.com/img-*
+// @match         http://*.image.adlock.in/img-*
 // ==/UserScript==
 
 if (typeof unsafeWindow === "undefined")
@@ -1550,6 +1550,7 @@ function makeworld()
 	case "img-zone.com":
 	case "xxxscreens.com":
 	case "trikyimg.com":
+	case "image.adlock.in":
 		i = ev('.//input[@type="submit"]');
 		dp=true;
 		if(i) 
@@ -1592,6 +1593,7 @@ function makeworld()
 	case "imgstudio.org":
 	case "imgfap.net":
 	case "pic.apollon-fervor.com":
+	case "image.adlock.in":
 		i = ev('.//img[contains(@src,"/upload/")]');
 		break;
 	case "xxx.image-server.ru":
