@@ -3,7 +3,7 @@
 // @namespace     handyimage
 // @author        Owyn
 // @contributors  U BLESS
-// @version       2014.05.03
+// @version       2014.05.05
 // @updateURL     https://github.com/Owyn/HandyImage/raw/master/HandyImage.user.js
 // @downloadURL   https://github.com/Owyn/HandyImage/raw/master/HandyImage.user.js
 // @homepage      https://userscripts.org/scripts/show/166494
@@ -737,6 +737,7 @@
 // @match         http://*.img.spicyzilla.com/img-*
 // @match         http://*.imgstudio.org/img-*
 // @match         http://*.imgsure.com/*
+// @exclude       http://*.imgsure.com/uc.php*
 // @match         http://*.onlinepic.net/share*
 // @match         http://imgboxxx.com/view*
 // @match         http://*.imghere.net/view*
@@ -1827,7 +1828,6 @@ function makeworld()
 	case "imagepong.info":
 	case "imgboxxx.com":
 	case "imghere.net":
-	case "imgleech.com":
 	case "imghoney.com":
 	case "imgking.us":
 	case "imgdope.com":
@@ -2172,12 +2172,12 @@ function makeworld()
 	case "imagedomino.com":
 	case "imagepdb.com":
 	case "imghash.com":
-	case "imagedomino.net":
 	case "imageporn.eu":
+	case "imgleech.com":
 		j = true;
 		dp=true;
 		i = ev('.//input[@value="YES"]');
-		if(i){i.click();}
+		if(i){i.onclick();break;}
 	case "imagepdb.com":
 	case "imagebam.com":
 	case "imgfantasy.com":
@@ -2187,6 +2187,7 @@ function makeworld()
 	case "pohrani.com":
 	case "shrani.najdi.si":
 	case "imageporn.eu":
+	case "imgleech.com":
 		i = ev('.//img[contains(@onclick,"(this")]');
 		break;
 	default: // dynamic subdomain
