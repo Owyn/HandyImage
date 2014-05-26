@@ -3,10 +3,10 @@
 // @namespace     handyimage
 // @author        Owyn
 // @contributors  U BLESS
-// @version       2014.05.05
+// @version       2014.05.26
 // @updateURL     https://github.com/Owyn/HandyImage/raw/master/HandyImage.user.js
 // @downloadURL   https://github.com/Owyn/HandyImage/raw/master/HandyImage.user.js
-// @homepage      https://userscripts.org/scripts/show/166494
+// @homepage      http://userscripts.org:8080/scripts/show/166494
 // @icon          http://i.imgur.com/Q5TTIjV.png
 // @description   Shows just fullsize Image with hotkeys & without pop-ups on many image-hosting sites
 // @run-at        document-start
@@ -813,6 +813,8 @@
 // @match         http://*.pic.apollon-fervor.com/img-*
 // @match         http://*.image.adlock.in/img-*
 // @match         http://*.photobucket.com/user/*/media/*.htm*
+// @match         http://www.picrar.com/view*
+// @match         http://*.imagepool.in/share*
 // ==/UserScript==
 
 if (typeof unsafeWindow === "undefined")
@@ -1122,6 +1124,7 @@ function makeworld()
 	case "onlinepic.net":
 	case "sexyimage.imagepool.in":
 	case "imgdoze.com":
+	case "imagepool.in":
 		//i = ev('.//img[@id="iimg"]');
 		find_text_in_scripts("<img src='", "'");
 		break;
@@ -1832,6 +1835,7 @@ function makeworld()
 	case "imgking.us":
 	case "imgdope.com":
 	case "hostmat.eu":
+	case "picrar.com":
 		i = ev('.//img[contains(@src,"images/")]');
 		break;
 	case "fotosik.pl":
