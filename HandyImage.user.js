@@ -3,7 +3,7 @@
 // @namespace     handyimage
 // @author        Owyn
 // @contributors  U BLESS
-// @version       2014.05.26
+// @version       2014.05.27
 // @updateURL     https://github.com/Owyn/HandyImage/raw/master/HandyImage.user.js
 // @downloadURL   https://github.com/Owyn/HandyImage/raw/master/HandyImage.user.js
 // @homepage      http://userscripts.org:8080/scripts/show/166494
@@ -815,6 +815,7 @@
 // @match         http://*.photobucket.com/user/*/media/*.htm*
 // @match         http://www.picrar.com/view*
 // @match         http://*.imagepool.in/share*
+// @match         http://imgv.net/*.html
 // ==/UserScript==
 
 if (typeof unsafeWindow === "undefined")
@@ -1219,6 +1220,7 @@ function makeworld()
 		if(i){i.src = i.href;}
 		break;
 	case "imageshost.ru":
+	case "imgv.net":
 		i = ev('.//a[contains(@href,"/img/")]');
 		if(i){i.src = i.href;}
 		break;
