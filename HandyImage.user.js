@@ -817,6 +817,7 @@
 // @match         http://*.imagepool.in/share*
 // @match         http://imgv.net/*.html
 // @match         http://imgmega.com/*.html
+// @match         http://imgsee.me/*.html
 // ==/UserScript==
 
 if (typeof unsafeWindow === "undefined")
@@ -1628,6 +1629,7 @@ function makeworld()
 		}
 		break;
 	case "imgmega.com":
+	case "imgsee.me":
 		i = ev('.//input[@value="Continue to image..."]');
 		if (i)
 			i.click();
