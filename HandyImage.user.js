@@ -3,10 +3,10 @@
 // @namespace     handyimage
 // @author        Owyn
 // @contributors  U BLESS
-// @version       2014.06.22
+// @version       2014.05.27
 // @updateURL     https://github.com/Owyn/HandyImage/raw/master/HandyImage.user.js
 // @downloadURL   https://github.com/Owyn/HandyImage/raw/master/HandyImage.user.js
-// @homepage      https://greasyfork.org/scripts/109-handy-image
+// @homepage      http://userscripts.org:8080/scripts/show/166494
 // @icon          http://i.imgur.com/Q5TTIjV.png
 // @description   Shows just fullsize Image with hotkeys & without pop-ups on many image-hosting sites
 // @run-at        document-start
@@ -757,13 +757,13 @@
 // @match         http://*.vipeep.com/*
 // @match         http://*.imgskull.info/img-*
 // @match         http://*.imagehost.thehateugave.com/*
-// @match         http://*.picturescream.com/*
+// @match         http://*.picturescream.com/?*
 // @match         http://*.imgleech.com/?*
 // @match         http://*.imgdone.com/view*
 // @match         http://*.imghoney.com/view*
 // @match         http://*.pictureupl.info/?*
 // @match         http://*.4ufrom.me/view*
-// @match         http://*.img3x.net/view*
+// @match         http://*.img3x.net/picture*
 // @match         http://www.2i.cz/*
 // @match         http://2tu.me/view*
 // @match         http://awesomescreenshot.com/*
@@ -816,8 +816,8 @@
 // @match         http://www.picrar.com/view*
 // @match         http://*.imagepool.in/share*
 // @match         http://imgv.net/*.html
-// @match         http://www.imgshots.com/img*
-// @match         http://*.3xplanet.com/view*
+// @match         http://imgmega.com/*.html
+// @match         http://imgsee.me/*.html
 // ==/UserScript==
 
 if (typeof unsafeWindow === "undefined")
@@ -1062,7 +1062,6 @@ function makeworld()
 	case "imagetoupload.com":
 	case "pixtreat.com":
 	case "piking.us":
-	case "imgshots.com":
 		i = ev('.//img[@id="img_obj"]');
 		break;
 	case "pimpandhost.com":
@@ -1336,14 +1335,6 @@ function makeworld()
 			return;
 		}
 		break;
-	case "img3x.net":
-		i = ev('.//input[@type="submit"]');
-		dp=true;
-		if(i) 
-		{
-			i.click();
-			break;
-		}
 	case "turboimagehost.com":
 	case "screenlist.ru":
 	case "picshare.geenza.com":
@@ -1637,6 +1628,14 @@ function makeworld()
 			i = ev('.//img[contains(@src,"/uploads/")]');
 		}
 		break;
+	case "imgmega.com":
+	case "imgsee.me":
+		i = ev('.//input[@value="Continue to image..."]');
+		if (i)
+			i.click();
+		else
+			i = ev('.//img[@class="pic"]');
+		break;
 	case "imgsure.com":
 		i = ev('.//input[@value="Continue to image"]');
 		dp=true;
@@ -1664,9 +1663,6 @@ function makeworld()
 	case "ruleimg.com":
 		i = ev('.//img[@alt="image"]');
 		break;
-	case "3xplanet.com":
-		i = ev('.//img[@alt="picContent"]');
-		break;
 	case "zagruzitfoto.com":
 		i = ev('.//img[contains(@src,"' + iurl + '/images/")][@alt]');
 		break;
@@ -1679,6 +1675,7 @@ function makeworld()
 			break;
 		}
 	case "subirimagenes.com":
+	case "img3x.net":
 		i = ev('.//img[contains(@onclick,"scale")]');
 		break;
 	case "image-share.com":
@@ -1851,7 +1848,6 @@ function makeworld()
 	case "imgdope.com":
 	case "hostmat.eu":
 	case "picrar.com":
-	case "imagedomino.net":
 		i = ev('.//img[contains(@src,"images/")]');
 		break;
 	case "fotosik.pl":
