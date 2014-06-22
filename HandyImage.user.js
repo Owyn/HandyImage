@@ -3,7 +3,7 @@
 // @namespace     handyimage
 // @author        Owyn
 // @contributors  U BLESS
-// @version       2014.06.22.1951
+// @version       2014.06.22.2300
 // @updateURL     https://github.com/Owyn/HandyImage/raw/master/HandyImage.user.js
 // @downloadURL   https://github.com/Owyn/HandyImage/raw/master/HandyImage.user.js
 // @homepage      https://greasyfork.org/scripts/109-handy-image
@@ -716,7 +716,6 @@
 // @exclude       *://imgur.com/memege*
 // @match         http://motherless.com/*/*
 // @match         http://*.imgult.com/img-*
-// @match         http://*.lustimages.net/*/*/
 // @match         http://*.send-up.ru/*
 // @match         http://*.xpic.biz/*/view*
 // @match         http://pictraff.ru/*/*/
@@ -865,7 +864,7 @@ if(document.cookie.indexOf("hji=") != -1)
 		console.warn("you have found a time machine, now you are traveling back in history");
 		window.history.go(-1);
 		document.cookie = "hji=; expires=Thu, 01 Jan 1970 00:00:01 GMT;";
-		return false
+		return false;
 	}
 	console.warn("found a weird cookie, let's eat it");
 	document.cookie = "hji=; expires=Thu, 01 Jan 1970 00:00:01 GMT;"; // stealth mode
@@ -888,7 +887,7 @@ var FireFox = ((navigator.userAgent.indexOf('Firefox') != -1) ? true : false);
 var i;
 var j;
 var iurl = window.location.hostname;
-if(iurl.indexOf("www.") == 0)
+if(!iurl.indexOf("www."))
 {
 	iurl = iurl.substr(4);
 }
@@ -1094,7 +1093,7 @@ function makeworld()
 		i = ev('.//img[contains(@src,"/exec/")]');
 		break;
 	case "image2you.ru":
-		i = ev('.//img[contains(@src,"images/")]')
+		i = ev('.//img[contains(@src,"images/")]');
 		if(i){i.src = i.src.replace('2_', '');}
 		break;
 	case "upix.me":
@@ -1145,7 +1144,9 @@ function makeworld()
 		find_text_in_scripts('"image_url":["', '"');
 		break;
 	case "pix-x.net":
-		i = ev('.//img[contains(@src,"images/")]');if(i){break;}
+		i = ev('.//td/img[contains(@src,"thumb")]');
+		if(i){i.src = i.src.replace('-thumb', '');i.src = i.src.replace('img_thumb', 'img_full');}
+		break;
 	case "pics-money.ru":
 		i = ev('.//img[contains(@src,"/full/")]');if(i){break;}
 	case "pic5you.ru":
@@ -1156,10 +1157,8 @@ function makeworld()
 	case "picage.ru":
 	case "images-host.biz":
 	case "pic2profit.com":
-	case "pix-x.net":
 	case "pics-money.ru":
 	case "pic-mir.ru":
-	case "lustimages.net":
 	case "pictraff.ru":
 		i = ev('.//img[contains(@src,"thumb")]');
 		if(i){i.src = i.src.replace('-thumb', '');i.src = i.src.replace('img_thumb', 'img_full');}
@@ -1401,7 +1400,7 @@ function makeworld()
 	case "platimzafoto.ru":
 	case "pic-money.ru":
 		var f = document.getElementsByTagName("button");
-		if(f.length != 0) 
+		if(f.length)
 		{
 			f[0].click();
 			break;
@@ -1430,7 +1429,7 @@ function makeworld()
 		break;
 	case "imagerocket.net":
 		i = ev('.//a[contains(@href,"/photos/")]');
-		if(i){i.src = i.href};
+		if(i){i.src = i.href;}
 		break;
 	case "keptarolo.hu":
 		i = ev('.//img[contains(@src,"/kep/")]');
@@ -1547,7 +1546,7 @@ function makeworld()
 		if(!i)
 		{
 			var f = document.getElementsByTagName("input");
-			for(c=0;c<f.length;c++) 
+			for(var c=0;c<f.length;c++) 
 			{
 				if(f[c].type == "submit" && f[c].style.display != "none" && f[c].value != "Premium Download")
 				{
@@ -2365,8 +2364,8 @@ function rescale(event)
 	if(rescaled)
 	{
 		rescaled = false;
-		var scale;
-		if(event != 0)
+		var scale,ex,ey;
+		if(event)
 		{
 			if (typeof event.y === "undefined") // Firefox
 			{
@@ -2384,7 +2383,7 @@ function rescale(event)
 		}
 		i.removeAttribute("style");
 		changecursor();
-		if(event != 0)
+		if(event)
 		{
 			window.scrollTo(ex / scale - window.innerWidth / 2, ey / scale - window.innerHeight / 2);
 		}
@@ -2414,7 +2413,7 @@ function rescale(event)
 var ARC = 0;
 function autoresize()
 {
-	if(i.naturalWidth != 0)
+	if(i.naturalWidth)
 	{
 		var title = i.src.substr(i.src.lastIndexOf("/")+1);
 		if(title.indexOf("?") != -1)
