@@ -816,6 +816,7 @@
 // @match         http://www.picrar.com/view*
 // @match         http://*.imagepool.in/share*
 // @match         http://imgv.net/*.html
+// @match         http://img.yt/img-*.html
 // ==/UserScript==
 
 if (typeof unsafeWindow === "undefined")
@@ -1559,6 +1560,7 @@ function makeworld()
 	case "xxxscreens.com":
 	case "trikyimg.com":
 	case "image.adlock.in":
+	case "img.yt":
 		i = ev('.//input[@type="submit"]');
 		dp=true;
 		if(i) 
