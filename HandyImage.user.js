@@ -3,7 +3,7 @@
 // @namespace     handyimage
 // @author        Owyn
 // @contributors  U BLESS
-// @version       2014.06.22
+// @version       2014.06.22.1950
 // @updateURL     https://github.com/Owyn/HandyImage/raw/master/HandyImage.user.js
 // @downloadURL   https://github.com/Owyn/HandyImage/raw/master/HandyImage.user.js
 // @homepage      https://greasyfork.org/scripts/109-handy-image
@@ -818,6 +818,8 @@
 // @match         http://imgv.net/*.html
 // @match         http://www.imgshots.com/img*
 // @match         http://*.3xplanet.com/view*
+// @match         http://*.imgmega.com/*.html
+// @match         http://*.imgsee.me/*.html
 // ==/UserScript==
 
 if (typeof unsafeWindow === "undefined")
@@ -1336,7 +1338,17 @@ function makeworld()
 			return;
 		}
 		break;
+	case "imgmega.com":
+		i = ev('.//input[@value="Continue to image..."]');
+		if(i)
+		{
+			i.click();
+			break;
+		}
+		i = ev('.//img[contains(@onload,"scale")]');
+		break;
 	case "img3x.net":
+	case "imgsee.me":
 		i = ev('.//input[@type="submit"]');
 		dp=true;
 		if(i) 
@@ -1349,6 +1361,7 @@ function makeworld()
 	case "picshare.geenza.com":
 	case "imageboss.net":
 	case "mojoimage.com":
+	case "imgsee.me":
 		i = ev('.//img[contains(@onload,"scale")]');
 		break;
 	case "bild.me":
