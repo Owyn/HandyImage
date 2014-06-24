@@ -3,7 +3,7 @@
 // @namespace     handyimage
 // @author        Owyn
 // @contributors  U BLESS
-// @version       2014.06.24
+// @version       2014.06.24.2130
 // @updateURL     https://github.com/Owyn/HandyImage/raw/master/HandyImage.user.js
 // @downloadURL   https://github.com/Owyn/HandyImage/raw/master/HandyImage.user.js
 // @homepage      https://greasyfork.org/scripts/109-handy-image
@@ -824,6 +824,7 @@
 // @match         http://*.payforpic.ru/*/*/
 // @match         http://*.pic4cash.ru/*.html
 // @match         http://*.pic4cash.ru/full/
+// @match         http://*.imgchili.mcdir.ru/v*
 // ==/UserScript==
 
 if (typeof unsafeWindow === "undefined")
@@ -1394,6 +1395,7 @@ function makeworld()
 	case "mepic.ru":
 	case "upload.qoonal.com":
 	case "imagehovel.com":
+	case "imgchili.mcdir.ru":
 		i = ev('.//img[contains(@src,"' + iurl + '")]');
 		break;
 	case "uaimage.com":
