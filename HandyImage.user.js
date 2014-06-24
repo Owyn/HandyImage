@@ -3,7 +3,7 @@
 // @namespace     handyimage
 // @author        Owyn
 // @contributors  U BLESS
-// @version       2014.06.23
+// @version       2014.06.24
 // @updateURL     https://github.com/Owyn/HandyImage/raw/master/HandyImage.user.js
 // @downloadURL   https://github.com/Owyn/HandyImage/raw/master/HandyImage.user.js
 // @homepage      https://greasyfork.org/scripts/109-handy-image
@@ -32,6 +32,7 @@
 // @match         http://tinypic.com/view*
 // @match         http://radical-foto.ru/*
 // @match         http://radikal-foto.ru/*
+// @match         http://radikal.ru/*
 // @match         http://f-page.ru/*
 // @match         http://www.fotolink.su/v.php?id=*
 // @match         http://www.stooorage.com/show*
@@ -1185,6 +1186,7 @@ function makeworld()
 		i.src = i.src.replace('/tn-', '/');
 		i.src = i.src.replace('/mid/', '/wz/');}
 		break;
+	case "radikal.ru":
 	case "radical-foto.ru":
 	case "radikal-foto.ru":
 	case "f-page.ru":
