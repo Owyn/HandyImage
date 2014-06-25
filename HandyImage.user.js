@@ -3,7 +3,7 @@
 // @namespace     handyimage
 // @author        Owyn
 // @contributors  U BLESS
-// @version       2014.06.24.2200
+// @version       2014.06.25
 // @updateURL     https://github.com/Owyn/HandyImage/raw/master/HandyImage.user.js
 // @downloadURL   https://github.com/Owyn/HandyImage/raw/master/HandyImage.user.js
 // @homepage      https://greasyfork.org/scripts/109-handy-image
@@ -110,8 +110,10 @@
 // @match         http://www.bild.me/bild.php?*
 // @match         http://www.imagesnake.com/show*
 // @match         http://www.imagesnake.com/img*
+// @match         http://www.imagesnake.com/view*
 // @match         http://www.freebunker.com/show*
 // @match         http://www.freebunker.com/img*
+// @match         http://www.freebunker.com/view*
 // @match         http://bayimg.com/*
 // @match         http://*.directupload.net/file*
 // @match         http://*.imgpo.st/*
@@ -1006,6 +1008,7 @@ function makeworld()
 		break;
 	case "directupload.net":
 	case "bilderhoster.net":
+	case "noelshack.com":
 		i = ev('//meta[@property="og:image" or @name="og:image"]');
 		if(i){i.src = i.content;}
 		break;
@@ -1025,10 +1028,6 @@ function makeworld()
 	case "imgnook.com":
 	case "h4z.it":
 		i = document.images[2];
-		if(i){i.src = i.parentNode.href;}
-		break;
-	case "noelshack.com":
-		i = ev('.//a[@target="_blank"]/img');
 		if(i){i.src = i.parentNode.href;}
 		break;
 	case "dumpyourphoto.com":
