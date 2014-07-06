@@ -3,7 +3,7 @@
 // @namespace     handyimage
 // @author        Owyn
 // @contributors  U BLESS
-// @version       2014.06.25
+// @version       2014.07.06
 // @updateURL     https://github.com/Owyn/HandyImage/raw/master/HandyImage.user.js
 // @downloadURL   https://github.com/Owyn/HandyImage/raw/master/HandyImage.user.js
 // @homepage      https://greasyfork.org/scripts/109-handy-image
@@ -34,6 +34,7 @@
 // @match         http://radikal-foto.ru/*
 // @match         http://radikal.ru/*
 // @match         http://f-page.ru/*
+// @match         http://f-picture.net/*
 // @match         http://www.fotolink.su/v.php?id=*
 // @match         http://www.stooorage.com/show*
 // @match         http://*.pimpandhost.com/image*
@@ -827,6 +828,8 @@
 // @match         http://*.pic4cash.ru/*.html
 // @match         http://*.pic4cash.ru/full/
 // @match         http://*.imgchili.mcdir.ru/v*
+// @match         http://*.keep4u.ru/full/*
+// @match         http://*.imgfeel.com/img-*
 // ==/UserScript==
 
 if (typeof unsafeWindow === "undefined")
@@ -1108,6 +1111,9 @@ function makeworld()
 		i = ev('.//a[@class]');
 		if(i){i.src = i.href;}
 		break;
+	case "keep4u.ru":
+		i = ev('.//img[contains(@src,"/b/")]');
+		break;
 	case "euro-pic.eu":
 	case "picpicture.com":
 	case "picfox.org":
@@ -1161,7 +1167,6 @@ function makeworld()
 	case "picage.ru":
 	case "images-host.biz":
 	case "pic2profit.com":
-	case "pics-money.ru":
 	case "pic-mir.ru":
 	case "pictraff.ru":
 	case "payforpic.ru":
@@ -1191,6 +1196,7 @@ function makeworld()
 	case "radikal-foto.ru":
 	case "f-page.ru":
 	case "f-lite.ru":
+	case "f-picture.net":
 		find_text_in_scripts('"Url":"', '"');
 		break;
 	case "subimg.net":
@@ -1367,7 +1373,6 @@ function makeworld()
 	case "picshare.geenza.com":
 	case "imageboss.net":
 	case "mojoimage.com":
-	case "imgsee.me":
 		i = ev('.//img[contains(@onload,"scale")]');
 		break;
 	case "bild.me":
@@ -1528,8 +1533,6 @@ function makeworld()
 	case "imgbar.net":
 		i = ev('.//img[contains(@src,"view/")]');
 		if(i){break;}
-	case "imgbunk.com":
-	case "imgbar.net":
 	case "imagepicsa.com":
 	case "imagefolks.com":
 	case "imgrill.com":
@@ -1547,7 +1550,6 @@ function makeworld()
 	case "imgcoco.com":
 	case "imgcoin.net":
 	case "dtpics.biz":
-	case "xxxscreens.com":
 	case "gokoimage.com":
 		i = ev('.//img[contains(@src,"/upload/")]');
 		dp=true;
@@ -1588,10 +1590,11 @@ function makeworld()
 	case "imgskull.info":
 	case "bulkimg.info":
 	case "img-zone.com":
-	case "xxxscreens.com":
 	case "trikyimg.com":
 	case "image.adlock.in":
 	case "img.yt":
+	case "imgfeel.com":
+	case "xxxscreens.com":
 		i = ev('.//input[@type="submit"]');
 		dp=true;
 		if(i) 
@@ -1599,32 +1602,19 @@ function makeworld()
 			i.click();
 			break;
 		}
-	case "imgonion.com":
-	case "pixup.us":
-	case "imgcorn.com":
 	case "imgplate.com":
 	case "myhotimage.com":
 	case "picstwist.com":
 	case "hotimages.eu":
-	case "xximg.net":
-	case "x.xximg.net":
 	case "fotoszok.pl":
-	case "sxpics.nl":
-	case "sxpics.net":
 	case "gallerycloud.net":
-	case "imgadult.com":
 	case "imagetotal.de":
 	case "imgsavvy.com":
 	case "3xvintage.com":
 	case "imgult.com":
-	case "img-zone.com":
-	case "bulkimg.info":
-	case "imgskull.info":
 	case "istoreimg.com":
 	case "08lkk.com":	
 	case "dragimage.org":
-	case "xxxscreens.com":
-	case "trikyimg.com":
 	case "imgfun.biz":
 	case "storeimgs.net":
 	case "damimage.com":
@@ -1634,7 +1624,6 @@ function makeworld()
 	case "imgstudio.org":
 	case "imgfap.net":
 	case "pic.apollon-fervor.com":
-	case "image.adlock.in":
 		i = ev('.//img[contains(@src,"/upload/")]');
 		break;
 	case "xxx.image-server.ru":
@@ -1700,7 +1689,6 @@ function makeworld()
 			i.click();
 			break;
 		}
-	case "subirimagenes.com":
 		i = ev('.//img[contains(@onclick,"scale")]');
 		break;
 	case "image-share.com":
@@ -1823,7 +1811,6 @@ function makeworld()
 			break;
 		}
 	case "imgnip.com":
-	case "dumppix.com":
 	case "mrjh.org":
 	case "stuffed.ru":
 	case "pixtn.com":
@@ -1832,7 +1819,6 @@ function makeworld()
 	case "rapid-img.de":
 	case "imghostr.me":
 	case "ushareimg.com":
-	case "zimage.fr":
 	case "ngarko.online.fr":
 	case "picrak.com":
 	case "freeuploadimages.org":
@@ -2065,7 +2051,6 @@ function makeworld()
 	case "imgtiger.com":
 	case "imgserve.net":
 	case "imgdino.com":
-	case "qrrro.com":
 	case "fotohosting.net":
 	case "overpic.net":
 	case "imagesocket.com":
@@ -2201,7 +2186,6 @@ function makeworld()
 	case "beeimg.com":	
 	case "1pics.ru":	
 	case "imgshow.me":
-	case "aveimage.com":
 	case "greenpiccs.com":
 		i = ev('.//img[contains(@src,"' + iurl + '/images/")]');
 		break;
@@ -2220,16 +2204,11 @@ function makeworld()
 		dp=true;
 		i = ev('.//input[@value="YES"]');
 		if(i){i.onclick();break;}
-	case "imagepdb.com":
 	case "imagebam.com":
-	case "imgfantasy.com":
-	case "imagedomino.com":
 	case "imgchili.net":
 	case "pic-upload.de":
 	case "pohrani.com":
 	case "shrani.najdi.si":
-	case "imageporn.eu":
-	case "imgleech.com":
 		i = ev('.//img[contains(@onclick,"(this")]');
 		break;
 	default: // dynamic subdomain
@@ -2270,7 +2249,6 @@ function makeworld()
 				i.click();
 				break;
 			}
-		case "imagilive.com":
 			i = ev('.//img[contains(@src,"' + iurl + '")]');
 			break;
 		default:
