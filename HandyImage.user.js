@@ -3,7 +3,7 @@
 // @namespace     handyimage
 // @author        Owyn
 // @contributors  U BLESS
-// @version       2014.07.06
+// @version       2014.07.07
 // @updateURL     https://github.com/Owyn/HandyImage/raw/master/HandyImage.user.js
 // @downloadURL   https://github.com/Owyn/HandyImage/raw/master/HandyImage.user.js
 // @homepage      https://greasyfork.org/scripts/109-handy-image
@@ -830,6 +830,7 @@
 // @match         http://*.imgchili.mcdir.ru/v*
 // @match         http://*.keep4u.ru/full/*
 // @match         http://*.imgfeel.com/img-*
+// @match         http://*.imageeer.com/img-*
 // ==/UserScript==
 
 if (typeof unsafeWindow === "undefined")
@@ -1624,6 +1625,7 @@ function makeworld()
 	case "imgstudio.org":
 	case "imgfap.net":
 	case "pic.apollon-fervor.com":
+	case "imageeer.com":
 		i = ev('.//img[contains(@src,"/upload/")]');
 		break;
 	case "xxx.image-server.ru":
