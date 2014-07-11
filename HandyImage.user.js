@@ -2,8 +2,8 @@
 // @name          Handy Image
 // @namespace     handyimage
 // @author        Owyn
-// @contributors  U BLESS
-// @version       2014.07.07
+// @contributors  U BLESS 
+// @version       2014.07.11
 // @updateURL     https://github.com/Owyn/HandyImage/raw/master/HandyImage.user.js
 // @downloadURL   https://github.com/Owyn/HandyImage/raw/master/HandyImage.user.js
 // @homepage      https://greasyfork.org/scripts/109-handy-image
@@ -831,6 +831,7 @@
 // @match         http://*.keep4u.ru/full/*
 // @match         http://*.imgfeel.com/img-*
 // @match         http://*.imageeer.com/img-*
+// @match         http://*.pic.re/*.html
 // ==/UserScript==
 
 if (typeof unsafeWindow === "undefined")
@@ -1352,6 +1353,7 @@ function makeworld()
 		}
 		break;
 	case "imgmega.com":
+	case "pic.re":
 		i = ev('.//input[@value="Continue to image..."]');
 		if(i)
 		{
