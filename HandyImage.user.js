@@ -2,8 +2,8 @@
 // @name          Handy Image
 // @namespace     handyimage
 // @author        Owyn
-// @contributors  U BLESS 
-// @version       2014.07.11
+// @contributors  U BLESS
+// @version       2014.07.12
 // @updateURL     https://github.com/Owyn/HandyImage/raw/master/HandyImage.user.js
 // @downloadURL   https://github.com/Owyn/HandyImage/raw/master/HandyImage.user.js
 // @homepage      https://greasyfork.org/scripts/109-handy-image
@@ -832,6 +832,8 @@
 // @match         http://*.imgfeel.com/img-*
 // @match         http://*.imageeer.com/img-*
 // @match         http://*.pic.re/*.html
+// @match         http://*.imagebucks.biz/*/*
+// @match         http://*.freshpics.ru/*/*/
 // ==/UserScript==
 
 if (typeof unsafeWindow === "undefined")
@@ -1172,6 +1174,7 @@ function makeworld()
 	case "pic-mir.ru":
 	case "pictraff.ru":
 	case "payforpic.ru":
+	case "freshpics.ru":
 		i = ev('.//img[contains(@src,"thumb")]');
 		if(i){i.src = i.src.replace('-thumb', '');i.src = i.src.replace('img_thumb', 'img_full');}
 		break;
@@ -1469,6 +1472,14 @@ function makeworld()
 	case "free-picload.de":
 		i = ev('.//img[contains(@src,"pics/")]');
 		break;
+	case "imagebucks.biz":
+		i = ev('.//input[@type="submit"]');
+		dp=true;
+		if(i) 
+		{
+			i.click();
+			break;
+		}
 	case "casimages.com":
 	case "thebestpichost.com":
 	case "imagebanana.com":
