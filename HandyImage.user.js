@@ -3,7 +3,7 @@
 // @namespace     handyimage
 // @author        Owyn
 // @contributors  U BLESS
-// @version       2014.07.12
+// @version       2014.07.19
 // @updateURL     https://github.com/Owyn/HandyImage/raw/master/HandyImage.user.js
 // @downloadURL   https://github.com/Owyn/HandyImage/raw/master/HandyImage.user.js
 // @homepage      https://greasyfork.org/scripts/109-handy-image
@@ -834,6 +834,7 @@
 // @match         http://*.pic.re/*.html
 // @match         http://*.imagebucks.biz/*/*
 // @match         http://*.freshpics.ru/*/*/
+// @match         http://imglocker.com/*/*
 // ==/UserScript==
 
 if (typeof unsafeWindow === "undefined")
@@ -1175,8 +1176,9 @@ function makeworld()
 	case "pictraff.ru":
 	case "payforpic.ru":
 	case "freshpics.ru":
+	case "imglocker.com":
 		i = ev('.//img[contains(@src,"thumb")]');
-		if(i){i.src = i.src.replace('-thumb', '');i.src = i.src.replace('img_thumb', 'img_full');}
+		if(i){i.src = i.src.replace('-thumb', '');i.src = i.src.replace('img_thumb', 'img_full');i.src = i.src.replace('_thumb', '');}
 		break;
 	case "imagik.fr":
 		i = ev('.//img[contains(@src,"/uploads/")]');
