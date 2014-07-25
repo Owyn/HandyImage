@@ -3,7 +3,7 @@
 // @namespace     handyimage
 // @author        Owyn
 // @contributors  U BLESS
-// @version       2014.07.24
+// @version       2014.07.25
 // @updateURL     https://github.com/Owyn/HandyImage/raw/master/HandyImage.user.js
 // @downloadURL   https://github.com/Owyn/HandyImage/raw/master/HandyImage.user.js
 // @homepage      https://greasyfork.org/scripts/109-handy-image
@@ -837,6 +837,7 @@
 // @match         http://imglocker.com/*/*
 // @match         http://imgspot.org/img*
 // @match         http://picexposed.com/*.html
+// @match         http://*.imgpapa.com/img-*
 // ==/UserScript==
 
 if (typeof unsafeWindow === "undefined")
@@ -1614,6 +1615,7 @@ function makeworld()
 	case "img.yt":
 	case "imgfeel.com":
 	case "xxxscreens.com":
+	case "imgpapa.com":
 		i = ev('.//input[@type="submit"]');
 		dp=true;
 		if(i) 
