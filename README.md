@@ -1,3 +1,6 @@
+
+# HANDY JUST IMAGE
+
 <h3>Features</h3>
 This script opens fullsized image right after page load in <strong>many image hosting sites</strong> skipping all the annoying stuff like ads, link code etc and <strong>disabling</strong> any kind of <strong>pop-ups</strong>. (script for images opened directly in browser can be found <a href=https://userscripts.org/scripts/show/177505>here</a>)
 
@@ -19,10 +22,6 @@ This script opens fullsized image right after page load in <strong>many image ho
 <li><strong>R</strong> - reload page with script disabled (to see comments etc)</li>
 </ul>
 
-<h3>Supported browsers:</h3>
-<img src=http://upload.wikimedia.org/wikipedia/en/thumb/d/d0/Chrome_Logo.svg/90px-Chrome_Logo.svg.png>
-<img src=http://upload.wikimedia.org/wikipedia/commons/thumb/e/e7/Mozilla_Firefox_3.5_logo_256.png/90px-Mozilla_Firefox_3.5_logo_256.png>
-
 <h3>How to request a new imagehost support or fix for old one</h3>
 Please, if you would like to request a new site or report a non-working one, please, remember to write at least ONE image URL where the script should work, then head right to <strong><a href="https://userscripts.org/scripts/discuss/166494">Discussions section</a></strong>.
 
@@ -31,5 +30,9 @@ In the topic title, write "fix" if the site is already on the list or "add" if i
 <em>* But keep in mind that when requesting nameless non-popular image hosting google knows not much about you'd have to provide a reason for adding it - a website url which uses that hosting a lot for images</em>
 <br><br><em>** Or if you are a developer yourself and would like to help add new hosts, you can <a href="https://userscripts.org/topics/131342">submit code edits</a> at <a href="https://github.com/Owyn/HandyImage">GitHub page</a>
 
-<h3>Supported sites:</h3><table>
-See <a href="https://github.com/Owyn/HandyImage/blob/master/supported-host-list.txt">supported-host-list.txt</a>
+## Supported sites:
+
+See [supported-host-list.txt][1]
+
+
+[1]: https://github.com/Owyn/HandyImage/blob/master/supported-host-list.txt
