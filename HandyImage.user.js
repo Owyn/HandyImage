@@ -169,6 +169,7 @@
 // @match         http://*.itmages.ru/image/view*
 // @match         http://*.pohrani.com/*
 // @match         http://shrani.najdi.si/*
+// @match         http://*.sexyimg.eu/img-*
 // @match         http://*.iv.pl/view*
 // @match         http://*.hostingfailov.com/photo/*
 // @match         http://www.picamatic.com/view*
@@ -2233,6 +2234,9 @@ function makeworld()
 	case "pohrani.com":
 	case "shrani.najdi.si":
 		i = ev('.//img[contains(@onclick,"(this")]');
+		break;
+	case "sexyimg.eu":
+		i = ev('.//img[@class="centred_resized"]');
 		break;
 	default: // dynamic subdomain
 		switch(iurl.substr(iurl.indexOf(".")+1))
