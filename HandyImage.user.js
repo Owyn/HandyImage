@@ -3,7 +3,7 @@
 // @namespace     handyimage
 // @author        Owyn
 // @contributors  U BLESS
-// @version       2014.08.03
+// @version       2014.08.04
 // @updateURL     https://github.com/Owyn/HandyImage/raw/master/HandyImage.user.js
 // @downloadURL   https://github.com/Owyn/HandyImage/raw/master/HandyImage.user.js
 // @homepage      https://greasyfork.org/scripts/109-handy-image
@@ -839,6 +839,12 @@
 // @match         http://picexposed.com/*.html
 // @match         http://*.imgpapa.com/img-*
 // @match         http://*.sexyimg.eu/img-*
+// @match         http://*.imglemon.com/img-*
+// @match         http://*.imgseeds.com/image/*
+// @match         http://*.pronpic.org/*/*
+// @match         http://*.prntscr.com/*
+// @match         http://*.imgdream.net/viewer.php?*
+// @match         http://*.imgtab.net/*
 // ==/UserScript==
 
 if (typeof unsafeWindow === "undefined")
@@ -1094,6 +1100,9 @@ function makeworld()
 		i = ev('.//img[@id="image"]');
 		j = true;
 		break;
+	case "prntscr.com":
+		i = ev('.//img[@id="screenshot-image"]');
+		break;
 	case "bayimg.com":
 	case "picgarage.net":
 		i = ev('.//img[@id="mainImage"]');
@@ -1344,6 +1353,10 @@ function makeworld()
 	case "photosex.biz":
 		i = ev('.//img[contains(@src,"/pic")]');
 		break;
+	case "pronpic.org":
+		i = ev('.//td/img[(contains(@src,"/pic/"))]');
+		if(i){i.src = i.src.replace('th_', '');}
+		break;
 	case "d69.in":
 	case "imadul.com":
 		i = ev('.//div[@class="img_box"]/a');
@@ -1442,6 +1455,7 @@ function makeworld()
 	case "fapomatic.com":
 	case "picshare.ru":
 	case "imgearn.net":
+	case "imgtab.net":
 		i = ev('.//img[contains(@src,"uploads/")]');
 		break;
 	case "xtremeshack.com":
@@ -1650,6 +1664,19 @@ function makeworld()
 	case "imgspot.org":
 	case "sexyimg.eu":
 		i = ev('.//img[contains(@src,"/upload/")]');
+		break;
+	case "imglemon.com":
+		i = ev('.//input[@class="cti-submit"]');
+		dp=true;
+		if(i) 
+		{
+			i.click();
+			i = ev('.//img[contains(@src,"/upload/")]');
+		}
+		else
+		{
+			i = ev('.//img[contains(@src,"/upload/")]');
+		}
 		break;
 	case "xxx.image-server.ru":
 	case "image-server.ru":
@@ -1885,6 +1912,7 @@ function makeworld()
 	case "hostmat.eu":
 	case "picrar.com":
 	case "imagedomino.net":
+	case "imgdream.net":
 		i = ev('.//img[contains(@src,"images/")]');
 		break;
 	case "fotosik.pl":
@@ -2212,6 +2240,7 @@ function makeworld()
 	case "1pics.ru":	
 	case "imgshow.me":
 	case "greenpiccs.com":
+	case "imgseeds.com":
 		i = ev('.//img[contains(@src,"' + iurl + '/images/")]');
 		break;
 	case "shareimages.com":
