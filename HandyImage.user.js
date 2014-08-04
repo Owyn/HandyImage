@@ -840,6 +840,7 @@
 // @match         http://*.imgpapa.com/img-*
 // @match         http://*.sexyimg.eu/img-*
 // @match         http://*.imglemon.com/img-*
+// @match         http://*.imgseeds.com/image/*
 // ==/UserScript==
 
 if (typeof unsafeWindow === "undefined")
@@ -2226,6 +2227,7 @@ function makeworld()
 	case "1pics.ru":	
 	case "imgshow.me":
 	case "greenpiccs.com":
+	case "imgseeds.com":
 		i = ev('.//img[contains(@src,"' + iurl + '/images/")]');
 		break;
 	case "shareimages.com":
