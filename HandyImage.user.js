@@ -844,6 +844,7 @@
 // @match         http://*.pronpic.org/*/*
 // @match         http://*.prntscr.com/*
 // @match         http://*.imgdream.net/viewer.php?*
+// @match         http://*.imgtab.net/*
 // ==/UserScript==
 
 if (typeof unsafeWindow === "undefined")
@@ -1454,6 +1455,7 @@ function makeworld()
 	case "fapomatic.com":
 	case "picshare.ru":
 	case "imgearn.net":
+	case "imgtab.net":
 		i = ev('.//img[contains(@src,"uploads/")]');
 		break;
 	case "xtremeshack.com":
