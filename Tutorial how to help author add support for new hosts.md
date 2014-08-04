@@ -2,7 +2,7 @@ As other authors abandon their scripts when they start to take more time support
 
 This topic would be a tutorial on how to add support for new hosts, after you add it you can commit code changes to script's github https://github.com/Owyn/HandyImage so I can update this userscript here for everyone.
 
-Note: script is designed for image-hosting sites where you can upload images yourself with browser, not for galleries or any other image hostings where any user can't just upload images.
+Note: script is for image-hosting sites where you can upload images yourself with browser, not for galleries or any other image hostings where any user can't just upload images.
 
 ok, **Tutorial**:
 
