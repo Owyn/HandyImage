@@ -1601,14 +1601,11 @@ function makeworld()
 	case "imgpapa.com":
 	case "imglemon.com":
 		dp=true;
-		if(!i)
+		var f = document.getElementsByTagName("input");
+		if(f.length)
 		{
-			var f=document.getElementsByTagName("input");
-			if(f.length)
-			{
-				f[f.length-1].click();
-				break;
-			}
+			f[f.length-1].click();
+			break;
 		}
 	case "imgplate.com":
 	case "myhotimage.com":
