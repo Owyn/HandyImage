@@ -842,6 +842,7 @@
 // @match         http://*.imglemon.com/img-*
 // @match         http://*.imgseeds.com/image/*
 // @match         http://*.pronpic.org/*/*
+// @match         http://*.prntscr.com/*
 // ==/UserScript==
 
 if (typeof unsafeWindow === "undefined")
@@ -1096,6 +1097,9 @@ function makeworld()
 	case "pikucha.ru":
 		i = ev('.//img[@id="image"]');
 		j = true;
+		break;
+	case "prntscr.com":
+		i = ev('.//img[@id="screenshot-image"]');
 		break;
 	case "bayimg.com":
 	case "picgarage.net":
