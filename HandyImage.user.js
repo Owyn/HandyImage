@@ -843,6 +843,7 @@
 // @match         http://*.imgseeds.com/image/*
 // @match         http://*.pronpic.org/*/*
 // @match         http://*.prntscr.com/*
+// @match         http://*.imgdream.net/viewer.php?*
 // ==/UserScript==
 
 if (typeof unsafeWindow === "undefined")
@@ -1909,6 +1910,7 @@ function makeworld()
 	case "hostmat.eu":
 	case "picrar.com":
 	case "imagedomino.net":
+	case "imgdream.net":
 		i = ev('.//img[contains(@src,"images/")]');
 		break;
 	case "fotosik.pl":
