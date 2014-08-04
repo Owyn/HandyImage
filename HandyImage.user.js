@@ -839,6 +839,7 @@
 // @match         http://picexposed.com/*.html
 // @match         http://*.imgpapa.com/img-*
 // @match         http://*.sexyimg.eu/img-*
+// @match         http://*.imglemon.com/img-*
 // ==/UserScript==
 
 if (typeof unsafeWindow === "undefined")
@@ -1650,6 +1651,19 @@ function makeworld()
 	case "imgspot.org":
 	case "sexyimg.eu":
 		i = ev('.//img[contains(@src,"/upload/")]');
+		break;
+	case "imglemon.com":
+		i = ev('.//input[@class="cti-submit"]');
+		dp=true;
+		if(i) 
+		{
+			i.click();
+			i = ev('.//img[contains(@src,"/upload/")]');
+		}
+		else
+		{
+			i = ev('.//img[contains(@src,"/upload/")]');
+		}
 		break;
 	case "xxx.image-server.ru":
 	case "image-server.ru":
