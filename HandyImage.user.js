@@ -841,6 +841,7 @@
 // @match         http://*.sexyimg.eu/img-*
 // @match         http://*.imglemon.com/img-*
 // @match         http://*.imgseeds.com/image/*
+// @match         http://*.pronpic.org/*/*
 // ==/UserScript==
 
 if (typeof unsafeWindow === "undefined")
@@ -1345,6 +1346,10 @@ function makeworld()
 	case "blackcatpix.com":
 	case "photosex.biz":
 		i = ev('.//img[contains(@src,"/pic")]');
+		break;
+	case "pronpic.org":
+		i = ev('.//td/img[(contains(@src,"/pic/"))]');
+		if(i){i.src = i.src.replace('th_', '');}
 		break;
 	case "d69.in":
 	case "imadul.com":
