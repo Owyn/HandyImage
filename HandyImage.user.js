@@ -535,7 +535,6 @@
 // @match         http://*.imagefluff.com/?*
 // @match         http://*.fotohelp.kz/image*
 // @match         https://*.myimg.me/*
-// @match         http://i.ruspotting.net/*
 // @match         http://*.upic.kz/*
 // @match         http://imguploda.inamurajane.info/*
 // @match         http://*.hosting.webspell.fr/*
@@ -747,6 +746,7 @@
 // @match         http://*.imgtab.net/*
 // @match         http://*.madimage.org/img-*
 // @match         http://*.kephost.com/image/*
+// @match         http://i.ruspotting.net/image/*
 // ==/UserScript==
 
 if (typeof unsafeWindow === "undefined")
@@ -930,6 +930,7 @@ function makeworld()
 	case "noelshack.com":
 	case "prntscr.com":
 	case "kephost.com":
+	case "i.ruspotting.net":
 		i = ev('//meta[@property="og:image" or @name="og:image"]');
 		if(i){i.src = i.content;}
 		break;
@@ -1907,7 +1908,6 @@ function makeworld()
 	case "image.vsemrole.ru":
 	case "up.vn-hello.com":
 	case "myimg.me":
-	case "i.ruspotting.net":
 	case "upic.kz":
 	case "hosting.webspell.fr":
 	case "heberg-hush.org":
