@@ -746,6 +746,7 @@
 // @match         http://*.imgdream.net/view*
 // @match         http://*.imgtab.net/*
 // @match         http://*.madimage.org/img-*
+// @match         http://*.kephost.com/image/*
 // ==/UserScript==
 
 if (typeof unsafeWindow === "undefined")
@@ -928,6 +929,7 @@ function makeworld()
 	case "bilderhoster.net":
 	case "noelshack.com":
 	case "prntscr.com":
+	case "kephost.com":
 		i = ev('//meta[@property="og:image" or @name="og:image"]');
 		if(i){i.src = i.content;}
 		break;
