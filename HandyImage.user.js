@@ -182,7 +182,8 @@
 // @match         http://*.pictureshoster.com/view*
 // @match         http://*.imageshost.ru/photo*
 // @match         http://*.imagestime.com/show*
-// @match         http://sharenxs.com/view*
+// @match         http://sharenxs.com/view/*
+// @match         http://sharenxs.com/gallery/*
 // @match         http://img4.imagetitan.com/img*
 // @match         http://*.imagenpic.com/*
 // @match         http://*.stuffed.ru/images*
@@ -1054,10 +1055,26 @@ function makeworld()
 		if(i){i.src = i.src.replace('thumb', 'file');}
 		break;
 	case "sharenxs.com":
+		i = ev('//meta[@property="og:image"]');
+		if(i){return;}
 		i = ev('.//img[contains(@src,"/thumbnails/")]');
-		if(i){i.src = i.src.replace('/thumbnails/', '/images/');
-		i.src = i.src.replace('/tn-', '/');
-		i.src = i.src.replace('/mid/', '/wz/');}
+		if(i)
+		{
+			i.src = i.src.replace('/thumbnails/', '/images/');
+			i.src = i.src.replace('/tn-', '/');
+			i.src = i.src.replace('/mid/', '/wz/');
+			var fn = ev('//div[@class="alert alert-info nomargin photo_name"]/span');
+			if(fn)
+			{
+			var url = i.src;
+			i.src = url.substring(0,url.lastIndexOf('/')+1) + fn.textContent + url.substring(url.lastIndexOf('.'));
+			}
+		}
+		else
+		{
+			i = ev('.//img[contains(@src,"/photos/") or contains(@src,"/images/")]');
+			if(i){i.src = i.src.replace('/tn-', '/');}
+		}
 		break;
 	case "radikal.ru":
 	case "radical-foto.ru":
