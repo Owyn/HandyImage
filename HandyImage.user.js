@@ -3,7 +3,7 @@
 // @namespace     handyimage
 // @author        Owyn
 // @contributors  U BLESS, bitst0rm
-// @version       2014.08.06
+// @version       2014.08.07
 // @updateURL     https://github.com/Owyn/HandyImage/raw/master/HandyImage.user.js
 // @downloadURL   https://github.com/Owyn/HandyImage/raw/master/HandyImage.user.js
 // @homepage      https://greasyfork.org/scripts/109-handy-image
@@ -183,6 +183,7 @@
 // @match         http://*.imageshost.ru/photo*
 // @match         http://*.imagestime.com/show*
 // @match         http://sharenxs.com/view*
+// @match         http://sharenxs.com/gallery/*/*
 // @match         http://img4.imagetitan.com/img*
 // @match         http://*.imagenpic.com/*
 // @match         http://*.stuffed.ru/images*
@@ -1054,10 +1055,16 @@ function makeworld()
 		if(i){i.src = i.src.replace('thumb', 'file');}
 		break;
 	case "sharenxs.com":
-		i = ev('.//img[contains(@src,"/thumbnails/")]');
+		i = ev('.//img[@class="view_photo"]');
 		if(i){i.src = i.src.replace('/thumbnails/', '/images/');
 		i.src = i.src.replace('/tn-', '/');
-		i.src = i.src.replace('/mid/', '/wz/');}
+		i.src = i.src.replace('/mid/', '/wz/');
+		var fn = ev('//div[@class="alert alert-info nomargin photo_name"]/span');
+		if(fn)
+		{
+			var url = i.src;
+			i.src = url.substring(0,url.lastIndexOf('/')+1) + fn.textContent + url.substring(url.lastIndexOf('.'));
+		}}
 		break;
 	case "radikal.ru":
 	case "radical-foto.ru":
