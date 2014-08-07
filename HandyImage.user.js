@@ -1056,7 +1056,7 @@ function makeworld()
 		break;
 	case "sharenxs.com":
 		i = ev('//meta[@property="og:image"]');
-      	if(i){return;}
+		if(i){return;}
 		i = ev('.//img[contains(@src,"/thumbnails/")]');
 		if(i)
 		{
@@ -1072,7 +1072,7 @@ function makeworld()
 		}
 		else
 		{
-			i = ev('.//img[contains(@src,"/photos/")]');
+			i = ev('.//img[contains(@src,"/photos/") or contains(@src,"/images/")]');
 			if(i){i.src = i.src.replace('/tn-', '/');}
 		}
 		break;
