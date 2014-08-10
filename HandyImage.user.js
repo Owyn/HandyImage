@@ -972,12 +972,6 @@ function makeworld()
 	case "picgarage.net":
 		i = ev('.//img[@id="mainImage"]');
 		break;
-	case "depic.me":
-		i = ev('.//img[@id="pic"]');
-		break;
-	case "6on9.com":
-		i = ev('.//img[@id="thepic"]');
-		break;
 	case "xup.in":
 		i = ev('.//img[contains(@src,"/exec/")]');
 		break;
@@ -1239,6 +1233,7 @@ function makeworld()
 	case "imageboss.net":
 	case "mojoimage.com":
 	case "imagecherry.com":
+	case "6on9.com":
 		i = ev('.//img[contains(@onload,"scale")]');
 		break;
 	case "bild.me":
@@ -1264,6 +1259,7 @@ function makeworld()
 	case "mepic.ru":
 	case "imagehovel.com":
 	case "imgchili.mcdir.ru":
+	case "depic.me":
 		i = ev('.//img[contains(@src,"' + iurl + '")]');
 		break;
 	case "uaimage.com":
