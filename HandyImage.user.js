@@ -3,7 +3,7 @@
 // @namespace     handyimage
 // @author        Owyn
 // @contributors  U BLESS, bitst0rm
-// @version       2014.08.07
+// @version       2014.08.10
 // @updateURL     https://github.com/Owyn/HandyImage/raw/master/HandyImage.user.js
 // @downloadURL   https://github.com/Owyn/HandyImage/raw/master/HandyImage.user.js
 // @homepage      https://greasyfork.org/scripts/109-handy-image
@@ -22,6 +22,7 @@
 // @match         http://*.imagetwist.com/*/*
 // @match         http://*.imagevenue.com/img.php?*
 // @match         *://*.imageshack.com/i/*
+// @match         *://*.imageshack.com/f/*
 // @match         http://imagepix.org/image*
 // @match         http://image2you.ru/*/*/
 // @match         http://imageban.ru/show*
@@ -675,6 +676,7 @@
 // @match         http://*.ultraimg.com/image/*
 // @match         http://demo.chevereto.com/image/*
 // @match         http://*.ownimg.com/image/*
+// @match         http://*.6on9.com/img/*
 // ==/UserScript==
 
 if (typeof unsafeWindow === "undefined")
@@ -913,6 +915,8 @@ function makeworld()
 		}
 		break;
 	case "imageshack.com":
+		i = ev('.//input[contains(@value,"' + iurl + '/f/")]');
+		if(i){window.location.href = i.value.replace('/f/', '/i/');}
 		i = ev('.//img[@data-width]');
 		break;
 	case "imgnook.com":
@@ -970,6 +974,9 @@ function makeworld()
 		break;
 	case "depic.me":
 		i = ev('.//img[@id="pic"]');
+		break;
+	case "6on9.com":
+		i = ev('.//img[@id="thepic"]');
 		break;
 	case "xup.in":
 		i = ev('.//img[contains(@src,"/exec/")]');
