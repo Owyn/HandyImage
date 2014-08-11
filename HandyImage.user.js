@@ -3,7 +3,7 @@
 // @namespace     handyimage
 // @author        Owyn
 // @contributors  U BLESS, bitst0rm
-// @version       2014.08.10
+// @version       2014.08.11
 // @updateURL     https://github.com/Owyn/HandyImage/raw/master/HandyImage.user.js
 // @downloadURL   https://github.com/Owyn/HandyImage/raw/master/HandyImage.user.js
 // @homepage      https://greasyfork.org/scripts/109-handy-image
@@ -677,6 +677,7 @@
 // @match         http://demo.chevereto.com/image/*
 // @match         http://*.ownimg.com/image/*
 // @match         http://*.6on9.com/img/*
+// @match         http://imgclick.net/*/*
 // ==/UserScript==
 
 if (typeof unsafeWindow === "undefined")
@@ -1209,17 +1210,10 @@ function makeworld()
 			return;
 		}
 		break;
+	case "imgsee.me":
 	case "imgmega.com":
 	case "pic.re":
-		i = ev('.//input[@value="Continue to image..."]');
-		if(i)
-		{
-			i.click();
-			break;
-		}
-		i = ev('.//img[contains(@onload,"scale")]');
-		break;
-	case "imgsee.me":
+	case "imgclick.net":
 		i = ev('.//input[@type="submit"]');
 		dp=true;
 		if(i) 
