@@ -3,7 +3,7 @@
 // @namespace     handyimage
 // @author        Owyn
 // @contributors  U BLESS, bitst0rm
-// @version       2014.08.11
+// @version       2014.08.12
 // @updateURL     https://github.com/Owyn/HandyImage/raw/master/HandyImage.user.js
 // @downloadURL   https://github.com/Owyn/HandyImage/raw/master/HandyImage.user.js
 // @homepage      https://greasyfork.org/scripts/109-handy-image
@@ -678,6 +678,7 @@
 // @match         http://*.ownimg.com/image/*
 // @match         http://*.6on9.com/img/*
 // @match         http://imgclick.net/*/*
+// @match         http://*.www.gogoimage.org/img-*
 // ==/UserScript==
 
 if (typeof unsafeWindow === "undefined")
@@ -1021,7 +1022,7 @@ function makeworld()
 		}
 		break;
 	case "500px.com":
-		find_text_in_scripts('"image_url":["', '"');
+		find_text_in_scripts('full.jpg","http:', '"');
 		break;
 	case "pix-x.net":
 		i = ev('.//td/img[contains(@src,"thumb")]');
@@ -1445,6 +1446,7 @@ function makeworld()
 	case "imgspot.org":
 	case "sexyimg.eu":
 	case "madimage.org":
+	case "gogoimage.org":
 		i = ev('.//img[contains(@src,"/upload/")]');
 		break;
 	case "xxx.image-server.ru":
