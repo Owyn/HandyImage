@@ -2,7 +2,7 @@ As other authors abandon their scripts when they start to take more time support
 
 This topic would be a tutorial on how to add support for new hosts, after you add it you can commit code changes to script's github https://github.com/Owyn/HandyImage so I can update this userscript here for everyone.
 
-Note: script is for image-hosting sites where you can upload images yourself with browser, not for galleries or any other image hostings where any user can't just upload images.
+Note: this script is for image-hosting sites where you can upload images yourself with browser, not for galleries or any other image hostings where any user can't just upload images (this script is not to include every website with images on the internet).
 
 ok, **Tutorial**:
 
@@ -32,7 +32,7 @@ in url `http://imgshow.me/image/sm` code after `/image/` determines which image 
     `// @match         http://*.imgshow.me/image/*`  
 this is our final `@match` line, we need to place it after all other `@match` lines but before `// ==/UserScript==` (don't put it in the middle of the hostlist, place it last - this way we can keep track when host was added)
 
-**2) making a case to find image on page**
+**2) choosing a case to find image on page**
 
 **2.1)** find image itself to display it on your screen later
 
@@ -43,21 +43,22 @@ here the code of image is:
 
 src here is `http://imgshow.me/images/60wmMdG.jpg` , so common part for all images is `/images/` - to be exact - `website url + /images/` (we need to take the biggest common part of the url to not confuse image with other images which might appear on the image page now or later)
 
-**2.2) writing the case itself**
+**2.2) using the case itself**
 
 now after we know how to determine images we should write it down so script would know it too:
-for most of websites there is already a correct machanism to find the image is present, you just have to add new website address to one of those.
+for most of websites there is already a correct machanism to find the image present, you just have to add new website address to one of those.
 do a ctrl+f (f3) (find) in `HandyImage.user.js` for common part you found ( `website url + "/images/"` here)
 what we need would be:  
-    `i = ev('.//img[contains(@src,"' + iurl + '/images/")]');`
+    `i = q('img[src*="' + iurl + '/images/"]');`
 
-code above finds an `<img>` element containing `website url` and `/images/` right after it inside `src` attribute
+code above finds an `<img>` element containing `website url` and `/images/` right after it inside `src` attribute.
+full documentation about how search works is here http://www.w3schools.com/cssref/css_selectors.asp  
 
 old part of code now looks like:
 ```
     case "hostpic.org":
 	case "zapodaj.net":
-		i = ev('.//img[contains(@src,"' + iurl + '/images/")]');
+		i = q('img[src*="' + iurl + '/images/"]');
 		break;
 ```
 and we have to just add new host address (without `www.` here so it would look like:
@@ -65,7 +66,7 @@ and we have to just add new host address (without `www.` here so it would look l
     case "hostpic.org":
 	case "zapodaj.net":
 	case "imgshow.me":
-		i = ev('.//img[contains(@src,"' + iurl + '/images/")]');
+		i = q('img[src*="' + iurl + '/images/"]');
 		break;
 ```
 
