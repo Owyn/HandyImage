@@ -3,7 +3,7 @@
 // @namespace     handyimage
 // @author        Owyn
 // @contributors  U BLESS, bitst0rm
-// @version       2014.08.20
+// @version       2014.08.22
 // @updateURL     https://github.com/Owyn/HandyImage/raw/master/HandyImage.user.js
 // @downloadURL   https://github.com/Owyn/HandyImage/raw/master/HandyImage.user.js
 // @homepage      https://greasyfork.org/scripts/109-handy-image
@@ -730,7 +730,7 @@ if(document.cookie.indexOf("hji=") != -1)
 }
 //else{	console.warn("no hji cookie found");}
 
-function q(s){if(document.body){return document.body.querySelector(s);}return null}
+function q(s){if(document.body){return document.body.querySelector(s);}return null;}
 var cfg_direct;
 var cfg_bgclr;
 var cfg_fitWH = true;
@@ -1862,7 +1862,7 @@ function makeworld()
 		switch(iurl.substr(iurl.indexOf(".")+1))
 		{
 		case "tumblr.com":
-			i = q('img[:not(src*="data:")][id]');
+			i = q('img:not([src*="data:"])[id]');
 			break;
 		case "imagevenue.com":
 			i = q('img[src*="/loc"]');
