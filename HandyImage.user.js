@@ -678,7 +678,7 @@
 // @match         http://*.ownimg.com/image/*
 // @match         http://*.6on9.com/img/*
 // @match         http://imgclick.net/*/*
-// @match         http://*.www.gogoimage.org/img-*
+// @match         http://*.gogoimage.org/img-*
 // ==/UserScript==
 
 if (typeof unsafeWindow === "undefined")
