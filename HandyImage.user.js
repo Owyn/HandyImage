@@ -3,7 +3,7 @@
 // @namespace     handyimage
 // @author        Owyn
 // @contributors  U BLESS, bitst0rm
-// @version       2014.08.22
+// @version       2014.08.25
 // @updateURL     https://github.com/Owyn/HandyImage/raw/master/HandyImage.user.js
 // @downloadURL   https://github.com/Owyn/HandyImage/raw/master/HandyImage.user.js
 // @homepage      https://greasyfork.org/scripts/109-handy-image
@@ -1362,7 +1362,6 @@ function makeworld()
 	case "hostingfailov.com":
 	case "zimagez.com":
 	case "chickupload.com":
-	case "imagefap.com":
 		i = q('img[src*="/full/"]');
 		break;
 	case "picbank.pl":
@@ -1370,6 +1369,14 @@ function makeworld()
 	case "screencity.pl":
 	case "fotoshara.pl":
 		i = q('img[src*="/uploaded/"]');
+		break;
+	case "imagefap.com":
+		i = q('noscript');
+		if(i)
+		{
+			i.src = i.innerHTML.substring(i.innerHTML.indexOf("http"));
+			i.src = i.src.substring(0,i.src.indexOf('"'));
+		}
 		break;
 	case "imgadult.com":
 		i = q('a.overlay_ad_link');
