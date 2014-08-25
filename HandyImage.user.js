@@ -3,7 +3,7 @@
 // @namespace     handyimage
 // @author        Owyn
 // @contributors  U BLESS, bitst0rm
-// @version       2014.08.25
+// @version       2014.08.26
 // @updateURL     https://github.com/Owyn/HandyImage/raw/master/HandyImage.user.js
 // @downloadURL   https://github.com/Owyn/HandyImage/raw/master/HandyImage.user.js
 // @homepage      https://greasyfork.org/scripts/109-handy-image
@@ -754,7 +754,7 @@ function ws()
 {
 	if(!(FireFox && i.src.lastIndexOf(".gif") != -1)) // NOT firefox + gif = no animation
 	{
-		unsafeWindow.stop();
+		window.stop();
 	}
 }
 
@@ -799,8 +799,8 @@ function makeimage()
 	i.style.margin = "auto"; // center image
 	document.body.appendChild(i);
 	i.addEventListener("click", rescale, true);
-	unsafeWindow.addEventListener("keydown", onkeydown, true);
-	if(dp){console.warn("you are on a double-page image hosting (probably)");unsafeWindow.addEventListener("beforeunload", onbeforeunload, true);}
+	window.addEventListener("keydown", onkeydown, true);
+	if(dp){console.warn("you are on a double-page image hosting (probably)");window.addEventListener("beforeunload", onbeforeunload, true);}
 	autoresize();
 }
 
@@ -1912,7 +1912,7 @@ function makeworld()
 	if(!j)
 	{
 		j = true;
-		unsafeWindow.addEventListener('beforescriptexecute', onscript, true);
+		window.addEventListener('beforescriptexecute', onscript, true);
 	}
 	//
 	if(i && i.src)
@@ -1944,7 +1944,7 @@ function makeworld()
 		ws();
 		document.head.innerHTML = "";
 		sanitize();
-		unsafeWindow.removeEventListener('beforescriptexecute', onscript, true);
+		window.removeEventListener('beforescriptexecute', onscript, true);
 		makeimage();
 	}
 	else // try again
@@ -2217,11 +2217,11 @@ function onkeydown (b)
 		}
 		else
 		{
-			unsafeWindow.removeEventListener("beforeunload", onbeforeunload, true);
+			window.removeEventListener("beforeunload", onbeforeunload, true);
 		}
 		break;
 	case KeyEvent.DOM_VK_F5:
-		unsafeWindow.removeEventListener("beforeunload", onbeforeunload, true);
+		window.removeEventListener("beforeunload", onbeforeunload, true);
 		break;
 	}
 }
@@ -2242,7 +2242,7 @@ function cfg()
 			if(q("#hji_cfg_2_bgclr").value){document.body.bgColor = q("#hji_cfg_2_bgclr").value;}else{document.body.removeAttribute("bgColor");}
 		}
 		if(i && i.src){i.removeEventListener("click", rescale, true);}
-		unsafeWindow.removeEventListener("keydown", onkeydown, true);
+		window.removeEventListener("keydown", onkeydown, true);
 		document.head.innerHTML = "";
 		document.body.innerHTML = "";
 		ws();
