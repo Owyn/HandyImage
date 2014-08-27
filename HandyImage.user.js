@@ -3,7 +3,7 @@
 // @namespace     handyimage
 // @author        Owyn
 // @contributors  U BLESS, bitst0rm
-// @version       2014.08.27
+// @version       2014.08.28
 // @updateURL     https://github.com/Owyn/HandyImage/raw/master/HandyImage.user.js
 // @downloadURL   https://github.com/Owyn/HandyImage/raw/master/HandyImage.user.js
 // @homepage      https://greasyfork.org/scripts/109-handy-image
@@ -679,6 +679,8 @@
 // @match         http://*.6on9.com/img/*
 // @match         http://imgclick.net/*/*
 // @match         http://*.gogoimage.org/img-*
+// @match         http://imgmoney.ru/*.html
+// @match         http://imgmoney.ru/full/
 // ==/UserScript==
 
 if (typeof unsafeWindow === "undefined")
@@ -1268,6 +1270,7 @@ function makeworld()
 	case "platimzafoto.ru":
 	case "pic-money.ru":
 	case "pic4cash.ru":
+	case "imgmoney.ru":
 		var f = document.getElementsByTagName("button");
 		if(f.length)
 		{
