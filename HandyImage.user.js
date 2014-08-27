@@ -3,7 +3,7 @@
 // @namespace     handyimage
 // @author        Owyn
 // @contributors  U BLESS, bitst0rm
-// @version       2014.08.26
+// @version       2014.08.27
 // @updateURL     https://github.com/Owyn/HandyImage/raw/master/HandyImage.user.js
 // @downloadURL   https://github.com/Owyn/HandyImage/raw/master/HandyImage.user.js
 // @homepage      https://greasyfork.org/scripts/109-handy-image
@@ -1018,7 +1018,12 @@ function makeworld()
 		}
 		break;
 	case "500px.com":
-		find_text_in_scripts('full.jpg","http:', '"');
+		if(find_text_in_scripts('https_url":"', '/avatar'))
+		{
+			var f = i.src;
+			find_text_in_scripts('photos\\/', '"');
+			i.src = f + "/photos/" + i.getAttribute("src");
+		}
 		break;
 	case "pix-x.net":
 		i = q('td img[src*="thumb"]');
