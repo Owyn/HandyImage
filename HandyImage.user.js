@@ -3,7 +3,7 @@
 // @namespace     handyimage
 // @author        Owyn
 // @contributors  U BLESS, bitst0rm
-// @version       2014.08.28
+// @version       2014.08.29
 // @updateURL     https://github.com/Owyn/HandyImage/raw/master/HandyImage.user.js
 // @downloadURL   https://github.com/Owyn/HandyImage/raw/master/HandyImage.user.js
 // @homepage      https://greasyfork.org/scripts/109-handy-image
@@ -845,6 +845,7 @@ function makeworld()
 		i = q('a img:not([src*="/images/"])');
 		break;
 	case "motherless.com":
+		j = true;
 		i = q('div#media-media div a img');
 		break;
 	case "awesomescreenshot.com":
