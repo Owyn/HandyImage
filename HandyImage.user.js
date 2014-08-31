@@ -3,7 +3,7 @@
 // @namespace     handyimage
 // @author        Owyn
 // @contributors  U BLESS, bitst0rm
-// @version       2014.08.29
+// @version       2014.08.31
 // @updateURL     https://github.com/Owyn/HandyImage/raw/master/HandyImage.user.js
 // @downloadURL   https://github.com/Owyn/HandyImage/raw/master/HandyImage.user.js
 // @homepage      https://greasyfork.org/scripts/109-handy-image
@@ -681,6 +681,7 @@
 // @match         http://*.gogoimage.org/img-*
 // @match         http://imgmoney.ru/*.html
 // @match         http://imgmoney.ru/full/
+// @match         http://www.imgili.com/view*
 // ==/UserScript==
 
 if (typeof unsafeWindow === "undefined")
@@ -975,10 +976,6 @@ function makeworld()
 		break;
 	case "xup.in":
 		i = q('img[src*="/exec/"]');
-		break;
-	case "image2you.ru":
-		i = q('img[src*="images/"]');
-		if(i){i.src = i.src.replace('2_', '');}
 		break;
 	case "upix.me":
 		i = q('a');
@@ -1632,6 +1629,7 @@ function makeworld()
 	case "hostmat.eu":
 	case "imagedomino.net":
 	case "imgdream.net":
+	case "imgili.com":
 		i = q('img[src*="images/"]');
 		break;
 	case "fotosik.pl":
@@ -1759,6 +1757,10 @@ function makeworld()
 	case "ipic.su":
 		i = q('input[value*="' + iurl + ' img/"]');
 		if(i){i.src = i.value;}
+		break;
+	case "image2you.ru":
+		i = q('img[src*="images/"]');
+		if(i){i.src = i.src.replace('2_', '');}
 		break;
 	case "imgrex.com":
 		i = q('form[action="' + window.location.pathname.substr(1) + window.location.search + '"]');
