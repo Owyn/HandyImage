@@ -3,7 +3,7 @@
 // @namespace     handyimage
 // @author        Owyn
 // @contributors  U BLESS, bitst0rm
-// @version       2014.08.31
+// @version       2014.09.01
 // @updateURL     https://github.com/Owyn/HandyImage/raw/master/HandyImage.user.js
 // @downloadURL   https://github.com/Owyn/HandyImage/raw/master/HandyImage.user.js
 // @homepage      https://greasyfork.org/scripts/109-handy-image
@@ -682,6 +682,7 @@
 // @match         http://imgmoney.ru/*.html
 // @match         http://imgmoney.ru/full/
 // @match         http://www.imgili.com/view*
+// @match         http://www.imglooks.com/view*
 // ==/UserScript==
 
 if (typeof unsafeWindow === "undefined")
@@ -1630,6 +1631,7 @@ function makeworld()
 	case "imagedomino.net":
 	case "imgdream.net":
 	case "imgili.com":
+	case "imglooks.com":
 		i = q('img[src*="images/"]');
 		break;
 	case "fotosik.pl":
