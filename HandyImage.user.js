@@ -3,7 +3,7 @@
 // @namespace     handyimage
 // @author        Owyn
 // @contributors  U BLESS, bitst0rm
-// @version       2014.09.05
+// @version       2014.09.07
 // @updateURL     https://github.com/Owyn/HandyImage/raw/master/HandyImage.user.js
 // @downloadURL   https://github.com/Owyn/HandyImage/raw/master/HandyImage.user.js
 // @homepage      https://greasyfork.org/scripts/109-handy-image
@@ -577,12 +577,14 @@
 // @match         http://*.imgcoin.net/img-*
 // @match         http://*.08lkk.com/Image/img-*
 // @match         *://*.flickr.com/photos/*/*
-// @exclude       /^https?://(www\.)?flickr\.com/photos/([^/]+)/(sets/.*|page.*|with.*)?$/
+// @exclude       /^https?://(www\.)?flickr\.com/photos/([^/]+)/(sets/.*|page.*|with.*|favorites.*)?$/
 // @match         http://*.imgrex.com/view*
 // @match         http://www.amateri.cz/g*/*
 // @match         http://*.imgshow.me/*
-// @match         *://*.wikipedia.org/wiki/File:*.jp*
-// @match         *://*.wikipedia.org/wiki/File:*.png
+// @match         *://*.wikipedia.org/wiki/*:*.jp*
+// @match         *://*.wikipedia.org/wiki/*:*.png
+// @match         *://*.wikimedia.org/wiki/File:*.jp*
+// @match         *://*.wikimedia.org/wiki/File:*.pn*
 // @match         http://*.dragimage.org/img-*
 // @match         http://*.xxxscreens.com//img-*
 // @match         http://*.trikyimg.com//img-*
@@ -909,7 +911,7 @@ function makeworld()
 		break;
 	case "flickr.com":
 	case "secure.flickr.com":
-		if(!find_text_in_scripts('"url":"', '"'))
+		if(!find_text_in_scripts('"url":"https:', '"') && !find_text_in_scripts('"url":"', '"'))
 		{
 			if(i = q("#share-options-embed-textarea-o-bbcode"))
 			{
@@ -1888,6 +1890,7 @@ function makeworld()
 			i = q('img[src*="/loc"]');
 			break;
 		case "wikipedia.org":
+		case "wikimedia.org":
 			i = q('a[href*="/upload"]');
 			if(i){i.src = i.href;}
 			break;
