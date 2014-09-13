@@ -3,7 +3,7 @@
 // @namespace     handyimage
 // @author        Owyn
 // @contributors  U BLESS, bitst0rm
-// @version       2014.09.08
+// @version       2014.09.14
 // @updateURL     https://github.com/Owyn/HandyImage/raw/master/HandyImage.user.js
 // @downloadURL   https://github.com/Owyn/HandyImage/raw/master/HandyImage.user.js
 // @homepage      https://greasyfork.org/scripts/109-handy-image
@@ -686,6 +686,7 @@
 // @match         http://www.imgili.com/view*
 // @match         http://www.imglooks.com/view*
 // @match         http://*.bababian.com/phoinfo/*
+// @match         http://*.imageeer.com/*
 // ==/UserScript==
 
 if (typeof unsafeWindow === "undefined")
@@ -1113,6 +1114,11 @@ function makeworld()
 	case "wstaw.org":
 		i = q('a[href*="/m/"]');
 		if(i){i.src = i.href;}
+		break;
+	case "imageeer.com":
+		i = q('input[type="button"]');
+		if(i){i.click();}
+		else{i = q('img[src*="/img/"]');}
 		break;
 	case "imageshost.ru":
 	case "imgv.net":
