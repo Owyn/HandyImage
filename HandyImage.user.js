@@ -1446,7 +1446,6 @@ function makeworld()
 		if(f.length)
 		{
 			f[f.length-1].click();
-			break;
 		}
 	case "myhotimage.com":
 	case "picstwist.com":
