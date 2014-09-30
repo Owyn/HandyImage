@@ -3,7 +3,7 @@
 // @namespace     handyimage
 // @author        Owyn
 // @contributors  U BLESS, bitst0rm
-// @version       2014.09.30
+// @version       2014.09.31
 // @updateURL     https://github.com/Owyn/HandyImage/raw/master/HandyImage.user.js
 // @downloadURL   https://github.com/Owyn/HandyImage/raw/master/HandyImage.user.js
 // @homepage      https://greasyfork.org/scripts/109-handy-image
@@ -688,6 +688,7 @@
 // @match         http://*.bababian.com/phoinfo/*
 // @match         http://*.imageeer.com/*
 // @match         http://*.xxximagenow.com/img-*
+// @match         http://*.imgbanana.com/view*
 // ==/UserScript==
 
 if (typeof unsafeWindow === "undefined")
@@ -1227,6 +1228,7 @@ function makeworld()
 	case "imgmega.com":
 	case "pic.re":
 	case "imgclick.net":
+	case "imgbanana.com":
 		i = q('input[type="submit"]');
 		dp=true;
 		if(i) 
