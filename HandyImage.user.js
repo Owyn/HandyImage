@@ -3,7 +3,7 @@
 // @namespace     handyimage
 // @author        Owyn
 // @contributors  U BLESS, bitst0rm
-// @version       2014.10.01
+// @version       2014.10.09
 // @updateURL     https://github.com/Owyn/HandyImage/raw/master/HandyImage.user.js
 // @downloadURL   https://github.com/Owyn/HandyImage/raw/master/HandyImage.user.js
 // @homepage      https://greasyfork.org/scripts/109-handy-image
@@ -1898,7 +1898,11 @@ function makeworld()
 		switch(iurl.substr(iurl.indexOf(".")+1))
 		{
 		case "tumblr.com":
-			i = q('img:not([src*="data:"])[id]');
+			i = q('img[data-src]');
+			if(i)
+			{
+				i.src = i.dataset.src;
+			}
 			break;
 		case "imagevenue.com":
 			i = q('img[src*="/loc"]');
