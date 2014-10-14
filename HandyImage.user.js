@@ -3,7 +3,7 @@
 // @namespace     handyimage
 // @author        Owyn
 // @contributors  U BLESS, bitst0rm
-// @version       2014.10.09
+// @version       2014.10.14
 // @updateURL     https://github.com/Owyn/HandyImage/raw/master/HandyImage.user.js
 // @downloadURL   https://github.com/Owyn/HandyImage/raw/master/HandyImage.user.js
 // @homepage      https://greasyfork.org/scripts/109-handy-image
@@ -689,6 +689,7 @@
 // @match         http://*.imageeer.com/*
 // @match         http://*.xxximagenow.com/img-*
 // @match         http://*.imgbanana.com/view*
+// @match         http://*.imgreserve.com/?v=*
 // ==/UserScript==
 
 if (typeof unsafeWindow === "undefined")
@@ -1883,6 +1884,7 @@ function makeworld()
 	case "imagedomino.com":
 	case "imghash.com":
 	case "imageporn.eu":
+	case "imgreserve.com":
 		j = true;
 		dp=true;
 		i = q('input[value="YES"]');
