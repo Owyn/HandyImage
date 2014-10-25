@@ -3,7 +3,7 @@
 // @namespace     handyimage
 // @author        Owyn
 // @contributors  U BLESS, bitst0rm
-// @version       2014.10.14
+// @version       2014.10.25
 // @updateURL     https://github.com/Owyn/HandyImage/raw/master/HandyImage.user.js
 // @downloadURL   https://github.com/Owyn/HandyImage/raw/master/HandyImage.user.js
 // @homepage      https://greasyfork.org/scripts/109-handy-image
@@ -690,6 +690,14 @@
 // @match         http://*.xxximagenow.com/img-*
 // @match         http://*.imgbanana.com/view*
 // @match         http://*.imgreserve.com/?v=*
+// @match         http://*.you-logo.ru/show*
+// @match         http://*.ticklebytes.com/?v=*
+// @match         http://*.uploadimagex.com/view*
+// @match         http://*.powerlogo.ru/show*
+// @match         http://*.rupix.org/view*
+// @match         http://youpicture.org/?v=*
+// @match         http://*.all-poster.ru/?v=*
+// @match         http://*.picbug.ru/share*
 // ==/UserScript==
 
 if (typeof unsafeWindow === "undefined")
@@ -1182,6 +1190,7 @@ function makeworld()
 	case "imageupload.sketchupthai.com":
 	case "multihoster.saxonia-fighter.de":
 	case "imgdone.com":
+	case "rupix.org":
 		i = q('a[href*="images/"]');
 		if(i){i.src = i.href;}
 		break;
@@ -1476,6 +1485,7 @@ function makeworld()
 	case "xxx.image-server.ru":
 	case "image-server.ru":
 	case "avenuexxx.com":
+	case "uploadimagex.com":
 		i = q('img[src*="/upload"]');
 		break;
 	case "bababian.com":
@@ -1504,9 +1514,6 @@ function makeworld()
 	case "3xplanet.com":
 		i = q('img[alt="picContent"]');
 		break;
-	case "zagruzitfoto.com":
-		i = q('img[src*="' + iurl + '/images/"][alt]');
-		break;
 	case "subirimagenes.com":
 		i = q('input[type="submit"]');
 		dp=true;
@@ -1531,6 +1538,7 @@ function makeworld()
 	case "uprapide.com":
 	case "roboimages.com":
 	case "public-pic.de":
+	case "picbug.ru":
 		i = q('img[src*="' + iurl + '/image"]');
 		break;
 	case "imagesup.net":
@@ -1705,6 +1713,7 @@ function makeworld()
 	case "picify.com":
 	case "picturescream.com":
 	case "urpichost.com":
+	case "all-poster.ru":
 		i = q('img[src*="/images/"]');
 		break;
 	case "intergranada.com":
@@ -1722,6 +1731,8 @@ function makeworld()
 	case "4put.ru":
 	case "hostimg.org":
 	case "sharepic.biz":
+	case "you-logo.ru":
+	case "powerlogo.ru":
 		i = q('img[src*="pictures/"]');
 		break;
 	case "xenopix.com":
@@ -1873,6 +1884,9 @@ function makeworld()
 	case "imgshow.me":
 	case "greenpiccs.com":
 	case "imgseeds.com":
+	case "ticklebytes.com":
+	case "youpicture.org":
+	case "zagruzitfoto.com":
 		i = q('img[src*="' + iurl + '/images/"]');
 		break;
 	case "shareimages.com":
@@ -1900,11 +1914,7 @@ function makeworld()
 		switch(iurl.substr(iurl.indexOf(".")+1))
 		{
 		case "tumblr.com":
-			i = q('img[data-src]');
-			if(i)
-			{
-				i.src = i.dataset.src;
-			}
+			i = q('img:not([src*="data:"])[id]');
 			break;
 		case "imagevenue.com":
 			i = q('img[src*="/loc"]');
