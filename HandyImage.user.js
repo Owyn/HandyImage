@@ -3,7 +3,7 @@
 // @namespace     handyimage
 // @author        Owyn
 // @contributors  U BLESS, bitst0rm
-// @version       2014.11.23
+// @version       2014.12.03
 // @updateURL     https://github.com/Owyn/HandyImage/raw/master/HandyImage.user.js
 // @downloadURL   https://github.com/Owyn/HandyImage/raw/master/HandyImage.user.js
 // @homepage      https://greasyfork.org/scripts/109-handy-image
@@ -620,7 +620,7 @@
 // @match         http://www.imgshots.com/img*
 // @match         http://*.3xplanet.com/view*
 // @match         http://*.imgmega.com/*.html
-// @match         http://*.imgsee.me/*.html
+// @match         http://*.imgsee.me/*
 // @match         http://img.yt/img-*
 // @match         http://*.payforpic.ru/*/*/
 // @match         http://*.pic4cash.ru/*.html
@@ -1129,6 +1129,7 @@ function makeworld()
 		if(i){i.src = i.href;}
 		break;
 	case "imageeer.com":
+	case "imgsee.me":
 		i = q('input[type="button"]');
 		if(i){i.click();}
 		else{i = q('img[src*="/img/"]');}
@@ -1236,7 +1237,6 @@ function makeworld()
 			return;
 		}
 		break;
-	case "imgsee.me":
 	case "imgmega.com":
 	case "pic.re":
 	case "imgclick.net":
