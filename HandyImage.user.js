@@ -3,7 +3,7 @@
 // @namespace     handyimage
 // @author        Owyn
 // @contributors  U BLESS, bitst0rm
-// @version       2014.12.13
+// @version       2014.12.14
 // @updateURL     https://github.com/Owyn/HandyImage/raw/master/HandyImage.user.js
 // @downloadURL   https://github.com/Owyn/HandyImage/raw/master/HandyImage.user.js
 // @homepage      https://greasyfork.org/scripts/109-handy-image
@@ -704,6 +704,7 @@
 // @match         http://*.hotflick.net/u/v/?q=*
 // @match         http://*.fotooplata.ru/*.html
 // @match         http://*.fotooplata.ru/full/
+// @match         http://vavvi.com/images/*.html
 // ==/UserScript==
 
 if (typeof unsafeWindow === "undefined")
@@ -1898,6 +1899,7 @@ function makeworld()
 	case "ticklebytes.com":
 	case "youpicture.org":
 	case "zagruzitfoto.com":
+	case "vavvi.com":
 		i = q('img[src*="' + iurl + '/images/"]');
 		break;
 	case "shareimages.com":
