@@ -3,7 +3,7 @@
 // @namespace     handyimage
 // @author        Owyn
 // @contributors  U BLESS, bitst0rm
-// @version       2014.12.15
+// @version       2014.12.16
 // @updateURL     https://github.com/Owyn/HandyImage/raw/master/HandyImage.user.js
 // @downloadURL   https://github.com/Owyn/HandyImage/raw/master/HandyImage.user.js
 // @homepage      https://greasyfork.org/scripts/109-handy-image
@@ -705,6 +705,7 @@
 // @match         http://*.fotooplata.ru/*.html
 // @match         http://*.fotooplata.ru/full/
 // @match         http://vavvi.com/images/*.html
+// @match         http://*.viewvee.com/img-*
 // ==/UserScript==
 
 if (typeof unsafeWindow === "undefined")
@@ -1464,6 +1465,7 @@ function makeworld()
 	case "xxximagenow.com":
 	case "etc.imgextra.com":
 	case "i.sxpics.nl":
+	case "viewvee.com":
 		dp=true;
 		var f = document.getElementsByTagName("input");
 		if(f.length)
