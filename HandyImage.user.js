@@ -3,7 +3,7 @@
 // @namespace     handyimage
 // @author        Owyn
 // @contributors  U BLESS, bitst0rm
-// @version       2014.12.16
+// @version       2014.12.17
 // @updateURL     https://github.com/Owyn/HandyImage/raw/master/HandyImage.user.js
 // @downloadURL   https://github.com/Owyn/HandyImage/raw/master/HandyImage.user.js
 // @homepage      https://greasyfork.org/scripts/109-handy-image
@@ -706,6 +706,8 @@
 // @match         http://*.fotooplata.ru/full/
 // @match         http://vavvi.com/images/*.html
 // @match         http://*.viewvee.com/img-*
+// @match         http://*.deviantart.com/art/*
+// @match         http://*.myceleb.net/u/v/?q=*
 // ==/UserScript==
 
 if (typeof unsafeWindow === "undefined")
@@ -862,6 +864,9 @@ function makeworld()
 	case "iceimg.com":
 	case "pics.tam.in.ua":
 		i = q('img');
+		break;
+	case "myceleb.net":
+		i = q('img[id]');
 		break;
 	case "tryimg.com":
 		i = q('a img:not([href,"' + iurl + '"])');
@@ -1941,6 +1946,9 @@ function makeworld()
 			{
 				i = q('img:not([src*="data:"])[id]');
 			}
+			break;
+		case "deviantart.com":
+			i = q('img.dev-content-full');
 			break;
 		case "imagevenue.com":
 			i = q('img[src*="/loc"]');
