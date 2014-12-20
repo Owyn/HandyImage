@@ -3,7 +3,7 @@
 // @namespace     handyimage
 // @author        Owyn
 // @contributors  U BLESS, bitst0rm
-// @version       2014.12.18
+// @version       2014.12.20
 // @updateURL     https://github.com/Owyn/HandyImage/raw/master/HandyImage.user.js
 // @downloadURL   https://github.com/Owyn/HandyImage/raw/master/HandyImage.user.js
 // @homepage      https://greasyfork.org/scripts/109-handy-image
@@ -709,6 +709,9 @@
 // @match         http://*.deviantart.com/art/*
 // @match         http://*.myceleb.net/u/v/?q=*
 // @match         http://*.imageblinks.com/img-*
+// @match         http://*.gelbooru.com/index.php?page=post&s=view&id=*
+// @match         http://*.imgrock.net/*/*.html
+// @match         http://*.upix.me/i/v/?q=*
 // ==/UserScript==
 
 if (typeof unsafeWindow === "undefined")
@@ -849,6 +852,26 @@ function find_text_in_scripts(a, b)
 	return false;
 }
 
+function post(path, params, method) 
+{
+    method = method || "post";
+    var form = document.createElement("form");
+    form.setAttribute("method", method);
+    form.setAttribute("action", path);
+    for(var key in params) {
+        if(params.hasOwnProperty(key)) {
+            var hiddenField = document.createElement("input");
+            hiddenField.setAttribute("type", "hidden");
+            hiddenField.setAttribute("name", key);
+            hiddenField.setAttribute("value", params[key]);
+
+            form.appendChild(hiddenField);
+         }
+    }
+    document.body.appendChild(form);
+    form.submit();
+}
+
 function makeworld()
 {
 	if(i){return false;}
@@ -967,6 +990,7 @@ function makeworld()
 	case "imgbox.com":
 	case "imageupper.com":
 	case "hotflick.net":
+	case "upix.me":
 		i = q('img#img');
 		break;
 	case "imageban.ru":
@@ -1207,6 +1231,7 @@ function makeworld()
 	case "multihoster.saxonia-fighter.de":
 	case "imgdone.com":
 	case "rupix.org":
+	case "gelbooru.com":
 		i = q('a[href*="images/"]');
 		if(i){i.src = i.href;}
 		break;
@@ -1356,6 +1381,21 @@ function makeworld()
 	case "free-picload.de":
 		i = q('img[src*="pics/"]');
 		break;
+	case "imgrock.net":
+		i = q('button.close');
+		if(i) 
+		{
+			if(i.firstChild.nodeType == 1)
+			{
+				post('', {op: 'view', id: window.location.pathname.substring(1, window.location.pathname.lastIndexOf("/")), pre: '1', next: 'Continue to Image...'}, "POST");
+			}
+			else
+			{
+				iurl += "$";
+				i = 0;
+			}
+		}
+		break;
 	case "imagebucks.biz":
 		i = q('input[type="submit"]');
 		dp=true;
@@ -1374,6 +1414,7 @@ function makeworld()
 	case "pixpal.net":
 	case "imgpaying.com":
 	case "picexposed.com":
+	case "imgrock.net$":
 		i = q('img[src*="/img/"]');
 		break;
 	case "imagenetz.de":
