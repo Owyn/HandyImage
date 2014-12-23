@@ -3,7 +3,7 @@
 // @namespace     handyimage
 // @author        Owyn
 // @contributors  U BLESS, bitst0rm
-// @version       2014.12.20
+// @version       2014.12.23
 // @updateURL     https://github.com/Owyn/HandyImage/raw/master/HandyImage.user.js
 // @downloadURL   https://github.com/Owyn/HandyImage/raw/master/HandyImage.user.js
 // @homepage      https://greasyfork.org/scripts/109-handy-image
@@ -684,7 +684,7 @@
 // @match         http://imgmoney.ru/*.html
 // @match         http://imgmoney.ru/full/
 // @match         http://www.imgili.com/view*
-// @match         http://www.imglooks.com/view*
+// @match         http://*.imglooks.com/img-*
 // @match         http://*.bababian.com/phoinfo/*
 // @match         http://*.imageeer.com/*
 // @match         http://*.xxximagenow.com/img-*
@@ -712,6 +712,7 @@
 // @match         http://*.gelbooru.com/index.php?page=post&s=view&id=*
 // @match         http://*.imgrock.net/*/*.html
 // @match         http://*.upix.me/i/v/?q=*
+// @match         http://*.imagedoza.com/i.cc/i/*
 // ==/UserScript==
 
 if (typeof unsafeWindow === "undefined")
@@ -1319,6 +1320,7 @@ function makeworld()
 	case "imagehovel.com":
 	case "imgchili.mcdir.ru":
 	case "depic.me":
+	case "imagedoza.com":
 		i = q('img[src*="' + iurl + '"]');
 		break;
 	case "uaimage.com":
@@ -1542,6 +1544,7 @@ function makeworld()
 	case "gogoimage.org":
 	case "xxxupload.org":
 	case "imageblinks.com":
+	case "imglooks.com":
 		i = q('img[src*="/upload/"]');
 		break;
 	case "xxx.image-server.ru":
@@ -1718,7 +1721,6 @@ function makeworld()
 	case "imagedomino.net":
 	case "imgdream.net":
 	case "imgili.com":
-	case "imglooks.com":
 		i = q('img[src*="images/"]');
 		break;
 	case "fotosik.pl":
