@@ -3,7 +3,7 @@
 // @namespace     handyimage
 // @author        Owyn
 // @contributors  U BLESS, bitst0rm
-// @version       2015.01.10
+// @version       2015.01.11
 // @updateURL     https://github.com/Owyn/HandyImage/raw/master/HandyImage.user.js
 // @downloadURL   https://github.com/Owyn/HandyImage/raw/master/HandyImage.user.js
 // @homepage      https://greasyfork.org/scripts/109-handy-image
@@ -710,11 +710,19 @@
 // @match         http://*.myceleb.net/u/v/?q=*
 // @match         http://*.imageblinks.com/img-*
 // @match         http://*.gelbooru.com/index.php?page=post&s=view&id=*
+// @match         http://danbooru.donmai.us/posts/*
+// @match         http://konachan.com/post/show/*
+// @match         http://konachan.net/post/show/*
+// @match         https://yande.re/post/show/*
+// @match         https://chan.sankakucomplex.com/post/show/*
+// @match         https://yande.re/post/show/*
+// @match         http://www.zerochan.net/*
 // @match         http://*.imgrock.net/*/*.html
 // @match         http://*.upix.me/i/v/?q=*
 // @match         http://*.imagedoza.com/i.cc/i/*
 // @match         http://imgzap.com/view*
 // @match         http://*.funimg.net/img-*
+// @match         http://*.olivepix.com/view/*
 // ==/UserScript==
 
 if (typeof unsafeWindow === "undefined")
@@ -951,10 +959,17 @@ function makeworld()
 	case "ultraimg.com":
 	case "demo.chevereto.com":
 	case "ownimg.com":
-		i = document.head.querySelector('meta[property="og:image"] , [name="og:image"]');
+	case "danbooru.donmai.us":
+	case "photobucket.com":
+	case "media.photobucket.com":
+	case "chan.sankakucomplex.com":
+		i = document.querySelector('meta[property="og:image"] , [name="og:image"]');
 		if(i)
 		{
 			i.src = i.content;
+			i.src = i.src.replace('/preview/', '/'); //danbooru
+			i.src = i.src.replace('/sample/', '/'); //sankaku
+			i.src = i.src.replace('/sample-', '/'); //sankaku
 		}
 		else
 		{
@@ -1163,6 +1178,10 @@ function makeworld()
 		break;
 	case "imgplus.info":
 		i = q('img[src*="full"]');
+		break;
+	case "zerochan.net":
+		i = q('a[href*="full"]');
+		if(i){i.src = i.href;}
 		break;
 	case "wstaw.org":
 		i = q('a[href*="/m/"]');
@@ -1483,6 +1502,7 @@ function makeworld()
 			break;
 		}
 	case "imgbar.net":
+	case "olivepix.com":
 		i = q('img[src*="view/"]');
 		break;
 	case "imagepicsa.com":
@@ -1609,6 +1629,12 @@ function makeworld()
 	case "picbug.ru":
 		i = q('img[src*="' + iurl + '/image"]');
 		break;
+	case "yande.re":
+	case "konachan.com":
+	case "konachan.net":
+		i = q('a[href*="' + iurl + '/image"]');
+		if(i){i.src = i.href;}
+		break;
 	case "imagesup.net":
 	case "picfree.org":
 	case "imghs.teamfreewill.net":
@@ -1721,7 +1747,6 @@ function makeworld()
 	case "imghoney.com":
 	case "imgdope.com":
 	case "hostmat.eu":
-	case "imagedomino.net":
 	case "imgdream.net":
 	case "imgili.com":
 		i = q('img[src*="images/"]');
@@ -1965,6 +1990,7 @@ function makeworld()
 		break;
 	case "imgfantasy.com":
 	case "imagedomino.com":
+	case "imagedomino.net":
 	case "imghash.com":
 	case "imageporn.eu":
 	case "imgreserve.com":
@@ -2006,10 +2032,6 @@ function makeworld()
 		case "wikimedia.org":
 			i = q('a[href*="/upload"]');
 			if(i){i.src = i.href;}
-			break;
-		case "photobucket.com":
-			i = document.head.querySelector('meta[property="og:image"] , [name="og:image"]');
-			if(i){i.src = i.content;}
 			break;
 		case "freeamateurteens.net":
 		case "img-vidiklub.com":
