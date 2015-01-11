@@ -3,7 +3,7 @@
 // @namespace     handyimage
 // @author        Owyn
 // @contributors  U BLESS, bitst0rm
-// @version       2015.01.03
+// @version       2015.01.10
 // @updateURL     https://github.com/Owyn/HandyImage/raw/master/HandyImage.user.js
 // @downloadURL   https://github.com/Owyn/HandyImage/raw/master/HandyImage.user.js
 // @homepage      https://greasyfork.org/scripts/109-handy-image
@@ -2088,11 +2088,11 @@ function changecursor()
 {
 	i.style.margin = "auto";
 	var root = document.compatMode=='BackCompat'? document.body : document.documentElement;
-	if(!rescaled && ((i.naturalHeight == root.clientHeight) || (i.naturalWidth == root.clientWidth)) && ((root.clientHeight == root.scrollHeight) && (root.clientWidth == root.scrollWidth)) ) // no scrollbars and one img dimension is equal to screen
+	if(!rescaled && (((i.naturalHeight / window.devicePixelRatio).toFixed() == root.clientHeight && (i.naturalWidth / window.devicePixelRatio).toFixed() == root.clientWidth) || ((i.naturalWidth / window.devicePixelRatio).toFixed() == root.clientWidth && (i.naturalWidth / window.devicePixelRatio).toFixed() == root.clientWidth))) // one img dimension is equal to screen and other is the same or less than the screen
 	{
 		i.style.cursor = "";
 	}
-	else if((i.naturalHeight > root.clientHeight) || (i.naturalWidth > root.clientWidth))
+	else if(((i.naturalHeight / window.devicePixelRatio).toFixed() > root.clientHeight) || ((i.naturalWidth / window.devicePixelRatio).toFixed() > root.clientWidth))
 	{
 		if(rescaled)
 		{
@@ -2103,7 +2103,7 @@ function changecursor()
 		{
 			i.style.cursor = "-moz-zoom-out";
 			i.style.cursor = "-webkit-zoom-out";
-			if(i.naturalHeight > root.clientHeight) // chrome bug fuuuuu
+			if((i.naturalHeight / window.devicePixelRatio).toFixed() > root.clientHeight) // chrome bug fuuuuu
 			{
 				i.style.margin = "0px auto";
 			}
@@ -2144,9 +2144,10 @@ function rescale(event)
 			}
 			ex -= i.offsetLeft;
 			ey -= i.offsetTop;
-			scale = Math.min((window.innerWidth / i.naturalWidth), (window.innerHeight / i.naturalHeight));
+			scale = Math.min((window.innerWidth / (i.naturalWidth / window.devicePixelRatio).toFixed()), (window.innerHeight / (i.naturalHeight / window.devicePixelRatio).toFixed()));
 		}
-		i.removeAttribute("style");
+		i.style.width = (i.naturalWidth / window.devicePixelRatio).toFixed() + "px";
+		i.style.height = (i.naturalHeight / window.devicePixelRatio).toFixed() + "px";
 		changecursor();
 		if(event)
 		{
@@ -2155,19 +2156,24 @@ function rescale(event)
 	}
 	else
 	{
-		i.removeAttribute("style");
-		if(i.naturalWidth != window.innerWidth)
+		i.style.width = (i.naturalWidth / window.devicePixelRatio).toFixed() + "px";
+		i.style.height = (i.naturalHeight / window.devicePixelRatio).toFixed() + "px";
+		if((i.naturalWidth / window.devicePixelRatio).toFixed() != window.innerWidth)
 		{
 			i.style.width = window.innerWidth + "px";
+			i.style.height = "";
 			rescaled = true;
 		}
 		var root = document.compatMode=='BackCompat'? document.body : document.documentElement;
-		if((root.scrollHeight != root.clientHeight) || (root.scrollWidth != root.clientWidth))
+		var n = !FireFox&&window.devicePixelRatio>1? 1 : 0; // chrome bug fuuuuu
+		if((root.scrollHeight - root.clientHeight > n) || (root.scrollWidth - root.clientWidth > n))
 		{
-			i.removeAttribute("style");
-			if(i.naturalHeight != window.innerHeight)
+			i.style.width = (i.naturalWidth / window.devicePixelRatio).toFixed() + "px";
+			i.style.height = (i.naturalHeight / window.devicePixelRatio).toFixed() + "px";
+			if((i.naturalHeight / window.devicePixelRatio).toFixed() != window.innerHeight)
 			{
 				i.style.height = window.innerHeight + "px";
+				i.style.width = "";
 				rescaled = true;
 			}
 		}
@@ -2191,6 +2197,7 @@ function autoresize()
 		link.rel = 'shortcut icon';
 		link.href = i.src;
 		document.getElementsByTagName('head')[0].appendChild(link);
+		rescaled = true;rescale(0); // to original size in pixels
 		var root = document.compatMode=='BackCompat'? document.body : document.documentElement;
 		if(cfg_fitWH && (root.clientHeight != root.scrollHeight) && (root.clientWidth != root.scrollWidth)) // both scrollbars detected
 		{
@@ -2203,10 +2210,6 @@ function autoresize()
 		else if(cfg_fitS && (root.clientHeight == root.scrollHeight) && (root.clientWidth == root.scrollWidth)) // no scrollbars
 		{
 			rescale(0);
-		}
-		else
-		{
-			changecursor();
 		}
 		if(cfg_js){eval(cfg_js);}
 	}
