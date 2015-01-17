@@ -3,7 +3,7 @@
 // @namespace     handyimage
 // @author        Owyn
 // @contributors  U BLESS, bitst0rm
-// @version       2015.01.14
+// @version       2015.01.17
 // @updateURL     https://github.com/Owyn/HandyImage/raw/master/HandyImage.user.js
 // @downloadURL   https://github.com/Owyn/HandyImage/raw/master/HandyImage.user.js
 // @homepage      https://greasyfork.org/scripts/109-handy-image
@@ -724,6 +724,7 @@
 // @match         http://*.funimg.net/img-*
 // @match         http://*.olivepix.com/view/*
 // @match         http://*.imageontime.org/img-*
+// @match         http://*.ocaload.com/img-*
 // ==/UserScript==
 
 if (typeof unsafeWindow === "undefined")
@@ -1570,6 +1571,7 @@ function makeworld()
 	case "imageblinks.com":
 	case "imglooks.com":
 	case "imageontime.org":
+	case "ocaload.com":
 		i = q('img[src*="/upload/"]');
 		break;
 	case "xxx.image-server.ru":
