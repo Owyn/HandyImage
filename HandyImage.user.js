@@ -3,7 +3,7 @@
 // @namespace     handyimage
 // @author        Owyn
 // @contributors  U BLESS, bitst0rm
-// @version       2015.01.17
+// @version       2015.01.18
 // @updateURL     https://github.com/Owyn/HandyImage/raw/master/HandyImage.user.js
 // @downloadURL   https://github.com/Owyn/HandyImage/raw/master/HandyImage.user.js
 // @homepage      https://greasyfork.org/scripts/109-handy-image
@@ -725,6 +725,7 @@
 // @match         http://*.olivepix.com/view/*
 // @match         http://*.imageontime.org/img-*
 // @match         http://*.ocaload.com/img-*
+// @match         http://*.imgget.net/img-*
 // ==/UserScript==
 
 if (typeof unsafeWindow === "undefined")
@@ -1190,7 +1191,6 @@ function makeworld()
 		if(i){i.src = i.href;}
 		break;
 	case "imageeer.com":
-	case "imgsee.me":
 		i = q('input[type="button"]');
 		if(i){i.click();}
 		else{i = q('img[src*="/img/"]');}
@@ -1572,6 +1572,7 @@ function makeworld()
 	case "imglooks.com":
 	case "imageontime.org":
 	case "ocaload.com":
+	case "imgget.net":
 		i = q('img[src*="/upload/"]');
 		break;
 	case "xxx.image-server.ru":
@@ -1852,6 +1853,7 @@ function makeworld()
 	case "imageporter.com":
 	case "imagenimage.com":
 	case "imageshimage.com":
+	case "imgsee.me":
 		i = q('img[src*="/i/"]');
 		break;
 	case "pixpipeline.com":
