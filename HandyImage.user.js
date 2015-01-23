@@ -3,7 +3,7 @@
 // @namespace     handyimage
 // @author        Owyn
 // @contributors  U BLESS, bitst0rm
-// @version       2015.01.18
+// @version       2015.01.23
 // @updateURL     https://github.com/Owyn/HandyImage/raw/master/HandyImage.user.js
 // @downloadURL   https://github.com/Owyn/HandyImage/raw/master/HandyImage.user.js
 // @homepage      https://greasyfork.org/scripts/109-handy-image
@@ -963,8 +963,6 @@ function makeworld()
 	case "demo.chevereto.com":
 	case "ownimg.com":
 	case "danbooru.donmai.us":
-	case "photobucket.com":
-	case "media.photobucket.com":
 	case "chan.sankakucomplex.com":
 		i = document.querySelector('meta[property="og:image"] , [name="og:image"]');
 		if(i)
@@ -2039,6 +2037,10 @@ function makeworld()
 			i = q('a[href*="/upload"]');
 			if(i){i.src = i.href;}
 			break;
+		case "photobucket.com":
+			i = document.head.querySelector('meta[property="og:image"] , [name="og:image"]');
+			if(i){i.src = i.content;}
+			break;
 		case "freeamateurteens.net":
 		case "img-vidiklub.com":
 			i = q('img[src*="images/"]');
@@ -2115,12 +2117,11 @@ function makeworld()
 function changecursor()
 {
 	i.style.margin = "auto";
-	var root = document.compatMode=='BackCompat'? document.body : document.documentElement;
-	if(!rescaled && (((i.naturalHeight / window.devicePixelRatio).toFixed() == root.clientHeight && (i.naturalWidth / window.devicePixelRatio).toFixed() == root.clientWidth) || ((i.naturalWidth / window.devicePixelRatio).toFixed() == root.clientWidth && (i.naturalWidth / window.devicePixelRatio).toFixed() == root.clientWidth))) // one img dimension is equal to screen and other is the same or less than the screen
+	if(!rescaled && (((i.naturalHeight / window.devicePixelRatio).toFixed() == window.innerHeight && (i.naturalWidth / window.devicePixelRatio).toFixed() == window.innerWidth) || ((i.naturalWidth / window.devicePixelRatio).toFixed() == window.innerWidth && (i.naturalWidth / window.devicePixelRatio).toFixed() == window.innerWidth))) // one img dimension is equal to screen and other is the same or less than the screen
 	{
 		i.style.cursor = "";
 	}
-	else if(((i.naturalHeight / window.devicePixelRatio).toFixed() > root.clientHeight) || ((i.naturalWidth / window.devicePixelRatio).toFixed() > root.clientWidth))
+	else if((i.naturalHeight / window.devicePixelRatio).toFixed() > window.innerHeight || (i.naturalWidth / window.devicePixelRatio).toFixed() > window.innerWidth)
 	{
 		if(rescaled)
 		{
@@ -2131,7 +2132,7 @@ function changecursor()
 		{
 			i.style.cursor = "-moz-zoom-out";
 			i.style.cursor = "-webkit-zoom-out";
-			if((i.naturalHeight / window.devicePixelRatio).toFixed() > root.clientHeight) // chrome bug fuuuuu
+			if((i.naturalHeight / window.devicePixelRatio).toFixed() > window.innerHeight) // chrome bug fuuuuu
 			{
 				i.style.margin = "0px auto";
 			}
@@ -2192,9 +2193,8 @@ function rescale(event)
 			i.style.height = "";
 			rescaled = true;
 		}
-		var root = document.compatMode=='BackCompat'? document.body : document.documentElement;
-		var n = !FireFox&&window.devicePixelRatio>1? 1 : 0; // chrome bug fuuuuu
-		if((root.scrollHeight - root.clientHeight > n) || (root.scrollWidth - root.clientWidth > n))
+		
+		if((i.height > window.innerHeight) || (i.width > window.innerWidth))
 		{
 			i.style.width = (i.naturalWidth / window.devicePixelRatio).toFixed() + "px";
 			i.style.height = (i.naturalHeight / window.devicePixelRatio).toFixed() + "px";
@@ -2226,16 +2226,15 @@ function autoresize()
 		link.href = i.src;
 		document.getElementsByTagName('head')[0].appendChild(link);
 		rescaled = true;rescale(0); // to original size in pixels
-		var root = document.compatMode=='BackCompat'? document.body : document.documentElement;
-		if(cfg_fitWH && (root.clientHeight != root.scrollHeight) && (root.clientWidth != root.scrollWidth)) // both scrollbars detected
+		if(cfg_fitWH && i.height > window.innerHeight && i.width > window.innerWidth) // both scrollbars
 		{
 			rescale(0);
 		}
-		else if(cfg_fitB && ((root.clientHeight != root.scrollHeight) || (root.clientWidth != root.scrollWidth))) // one scrollbar
+		else if(cfg_fitB && (i.height > window.innerHeight || i.width > window.innerWidth)) // one scrollbar
 		{
 			rescale(0);
 		}
-		else if(cfg_fitS && (root.clientHeight == root.scrollHeight) && (root.clientWidth == root.scrollWidth)) // no scrollbars
+		else if(cfg_fitS && i.height <= window.innerHeight && i.width <= window.innerWidth) // no scrollbars
 		{
 			rescale(0);
 		}
