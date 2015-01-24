@@ -3,7 +3,7 @@
 // @namespace     handyimage
 // @author        Owyn
 // @contributors  U BLESS, bitst0rm
-// @version       2015.01.23
+// @version       2015.01.24
 // @updateURL     https://github.com/Owyn/HandyImage/raw/master/HandyImage.user.js
 // @downloadURL   https://github.com/Owyn/HandyImage/raw/master/HandyImage.user.js
 // @homepage      https://greasyfork.org/scripts/109-handy-image
@@ -699,7 +699,7 @@
 // @match         http://*.all-poster.ru/?v=*
 // @match         http://*.picbug.ru/share*
 // @match         http://*.etc.imgextra.com//img-*
-// @match         http://i.sxpics.nl/img-*
+// @match         http://*.sxpix.nl/img-*
 // @match         http://*.xxxupload.org/img-*
 // @match         http://*.hotflick.net/u/v/?q=*
 // @match         http://*.fotooplata.ru/*.html
@@ -726,6 +726,8 @@
 // @match         http://*.imageontime.org/img-*
 // @match         http://*.ocaload.com/img-*
 // @match         http://*.imgget.net/img-*
+// @match         http://*.imgs.it/img-*
+// @match         http://*.imghit.com/img-*
 // ==/UserScript==
 
 if (typeof unsafeWindow === "undefined")
@@ -1524,6 +1526,7 @@ function makeworld()
 	case "x.xximg.net":
 	case "sxpics.nl":
 	case "sxpics.net":
+	case "sxpix.nl":
 	case "bulkimg.info":
 	case "img-zone.com":
 	case "trikyimg.com":
@@ -1571,6 +1574,8 @@ function makeworld()
 	case "imageontime.org":
 	case "ocaload.com":
 	case "imgget.net":
+	case "imgs.it":
+	case "imghit.com":
 		i = q('img[src*="/upload/"]');
 		break;
 	case "xxx.image-server.ru":
