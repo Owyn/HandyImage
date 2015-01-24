@@ -3,7 +3,7 @@
 // @namespace     handyimage
 // @author        Owyn
 // @contributors  U BLESS, bitst0rm
-// @version       2015.01.24
+// @version       2015.01.24.22
 // @updateURL     https://github.com/Owyn/HandyImage/raw/master/HandyImage.user.js
 // @downloadURL   https://github.com/Owyn/HandyImage/raw/master/HandyImage.user.js
 // @homepage      https://greasyfork.org/scripts/109-handy-image
@@ -30,7 +30,7 @@
 // @match         http://www.pixhost.org/show*
 // @match         http://*.picpicture.com/share.php?id=*
 // @match         http://*.pic5you.ru/*/*/
-// @match         http://tinypic.com/view*
+// @match         http://*.tinypic.com/view*
 // @match         http://radical-foto.ru/*
 // @match         http://radikal-foto.ru/*
 // @match         http://radikal.ru/*
@@ -2055,6 +2055,9 @@ function makeworld()
 			break;
 		case "otofotki.pl":
 			i = q('img[src*="/obrazki/"]');
+			break;
+		case "tinypic.com":
+			i = q('img#imgElement');
 			break;
 		case "imagilive.com":
 			i = q('a.button');
