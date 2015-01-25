@@ -3,7 +3,7 @@
 // @namespace     handyimage
 // @author        Owyn
 // @contributors  U BLESS, bitst0rm
-// @version       2015.01.24.22
+// @version       2015.01.25
 // @updateURL     https://github.com/Owyn/HandyImage/raw/master/HandyImage.user.js
 // @downloadURL   https://github.com/Owyn/HandyImage/raw/master/HandyImage.user.js
 // @homepage      https://greasyfork.org/scripts/109-handy-image
@@ -728,6 +728,7 @@
 // @match         http://*.imgget.net/img-*
 // @match         http://*.imgs.it/img-*
 // @match         http://*.imghit.com/img-*
+// @match         http://*.imagewow.eu/img-*
 // ==/UserScript==
 
 if (typeof unsafeWindow === "undefined")
@@ -828,7 +829,7 @@ function onbeforeunload(e) // back helper
 	//console.warn("setting hji cookie before unloading page");
 	var now = new Date();
 	var time = now.getTime();
-	time += 3000; // 3 sec to help quit double-pages
+	time += 2000; // 2 sec to help quit double-pages
 	now.setTime(time);
 	now.toGMTString();
 	document.cookie = 'backhji=; expires=' + now.toGMTString() + '; path=/';
@@ -1576,6 +1577,7 @@ function makeworld()
 	case "imgget.net":
 	case "imgs.it":
 	case "imghit.com":
+	case "imagewow.eu":
 		i = q('img[src*="/upload/"]');
 		break;
 	case "xxx.image-server.ru":
