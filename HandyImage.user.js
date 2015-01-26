@@ -3,7 +3,7 @@
 // @namespace     handyimage
 // @author        Owyn
 // @contributors  U BLESS, bitst0rm
-// @version       2015.01.25
+// @version       2015.01.26
 // @updateURL     https://github.com/Owyn/HandyImage/raw/master/HandyImage.user.js
 // @downloadURL   https://github.com/Owyn/HandyImage/raw/master/HandyImage.user.js
 // @homepage      https://greasyfork.org/scripts/109-handy-image
@@ -802,7 +802,7 @@ if(!iurl.indexOf("www."))
 
 function ws()
 {
-	if(!(FireFox && i.src.lastIndexOf(".gif") != -1)) // NOT firefox + gif = no animation
+	if(!FireFox) // NOT firefox
 	{
 		window.stop();
 	}
