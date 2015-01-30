@@ -3,7 +3,7 @@
 // @namespace     handyimage
 // @author        Owyn
 // @contributors  U BLESS, bitst0rm
-// @version       2015.01.28
+// @version       2015.01.30
 // @updateURL     https://github.com/Owyn/HandyImage/raw/master/HandyImage.user.js
 // @downloadURL   https://github.com/Owyn/HandyImage/raw/master/HandyImage.user.js
 // @homepage      https://greasyfork.org/scripts/109-handy-image
@@ -968,14 +968,11 @@ function makeworld()
 	case "demo.chevereto.com":
 	case "ownimg.com":
 	case "danbooru.donmai.us":
-	case "chan.sankakucomplex.com":
 		i = document.querySelector('meta[property="og:image"] , [name="og:image"]');
 		if(i)
 		{
 			i.src = i.content;
 			i.src = i.src.replace('/preview/', '/'); //danbooru
-			i.src = i.src.replace('/sample/', '/'); //sankaku
-			i.src = i.src.replace('/sample-', '/'); //sankaku
 		}
 		else
 		{
@@ -991,6 +988,13 @@ function makeworld()
 			{
 				i.src = i.value.substring(i.value.indexOf("[img]")+5, i.value.indexOf("[ img]"));
 			}
+		}
+		break;
+	case "chan.sankakucomplex.com":
+		i = q('a[itemprop="contentUrl"]');
+		if(i)
+		{
+			i.src = i.href;
 		}
 		break;
 	case "imageshack.com":
