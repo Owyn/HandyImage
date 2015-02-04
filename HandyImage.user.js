@@ -3,7 +3,7 @@
 // @namespace     handyimage
 // @author        Owyn
 // @contributors  U BLESS, bitst0rm
-// @version       2015.01.30
+// @version       2015.02.04
 // @updateURL     https://github.com/Owyn/HandyImage/raw/master/HandyImage.user.js
 // @downloadURL   https://github.com/Owyn/HandyImage/raw/master/HandyImage.user.js
 // @homepage      https://greasyfork.org/scripts/109-handy-image
@@ -1591,6 +1591,7 @@ function makeworld()
 	case "image-server.ru":
 	case "avenuexxx.com":
 	case "uploadimagex.com":
+	case "hostingkartinok.com":
 		i = q('img[src*="/upload"]');
 		break;
 	case "bababian.com":
@@ -1801,7 +1802,6 @@ function makeworld()
 	case "ii4.ru":
 	case "picuploader.de":
 	case "smages.com":
-	case "hostingkartinok.com":
 	case "pictureshack.ru":
 	case "imgbox.de":
 	case "imagehosting.cz":
