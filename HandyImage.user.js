@@ -3,7 +3,7 @@
 // @namespace     handyimage
 // @author        Owyn
 // @contributors  U BLESS, bitst0rm
-// @version       2015.02.04
+// @version       2015.02.08
 // @updateURL     https://github.com/Owyn/HandyImage/raw/master/HandyImage.user.js
 // @downloadURL   https://github.com/Owyn/HandyImage/raw/master/HandyImage.user.js
 // @homepage      https://greasyfork.org/scripts/109-handy-image
@@ -15,7 +15,7 @@
 // @grant         GM_registerMenuCommand
 // @grant         GM_unregisterMenuCommand
 // @grant         unsafeWindow
-// @match         https://github.com/Owyn/HandyImage/configuration
+// @match         https://gist.github.com/Owyn/8553d7953d948228e312
 // @match         http://www.imagebam.com/image*
 // @match         http://imgchili.net/show*
 // @match         http://imgbox.com/*
@@ -897,8 +897,8 @@ function makeworld()
 	// per-host image detection
 	switch (iurl)
 	{
-	case "github.com":
-		i=1;cfg();break;
+	case "gist.github.com":
+		if(document.body){i=1;cfg();}break;
 	case "vvcap.net":
 	case "simplest-image-hosting.net":
 	case "hostimage.ru":
@@ -2376,7 +2376,7 @@ function onkeydown (b)
 	case KeyEvent.DOM_VK_P:
 		if(i && !FireFox) // Chrome nosave bug
 		{
-			window.location.href = "https://github.com/Owyn/HandyImage/configuration";
+			window.location.href = "https://gist.github.com/Owyn/8553d7953d948228e312";
 		}
 		else
 		{
