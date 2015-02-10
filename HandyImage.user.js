@@ -3,7 +3,7 @@
 // @namespace     handyimage
 // @author        Owyn
 // @contributors  U BLESS, bitst0rm
-// @version       2015.02.08
+// @version       2015.02.10
 // @updateURL     https://github.com/Owyn/HandyImage/raw/master/HandyImage.user.js
 // @downloadURL   https://github.com/Owyn/HandyImage/raw/master/HandyImage.user.js
 // @homepage      https://greasyfork.org/scripts/109-handy-image
@@ -545,7 +545,6 @@
 // @match         http://filefap.com/view*
 // @match         *://imgur.com/*
 // @exclude       *://imgur.com/*,*
-// @exclude       *://imgur.com/memege*
 // @match         http://motherless.com/*
 // @match         http://*.imgult.com/img-*
 // @match         http://*.xpic.biz/*/view*
@@ -926,8 +925,8 @@ function makeworld()
 		break;
 	case "imgur.com":
 		j = true;
-		i = document.head.querySelector('meta[name="twitter:image"]');
-		if(i){i.src = i.content;}
+		i = document.head.querySelector('meta[property="og:image"]');
+		if(i){i.src = i.content;i.src = i.src.split('?')[0];}
 		break;
 	case "directupload.net":
 	case "bilderhoster.net":
