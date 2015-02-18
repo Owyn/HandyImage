@@ -3,7 +3,7 @@
 // @namespace     handyimage
 // @author        Owyn
 // @contributors  U BLESS, bitst0rm
-// @version       2015.02.13
+// @version       2015.02.18
 // @updateURL     https://github.com/Owyn/HandyImage/raw/master/HandyImage.user.js
 // @downloadURL   https://github.com/Owyn/HandyImage/raw/master/HandyImage.user.js
 // @homepage      https://greasyfork.org/scripts/109-handy-image
@@ -1274,6 +1274,7 @@ function makeworld()
 	case "imgdone.com":
 	case "rupix.org":
 	case "gelbooru.com":
+	case "greenpiccs.com":
 		i = q('a[href*="images/"]');
 		if(i){i.src = i.href;}
 		break;
@@ -2004,7 +2005,6 @@ function makeworld()
 	case "beeimg.com":	
 	case "1pics.ru":	
 	case "imgshow.me":
-	case "greenpiccs.com":
 	case "imgseeds.com":
 	case "ticklebytes.com":
 	case "youpicture.org":
