@@ -3,7 +3,7 @@
 // @namespace     handyimage
 // @author        Owyn
 // @contributors  U BLESS, bitst0rm
-// @version       2015.02.18
+// @version       2015.02.21
 // @updateURL     https://github.com/Owyn/HandyImage/raw/master/HandyImage.user.js
 // @downloadURL   https://github.com/Owyn/HandyImage/raw/master/HandyImage.user.js
 // @homepage      https://greasyfork.org/scripts/109-handy-image
@@ -731,6 +731,7 @@
 // @match         http://*.imagewow.eu/img-*
 // @match         http://*.imageon.org/img-*
 // @match         http://*.imgcentral.com/view*
+// @match         http://*.imgtrex.com/*/*
 // ==/UserScript==
 
 if (typeof unsafeWindow === "undefined")
@@ -1459,6 +1460,7 @@ function makeworld()
 	case "imgpaying.com":
 	case "picexposed.com":
 	case "imgrock.net$":
+	case "imgtrex.com":
 		i = q('img[src*="/img/"]');
 		break;
 	case "imagenetz.de":
