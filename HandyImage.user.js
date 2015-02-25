@@ -3,7 +3,7 @@
 // @namespace     handyimage
 // @author        Owyn
 // @contributors  U BLESS, bitst0rm
-// @version       2015.02.21
+// @version       2015.02.25
 // @updateURL     https://github.com/Owyn/HandyImage/raw/master/HandyImage.user.js
 // @downloadURL   https://github.com/Owyn/HandyImage/raw/master/HandyImage.user.js
 // @homepage      https://greasyfork.org/scripts/109-handy-image
@@ -627,7 +627,6 @@
 // @match         http://*.imgchili.mcdir.ru/v*
 // @match         http://*.keep4u.ru/full/*
 // @match         http://*.imgfeel.com/img-*
-// @match         http://*.imageeer.com/img-*
 // @match         http://*.pic.re/*.html
 // @match         http://*.imagebucks.biz/*/*
 // @match         http://*.freshpics.ru/*/*/
@@ -732,6 +731,8 @@
 // @match         http://*.imageon.org/img-*
 // @match         http://*.imgcentral.com/view*
 // @match         http://*.imgtrex.com/*/*
+// @match         http://*.imgdoggy.com/img-*
+// @match         http://*.chronos.to/*
 // ==/UserScript==
 
 if (typeof unsafeWindow === "undefined")
@@ -1209,11 +1210,6 @@ function makeworld()
 		i = q('a[href*="/m/"]');
 		if(i){i.src = i.href;}
 		break;
-	case "imageeer.com":
-		i = q('input[type="button"]');
-		if(i){i.click();}
-		else{i = q('img[src*="/img/"]');}
-		break;
 	case "imageshost.ru":
 	case "imgv.net":
 		i = q('a[href*="/img/"]');
@@ -1585,7 +1581,6 @@ function makeworld()
 	case "croftimage.com":
 	case "imagedecode.com":
 	case "imgfap.net":
-	case "imageeer.com":
 	case "imgspot.org":
 	case "sexyimg.eu":
 	case "madimage.org":
@@ -1599,6 +1594,7 @@ function makeworld()
 	case "imgs.it":
 	case "imghit.com":
 	case "imagewow.eu":
+	case "imgdoggy.com":
 		i = q('img[src*="/upload/"]');
 		break;
 	case "xxx.image-server.ru":
@@ -1862,6 +1858,22 @@ function makeworld()
 	case "xenopix.com":
 		i = q('img[src*="/pix/"]');
 		break;
+	case "imageeer.com":
+		i = q('input[type="button"]');
+		if(i)
+		{
+			i.click();
+			break;
+		}
+		dp=true;
+	case "chronos.to":
+		i = q('input[type="submit"]');
+		if(i)
+		{
+			i.click();
+			break;
+		}
+		dp=true;
 	case "imgspice.com":
 	case "imagetwist.com":
 	case "pixroute.com":
