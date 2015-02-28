@@ -3,7 +3,7 @@
 // @namespace     handyimage
 // @author        Owyn
 // @contributors  U BLESS, bitst0rm
-// @version       2015.02.25
+// @version       2015.02.28
 // @updateURL     https://github.com/Owyn/HandyImage/raw/master/HandyImage.user.js
 // @downloadURL   https://github.com/Owyn/HandyImage/raw/master/HandyImage.user.js
 // @homepage      https://greasyfork.org/scripts/109-handy-image
@@ -942,6 +942,14 @@ function makeworld()
 			}
 		}
 		break;
+	case "img.3ezy.net":
+		i = document.head.querySelector('link[rel="image_src"]');
+		if(i)
+		{
+			i.src = i.href;
+			i.src = i.src.replace('_800.', '.');
+		}
+		break;
 	case "directupload.net":
 	case "bilderhoster.net":
 	case "noelshack.com":
@@ -1350,7 +1358,6 @@ function makeworld()
 	case "imagehousing.com":
 	case "cubeupload.com":
 	case "dumparump.com":
-	case "img.3ezy.net":
 	case "uploads.ru":
 	case "myimg.de":
 	case "root-space.eu":
