@@ -3,7 +3,7 @@
 // @namespace     handyimage
 // @author        Owyn
 // @contributors  U BLESS, bitst0rm
-// @version       2015.02.28
+// @version       2015.03.01
 // @updateURL     https://github.com/Owyn/HandyImage/raw/master/HandyImage.user.js
 // @downloadURL   https://github.com/Owyn/HandyImage/raw/master/HandyImage.user.js
 // @homepage      https://greasyfork.org/scripts/109-handy-image
@@ -2111,7 +2111,25 @@ function makeworld()
 			}
 			i = q('img[src*="' + iurl + '"]');
 			break;
-		default:
+		default: // for user-added sites
+			console.warn("HJI is running on a custom website");
+			if(document.readyState != "loading" && document.images.length != 0)
+			{
+				var b = 0;
+				for(var n = 0; n < document.images.length; n++)
+				{
+					if(document.images[n].width == 0 && !document.images[n].complete) // not started loading
+					{
+						break;
+					}
+					else if(document.images[n].width * document.images[n].height > document.images[b].width * document.images[b].height)
+					{
+						b = n;
+					}
+				}
+				i = document.images[b];
+				console.warn("HJI is running on a custom website, showing biggest image");
+			}
 			break;
 		}
 		break;
