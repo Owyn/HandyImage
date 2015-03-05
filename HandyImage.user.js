@@ -2129,6 +2129,7 @@ function makeworld()
 				{
 					if(document.images[n].width == 0 && !document.images[n].complete) // not started loading
 					{
+						b = -1;
 						break;
 					}
 					else if(document.images[n].width * document.images[n].height > document.images[b].width * document.images[b].height)
@@ -2137,7 +2138,7 @@ function makeworld()
 					}
 				}
 				i = document.images[b];
-				console.warn("HJI is running on a custom website, showing biggest image");
+				if(i){console.warn("HJI is running on a custom website, showing biggest image");}
 			}
 			break;
 		}
