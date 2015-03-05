@@ -3,7 +3,7 @@
 // @namespace     handyimage
 // @author        Owyn
 // @contributors  U BLESS, bitst0rm
-// @version       2015.03.01
+// @version       2015.03.05
 // @updateURL     https://github.com/Owyn/HandyImage/raw/master/HandyImage.user.js
 // @downloadURL   https://github.com/Owyn/HandyImage/raw/master/HandyImage.user.js
 // @homepage      https://greasyfork.org/scripts/109-handy-image
@@ -733,6 +733,7 @@
 // @match         http://*.imgtrex.com/*/*
 // @match         http://*.imgdoggy.com/img-*
 // @match         http://*.chronos.to/*
+// @match         http://picspornfree.me/img-*
 // ==/UserScript==
 
 if (typeof unsafeWindow === "undefined")
@@ -1604,6 +1605,14 @@ function makeworld()
 	case "imgdoggy.com":
 		i = q('img[src*="/upload/"]');
 		break;
+	case "picspornfree.me":
+		i = q('input[type="submit"]');
+		dp=true;
+		if(i) 
+		{
+			i.click();
+			break;
+		}
 	case "xxx.image-server.ru":
 	case "image-server.ru":
 	case "avenuexxx.com":
