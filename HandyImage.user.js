@@ -3,7 +3,7 @@
 // @namespace     handyimage
 // @author        Owyn
 // @contributors  U BLESS, bitst0rm
-// @version       2015.03.05
+// @version       2015.03.09
 // @updateURL     https://github.com/Owyn/HandyImage/raw/master/HandyImage.user.js
 // @downloadURL   https://github.com/Owyn/HandyImage/raw/master/HandyImage.user.js
 // @homepage      https://greasyfork.org/scripts/109-handy-image
@@ -734,6 +734,7 @@
 // @match         http://*.imgdoggy.com/img-*
 // @match         http://*.chronos.to/*
 // @match         http://picspornfree.me/img-*
+// @match         http://*.pic-you.com/p*
 // ==/UserScript==
 
 if (typeof unsafeWindow === "undefined")
@@ -1700,6 +1701,7 @@ function makeworld()
 	case "fmsecond.com":
 	case "qattach.com":
 	case "fotohelp.kz":
+	case "pic-you.com":
 		i = q('a[href*="/di/"]');
 		if(i)
 		{
