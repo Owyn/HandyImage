@@ -3,7 +3,7 @@
 // @namespace     handyimage
 // @author        Owyn
 // @contributors  U BLESS, bitst0rm
-// @version       2015.03.10
+// @version       2015.03.12
 // @updateURL     https://github.com/Owyn/HandyImage/raw/master/HandyImage.user.js
 // @downloadURL   https://github.com/Owyn/HandyImage/raw/master/HandyImage.user.js
 // @homepage      https://greasyfork.org/scripts/109-handy-image
@@ -1447,6 +1447,14 @@ function makeworld()
 			}
 		}
 		break;
+	case "imageeer.com":
+		i = q('input[type="button"]');
+		if(i)
+		{
+			i.click();
+			break;
+		}
+		dp=true;
 	case "imagebucks.biz":
 		i = q('input[type="submit"]');
 		dp=true;
@@ -1878,7 +1886,7 @@ function makeworld()
 	case "xenopix.com":
 		i = q('img[src*="/pix/"]');
 		break;
-	case "imageeer.com":
+	case "imgsee.me":
 		i = q('input[type="button"]');
 		if(i)
 		{
@@ -1912,7 +1920,6 @@ function makeworld()
 	case "imageporter.com":
 	case "imagenimage.com":
 	case "imageshimage.com":
-	case "imgsee.me":
 		i = q('img[src*="/i/"]');
 		break;
 	case "pixpipeline.com":
