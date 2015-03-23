@@ -3,7 +3,7 @@
 // @namespace     handyimage
 // @author        Owyn
 // @contributors  U BLESS, bitst0rm
-// @version       2015.03.12
+// @version       2015.03.24
 // @updateURL     https://github.com/Owyn/HandyImage/raw/master/HandyImage.user.js
 // @downloadURL   https://github.com/Owyn/HandyImage/raw/master/HandyImage.user.js
 // @homepage      https://greasyfork.org/scripts/109-handy-image
@@ -953,10 +953,20 @@ function makeworld()
 			i.src = i.src.replace('_800.', '.');
 		}
 		break;
+	case "prntscr.com":
+		i = document.querySelector('meta[property="og:image"]');
+		if(i)
+		{
+			i.src = i.content;
+			if(FireFox)
+			{
+				i.src = "http://img.prntscr.com/img?url=" + i.src;
+			}
+		}
+		break;
 	case "directupload.net":
 	case "bilderhoster.net":
 	case "noelshack.com":
-	case "prntscr.com":
 	case "kephost.com":
 	case "i.ruspotting.net":
 	case "gifyu.com":
