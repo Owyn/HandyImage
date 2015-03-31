@@ -3,7 +3,7 @@
 // @namespace     handyimage
 // @author        Owyn
 // @contributors  U BLESS, bitst0rm
-// @version       2015.03.24
+// @version       2015.03.31
 // @updateURL     https://github.com/Owyn/HandyImage/raw/master/HandyImage.user.js
 // @downloadURL   https://github.com/Owyn/HandyImage/raw/master/HandyImage.user.js
 // @homepage      https://greasyfork.org/scripts/109-handy-image
@@ -736,6 +736,7 @@
 // @match         http://picspornfree.me/img-*
 // @match         http://*.pic-you.com/p*
 // @match         http://*.imageback.info/view*
+// @match         http://*.image-bugs.com/image/*
 // ==/UserScript==
 
 if (typeof unsafeWindow === "undefined")
@@ -946,11 +947,12 @@ function makeworld()
 		}
 		break;
 	case "img.3ezy.net":
+	case "image-bugs.com":
 		i = document.head.querySelector('link[rel="image_src"]');
 		if(i)
 		{
 			i.src = i.href;
-			i.src = i.src.replace('_800.', '.');
+			i.src = i.src.replace('_800.', '.'); //img.3ezy.net
 		}
 		break;
 	case "prntscr.com":
