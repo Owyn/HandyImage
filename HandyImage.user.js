@@ -3,7 +3,7 @@
 // @namespace     handyimage
 // @author        Owyn
 // @contributors  U BLESS, bitst0rm
-// @version       2015.03.31
+// @version       2015.04.01
 // @updateURL     https://github.com/Owyn/HandyImage/raw/master/HandyImage.user.js
 // @downloadURL   https://github.com/Owyn/HandyImage/raw/master/HandyImage.user.js
 // @homepage      https://greasyfork.org/scripts/109-handy-image
@@ -737,6 +737,7 @@
 // @match         http://*.pic-you.com/p*
 // @match         http://*.imageback.info/view*
 // @match         http://*.image-bugs.com/image/*
+// @match         http://*.pixhst.com/pictures/*
 // ==/UserScript==
 
 if (typeof unsafeWindow === "undefined")
@@ -912,6 +913,7 @@ function makeworld()
 	case "imagebin.ca":
 	case "iceimg.com":
 	case "pics.tam.in.ua":
+	case "pixhst.com":
 		i = q('img');
 		break;
 	case "myceleb.net":
@@ -1874,6 +1876,7 @@ function makeworld()
 	case "picturescream.com":
 	case "urpichost.com":
 	case "all-poster.ru":
+	case "picturescream.asia":
 		i = q('img[src*="/images/"]');
 		break;
 	case "intergranada.com":
@@ -1989,7 +1992,6 @@ function makeworld()
 			break;
 		}
 	case "pixhost.org":
-	case "picturescream.asia":
 	case "stooorage.com":
 	case "imgtiger.com":
 	case "imgserve.net":
