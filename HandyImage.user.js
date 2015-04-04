@@ -3,7 +3,7 @@
 // @namespace     handyimage
 // @author        Owyn
 // @contributors  U BLESS, bitst0rm
-// @version       2015.04.01
+// @version       2015.04.04
 // @updateURL     https://github.com/Owyn/HandyImage/raw/master/HandyImage.user.js
 // @downloadURL   https://github.com/Owyn/HandyImage/raw/master/HandyImage.user.js
 // @homepage      https://greasyfork.org/scripts/109-handy-image
@@ -608,7 +608,7 @@
 // @match         http://www.urpichost.com/?v=*
 // @match         http://*.imgswift.com/*/*
 // @match         http://*.imageporn.eu/?v=*
-// @match         http://500px.com/photo/*
+// @match         https://500px.com/photo/*
 // @match         http://*.gokoimage.com/img-*
 // @match         http://*.greenpiccs.com/images/*.html
 // @match         http://*.hostmat.eu/view*
@@ -863,12 +863,12 @@ function makeimage()
 	autoresize();
 }
 
-function find_text_in_scripts(a, b)
+function find_text_in_scripts(a, b, o)
 {
 	var s = document.getElementsByTagName("script");
 	for(var c=0;c<s.length;c++) 
 	{
-		var start_pos = s[c].innerHTML.lastIndexOf(a);
+		var start_pos = o ? s[c].innerHTML.indexOf(a) : s[c].innerHTML.lastIndexOf(a);
 		if(start_pos == -1){continue;}
 		start_pos += a.length;
 		i = s[c];
@@ -932,22 +932,6 @@ function makeworld()
 	case "awesomescreenshot.com":
 		i = q('img#screenshot');
 		break;
-	case "imgur.com":
-		j = true;
-		i = document.head.querySelector('meta[property="og:image"]');
-		if(i)
-		{
-			var f = document.head.querySelector('meta[name="twitter:card"]');
-			if((f && f.content == "gallery") || i.content.indexOf("logo") != -1)
-			{
-				return false;
-			}
-			else
-			{
-				i.src = i.content;i.src = i.src.split('?')[0];
-			}
-		}
-		break;
 	case "img.3ezy.net":
 	case "image-bugs.com":
 		i = document.head.querySelector('link[rel="image_src"]');
@@ -955,17 +939,6 @@ function makeworld()
 		{
 			i.src = i.href;
 			i.src = i.src.replace('_800.', '.'); //img.3ezy.net
-		}
-		break;
-	case "prntscr.com":
-		i = document.querySelector('meta[property="og:image"]');
-		if(i)
-		{
-			i.src = i.content;
-			if(FireFox)
-			{
-				i.src = "http://img.prntscr.com/img?url=" + i.src;
-			}
 		}
 		break;
 	case "directupload.net":
@@ -1006,6 +979,7 @@ function makeworld()
 	case "demo.chevereto.com":
 	case "ownimg.com":
 	case "danbooru.donmai.us":
+	case "500px.com":
 		i = document.querySelector('meta[property="og:image"] , [name="og:image"]');
 		if(i)
 		{
@@ -1018,14 +992,43 @@ function makeworld()
 			if(i){i.src = i.href;}
 		}
 		break;
+	case "imgur.com":
+		j = true;
+		i = document.head.querySelector('meta[property="og:image"]');
+		if(i)
+		{
+			var f = document.head.querySelector('meta[name="twitter:card"]');
+			if((f && f.content == "gallery") || i.content.indexOf("logo") != -1)
+			{
+				return false;
+			}
+			else
+			{
+				i.src = i.content;i.src = i.src.split('?')[0];
+			}
+		}
+		break;
+	case "prntscr.com":
+		i = document.querySelector('meta[property="og:image"]');
+		if(i)
+		{
+			i.src = i.content;
+			if(FireFox)
+			{
+				i.src = "http://img.prntscr.com/img?url=" + i.src;
+			}
+		}
+		break;
 	case "flickr.com":
 	case "secure.flickr.com":
-		if(!find_text_in_scripts('"url":"https:', '"') && !find_text_in_scripts('"url":"', '"'))
+		j = true;
+		if(i = q("div.zoom-view"))
 		{
-			if(i = q("#share-options-embed-textarea-o-bbcode"))
+			if(!q("img.zoom-large"))
 			{
-				i.src = i.value.substring(i.value.indexOf("[img]")+5, i.value.indexOf("[ img]"));
+				i.click();
 			}
+			i = q("img.zoom-large");
 		}
 		break;
 	case "chan.sankakucomplex.com":
@@ -1136,14 +1139,6 @@ function makeworld()
 		if(find_text_in_scripts('var orig_url="', '"'))
 		{
 			i.src = i.src.replace('http://www.amateri.cz/orig.php?&img=', 'http:/ img2.amateri.cz/users/');
-		}
-		break;
-	case "500px.com":
-		if(find_text_in_scripts('https_url":"', '/avatar'))
-		{
-			var f = i.src;
-			find_text_in_scripts('photos\\/', '"');
-			i.src = f + "/photos/" + i.getAttribute("src");
 		}
 		break;
 	case "pix-x.net":
