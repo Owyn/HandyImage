@@ -3,7 +3,7 @@
 // @namespace     handyimage
 // @author        Owyn
 // @contributors  U BLESS, bitst0rm
-// @version       2015.04.05
+// @version       2015.04.06
 // @updateURL     https://github.com/Owyn/HandyImage/raw/master/HandyImage.user.js
 // @downloadURL   https://github.com/Owyn/HandyImage/raw/master/HandyImage.user.js
 // @homepage      https://greasyfork.org/scripts/109-handy-image
@@ -1088,7 +1088,11 @@ function makeworld()
 	case "pimpandhost.com":
 	case "fastpic.ru":
 	case "abload.de":
-		i = q('img#image');
+		i = document.querySelectorAll('img#image');
+		if(i)
+		{
+			i = i[i.length-1];
+		}
 		break;
 	case "pikucha.ru":
 		i = q('img#image');
