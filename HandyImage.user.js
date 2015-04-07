@@ -3,7 +3,7 @@
 // @namespace     handyimage
 // @author        Owyn
 // @contributors  U BLESS, bitst0rm
-// @version       2015.04.06
+// @version       2015.04.07
 // @updateURL     https://github.com/Owyn/HandyImage/raw/master/HandyImage.user.js
 // @downloadURL   https://github.com/Owyn/HandyImage/raw/master/HandyImage.user.js
 // @homepage      https://greasyfork.org/scripts/109-handy-image
@@ -738,6 +738,7 @@
 // @match         http://*.imageback.info/view*
 // @match         http://*.image-bugs.com/image/*
 // @match         http://*.pixhst.com/pictures/*
+// @match         http://*.imgdrive.net/img-*
 // ==/UserScript==
 
 if (typeof unsafeWindow === "undefined")
@@ -900,7 +901,7 @@ function post(path, params, method)
 
 function makeworld()
 {
-	if(i){return false;}
+	if(i){return;}
 	// per-host image detection
 	switch (iurl)
 	{
@@ -1000,7 +1001,7 @@ function makeworld()
 			var f = document.head.querySelector('meta[name="twitter:card"]');
 			if((f && f.content == "gallery") || i.content.indexOf("logo") != -1)
 			{
-				return false;
+				return;
 			}
 			else
 			{
@@ -1088,7 +1089,7 @@ function makeworld()
 	case "pimpandhost.com":
 	case "fastpic.ru":
 	case "abload.de":
-		i = document.querySelectorAll('img#image');
+		i = document.body.querySelectorAll('img#image');
 		if(i)
 		{
 			i = i[i.length-1];
@@ -1983,6 +1984,13 @@ function makeworld()
 			i.submit();
 			break;
 		}
+	case "imgdrive.net":
+		i = q("a.overlay_ad_link");
+		if(i && i.parentNode.style.display)
+		{
+			i.click();
+			break;
+		}
 	case "pixhost.org":
 	case "stooorage.com":
 	case "imgtiger.com":
@@ -2058,6 +2066,7 @@ function makeworld()
 	case "zagruzitfoto.com":
 	case "vavvi.com":
 	case "imgzap.com":
+	case "imgdrive.net":
 		i = q('img[src*="' + iurl + '/images/"]');
 		break;
 	case "shareimages.com":
@@ -2203,7 +2212,7 @@ function makeworld()
 	}
 	else // try again
 	{
-		//console.warn("Didnt find image, trying again in " + timeout + " ms");
+		console.warn("Didnt find image, trying again in " + timeout + " ms");
 		if(tb){clearTimeout(tb);}
 		tb = setTimeout(function() { tb=0; timeout*=2; makeworld(); }, timeout);
 	}
