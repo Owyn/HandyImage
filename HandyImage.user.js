@@ -3,7 +3,7 @@
 // @namespace     handyimage
 // @author        Owyn
 // @contributors  U BLESS, bitst0rm
-// @version       2015.04.07
+// @version       2015.04.08
 // @updateURL     https://github.com/Owyn/HandyImage/raw/master/HandyImage.user.js
 // @downloadURL   https://github.com/Owyn/HandyImage/raw/master/HandyImage.user.js
 // @homepage      https://greasyfork.org/scripts/109-handy-image
@@ -1985,6 +1985,7 @@ function makeworld()
 			break;
 		}
 	case "imgdrive.net":
+		j = true;
 		i = q("a.overlay_ad_link");
 		if(i && i.parentNode.style.display)
 		{
@@ -2212,9 +2213,9 @@ function makeworld()
 	}
 	else // try again
 	{
-		console.warn("Didnt find image, trying again in " + timeout + " ms");
+		//console.warn("Didnt find image, trying again in " + timeout + " ms");
 		if(tb){clearTimeout(tb);}
-		tb = setTimeout(function() { tb=0; timeout*=2; makeworld(); }, timeout);
+		tb = setTimeout(function() { console.warn("Didnt find image, waited " + timeout + " ms to try again"); tb=0; timeout*=2; makeworld(); }, timeout);
 	}
 }
 
