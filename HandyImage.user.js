@@ -3,7 +3,7 @@
 // @namespace     handyimage
 // @author        Owyn
 // @contributors  U BLESS, bitst0rm
-// @version       2015.04.12
+// @version       2015.04.12.13
 // @updateURL     https://github.com/Owyn/HandyImage/raw/master/HandyImage.user.js
 // @downloadURL   https://github.com/Owyn/HandyImage/raw/master/HandyImage.user.js
 // @homepage      https://greasyfork.org/scripts/109-handy-image
@@ -743,6 +743,7 @@
 // @match         http://*.gallerynova.se/site/v/*
 // @match         http://*.image.re/img-*
 // @match         http://*.uplimg.com/img-*
+// @match         http://www.pixiv.net/member_illust.php?mode=medium&illust_id=*
 // ==/UserScript==
 
 if (typeof unsafeWindow === "undefined")
@@ -1028,6 +1029,12 @@ function makeworld()
 	case "flickr.com":
 	case "secure.flickr.com":
 		find_text_in_scripts('"url":"', '"', false, '"canComment"');
+		break;
+	case "pixiv.net":
+		{
+			i = q("img.original-image");
+			if(i){i.src = i.dataset.src;}
+		}
 		break;
 	case "chan.sankakucomplex.com":
 		i = q('a[itemprop="contentUrl"]');
