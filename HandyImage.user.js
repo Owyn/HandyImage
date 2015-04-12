@@ -3,7 +3,7 @@
 // @namespace     handyimage
 // @author        Owyn
 // @contributors  U BLESS, bitst0rm
-// @version       2015.04.08
+// @version       2015.04.12
 // @updateURL     https://github.com/Owyn/HandyImage/raw/master/HandyImage.user.js
 // @downloadURL   https://github.com/Owyn/HandyImage/raw/master/HandyImage.user.js
 // @homepage      https://greasyfork.org/scripts/109-handy-image
@@ -739,6 +739,10 @@
 // @match         http://*.image-bugs.com/image/*
 // @match         http://*.pixhst.com/pictures/*
 // @match         http://*.imgdrive.net/img-*
+// @match         http://*.fapic.me/img-*
+// @match         http://*.gallerynova.se/site/v/*
+// @match         http://*.image.re/img-*
+// @match         http://*.uplimg.com/img-*
 // ==/UserScript==
 
 if (typeof unsafeWindow === "undefined")
@@ -864,16 +868,17 @@ function makeimage()
 	autoresize();
 }
 
-function find_text_in_scripts(a, b, o)
+function find_text_in_scripts(a, b, o, h)
 {
 	var s = document.getElementsByTagName("script");
 	for(var c=0;c<s.length;c++) 
 	{
+		if(h && s[c].innerHTML.indexOf(h) != -1){s[c].innerHTML = s[c].innerHTML.substring(0, s[c].innerHTML.indexOf(h));}
 		var start_pos = o ? s[c].innerHTML.indexOf(a) : s[c].innerHTML.lastIndexOf(a);
 		if(start_pos == -1){continue;}
 		start_pos += a.length;
 		i = s[c];
-		i.src = decodeURIComponent(s[c].innerHTML.substring(start_pos,s[c].innerHTML.indexOf(b,start_pos)).split("\\").join("")); // slpit\join fix for stupidfox GreaseMonkey
+		i.src = decodeURIComponent(s[c].innerHTML.substring(start_pos,s[c].innerHTML.indexOf(b,start_pos)).split("\\").join("")); // split\join fix for stupidfox GreaseMonkey
 		return true;
 	}
 	return false;
@@ -1022,15 +1027,7 @@ function makeworld()
 		break;
 	case "flickr.com":
 	case "secure.flickr.com":
-		j = true;
-		if(i = q("div.zoom-view"))
-		{
-			if(!q("img.zoom-large"))
-			{
-				i.click();
-			}
-			i = q("img.zoom-large");
-		}
+		find_text_in_scripts('"url":"', '"', false, '"canComment"');
 		break;
 	case "chan.sankakucomplex.com":
 		i = q('a[itemprop="contentUrl"]');
@@ -1627,6 +1624,10 @@ function makeworld()
 	case "imghit.com":
 	case "imagewow.eu":
 	case "imgdoggy.com":
+	case "fapic.me":
+	case "gallerynova.se":
+	case "image.re":
+	case "uplimg.com":
 		i = q('img[src*="/upload/"]');
 		break;
 	case "picspornfree.me":
