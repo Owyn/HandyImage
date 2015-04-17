@@ -3,7 +3,7 @@
 // @namespace     handyimage
 // @author        Owyn
 // @contributors  U BLESS, bitst0rm
-// @version       2015.04.12.13
+// @version       2015.04.17
 // @updateURL     https://github.com/Owyn/HandyImage/raw/master/HandyImage.user.js
 // @downloadURL   https://github.com/Owyn/HandyImage/raw/master/HandyImage.user.js
 // @homepage      https://greasyfork.org/scripts/109-handy-image
@@ -1219,6 +1219,7 @@ function makeworld()
 		if(i){i.src = i.href;}
 		break;
 	case "picsee.net":
+	case "gallerynova.se":
 		i = q('a[href*="/upload"]');
 		if(i){i.src = i.href;}
 		break;
@@ -1632,7 +1633,6 @@ function makeworld()
 	case "imagewow.eu":
 	case "imgdoggy.com":
 	case "fapic.me":
-	case "gallerynova.se":
 	case "image.re":
 	case "uplimg.com":
 		i = q('img[src*="/upload/"]');
