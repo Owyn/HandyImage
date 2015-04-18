@@ -3,7 +3,7 @@
 // @namespace     handyimage
 // @author        Owyn
 // @contributors  U BLESS, bitst0rm
-// @version       2015.04.17
+// @version       2015.04.18
 // @updateURL     https://github.com/Owyn/HandyImage/raw/master/HandyImage.user.js
 // @downloadURL   https://github.com/Owyn/HandyImage/raw/master/HandyImage.user.js
 // @homepage      https://greasyfork.org/scripts/109-handy-image
@@ -744,6 +744,8 @@
 // @match         http://*.image.re/img-*
 // @match         http://*.uplimg.com/img-*
 // @match         http://www.pixiv.net/member_illust.php?mode=medium&illust_id=*
+// @match         http://*.imagelike.org/?v=*
+// @match         http://*.scrin.org/?v=*
 // ==/UserScript==
 
 if (typeof unsafeWindow === "undefined")
@@ -1302,6 +1304,7 @@ function makeworld()
 	case "rupix.org":
 	case "gelbooru.com":
 	case "greenpiccs.com":
+	case "imagelike.org":
 		i = q('a[href*="images/"]');
 		if(i){i.src = i.href;}
 		break;
@@ -1451,21 +1454,6 @@ function makeworld()
 	case "free-picload.de":
 		i = q('img[src*="pics/"]');
 		break;
-	case "imgrock.net":
-		i = q('button.close');
-		if(i) 
-		{
-			if(i.firstChild.nodeType == 1)
-			{
-				post('', {op: 'view', id: window.location.pathname.substring(1, window.location.pathname.lastIndexOf("/")), pre: '1', next: 'Continue to Image...'}, "POST");
-			}
-			else
-			{
-				iurl += "$";
-				i = 0;
-			}
-		}
-		break;
 	case "imageeer.com":
 		i = q('input[type="button"]');
 		if(i)
@@ -1475,7 +1463,9 @@ function makeworld()
 		}
 		dp=true;
 	case "imagebucks.biz":
-		i = q('input[type="submit"]');
+	case "imgrock.net":
+		j = true;
+		i = q('input[type="submit"]:not([style="display:none;"])')
 		dp=true;
 		if(i) 
 		{
@@ -1492,7 +1482,6 @@ function makeworld()
 	case "pixpal.net":
 	case "imgpaying.com":
 	case "picexposed.com":
-	case "imgrock.net$":
 	case "imgtrex.com":
 		i = q('img[src*="/img/"]');
 		break;
@@ -1943,7 +1932,8 @@ function makeworld()
 		break;
 	case "2imgs.com":
 	case "2i.sk":
-	case "2i.cz":	
+	case "2i.cz":
+	case "scrin.org":
 		i = q('a[href*="/i/"]');
 		if(i)
 		{
