@@ -3,7 +3,7 @@
 // @namespace     handyimage
 // @author        Owyn
 // @contributors  U BLESS, bitst0rm
-// @version       2015.04.18
+// @version       2015.04.19
 // @updateURL     https://github.com/Owyn/HandyImage/raw/master/HandyImage.user.js
 // @downloadURL   https://github.com/Owyn/HandyImage/raw/master/HandyImage.user.js
 // @homepage      https://greasyfork.org/scripts/109-handy-image
@@ -746,6 +746,12 @@
 // @match         http://www.pixiv.net/member_illust.php?mode=medium&illust_id=*
 // @match         http://*.imagelike.org/?v=*
 // @match         http://*.scrin.org/?v=*
+// @match         http://*.imghost.us.to/xxx/?v=*
+// @match         http://*.img.thumbnailus.com/view*
+// @match         http://*.nimplus.com/img-*
+// @match         http://*.imgtaxi.com/img-*
+// @match         http://*.imgstudio.org/img-*
+// @match         http://goimge.com/img-*
 // ==/UserScript==
 
 if (typeof unsafeWindow === "undefined")
@@ -1585,6 +1591,7 @@ function makeworld()
 	case "viewvee.com":
 	case "funimg.net":
 	case "imageon.org":
+	case "nimplus.com":
 		dp=true;
 		var f = document.getElementsByTagName("input");
 		if(f.length)
@@ -1624,6 +1631,8 @@ function makeworld()
 	case "fapic.me":
 	case "image.re":
 	case "uplimg.com":
+	case "imgstudio.org":
+	case "goimge.com":
 		i = q('img[src*="/upload/"]');
 		break;
 	case "picspornfree.me":
@@ -1817,6 +1826,7 @@ function makeworld()
 	case "imgili.com":
 	case "imgcentral.com":
 	case "imageback.info":
+	case "img.thumbnailus.com":
 		i = q('img[src*="images/"]');
 		break;
 	case "fotosik.pl":
@@ -1874,6 +1884,8 @@ function makeworld()
 	case "urpichost.com":
 	case "all-poster.ru":
 	case "picturescream.asia":
+	case "imghost.us.to":
+	case "imgtaxi.com":
 		i = q('img[src*="/images/"]');
 		break;
 	case "intergranada.com":
