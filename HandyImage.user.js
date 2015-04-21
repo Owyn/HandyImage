@@ -3,7 +3,7 @@
 // @namespace     handyimage
 // @author        Owyn
 // @contributors  U BLESS, bitst0rm
-// @version       2015.04.19
+// @version       2015.04.21
 // @updateURL     https://github.com/Owyn/HandyImage/raw/master/HandyImage.user.js
 // @downloadURL   https://github.com/Owyn/HandyImage/raw/master/HandyImage.user.js
 // @homepage      https://greasyfork.org/scripts/109-handy-image
@@ -752,6 +752,7 @@
 // @match         http://*.imgtaxi.com/img-*
 // @match         http://*.imgstudio.org/img-*
 // @match         http://goimge.com/img-*
+// @match         http://*.shareimg.fr/img-*
 // ==/UserScript==
 
 if (typeof unsafeWindow === "undefined")
@@ -1592,6 +1593,7 @@ function makeworld()
 	case "funimg.net":
 	case "imageon.org":
 	case "nimplus.com":
+	case "shareimg.fr":
 		dp=true;
 		var f = document.getElementsByTagName("input");
 		if(f.length)
