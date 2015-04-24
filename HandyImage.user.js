@@ -3,7 +3,7 @@
 // @namespace     handyimage
 // @author        Owyn
 // @contributors  U BLESS, bitst0rm
-// @version       2015.04.21
+// @version       2015.04.24
 // @updateURL     https://github.com/Owyn/HandyImage/raw/master/HandyImage.user.js
 // @downloadURL   https://github.com/Owyn/HandyImage/raw/master/HandyImage.user.js
 // @homepage      https://greasyfork.org/scripts/109-handy-image
@@ -580,8 +580,8 @@
 // @match         http://*.imgrex.com/view*
 // @match         http://www.amateri.cz/g*/*
 // @match         http://*.imgshow.me/*
-// @match         *://*.wikipedia.org/wiki/*:*.jp*
-// @match         *://*.wikipedia.org/wiki/*:*.png
+// @match         *://*.wikipedia.org/wiki/File:*.jp*
+// @match         *://*.wikipedia.org/wiki/File:*.png
 // @match         *://*.wikimedia.org/wiki/File:*.jp*
 // @match         *://*.wikimedia.org/wiki/File:*.pn*
 // @match         http://*.dragimage.org/img-*
@@ -2129,7 +2129,8 @@ function makeworld()
 			break;
 		case "wikipedia.org":
 		case "wikimedia.org":
-			i = q('a[href*="/upload"]');
+			i = q('a.mw-mmv-download-preview-link');
+			if(!i){i = q('a[href*="/upload"]');}
 			if(i){i.src = i.href;}
 			break;
 		case "photobucket.com":
