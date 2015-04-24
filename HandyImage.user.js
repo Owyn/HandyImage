@@ -2129,8 +2129,7 @@ function makeworld()
 			break;
 		case "wikipedia.org":
 		case "wikimedia.org":
-			i = q('a.mw-mmv-download-preview-link');
-			if(!i){i = q('a[href*="/upload"]');}
+			i = q('a[href*="/upload"]');
 			if(i){i.src = i.href;}
 			break;
 		case "photobucket.com":
