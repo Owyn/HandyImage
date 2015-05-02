@@ -3,7 +3,7 @@
 // @namespace     handyimage
 // @author        Owyn
 // @contributors  U BLESS, bitst0rm
-// @version       2015.04.24
+// @version       2015.05.02
 // @updateURL     https://github.com/Owyn/HandyImage/raw/master/HandyImage.user.js
 // @downloadURL   https://github.com/Owyn/HandyImage/raw/master/HandyImage.user.js
 // @homepage      https://greasyfork.org/scripts/109-handy-image
@@ -1627,7 +1627,6 @@ function makeworld()
 	case "ocaload.com":
 	case "imgget.net":
 	case "imgs.it":
-	case "imghit.com":
 	case "imagewow.eu":
 	case "imgdoggy.com":
 	case "fapic.me":
@@ -1673,6 +1672,7 @@ function makeworld()
 		}
 		break;
 	case "ruleimg.com":
+	case "imghit.com":
 		i = q('img[alt="image"]');
 		break;
 	case "3xplanet.com":
