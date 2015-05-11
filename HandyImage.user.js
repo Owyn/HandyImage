@@ -3,7 +3,7 @@
 // @namespace     handyimage
 // @author        Owyn
 // @contributors  U BLESS, bitst0rm
-// @version       2015.05.02
+// @version       2015.05.11
 // @updateURL     https://github.com/Owyn/HandyImage/raw/master/HandyImage.user.js
 // @downloadURL   https://github.com/Owyn/HandyImage/raw/master/HandyImage.user.js
 // @homepage      https://greasyfork.org/scripts/109-handy-image
@@ -753,6 +753,8 @@
 // @match         http://*.imgstudio.org/img-*
 // @match         http://goimge.com/img-*
 // @match         http://*.shareimg.fr/img-*
+// @match         http://*.safeimage.biz/image/*
+// @match         http://*.picclick.ru/*/*/
 // ==/UserScript==
 
 if (typeof unsafeWindow === "undefined")
@@ -996,6 +998,7 @@ function makeworld()
 	case "ownimg.com":
 	case "danbooru.donmai.us":
 	case "500px.com":
+	case "safeimage.biz":
 		i = document.querySelector('meta[property="og:image"] , [name="og:image"]');
 		if(i)
 		{
@@ -1178,6 +1181,7 @@ function makeworld()
 	case "payforpic.ru":
 	case "freshpics.ru":
 	case "imglocker.com":
+	case "picclick.ru":
 		i = q('img[src*="thumb"]');
 		if(i){i.src = i.src.replace('-thumb', '');i.src = i.src.replace('img_thumb', 'img_full');i.src = i.src.replace('_thumb', '');}
 		break;
