@@ -3,7 +3,7 @@
 // @namespace     handyimage
 // @author        Owyn
 // @contributors  U BLESS, bitst0rm
-// @version       2015.05.11
+// @version       2015.05.12
 // @updateURL     https://github.com/Owyn/HandyImage/raw/master/HandyImage.user.js
 // @downloadURL   https://github.com/Owyn/HandyImage/raw/master/HandyImage.user.js
 // @homepage      https://greasyfork.org/scripts/109-handy-image
@@ -747,7 +747,7 @@
 // @match         http://*.imagelike.org/?v=*
 // @match         http://*.scrin.org/?v=*
 // @match         http://*.imghost.us.to/xxx/?v=*
-// @match         http://*.img.thumbnailus.com/view*
+// @match         http://*.thumbnailus.com/view*
 // @match         http://*.nimplus.com/img-*
 // @match         http://*.imgtaxi.com/img-*
 // @match         http://*.imgstudio.org/img-*
@@ -1832,7 +1832,7 @@ function makeworld()
 	case "imgili.com":
 	case "imgcentral.com":
 	case "imageback.info":
-	case "img.thumbnailus.com":
+	case "thumbnailus.com":
 		i = q('img[src*="images/"]');
 		break;
 	case "fotosik.pl":
