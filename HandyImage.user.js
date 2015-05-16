@@ -3,7 +3,7 @@
 // @namespace     handyimage
 // @author        Owyn
 // @contributors  U BLESS, bitst0rm
-// @version       2015.05.15
+// @version       2015.05.16
 // @updateURL     https://github.com/Owyn/HandyImage/raw/master/HandyImage.user.js
 // @downloadURL   https://github.com/Owyn/HandyImage/raw/master/HandyImage.user.js
 // @homepage      https://greasyfork.org/scripts/109-handy-image
@@ -575,7 +575,7 @@
 // @match         http://*.istoreimg.com/i/*
 // @match         http://*.imgcoin.net/img-*
 // @match         http://*.08lkk.com/Image/img-*
-// @match         *://*.flickr.com/photos/*/*
+// @match         *://*.flickr.com/photos/*/*/
 // @exclude       /^https?://(www\.)?flickr\.com/photos/([^/]+)/(sets/.*|page.*|with.*|favorites.*)?$/
 // @match         http://*.imgrex.com/view*
 // @match         http://www.amateri.cz/g*/*
@@ -755,6 +755,7 @@
 // @match         http://*.shareimg.fr/img-*
 // @match         http://*.safeimage.biz/image/*
 // @match         http://*.picclick.ru/*/*/
+// @match         http://*.fixxpix.ru/*/*/
 // ==/UserScript==
 
 if (typeof unsafeWindow === "undefined")
@@ -1182,6 +1183,7 @@ function makeworld()
 	case "freshpics.ru":
 	case "imglocker.com":
 	case "picclick.ru":
+	case "fixxpix.ru":
 		i = q('img[src*="thumb"]');
 		if(i){i.src = i.src.replace('-thumb', '');i.src = i.src.replace('img_thumb', 'img_full');i.src = i.src.replace('_thumb', '');}
 		break;
