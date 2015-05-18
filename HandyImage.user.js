@@ -3,7 +3,7 @@
 // @namespace     handyimage
 // @author        Owyn
 // @contributors  U BLESS, bitst0rm
-// @version       2015.05.16
+// @version       2015.05.18
 // @updateURL     https://github.com/Owyn/HandyImage/raw/master/HandyImage.user.js
 // @downloadURL   https://github.com/Owyn/HandyImage/raw/master/HandyImage.user.js
 // @homepage      https://greasyfork.org/scripts/109-handy-image
@@ -1836,9 +1836,6 @@ function makeworld()
 	case "imageback.info":
 	case "thumbnailus.com":
 		i = q('img[src*="images/"]');
-		break;
-	case "fotosik.pl":
-		i = q('img[src*="images"][src*=iurl][style]');
 		break;
 	case "use.com":
 		i = q('img[src*="images/"][onload]');
