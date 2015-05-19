@@ -3,7 +3,7 @@
 // @namespace     handyimage
 // @author        Owyn
 // @contributors  U BLESS, bitst0rm
-// @version       2015.05.18
+// @version       2015.05.19
 // @updateURL     https://github.com/Owyn/HandyImage/raw/master/HandyImage.user.js
 // @downloadURL   https://github.com/Owyn/HandyImage/raw/master/HandyImage.user.js
 // @homepage      https://greasyfork.org/scripts/109-handy-image
@@ -756,6 +756,8 @@
 // @match         http://*.safeimage.biz/image/*
 // @match         http://*.picclick.ru/*/*/
 // @match         http://*.fixxpix.ru/*/*/
+// @match         http://*.imgclover.com/image/*
+// @match         http://*.imgz.pw/share-*
 // ==/UserScript==
 
 if (typeof unsafeWindow === "undefined")
@@ -862,6 +864,14 @@ function onbeforeunload(e) // back helper
 	document.cookie = 'backhji=; expires=' + now.toGMTString() + '; path=/';
 }
 
+function protected_createElement(el)
+{
+	delete document.createElement;
+	var r = document.createElement(el);
+	unsafeWindow.document.createElement = null;
+	return r;
+}
+
 function makeimage()
 {
 	loadCfg();
@@ -871,7 +881,7 @@ function makeimage()
 	document.body.innerHTML = "<style>img { position: absolute; top: 0; right: 0; bottom: 0; left: 0; image-orientation: from-image; }</style>"; // center image
 	ws();
 	var isrc = i.src;
-	i = document.createElement("img");
+	i = protected_createElement("img");
 	i.src = isrc;
 	i.style.margin = "auto"; // center image
 	document.body.appendChild(i);
@@ -900,12 +910,12 @@ function find_text_in_scripts(a, b, o, h)
 function post(path, params, method) 
 {
     method = method || "post";
-    var form = document.createElement("form");
+    var form = protected_createElement("form");
     form.setAttribute("method", method);
     form.setAttribute("action", path);
     for(var key in params) {
         if(params.hasOwnProperty(key)) {
-            var hiddenField = document.createElement("input");
+            var hiddenField = protected_createElement("input");
             hiddenField.setAttribute("type", "hidden");
             hiddenField.setAttribute("name", key);
             hiddenField.setAttribute("value", params[key]);
@@ -1154,6 +1164,7 @@ function makeworld()
 	case "vippix.com":
 	case "sexyimage.imagepool.in":
 	case "imagepool.in":
+	case "imgz.pw":
 		//i = q('img#iimg');
 		find_text_in_scripts("<img src='", "'");
 		break;
@@ -2083,6 +2094,7 @@ function makeworld()
 	case "vavvi.com":
 	case "imgzap.com":
 	case "imgdrive.net":
+	case "imgclover.com":
 		i = q('img[src*="' + iurl + '/images/"]');
 		break;
 	case "shareimages.com":
@@ -2340,7 +2352,7 @@ function autoresize()
 			title = title.substr(0, title.indexOf("?"));
 		}
 		document.title = title + " (" + i.naturalWidth + "x" + i.naturalHeight + ")"; // title
-		var link = document.createElement('link');
+		var link = protected_createElement('link');
 		link.type = 'image/x-icon';
 		link.rel = 'shortcut icon';
 		link.href = i.src;
@@ -2525,7 +2537,7 @@ function cfg()
 		document.head.innerHTML = "";
 		document.body.innerHTML = "";
 		ws();
-		var div = document.createElement("div");
+		var div = protected_createElement("div");
 		div.style.margin = "11% auto";
 		div.style.width = "444px";
 		div.style.border = "solid 1px black";
