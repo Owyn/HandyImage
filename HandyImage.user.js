@@ -3,7 +3,7 @@
 // @namespace     handyimage
 // @author        Owyn
 // @contributors  U BLESS, bitst0rm
-// @version       2015.05.19
+// @version       2015.05.21
 // @updateURL     https://github.com/Owyn/HandyImage/raw/master/HandyImage.user.js
 // @downloadURL   https://github.com/Owyn/HandyImage/raw/master/HandyImage.user.js
 // @homepage      https://greasyfork.org/scripts/109-handy-image
@@ -963,6 +963,7 @@ function makeworld()
 		break;
 	case "img.3ezy.net":
 	case "image-bugs.com":
+	case "imgclover.com":
 		i = document.head.querySelector('link[rel="image_src"]');
 		if(i)
 		{
@@ -2094,7 +2095,6 @@ function makeworld()
 	case "vavvi.com":
 	case "imgzap.com":
 	case "imgdrive.net":
-	case "imgclover.com":
 		i = q('img[src*="' + iurl + '/images/"]');
 		break;
 	case "shareimages.com":
