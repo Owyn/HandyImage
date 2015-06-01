@@ -3,7 +3,7 @@
 // @namespace     handyimage
 // @author        Owyn
 // @contributors  U BLESS, bitst0rm
-// @version       2015.05.31
+// @version       2015.06.01
 // @updateURL     https://github.com/Owyn/HandyImage/raw/master/HandyImage.user.js
 // @downloadURL   https://github.com/Owyn/HandyImage/raw/master/HandyImage.user.js
 // @homepage      https://greasyfork.org/scripts/109-handy-image
@@ -759,6 +759,7 @@
 // @match         http://*.imgclover.com/image/*
 // @match         http://*.imgz.pw/share-*
 // @match         http://*.imgking.co/img-*
+// @match         http://ask.fm/*/photo/original
 // ==/UserScript==
 
 if (typeof unsafeWindow === "undefined")
@@ -1366,14 +1367,6 @@ function makeworld()
 		i = q('div.img_box a');
 		if(i){i.src = i.href;}
 		break;
-	case "postimg.org":
-		i = q('img[src*="' + iurl + '"]');
-		if(i && i.parentNode.href)
-		{
-			window.location.assign(i.parentNode.href);
-			return;
-		}
-		break;
 	case "imgmega.com":
 	case "pic.re":
 	case "imgclick.net":
@@ -1420,8 +1413,18 @@ function makeworld()
 	case "imagedoza.com":
 		i = q('img[src*="' + iurl + '"]');
 		break;
+	case "postimg.org":
+		i = q('img[src*="' + iurl + '"]');
+		if(i && i.parentNode.href)
+		{
+			window.location.assign(i.parentNode.href);
+			return;
+		}
+		break;
+	case "ask.fm":
 	case "uaimage.com":
-	i = q('img[src*="' + iurl + '"][id]');
+		i = q('img[src*="' + iurl + '"][id]');
+		i.src = i.src.replace('/original/', '/large/'); //ask.fm
 		break;
 	case "picfront.org":
 		j = true;
@@ -1490,6 +1493,7 @@ function makeworld()
 		dp=true;
 	case "imagebucks.biz":
 	case "imgrock.net":
+	case "imgtrex.com":
 		j = true;
 		i = q('input[type="submit"]:not([style="display:none;"])')
 		dp=true;
@@ -1508,7 +1512,6 @@ function makeworld()
 	case "pixpal.net":
 	case "imgpaying.com":
 	case "picexposed.com":
-	case "imgtrex.com":
 		i = q('img[src*="/img/"]');
 		break;
 	case "imagenetz.de":
