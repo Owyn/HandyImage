@@ -3,7 +3,7 @@
 // @namespace     handyimage
 // @author        Owyn
 // @contributors  U BLESS, bitst0rm
-// @version       2015.06.01
+// @version       2015.06.07
 // @updateURL     https://github.com/Owyn/HandyImage/raw/master/HandyImage.user.js
 // @downloadURL   https://github.com/Owyn/HandyImage/raw/master/HandyImage.user.js
 // @homepage      https://greasyfork.org/scripts/109-handy-image
@@ -199,7 +199,8 @@
 // @match         http://pix.toile-libre.org/?img*
 // @match         http://uppix.com/s*
 // @match         http://www.servimg.com/image*
-// @match         http://*.upix.me/files*
+// @match         http://*.upix.me/files/*
+// @match         http://*.upix.me/i/v/?q=*
 // @match         http://*.pixelup.net/image*
 // @match         http://*.pixelup.net/image*
 // @match         http://*.picsee.net/*
@@ -717,7 +718,6 @@
 // @match         https://yande.re/post/show/*
 // @match         http://www.zerochan.net/*
 // @match         http://*.imgrock.net/*/*.html
-// @match         http://*.upix.me/i/v/?q=*
 // @match         http://*.imagedoza.com/i.cc/i/*
 // @match         http://imgzap.com/view*
 // @match         http://*.funimg.net/img-*
@@ -760,6 +760,8 @@
 // @match         http://*.imgz.pw/share-*
 // @match         http://*.imgking.co/img-*
 // @match         http://ask.fm/*/photo/original
+// @match         http://cuteimg.cc/*
+// @match         http://*.newimagepost.com/img-*
 // ==/UserScript==
 
 if (typeof unsafeWindow === "undefined")
@@ -1092,6 +1094,11 @@ function makeworld()
 	case "hotflick.net":
 	case "upix.me":
 		i = q('img#img');
+		if(!i && window.location.hash) // upix.me
+		{
+			i = q('a');
+			i.src = window.location.href.replace("#","");
+		}
 		break;
 	case "imageban.ru":
 	case "imageban.net":
@@ -1135,10 +1142,6 @@ function makeworld()
 		break;
 	case "xup.in":
 		i = q('img[src*="/exec/"]');
-		break;
-	case "upix.me":
-		i = q('a');
-		if(i){i.src = window.location.href.replace("#","");}
 		break;
 	case "jpegbay.com":
 		i = q('a[class]');
@@ -1484,6 +1487,7 @@ function makeworld()
 		i = q('img[src*="pics/"]');
 		break;
 	case "imageeer.com":
+	case "cuteimg.cc":
 		i = q('input[type="button"]');
 		if(i)
 		{
@@ -1617,6 +1621,7 @@ function makeworld()
 	case "nimplus.com":
 	case "shareimg.fr":
 	case "imgking.co":
+	case "newimagepost.com":
 		dp=true;
 		var f = document.getElementsByTagName("input");
 		if(f.length)
