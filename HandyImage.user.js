@@ -3,7 +3,7 @@
 // @namespace     handyimage
 // @author        Owyn
 // @contributors  U BLESS, bitst0rm
-// @version       2015.06.07
+// @version       2015.06.12
 // @updateURL     https://github.com/Owyn/HandyImage/raw/master/HandyImage.user.js
 // @downloadURL   https://github.com/Owyn/HandyImage/raw/master/HandyImage.user.js
 // @homepage      https://greasyfork.org/scripts/109-handy-image
@@ -762,6 +762,7 @@
 // @match         http://ask.fm/*/photo/original
 // @match         http://cuteimg.cc/*
 // @match         http://*.newimagepost.com/img-*
+// @match         http://*.imageho.me/img-*
 // ==/UserScript==
 
 if (typeof unsafeWindow === "undefined")
@@ -1149,6 +1150,9 @@ function makeworld()
 		break;
 	case "keep4u.ru":
 		i = q('img[src*="/b/"]');
+		break;
+	case "imagebam.com":
+		i = q('img[src*="/download/"]');
 		break;
 	case "euro-pic.eu":
 	case "picpicture.com":
@@ -1662,6 +1666,7 @@ function makeworld()
 	case "uplimg.com":
 	case "imgstudio.org":
 	case "goimge.com":
+	case "imageho.me":
 		i = q('img[src*="/upload/"]');
 		break;
 	case "picspornfree.me":
@@ -2122,7 +2127,6 @@ function makeworld()
 		dp=true;
 		i = q('input[value="YES"]');
 		if(i){i.onclick();break;}
-	case "imagebam.com":
 	case "imgchili.net":
 	case "pic-upload.de":
 	case "pohrani.com":
