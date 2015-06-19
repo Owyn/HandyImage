@@ -3,7 +3,7 @@
 // @namespace     handyimage
 // @author        Owyn
 // @contributors  U BLESS, bitst0rm
-// @version       2015.06.15.22
+// @version       2015.06.19
 // @updateURL     https://github.com/Owyn/HandyImage/raw/master/HandyImage.user.js
 // @downloadURL   https://github.com/Owyn/HandyImage/raw/master/HandyImage.user.js
 // @homepage      https://greasyfork.org/scripts/109-handy-image
@@ -765,6 +765,12 @@
 // @match         http://*.imageho.me/img-*
 // @match         http://myimg.club/*
 // @match         http://*.imgease.re/img-*
+// @match         http://hotimage.uk/img-*
+// @match         http://imgview.net/*/*.html
+// @match         http://*.picsnova.net/img-*
+// @match         http://*.holdthemoan.net/x/share-*
+// @match         http://*.10.imageleon.com/i-*
+// @match         https://www.dropbox.com/s/*/*
 // ==/UserScript==
 
 if (typeof unsafeWindow === "undefined")
@@ -968,6 +974,17 @@ function makeworld()
 	case "awesomescreenshot.com":
 		i = q('img#screenshot');
 		break;
+	case "dropbox.com":
+		i = q('img.preview-image');
+		if(i)
+		{
+			i = q('a[href*="?dl=1"]');
+			if(i)
+			{
+				i.src = i.href;
+			}
+		}
+		break;
 	case "img.3ezy.net":
 	case "image-bugs.com":
 	case "imgclover.com":
@@ -1016,7 +1033,6 @@ function makeworld()
 	case "demo.chevereto.com":
 	case "ownimg.com":
 	case "danbooru.donmai.us":
-	case "500px.com":
 	case "safeimage.biz":
 		i = document.querySelector('meta[property="og:image"] , [name="og:image"]');
 		if(i)
@@ -1177,6 +1193,7 @@ function makeworld()
 	case "sexyimage.imagepool.in":
 	case "imagepool.in":
 	case "imgz.pw":
+	case "holdthemoan.net":
 		//i = q('img#iimg');
 		find_text_in_scripts("<img src='", "'");
 		break;
@@ -1393,6 +1410,8 @@ function makeworld()
 	case "mojoimage.com":
 	case "imagecherry.com":
 	case "6on9.com":
+	case "10.imageleon.com":
+	case "imagetitan.com":
 		i = q('img[onload*="scale"]');
 		break;
 	case "bild.me":
@@ -1466,7 +1485,8 @@ function makeworld()
 		i = q('img[src*="/photos/"]');
 		break;
 	case "images.orzzso.com":
-	case "picturepush.com":	
+	case "picturepush.com":
+	case "500px.com":
 		i = q('img[src*="/photo/"]');
 		break;
 	case "keptarolo.hu":
@@ -1504,6 +1524,7 @@ function makeworld()
 	case "imgrock.net":
 	case "imgtrex.com":
 	case "myimg.club":
+	case "imgview.net":
 		j = true;
 		i = q('input[type="submit"]:not([style="display:none;"])')
 		dp=true;
@@ -1629,6 +1650,7 @@ function makeworld()
 	case "imgking.co":
 	case "newimagepost.com":
 	case "imgease.re":
+	case "hotimage.uk":
 		dp=true;
 		var f = document.getElementsByTagName("input");
 		if(f.length)
@@ -1670,6 +1692,7 @@ function makeworld()
 	case "imgstudio.org":
 	case "goimge.com":
 	case "imageho.me":
+	case "picsnova.net":
 		i = q('img[src*="/upload/"]');
 		break;
 	case "picspornfree.me":
@@ -2173,9 +2196,6 @@ function makeworld()
 		case "freeamateurteens.net":
 		case "img-vidiklub.com":
 			i = q('img[src*="images/"]');
-			break;
-		case "imagetitan.com":
-			i = q('img[onload*="scale"]');
 			break;
 		case "otofotki.pl":
 			i = q('img[src*="/obrazki/"]');
