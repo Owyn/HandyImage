@@ -3,7 +3,7 @@
 // @namespace     handyimage
 // @author        Owyn
 // @contributors  U BLESS, bitst0rm
-// @version       2015.06.19
+// @version       2015.06.21
 // @updateURL     https://github.com/Owyn/HandyImage/raw/master/HandyImage.user.js
 // @downloadURL   https://github.com/Owyn/HandyImage/raw/master/HandyImage.user.js
 // @homepage      https://greasyfork.org/scripts/109-handy-image
@@ -243,6 +243,7 @@
 // @match         http://*.zaslike.com/view*
 // @match         http://www.zimagez.com/zimage*
 // @match         http://*.someimage.com/*
+// @exclude       http://*/someimage.com/compare/*
 // @match         http://*.sexyxpixels.com/?v=*
 // @match         http://*.postimg.net/view*
 // @match         http://*.imagedomino.com/?v=*
@@ -771,6 +772,7 @@
 // @match         http://*.holdthemoan.net/x/share-*
 // @match         http://*.10.imageleon.com/i-*
 // @match         https://www.dropbox.com/s/*/*
+// @match         http://imgor.net/img-*
 // ==/UserScript==
 
 if (typeof unsafeWindow === "undefined")
@@ -1411,7 +1413,7 @@ function makeworld()
 	case "imagecherry.com":
 	case "6on9.com":
 	case "10.imageleon.com":
-	case "imagetitan.com":
+	case "img4.imagetitan.com":
 		i = q('img[onload*="scale"]');
 		break;
 	case "bild.me":
@@ -1693,6 +1695,7 @@ function makeworld()
 	case "goimge.com":
 	case "imageho.me":
 	case "picsnova.net":
+	case "imgor.net":
 		i = q('img[src*="/upload/"]');
 		break;
 	case "picspornfree.me":
@@ -1969,9 +1972,16 @@ function makeworld()
 		i = q('img[src*="/pix/"]');
 		break;
 	case "imgclick.net":
-		j = true;
-	case "imgsee.me":
 	case "chronos.to":
+		j = true;
+		i = q('input[type="submit"]');
+		dp=true;
+		if(i) 
+		{
+			i.click();
+			break;
+		}
+	case "imgsee.me":
 		i = q('input[type="button"]');
 		if(i)
 		{
