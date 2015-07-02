@@ -3,7 +3,7 @@
 // @namespace     handyimage
 // @author        Owyn
 // @contributors  U BLESS, bitst0rm
-// @version       2015.06.21
+// @version       2015.07.02
 // @updateURL     https://github.com/Owyn/HandyImage/raw/master/HandyImage.user.js
 // @downloadURL   https://github.com/Owyn/HandyImage/raw/master/HandyImage.user.js
 // @homepage      https://greasyfork.org/scripts/109-handy-image
@@ -90,7 +90,7 @@
 // @match         http://*.imgnip.com/view*
 // @match         http://www.pic-upload.de/view*
 // @match         http://picshare.geenza.com/pics*
-// @match         http://www.imgbabes.com/*/*.html
+// @match         http://www.imgbabes.com/*/*.htm*
 // @match         http://*.goimagehost.com/xxx/*.*
 // @exclude       http://goimagehost.com/xxx/?v=*
 // @exclude       http://www.goimagehost.com/xxx/?v=*
@@ -773,6 +773,7 @@
 // @match         http://*.10.imageleon.com/i-*
 // @match         https://www.dropbox.com/s/*/*
 // @match         http://imgor.net/img-*
+// @match         http://*.imagedax.net/*/*.html
 // ==/UserScript==
 
 if (typeof unsafeWindow === "undefined")
@@ -1556,6 +1557,16 @@ function makeworld()
 	case "orzz.us":
 		i = q('img[src*="/img/"][title]'); 
 		break;
+	case "imgbabes.com":
+	case "imgflare.com":
+		i = q('input[onclick="Decode"]');
+		dp=true;
+		if(i) 
+		{
+			i.click();
+			break;
+		}
+		button
 	case "xxxhost.me":
 	case "imgbabes.com":
 	case "bilder-hochladen.net":
@@ -2007,6 +2018,7 @@ function makeworld()
 	case "imageporter.com":
 	case "imagenimage.com":
 	case "imageshimage.com":
+	case "imagedax.net":
 		i = q('img[src*="/i/"]');
 		break;
 	case "pixpipeline.com":
