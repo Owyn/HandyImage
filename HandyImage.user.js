@@ -3,7 +3,7 @@
 // @namespace     handyimage
 // @author        Owyn
 // @contributors  U BLESS, bitst0rm
-// @version       2015.07.03
+// @version       2015.07.04
 // @updateURL     https://github.com/Owyn/HandyImage/raw/master/HandyImage.user.js
 // @downloadURL   https://github.com/Owyn/HandyImage/raw/master/HandyImage.user.js
 // @homepage      https://greasyfork.org/scripts/109-handy-image
@@ -1567,7 +1567,6 @@ function makeworld()
 			i.click();
 			break;
 		}
-		button
 	case "xxxhost.me":
 	case "imgbabes.com":
 	case "bilder-hochladen.net":
