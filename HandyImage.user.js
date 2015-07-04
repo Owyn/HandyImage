@@ -3,7 +3,7 @@
 // @namespace     handyimage
 // @author        Owyn
 // @contributors  U BLESS, bitst0rm
-// @version       2015.07.02.23
+// @version       2015.07.03
 // @updateURL     https://github.com/Owyn/HandyImage/raw/master/HandyImage.user.js
 // @downloadURL   https://github.com/Owyn/HandyImage/raw/master/HandyImage.user.js
 // @homepage      https://greasyfork.org/scripts/109-handy-image
@@ -1561,6 +1561,7 @@ function makeworld()
 	case "imgflare.com":
 		i = q('input[onclick*="Decode"]');
 		dp=true;
+		j = true;
 		if(i) 
 		{
 			i.click();
