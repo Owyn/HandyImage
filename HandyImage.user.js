@@ -3,7 +3,7 @@
 // @namespace     handyimage
 // @author        Owyn
 // @contributors  U BLESS, bitst0rm
-// @version       2015.07.04
+// @version       2015.07.05
 // @updateURL     https://github.com/Owyn/HandyImage/raw/master/HandyImage.user.js
 // @downloadURL   https://github.com/Owyn/HandyImage/raw/master/HandyImage.user.js
 // @homepage      https://greasyfork.org/scripts/109-handy-image
@@ -774,6 +774,8 @@
 // @match         https://www.dropbox.com/s/*/*
 // @match         http://imgor.net/img-*
 // @match         http://*.imagedax.net/*/*.html
+// @match         http://*.ipicsharer.com/img-*
+// @match         http://*.imgwet.com/img-*
 // ==/UserScript==
 
 if (typeof unsafeWindow === "undefined")
@@ -978,6 +980,7 @@ function makeworld()
 		i = q('img#screenshot');
 		break;
 	case "dropbox.com":
+		j = true;
 		i = q('img.preview-image');
 		if(i)
 		{
@@ -1664,6 +1667,7 @@ function makeworld()
 	case "newimagepost.com":
 	case "imgease.re":
 	case "hotimage.uk":
+	case "ipicsharer.com":
 		dp=true;
 		var f = document.getElementsByTagName("input");
 		if(f.length)
@@ -1729,6 +1733,8 @@ function makeworld()
 		if(i){i.src = i.src.replace('_500', '');}
 		break;
 	case "imageontime.com":
+	case "imgwet.com":
+		j = true;
 		i = q('img[src*="/big/"]');
 		break;
 	case "imgtube.net":	
