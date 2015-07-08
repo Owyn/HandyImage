@@ -3,7 +3,7 @@
 // @namespace     handyimage
 // @author        Owyn
 // @contributors  U BLESS, bitst0rm
-// @version       2015.07.05
+// @version       2015.07.08
 // @updateURL     https://github.com/Owyn/HandyImage/raw/master/HandyImage.user.js
 // @downloadURL   https://github.com/Owyn/HandyImage/raw/master/HandyImage.user.js
 // @homepage      https://greasyfork.org/scripts/109-handy-image
@@ -776,6 +776,7 @@
 // @match         http://*.imagedax.net/*/*.html
 // @match         http://*.ipicsharer.com/img-*
 // @match         http://*.imgwet.com/img-*
+// @match         http://*.imgwel.com/*
 // ==/UserScript==
 
 if (typeof unsafeWindow === "undefined")
@@ -1531,6 +1532,7 @@ function makeworld()
 	case "imgtrex.com":
 	case "myimg.club":
 	case "imgview.net":
+	case "imgwel.com":
 		j = true;
 		i = q('input[type="submit"]:not([style="display:none;"])')
 		dp=true;
