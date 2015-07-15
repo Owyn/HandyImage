@@ -3,7 +3,7 @@
 // @namespace     handyimage
 // @author        Owyn
 // @contributors  U BLESS, bitst0rm
-// @version       2015.07.13
+// @version       2015.07.15
 // @updateURL     https://github.com/Owyn/HandyImage/raw/master/HandyImage.user.js
 // @downloadURL   https://github.com/Owyn/HandyImage/raw/master/HandyImage.user.js
 // @homepage      https://greasyfork.org/scripts/109-handy-image
@@ -778,6 +778,8 @@
 // @match         http://*.imgwet.com/img-*
 // @match         http://*.imgwel.com/*
 // @match         http://*.imgmonkey.com/*/*.html
+// @match         https://*.img.bi/*
+// @match         http://*.fapat.me/img-*
 // ==/UserScript==
 
 if (typeof unsafeWindow === "undefined")
@@ -1046,7 +1048,7 @@ function makeworld()
 		if(i)
 		{
 			i.src = i.content;
-			i.src = i.src.replace('/preview/', '/'); //danbooru
+			i.src = i.src.replace('sample/sample-', '/'); //danbooru
 		}
 		else
 		{
@@ -1564,6 +1566,9 @@ function makeworld()
 	case "orzz.us":
 		i = q('img[src*="/img/"][title]'); 
 		break;
+	case "img.bi":
+		i = q('img[ng-src]'); 
+		break;
 	case "imgbabes.com":
 	case "imgflare.com":
 		i = q('input[onclick*="Decode"]');
@@ -1672,6 +1677,7 @@ function makeworld()
 	case "imgease.re":
 	case "hotimage.uk":
 	case "ipicsharer.com":
+	case "fapat.me":
 		dp=true;
 		var f = document.getElementsByTagName("input");
 		if(f.length)
