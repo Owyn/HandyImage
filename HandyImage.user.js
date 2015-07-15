@@ -3,7 +3,7 @@
 // @namespace     handyimage
 // @author        Owyn
 // @contributors  U BLESS, bitst0rm
-// @version       2015.07.15
+// @version       2015.07.15.23
 // @updateURL     https://github.com/Owyn/HandyImage/raw/master/HandyImage.user.js
 // @downloadURL   https://github.com/Owyn/HandyImage/raw/master/HandyImage.user.js
 // @homepage      https://greasyfork.org/scripts/109-handy-image
@@ -1567,6 +1567,7 @@ function makeworld()
 		i = q('img[src*="/img/"][title]'); 
 		break;
 	case "img.bi":
+		j = true;
 		i = q('img[ng-src]'); 
 		break;
 	case "imgbabes.com":
