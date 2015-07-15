@@ -1048,7 +1048,7 @@ function makeworld()
 		if(i)
 		{
 			i.src = i.content;
-			i.src = i.src.replace('sample/sample-', '/'); //danbooru
+			i.src = i.src.replace('/sample/sample-', '/'); //danbooru
 		}
 		else
 		{
