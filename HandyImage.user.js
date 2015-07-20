@@ -3,7 +3,7 @@
 // @namespace     handyimage
 // @author        Owyn
 // @contributors  U BLESS, bitst0rm
-// @version       2015.07.16
+// @version       2015.07.20
 // @updateURL     https://github.com/Owyn/HandyImage/raw/master/HandyImage.user.js
 // @downloadURL   https://github.com/Owyn/HandyImage/raw/master/HandyImage.user.js
 // @homepage      https://greasyfork.org/scripts/109-handy-image
@@ -1284,8 +1284,11 @@ function makeworld()
 		if(i){i.src = i.href;}
 		break;
 	case "picsee.net":
-	case "gallerynova.se":
 		i = q('a[href*="/upload"]');
+		if(i){i.src = i.href;}
+		break;
+	case "gallerynova.se":
+		i = q('a[href*="/data/"]');
 		if(i){i.src = i.href;}
 		break;
 	case "totalsimage.com":
@@ -2218,7 +2221,12 @@ function makeworld()
 			}
 			break;
 		case "deviantart.com":
-			i = q('img.dev-content-full');
+			if(q('div.deviation-mlt-preview'))
+			{
+				i = q('a[href*="/download/"]');
+				if(i){i.src = i.href;}
+				else{i = q('img.dev-content-full');}
+			}
 			break;
 		case "imagevenue.com":
 			i = q('img[src*="/loc"]');
