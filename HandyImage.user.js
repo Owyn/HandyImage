@@ -3,7 +3,7 @@
 // @namespace     handyimage
 // @author        Owyn
 // @contributors  U BLESS, bitst0rm
-// @version       2015.07.20
+// @version       2015.07.21
 // @updateURL     https://github.com/Owyn/HandyImage/raw/master/HandyImage.user.js
 // @downloadURL   https://github.com/Owyn/HandyImage/raw/master/HandyImage.user.js
 // @homepage      https://greasyfork.org/scripts/109-handy-image
@@ -1042,13 +1042,11 @@ function makeworld()
 	case "ultraimg.com":
 	case "demo.chevereto.com":
 	case "ownimg.com":
-	case "danbooru.donmai.us":
 	case "safeimage.biz":
 		i = document.querySelector('meta[property="og:image"] , [name="og:image"]');
 		if(i)
 		{
 			i.src = i.content;
-			i.src = i.src.replace('/sample/sample-', '/'); //danbooru
 		}
 		else
 		{
@@ -1288,6 +1286,7 @@ function makeworld()
 		if(i){i.src = i.href;}
 		break;
 	case "gallerynova.se":
+	case "danbooru.donmai.us":
 		i = q('a[href*="/data/"]');
 		if(i){i.src = i.href;}
 		break;
