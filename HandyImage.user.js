@@ -3,7 +3,7 @@
 // @namespace     handyimage
 // @author        Owyn
 // @contributors  U BLESS, bitst0rm
-// @version       2015.07.21
+// @version       2015.07.22
 // @updateURL     https://github.com/Owyn/HandyImage/raw/master/HandyImage.user.js
 // @downloadURL   https://github.com/Owyn/HandyImage/raw/master/HandyImage.user.js
 // @homepage      https://greasyfork.org/scripts/109-handy-image
@@ -1724,7 +1724,7 @@ function makeworld()
 	case "imageho.me":
 	case "picsnova.net":
 	case "imgor.net":
-		i = q('img[src*="/upload/"]');
+		i = q('img[src*="' + iurl + '/upload/"]');
 		break;
 	case "picspornfree.me":
 		i = q('input[type="submit"]');
