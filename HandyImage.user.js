@@ -3,7 +3,7 @@
 // @namespace     handyimage
 // @author        Owyn
 // @contributors  U BLESS, bitst0rm
-// @version       2015.07.22
+// @version       2015.07.23
 // @updateURL     https://github.com/Owyn/HandyImage/raw/master/HandyImage.user.js
 // @downloadURL   https://github.com/Owyn/HandyImage/raw/master/HandyImage.user.js
 // @homepage      https://greasyfork.org/scripts/109-handy-image
@@ -780,6 +780,7 @@
 // @match         http://*.imgmonkey.com/*/*.html
 // @match         https://*.img.bi/*
 // @match         http://*.fapat.me/img-*
+// @match         http://photo.weibo.com/*/large/photo_id/*
 // ==/UserScript==
 
 if (typeof unsafeWindow === "undefined")
@@ -1464,6 +1465,9 @@ function makeworld()
 	case "uaimage.com":
 		i = q('img[src*="' + iurl + '"][id]');
 		i.src = i.src.replace('/original/', '/large/'); //ask.fm
+		break;
+	case "photo.weibo.com":
+		i = q('img[src*="large"]');
 		break;
 	case "picfront.org":
 		j = true;
