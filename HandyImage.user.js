@@ -3,7 +3,7 @@
 // @namespace     handyimage
 // @author        Owyn
 // @contributors  U BLESS, bitst0rm
-// @version       2015.07.23
+// @version       2015.07.27
 // @updateURL     https://github.com/Owyn/HandyImage/raw/master/HandyImage.user.js
 // @downloadURL   https://github.com/Owyn/HandyImage/raw/master/HandyImage.user.js
 // @homepage      https://greasyfork.org/scripts/109-handy-image
@@ -1286,7 +1286,6 @@ function makeworld()
 		i = q('a[href*="/upload"]');
 		if(i){i.src = i.href;}
 		break;
-	case "gallerynova.se":
 	case "danbooru.donmai.us":
 		i = q('a[href*="/data/"]');
 		if(i){i.src = i.href;}
@@ -1451,6 +1450,7 @@ function makeworld()
 	case "imgchili.mcdir.ru":
 	case "depic.me":
 	case "imagedoza.com":
+	case "gallerynova.se":
 		i = q('img[src*="' + iurl + '"]');
 		break;
 	case "postimg.org":
@@ -1467,7 +1467,7 @@ function makeworld()
 		i.src = i.src.replace('/original/', '/large/'); //ask.fm
 		break;
 	case "photo.weibo.com":
-		i = q('img[src*="large"]');
+		i = q('img[src*="/large/"]');
 		break;
 	case "picfront.org":
 		j = true;
