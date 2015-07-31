@@ -3,7 +3,7 @@
 // @namespace     handyimage
 // @author        Owyn
 // @contributors  U BLESS, bitst0rm
-// @version       2015.07.27
+// @version       2015.07.30
 // @updateURL     https://github.com/Owyn/HandyImage/raw/master/HandyImage.user.js
 // @downloadURL   https://github.com/Owyn/HandyImage/raw/master/HandyImage.user.js
 // @homepage      https://greasyfork.org/scripts/109-handy-image
@@ -781,6 +781,7 @@
 // @match         https://*.img.bi/*
 // @match         http://*.fapat.me/img-*
 // @match         http://photo.weibo.com/*/large/photo_id/*
+// @match         http://*.crazyimg.com/images/*.html
 // ==/UserScript==
 
 if (typeof unsafeWindow === "undefined")
@@ -971,6 +972,13 @@ function makeworld()
 	case "myceleb.net":
 		i = q('img[id]');
 		break;
+	case "gallerynova.se":
+		i = q('a[href*="' + iurl + '"]');
+		if(i)
+		{
+			i.src = i.href;
+		}
+		break;
 	case "tryimg.com":
 		i = q('a img:not([href,"' + iurl + '"])');
 		break;
@@ -1110,7 +1118,7 @@ function makeworld()
 		if(i){i.src = i.parentNode.href;}
 		break;
 	case "dumpyourphoto.com":
-		i = q('a img');
+		i = q('a img:not([alt])');
 		if(i){i.src = i.parentNode.href;}
 		break;
 	case "thumbsnap.com":
@@ -1450,7 +1458,6 @@ function makeworld()
 	case "imgchili.mcdir.ru":
 	case "depic.me":
 	case "imagedoza.com":
-	case "gallerynova.se":
 		i = q('img[src*="' + iurl + '"]');
 		break;
 	case "postimg.org":
@@ -1587,14 +1594,12 @@ function makeworld()
 			break;
 		}
 	case "xxxhost.me":
-	case "imgbabes.com":
 	case "bilder-hochladen.net":
 	case "dumpt.com":
 	case "imgsin.com":
 	case "loaditup.de":
 	case "123poze.3x.ro":
 	case "thaisharing.online.fr":
-	case "imgflare.com":
 	case "filefap.com":
 	case "4ufrom.me":
 	case "imgswift.com":
@@ -2183,6 +2188,7 @@ function makeworld()
 	case "vavvi.com":
 	case "imgzap.com":
 	case "imgdrive.net":
+	case "crazyimg.com":
 		i = q('img[src*="' + iurl + '/images/"]');
 		break;
 	case "shareimages.com":
@@ -2331,7 +2337,7 @@ function makeworld()
 	{
 		//console.warn("Didnt find image, trying again in " + timeout + " ms");
 		if(tb){clearTimeout(tb);}
-		tb = setTimeout(function() { console.warn("Didnt find image, waited " + timeout + " ms to try again"); tb=0; timeout*=2; makeworld(); }, timeout);
+		tb = setTimeout(function() { console.warn("Didnt find image, waited " + timeout + " ms to try again"); tb=0; timeout*=2; i=0; makeworld(); }, timeout);
 	}
 }
 
