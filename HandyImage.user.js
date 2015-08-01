@@ -3,7 +3,7 @@
 // @namespace     handyimage
 // @author        Owyn
 // @contributors  U BLESS, bitst0rm
-// @version       2015.07.30
+// @version       2015.08.01
 // @updateURL     https://github.com/Owyn/HandyImage/raw/master/HandyImage.user.js
 // @downloadURL   https://github.com/Owyn/HandyImage/raw/master/HandyImage.user.js
 // @homepage      https://greasyfork.org/scripts/109-handy-image
@@ -782,6 +782,9 @@
 // @match         http://*.fapat.me/img-*
 // @match         http://photo.weibo.com/*/large/photo_id/*
 // @match         http://*.crazyimg.com/images/*.html
+// @match         http://imgbe.com/img-*
+// @match         http://*.imgextra.uk/image/*
+// @match         http://*.extraimago.com/image/*
 // ==/UserScript==
 
 if (typeof unsafeWindow === "undefined")
@@ -1690,6 +1693,7 @@ function makeworld()
 	case "hotimage.uk":
 	case "ipicsharer.com":
 	case "fapat.me":
+	case "imgbe.com":
 		dp=true;
 		var f = document.getElementsByTagName("input");
 		if(f.length)
@@ -2189,6 +2193,8 @@ function makeworld()
 	case "imgzap.com":
 	case "imgdrive.net":
 	case "crazyimg.com":
+	case "imgextra.ua":
+	case "extraimago.com":
 		i = q('img[src*="' + iurl + '/images/"]');
 		break;
 	case "shareimages.com":
