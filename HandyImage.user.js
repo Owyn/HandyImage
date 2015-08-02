@@ -3,7 +3,7 @@
 // @namespace     handyimage
 // @author        Owyn
 // @contributors  U BLESS, bitst0rm
-// @version       2015.08.01
+// @version       2015.08.02
 // @updateURL     https://github.com/Owyn/HandyImage/raw/master/HandyImage.user.js
 // @downloadURL   https://github.com/Owyn/HandyImage/raw/master/HandyImage.user.js
 // @homepage      https://greasyfork.org/scripts/109-handy-image
@@ -1055,6 +1055,7 @@ function makeworld()
 	case "demo.chevereto.com":
 	case "ownimg.com":
 	case "safeimage.biz":
+	case "imagebam.com":
 		i = document.querySelector('meta[property="og:image"] , [name="og:image"]');
 		if(i)
 		{
@@ -1188,9 +1189,6 @@ function makeworld()
 		break;
 	case "keep4u.ru":
 		i = q('img[src*="/b/"]');
-		break;
-	case "imagebam.com":
-		i = q('img[src*="/download/"]');
 		break;
 	case "euro-pic.eu":
 	case "picpicture.com":
@@ -2193,7 +2191,7 @@ function makeworld()
 	case "imgzap.com":
 	case "imgdrive.net":
 	case "crazyimg.com":
-	case "imgextra.ua":
+	case "imgextra.uk":
 	case "extraimago.com":
 		i = q('img[src*="' + iurl + '/images/"]');
 		break;
