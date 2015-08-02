@@ -1,9 +1,9 @@
 // ==UserScript==
 // @name		Handy Image
-// @author		Owyn
 // @version		2015.08.02
-// @namespace	handyimage
+// @author		Owyn
 // @contributor	U BLESS, bitst0rm
+// @namespace	handyimage
 // @description	Shows just fullsize Image with hotkeys & without pop-ups on many image-hosting sites
 // @updateURL	https://github.com/Owyn/HandyImage/raw/master/HandyImage.user.js
 // @downloadURL	https://github.com/Owyn/HandyImage/raw/master/HandyImage.user.js
