@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name		Handy Image
-// @version		2015.08.02
+// @version		2015.08.08
 // @author		Owyn
 // @contributor	U BLESS, bitst0rm
 // @namespace	handyimage
@@ -715,7 +715,7 @@
 // @match		http://konachan.com/post/show/*
 // @match		http://konachan.net/post/show/*
 // @match		https://yande.re/post/show/*
-// @match		https://chan.sankakucomplex.com/post/show/*
+// @match		https://chan.sankakucomplex.com/*post/show/*
 // @match		https://yande.re/post/show/*
 // @match		http://www.zerochan.net/*
 // @match		http://*.imgrock.net/*/*.html
