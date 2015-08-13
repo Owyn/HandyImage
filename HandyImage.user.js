@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name		Handy Image
-// @version		2015.08.08
+// @version		2015.08.13
 // @author		Owyn
 // @contributor	U BLESS, bitst0rm
 // @namespace	handyimage
@@ -785,6 +785,7 @@
 // @match		http://imgbe.com/img-*
 // @match		http://*.imgextra.uk/image/*
 // @match		http://*.extraimago.com/image/*
+// @match		http://*.fireimg.cc/img-*
 // ==/UserScript==
 
 if (typeof unsafeWindow === "undefined")
@@ -1694,6 +1695,7 @@ function makeworld()
 	case "ipicsharer.com":
 	case "fapat.me":
 	case "imgbe.com":
+	case "fireimg.cc":
 		dp=true;
 		var f = document.getElementsByTagName("input");
 		if(f.length)
