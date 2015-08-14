@@ -688,7 +688,6 @@
 // @match		http://*.bababian.com/phoinfo/*
 // @match		http://*.imageeer.com/*
 // @match		http://*.xxximagenow.com/img-*
-// @match		http://*.imgbanana.com/view*
 // @match		http://*.imgreserve.com/?v=*
 // @match		http://*.you-logo.ru/show*
 // @match		http://*.ticklebytes.com/?v=*
@@ -786,6 +785,7 @@
 // @match		http://*.imgextra.uk/image/*
 // @match		http://*.extraimago.com/image/*
 // @match		http://*.fireimg.cc/img-*
+// @match               http://www.pornimagex.com/image/*
 // ==/UserScript==
 
 if (typeof unsafeWindow === "undefined")
@@ -1419,7 +1419,6 @@ function makeworld()
 		break;
 	case "imgmega.com":
 	case "pic.re":
-	case "imgbanana.com":
 		i = q('input[type="submit"]');
 		dp=true;
 		if(i) 
@@ -2053,6 +2052,7 @@ function makeworld()
 	case "imagenimage.com":
 	case "imageshimage.com":
 	case "imagedax.net":
+	case "pornimagex.com"
 		i = q('img[src*="/i/"]');
 		break;
 	case "pixpipeline.com":
