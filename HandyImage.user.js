@@ -785,7 +785,7 @@
 // @match		http://*.imgextra.uk/image/*
 // @match		http://*.extraimago.com/image/*
 // @match		http://*.fireimg.cc/img-*
-// @match               http://www.pornimagex.com/image/*
+// @match		http://www.pornimagex.com/image/*
 // ==/UserScript==
 
 if (typeof unsafeWindow === "undefined")
@@ -2052,7 +2052,7 @@ function makeworld()
 	case "imagenimage.com":
 	case "imageshimage.com":
 	case "imagedax.net":
-	case "pornimagex.com"
+	case "pornimagex.com":
 		i = q('img[src*="/i/"]');
 		break;
 	case "pixpipeline.com":
