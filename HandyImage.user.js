@@ -619,6 +619,7 @@
 // @match		http://*.imagepool.in/share*
 // @match		http://imgv.net/*.html
 // @match		http://www.imgshots.com/img*
+// @match		http://www.imgshots.com/show/*
 // @match		http://*.3xplanet.com/view*
 // @match		http://*.imgmega.com/*.html
 // @match		http://*.imgsee.me/*
