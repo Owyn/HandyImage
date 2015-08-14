@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name		Handy Image
-// @version		2015.08.13
+// @version		2015.08.14
 // @author		Owyn
 // @contributor	U BLESS, bitst0rm
 // @namespace	handyimage
@@ -786,6 +786,7 @@
 // @match		http://*.extraimago.com/image/*
 // @match		http://*.fireimg.cc/img-*
 // @match		http://www.pornimagex.com/image/*
+// @match		http://*.porno-pirat.ru/img-*
 // ==/UserScript==
 
 if (typeof unsafeWindow === "undefined")
@@ -1690,11 +1691,11 @@ function makeworld()
 	case "imgking.co":
 	case "newimagepost.com":
 	case "imgease.re":
-	case "hotimage.uk":
 	case "ipicsharer.com":
 	case "fapat.me":
 	case "imgbe.com":
 	case "fireimg.cc":
+	case "porno-pirat.ru":
 		dp=true;
 		var f = document.getElementsByTagName("input");
 		if(f.length)
@@ -1741,6 +1742,7 @@ function makeworld()
 		i = q('img[src*="' + iurl + '/upload/"]');
 		break;
 	case "picspornfree.me":
+	case "hotimage.uk":
 		i = q('input[type="submit"]');
 		dp=true;
 		if(i) 
