@@ -1,8 +1,8 @@
 // ==UserScript==
 // @name		Handy Image
-// @version		2015.08.14
+// @version		2015.08.15
 // @author		Owyn
-// @contributor	U BLESS, bitst0rm
+// @contributor	ubless607, bitst0rm
 // @namespace	handyimage
 // @description	Shows just fullsize Image with hotkeys & without pop-ups on many image-hosting sites
 // @updateURL	https://github.com/Owyn/HandyImage/raw/master/HandyImage.user.js
@@ -748,7 +748,7 @@
 // @match		http://*.imagelike.org/?v=*
 // @match		http://*.scrin.org/?v=*
 // @match		http://*.imghost.us.to/xxx/?v=*
-// @match		http://*.thumbnailus.com/view*
+// @match		http://*.thumbnailus.com/img-*
 // @match		http://*.nimplus.com/img-*
 // @match		http://*.imgtaxi.com/img-*
 // @match		http://*.imgstudio.org/img-*
@@ -1697,6 +1697,7 @@ function makeworld()
 	case "imgbe.com":
 	case "fireimg.cc":
 	case "porno-pirat.ru":
+	case "thumbnailus.com":		
 		dp=true;
 		var f = document.getElementsByTagName("input");
 		if(f.length)
@@ -1937,7 +1938,6 @@ function makeworld()
 	case "imgili.com":
 	case "imgcentral.com":
 	case "imageback.info":
-	case "thumbnailus.com":
 		i = q('img[src*="images/"]');
 		break;
 	case "use.com":
