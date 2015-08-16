@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name		Handy Image
-// @version		2015.08.15
+// @version		2015.08.16
 // @author		Owyn
 // @contributor	ubless607, bitst0rm
 // @namespace	handyimage
@@ -788,6 +788,8 @@
 // @match		http://*.fireimg.cc/img-*
 // @match		http://www.pornimagex.com/image/*
 // @match		http://*.porno-pirat.ru/img-*
+// @match   		http://*.imgdrive.co/*/*
+// @match   		http://*.imgboom.net/img-*
 // ==/UserScript==
 
 if (typeof unsafeWindow === "undefined")
@@ -1421,6 +1423,7 @@ function makeworld()
 		break;
 	case "imgmega.com":
 	case "pic.re":
+	case "imgdrive.co":
 		i = q('input[type="submit"]');
 		dp=true;
 		if(i) 
@@ -1698,6 +1701,7 @@ function makeworld()
 	case "fireimg.cc":
 	case "porno-pirat.ru":
 	case "thumbnailus.com":		
+	case "imgboom.net":
 		dp=true;
 		var f = document.getElementsByTagName("input");
 		if(f.length)
