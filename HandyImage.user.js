@@ -790,6 +790,7 @@
 // @match		http://*.porno-pirat.ru/img-*
 // @match   		http://*.imgdrive.co/*/*
 // @match   		http://*.imgboom.net/img-*
+// @match   		http://*.img24.org/*.html
 // ==/UserScript==
 
 if (typeof unsafeWindow === "undefined")
@@ -1493,6 +1494,7 @@ function makeworld()
 	case "pic4cash.ru":
 	case "imgmoney.ru":
 	case "fotooplata.ru":
+  	case "img24.org":
 		var f = document.getElementsByTagName("button");
 		if(f.length)
 		{
