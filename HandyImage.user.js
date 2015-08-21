@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name		Handy Image
-// @version		2015.08.19
+// @version		2015.08.21
 // @author		Owyn
 // @contributor	ubless607, bitst0rm
 // @namespace	handyimage
@@ -788,12 +788,15 @@
 // @match		http://*.fireimg.cc/img-*
 // @match		http://www.pornimagex.com/image/*
 // @match		http://*.porno-pirat.ru/img-*
-// @match   		http://*.imgdrive.co/*/*
-// @match   		http://*.imgboom.net/img-*
-// @match   		http://*.img24.org/*.html
-// @match   		http://*.project-photo.net/img-*
-// @match   		http://*.img-planet.com/img-*
-// @match   		http://*.greasyimage.com/img-*
+// @match		http://*.imgdrive.co/*/*
+// @match		http://*.imgboom.net/img-*
+// @match		http://*.img24.org/*.html
+// @match		http://*.project-photo.net/img-*
+// @match		http://*.img-planet.com/img-*
+// @match		http://*.greasyimage.com/img-*
+// @match		http://*.imgbb.net/v-*
+// @match		http://*.picangel.com/?v=*
+// @match		http://*.picangel.com/?p=*
 // ==/UserScript==
 
 if (typeof unsafeWindow === "undefined")
@@ -1710,6 +1713,7 @@ function makeworld()
 	case "project-photo.net":
   	case "img-planet.com":
   	case "greasyimage.com":
+	case "imgbb.net":
 		dp=true;
 		var f = document.getElementsByTagName("input");
 		if(f.length)
@@ -2225,6 +2229,7 @@ function makeworld()
 	case "imghash.com":
 	case "imageporn.eu":
 	case "imgreserve.com":
+	case "picangel.com":
 		j = true;
 		dp=true;
 		i = q('input[value="YES"]');
