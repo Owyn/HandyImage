@@ -798,6 +798,7 @@
 // @match		http://*.imgbb.net/v-*
 // @match		http://*.picangel.com/?v=*
 // @match		http://*.picangel.com/?p=*
+// @match   		http://*.photolot.org/img-*
 // ==/UserScript==
 
 if (typeof unsafeWindow === "undefined")
@@ -1758,6 +1759,7 @@ function makeworld()
 	case "imageho.me":
 	case "picsnova.net":
 	case "imgor.net":
+  	case "photolot.org":
 		i = q('img[src*="' + iurl + '/upload/"]');
 		break;
 	case "picspornfree.me":
