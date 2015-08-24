@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name		Handy Image
-// @version		2015.08.21
+// @version		2015.08.24
 // @author		Owyn
 // @contributor	ubless607, bitst0rm
 // @namespace	handyimage
@@ -8,6 +8,7 @@
 // @updateURL	https://github.com/Owyn/HandyImage/raw/master/HandyImage.user.js
 // @downloadURL	https://github.com/Owyn/HandyImage/raw/master/HandyImage.user.js
 // @homepage	https://greasyfork.org/scripts/109-handy-image
+// @supportURL	https://greasyfork.org/scripts/109-handy-image/feedback
 // @icon		http://i.imgur.com/Q5TTIjV.png
 // @run-at		document-start
 // @grant		GM_getValue
