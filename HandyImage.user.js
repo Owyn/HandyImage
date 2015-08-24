@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name		Handy Image
-// @version		2015.08.24
+// @version		2015.08.25
 // @author		Owyn
 // @contributor	ubless607, bitst0rm
 // @namespace	handyimage
@@ -798,7 +798,7 @@
 // @match		http://*.imgbb.net/v-*
 // @match		http://*.picangel.com/?v=*
 // @match		http://*.picangel.com/?p=*
-// @match   		http://*.photolot.org/img-*
+// @match		http://*.photolot.org/img-*
 // ==/UserScript==
 
 if (typeof unsafeWindow === "undefined")
