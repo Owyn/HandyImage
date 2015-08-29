@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name		Handy Image
-// @version		2015.08.25
+// @version		2015.08.29
 // @author		Owyn
 // @contributor	ubless607, bitst0rm
 // @namespace	handyimage
@@ -799,6 +799,8 @@
 // @match		http://*.picangel.com/?v=*
 // @match		http://*.picangel.com/?p=*
 // @match		http://*.photolot.org/img-*
+// @match		http://*.pic-maniac.com/*
+// @match		https://instagram.com/p/*
 // ==/UserScript==
 
 if (typeof unsafeWindow === "undefined")
@@ -1109,6 +1111,10 @@ function makeworld()
 				i.src = "http://img.prntscr.com/img?url=" + i.src;
 			}
 		}
+		break;
+	case "instagram.com":
+		find_text_in_scripts('display_src":"', '"');
+		if(i){i.src = i.src.replace(/\/s.+x.+?\//, '/');}
 		break;
 	case "flickr.com":
 	case "secure.flickr.com":
@@ -1568,8 +1574,9 @@ function makeworld()
 	case "imgview.net":
 	case "imgwel.com":
 	case "imgmonkey.com":
+	case "pic-maniac.com":
 		j = true;
-		i = q('input[type="submit"]:not([style="display:none;"])')
+		i = q("input[type='submit']:not([style='display:none;']):not([value*='eply'])");
 		dp=true;
 		if(i) 
 		{
