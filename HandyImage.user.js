@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name		Handy Image
-// @version		2015.08.29
+// @version		2015.08.30
 // @author		Owyn
 // @contributor	ubless607, bitst0rm
 // @namespace	handyimage
@@ -751,7 +751,7 @@
 // @match		http://*.imghost.us.to/xxx/?v=*
 // @match		http://*.thumbnailus.com/img-*
 // @match		http://*.nimplus.com/img-*
-// @match		http://*.imgtaxi.com/img-*
+// @match		http://www.imgtaxi.com/img-*
 // @match		http://*.imgstudio.org/img-*
 // @match		http://goimge.com/img-*
 // @match		http://*.shareimg.fr/img-*
@@ -801,6 +801,11 @@
 // @match		http://*.photolot.org/img-*
 // @match		http://*.pic-maniac.com/*
 // @match		https://instagram.com/p/*
+// @match		http://*.picbee.pw/image/*
+// @match		http://*.imgglobe.eu/img-*
+// @match		http://*.imgsay.com/?v=*
+// @match		http://*.imgsmile.com/?v=*
+// @match		http://*.balkanelite.org/MultiHoster/view*
 // ==/UserScript==
 
 if (typeof unsafeWindow === "undefined")
@@ -1401,6 +1406,7 @@ function makeworld()
 	case "gelbooru.com":
 	case "greenpiccs.com":
 	case "imagelike.org":
+	case "balkanelite.org":
 		i = q('a[href*="images/"]');
 		if(i){i.src = i.href;}
 		break;
@@ -1767,6 +1773,7 @@ function makeworld()
 	case "picsnova.net":
 	case "imgor.net":
   	case "photolot.org":
+	case "imgglobe.eu":
 		i = q('img[src*="' + iurl + '/upload/"]');
 		break;
 	case "picspornfree.me":
@@ -2019,7 +2026,6 @@ function makeworld()
 	case "all-poster.ru":
 	case "picturescream.asia":
 	case "imghost.us.to":
-	case "imgtaxi.com":
 		i = q('img[src*="/images/"]');
 		break;
 	case "intergranada.com":
@@ -2140,6 +2146,7 @@ function makeworld()
 			break;
 		}
 	case "imgdrive.net":
+	case "imgtaxi.com":
 		j = true;
 		i = q("a.overlay_ad_link");
 		if(i && i.parentNode.style.display)
@@ -2226,6 +2233,7 @@ function makeworld()
 	case "crazyimg.com":
 	case "imgextra.uk":
 	case "extraimago.com":
+	case "picbee.pw":
 		i = q('img[src*="' + iurl + '/images/"]');
 		break;
 	case "shareimages.com":
@@ -2240,6 +2248,8 @@ function makeworld()
 	case "imageporn.eu":
 	case "imgreserve.com":
 	case "picangel.com":
+	case "imgsmile.com":
+	case "imgsay.com":
 		j = true;
 		dp=true;
 		i = q('input[value="YES"]');
