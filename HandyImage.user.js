@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name		Handy Image
-// @version		2015.08.30
+// @version		2015.08.31
 // @author		Owyn
 // @contributor	ubless607, bitst0rm
 // @namespace	handyimage
@@ -2149,7 +2149,7 @@ function makeworld()
 	case "imgtaxi.com":
 		j = true;
 		i = q("a.overlay_ad_link");
-		if(i && i.parentNode.style.display)
+		if(i)
 		{
 			i.click();
 			break;
