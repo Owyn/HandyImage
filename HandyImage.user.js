@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name		Handy Image
-// @version		2015.08.31
+// @version		2015.09.01
 // @author		Owyn
 // @contributor	ubless607, bitst0rm
 // @namespace	handyimage
@@ -806,7 +806,8 @@
 // @match		http://*.imgsay.com/?v=*
 // @match		http://*.imgsmile.com/?v=*
 // @match		http://*.balkanelite.org/MultiHoster/view*
-// @match   		http://*.shareimgs.com/show*
+// @match		http://*.shareimgs.com/show*
+// @match		https://twitter.com/*/photo/*
 // ==/UserScript==
 
 if (typeof unsafeWindow === "undefined")
@@ -1080,10 +1081,12 @@ function makeworld()
 	case "ownimg.com":
 	case "safeimage.biz":
 	case "imagebam.com":
+	case "twitter.com":
 		i = document.querySelector('meta[property="og:image"] , [name="og:image"]');
 		if(i)
 		{
 			i.src = i.content;
+			i.src = i.src.replace(':large', ':orig'); //twitter.com
 		}
 		else
 		{
