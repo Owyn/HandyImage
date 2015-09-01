@@ -806,6 +806,7 @@
 // @match		http://*.imgsay.com/?v=*
 // @match		http://*.imgsmile.com/?v=*
 // @match		http://*.balkanelite.org/MultiHoster/view*
+// @match   		http://*.shareimgs.com/show*
 // ==/UserScript==
 
 if (typeof unsafeWindow === "undefined")
@@ -1188,6 +1189,7 @@ function makeworld()
 	case "hostarea.de":
 	case "pixtreat.com":
 	case "imgshots.com":
+  	case "shareimgs.com":
 		i = q('img#img_obj');
 		break;
 	case "pimpandhost.com":
