@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name		Handy Image
-// @version		2015.09.02
+// @version		2015.09.03
 // @author		Owyn
 // @contributor	ubless607, bitst0rm
 // @namespace	handyimage
@@ -1250,7 +1250,7 @@ function makeworld()
 	case "amateri.cz":
 		if(find_text_in_scripts('var orig_url="', '"'))
 		{
-			i.src = i.src.replace('http://www.amateri.cz/orig.php?&img=', 'http:/ img2.amateri.cz/users/');
+			i.src = i.src.replace('http://www.amateri.cz/orig.php?&img=', 'http://img2.amateri.cz/users/');
 		}
 		break;
 	case "pix-x.net":
