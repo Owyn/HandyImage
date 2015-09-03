@@ -2300,7 +2300,7 @@ function makeworld()
 			break;
 		case "photobucket.com":
 			i = document.head.querySelector('meta[property="og:image"] , [name="og:image"]');
-			if(i){i.src = i.content;}
+			if(i){i.src = i.content + "~original";}
 			break;
 		case "freeamateurteens.net":
 		case "img-vidiklub.com":
