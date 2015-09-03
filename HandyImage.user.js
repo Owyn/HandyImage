@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name		Handy Image
-// @version		2015.09.01
+// @version		2015.09.02
 // @author		Owyn
 // @contributor	ubless607, bitst0rm
 // @namespace	handyimage
@@ -2299,8 +2299,7 @@ function makeworld()
 			if(i){i.src = i.href;}
 			break;
 		case "photobucket.com":
-			i = document.head.querySelector('meta[property="og:image"] , [name="og:image"]');
-			if(i){i.src = i.content;}
+			find_text_in_scripts('originalUrl":"', '"');
 			break;
 		case "freeamateurteens.net":
 		case "img-vidiklub.com":
