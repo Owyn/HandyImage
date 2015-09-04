@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name		Handy Image
-// @version		2015.09.03
+// @version		2015.09.04
 // @author		Owyn
 // @contributor	ubless607, bitst0rm
 // @namespace	handyimage
@@ -1035,6 +1035,7 @@ function makeworld()
 	case "img.3ezy.net":
 	case "image-bugs.com":
 	case "imgclover.com":
+	case "picbee.pw":
 		i = document.head.querySelector('link[rel="image_src"]');
 		if(i)
 		{
@@ -2238,7 +2239,6 @@ function makeworld()
 	case "crazyimg.com":
 	case "imgextra.uk":
 	case "extraimago.com":
-	case "picbee.pw":
 		i = q('img[src*="' + iurl + '/images/"]');
 		break;
 	case "shareimages.com":
