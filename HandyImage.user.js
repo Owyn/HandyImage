@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name		Handy Image
-// @version		2015.09.05
+// @version		2015.09.09
 // @author		Owyn
 // @contributor	ubless607, bitst0rm
 // @namespace	handyimage
@@ -801,6 +801,7 @@
 // @match		http://*.photolot.org/img-*
 // @match		http://*.pic-maniac.com/*
 // @match		https://instagram.com/p/*
+// @exclude		https://instagram.com/p/*/embed/*
 // @match		http://*.picbee.pw/image/*
 // @match		http://*.imgglobe.eu/img-*
 // @match		http://*.imgsay.com/?v=*
