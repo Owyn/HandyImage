@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name		Handy Image
-// @version		2015.09.09
+// @version		2015.09.12
 // @author		Owyn
 // @contributor	ubless607, bitst0rm
 // @namespace	handyimage
@@ -809,6 +809,7 @@
 // @match		http://*.balkanelite.org/MultiHoster/view*
 // @match		http://*.shareimgs.com/show*
 // @match		https://twitter.com/*/photo/*
+// @match		http://*.icezap.com/img-*
 // ==/UserScript==
 
 if (typeof unsafeWindow === "undefined")
@@ -1781,6 +1782,7 @@ function makeworld()
 	case "imgor.net":
   	case "photolot.org":
 	case "imgglobe.eu":
+	case "icezap.com":
 		i = q('img[src*="' + iurl + '/upload/"]');
 		break;
 	case "picspornfree.me":
