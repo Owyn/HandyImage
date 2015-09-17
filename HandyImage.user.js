@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name		Handy Image
-// @version		2015.09.12
+// @version		2015.09.17
 // @author		Owyn
 // @contributor	ubless607, bitst0rm
 // @namespace	handyimage
@@ -1126,7 +1126,7 @@ function makeworld()
 		break;
 	case "instagram.com":
 		find_text_in_scripts('display_src":"', '"');
-		if(i){i.src = i.src.replace(/\/s.+x.+?\//, '/');}
+		if(i){i.src = i.src.replace(/\/s\d+x\d+?\//, '/');}
 		break;
 	case "flickr.com":
 	case "secure.flickr.com":
