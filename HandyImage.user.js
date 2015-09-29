@@ -1,14 +1,14 @@
 // ==UserScript==
 // @name		Handy Image
-// @version		2015.09.17
+// @version		2015.09.29
 // @author		Owyn
 // @contributor	ubless607, bitst0rm
 // @namespace	handyimage
 // @description	Shows just fullsize Image with hotkeys & without pop-ups on many image-hosting sites
 // @updateURL	https://github.com/Owyn/HandyImage/raw/master/HandyImage.user.js
 // @downloadURL	https://github.com/Owyn/HandyImage/raw/master/HandyImage.user.js
-// @homepage	https://greasyfork.org/scripts/109-handy-image
-// @supportURL	https://greasyfork.org/scripts/109-handy-image/feedback
+// @homepage	https://sleazyfork.org/scripts/109-handy-image
+// @supportURL	https://sleazyfork.org/scripts/109-handy-image/feedback
 // @icon		http://i.imgur.com/Q5TTIjV.png
 // @run-at		document-start
 // @grant		GM_getValue
@@ -640,7 +640,7 @@
 // @match		http://*.imgpapa.com/img-*
 // @match		http://*.sexyimg.eu/img-*
 // @match		http://*.imglemon.com/img-*
-// @match		http://*.imgseeds.com/image/*
+// @match		*://*.imgseeds.com/img-*
 // @match		http://*.pronpic.org/*/*
 // @match		http://prntscr.com/*
 // @match		http://*.imgdream.net/view*
@@ -810,6 +810,11 @@
 // @match		http://*.shareimgs.com/show*
 // @match		https://twitter.com/*/photo/*
 // @match		http://*.icezap.com/img-*
+// @match   		http://*.imgtea.com/img-*
+// @match   		*://*.imgsen.se/img-*
+// @match   		*://*.rapidimg.net/img-*
+// @match   		http://foxyimg.link/*
+// @match   		*://*.imgflash.net/img-*
 // ==/UserScript==
 
 if (typeof unsafeWindow === "undefined")
@@ -1453,6 +1458,7 @@ function makeworld()
 	case "imgmega.com":
 	case "pic.re":
 	case "imgdrive.co":
+  	case "foxyimg.link":
 		i = q('input[type="submit"]');
 		dp=true;
 		if(i) 
@@ -1737,6 +1743,11 @@ function makeworld()
   	case "img-planet.com":
   	case "greasyimage.com":
 	case "imgbb.net":
+  	case "imgtea.com":
+  	case "imgsen.se":
+  	case "rapidimg.net":
+	case "imgseeds.com":   
+  	case "imgflash.net":
 		dp=true;
 		var f = document.getElementsByTagName("input");
 		if(f.length)
@@ -2232,7 +2243,6 @@ function makeworld()
 	case "beeimg.com":	
 	case "1pics.ru":	
 	case "imgshow.me":
-	case "imgseeds.com":
 	case "ticklebytes.com":
 	case "youpicture.org":
 	case "zagruzitfoto.com":
