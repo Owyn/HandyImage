@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name		Handy Image
-// @version		2015.09.29
+// @version		2015.09.30
 // @author		Owyn
 // @contributor	ubless607, bitst0rm
 // @namespace	handyimage
@@ -583,8 +583,8 @@
 // @match		http://*.imgrex.com/view*
 // @match		http://www.amateri.cz/g*/*
 // @match		http://*.imgshow.me/*
-// @match		*://*.wikipedia.org/wiki/File:*.jp*
-// @match		*://*.wikipedia.org/wiki/File:*.png
+// @match		*://*.wikipedia.org/wiki/*:*.jp*
+// @match		*://*.wikipedia.org/wiki/*:*.png
 // @match		*://*.wikimedia.org/wiki/File:*.jp*
 // @match		*://*.wikimedia.org/wiki/File:*.pn*
 // @match		http://*.dragimage.org/img-*
