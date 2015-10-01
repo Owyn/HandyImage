@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name		Handy Image
-// @version		2015.10.01
+// @version		2015.10.01.17
 // @author		Owyn
 // @contributor	ubless607, bitst0rm
 // @namespace	handyimage
@@ -810,12 +810,12 @@
 // @match		http://*.shareimgs.com/show*
 // @match		https://twitter.com/*/photo/*
 // @match		http://*.icezap.com/img-*
-// @match   		http://*.imgtea.com/img-*
-// @match   		*://*.imgsen.se/img-*
-// @match   		*://*.rapidimg.net/img-*
-// @match   		http://foxyimg.link/*
-// @match   		*://*.imgflash.net/img-*
-// @match       	http://*.sexyimagexxx.com/img-*
+// @match		http://*.imgtea.com/img-*
+// @match		*://*.imgsen.se/img-*
+// @match		*://*.rapidimg.net/img-*
+// @match		http://foxyimg.link/*
+// @match		*://*.imgflash.net/img-*
+// @match		http://*.sexyimagexxx.com/img-*
 // ==/UserScript==
 
 if (typeof unsafeWindow === "undefined")
@@ -1747,7 +1747,6 @@ function makeworld()
   	case "imgtea.com":
   	case "imgsen.se":
   	case "rapidimg.net":
-	case "imgseeds.com":   
   	case "imgflash.net":
     	case "sexyimagexxx.com":
 		dp=true;
@@ -1818,6 +1817,13 @@ function makeworld()
 		i = q('img[src*="/upload"]');
 		if(i){i.src = i.src.replace('_500', '');}
 		break;
+	case "imgseeds.com":   
+		i = q('input');
+		if(i)
+		{
+			i.click();
+			break;
+		}
 	case "imageontime.com":
 	case "imgwet.com":
 		j = true;
