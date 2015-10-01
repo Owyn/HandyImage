@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name		Handy Image
-// @version		2015.09.30
+// @version		2015.10.01
 // @author		Owyn
 // @contributor	ubless607, bitst0rm
 // @namespace	handyimage
@@ -815,6 +815,7 @@
 // @match   		*://*.rapidimg.net/img-*
 // @match   		http://foxyimg.link/*
 // @match   		*://*.imgflash.net/img-*
+// @match       	http://*.sexyimagexxx.com/img-*
 // ==/UserScript==
 
 if (typeof unsafeWindow === "undefined")
@@ -1748,6 +1749,7 @@ function makeworld()
   	case "rapidimg.net":
 	case "imgseeds.com":   
   	case "imgflash.net":
+    	case "sexyimagexxx.com":
 		dp=true;
 		var f = document.getElementsByTagName("input");
 		if(f.length)
