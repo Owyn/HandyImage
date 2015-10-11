@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name		Handy Image
-// @version		2015.10.11
+// @version		2015.10.11.1600
 // @author		Owyn
 // @contributor	ubless607, bitst0rm
 // @namespace	handyimage
@@ -801,7 +801,6 @@
 // @match		http://*.photolot.org/img-*
 // @match		http://*.pic-maniac.com/*
 // @match		https://instagram.com/p/*
-// @exclude		https://instagram.com/p/*/embed/*
 // @match		http://*.picbee.pw/image/*
 // @match		http://*.imgglobe.eu/img-*
 // @match		http://*.imgsay.com/?v=*
@@ -816,11 +815,11 @@
 // @match		http://foxyimg.link/*
 // @match		*://*.imgflash.net/img-*
 // @match		http://*.sexyimagexxx.com/img-*
-// @match   		http://*.imgtornado.com/img-*
-// @match   		http://*.img-365.com/image/*
-// @match   		http://*.imgbonk.com/image/*
-// @match   		http://*.imageyo.ga/image/*
-// @match   		http://*.daily-img.com/image/*
+// @match		http://*.imgtornado.com/img-*
+// @match		http://*.img-365.com/image/*
+// @match		http://*.imgbonk.com/image/*
+// @match		http://*.imageyo.ga/image/*
+// @match		http://*.daily-img.com/image/*
 // ==/UserScript==
 
 if (typeof unsafeWindow === "undefined")
@@ -828,10 +827,9 @@ if (typeof unsafeWindow === "undefined")
 	unsafeWindow = window;
 }
 
-var menuID;
 if (typeof GM_registerMenuCommand !== "undefined")
 {
-	menuID = GM_registerMenuCommand("Handy Image Configuration", cfg, "C");
+	GM_registerMenuCommand("Handy Image Configuration", cfg, "C");
 }
 
 if(window.location.href.lastIndexOf(window.location.hostname) + window.location.hostname.length + 1 == window.location.href.length)
@@ -1141,8 +1139,19 @@ function makeworld()
 		}
 		break;
 	case "instagram.com":
+		j = true;
 		find_text_in_scripts('display_src":"', '"');
-		if(i){i.src = i.src.replace(/\/s\d+x\d+?\//, '/');}
+		if(i)
+		{
+			if(!find_text_in_scripts('is_video":true', ','))
+			{
+				i.src = i.src.replace(/\/s\d+x\d+?\//, '/');
+			}
+			else
+			{
+				i = null;
+			}
+		}
 		break;
 	case "flickr.com":
 	case "secure.flickr.com":
@@ -1211,7 +1220,7 @@ function makeworld()
 	case "hostarea.de":
 	case "pixtreat.com":
 	case "imgshots.com":
-  	case "shareimgs.com":
+	case "shareimgs.com":
 		i = q('img#img_obj');
 		break;
 	case "pimpandhost.com":
@@ -1469,7 +1478,7 @@ function makeworld()
 	case "imgmega.com":
 	case "pic.re":
 	case "imgdrive.co":
-  	case "foxyimg.link":
+	case "foxyimg.link":
 		i = q('input[type="submit"]');
 		dp=true;
 		if(i) 
@@ -1539,7 +1548,7 @@ function makeworld()
 	case "pic4cash.ru":
 	case "imgmoney.ru":
 	case "fotooplata.ru":
-  	case "img24.org":
+	case "img24.org":
 		var f = document.getElementsByTagName("button");
 		if(f.length)
 		{
@@ -1685,24 +1694,18 @@ function makeworld()
 			i.src = i.src.substring(0,i.src.indexOf('"'));
 		}
 		break;
-	case "imgadult.com":
-		i = q('a.overlay_ad_link');
-		if(i)
-		{
-			var now = new Date();
-			var time = now.getTime();
-			time += 360 * 1000;
-			now.setTime(time);
-			document.cookie = 'user=' + 'true' + 
-				'; expires=' + now.toGMTString() + 
-				'; path=/';
-			window.location.href = window.location.pathname + "?imgContinue=1";
-			break;
-		}
 	case "imgbar.net":
 	case "olivepix.com":
 		i = q('img[src*="view/"]');
 		break;
+	case "imgadult.com":
+		j = true;
+		i = q('a.overlay_ad_link');
+		if(i)
+		{
+			i.click();
+			break;
+		}
 	case "imagepicsa.com":
 	case "imagefolks.com":
 	case "imgrill.com":
@@ -1752,15 +1755,15 @@ function makeworld()
 	case "thumbnailus.com":		
 	case "imgboom.net":
 	case "project-photo.net":
-  	case "img-planet.com":
-  	case "greasyimage.com":
+	case "img-planet.com":
+	case "greasyimage.com":
 	case "imgbb.net":
-  	case "imgtea.com":
-  	case "imgsen.se":
-  	case "rapidimg.net":
-  	case "imgflash.net":
-    	case "sexyimagexxx.com":
-    	case "imgtornado.com":
+	case "imgtea.com":
+	case "imgsen.se":
+	case "rapidimg.net":
+	case "imgflash.net":
+	case "sexyimagexxx.com":
+	case "imgtornado.com":
 		dp=true;
 		var f = document.getElementsByTagName("input");
 		if(f.length)
@@ -1804,7 +1807,7 @@ function makeworld()
 	case "imageho.me":
 	case "picsnova.net":
 	case "imgor.net":
-  	case "photolot.org":
+	case "photolot.org":
 	case "imgglobe.eu":
 	case "icezap.com":
 		i = q('img[src*="' + iurl + '/upload/"]');
@@ -2402,13 +2405,6 @@ function makeworld()
 			else
 			{
 				document.replaceChild(document.importNode(document.implementation.createHTMLDocument("").documentElement, true), document.documentElement);
-			}
-		}
-		if(!FireFox) // Then it is Chrome
-		{
-			if (typeof GM_unregisterMenuCommand !== "undefined" && menuID)
-			{
-				GM_unregisterMenuCommand(menuID);
 			}
 		}
 		clr_pgn();
