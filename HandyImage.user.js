@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name		Handy Image
-// @version		2015.10.11.1600
+// @version		2015.10.12
 // @author		Owyn
 // @contributor	ubless607, bitst0rm
 // @namespace	handyimage
@@ -820,6 +820,7 @@
 // @match		http://*.imgbonk.com/image/*
 // @match		http://*.imageyo.ga/image/*
 // @match		http://*.daily-img.com/image/*
+// @match		http://*.imgcool.net/?*
 // ==/UserScript==
 
 if (typeof unsafeWindow === "undefined")
@@ -2291,6 +2292,8 @@ function makeworld()
 	case "picangel.com":
 	case "imgsmile.com":
 	case "imgsay.com":
+	case "imgcool.net":
+		//IMGReserve  
 		j = true;
 		dp=true;
 		i = q('input[value="YES"]');
