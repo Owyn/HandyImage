@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name		Handy Image
-// @version		2015.10.04
+// @version		2015.10.11
 // @author		Owyn
 // @contributor	ubless607, bitst0rm
 // @namespace	handyimage
@@ -817,6 +817,10 @@
 // @match		*://*.imgflash.net/img-*
 // @match		http://*.sexyimagexxx.com/img-*
 // @match   		http://*.imgtornado.com/img-*
+// @match   		http://*.img-365.com/image/*
+// @match   		http://*.imgbonk.com/image/*
+// @match   		http://*.imageyo.ga/image/*
+// @match   		http://*.daily-img.com/image/*
 // ==/UserScript==
 
 if (typeof unsafeWindow === "undefined")
@@ -1045,6 +1049,12 @@ function makeworld()
 	case "image-bugs.com":
 	case "imgclover.com":
 	case "picbee.pw":
+	case "demo.chevereto.com":	
+	case "img-365.com":
+	case "imgbonk.com":
+	case "imageyo.ga":
+	case "daily-img.com":
+		//chevereto 3.x
 		i = document.head.querySelector('link[rel="image_src"]');
 		if(i)
 		{
@@ -1087,7 +1097,6 @@ function makeworld()
 	case "imagestorming.com":
 	case "pic.xtream-reallife.de":
 	case "ultraimg.com":
-	case "demo.chevereto.com":
 	case "ownimg.com":
 	case "safeimage.biz":
 	case "imagebam.com":
@@ -1730,6 +1739,7 @@ function makeworld()
 	case "funimg.net":
 	case "imageon.org":
 	case "nimplus.com":
+	case "imag.nimplus.com":
 	case "shareimg.fr":
 	case "imgking.co":
 	case "newimagepost.com":
