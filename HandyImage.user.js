@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name		Handy Image
-// @version		2015.10.12
+// @version		2015.10.13
 // @author		Owyn
 // @contributor	ubless607, bitst0rm
 // @namespace	handyimage
@@ -821,6 +821,10 @@
 // @match		http://*.imageyo.ga/image/*
 // @match		http://*.daily-img.com/image/*
 // @match		http://*.imgcool.net/?*
+// @match		http://*.imageab.com/image/*
+// @match		http://*.erimge.com/img-*
+// @match		http://*.img-pay.com/img-*
+// @match		http://*.imgtrial.com/img-*
 // ==/UserScript==
 
 if (typeof unsafeWindow === "undefined")
@@ -1765,6 +1769,8 @@ function makeworld()
 	case "imgflash.net":
 	case "sexyimagexxx.com":
 	case "imgtornado.com":
+	case "erimge.com":
+	case "img-pay.com":	
 		dp=true;
 		var f = document.getElementsByTagName("input");
 		if(f.length)
@@ -1811,6 +1817,7 @@ function makeworld()
 	case "photolot.org":
 	case "imgglobe.eu":
 	case "icezap.com":
+	case "imgtrial.com":	
 		i = q('img[src*="' + iurl + '/upload/"]');
 		break;
 	case "picspornfree.me":
@@ -2302,6 +2309,7 @@ function makeworld()
 	case "pic-upload.de":
 	case "pohrani.com":
 	case "shrani.najdi.si":
+	case "imageab.com":	
 		i = q('img[onclick*="(this"]');
 		break;
 	default: // dynamic subdomain
