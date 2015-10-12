@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name		Handy Image
-// @version		2015.10.13
+// @version		2015.10.13.2000
 // @author		Owyn
 // @contributor	ubless607, bitst0rm
 // @namespace	handyimage
@@ -825,6 +825,7 @@
 // @match		http://*.erimge.com/img-*
 // @match		http://*.img-pay.com/img-*
 // @match		http://*.imgtrial.com/img-*
+// @match		http://imgtown.net/*/*.html
 // ==/UserScript==
 
 if (typeof unsafeWindow === "undefined")
@@ -1620,6 +1621,7 @@ function makeworld()
 	case "imgwel.com":
 	case "imgmonkey.com":
 	case "pic-maniac.com":
+	case "imgtown.net":
 		j = true;
 		i = q("input[type='submit']:not([style='display:none;']):not([value*='eply'])");
 		dp=true;
