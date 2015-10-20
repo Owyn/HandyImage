@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name		Handy Image
-// @version		2015.10.13.2000
+// @version		2015.10.20
 // @author		Owyn
 // @contributor	ubless607, bitst0rm
 // @namespace	handyimage
@@ -801,6 +801,7 @@
 // @match		http://*.photolot.org/img-*
 // @match		http://*.pic-maniac.com/*
 // @match		https://instagram.com/p/*
+// @exclude		https://instagram.com/p/*/embed/*
 // @match		http://*.picbee.pw/image/*
 // @match		http://*.imgglobe.eu/img-*
 // @match		http://*.imgsay.com/?v=*
@@ -826,6 +827,7 @@
 // @match		http://*.img-pay.com/img-*
 // @match		http://*.imgtrial.com/img-*
 // @match		http://imgtown.net/*/*.html
+// @match		http://ameblo.jp/*/image-*
 // ==/UserScript==
 
 if (typeof unsafeWindow === "undefined")
@@ -1143,6 +1145,10 @@ function makeworld()
 				i.src = "http://img.prntscr.com/img?url=" + i.src;
 			}
 		}
+		break;
+	case "ameblo.jp":
+		j=true;
+		i = q('img#imgItem');
 		break;
 	case "instagram.com":
 		j = true;
