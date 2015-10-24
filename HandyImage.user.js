@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name		Handy Image
-// @version		2015.10.20
+// @version		2015.10.25
 // @author		Owyn
 // @contributor	ubless607, bitst0rm
 // @namespace	handyimage
@@ -828,6 +828,7 @@
 // @match		http://*.imgtrial.com/img-*
 // @match		http://imgtown.net/*/*.html
 // @match		http://ameblo.jp/*/image-*
+// @match		http://*.loftlm.ru/img-*
 // ==/UserScript==
 
 if (typeof unsafeWindow === "undefined")
@@ -1779,6 +1780,7 @@ function makeworld()
 	case "imgtornado.com":
 	case "erimge.com":
 	case "img-pay.com":	
+	case "loftlm.ru":
 		dp=true;
 		var f = document.getElementsByTagName("input");
 		if(f.length)
