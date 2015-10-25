@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name		Handy Image
-// @version		2015.10.25
+// @version		2015.10.26
 // @author		Owyn
 // @contributor	ubless607, bitst0rm
 // @namespace	handyimage
@@ -829,6 +829,7 @@
 // @match		http://imgtown.net/*/*.html
 // @match		http://ameblo.jp/*/image-*
 // @match		http://*.loftlm.ru/img-*
+// @match		http://*.imgmag.co/img-*
 // ==/UserScript==
 
 if (typeof unsafeWindow === "undefined")
@@ -1827,7 +1828,8 @@ function makeworld()
 	case "photolot.org":
 	case "imgglobe.eu":
 	case "icezap.com":
-	case "imgtrial.com":	
+	case "imgtrial.com":
+	case "imgmag.co":
 		i = q('img[src*="' + iurl + '/upload/"]');
 		break;
 	case "picspornfree.me":
