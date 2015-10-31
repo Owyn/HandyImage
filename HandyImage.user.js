@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name		Handy Image
-// @version		2015.10.28
+// @version		2015.10.31
 // @author		Owyn
 // @contributor	ubless607, bitst0rm
 // @namespace	handyimage
@@ -1820,7 +1820,6 @@ function makeworld()
 	case "imagewow.eu":
 	case "imgdoggy.com":
 	case "fapic.me":
-	case "image.re":
 	case "uplimg.com":
 	case "imgstudio.org":
 	case "goimge.com":
@@ -1881,6 +1880,7 @@ function makeworld()
 		break;
 	case "ruleimg.com":
 	case "imghit.com":
+	case "image.re":
 		i = q('img[alt="image"]');
 		break;
 	case "3xplanet.com":
