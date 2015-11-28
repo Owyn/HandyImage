@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name		Handy Image
-// @version		2015.10.31
+// @version		2015.11.28
 // @author		Owyn
 // @contributor	ubless607, bitst0rm
 // @namespace	handyimage
@@ -651,7 +651,7 @@
 // @match		http://*.gifyu.com/image/*
 // @match		https://*.picr.ws/image/*
 // @match		https://www.linkmypic.com/image/*
-// @match		*://celebimg.com/2/image/*
+// @match		http://celebimg.com/image/*
 // @match		http://*.sharepic.org/image/*
 // @match		http://*.zuly.de/image/*
 // @match		http://upload.vstanced.com/image/*
@@ -800,7 +800,7 @@
 // @match		http://*.picangel.com/?p=*
 // @match		http://*.photolot.org/img-*
 // @match		http://*.pic-maniac.com/*
-// @match		https://instagram.com/p/*
+// @match		https://*.instagram.com/p/*
 // @exclude		https://instagram.com/p/*/embed/*
 // @match		http://*.picbee.pw/image/*
 // @match		http://*.imgglobe.eu/img-*
@@ -831,6 +831,7 @@
 // @match		http://*.loftlm.ru/img-*
 // @match		http://*.imgmag.co/img-*
 // @match		http://*.imgdragon.com/*/*.html
+// @match		http://ftop.ru/*/*
 // ==/UserScript==
 
 if (typeof unsafeWindow === "undefined")
@@ -1063,6 +1064,7 @@ function makeworld()
 	case "imgbonk.com":
 	case "imageyo.ga":
 	case "daily-img.com":
+	case "celebimg.com":
 		//chevereto 3.x
 		i = document.head.querySelector('link[rel="image_src"]');
 		if(i)
@@ -1079,7 +1081,6 @@ function makeworld()
 	case "gifyu.com":
 	case "picr.ws":
 	case "linkmypic.com":
-	case "celebimg.com":
 	case "sharepic.org":
 	case "zuly.de":
 	case "upload.vstanced.com":
@@ -1536,6 +1537,7 @@ function makeworld()
 	case "imgchili.mcdir.ru":
 	case "depic.me":
 	case "imagedoza.com":
+	case "ftop.ru":
 		i = q('img[src*="' + iurl + '"]');
 		break;
 	case "postimg.org":
