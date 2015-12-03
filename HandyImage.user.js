@@ -833,7 +833,7 @@
 // @match		http://*.imgmag.co/img-*
 // @match		http://*.imgdragon.com/*/*.html
 // @match		http://ftop.ru/*/*
-// @match		http://imgurx.net/*/share*.html
+// @match		http://imgurx.net/*share*.html
 // ==/UserScript==
 
 if (typeof unsafeWindow === "undefined")
@@ -2331,7 +2331,7 @@ function makeworld()
 		i = q('img[onclick*="(this"]');
 		break;
 	case "imgurx.net":
-		i = q('img[src*="/x/image"]');
+		i = q('img[src*="/image-"]');
 		break;
 	default: // dynamic subdomain
 		switch(iurl.substr(iurl.indexOf(".")+1))
