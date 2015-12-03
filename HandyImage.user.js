@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name		Handy Image
-// @version		2015.11.29
+// @version		2015.12.03
 // @author		Owyn
 // @contributor	ubless607, bitst0rm
 // @namespace	handyimage
@@ -833,6 +833,7 @@
 // @match		http://*.imgmag.co/img-*
 // @match		http://*.imgdragon.com/*/*.html
 // @match		http://ftop.ru/*/*
+// @match		http://*.imgurx.net/share*
 // ==/UserScript==
 
 if (typeof unsafeWindow === "undefined")
@@ -1289,6 +1290,7 @@ function makeworld()
 	case "imagepool.in":
 	case "imgz.pw":
 	case "holdthemoan.net":
+	case "imgurx.net":
 		//i = q('img#iimg');
 		find_text_in_scripts("<img src='", "'");
 		break;
