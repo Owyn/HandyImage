@@ -2330,7 +2330,7 @@ function makeworld()
 	case "imageab.com":	
 		i = q('img[onclick*="(this"]');
 		break;
-    case "imgurx.net":
+	case "imgurx.net":
 		i = q('img[src*="/x/image"]');
 		break;
 	default: // dynamic subdomain
