@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name		Handy Image
-// @version		2016.01.31
+// @version		2016.03.01
 // @author		Owyn
 // @contributor	ubless607, bitst0rm
 // @namespace	handyimage
@@ -760,14 +760,14 @@
 // @match		http://*.fixxpix.ru/*/*/
 // @match		http://*.imgclover.com/image/*
 // @match		http://*.imgz.pw/share-*
-// @match		http://*.imgking.co/img-*
+// @match		http://*.imgking.co/img*
 // @match		http://ask.fm/*/photo/original
 // @match		http://cuteimg.cc/*
 // @match		http://*.newimagepost.com/img-*
 // @match		http://*.imageho.me/img-*
 // @match		http://myimg.club/*
 // @match		http://*.imgease.re/img-*
-// @match		http://hotimage.uk/img-*
+// @match		http://www.hotimage.uk/img-*
 // @match		http://imgview.net/*/*.html
 // @match		http://*.picsnova.net/img-*
 // @match		http://*.holdthemoan.net/x/share-*
@@ -827,7 +827,7 @@
 // @match		http://*.erimge.com/img-*
 // @match		http://*.img-pay.com/img-*
 // @match		http://*.imgtrial.com/img-*
-// @match		http://imgtown.net/*/*.html
+// @match		http://imgtown.net/*
 // @match		http://ameblo.jp/*/image-*
 // @match		http://*.loftlm.ru/img-*
 // @match		http://*.imgmag.co/img-*
@@ -840,6 +840,7 @@
 // @match		http://*.imgcredit.xyz/img-*
 // @match		http://*.dimtus.com/img-*
 // @match		http://*.coreimg.net/*
+// @match		http://sfwimg.com/image/*
 // ==/UserScript==
 
 if (typeof unsafeWindow === "undefined")
@@ -1074,6 +1075,7 @@ function makeworld()
 	case "imageyo.ga":
 	case "daily-img.com":
 	case "celebimg.com":
+	case "sfwimg.com":
 		//chevereto 3.x
 		i = document.head.querySelector('link[rel="image_src"]');
 		if(i)
@@ -1640,9 +1642,9 @@ function makeworld()
 	case "imgview.net":
 	case "imgwel.com":
 	case "imgmonkey.com":
-	case "imgtown.net":
 	case "imgdragon.com":
 	case "imggold.org":
+	case "imgtown.net":
 		j = true;
 		i = q("input[type='submit']:not([style='display:none;']):not([value*='eply'])");
 		dp=true;
@@ -1726,6 +1728,12 @@ function makeworld()
 	case "olivepix.com":
 		i = q('img[src*="view/"]');
 		break;
+	case "imgking.co":
+		if(window.location.href.indexOf("img3") != -1)
+		{
+			window.location.href = window.location.href.replace("img3","img4");
+			break;
+		}
 	case "imgadult.com":
 		j = true;
 		i = q('a.overlay_ad_link');
@@ -1772,7 +1780,6 @@ function makeworld()
 	case "nimplus.com":
 	case "imag.nimplus.com":
 	case "shareimg.fr":
-	case "imgking.co":
 	case "newimagepost.com":
 	case "imgease.re":
 	case "ipicsharer.com":
