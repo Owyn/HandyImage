@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name		Handy Image
-// @version		2016.03.02
+// @version		2016.03.07
 // @author		Owyn
 // @contributor	ubless607, bitst0rm
 // @namespace	handyimage
@@ -841,6 +841,7 @@
 // @match		http://*.dimtus.com/img-*
 // @match		http://*.coreimg.net/*
 // @match		http://sfwimg.com/image/*
+// @match		http://*.imgtiger.org/*/*
 // ==/UserScript==
 
 if (typeof unsafeWindow === "undefined")
@@ -1626,6 +1627,13 @@ function makeworld()
 	case "free-picload.de":
 		i = q('img[src*="pics/"]');
 		break;
+	case "imgtiger.org":
+		i = q('form');
+		if(i)
+		{
+			i.submit();
+			break;
+		}
 	case "imageeer.com":
 	case "cuteimg.cc":
 		i = q('input[type="button"]');
@@ -1634,7 +1642,6 @@ function makeworld()
 			i.click();
 			break;
 		}
-		dp=true;
 	case "imagebucks.biz":
 	case "imgrock.net":
 	case "imgtrex.com":
