@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name		Handy Image
-// @version		2016.03.07
+// @version		2016.03.14
 // @author		Owyn
 // @contributor	ubless607, bitst0rm
 // @namespace	handyimage
@@ -1123,6 +1123,7 @@ function makeworld()
 	case "safeimage.biz":
 	case "imagebam.com":
 	case "twitter.com":
+	case "500px.com":
 		i = document.querySelector('meta[property="og:image"] , [name="og:image"]');
 		if(i)
 		{
@@ -1602,7 +1603,6 @@ function makeworld()
 		break;
 	case "images.orzzso.com":
 	case "picturepush.com":
-	case "500px.com":
 		i = q('img[src*="/photo/"]');
 		break;
 	case "keptarolo.hu":
