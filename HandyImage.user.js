@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name		Handy Image
-// @version		2016.03.14
+// @version		2016.03.15
 // @author		Owyn
 // @contributor	ubless607, bitst0rm
 // @namespace	handyimage
@@ -1644,7 +1644,6 @@ function makeworld()
 		}
 	case "imagebucks.biz":
 	case "imgrock.net":
-	case "imgtrex.com":
 	case "myimg.club":
 	case "imgview.net":
 	case "imgwel.com":
@@ -2191,6 +2190,7 @@ function makeworld()
 	case "imageshimage.com":
 	case "imagedax.net":
 	case "pornimagex.com":
+	case "imgtrex.com":
 		i = q('img[src*="/i/"]');
 		break;
 	case "pixpipeline.com":
