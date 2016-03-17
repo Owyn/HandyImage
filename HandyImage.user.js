@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name		Handy Image
-// @version		2016.03.15
+// @version		2016.03.17
 // @author		Owyn
 // @contributor	ubless607, bitst0rm
 // @namespace	handyimage
@@ -1141,8 +1141,7 @@ function makeworld()
 		i = document.head.querySelector('meta[property="og:image"]');
 		if(i)
 		{
-			var f = document.head.querySelector('meta[property="og:url"]');
-			if((f && f.content.indexOf("/gallery/") != -1) || i.content.indexOf("/images/logo") != -1)
+			if((document.title.indexOf(" - Album on Imgur") != -1) || i.content.indexOf("/images/logo") != -1)
 			{
 				return;
 			}
