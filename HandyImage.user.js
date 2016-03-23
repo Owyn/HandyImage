@@ -243,8 +243,8 @@
 // @match		http://*.xximg.net/img-*
 // @match		http://*.zaslike.com/view*
 // @match		http://www.zimagez.com/zimage*
-// @match		http://*.someimage.com/*
-// @exclude		http://*/someimage.com/compare/*
+// @match		*://*.someimage.com/*
+// @exclude		*://*/someimage.com/compare/*
 // @match		http://*.sexyxpixels.com/?v=*
 // @match		http://*.postimg.net/view*
 // @match		http://*.imagedomino.com/?v=*
