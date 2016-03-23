@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name		Handy Image
-// @version		2016.03.20
+// @version		2016.03.23
 // @author		Owyn
 // @contributor	ubless607, bitst0rm
 // @namespace	handyimage
@@ -243,8 +243,8 @@
 // @match		http://*.xximg.net/img-*
 // @match		http://*.zaslike.com/view*
 // @match		http://www.zimagez.com/zimage*
-// @match		http://*.someimage.com/*
-// @exclude		http://*/someimage.com/compare/*
+// @match		https://*.someimage.com/*
+// @exclude		https://*/someimage.com/compare/*
 // @match		http://*.sexyxpixels.com/?v=*
 // @match		http://*.postimg.net/view*
 // @match		http://*.imagedomino.com/?v=*
