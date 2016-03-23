@@ -41,8 +41,8 @@
 // @match		*://*.pimpandhost.com/image*
 // @match		*://*.pixroute.com/*.html
 // @match		*://*.piccash.net/*/*/
-// @exclude		http://piccash.net/cabinets/*
-// @exclude		http://www.piccash.net/cabinets/*
+// @exclude		*://piccash.net/cabinets/*
+// @exclude		*://www.piccash.net/cabinets/*
 // @match		*://*.picforall.ru/*/*/
 // @match		*://*.imagecurl.com/view*
 // @match		*://*.imagecurl.org/view*
@@ -69,8 +69,8 @@
 // @match		*://*.platimzafoto.ru/*.html
 // @match		*://*.imageontime.com/img*
 // @match		*://*.pic2profit.com/*/*
-// @exclude		http://pic2profit.com/cabinet/*
-// @exclude		http://www.pic2profit.com/cabinet/*
+// @exclude		*://pic2profit.com/cabinet/*
+// @exclude		*://www.pic2profit.com/cabinet/*
 // @match		*://imgdino.com/view*
 // @match		*://*.anonpic.com/?v=*
 // @match		*://*.pic-money.ru/*.html
@@ -93,8 +93,8 @@
 // @match		*://picshare.geenza.com/pics*
 // @match		*://www.imgbabes.com/*/*.htm*
 // @match		*://*.goimagehost.com/xxx/*.*
-// @exclude		http://goimagehost.com/xxx/?v=*
-// @exclude		http://www.goimagehost.com/xxx/?v=*
+// @exclude		*://goimagehost.com/xxx/?v=*
+// @exclude		*://www.goimagehost.com/xxx/?v=*
 // @match		*://ibunker.us/f*
 // @match		*://ichan.org/image.php?path=*
 // @match		*://*.imagearn.com/*
@@ -161,7 +161,7 @@
 // @match		*://*.thebestpichost.com/picture/*
 // @match		*://*.lostpic.net/?photo=*
 // @match		*://subefotos.com/ver/*
-// @exclude		http://subefotos.com/ver/*#codigos
+// @exclude		*://subefotos.com/ver/*#codigos
 // @match		*://*.seedimage.com/P/show*
 // @match		*://*.pixsor.com/share*
 // @match		*://*.pixsor.com/XXX/share*
@@ -178,8 +178,8 @@
 // @match		*://www.use.com/*
 // @match		*://www.hostingpics.net/view*
 // @match		*://*.picp2.com/*/*/
-// @exclude		http://*.picp2.com/cabinet/*
-// @exclude		http://picp2.com/cabinet/*
+// @exclude		*://*.picp2.com/cabinet/*
+// @exclude		*://picp2.com/cabinet/*
 // @match		*://*.myhotimage.com/img-*
 // @match		*://*.pictureshoster.com/view*
 // @match		*://*.imageshost.ru/photo*
@@ -236,7 +236,7 @@
 // @match		*://*.piratescreen.com/*
 // @match		*://*.hotimages.eu/img-*
 // @match		*://*.picturevip.com/*
-// @exclude		http://*.picturevip.com/x/clean/
+// @exclude		*://*.picturevip.com/x/clean/
 // @match		*://*.emptypix.com/*
 // @match		*://*.hornyimage.com/show*
 // @match		*://img.3ezy.net/*.htm
