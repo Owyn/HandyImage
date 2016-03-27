@@ -1812,6 +1812,7 @@ function makeworld()
 		var f = document.getElementsByTagName("input");
 		if(f.length)
 		{
+			f[f.length-1].removeAttribute("disabled");
 			f[f.length-1].click();
 		}
 	case "myhotimage.com":
