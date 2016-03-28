@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name		Handy Image
-// @version		2016.03.27
+// @version		2016.03.28
 // @author		Owyn
 // @contributor	ubless607, bitst0rm
 // @namespace	handyimage
@@ -842,6 +842,7 @@
 // @match		http://*.coreimg.net/*
 // @match		http://sfwimg.com/image/*
 // @match		http://*.imgtiger.org/*/*
+// @match		http://*.lexiit.com/img-*
 // ==/UserScript==
 
 if (typeof unsafeWindow === "undefined")
@@ -1792,8 +1793,7 @@ function makeworld()
 	case "fapat.me":
 	case "imgbe.com":
 	case "fireimg.cc":
-	case "porno-pirat.ru":
-	case "thumbnailus.com":		
+	case "porno-pirat.ru":	
 	case "imgboom.net":
 	case "project-photo.net":
 	case "img-planet.com":
@@ -1808,6 +1808,7 @@ function makeworld()
 	case "erimge.com":
 	case "img-pay.com":	
 	case "loftlm.ru":
+	case "lexiit.com":
 		dp=true;
 		var f = document.getElementsByTagName("input");
 		if(f.length)
@@ -1859,6 +1860,17 @@ function makeworld()
 	case "imgcredit.xyz":
 	case "dimtus.com":
 		i = q('img[src*="' + iurl + '/upload/"]');
+		break;
+	case "thumbnailus.com":
+		i = q('input[type="submit"]');
+		dp=true;
+		if(i) 
+		{
+			i.click();
+			break;
+		}
+		i = q('a[href*="' + iurl + '/upload/"]');
+		if(i){i.src = i.href;}
 		break;
 	case "picspornfree.me":
 	case "hotimage.uk":
