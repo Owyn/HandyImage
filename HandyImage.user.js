@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name		Handy Image
-// @version		2016.03.28
+// @version		2016.04.03
 // @author		Owyn
 // @contributor	ubless607, bitst0rm
 // @namespace	handyimage
@@ -843,6 +843,10 @@
 // @match		http://sfwimg.com/image/*
 // @match		http://*.imgtiger.org/*/*
 // @match		http://*.lexiit.com/img-*
+// @match		http://*.img3x.com/image/*
+// @match		http://*.imguniversal.com/*
+// @match		http://*.imagepearl.com/view/*
+// @match		http://*.tinizo.com/img-*
 // ==/UserScript==
 
 if (typeof unsafeWindow === "undefined")
@@ -1035,6 +1039,7 @@ function makeworld()
 		i = q('img[id]');
 		break;
 	case "gallerynova.se":
+	case "depic.me":
 		i = q('a[href*="' + iurl + '"]');
 		if(i)
 		{
@@ -1078,6 +1083,7 @@ function makeworld()
 	case "daily-img.com":
 	case "celebimg.com":
 	case "sfwimg.com":
+	case "img3x.com":
 		//chevereto 3.x
 		i = document.head.querySelector('link[rel="image_src"]');
 		if(i)
@@ -1550,8 +1556,8 @@ function makeworld()
 	case "mepic.ru":
 	case "imagehovel.com":
 	case "imgchili.mcdir.ru":
-	case "depic.me":
 	case "imagedoza.com":
+	case "imagepearl.com":
 		i = q('img[src*="' + iurl + '"]');
 		break;
 	case "postimg.org":
@@ -1652,6 +1658,7 @@ function makeworld()
 	case "imgdragon.com":
 	case "imggold.org":
 	case "imgtown.net":
+	case "imguniversal.com":
 		j = true;
 		i = q("input[type='submit']:not([style='display:none;']):not([value*='eply'])");
 		dp=true;
@@ -1809,6 +1816,7 @@ function makeworld()
 	case "img-pay.com":	
 	case "loftlm.ru":
 	case "lexiit.com":
+	case "tinizo.com":
 		dp=true;
 		var f = document.getElementsByTagName("input");
 		if(f.length)
