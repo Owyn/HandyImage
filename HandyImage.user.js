@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name		Handy Image
-// @version		2016.04.03
+// @version		2016.04.09
 // @author		Owyn
 // @contributor	ubless607, bitst0rm
 // @namespace	handyimage
@@ -847,6 +847,7 @@
 // @match		http://*.imguniversal.com/*
 // @match		http://*.imagepearl.com/view/*
 // @match		http://*.tinizo.com/img-*
+// @match		http://www.xxxsparrow.com/img-*
 // ==/UserScript==
 
 if (typeof unsafeWindow === "undefined")
@@ -1817,6 +1818,7 @@ function makeworld()
 	case "loftlm.ru":
 	case "lexiit.com":
 	case "tinizo.com":
+	case "xxxsparrow.com":
 		dp=true;
 		var f = document.getElementsByTagName("input");
 		if(f.length)
