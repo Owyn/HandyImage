@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name		Handy Image
-// @version		2016.04.09
+// @version		2016.04.11
 // @author		Owyn
 // @contributor	ubless607, bitst0rm
 // @namespace	handyimage
@@ -848,6 +848,7 @@
 // @match		http://*.imagepearl.com/view/*
 // @match		http://*.tinizo.com/img-*
 // @match		http://www.xxxsparrow.com/img-*
+// @match		http://*.imgkings.com/img*
 // ==/UserScript==
 
 if (typeof unsafeWindow === "undefined")
@@ -1596,6 +1597,12 @@ function makeworld()
 		dp=true;
 		i = q('img[src*="/pic.jpeg"]');
 		break;
+	case "imgkings.com":
+		if(window.location.href.indexOf("img-") != -1)
+		{
+			window.location.href = window.location.href.replace("img-","img2-");
+			break;
+		}
 	case "freeimagehosting.net":
 	case "uploadhouse.com":
 	case "pixhub.eu":
