@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name		Handy Image
-// @version		2016.04.13
+// @version		2016.04.28
 // @author		Owyn
 // @contributor	ubless607, bitst0rm
 // @namespace	handyimage
@@ -849,6 +849,10 @@
 // @match		http://*.tinizo.com/img-*
 // @match		http://www.xxxsparrow.com/img-*
 // @match		http://*.imgkings.com/img*
+// @match		http://*.sendpic.org/view/*
+// @match		http://*.imgzizi.xyz/img-*
+// @match		http://www.porncomix.info/*/*/
+// @exclude		http://www.porncomix.info/gallery/*
 // ==/UserScript==
 
 if (typeof unsafeWindow === "undefined")
@@ -1828,6 +1832,7 @@ function makeworld()
 	case "lexiit.com":
 	case "tinizo.com":
 	case "xxxsparrow.com":
+	case "imgzizi.xyz":
 		dp=true;
 		var f = document.getElementsByTagName("input");
 		if(f.length)
@@ -2223,6 +2228,7 @@ function makeworld()
 	case "imagedax.net":
 	case "pornimagex.com":
 	case "imgtrex.com":
+	case "sendpic.org":
 		i = q('img[src*="/i/"]');
 		break;
 	case "pixpipeline.com":
@@ -2367,6 +2373,7 @@ function makeworld()
 	case "imgextra.uk":
 	case "extraimago.com":
 	case "ftop.ru":
+	case "porncomix.info":
 		i = q('img[src*="' + iurl + '/images/"]');
 		break;
 	case "shareimages.com":
