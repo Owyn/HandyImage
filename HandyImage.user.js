@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name		Handy Image
-// @version		2016.04.28
+// @version		2016.05.10
 // @author		Owyn
 // @contributor	ubless607, bitst0rm
 // @namespace	handyimage
@@ -159,7 +159,7 @@
 // @match		http://*.moyophoto.com/share-*
 // @match		http://www.imageboss.net/view*
 // @match		http://*.thebestpichost.com/picture/*
-// @match		http://*.lostpic.net/?photo=*
+// @match		http://*.lostpic.net/image/*
 // @match		http://subefotos.com/ver/*
 // @exclude		http://subefotos.com/ver/*#codigos
 // @match		http://*.seedimage.com/P/show*
@@ -1090,6 +1090,7 @@ function makeworld()
 	case "celebimg.com":
 	case "sfwimg.com":
 	case "img3x.com":
+	case "lostpic.net":
 		//chevereto 3.x
 		i = document.head.querySelector('link[rel="image_src"]');
 		if(i)
@@ -1384,10 +1385,6 @@ function makeworld()
 	case "bilder-space.de":
 	case "imagesup.de":
 		i = q('img.picture');
-		break;
-	case "lostpic.net":
-		i = q('a[href*="/orig"]');
-		if(i){i.src = i.href;}
 		break;
 	case "pix.toile-libre.org":
 	case "photo-host.org":
