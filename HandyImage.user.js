@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name		Handy Image
-// @version		2016.05.10
+// @version		2016.05.15
 // @author		Owyn
 // @contributor	ubless607, bitst0rm
 // @namespace	handyimage
@@ -853,6 +853,9 @@
 // @match		http://*.imgzizi.xyz/img-*
 // @match		http://www.porncomix.info/*/*/
 // @exclude		http://www.porncomix.info/gallery/*
+// @match		http://*.imgclick.ru/*/*/
+// @match		http://*.svetmonet.ru/*.html
+// @match		http://*.svetmonet.ru/full/
 // ==/UserScript==
 
 if (typeof unsafeWindow === "undefined")
@@ -1328,7 +1331,8 @@ function makeworld()
 		}
 		break;
 	case "pix-x.net":
-		i = q('td img[src*="thumb"]');
+	case "imgclick.ru":
+		i = q('img[onclick*="mshow"]');
 		if(i){i.src = i.src.replace('-thumb', '');i.src = i.src.replace('img_thumb', 'img_full');}
 		break;
 	case "pics-money.ru":
@@ -1591,6 +1595,7 @@ function makeworld()
 	case "imgmoney.ru":
 	case "fotooplata.ru":
 	case "img24.org":
+	case "svetmonet.ru":
 		var f = document.getElementsByTagName("button");
 		if(f.length)
 		{
