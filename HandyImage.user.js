@@ -856,6 +856,7 @@
 // @match		http://*.imgclick.ru/*/*/
 // @match		http://*.svetmonet.ru/*.html
 // @match		http://*.svetmonet.ru/full/
+// @match		http://*.imgpix.net/*
 // ==/UserScript==
 
 if (typeof unsafeWindow === "undefined")
@@ -1835,6 +1836,7 @@ function makeworld()
 	case "tinizo.com":
 	case "xxxsparrow.com":
 	case "imgzizi.xyz":
+	case "imgpix.net":
 		dp=true;
 		var f = document.getElementsByTagName("input");
 		if(f.length)
