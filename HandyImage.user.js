@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name		Handy Image
-// @version		2016.05.15
+// @version		2016.05.31
 // @author		Owyn
 // @contributor	ubless607, bitst0rm
 // @namespace	handyimage
@@ -857,6 +857,11 @@
 // @match		http://*.svetmonet.ru/*.html
 // @match		http://*.svetmonet.ru/full/
 // @match		http://*.imgpix.net/*
+// @match		https://*.imgzulu.com/img-*
+// @match		http://*.freeimagehostin.com/img-*
+// @match		http://www.mixbase.net/gallery/image.*
+// @match		http://*.indiansex.xyz/images/image.html?gallery=*&image=*
+// @match		http://www.adultimages.xyz/*/image*.html
 // ==/UserScript==
 
 if (typeof unsafeWindow === "undefined")
@@ -1043,6 +1048,7 @@ function makeworld()
 	case "iceimg.com":
 	case "pics.tam.in.ua":
 	case "pixhst.com":
+	case "adultimages.xyz":
 		i = q('img');
 		break;
 	case "myceleb.net":
@@ -1837,6 +1843,7 @@ function makeworld()
 	case "xxxsparrow.com":
 	case "imgzizi.xyz":
 	case "imgpix.net":
+	case "freeimagehostin.com":
 		dp=true;
 		var f = document.getElementsByTagName("input");
 		if(f.length)
@@ -1897,8 +1904,17 @@ function makeworld()
 			i.click();
 			break;
 		}
-		i = q('a[href*="' + iurl + '/upload/"]');
-		if(i){i.src = i.href;}
+		i = q('img[src*="' + iurl + '/upload/"].centred');
+		break;
+	case "imgzulu.com":
+		i = q('button[type="submit"]');
+		dp=true;
+		if(i) 
+		{
+			i.click();
+			break;
+		}
+		i = q('img[src*="' + iurl + '/upload/"]');
 		break;
 	case "picspornfree.me":
 	case "hotimage.uk":
@@ -2266,6 +2282,9 @@ function makeworld()
 		i = q('input[value*="' + iurl + ' img/"]');
 		if(i){i.src = i.value;}
 		break;
+	case "mixbase.net":
+		i = q('img[src*="media/storage/"]');
+		break;
 	case "image2you.ru":
 		i = q('img[src*="images/"]');
 		if(i){i.src = i.src.replace('2_', '');}
@@ -2378,6 +2397,7 @@ function makeworld()
 	case "extraimago.com":
 	case "ftop.ru":
 	case "porncomix.info":
+	case "indiansex.xyz":
 		i = q('img[src*="' + iurl + '/images/"]');
 		break;
 	case "shareimages.com":
