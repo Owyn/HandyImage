@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name		Handy Image
-// @version		2016.05.31
+// @version		2016.06.10
 // @author		Owyn
 // @contributor	ubless607, bitst0rm
 // @namespace	handyimage
@@ -1192,7 +1192,7 @@ function makeworld()
 		break;
 	case "instagram.com":
 		j = true;
-		find_text_in_scripts('display_src":"', '"');
+		find_text_in_scripts('display_src": "', '"');
 		if(i)
 		{
 			if(!find_text_in_scripts('is_video":true', ','))
@@ -2212,7 +2212,7 @@ function makeworld()
 	case "pic-maniac.com":
 	case "coreimg.net":
 		j = true;
-		i = q('input[type="submit"]');
+		i = q('input[type="submit"]:not([name="method_free"])'); // not() = imgclick
 		dp=true;
 		if(i) 
 		{
