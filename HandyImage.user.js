@@ -1683,7 +1683,7 @@ function makeworld()
 	case "imgtown.net":
 	case "imguniversal.com":
 		j = true;
-		i = q("input[type='submit']:not([style='display:none;']):not([value*='eply'])");
+		i = q("input[type='submit'][name='next']:not([style='display:none;']):not([value*='eply'])");
 		dp=true;
 		if(i) 
 		{
