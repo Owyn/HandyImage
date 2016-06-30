@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name		Handy Image
-// @version		2016.06.10
+// @version		2016.06.30
 // @author		Owyn
 // @contributor	ubless607, bitst0rm
 // @namespace	handyimage
@@ -784,7 +784,7 @@
 // @match		http://photo.weibo.com/*/large/photo_id/*
 // @match		http://*.crazyimg.com/images/*.html
 // @match		http://imgbe.com/img-*
-// @match		http://*.imgextra.uk/image/*
+// @match		https://*.imgextra.uk/image/*
 // @match		http://*.extraimago.com/image/*
 // @match		http://*.fireimg.cc/img-*
 // @match		http://www.pornimagex.com/image/*
@@ -862,6 +862,8 @@
 // @match		http://www.mixbase.net/gallery/image.*
 // @match		http://*.indiansex.xyz/images/image.html?gallery=*&image=*
 // @match		http://www.adultimages.xyz/*/image*.html
+// @match		http://*.pic4share.ru/*.html
+// @match		http://*.pic4share.ru/full/
 // ==/UserScript==
 
 if (typeof unsafeWindow === "undefined")
@@ -1147,6 +1149,7 @@ function makeworld()
 	case "safeimage.biz":
 	case "imagebam.com":
 	case "twitter.com":
+	case "imgextra.uk":
 		i = document.querySelector('meta[property="og:image"] , [name="og:image"]');
 		if(i)
 		{
@@ -1254,8 +1257,6 @@ function makeworld()
 			i.src = window.location.href.replace("#","");
 		}
 		break;
-	case "imageban.ru":
-	case "imageban.net":
 	case "imagesnake.com":
 	case "freebunker.com":
 	case "imagefruit.com":
@@ -1294,6 +1295,10 @@ function makeworld()
 	case "bayimg.com":
 	case "picgarage.net":
 		i = q('img#mainImage');
+		break;
+	case "imageban.ru":
+	case "imageban.net":
+		i = q('img[src*="' + iurl + '/out/"]');
 		break;
 	case "xup.in":
 		i = q('img[src*="/exec/"]');
@@ -1603,6 +1608,7 @@ function makeworld()
 	case "fotooplata.ru":
 	case "img24.org":
 	case "svetmonet.ru":
+	case "pic4share.ru":
 		var f = document.getElementsByTagName("button");
 		if(f.length)
 		{
@@ -1683,7 +1689,7 @@ function makeworld()
 	case "imgtown.net":
 	case "imguniversal.com":
 		j = true;
-		i = q("input[type='submit']:not([style='display:none;']):not([value*='eply'])");
+		i = q("input[type='submit']:not([style='display:none;']):not([value*='eply']):not([value*='Log'])");
 		dp=true;
 		if(i) 
 		{
@@ -2393,7 +2399,6 @@ function makeworld()
 	case "imgzap.com":
 	case "imgdrive.net":
 	case "crazyimg.com":
-	case "imgextra.uk":
 	case "extraimago.com":
 	case "ftop.ru":
 	case "porncomix.info":
