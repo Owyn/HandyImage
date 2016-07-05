@@ -1047,6 +1047,7 @@ function makeworld()
 	case "hostimage.ru":
 	case "gluner.de":
 	case "imagebin.ca":
+	case "imgchili.net":
 	case "iceimg.com":
 	case "pics.tam.in.ua":
 	case "pixhst.com":
@@ -2425,7 +2426,6 @@ function makeworld()
 		dp=true;
 		i = q('input[value="YES"]');
 		if(i){i.onclick();break;}
-	case "imgchili.net":
 	case "pic-upload.de":
 	case "pohrani.com":
 	case "shrani.najdi.si":
