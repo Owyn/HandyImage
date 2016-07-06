@@ -864,6 +864,11 @@
 // @match		http://www.adultimages.xyz/*/image*.html
 // @match		http://*.pic4share.ru/*.html
 // @match		http://*.pic4share.ru/full/
+// @match		*://hizliresim.com/*
+// @match		*://*.hizliresimyukle.com/image/*
+// @match		http://www.yukleresim.com/image/*
+// @match		http://imgim.com/image/*
+
 // ==/UserScript==
 
 if (typeof unsafeWindow === "undefined")
@@ -2432,6 +2437,10 @@ function makeworld()
 	case "imageab.com":	
 		i = q('img[onclick*="(this"]');
 		break;
+	case "hizliresim.com":
+	case "hizliresimyukle.com":
+	case "yukleresim.com":
+	case "imgim.com":
 	default: // dynamic subdomain
 		switch(iurl.substr(iurl.indexOf(".")+1))
 		{
