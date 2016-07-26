@@ -864,6 +864,7 @@
 // @match		http://www.adultimages.xyz/*/image*.html
 // @match		http://*.pic4share.ru/*.html
 // @match		http://*.pic4share.ru/full/
+// @match		http://*.sximg.nl/img-*
 // ==/UserScript==
 
 if (typeof unsafeWindow === "undefined")
@@ -1851,6 +1852,7 @@ function makeworld()
 	case "imgzizi.xyz":
 	case "imgpix.net":
 	case "freeimagehostin.com":
+	case "sximg.nl":
 		dp=true;
 		var f = document.getElementsByTagName("input");
 		if(f.length)
