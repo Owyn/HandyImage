@@ -865,6 +865,7 @@
 // @match		http://*.pic4share.ru/*.html
 // @match		http://*.pic4share.ru/full/
 // @match		http://*.sximg.nl/img-*
+// @match		http://img.3xpla.net/img-*
 // ==/UserScript==
 
 if (typeof unsafeWindow === "undefined")
@@ -1853,6 +1854,7 @@ function makeworld()
 	case "imgpix.net":
 	case "freeimagehostin.com":
 	case "sximg.nl":
+	case "img.3xpla.net":
 		dp=true;
 		var f = document.getElementsByTagName("input");
 		if(f.length)
