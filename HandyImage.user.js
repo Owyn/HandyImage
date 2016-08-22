@@ -866,6 +866,7 @@
 // @match		http://*.pic4share.ru/full/
 // @match		http://*.sximg.nl/img-*
 // @match		http://img.3xpla.net/img-*
+// @match               http://*.0img.net/?v=* 
 // ==/UserScript==
 
 if (typeof unsafeWindow === "undefined")
@@ -2425,6 +2426,7 @@ function makeworld()
 	case "imgsmile.com":
 	case "imgsay.com":
 	case "imgcool.net":
+	case "0img.net":
 		//IMGReserve  
 		j = true;
 		dp=true;
