@@ -681,7 +681,7 @@
 // @match		http://demo.chevereto.com/image/*
 // @match		http://*.ownimg.com/image/*
 // @match		http://*.6on9.com/img/*
-// @match		http://imgclick.net/*/*
+// @match		http://imgclick.net/*
 // @match		http://*.gogoimage.org/img-*
 // @match		http://imgmoney.ru/*.html
 // @match		http://imgmoney.ru/full/
