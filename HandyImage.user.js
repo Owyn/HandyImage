@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name		Handy Image
-// @version		2016.08.31
+// @version		2016.09.03
 // @author		Owyn
 // @contributor	ubless607, bitst0rm
 // @namespace	handyimage
@@ -876,6 +876,8 @@
 // @match		*://*.imgmak.com/image/*
 // @match		http://*.freephotohostin.com/img-*
 // @match		http://*.imgcat.pw/img-*
+// @match		http://*.levinpic.org/*.html
+// @match		https://www.sparrowpics.com/image/*
 // ==/UserScript==
 
 if (typeof unsafeWindow === "undefined")
@@ -1166,6 +1168,7 @@ function makeworld()
 	case "ss.movierls.net":
 	case "xxximagetpb.org":
 	case "pix.ac":
+	case "sparrowpics.com":
 		i = document.querySelector('meta[property="og:image"] , [name="og:image"]');
 		if(i)
 		{
@@ -1708,6 +1711,7 @@ function makeworld()
 	case "imgtown.net":
 	case "imguniversal.com":
 	case "imgoutlet.com":
+	case "levinpic.org":
 		j = true;
 		i = q("input[type='submit']:not([style='display:none;']):not([value*='eply']):not([value*='Log'])");
 		dp=true;
