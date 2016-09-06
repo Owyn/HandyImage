@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name		Handy Image
-// @version		2016.09.03
+// @version		2016.09.05
 // @author		Owyn
 // @contributor	ubless607, bitst0rm
 // @namespace	handyimage
@@ -642,7 +642,7 @@
 // @match		http://*.imglemon.com/img-*
 // @match		*://*.imgseeds.com/img-*
 // @match		http://*.pronpic.org/*/*
-// @match		http://prntscr.com/*
+// @match		http://prnt.sc/*
 // @match		http://*.imgdream.net/view*
 // @match		http://*.imgtab.net/*
 // @match		http://*.madimage.org/img-*
@@ -1169,6 +1169,7 @@ function makeworld()
 	case "xxximagetpb.org":
 	case "pix.ac":
 	case "sparrowpics.com":
+	case "prnt.sc":
 		i = document.querySelector('meta[property="og:image"] , [name="og:image"]');
 		if(i)
 		{
@@ -1194,17 +1195,6 @@ function makeworld()
 			else
 			{
 				i.src = i.content;i.src = i.src.split('?')[0];
-			}
-		}
-		break;
-	case "prntscr.com":
-		i = document.querySelector('meta[property="og:image"]');
-		if(i)
-		{
-			i.src = i.content;
-			if(FireFox)
-			{
-				i.src = "http://img.prntscr.com/img?url=" + i.src;
 			}
 		}
 		break;
