@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name		Handy Image
-// @version		2016.09.05
+// @version		2016.09.19
 // @author		Owyn
 // @contributor	ubless607, bitst0rm
 // @namespace	handyimage
@@ -712,6 +712,7 @@
 // @match		http://*.myceleb.net/u/v/?q=*
 // @match		http://*.imageblinks.com/img-*
 // @match		http://*.gelbooru.com/index.php?page=post&s=view&id=*
+// @match		http://*.youhate.us/index.php?page=post&s=view&id=*
 // @match		http://danbooru.donmai.us/posts/*
 // @match		http://konachan.com/post/show/*
 // @match		http://konachan.net/post/show/*
@@ -1225,10 +1226,9 @@ function makeworld()
 		find_text_in_scripts('"https_url":"', '"', false);
 		break;
 	case "pixiv.net":
-		{
-			i = q("img.original-image");
-			if(i){i.src = i.dataset.src;}
-		}
+		j = true;
+		i = q("img.original-image");
+		if(i){i.src = i.dataset.src;}
 		break;
 	case "chan.sankakucomplex.com":
 		i = q('a[itemprop="contentUrl"]');
@@ -1507,6 +1507,7 @@ function makeworld()
 	case "imgdone.com":
 	case "rupix.org":
 	case "gelbooru.com":
+	case "youhate.us":
 	case "greenpiccs.com":
 	case "imagelike.org":
 	case "balkanelite.org":
