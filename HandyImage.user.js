@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name		Handy Image
-// @version		2016.09.19
+// @version		2016.09.21
 // @author		Owyn
 // @contributor	ubless607, bitst0rm
 // @namespace	handyimage
@@ -879,6 +879,7 @@
 // @match		http://*.imgcat.pw/img-*
 // @match		http://*.levinpic.org/*.html
 // @match		https://www.sparrowpics.com/image/*
+// @match		http://*.imgmax.com/image/*
 // ==/UserScript==
 
 if (typeof unsafeWindow === "undefined")
@@ -1171,6 +1172,7 @@ function makeworld()
 	case "pix.ac":
 	case "sparrowpics.com":
 	case "prnt.sc":
+	case "imgmax.com":
 		i = document.querySelector('meta[property="og:image"] , [name="og:image"]');
 		if(i)
 		{
