@@ -850,6 +850,7 @@
 // @match		http://*.tinizo.com/img-*
 // @match		http://www.xxxsparrow.com/img-*
 // @match		http://*.imgkings.com/img*
+// @match		http://*.imagerar.com/img*
 // @match		http://*.sendpic.org/view/*
 // @match		http://*.imgzizi.xyz/img-*
 // @match		http://www.porncomix.info/*/*/
@@ -1634,6 +1635,7 @@ function makeworld()
 		i = q('img[src*="/pic.jpeg"]');
 		break;
 	case "imgkings.com":
+	case "imagerar.com":
 		if(window.location.href.indexOf("img-") != -1)
 		{
 			window.location.href = window.location.href.replace("img-","img2-");
