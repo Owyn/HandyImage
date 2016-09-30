@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name		Handy Image
-// @version		2016.09.31
+// @version		2016.10.01
 // @author		Owyn
 // @contributor	ubless607, bitst0rm
 // @namespace	handyimage
@@ -2582,11 +2582,11 @@ function makeworld()
 function changecursor()
 {
 	i.style.margin = "auto";
-	if(!rescaled && (((i.naturalHeight / window.devicePixelRatio).toFixed() == window.innerHeight && (i.naturalWidth / window.devicePixelRatio).toFixed() == window.innerWidth) || ((i.naturalWidth / window.devicePixelRatio).toFixed() == window.innerWidth && (i.naturalWidth / window.devicePixelRatio).toFixed() == window.innerWidth))) // one img dimension is equal to screen and other is the same or less than the screen
+	if(!rescaled && (((i.naturalHeight / window.devicePixelRatio).toFixed() == window.innerHeight && (i.naturalWidth / window.devicePixelRatio).toFixed() <= window.innerWidth) || ((i.naturalHeight / window.devicePixelRatio).toFixed() <= window.innerHeight && (i.naturalWidth / window.devicePixelRatio).toFixed() == window.innerWidth))) // one img dimension is equal to screen and other is the same or less than the screen
 	{
 		i.style.cursor = "";
 	}
-	else if((i.naturalHeight / window.devicePixelRatio).toFixed() > window.innerHeight || (i.naturalWidth / window.devicePixelRatio).toFixed() > window.innerWidth)
+	else if((i.naturalHeight / window.devicePixelRatio).toFixed() > window.innerHeight || (i.naturalWidth / window.devicePixelRatio).toFixed() > window.innerWidth) // one ong dimenions is bigger than the screen
 	{
 		if(rescaled)
 		{
