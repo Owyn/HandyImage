@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name		Handy Image
-// @version		2016.09.21
+// @version		2016.09.31
 // @author		Owyn
 // @contributor	ubless607, bitst0rm
 // @namespace	handyimage
@@ -881,6 +881,7 @@
 // @match		http://*.levinpic.org/*.html
 // @match		https://www.sparrowpics.com/image/*
 // @match		http://*.imgmax.com/image/*
+// @match		http://lostpix.com/?v=*
 // ==/UserScript==
 
 if (typeof unsafeWindow === "undefined")
@@ -1726,6 +1727,7 @@ function makeworld()
 	case "imgpaying.com":
 	case "picexposed.com":
 	case "imgtrex.com":
+	case "lostpix.com":
 		i = q('img[src*="/img/"]');
 		break;
 	case "imagenetz.de":
