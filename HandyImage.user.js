@@ -2586,7 +2586,7 @@ function changecursor()
 	{
 		i.style.cursor = "";
 	}
-	else if((i.naturalHeight / window.devicePixelRatio).toFixed() > window.innerHeight || (i.naturalWidth / window.devicePixelRatio).toFixed() > window.innerWidth) // one ong dimenions is bigger than the screen
+	else if((i.naturalHeight / window.devicePixelRatio).toFixed() > window.innerHeight || (i.naturalWidth / window.devicePixelRatio).toFixed() > window.innerWidth) // at least one img dimenion is bigger than the screen
 	{
 		if(rescaled)
 		{
@@ -2597,7 +2597,7 @@ function changecursor()
 		{
 			i.style.cursor = "-moz-zoom-out";
 			i.style.cursor = "-webkit-zoom-out";
-			if((i.naturalHeight / window.devicePixelRatio).toFixed() > window.innerHeight) // chrome bug fuuuuu
+			if((i.naturalHeight / window.devicePixelRatio).toFixed() > window.innerHeight) // image pushing out-of-screen fix
 			{
 				i.style.margin = "0px auto";
 			}
