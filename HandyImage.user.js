@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name		Handy Image
-// @version		2016.10.01
+// @version		2016.10.06
 // @author		Owyn
 // @contributor	ubless607, bitst0rm
 // @namespace	handyimage
@@ -53,7 +53,7 @@
 // @match		http://*.xxxhost.me/view*
 // @match		http://*.imadul.com/?*
 // @match		http://*.d69.in/?*
-// @match		http://postimg.org/image*
+// @match		*://postimg.org/image/*
 // @match		http://*.niceimage.pl/*.html
 // @match		http://*.picbank.pl/*.html
 // @match		http://*.pics-money.ru/*
@@ -1193,9 +1193,14 @@ function makeworld()
 		if(i)
 		{
 			var f = document.head.querySelector('meta[property="og:url"]');
+			var v = document.head.querySelector('meta[property="og:video"]');
 			if((f && (f.content.indexOf("/a/") != -1 || f.content.indexOf("/gallery/") != -1) ) || i.content.indexOf("/images/logo") != -1)
 			{
 				return;
+			}
+			else if(v)
+			{
+				i.src = v.content.replace('.mp4', '.gif');
 			}
 			else
 			{
@@ -1596,15 +1601,8 @@ function makeworld()
 	case "imgchili.mcdir.ru":
 	case "imagedoza.com":
 	case "imagepearl.com":
-		i = q('img[src*="' + iurl + '"]');
-		break;
 	case "postimg.org":
 		i = q('img[src*="' + iurl + '"]');
-		if(i && i.parentNode.href)
-		{
-			window.location.assign(i.parentNode.href);
-			return;
-		}
 		break;
 	case "ask.fm":
 	case "uaimage.com":
