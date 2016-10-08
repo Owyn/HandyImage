@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name		Handy Image
-// @version		2016.10.06
+// @version		2016.10.08
 // @author		Owyn
 // @contributor	ubless607, bitst0rm
 // @namespace	handyimage
@@ -624,7 +624,7 @@
 // @match		http://*.3xplanet.com/view*
 // @match		http://*.imgmega.com/*.html
 // @match		http://*.imgsee.me/*
-// @match		http://img.yt/img-*
+// @match		*://img.yt/img-*
 // @match		http://*.payforpic.ru/*/*/
 // @match		http://*.pic4cash.ru/*.html
 // @match		http://*.pic4cash.ru/full/
@@ -882,6 +882,7 @@
 // @match		https://www.sparrowpics.com/image/*
 // @match		http://*.imgmax.com/image/*
 // @match		http://lostpix.com/?v=*
+// @match		https://extraimago.com/image/*
 // ==/UserScript==
 
 if (typeof unsafeWindow === "undefined")
@@ -1175,6 +1176,7 @@ function makeworld()
 	case "sparrowpics.com":
 	case "prnt.sc":
 	case "imgmax.com":
+	case "extraimago.com":
 		i = document.querySelector('meta[property="og:image"] , [name="og:image"]');
 		if(i)
 		{
