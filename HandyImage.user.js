@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name		Handy Image
-// @version		2016.10.08
+// @version		2016.10.16
 // @author		Owyn
 // @contributor	ubless607, bitst0rm
 // @namespace	handyimage
@@ -883,6 +883,7 @@
 // @match		http://*.imgmax.com/image/*
 // @match		http://lostpix.com/?v=*
 // @match		https://extraimago.com/image/*
+// @match		http://*.imgroute.com/?v=*
 // ==/UserScript==
 
 if (typeof unsafeWindow === "undefined")
@@ -2159,6 +2160,7 @@ function makeworld()
 	case "imgili.com":
 	case "imgcentral.com":
 	case "imageback.info":
+	case "imgroute.com":
 		i = q('img[src*="images/"]');
 		break;
 	case "use.com":
