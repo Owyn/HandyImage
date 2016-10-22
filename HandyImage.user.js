@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name		Handy Image
-// @version		2016.10.16
+// @version		2016.10.22
 // @author		Owyn
 // @contributor	ubless607, bitst0rm
 // @namespace	handyimage
@@ -884,6 +884,7 @@
 // @match		http://lostpix.com/?v=*
 // @match		https://extraimago.com/image/*
 // @match		http://*.imgroute.com/?v=*
+// @match		http://www.joblo.com/hollywood-celebrities/hottie-profile/*/image-gallery/*.jpg
 // ==/UserScript==
 
 if (typeof unsafeWindow === "undefined")
@@ -2459,6 +2460,13 @@ function makeworld()
 	case "shrani.najdi.si":
 	case "imageab.com":	
 		i = q('img[onclick*="(this"]');
+		break;
+	case "joblo.com":
+		i = q('img');
+		if(i)
+		{
+			i.src = "http://www.joblo.com/moviehotties/images/profile-gallery/orig" + window.location.href.substr(window.location.href.lastIndexOf("/"));
+		}
 		break;
 	default: // dynamic subdomain
 		switch(iurl.substr(iurl.indexOf(".")+1))
