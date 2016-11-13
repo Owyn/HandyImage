@@ -885,6 +885,7 @@
 // @match		https://extraimago.com/image/*
 // @match		http://*.imgroute.com/?v=*
 // @match		http://www.joblo.com/hollywood-celebrities/hottie-profile/*/image-gallery/*.jpg
+// @match		http://extraimage.net/image/*
 // ==/UserScript==
 
 if (typeof unsafeWindow === "undefined")
@@ -2228,6 +2229,9 @@ function makeworld()
 	case "pixelup.net":
 		i = q('center img[src*="/images/"]');
 		break;
+	 case "extraimage.net":
+        	i = q('img[src*="/images/"][data-load="full"]');
+        	break;
 	case "saveimg.ru":
 	case "imglink.ru":
 	case "tinyphoto.net":
