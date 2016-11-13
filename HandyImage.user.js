@@ -1728,7 +1728,6 @@ function makeworld()
 	case "pixpal.net":
 	case "imgpaying.com":
 	case "picexposed.com":
-	case "imgtrex.com":
 	case "lostpix.com":
 		i = q('img[src*="/img/"]');
 		break;
@@ -2284,6 +2283,7 @@ function makeworld()
 	case "imagedax.net":
 	case "pornimagex.com":
 	case "sendpic.org":
+	case "imgtrex.com":
 		i = q('img[src*="/i/"]');
 		break;
 	case "pixpipeline.com":
