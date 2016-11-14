@@ -2230,6 +2230,9 @@ function makeworld()
 	case "pixelup.net":
 		i = q('center img[src*="/images/"]');
 		break;
+	 case "extraimage.net":
+        	i = q('img[src*="/images/"][data-load="full"]');
+        	break;
 	case "saveimg.ru":
 	case "imglink.ru":
 	case "tinyphoto.net":
