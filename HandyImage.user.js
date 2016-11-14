@@ -885,6 +885,7 @@
 // @match		https://extraimago.com/image/*
 // @match		http://*.imgroute.com/?v=*
 // @match		http://www.joblo.com/hollywood-celebrities/hottie-profile/*/image-gallery/*.jpg
+// @match		http://extraimage.net/image/*
 // ==/UserScript==
 
 if (typeof unsafeWindow === "undefined")
@@ -1179,6 +1180,7 @@ function makeworld()
 	case "prnt.sc":
 	case "imgmax.com":
 	case "extraimago.com":
+	case "extraimage.net":
 		i = document.querySelector('meta[property="og:image"] , [name="og:image"]');
 		if(i)
 		{
