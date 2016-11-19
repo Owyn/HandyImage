@@ -1709,7 +1709,6 @@ function makeworld()
 	case "imgdragon.com":
 	case "imggold.org":
 	case "imgtown.net":
-	case "imguniversal.com":
 	case "imgoutlet.com":
 	case "levinpic.org":
 		j = true;
@@ -2288,6 +2287,16 @@ function makeworld()
 	case "imgtrex.com":
 		i = q('img[src*="/i/"]');
 		break;
+    case "imguniversal.com":
+        i = q("input[type='submit'][value^='continue to image' i]");
+        j = true;
+        dp = true;
+        if(i)
+        {
+            i.click();
+        }
+        i = q("img.pic[src*='/i/']");
+        break;
 	case "pixpipeline.com":
 		i = q('img[src*="/s/"]');
 		break;
