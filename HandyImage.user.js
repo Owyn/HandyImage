@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name		Handy Image
-// @version		2016.10.22
+// @version		2016.11.20
 // @author		Owyn
 // @contributor	ubless607, bitst0rm
 // @namespace	handyimage
@@ -53,7 +53,8 @@
 // @match		http://*.xxxhost.me/view*
 // @match		http://*.imadul.com/?*
 // @match		http://*.d69.in/?*
-// @include		/https?://postimg\.(org|cc)/image//
+// @match		*://postimg.org/image/
+// @match		*://postimg.cc/image/
 // @match		http://*.niceimage.pl/*.html
 // @match		http://*.picbank.pl/*.html
 // @match		http://*.pics-money.ru/*
@@ -885,8 +886,8 @@
 // @match		https://extraimago.com/image/*
 // @match		http://*.imgroute.com/?v=*
 // @match		http://www.joblo.com/hollywood-celebrities/hottie-profile/*/image-gallery/*.jpg
-// @include		/https?://extraimage\.net/image//
-// @include		/https?://www\.bellazon\.com/main/attachment/\d+/
+// @include		*://extraimage.net/image/
+// @include		*://www.bellazon.com/main/attachment/*
 // ==/UserScript==
 
 if (typeof unsafeWindow === "undefined")
@@ -1972,6 +1973,7 @@ function makeworld()
 	case "avenuexxx.com":
 	case "uploadimagex.com":
 	case "hostingkartinok.com":
+	case "bellazon":
 		i = q('img[src*="/upload"]');
 		break;
 	case "bababian.com":
@@ -2486,10 +2488,7 @@ function makeworld()
 		{
 			i.src = "http://www.joblo.com/moviehotties/images/profile-gallery/orig" + window.location.href.substr(window.location.href.lastIndexOf("/"));
 		}
-		break;
-	case "bellazon.com":
-		i = q('img[class*=attachpage_image i]');
-		break;        
+		break;      
 	default: // dynamic subdomain
 		switch(iurl.substr(iurl.indexOf(".")+1))
 		{
