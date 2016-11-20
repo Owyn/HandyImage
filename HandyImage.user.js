@@ -53,7 +53,7 @@
 // @match		http://*.xxxhost.me/view*
 // @match		http://*.imadul.com/?*
 // @match		http://*.d69.in/?*
-// @match		*://postimg.org/image/*
+// @include		/https?://postimg\.(org|cc)/image//
 // @match		http://*.niceimage.pl/*.html
 // @match		http://*.picbank.pl/*.html
 // @match		http://*.pics-money.ru/*
@@ -885,7 +885,8 @@
 // @match		https://extraimago.com/image/*
 // @match		http://*.imgroute.com/?v=*
 // @match		http://www.joblo.com/hollywood-celebrities/hottie-profile/*/image-gallery/*.jpg
-// @match		http://extraimage.net/image/*
+// @include		/https?://extraimage\.net/image//
+// @include		/https?://www\.bellazon\.com/main/attachment/\d+/
 // ==/UserScript==
 
 if (typeof unsafeWindow === "undefined")
@@ -1607,9 +1608,16 @@ function makeworld()
 	case "imgchili.mcdir.ru":
 	case "imagedoza.com":
 	case "imagepearl.com":
-	case "postimg.org":
 		i = q('img[src*="' + iurl + '"]');
 		break;
+    case "postimg.org":
+    case "postimg.cc":
+        i = q('img[data-full]');
+        if(i)
+        {
+            i.src = i.getAttribute('data-full');
+        }
+        break;
 	case "ask.fm":
 	case "uaimage.com":
 		i = q('img[src*="' + iurl + '"][id]');
@@ -2479,6 +2487,9 @@ function makeworld()
 			i.src = "http://www.joblo.com/moviehotties/images/profile-gallery/orig" + window.location.href.substr(window.location.href.lastIndexOf("/"));
 		}
 		break;
+	case "bellazon.com":
+		i = q('img[class*=attachpage_image i]');
+		break;        
 	default: // dynamic subdomain
 		switch(iurl.substr(iurl.indexOf(".")+1))
 		{
