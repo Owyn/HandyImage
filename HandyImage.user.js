@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name		Handy Image
-// @version		2016.11.20
+// @version		2016.11.23
 // @author		Owyn
 // @contributor	ubless607, bitst0rm
 // @namespace	handyimage
@@ -53,7 +53,7 @@
 // @match		http://*.xxxhost.me/view*
 // @match		http://*.imadul.com/?*
 // @match		http://*.d69.in/?*
-// @match		*://postimg.org/image/
+// @match		*://postimg.org/image/*
 // @match		*://postimg.cc/image/
 // @match		http://*.niceimage.pl/*.html
 // @match		http://*.picbank.pl/*.html
@@ -886,8 +886,11 @@
 // @match		https://extraimago.com/image/*
 // @match		http://*.imgroute.com/?v=*
 // @match		http://www.joblo.com/hollywood-celebrities/hottie-profile/*/image-gallery/*.jpg
-// @include		*://extraimage.net/image/
-// @include		*://www.bellazon.com/main/attachment/*
+// @match		*://extraimage.net/image/
+// @match		*://www.bellazon.com/main/attachment/*
+// @match		*://extraimage.net/image/*
+// @match		https://www.artstation.com/artwork/*
+// @match		http://bcy.net/illust/detail/*
 // ==/UserScript==
 
 if (typeof unsafeWindow === "undefined")
@@ -1242,6 +1245,9 @@ function makeworld()
 	case "500px.com":
 		find_text_in_scripts('"https_url":"', '"', false);
 		break;
+	case "artstation.com":
+		find_text_in_scripts('"image_url\\":\\"', '\\"', false);
+		break;
 	case "pixiv.net":
 		j = true;
 		i = q("img.original-image");
@@ -1252,6 +1258,14 @@ function makeworld()
 		if(i)
 		{
 			i.src = i.href;
+		}
+		break;
+	case "bcy.net":
+		var f = document.querySelectorAll("img.detail_clickable")
+		if(f.length == 1)
+		{
+			i = f[0];
+			i.src = f[0].src.replace('/w650', '');
 		}
 		break;
 	case "imageshack.com":
@@ -2228,6 +2242,7 @@ function makeworld()
 	case "picturescream.asia":
 	case "imghost.us.to":
 	case "imgmak.com":
+	case "extraimage.net":
 		i = q('img[src*="/images/"]');
 		break;
 	case "intergranada.com":
