@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name		Handy Image
-// @version		2016.11.23
+// @version		2016.12.16
 // @author		Owyn
 // @contributor	ubless607, bitst0rm
 // @namespace	handyimage
@@ -2267,13 +2267,12 @@ function makeworld()
 	case "xenopix.com":
 		i = q('img[src*="/pix/"]');
 		break;
-	case "imgclick.net":
 	case "chronos.to":
 	case "imgmaid.net":
 	case "pic-maniac.com":
 	case "coreimg.net":
 		j = true;
-		i = q('input[type="submit"]:not([name="method_free"])'); // not() = imgclick
+		i = q('input[type="submit"]');
 		dp=true;
 		if(i) 
 		{
@@ -2313,6 +2312,7 @@ function makeworld()
 		i = q('img[src*="/i/"]');
 		break;
     case "imguniversal.com":
+	case "imgclick.net":
         i = q("input[type='submit'][value*='continue to image' i]");
         j = true;
         dp = true;
