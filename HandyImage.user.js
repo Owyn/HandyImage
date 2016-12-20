@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name		Handy Image
-// @version		2016.12.16
+// @version		2016.12.21
 // @author		Owyn
 // @contributor	ubless607, bitst0rm
 // @namespace	handyimage
@@ -891,6 +891,7 @@
 // @match		*://extraimage.net/image/*
 // @match		https://www.artstation.com/artwork/*
 // @match		http://bcy.net/illust/detail/*
+// @match		http://*.imgpics.nl/img-*
 // ==/UserScript==
 
 if (typeof unsafeWindow === "undefined")
@@ -1901,6 +1902,7 @@ function makeworld()
 	case "img.3xpla.net":
 	case "freephotohostin.com":
 	case "imgspot.org":
+	case "imgpics.nl":
 		dp=true;
 		var f = document.getElementsByTagName("input");
 		if(f.length)
@@ -2311,8 +2313,8 @@ function makeworld()
 	case "imgtrex.com":
 		i = q('img[src*="/i/"]');
 		break;
-    case "imguniversal.com":
-	case "imgclick.net":
+	case "imguniversal.com":
+	case "imgclick.net": // no submits
         i = q("input[type='submit'][value*='continue to image' i]");
         j = true;
         dp = true;
