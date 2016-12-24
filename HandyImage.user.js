@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name		Handy Image
-// @version		2016.12.21
+// @version		2016.12.24
 // @author		Owyn
 // @contributor	ubless607, bitst0rm
 // @namespace	handyimage
@@ -892,6 +892,7 @@
 // @match		https://www.artstation.com/artwork/*
 // @match		http://bcy.net/illust/detail/*
 // @match		http://*.imgpics.nl/img-*
+// @match		http://*.imagexxx18.com/image/*
 // ==/UserScript==
 
 if (typeof unsafeWindow === "undefined")
@@ -2245,6 +2246,7 @@ function makeworld()
 	case "imghost.us.to":
 	case "imgmak.com":
 	case "extraimage.net":
+	case "imagexxx18.com":
 		i = q('img[src*="/images/"]');
 		break;
 	case "intergranada.com":
