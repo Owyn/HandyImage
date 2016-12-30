@@ -762,7 +762,7 @@
 // @match		http://*.fixxpix.ru/*/*/
 // @match		http://*.imgclover.com/image/*
 // @match		http://*.imgz.pw/share-*
-// @match		http://*.imgking.co/img*
+// @match		*://*.imgking.co/img*
 // @match		http://ask.fm/*/photo/original
 // @match		http://cuteimg.cc/*
 // @match		http://*.newimagepost.com/img-*
@@ -1821,6 +1821,13 @@ function makeworld()
 		i = q('img[src*="view/"]');
 		break;
 	case "imgking.co":
+		i = q('img[src*="uploads/"]');
+		if(i)	break;
+        	if(window.location.href.indexOf("imgs") != -1)
+		{
+			window.location.href = window.location.href.replace("imgs","imgv");
+			break;
+		}
 		if(window.location.href.indexOf("img3") != -1)
 		{
 			window.location.href = window.location.href.replace("img3","img4");
