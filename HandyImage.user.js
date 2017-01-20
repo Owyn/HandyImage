@@ -893,6 +893,7 @@
 // @match		http://bcy.net/illust/detail/*
 // @match		http://*.imgpics.nl/img-*
 // @match		http://*.imagexxx18.com/image/*
+// @match		http://*.imagepics.xyz/img-*
 // ==/UserScript==
 
 if (typeof unsafeWindow === "undefined")
@@ -1911,6 +1912,7 @@ function makeworld()
 	case "freephotohostin.com":
 	case "imgspot.org":
 	case "imgpics.nl":
+	case "imagepics.xyz":
 		dp=true;
 		var f = document.getElementsByTagName("input");
 		if(f.length)
