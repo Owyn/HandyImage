@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name		Handy Image
-// @version		2016.12.24
+// @version		2017.01.25
 // @author		Owyn
 // @contributor	ubless607, bitst0rm
 // @namespace	handyimage
@@ -2538,7 +2538,7 @@ function makeworld()
 			if(q('div.deviation-mlt-preview'))
 			{
 				i = q('a[href*="/download/"]');
-				if(i && i.href.indexOf(".zip?") == -1 && i.href.indexOf(".7z?") == -1 && i.href.indexOf(".rar?") == -1 && i.href.indexOf("deviantart.com/users/outgoing?")== -1){i.src = i.href;}
+				if(i && i.href.indexOf(".zip?") == -1 && i.href.indexOf(".7z?") == -1 && i.href.indexOf(".rar?") == -1 && i.href.indexOf(".psd?") == -1 && i.href.indexOf("deviantart.com/users/outgoing?")== -1){i.src = i.href;}
 				else{i = q('img.dev-content-full');}
 			}
 			break;
@@ -2622,6 +2622,12 @@ function makeworld()
 			{
 				document.replaceChild(document.importNode(document.implementation.createHTMLDocument("").documentElement, true), document.documentElement);
 			}
+		}
+		var ext_list = ['webm', 'mp4', 'ogg'];
+		if (ext_list.indexOf(i.src.split('.').pop().toLowerCase()) >= 0)
+		{
+			console.warn("What we found is not an image");
+			return false;
 		}
 		clr_pgn();
 		ws();
