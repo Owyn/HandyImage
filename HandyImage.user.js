@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name		Handy Image
-// @version		2017.01.25
+// @version		2017.01.30
 // @author		Owyn
 // @contributor	ubless607, bitst0rm
 // @namespace	handyimage
@@ -894,6 +894,7 @@
 // @match		http://*.imgpics.nl/img-*
 // @match		http://*.imagexxx18.com/image/*
 // @match		http://*.imagepics.xyz/img-*
+// @match		*://*.imagesouls.net/img*
 // ==/UserScript==
 
 if (typeof unsafeWindow === "undefined")
@@ -1963,6 +1964,7 @@ function makeworld()
 	case "imgcredit.xyz":
 	case "dimtus.com":
 	case "imgcat.pw":
+	case "imagesouls.net":		
 		i = q('img[src*="' + iurl + '/upload/"]');
 		break;
 	case "thumbnailus.com":
