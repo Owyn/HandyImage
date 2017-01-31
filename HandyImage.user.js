@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name		Handy Image
-// @version		2017.01.25
+// @version		2017.01.31
 // @author		Owyn
 // @contributor	ubless607, bitst0rm
 // @namespace	handyimage
@@ -894,6 +894,7 @@
 // @match		http://*.imgpics.nl/img-*
 // @match		http://*.imagexxx18.com/image/*
 // @match		http://*.imagepics.xyz/img-*
+// @match		*://*.imagesouls.net/img*
 // ==/UserScript==
 
 if (typeof unsafeWindow === "undefined")
@@ -1832,6 +1833,12 @@ function makeworld()
 		if(window.location.href.indexOf("img3") != -1)
 		{
 			window.location.href = window.location.href.replace("img3","img4");
+			break;
+		}
+	case "imagesouls.net":
+		if(find_text_in_scripts('linkid="', '"', false))
+		{
+			window.location.href = i.src;
 			break;
 		}
 	case "imgadult.com":
