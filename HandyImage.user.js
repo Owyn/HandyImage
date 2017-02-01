@@ -221,7 +221,7 @@
 // @match		http://*.mypixxx.lonestarnaughtygirls.com/?*
 // @match		*://beeimg.com/view*
 // @match		http://www.noelshack.com/*.*
-// @match		http://www.zupmage.eu/image*
+// @match		http://www.turbopix.fr/v/*
 // @match		http://*.picstwist.com/img*
 // @match		http://thumbsnap.com/*
 // @match		http://*.deffe.com/image*
@@ -2315,7 +2315,7 @@ function makeworld()
 	case "itmages.ru":
 	case "img.acianetmedia.com":
 	case "imagenpic.com":
-	case "zupmage.eu":
+	case "turbopix.fr":
 	case "pictureturn.com":
 	case "pixic.ru":
 	case "tuspics.net":
