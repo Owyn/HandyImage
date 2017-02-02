@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name		Handy Image
-// @version		2017.01.31
+// @version		2017.02.02
 // @author		Owyn
 // @contributor	ubless607, bitst0rm
 // @namespace	handyimage
@@ -721,7 +721,7 @@
 // @match		https://chan.sankakucomplex.com/*post/show/*
 // @match		https://yande.re/post/show/*
 // @match		http://www.zerochan.net/*
-// @match		http://*.imgrock.net/*/*.html
+// @match		http://*.imgrock.net/*.php
 // @match		http://*.imagedoza.com/i.cc/i/*
 // @match		http://imgzap.com/view*
 // @match		http://*.funimg.net/img-*
@@ -770,7 +770,7 @@
 // @match		http://myimg.club/*
 // @match		http://*.imgease.re/img-*
 // @match		http://www.hotimage.uk/img-*
-// @match		http://imgview.net/*/*.html
+// @match		http://imgview.net/*.php
 // @match		http://*.picsnova.net/img-*
 // @match		http://*.holdthemoan.net/x/share-*
 // @match		http://*.10.imageleon.com/i-*
@@ -829,7 +829,7 @@
 // @match		http://*.erimge.com/img-*
 // @match		http://*.img-pay.com/img-*
 // @match		http://*.imgtrial.com/img-*
-// @match		http://imgtown.net/*
+// @match		http://imgtown.net/*.php
 // @match		http://ameblo.jp/*/image-*
 // @match		http://*.loftlm.ru/img-*
 // @match		http://*.imgmag.co/img-*
@@ -895,6 +895,7 @@
 // @match		http://*.imagexxx18.com/image/*
 // @match		http://*.imagepics.xyz/img-*
 // @match		*://*.imagesouls.net/img*
+// @match		*://postto.me/*
 // ==/UserScript==
 
 if (typeof unsafeWindow === "undefined")
@@ -1728,14 +1729,11 @@ function makeworld()
 			break;
 		}
 	case "imagebucks.biz":
-	case "imgrock.net":
 	case "myimg.club":
-	case "imgview.net":
 	case "imgwel.com":
 	case "imgmonkey.com":
 	case "imgdragon.com":
 	case "imggold.org":
-	case "imgtown.net":
 	case "imgoutlet.com":
 	case "levinpic.org":
 		j = true;
@@ -1746,6 +1744,23 @@ function makeworld()
 			i.click();
 			break;
 		}
+	case "imgrock.net":
+	case "imgtown.net":
+	case "imgview.net":
+		i = q('img.pic');
+		if (!i) 
+		{
+			j = true;
+			var f = document.body.querySelectorAll("form[class]");
+			for (var n = 0; n < f.length; n++)
+			{
+				if (f[n].offsetParent !== null) 
+				{
+					f[n].submit();
+				}
+			}
+		}
+		break;
 	case "casimages.com":
 	case "thebestpichost.com":
 	case "deffe.com":
@@ -2333,7 +2348,7 @@ function makeworld()
 		break;
 	case "imguniversal.com":
 	case "imgclick.net": // no submits
-        i = q("input[type='submit'][value*='continue to image' i]");
+        i = q("form input[type='submit'][value*='continue to image' i]");
         j = true;
         dp = true;
         if(i)
@@ -2523,7 +2538,10 @@ function makeworld()
 		{
 			i.src = "http://www.joblo.com/moviehotties/images/profile-gallery/orig" + window.location.href.substr(window.location.href.lastIndexOf("/"));
 		}
-		break;      
+		break; 
+	case "postto.me":
+		i = q('.image_view img');
+		break;
 	default: // dynamic subdomain
 		switch(iurl.substr(iurl.indexOf(".")+1))
 		{
