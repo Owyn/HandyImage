@@ -1736,31 +1736,25 @@ function makeworld()
 	case "imggold.org":
 	case "imgoutlet.com":
 	case "levinpic.org":
-		j = true;
-		i = q("input[type='submit']:not([style='display:none;']):not([value*='eply']):not([value*='Log'])");
-		dp=true;
-		if(i) 
-		{
-			i.click();
-			break;
-		}
 	case "imgrock.net":
 	case "imgtown.net":
 	case "imgview.net":
-		i = q('img.pic');
-		if (!i) 
+		j = true;
+		dp=true;
+		var f = document.querySelectorAll("input[type='submit']")
+		if(f.length)
 		{
-			j = true;
-			var f = document.body.querySelectorAll("form[class]");
-			for (var n = 0; n < f.length; n++)
+			var n;
+			for(n=f.length-1; n >= 0; n--)
 			{
-				if (f[n].offsetParent !== null) 
+				if(f[n].offsetWidth != 0 && f[n].value.indexOf("eply") == -1 && f[n].value.indexOf("Log") == -1)
 				{
-					f[n].submit();
+					f[n].removeAttribute("disabled");
+					f[n].click();
+					break;
 				}
 			}
 		}
-		break;
 	case "casimages.com":
 	case "thebestpichost.com":
 	case "deffe.com":
