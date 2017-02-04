@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name		Handy Image
-// @version		2017.02.02
+// @version		2017.02.03
 // @author		Owyn
 // @contributor	ubless607, bitst0rm
 // @namespace	handyimage
@@ -1628,6 +1628,7 @@ function makeworld()
 	case "imgchili.mcdir.ru":
 	case "imagedoza.com":
 	case "imagepearl.com":
+	case "postto.me":
 		i = q('img[src*="' + iurl + '"]');
 		break;
     case "postimg.org":
@@ -2533,9 +2534,6 @@ function makeworld()
 			i.src = "http://www.joblo.com/moviehotties/images/profile-gallery/orig" + window.location.href.substr(window.location.href.lastIndexOf("/"));
 		}
 		break; 
-	case "postto.me":
-		i = q('.image_view img');
-		break;
 	default: // dynamic subdomain
 		switch(iurl.substr(iurl.indexOf(".")+1))
 		{
