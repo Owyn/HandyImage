@@ -2,7 +2,7 @@
 // @name		Handy Image
 // @version		2017.02.09
 // @author		Owyn
-// @contributor	ubless607, bitst0rm, LightGrey, RiZKiT, MurkBRA, kickerofelves, HalliHalloSchatz, hurda, johnmcdee, AgentRev, Lambda11, Quicksaver
+// @contributor	ubless607, bitst0rm
 // @namespace	handyimage
 // @description	Shows just fullsize Image with hotkeys & without pop-ups on many image-hosting sites
 // @updateURL	https://github.com/Owyn/HandyImage/raw/master/HandyImage.user.js
