@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name		Handy Image
-// @version		2017.02.03
+// @version		2017.02.09
 // @author		Owyn
 // @contributor	ubless607, bitst0rm
 // @namespace	handyimage
@@ -557,7 +557,6 @@
 // @match		http://*.imageporter.com/*
 // @match		http://*.damimage.com/img-*
 // @match		http://fapping.empornium.sx/*
-// @match		http://*.imagehovel.com/view*
 // @match		http://*.imgfap.net/img-*
 // @match		http://*.img-zone.com/img-*
 // @match		http://*.bulkimg.info/img-*
@@ -722,7 +721,6 @@
 // @match		https://yande.re/post/show/*
 // @match		http://www.zerochan.net/*
 // @match		http://*.imgrock.net/*.php
-// @match		http://*.imagedoza.com/i.cc/i/*
 // @match		http://imgzap.com/view*
 // @match		http://*.funimg.net/img-*
 // @match		http://*.olivepix.com/view/*
@@ -896,6 +894,7 @@
 // @match		http://*.imagepics.xyz/img-*
 // @match		*://*.imagesouls.net/img*
 // @match		*://postto.me/*
+// @match		http://*.imgskull.xyz/image/*
 // ==/UserScript==
 
 if (typeof unsafeWindow === "undefined")
@@ -1136,6 +1135,7 @@ function makeworld()
 	case "sfwimg.com":
 	case "img3x.com":
 	case "lostpic.net":
+	case "imgskull.xyz":
 		//chevereto 3.x
 		i = document.head.querySelector('link[rel="image_src"]');
 		if(i)
@@ -1624,9 +1624,7 @@ function makeworld()
 	case "root-space.eu":
 	case "pokazal.ru":
 	case "mepic.ru":
-	case "imagehovel.com":
 	case "imgchili.mcdir.ru":
-	case "imagedoza.com":
 	case "imagepearl.com":
 	case "postto.me":
 		i = q('img[src*="' + iurl + '"]');
