@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name		Handy Image
-// @version		2017.02.09
+// @version		2017.02.14
 // @author		Owyn
 // @contributor	ubless607, bitst0rm
 // @namespace	handyimage
@@ -895,6 +895,8 @@
 // @match		*://*.imagesouls.net/img*
 // @match		*://postto.me/*
 // @match		http://*.imgskull.xyz/image/*
+// @match		*://*.ninjaimages.com/*.html
+// @match		*://*.imgprime.com/img*
 // ==/UserScript==
 
 if (typeof unsafeWindow === "undefined")
@@ -1602,6 +1604,7 @@ function makeworld()
 	case "6on9.com":
 	case "10.imageleon.com":
 	case "img4.imagetitan.com":
+	case "ninjaimages.com":		
 		i = q('img[onload*="scale"]');
 		break;
 	case "bild.me":
@@ -1673,6 +1676,12 @@ function makeworld()
 			window.location.href = window.location.href.replace("img-","img2-");
 			break;
 		}
+	case "imgprime.com":
+		if(window.location.href.indexOf("img-") != -1)
+		{
+			window.location.href = window.location.href.replace("img-","img3-");
+			break;
+		}	
 	case "freeimagehosting.net":
 	case "uploadhouse.com":
 	case "pixhub.eu":
