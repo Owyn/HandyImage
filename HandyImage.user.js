@@ -20,7 +20,8 @@
 // @match		http://www.imagebam.com/image*
 // @match		http://imgchili.net/show*
 // @match		http://imgbox.com/*
-// @match		http://*.imagetwist.com/*/*
+// @match		http://imagetwist.com/*/*
+// @match		http://www.imagetwist.com/*/*
 // @match		http://*.imagevenue.com/img.php?*
 // @match		*://*.imageshack.com/i/*
 // @match		*://*.imageshack.com/f/*
@@ -2028,7 +2029,7 @@ function makeworld()
 	{
 		//console.warn("Didnt find image, trying again in " + timeout + " ms");
 		if(tb){clearTimeout(tb);}
-		tb = setTimeout(function() { console.warn("Didnt find image, waited " + timeout + " ms to try again"); tb=0; timeout*=2; i=0; makeworld(); }, timeout);
+		tb = setTimeout(function() { console.warn("Didnt find image, waited " + timeout + " ms to try again. page: " + window.location.hostname); tb=0; timeout*=2; i=0; makeworld(); }, timeout);
 	}
 }
 
