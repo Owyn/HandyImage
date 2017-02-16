@@ -2029,7 +2029,7 @@ function makeworld()
 	{
 		//console.warn("Didnt find image, trying again in " + timeout + " ms");
 		if(tb){clearTimeout(tb);}
-		tb = setTimeout(function() { console.warn("Didnt find image, waited " + timeout + " ms to try again. page: " + window.location.hostname); tb=0; timeout*=2; i=0; makeworld(); }, timeout);
+		tb = setTimeout(function() { console.warn("Didnt find image, waited " + timeout + " ms to try again. page: " + window.location.href); tb=0; timeout*=2; i=0; makeworld(); }, timeout);
 	}
 }
 
