@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name		Handy Image
-// @version		2017.02.15
+// @version		2017.02.16
 // @author		Owyn
 // @contributor	ubless607, bitst0rm
 // @namespace	handyimage
@@ -19,17 +19,19 @@
 // @match		https://gist.github.com/Owyn/8553d7953d948228e312
 // @match		http://www.imagebam.com/image*
 // @match		http://imgchili.net/show*
-// @match		http://imgbox.com/*
+// @match		*://imgbox.com/*
 // @match		http://imagetwist.com/*/*
 // @match		http://www.imagetwist.com/*/*
 // @match		http://*.imagevenue.com/img.php?*
 // @match		*://*.imageshack.com/i/*
 // @match		*://*.imageshack.com/f/*
-// @match		http://image2you.ru/*/*/
+// @match		*://*.image2you.ru/*/*/
+// @exclude		*://image2you.ru/cabinet/*
+// @exclude		*://www.image2you.ru/cabinet/*
 // @match		http://imageban.ru/show*
 // @match		*://fastpic.ru/view*
-// @match		http://www.pixhost.org/show*
-// @match		http://*.picpicture.com/share.php?id=*
+// @match		http://pixhost.org/show/*
+// @match		http://*.picpicture.com/image/*
 // @match		http://*.pic5you.ru/*/*/
 // @match		http://*.tinypic.com/view*
 // @match		http://radical-foto.ru/*
@@ -844,6 +846,7 @@ function makeworld()
 	case "gallerycloud.net":
 	case "tryimg.com":
 	case "fsfiles.org":
+	case "picpicture.com":
 		//chevereto 3.x
 		i = document.head.querySelector('link[rel="image_src"]');
 		if(i)
@@ -1045,7 +1048,6 @@ function makeworld()
 		i = q('img[src*="/b/"]');
 		break;
 	case "euro-pic.eu":
-	case "picpicture.com":
 	case "picfox.org":
 	case "freeimage.us":
 	case "xxx.freeimage.us":
