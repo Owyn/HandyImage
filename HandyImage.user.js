@@ -66,7 +66,7 @@
 // @match		http://*.imgcandy.net/img*
 // @match		http://*.imagefolks.com/img*
 // @match		http://*.pzy.be/v*
-// @match		http://www.turboimagehost.com/p*
+// @match		https://www.turboimagehost.com/p*
 // @match		http://*.subirimagenes.com/*.html
 // @match		http://*.screenlist.ru/details.php?image_id=*
 // @match		http://qrrro.com/images*
@@ -84,6 +84,9 @@
 // @match		http://www.imagesnake.com/show*
 // @match		http://www.imagesnake.com/img*
 // @match		http://www.imagesnake.com/view*
+// @match		http://www.imagesnake.org/show*
+// @match		http://www.imagesnake.org/img*
+// @match		http://www.imagesnake.org/view*
 // @match		http://www.freebunker.com/show*
 // @match		http://www.freebunker.com/img*
 // @match		http://www.freebunker.com/view*
@@ -1002,6 +1005,7 @@ function makeworld()
 		}
 		break;
 	case "imagesnake.com":
+	case "imagesnake.org":
 	case "freebunker.com":
 	case "imagefruit.com":
 	case "imagestime.com":
@@ -1880,6 +1884,7 @@ function makeworld()
 	case "extraimago.com":
 	case "ftop.ru":
 	case "porncomix.info":
+		//Chevereto 2.x
 		i = q('img[src*="' + iurl + '/images/"]');
 		break;
 	case "shareimages.com":
