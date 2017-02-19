@@ -797,18 +797,17 @@ function makeworld()
 		if(document.body){i=1;cfg();}break;
 	case "simplest-image-hosting.net":
 	case "hostimage.ru":
-	case "imagebin.ca":
 	case "imgchili.net":
 	case "adultimages.xyz":
 		i = q('img');
-		if(i)
-		{
-			i.src = i.src.replace('/w800', ''); //imagebin.ca
-		}	
 		break;
 	case "myceleb.net":
 	case "depic.me":		
 		i = q('img[id]');
+		break;
+	case "imagebin.ca":
+		i = q('a img');
+		if(i){i.src = i.parentNode.href;}
 		break;
 	case "savepic.org":
 	case "savepic.ru":
@@ -1571,16 +1570,6 @@ function makeworld()
 			i.click();
 			break;
 		}
-	case "imgtaxi.com":
-		j = true;
-		i = q("a.overlay_ad_link");
-		if(i)
-		{
-			i.click();
-			break;
-		}
-		i = q('img[src*="' + iurl + '/images/"]');
-		break;	
 	case "imghit.com":
 		i = q('img[alt="image"]');
 		break;
@@ -1832,6 +1821,7 @@ function makeworld()
 			break;
 		}
 	case "imgdrive.net":
+	case "imgtaxi.com":
 		j = true;
 		i = q("a.overlay_ad_link");
 		if(i)
