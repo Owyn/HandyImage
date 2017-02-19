@@ -617,6 +617,9 @@
 // @match		*://*.ninjaimages.com/*.html
 // @match		*://*.imgprime.com/img*
 // @match		http://*.imgmaze.com/*.php
+// @match		http://*.piccash.net/*/*/
+// @exclude		http://piccash.net/cabinets/*
+// @exclude		http://www.piccash.net/cabinets/*
 // ==/UserScript==
 
 if (typeof unsafeWindow === "undefined")
@@ -1091,6 +1094,7 @@ function makeworld()
 	case "payforpic.ru":
 	case "freshpics.ru":
 	case "picclick.ru":
+	case "piccash.net":
 		i = q('img[src*="thumb"]');
 		if(i){i.src = i.src.replace('-thumb', '');i.src = i.src.replace('img_thumb', 'img_full');i.src = i.src.replace('_thumb', '');}
 		break;
