@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name		Handy Image
-// @version		2017.02.16
+// @version		2017.02.19
 // @author		Owyn
 // @contributor	ubless607, bitst0rm
 // @namespace	handyimage
@@ -1577,6 +1577,8 @@ function makeworld()
 			i.click();
 			break;
 		}
+		i = q('img[src*="' + iurl + '/images/"]');
+		break;	
 	case "imghit.com":
 		i = q('img[alt="image"]');
 		break;
