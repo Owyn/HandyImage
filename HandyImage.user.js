@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name		Handy Image
-// @version		2017.02.16
+// @version		2017.02.19
 // @author		Owyn
 // @contributor	ubless607, bitst0rm
 // @namespace	handyimage
@@ -118,7 +118,7 @@
 // @match		http://*.casimages.com/photos/*/*/*
 // @match		http://*.casimages.com/img*
 // @match		http://*.cyberpics.net/p*
-// @match		http://*.vvcap.net/db/*
+// @match		*://vvcap.com/*
 // @match		http://*.freeimage.us/share*
 // @match		http://*.pix-x.net/*/*
 // @match		http://*.shareimages.com/image*
@@ -295,7 +295,7 @@
 // @match		http://*.freeamateurteens.net/view*
 // @match		http://*.fotoshack.us/foto*
 // @match		http://*.image-server.ru/view*
-// @match		http://*.imagebin.ca/v/*
+// @match		https://*.imagebin.ca/v/*
 // @match		http://*.loadpix.de/*.html
 // @match		http://www.public-pic.de/image/show/*
 // @match		http://*.9foto.ru/photo/*
@@ -500,7 +500,6 @@
 // @match		http://picspornfree.me/img-*
 // @match		http://*.pic-you.com/p*
 // @match		http://*.image-bugs.com/*mage/*
-// @match		http://*.pixhst.com/pictures/*
 // @match		http://*.imgdrive.net/img-*
 // @match		http://www.pixiv.net/member_illust.php?mode=medium&illust_id=*
 // @match		http://*.scrin.org/?v=*
@@ -583,7 +582,7 @@
 // @match		https://*.imgzulu.com/img-*
 // @match		http://*.freeimagehostin.com/img-*
 // @match		http://www.mixbase.net/gallery/image.*
-// @match		http://www.adultimages.xyz/*/image*.html
+// @match		https://www.adultimages.xyz/*/image*.html
 // @match		http://*.pic4share.ru/*.html
 // @match		http://*.pic4share.ru/full/
 // @match		http://*.sximg.nl/img-*
@@ -796,17 +795,19 @@ function makeworld()
 	{
 	case "gist.github.com":
 		if(document.body){i=1;cfg();}break;
-	case "vvcap.net":
 	case "simplest-image-hosting.net":
 	case "hostimage.ru":
 	case "imagebin.ca":
 	case "imgchili.net":
-	case "pixhst.com":
 	case "adultimages.xyz":
-	case "depic.me":
 		i = q('img');
+		if(i)
+		{
+			i.src = i.src.replace('/w800', ''); //imagebin.ca
+		}	
 		break;
 	case "myceleb.net":
+	case "depic.me":		
 		i = q('img[id]');
 		break;
 	case "savepic.org":
@@ -1387,6 +1388,7 @@ function makeworld()
 	case "ifotos.pl":
 	case "subeimagenes.com":
 	case "lostpix.com":
+	case "vvcap.com":		
 		i = q('img[src*="/img/"]');
 		break;
 	case "imagenetz.de":
@@ -1577,6 +1579,8 @@ function makeworld()
 			i.click();
 			break;
 		}
+		i = q('img[src*="' + iurl + '/images/"]');
+		break;	
 	case "imghit.com":
 		i = q('img[alt="image"]');
 		break;
