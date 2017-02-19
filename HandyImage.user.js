@@ -1021,7 +1021,6 @@ function makeworld()
 	case "imgshots.com":
 		i = q('img#img_obj');
 		break;
-	case "pimpandhost.com":
 	case "fastpic.ru":
 	case "abload.de":
 		i = document.body.querySelectorAll('img#image');
@@ -1132,6 +1131,17 @@ function makeworld()
 	case "picness.com":
 		i = q('a[href*="original"]');
 		if(i){i.src = i.href;}
+		break;
+	case "pimpandhost.com":
+		i = q('a[href*="original"]');
+		if(i)
+		{
+			i.click();
+		}
+		else
+		{
+			i = q('img.original');
+		}
 		break;
 	case "picsee.net":
 		i = q('a[href*="/upload"]');
