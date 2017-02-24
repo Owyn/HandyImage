@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name		Handy Image
-// @version		2017.02.19
+// @version		2017.02.24
 // @author		Owyn
 // @contributor	ubless607, bitst0rm
 // @namespace	handyimage
@@ -2250,6 +2250,20 @@ function onkeydown (b)
 {
 	var a = (window.event) ? b.keyCode : b.which;
 
+	if(b.ctrlKey && a == KeyEvent.DOM_VK_S)
+	{
+		cancelEvent(b);
+		if(i)
+		{
+			a = protected_createElement("a");
+			a.href = i.src;
+			a.download = ""; // HTML5
+			document.body.appendChild(a);
+			a.click();
+			document.body.removeChild(a);
+		}
+		return;
+	}
 	if (b.altKey || b.metaKey || (b.ctrlKey && a != KeyEvent.DOM_VK_SPACE && a != KeyEvent.DOM_VK_F5 && a != KeyEvent.DOM_VK_R))
 	{
 		return;
