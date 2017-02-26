@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name		Handy Image
-// @version		2017.02.24
+// @version		2017.02.26
 // @author		Owyn
 // @contributor	ubless607, bitst0rm
 // @namespace	handyimage
@@ -490,7 +490,7 @@
 // @match		http://www.zerochan.net/*
 // @match		http://*.imgrock.net/*.php
 // @match		http://imgzap.com/view*
-// @match		http://*.funimg.net/img-*
+// @match		http://*.funimg.net/img*
 // @match		http://*.olivepix.com/view/*
 // @match		http://*.ocaload.com/img-*
 // @match		http://*.imghit.com/img-*
@@ -1465,6 +1465,7 @@ function makeworld()
 			break;
 		}
 	case "imagesouls.net":
+	case "funimg.net":
 		if(find_text_in_scripts('linkid="', '"', false))
 		{
 			window.location.href = i.src;
@@ -1492,7 +1493,6 @@ function makeworld()
 	case "img.yt":
 	case "xxxscreens.com":
 	case "i.sxpics.nl":
-	case "funimg.net":
 	case "imageon.org":
 	case "nimplus.com":
 	case "imag.nimplus.com":
