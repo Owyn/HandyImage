@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name		Handy Image
-// @version		2017.02.26
+// @version		2017.03.12
 // @author		Owyn
 // @contributor	ubless607, bitst0rm
 // @namespace	handyimage
@@ -2028,7 +2028,7 @@ function makeworld()
 			}
 		}
 		var ext_list = ['webm', 'mp4', 'ogg'];
-		if (ext_list.indexOf(i.src.split('.').pop().toLowerCase()) >= 0)
+		if (ext_list.indexOf(i.src.split('.').pop().split('?')[0].toLowerCase()) >= 0)
 		{
 			console.warn("What we found is not an image");
 			return false;
