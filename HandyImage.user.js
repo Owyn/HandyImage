@@ -505,6 +505,7 @@
 // @match		http://*.scrin.org/?v=*
 // @match		http://*.thumbnailus.com/img-*
 // @match		http://*.nimplus.com/img-*
+// @match		http://imgwo.com/img-*
 // @match		http://www.imgtaxi.com/img-*
 // @match		http://*.imgstudio.org/img-*
 // @match		http://goimge.com/img-*
@@ -1496,6 +1497,7 @@ function makeworld()
 	case "imageon.org":
 	case "nimplus.com":
 	case "imag.nimplus.com":
+	case "imgwo.com":
 	case "newimagepost.com":
 	case "imgease.re":
 	case "fapat.me":
