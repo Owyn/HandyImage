@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name		Handy Image
-// @version		2017.03.18
+// @version		2017.03.18.17
 // @author		Owyn
 // @contributor	ubless607, bitst0rm
 // @namespace	handyimage
@@ -534,7 +534,7 @@
 // @match		http://*.extraimago.com/image/*
 // @match		http://*.fireimg.cc/img-*
 // @match		http://www.pornimagex.com/image/*
-// @match		http://*.imgboom.net/img-*
+// @match		http://*.imgboom.net/*
 // @match		http://*.img24.org/*.html
 // @match		http://*.pic-maniac.com/*
 // @match		https://*.instagram.com/p/*
@@ -1503,7 +1503,6 @@ function makeworld()
 	case "fapat.me":
 	case "imgbe.com":
 	case "fireimg.cc":
-	case "imgboom.net":
 	case "rapidimg.net":
 	case "imgtornado.com":
 	case "erimge.com":
@@ -1544,6 +1543,12 @@ function makeworld()
 	case "imgcat.pw":
 		i = q('img[src*="' + iurl + '/upload/"]');
 		break;
+	case "imgboom.net":
+		if(window.location.href.indexOf("img-") != -1)
+		{
+			window.location.href = "http://imgboom.net/view.php";
+			break;
+		}	
 	case "thumbnailus.com":
 		i = q('input[type="submit"]');
 		dp=true;
