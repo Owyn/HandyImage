@@ -620,6 +620,7 @@
 // @match		http://*.piccash.net/*/*/
 // @exclude		http://piccash.net/cabinets/*
 // @exclude		http://www.piccash.net/cabinets/*
+// @match		http://imgwo.com/img-*
 // @match		http://luxpic.ru/images/*.html
 // ==/UserScript==
 
@@ -1514,6 +1515,7 @@ function makeworld()
 	case "freephotohostin.com":
 	case "imgpics.nl":
 	case "imagepics.xyz":
+	case "imgwo.com":
 		dp=true;
 		var f = document.getElementsByTagName("input");
 		if(f.length)
