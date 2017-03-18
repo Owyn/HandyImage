@@ -619,6 +619,7 @@
 // @match		*://*.imgprime.com/img*
 // @match		http://*.imgmaze.com/*.php
 // @match		http://*.piccash.net/*/*/
+// @match		http://luxpic.ru/images/*.html
 // @exclude		http://piccash.net/cabinets/*
 // @exclude		http://www.piccash.net/cabinets/*
 // ==/UserScript==
@@ -1327,7 +1328,13 @@ function makeworld()
 		{
 			window.location.href = window.location.href.replace("img-","img3-");
 			break;
-		}	
+		}
+	case "luxpic.ru":		
+		if(window.location.href.indexOf(".html") != -1)		
+		{			
+			window.location.href = window.location.href.replace(".html","");
+			break;		
+		}				
 	case "freeimagehosting.net":
 	case "uploadhouse.com":
 	case "fotos-hochladen.net":
