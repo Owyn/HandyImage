@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name		Handy Image
-// @version		2017.03.12
+// @version		2017.03.18
 // @author		Owyn
 // @contributor	ubless607, bitst0rm
 // @namespace	handyimage
@@ -505,7 +505,6 @@
 // @match		http://*.scrin.org/?v=*
 // @match		http://*.thumbnailus.com/img-*
 // @match		http://*.nimplus.com/img-*
-// @match		http://imgwo.com/img-*
 // @match		http://www.imgtaxi.com/img-*
 // @match		http://*.imgstudio.org/img-*
 // @match		http://goimge.com/img-*
@@ -621,6 +620,7 @@
 // @match		http://*.piccash.net/*/*/
 // @exclude		http://piccash.net/cabinets/*
 // @exclude		http://www.piccash.net/cabinets/*
+// @match		http://luxpic.ru/images/*.html
 // ==/UserScript==
 
 if (typeof unsafeWindow === "undefined")
@@ -1497,7 +1497,6 @@ function makeworld()
 	case "imageon.org":
 	case "nimplus.com":
 	case "imag.nimplus.com":
-	case "imgwo.com":
 	case "newimagepost.com":
 	case "imgease.re":
 	case "fapat.me":
@@ -1894,6 +1893,7 @@ function makeworld()
 	case "extraimago.com":
 	case "ftop.ru":
 	case "porncomix.info":
+	case "luxpic.ru":
 		//Chevereto 2.x
 		i = q('img[src*="' + iurl + '/images/"]');
 		break;
