@@ -63,6 +63,8 @@
 // @match		http://imgdino.com/view*
 // @match		http://*.pic-money.ru/*.html
 // @match		http://*.pic-money.ru/full/
+// @match		http://*.pic-images.ru/*.html
+// @match		http://*.pic-images.ru/full/
 // @match		http://*.imgcandy.net/img*
 // @match		http://*.imagefolks.com/img*
 // @match		http://*.pzy.be/v*
@@ -1307,7 +1309,8 @@ function makeworld()
 	case "img24.org":
 	case "svetmonet.ru":
 	case "pic4share.ru":
-		var f = document.getElementsByTagName("button");
+	case "pic-images.ru":		
+	var f = document.getElementsByTagName("button");
 		if(f.length)
 		{
 			f[0].click();
