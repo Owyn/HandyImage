@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name		Handy Image
-// @version		2017.03.18.17
+// @version		2017.03.19
 // @author		Owyn
 // @contributor	ubless607, bitst0rm
 // @namespace	handyimage
@@ -479,8 +479,8 @@
 // @match		http://*.deviantart.com/art/*
 // @match		http://*.myceleb.net/u/v/?q=*
 // @match		http://*.imageblinks.com/img-*
-// @match		http://*.gelbooru.com/index.php?page=post&s=view&id=*
-// @match		http://*.youhate.us/index.php?page=post&s=view&id=*
+// @match		*://*.gelbooru.com/index.php?page=post&s=view&id=*
+// @match		*://*.youhate.us/index.php?page=post&s=view&id=*
 // @match		http://danbooru.donmai.us/posts/*
 // @match		http://konachan.com/post/show/*
 // @match		http://konachan.net/post/show/*
@@ -622,6 +622,8 @@
 // @exclude		http://www.piccash.net/cabinets/*
 // @match		http://imgwo.com/img-*
 // @match		http://luxpic.ru/images/*.html
+// @match		http://*.pic-images.ru/full/
+// @match		http://*.pic-images.ru/*.html
 // ==/UserScript==
 
 if (typeof unsafeWindow === "undefined")
@@ -1157,6 +1159,11 @@ function makeworld()
 		i = q('a[href*="/data/"]');
 		if(i){i.src = i.href;}
 		break;
+	case "gelbooru.com":
+	case "youhate.us":
+		i = q('a[href*="//images/"]');
+		if(i){i.src = i.href;}
+		break;
 	case "imagehost.eu":
 	case "fappic.com":
 		i = q('a#image');
@@ -1208,8 +1215,6 @@ function makeworld()
 	case "myuploadedimages.com":
 	case "multihoster.saxonia-fighter.de":
 	case "imgdone.com":
-	case "gelbooru.com":
-	case "youhate.us":
 	case "greenpiccs.com":
 	case "balkanelite.org":
 		i = q('a[href*="images/"]');
@@ -1307,6 +1312,7 @@ function makeworld()
 	case "img24.org":
 	case "svetmonet.ru":
 	case "pic4share.ru":
+	case "pic-images.ru":
 		var f = document.getElementsByTagName("button");
 		if(f.length)
 		{
