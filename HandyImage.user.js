@@ -1161,6 +1161,7 @@ function makeworld()
 		break;
 	case "gelbooru.com":
 	case "youhate.us":
+		j = true;
 		i = q('a[href*="//images/"]');
 		if(i){i.src = i.href;}
 		break;
