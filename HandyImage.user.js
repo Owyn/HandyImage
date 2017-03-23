@@ -624,6 +624,8 @@
 // @match		http://luxpic.ru/images/*.html
 // @match		http://*.pic-images.ru/full/
 // @match		http://*.pic-images.ru/*.html
+// @match		http://*.imgspic.ru/full/
+// @match		http://*.imgspic.ru/*.html
 // ==/UserScript==
 
 if (typeof unsafeWindow === "undefined")
@@ -1314,6 +1316,7 @@ function makeworld()
 	case "svetmonet.ru":
 	case "pic4share.ru":
 	case "pic-images.ru":
+	case "imgspic.ru":
 		var f = document.getElementsByTagName("button");
 		if(f.length)
 		{
