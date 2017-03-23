@@ -626,6 +626,8 @@
 // @match		http://*.pic-images.ru/*.html
 // @match		http://*.imgbun.ru/full/
 // @match		http://*.imgbun.ru/*.html
+// @match		http://*.imgspic.ru/full/
+// @match		http://*.imgspic.ru/*.html
 // ==/UserScript==
 
 if (typeof unsafeWindow === "undefined")
@@ -1317,7 +1319,8 @@ function makeworld()
 	case "pic4share.ru":
 	case "pic-images.ru":
 	case "imgbun.ru":		
-var f = document.getElementsByTagName("button");
+	case "imgspic.ru":
+		var f = document.getElementsByTagName("button");
 		if(f.length)
 		{
 			f[0].click();
