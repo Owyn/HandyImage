@@ -628,7 +628,8 @@
 // @match		http://*.imgbun.ru/*.html
 // @match		http://*.imgspic.ru/full/
 // @match		http://*.imgspic.ru/*.html
-// @match		http://*.imgleveret.com/img-*
+// @match		http://imgleveret.com/img-*
+// @match		http://porn84.org/img-*
 // ==/UserScript==
 
 if (typeof unsafeWindow === "undefined")
@@ -1565,6 +1566,7 @@ function makeworld()
 		}	
 	case "thumbnailus.com":
 	case "imgleveret.com":
+	case "porn84.org":
 		i = q('input[type="submit"]');
 		dp=true;
 		if(i) 
