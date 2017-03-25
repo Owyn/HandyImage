@@ -628,6 +628,7 @@
 // @match		http://*.imgbun.ru/*.html
 // @match		http://*.imgspic.ru/full/
 // @match		http://*.imgspic.ru/*.html
+// @match		http://*.imgleveret.com/img-*
 // ==/UserScript==
 
 if (typeof unsafeWindow === "undefined")
@@ -1563,6 +1564,7 @@ function makeworld()
 			break;
 		}	
 	case "thumbnailus.com":
+	case "imgleveret.com":
 		i = q('input[type="submit"]');
 		dp=true;
 		if(i) 
