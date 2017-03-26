@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name		Handy Image
-// @version		2017.03.19
+// @version		2017.03.26
 // @author		Owyn
 // @contributor	ubless607, bitst0rm
 // @namespace	handyimage
@@ -536,6 +536,7 @@
 // @match		http://www.pornimagex.com/image/*
 // @match		http://*.imgboom.net/*
 // @match		http://*.img24.org/*.html
+// @match		http://*.img24.org/full/
 // @match		http://*.pic-maniac.com/*
 // @match		https://*.instagram.com/p/*
 // @exclude		https://instagram.com/p/*/embed/*
@@ -630,6 +631,9 @@
 // @match		http://*.imgspic.ru/*.html
 // @match		http://imgleveret.com/img-*
 // @match		http://porn84.org/img-*
+// @match		http://*.jpgstore.ru/full/
+// @match		http://*.jpgstore.ru/*.html
+// @match		https://*.ima.gy/i/*
 // ==/UserScript==
 
 if (typeof unsafeWindow === "undefined")
@@ -1320,13 +1324,13 @@ function makeworld()
 	case "svetmonet.ru":
 	case "pic4share.ru":
 	case "pic-images.ru":
-	case "imgbun.ru":		
+	case "imgbun.ru":
 	case "imgspic.ru":
+	case "jpgstore.ru":
 		var f = document.getElementsByTagName("button");
 		if(f.length)
 		{
-			f[0].click();
-			break;
+			f[f.length-1].click();
 		}
 		dp=true;
 		i = q('img[src*="/pic.jpeg"]');
@@ -1530,6 +1534,7 @@ function makeworld()
 	case "imgpics.nl":
 	case "imagepics.xyz":
 	case "imgwo.com":
+	case "ima.gy":
 		dp=true;
 		var f = document.getElementsByTagName("input");
 		if(f.length)
