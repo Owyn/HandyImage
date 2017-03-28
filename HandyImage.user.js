@@ -634,6 +634,8 @@
 // @match		http://*.jpgstore.ru/full/
 // @match		http://*.jpgstore.ru/*.html
 // @match		https://*.ima.gy/i/*
+// @match		http://moonpix.ru/full/
+// @match		http://moonpix.ru/*.html
 // ==/UserScript==
 
 if (typeof unsafeWindow === "undefined")
@@ -1327,6 +1329,7 @@ function makeworld()
 	case "imgbun.ru":
 	case "imgspic.ru":
 	case "jpgstore.ru":
+	case "moonpix.ru":
 		var f = document.getElementsByTagName("button");
 		if(f.length)
 		{
