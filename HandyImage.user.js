@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name		Handy Image
-// @version		2017.03.26
+// @version		2017.03.27
 // @author		Owyn
 // @contributor	ubless607, bitst0rm
 // @namespace	handyimage
@@ -636,6 +636,7 @@
 // @match		https://*.ima.gy/i/*
 // @match		http://moonpix.ru/full/
 // @match		http://moonpix.ru/*.html
+// @match		http://*.0img.ws/*
 // ==/UserScript==
 
 if (typeof unsafeWindow === "undefined")
@@ -1404,6 +1405,7 @@ function makeworld()
 	case "imgtown.net":
 	case "imgview.net":
 	case "imgmaze.com":
+	case "0img.ws":
 		j = true;
 		dp=true;
 		var f = document.querySelectorAll("input[type='submit']")
