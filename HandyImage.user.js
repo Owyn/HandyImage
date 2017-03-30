@@ -639,6 +639,8 @@
 // @match		http://*.0img.ws/*
 // @match		http://picpower.ru/full/
 // @match		http://picpower.ru/*.html
+// @match		http://piccloud.ru/full/
+// @match		http://piccloud.ru/*.html
 // ==/UserScript==
 
 if (typeof unsafeWindow === "undefined")
@@ -1334,6 +1336,7 @@ function makeworld()
 	case "jpgstore.ru":
 	case "moonpix.ru":
 	case "picpower.ru":
+	case "piccloud.ru":
 		var f = document.getElementsByTagName("button");
 		if(f.length)
 		{
