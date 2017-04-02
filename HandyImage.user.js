@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name		Handy Image
-// @version		2017.03.27
+// @version		2017.04.02
 // @author		Owyn
 // @contributor	ubless607, bitst0rm
 // @namespace	handyimage
@@ -641,6 +641,7 @@
 // @match		http://picpower.ru/*.html
 // @match		http://piccloud.ru/full/
 // @match		http://piccloud.ru/*.html
+// @match		http://imgbase.ru/*/*/
 // ==/UserScript==
 
 if (typeof unsafeWindow === "undefined")
@@ -1116,6 +1117,7 @@ function makeworld()
 	case "freshpics.ru":
 	case "picclick.ru":
 	case "piccash.net":
+	case "imgbase.ru":
 		i = q('img[src*="thumb"]');
 		if(i){i.src = i.src.replace('-thumb', '');i.src = i.src.replace('img_thumb', 'img_full');i.src = i.src.replace('_thumb', '');}
 		break;
