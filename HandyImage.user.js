@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name		Handy Image
-// @version		2017.04.02
+// @version		2017.04.05
 // @author		Owyn
 // @contributor	ubless607, bitst0rm
 // @namespace	handyimage
@@ -850,11 +850,7 @@ function makeworld()
 		i = q('img.preview-image');
 		if(i)
 		{
-			i = q('a[href*="?dl=1"]');
-			if(i)
-			{
-				i.src = i.href;
-			}
+			i.src = i.src.replace(/(size_mode)=\d+/, '$1=5');
 		}
 		break;
 	case "img.3ezy.net":
