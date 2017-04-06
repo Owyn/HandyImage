@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name		Handy Image
-// @version		2017.04.05
+// @version		2017.04.06
 // @author		Owyn
 // @contributor	ubless607, bitst0rm
 // @namespace	handyimage
@@ -1418,7 +1418,7 @@ function makeworld()
 			var n;
 			for(n=f.length-1; n >= 0; n--)
 			{
-				if(f[n].offsetWidth != 0 && f[n].value.indexOf("eply") == -1 && f[n].value.indexOf("Log") == -1)
+				if(window.getComputedStyle(f[n]).visibility != "hidden" && f[n].offsetWidth != 0 && f[n].value.indexOf("eply") == -1 && f[n].value.indexOf("Log") == -1)
 				{
 					f[n].removeAttribute("disabled");
 					f[n].click();
