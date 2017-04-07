@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name		Handy Image
-// @version		2017.04.06
+// @version		2017.04.07
 // @author		Owyn
 // @contributor	ubless607, bitst0rm
 // @namespace	handyimage
@@ -152,7 +152,6 @@
 // @match		http://*.imagenpic.com/*
 // @match		http://*.stuffed.ru/images*
 // @match		http://*.wstaw.org/w/*
-// @match		http://pikucha.ru/*
 // @match		http://www.imagesocket.com/photos*
 // @match		http://www.imagesocket.com/social*
 // @match		http://imageban.net/show*
@@ -642,6 +641,9 @@
 // @match		http://piccloud.ru/full/
 // @match		http://piccloud.ru/*.html
 // @match		http://imgbase.ru/*/*/
+// @match		http://*.sexybabepics.net/img-*.html
+// @match		http://*.imagecrest.com/verify/*
+// @match		http://*.imagecrest.com/view/*
 // ==/UserScript==
 
 if (typeof unsafeWindow === "undefined")
@@ -953,7 +955,7 @@ function makeworld()
 		}
 		break;
 	case "ameblo.jp":
-		j=true;
+		j = true;
 		i = q('img#imgItem');
 		break;
 	case "instagram.com":
@@ -1050,9 +1052,14 @@ function makeworld()
 			i = i[i.length-1];
 		}
 		break;
-	case "pikucha.ru":
+	case "imagecrest.com":
+		if(window.location.href.indexOf("/verify/") != -1)
+		{
+			unsafeWindow.location.href = window.location.href.replace("/verify/","/view/");
+			i=1;
+			break;
+		}
 		i = q('img#image');
-		j = true;
 		break;
 	case "bayimg.com":
 		i = q('img#mainImage');
@@ -1570,6 +1577,7 @@ function makeworld()
 	case "imgcredit.xyz":
 	case "dimtus.com":
 	case "imgcat.pw":
+	case "sexybabepics.net":
 		i = q('img[src*="' + iurl + '/upload/"]');
 		break;
 	case "imgboom.net":
