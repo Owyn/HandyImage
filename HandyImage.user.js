@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name		Handy Image
-// @version		2017.04.07
+// @version		2017.04.09
 // @author		Owyn
 // @contributor	ubless607, bitst0rm
 // @namespace	handyimage
@@ -644,6 +644,8 @@
 // @match		http://*.sexybabepics.net/img-*.html
 // @match		http://*.imagecrest.com/verify/*
 // @match		http://*.imagecrest.com/view/*
+// @match		https://*.picz.site/img-*.html
+// @match		http://*.allxpix.com/img-*.html
 // ==/UserScript==
 
 if (typeof unsafeWindow === "undefined")
@@ -1551,6 +1553,8 @@ function makeworld()
 	case "imagepics.xyz":
 	case "imgwo.com":
 	case "ima.gy":
+	case "picz.site":
+	case "allxpix.com":
 		dp=true;
 		var f = document.getElementsByTagName("input");
 		if(f.length)
