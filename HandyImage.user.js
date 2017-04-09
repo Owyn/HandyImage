@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name		Handy Image
-// @version		2017.04.09
+// @version		2017.04.10
 // @author		Owyn
 // @contributor	ubless607, bitst0rm
 // @namespace	handyimage
@@ -614,6 +614,7 @@
 // @match		*://*.imagesouls.net/img*
 // @match		*://postto.me/*
 // @match		http://*.imgskull.xyz/image/*
+// @match		http://*.imgskull.com/image/*
 // @match		*://*.ninjaimages.com/*.html
 // @match		*://*.imgprime.com/img*
 // @match		http://*.imgmaze.com/*.php
@@ -867,6 +868,7 @@ function makeworld()
 	case "img3x.com":
 	case "lostpic.net":
 	case "imgskull.xyz":
+	case "imgskull.com":
 	case "2i.sk":
 	case "2i.cz":
 	case "deffe.com":
