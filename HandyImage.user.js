@@ -649,6 +649,8 @@
 // @match		http://*.allxpix.com/img-*.html
 // @match		http://pixxss.ru/full/
 // @match		http://pixxss.ru/*.html
+// @match		http://pixxsees.ru/full/
+// @match		http://pixxsees.ru/*.html
 // ==/UserScript==
 
 if (typeof unsafeWindow === "undefined")
@@ -1349,6 +1351,7 @@ function makeworld()
 	case "picpower.ru":
 	case "piccloud.ru":
 	case "pixxss.ru":
+	case "pixxsees.ru":
 		var f = document.getElementsByTagName("button");
 		if(f.length)
 		{
