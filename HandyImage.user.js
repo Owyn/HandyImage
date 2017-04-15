@@ -647,6 +647,8 @@
 // @match		http://*.imagecrest.com/view/*
 // @match		https://*.picz.site/img-*.html
 // @match		http://*.allxpix.com/img-*.html
+// @match		http://pixxss.ru/full/
+// @match		http://pixxss.ru/*.html
 // ==/UserScript==
 
 if (typeof unsafeWindow === "undefined")
@@ -1346,6 +1348,7 @@ function makeworld()
 	case "moonpix.ru":
 	case "picpower.ru":
 	case "piccloud.ru":
+	case "pixxss.ru":
 		var f = document.getElementsByTagName("button");
 		if(f.length)
 		{
