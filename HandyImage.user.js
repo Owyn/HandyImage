@@ -651,6 +651,7 @@
 // @match		http://pixxss.ru/*.html
 // @match		http://pixxsees.ru/full/
 // @match		http://pixxsees.ru/*.html
+// @match		http://imgblank.com/img-*.html
 // ==/UserScript==
 
 if (typeof unsafeWindow === "undefined")
@@ -1563,6 +1564,7 @@ function makeworld()
 	case "ima.gy":
 	case "picz.site":
 	case "allxpix.com":
+	case "imgblank.com":			
 		dp=true;
 		var f = document.getElementsByTagName("input");
 		if(f.length)
