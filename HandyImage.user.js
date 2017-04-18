@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name		Handy Image
-// @version		2017.04.10
+// @version		2017.04.18
 // @author		Owyn
 // @contributor	ubless607, bitst0rm
 // @namespace	handyimage
@@ -500,7 +500,7 @@
 // @match		http://*.pic-you.com/p*
 // @match		http://*.image-bugs.com/*mage/*
 // @match		http://*.imgdrive.net/img-*
-// @match		http://www.pixiv.net/member_illust.php?mode=medium&illust_id=*
+// @match		https://www.pixiv.net/member_illust.php?mode=medium&illust_id=*
 // @match		http://*.scrin.org/?v=*
 // @match		http://*.thumbnailus.com/img-*
 // @match		http://*.nimplus.com/img-*
