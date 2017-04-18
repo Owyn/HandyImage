@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name		Handy Image
-// @version		2017.04.18
+// @version		2017.04.19
 // @author		Owyn
 // @contributor	ubless607, bitst0rm
 // @namespace	handyimage
@@ -42,8 +42,8 @@
 // @match		http://*.pimpandhost.com/image*
 // @match		http://*.pixroute.com/*.html
 // @match		http://*.picforall.ru/*/*/
-// @match		http://*.imagecurl.com/view*
-// @match		http://*.imagecurl.org/view*
+// @match		*://*.imagecurl.com/view*
+// @match		*://*.imagecurl.org/view*
 // @match		http://*.euro-pic.eu/*share*
 // @match		http://*.xxxhost.me/view*
 // @match		http://*.imadul.com/?*
