@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name		Handy Image
-// @version		2017.04.19
+// @version		2017.04.20
 // @author		Owyn
 // @contributor	ubless607, bitst0rm
 // @namespace	handyimage
@@ -969,7 +969,7 @@ function makeworld()
 		break;
 	case "instagram.com":
 		j = true;
-		find_text_in_scripts('display_src": "', '"');
+		find_text_in_scripts('display_url": "', '"');
 		if(i)
 		{
 			if(!find_text_in_scripts('is_video": true', ','))
