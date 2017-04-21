@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name		Handy Image
-// @version		2017.04.20
+// @version		2017.04.21
 // @author		Owyn
 // @contributor	ubless607, bitst0rm
 // @namespace	handyimage
@@ -652,6 +652,7 @@
 // @match		http://pixxsees.ru/full/
 // @match		http://pixxsees.ru/*.html
 // @match		http://imgblank.com/img-*.html
+// @match		http://imgtrex.com/*/*
 // ==/UserScript==
 
 if (typeof unsafeWindow === "undefined")
@@ -1449,7 +1450,8 @@ function makeworld()
 	case "ifotos.pl":
 	case "subeimagenes.com":
 	case "lostpix.com":
-	case "vvcap.com":		
+	case "vvcap.com":
+	case "imgtrex.com":
 		i = q('img[src*="/img/"]');
 		break;
 	case "imagenetz.de":
