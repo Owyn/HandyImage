@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name		Handy Image
-// @version		2017.04.21
+// @version		2017.04.24
 // @author		Owyn
 // @contributor	ubless607, bitst0rm
 // @namespace	handyimage
@@ -653,6 +653,7 @@
 // @match		http://pixxsees.ru/*.html
 // @match		http://imgblank.com/img-*.html
 // @match		http://imgtrex.com/*/*
+// @match		http://imgwallet.com/img-*.html
 // ==/UserScript==
 
 if (typeof unsafeWindow === "undefined")
@@ -1899,6 +1900,7 @@ function makeworld()
 		}
 	case "imgdrive.net":
 	case "imgtaxi.com":
+	case "imgwallet.com":
 		j = true;
 		i = q("a.overlay_ad_link");
 		if(i)
