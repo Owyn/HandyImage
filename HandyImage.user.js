@@ -654,6 +654,8 @@
 // @match		http://imgblank.com/img-*.html
 // @match		http://imgtrex.com/*/*
 // @match		http://imgwallet.com/img-*.html
+// @match		http://2picsun.ru/full/
+// @match		http://2picsun.ru/*.html
 // ==/UserScript==
 
 if (typeof unsafeWindow === "undefined")
@@ -1355,6 +1357,7 @@ function makeworld()
 	case "piccloud.ru":
 	case "pixxss.ru":
 	case "pixxsees.ru":
+	case "2picsun.ru":
 		var f = document.getElementsByTagName("button");
 		if(f.length)
 		{
