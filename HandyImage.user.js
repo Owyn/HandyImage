@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name		Handy Image
-// @version		2017.04.24
+// @version		2017.05.06
 // @author		Owyn
 // @contributor	ubless607, bitst0rm
 // @namespace	handyimage
@@ -524,7 +524,7 @@
 // @match		https://www.dropbox.com/s/*/*
 // @match		http://imgor.net/img-*
 // @match		http://*.imagedax.net/*/*.html
-// @match		http://*.imgmonkey.com/*/*.html
+// @match		https://*.imgmonkey.com/*/*.html
 // @match		http://*.fapat.me/img-*
 // @match		http://photo.weibo.com/*/large/photo_id/*
 // @match		http://*.crazyimg.com/images/*.html
