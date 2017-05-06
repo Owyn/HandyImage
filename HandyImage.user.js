@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name		Handy Image
-// @version		2017.05.06
+// @version		2017.05.07
 // @author		Owyn
 // @contributor	ubless607, bitst0rm
 // @namespace	handyimage
@@ -656,6 +656,7 @@
 // @match		http://imgwallet.com/img-*.html
 // @match		http://2picsun.ru/full/
 // @match		http://2picsun.ru/*.html
+// @match		http://picpie.org/image/*
 // ==/UserScript==
 
 if (typeof unsafeWindow === "undefined")
@@ -886,6 +887,7 @@ function makeworld()
 	case "tryimg.com":
 	case "fsfiles.org":
 	case "picpicture.com":
+	case "picpie.org":
 		//chevereto 3.x
 		i = document.head.querySelector('link[rel="image_src"]');
 		if(i)
