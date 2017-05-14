@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name		Handy Image
-// @version		2017.05.07
+// @version		2017.05.14
 // @author		Owyn
 // @contributor	ubless607, bitst0rm
 // @namespace	handyimage
@@ -570,7 +570,7 @@
 // @match		http://*.imguniversal.com/*
 // @match		http://*.imagepearl.com/view/*
 // @match		http://*.tinizo.com/img-*
-// @match		http://*.imgkings.com/img*
+// @match		*://*.imgkings.com/img*
 // @match		http://*.imagerar.com/img*
 // @match		http://*.sendpic.org/view/*
 // @match		http://www.porncomix.info/*/*/
@@ -657,6 +657,7 @@
 // @match		http://2picsun.ru/full/
 // @match		http://2picsun.ru/*.html
 // @match		http://picpie.org/image/*
+// @match		*://*.xeimg.yt/img-*.html
 // ==/UserScript==
 
 if (typeof unsafeWindow === "undefined")
@@ -1572,7 +1573,8 @@ function makeworld()
 	case "ima.gy":
 	case "picz.site":
 	case "allxpix.com":
-	case "imgblank.com":			
+	case "imgblank.com":
+	case "xeimg.yt":
 		dp=true;
 		var f = document.getElementsByTagName("input");
 		if(f.length)
