@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name		Handy Image
-// @version		2017.05.14
+// @version		2017.05.17
 // @author		Owyn
 // @contributor	ubless607, bitst0rm
 // @namespace	handyimage
@@ -658,6 +658,7 @@
 // @match		http://2picsun.ru/*.html
 // @match		http://picpie.org/image/*
 // @match		*://*.xeimg.yt/img-*.html
+// @match		*://*.imagedisco.net/?v=*
 // ==/UserScript==
 
 if (typeof unsafeWindow === "undefined")
@@ -1978,6 +1979,7 @@ function makeworld()
 	case "imgsmile.com":
 	case "imgsay.com":
 	case "0img.net":
+	case "imagedisco.net":
 		//IMGReserve  
 		j = true;
 		dp=true;
