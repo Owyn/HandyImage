@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name		Handy Image
-// @version		2017.05.17
+// @version		2017.05.26
 // @author		Owyn
 // @contributor	ubless607, bitst0rm
 // @namespace	handyimage
@@ -393,8 +393,13 @@
 // @match		http://*.imgdone.com/view*
 // @match		https://*.2i.cz/i/*
 // @match		http://awesomescreenshot.com/*
-// @match		*://*.flickr.com/photos/*/*/
-// @exclude		/^https?://(www\.)?flickr\.com/photos/([^/]+)/(sets/.*|page.*|with.*|favorites.*)?$/
+// @match		https://www.flickr.com/photos/*/*/
+// @exclude		https://www.flickr.com/photos/*/galleries/*
+// @exclude		https://www.flickr.com/photos/sets/*
+// @exclude		https://www.flickr.com/photos/tags/*
+// @exclude		https://www.flickr.com/photos/page*
+// @exclude		https://www.flickr.com/photos/with*
+// @exclude		https://www.flickr.com/photos/favorites*
 // @match		http://www.amateri.cz/g*/*
 // @match		http://*.imgshow.me/*
 // @match		*://*.wikipedia.org/wiki/*:*.jp*
