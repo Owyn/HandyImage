@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name		Handy Image
-// @version		2017.05.26
+// @version		2017.06.01
 // @author		Owyn
 // @contributor	ubless607, bitst0rm
 // @namespace	handyimage
@@ -664,6 +664,7 @@
 // @match		http://picpie.org/image/*
 // @match		*://*.xeimg.yt/img-*.html
 // @match		*://*.imagedisco.net/?v=*
+// @match		http://*.imgmain.com/img-*.html
 // ==/UserScript==
 
 if (typeof unsafeWindow === "undefined")
@@ -1581,6 +1582,7 @@ function makeworld()
 	case "allxpix.com":
 	case "imgblank.com":
 	case "xeimg.yt":
+	case "imgmain.com":
 		dp=true;
 		var f = document.getElementsByTagName("input");
 		if(f.length)
