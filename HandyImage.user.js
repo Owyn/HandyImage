@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name		Handy Image
-// @version		2017.06.05
+// @version		2017.06.10
 // @author		Owyn
 // @contributor	ubless607, bitst0rm
 // @namespace	handyimage
@@ -666,6 +666,7 @@
 // @match		*://*.imagedisco.net/?v=*
 // @match		http://*.imgmain.com/img-*.html
 // @match		http://*.imgvisits.com/*
+// @match		*://pixxxels.org/image/*
 // ==/UserScript==
 
 if (typeof unsafeWindow === "undefined")
@@ -1336,6 +1337,7 @@ function makeworld()
 		break;
     case "postimg.org":
     case "postimg.cc":
+	case "pixxxels.org":
         i = q('img[data-full]');
         if(i)
         {
