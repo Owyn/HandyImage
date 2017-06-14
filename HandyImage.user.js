@@ -667,7 +667,6 @@
 // @match		http://*.imgmain.com/img-*.html
 // @match		http://*.imgvisits.com/*
 // @match		*://pixxxels.org/image/*
-
 // ==/UserScript==
 
 if (typeof unsafeWindow === "undefined")
