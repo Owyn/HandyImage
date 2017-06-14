@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name		Handy Image
-// @version		2017.06.10
+// @version		2017.06.14
 // @author		Owyn
 // @contributor	ubless607, bitst0rm
 // @namespace	handyimage
@@ -509,7 +509,7 @@
 // @match		http://*.scrin.org/?v=*
 // @match		http://*.thumbnailus.com/img-*
 // @match		http://*.nimplus.com/img-*
-// @match		http://www.imgtaxi.com/img-*
+// @match		http://*.imgtaxi.com/img-*
 // @match		http://*.imgstudio.org/img-*
 // @match		http://goimge.com/img-*
 // @match		http://*.safeimage.biz/image/*
@@ -667,6 +667,7 @@
 // @match		http://*.imgmain.com/img-*.html
 // @match		http://*.imgvisits.com/*
 // @match		*://pixxxels.org/image/*
+
 // ==/UserScript==
 
 if (typeof unsafeWindow === "undefined")
