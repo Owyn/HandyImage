@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name		Handy Image
-// @version		2017.06.14
+// @version		2017.06.17
 // @author		Owyn
 // @contributor	ubless607, bitst0rm
 // @namespace	handyimage
@@ -574,6 +574,7 @@
 // @match		http://*.img3x.com/image/*
 // @match		http://*.imguniversal.com/*
 // @match		http://*.imagepearl.com/view/*
+// @match		http://*.imagepearl.com/verify/*
 // @match		http://*.tinizo.com/img-*
 // @match		*://*.imgkings.com/img*
 // @match		http://*.imagerar.com/img*
@@ -1313,6 +1314,15 @@ function makeworld()
 	case "ninjaimages.com":		
 		i = q('img[onload*="scale"]');
 		break;
+	case "imagepearl.com":
+		i = q("#verify2")
+		dp=true;
+		j = true;
+		if(i) 
+		{
+			i.click();
+			break;
+		}
 	case "bild.me":
 	case "imagecarry.com":
 	case "imagedunk.com":
@@ -1331,7 +1341,6 @@ function makeworld()
 	case "myimg.de":
 	case "root-space.eu":
 	case "mepic.ru":
-	case "imagepearl.com":
 	case "postto.me":
 		i = q('img[src*="' + iurl + '"]');
 		break;
