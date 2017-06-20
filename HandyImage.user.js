@@ -668,6 +668,8 @@
 // @match		http://*.imgmain.com/img-*.html
 // @match		http://*.imgvisits.com/*
 // @match		*://pixxxels.org/image/*
+// @match		http://img-pika.ru/full/
+// @match		http://img-pika.ru/*.html
 // ==/UserScript==
 
 if (typeof unsafeWindow === "undefined")
@@ -1380,6 +1382,7 @@ function makeworld()
 	case "pixxss.ru":
 	case "pixxsees.ru":
 	case "2picsun.ru":
+	case "img-pika.ru":	
 		var f = document.getElementsByTagName("button");
 		if(f.length)
 		{
