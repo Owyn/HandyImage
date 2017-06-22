@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name		Handy Image
-// @version		2017.06.17
+// @version		2017.06.22
 // @author		Owyn
 // @contributor	ubless607, bitst0rm
 // @namespace	handyimage
@@ -1291,7 +1291,7 @@ function makeworld()
 		i = q('img[src*="/pic"]');
 		break;
 	case "pronpic.org":
-		i = q('img[src*="/pic/"]');
+		i = q('img#small_img[src*="/pic/"]');
 		if(i){i.src = i.src.replace('th_', '');}
 		break;
 	case "imadul.com":
