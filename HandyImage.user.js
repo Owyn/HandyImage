@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name		Handy Image
-// @version		2017.06.22
+// @version		2017.06.23
 // @author		Owyn
 // @contributor	ubless607, bitst0rm
 // @namespace	handyimage
@@ -672,6 +672,9 @@
 // @match		http://img-pika.ru/*.html
 // @match		http://pic2x.ru/full/
 // @match		http://pic2x.ru/*.html
+// @match		http://imgcach.ru/*/*/
+// @match		http://*.2pixxsee.ru/*.html
+// @match		http://*.2pixxsee.ru/full/
 // ==/UserScript==
 
 if (typeof unsafeWindow === "undefined")
@@ -1135,6 +1138,7 @@ function makeworld()
 		break;
 	case "pix-x.net":
 	case "imgclick.ru":
+	case "imgcach.ru":
 		i = q('img[onclick*="mshow"]');
 		if(i){i.src = i.src.replace('-thumb', '');i.src = i.src.replace('img_thumb', 'img_full');}
 		break;
@@ -1491,6 +1495,10 @@ function makeworld()
 		break;
 	case "picatom.com":
 		i = q('img[src*="img/"]'); 
+		break;
+	case "2pixxsee.ru":
+		i = q('img[src*="/img/"]');
+		if(i){i.src = i.src.replace('p.', '.');}
 		break;
 	case "imgbabes.com":
 	case "imgflare.com":
