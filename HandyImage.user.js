@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name		Handy Image
-// @version		2017.06.28
+// @version		2017.07.01
 // @author		Owyn
 // @contributor	ubless607, bitst0rm
 // @namespace	handyimage
@@ -221,7 +221,8 @@
 // @match		http://*.imagesup.net/* 
 // @match		http://*.superkipje.com/view*
 // @match		https://*.2i.sk/i/*
-// @match		http://www.imgadult.com/img-*
+// @match		http://imgadult.com/img-*
+// @match		http://imagebic.com/?v=*
 // @match		http://www.picshot.pl/public/view*
 // @match		http://*.imagesmax.de/display-*
 // @match		http://*.ifotos.pl/zobacz/*
@@ -674,6 +675,7 @@
 // @match		http://imgcach.ru/*/*/
 // @match		http://*.2pixxsee.ru/*.html
 // @match		http://*.2pixxsee.ru/full/
+// @match		https://*.xhamster.com/photos/gallery/*/*
 // ==/UserScript==
 
 if (typeof unsafeWindow === "undefined")
@@ -2074,6 +2076,9 @@ function makeworld()
 			break;
 		case "tinypic.com":
 			i = q('img#imgElement');
+			break;
+		case "xhamster.com":
+			i = q('img#imgSized');
 			break;
 		case "imagilive.com":
 			i = q('a.button');
