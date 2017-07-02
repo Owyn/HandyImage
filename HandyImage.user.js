@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name		Handy Image
-// @version		2017.07.01
+// @version		2017.07.02
 // @author		Owyn
 // @contributor	ubless607, bitst0rm
 // @namespace	handyimage
@@ -1137,6 +1137,10 @@ function makeworld()
 	case "pixsense.net":
 		find_text_in_scripts('"src","', '"');
 		break;
+	case "postimg.org":
+    case "postimg.cc":
+		find_text_in_scripts("'src', \"", '"');
+		break;
 	case "pix-x.net":
 	case "imgclick.ru":
 	case "imgcach.ru":
@@ -1353,8 +1357,6 @@ function makeworld()
 	case "postto.me":
 		i = q('img[src*="' + iurl + '"]');
 		break;
-    case "postimg.org":
-    case "postimg.cc":
 	case "pixxxels.org":
         i = q('img[data-full]');
         if(i)
