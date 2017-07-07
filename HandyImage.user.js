@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name		Handy Image
-// @version		2017.07.02
+// @version		2017.07.07
 // @author		Owyn
 // @contributor	ubless607, bitst0rm
 // @namespace	handyimage
@@ -676,6 +676,8 @@
 // @match		http://*.2pixxsee.ru/*.html
 // @match		http://*.2pixxsee.ru/full/
 // @match		https://*.xhamster.com/photos/gallery/*/*
+// @match		http://*.imghall.com/?v=*
+// @match		https://*.acidimg.cc/img-*
 // ==/UserScript==
 
 if (typeof unsafeWindow === "undefined")
@@ -1138,7 +1140,7 @@ function makeworld()
 		find_text_in_scripts('"src","', '"');
 		break;
 	case "postimg.org":
-    case "postimg.cc":
+	case "postimg.cc":
 		find_text_in_scripts("'src', \"", '"');
 		break;
 	case "pix-x.net":
@@ -1612,6 +1614,7 @@ function makeworld()
 	case "imgblank.com":
 	case "xeimg.yt":
 	case "imgmain.com":
+	case "acidimg.cc":
 		dp=true;
 		var f = document.getElementsByTagName("input");
 		if(f.length)
@@ -1846,6 +1849,7 @@ function makeworld()
 	case "extraimage.net":
 	case "imagexxx18.com":
 	case "imgvisits.com":
+	case "imghall.com":
 		i = q('img[src*="/images/"]');
 		break;
 	case "intergranada.com":
