@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name		Handy Image
-// @version		2017.07.07
+// @version		2017.07.10
 // @author		Owyn
 // @contributor	ubless607, bitst0rm
 // @namespace	handyimage
@@ -20,7 +20,7 @@
 // @match		http://www.imagebam.com/image*
 // @match		http://imgchili.net/show*
 // @match		*://imgbox.com/*
-// @match		https://imagetwist.com/*/*
+// @match		*://imagetwist.com/*/*
 // @match		http://*.imagevenue.com/img.php?*
 // @match		*://*.imageshack.com/i/*
 // @match		*://*.imageshack.com/f/*
