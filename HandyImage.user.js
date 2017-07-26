@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name		Handy Image
-// @version		2017.07.10
+// @version		2017.07.25
 // @author		Owyn
 // @contributor	ubless607, bitst0rm
 // @namespace	handyimage
@@ -678,6 +678,7 @@
 // @match		https://*.xhamster.com/photos/gallery/*/*
 // @match		http://*.imghall.com/?v=*
 // @match		https://*.acidimg.cc/img-*
+// @match		https://imgcloud.pw/image/*
 // ==/UserScript==
 
 if (typeof unsafeWindow === "undefined")
@@ -957,6 +958,7 @@ function makeworld()
 	case "imgmax.com":
 	case "extraimago.com":
 	case "extraimage.net":
+	case "imgcloud.pw":
 		i = document.querySelector('meta[property="og:image"] , [name="og:image"]');
 		if(i)
 		{
