@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name		Handy Image
-// @version		2017.07.25
+// @version		2017.07.29
 // @author		Owyn
 // @contributor	ubless607, bitst0rm
 // @namespace	handyimage
@@ -679,6 +679,8 @@
 // @match		http://*.imghall.com/?v=*
 // @match		https://*.acidimg.cc/img-*
 // @match		https://imgcloud.pw/image/*
+// @match		https://z4a.net/image/*
+// @match		https://t.hogor.net/?pm=*
 // ==/UserScript==
 
 if (typeof unsafeWindow === "undefined")
@@ -959,6 +961,7 @@ function makeworld()
 	case "extraimago.com":
 	case "extraimage.net":
 	case "imgcloud.pw":
+	case "z4a.net":
 		i = document.querySelector('meta[property="og:image"] , [name="og:image"]');
 		if(i)
 		{
@@ -1764,6 +1767,7 @@ function makeworld()
 	case "image.alesher.com":
 	case "upload.khontai.com":
 	case "image.pantyhosemania.info":
+	case "t.hogor.net":
 		i = q('a[href*="?di="]');
 		if(i)
 		{
