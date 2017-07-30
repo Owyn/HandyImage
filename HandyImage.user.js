@@ -681,6 +681,8 @@
 // @match		https://imgcloud.pw/image/*
 // @match		https://z4a.net/image/*
 // @match		https://t.hogor.net/?pm=*
+// @match		http://1pic2x.ru/*.html
+// @match		http://1pic2x.ru/full/
 // ==/UserScript==
 
 if (typeof unsafeWindow === "undefined")
@@ -1399,7 +1401,8 @@ function makeworld()
 	case "pixxsees.ru":
 	case "2picsun.ru":
 	case "pic2x.ru":
-	case "img-pika.ru":	
+	case "img-pika.ru":
+	case "1pic2x.ru":
 		var f = document.getElementsByTagName("button");
 		if(f.length)
 		{
