@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name		Handy Image
-// @version		2017.07.29
+// @version		2017.08.05
 // @author		Owyn
 // @contributor	ubless607, bitst0rm
 // @namespace	handyimage
@@ -1368,13 +1368,6 @@ function makeworld()
 	case "postto.me":
 		i = q('img[src*="' + iurl + '"]');
 		break;
-	case "pixxxels.org":
-        i = q('img[data-full]');
-        if(i)
-        {
-            i.src = i.getAttribute('data-full');
-        }
-        break;
 	case "ask.fm":
 		i = q('img[src*="' + iurl + '"][id]');
 		i.src = i.src.replace('/original/', '/large/'); //ask.fm
@@ -1775,6 +1768,13 @@ function makeworld()
 	case "image.pantyhosemania.info":
 	case "t.hogor.net":
 		i = q('a[href*="?di="]');
+		if(i)
+		{
+			i.src = i.href;
+		}
+		break;
+	case "pixxxels.org":
+		i = q('a[href*="?dl="]');
 		if(i)
 		{
 			i.src = i.href;
