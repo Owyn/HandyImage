@@ -514,6 +514,7 @@
 // @match		http://goimge.com/img-*
 // @match		http://*.safeimage.biz/image/*
 // @match		http://*.picclick.ru/*/*/
+// @match		http://*.picpays.ru/*/*/
 // @match		http://*.imgclover.com/image/*
 // @match		http://*.imgz.pw/share-*
 // @match		*://*.imgking.co/img*
@@ -1169,6 +1170,7 @@ function makeworld()
 	case "payforpic.ru":
 	case "freshpics.ru":
 	case "picclick.ru":
+	case "picpays.ru":
 	case "piccash.net":
 	case "imgbase.ru":
 		i = q('img[src*="thumb"]');
