@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name		Handy Image
-// @version		2017.08.05
+// @version		2017.08.16
 // @author		Owyn
 // @contributor	ubless607, bitst0rm
 // @namespace	handyimage
@@ -118,7 +118,7 @@
 // @match		http://*.casimages.com/img*
 // @match		http://*.cyberpics.net/p*
 // @match		*://vvcap.com/*
-// @match		http://*.freeimage.us/share*
+// @match		https://*.freeimage.us/share*
 // @match		http://*.pix-x.net/*/*
 // @match		http://*.shareimages.com/image*
 // @match		http://www.xtremeshack.com/image/*
