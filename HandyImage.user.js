@@ -686,6 +686,7 @@
 // @match		http://1pic2x.ru/full/
 // @match		http://1pics1img.ru/*.html
 // @match		http://1pics1img.ru/full/
+// @match		http://xxxwebdlxxx.org/*.html
 // ==/UserScript==
 
 if (typeof unsafeWindow === "undefined")
@@ -1680,6 +1681,7 @@ function makeworld()
 		break;
 	case "picspornfree.me":
 	case "hotimage.uk":
+	case "xxxwebdlxxx.org":
 		i = q('input[type="submit"]');
 		dp=true;
 		if(i) 
