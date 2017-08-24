@@ -597,6 +597,7 @@
 // @match		https://ss.movierls.net/image/*
 // @match		http://www.xxximagetpb.org/image/*
 // @match		http://www.pixsense.net/site/v/*
+// @match		http://www.imagespicy.site/site/v/*
 // @match		http://imgoutlet.com/*.php
 // @match		http://imgoutlet.com/*/*.html
 // @match		http://*.pix.ac/image/*
@@ -1148,6 +1149,7 @@ function makeworld()
 		}
 		break;
 	case "pixsense.net":
+	case "imagespicy.site":
 		find_text_in_scripts('"src","', '"');
 		break;
 	case "postimg.org":
