@@ -688,6 +688,7 @@
 // @match		http://1pics1img.ru/*.html
 // @match		http://1pics1img.ru/full/
 // @match		http://xxxwebdlxxx.org/*.html
+// @match		https://www.sizzlingclicks.com/image/*
 // ==/UserScript==
 
 if (typeof unsafeWindow === "undefined")
@@ -2055,7 +2056,10 @@ function makeworld()
 		{
 			i.src = "http://www.joblo.com/moviehotties/images/profile-gallery/orig" + window.location.href.substr(window.location.href.lastIndexOf("/"));
 		}
-		break; 
+		break;
+	case "sizzlingclicks.com":
+		i = q('img[data-load="full"]');
+		break;
 	default: // dynamic subdomain
 		switch(iurl.substr(iurl.indexOf(".")+1))
 		{
