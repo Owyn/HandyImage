@@ -689,6 +689,8 @@
 // @match		http://1pics1img.ru/full/
 // @match		http://xxxwebdlxxx.org/*.html
 // @match		https://www.sizzlingclicks.com/image/*
+// @match		http://wwxxww.ru/*.html
+// @match		http://wwxxww.ru/full/
 // ==/UserScript==
 
 if (typeof unsafeWindow === "undefined")
@@ -1405,6 +1407,7 @@ function makeworld()
 	case "img-pika.ru":
 	case "1pic2x.ru":
 	case "1pics1img.ru":
+	case "wwxxww.ru":
 		var f = document.getElementsByTagName("button");
 		if(f.length)
 		{
