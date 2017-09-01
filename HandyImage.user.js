@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name		Handy Image
-// @version		2017.08.16
+// @version		2017.09.01
 // @author		Owyn
 // @contributor	ubless607, bitst0rm
 // @namespace	handyimage
@@ -689,8 +689,6 @@
 // @match		http://1pics1img.ru/full/
 // @match		http://xxxwebdlxxx.org/*.html
 // @match		https://www.sizzlingclicks.com/image/*
-// @match		http://wwxxww.ru/*.html
-// @match		http://wwxxww.ru/full/
 // ==/UserScript==
 
 if (typeof unsafeWindow === "undefined")
@@ -1011,16 +1009,12 @@ function makeworld()
 		break;
 	case "instagram.com":
 		j = true;
-		find_text_in_scripts('display_url": "', '"');
-		if(i)
+		if(find_text_in_scripts('"shortcode_media": {"__typename": "GraphImage"'))
 		{
-			if(!find_text_in_scripts('is_video": true', ','))
+			find_text_in_scripts('display_url": "', '"');
+			if(i)
 			{
 				i.src = i.src.replace(/\/p\d+x\d+?\//, '/');
-			}
-			else
-			{
-				i = null;
 			}
 		}
 		break;
@@ -1154,10 +1148,6 @@ function makeworld()
 	case "pixsense.net":
 	case "imagespicy.site":
 		find_text_in_scripts('"src","', '"');
-		break;
-	case "postimg.org":
-	case "postimg.cc":
-		find_text_in_scripts("'src', \"", '"');
 		break;
 	case "pix-x.net":
 	case "imgclick.ru":
@@ -1407,7 +1397,6 @@ function makeworld()
 	case "img-pika.ru":
 	case "1pic2x.ru":
 	case "1pics1img.ru":
-	case "wwxxww.ru":
 		var f = document.getElementsByTagName("button");
 		if(f.length)
 		{
@@ -1784,6 +1773,8 @@ function makeworld()
 		}
 		break;
 	case "pixxxels.org":
+	case "postimg.org":
+	case "postimg.cc":
 		i = q('a[href*="?dl="]');
 		if(i)
 		{
