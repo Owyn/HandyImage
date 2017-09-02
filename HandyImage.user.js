@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name		Handy Image
-// @version		2017.09.01
+// @version		2017.09.02
 // @author		Owyn
 // @contributor	ubless607, bitst0rm
 // @namespace	handyimage
@@ -691,6 +691,7 @@
 // @match		https://www.sizzlingclicks.com/image/*
 // @match		http://wwxxww.ru/*.html
 // @match		http://wwxxww.ru/full/
+// @match		http://pikoclick.ru/*/*/
 // ==/UserScript==
 
 if (typeof unsafeWindow === "undefined")
@@ -1154,6 +1155,7 @@ function makeworld()
 	case "pix-x.net":
 	case "imgclick.ru":
 	case "imgcach.ru":
+	case "pikoclick.ru":
 		i = q('img[onclick*="mshow"]');
 		if(i){i.src = i.src.replace('-thumb', '');i.src = i.src.replace('img_thumb', 'img_full');}
 		break;
