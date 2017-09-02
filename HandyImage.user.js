@@ -692,7 +692,7 @@
 // @match		http://wwxxww.ru/*.html
 // @match		http://wwxxww.ru/full/
 // @match		http://pikoclick.ru/*/*/
-// @match   		http://passpix.com/*
+// @match   		http://passpix.com/images/*
 // ==/UserScript==
 
 if (typeof unsafeWindow === "undefined")
@@ -869,9 +869,6 @@ function makeworld()
 	// per-host image detection
 	switch (iurl)
 	{
-	case "passpix.com":
-	      window.location.href = window.location.href.replace(".html","");
-	      break;
 	case "gist.github.com":
 		if(document.body){i=1;cfg();}break;
 	case "simplest-image-hosting.net":
@@ -2029,6 +2026,7 @@ function makeworld()
 	case "ftop.ru":
 	case "porncomix.info":
 	case "luxpic.ru":
+	case "passpix.com":
 		//Chevereto 2.x
 		i = q('img[src*="' + iurl + '/images/"]');
 		break;
