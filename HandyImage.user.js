@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name		Handy Image
-// @version		2017.09.02
+// @version		2017.09.09
 // @author		Owyn
 // @contributor	ubless607, bitst0rm
 // @namespace	handyimage
@@ -130,7 +130,7 @@
 // @match		http://*.pic4you.ru/*
 // @match		http://picload.org/view*
 // @match		http://*.thebestpichost.com/picture/*
-// @match		http://*.lostpic.net/image/*
+// @match		http://*.lostpic.net/?photo=*
 // @match		http://subefotos.com/ver/*
 // @exclude		http://subefotos.com/ver/*#codigos
 // @match		http://*.pixsor.com/share*
@@ -912,7 +912,6 @@ function makeworld()
 	case "celebimg.com":
 	case "sfwimg.com":
 	case "img3x.com":
-	case "lostpic.net":
 	case "imgskull.xyz":
 	case "imgskull.com":
 	case "2i.sk":
@@ -1293,6 +1292,7 @@ function makeworld()
 	case "imgdone.com":
 	case "greenpiccs.com":
 	case "balkanelite.org":
+	case "lostpic.net":
 		i = q('a[href*="images/"]');
 		if(i){i.src = i.href;}
 		break;
