@@ -692,8 +692,8 @@
 // @match		http://wwxxww.ru/*.html
 // @match		http://wwxxww.ru/full/
 // @match		http://pikoclick.ru/*/*/
-// @match   	http://passpix.com/images/*
-// @match   	http://*.sexyimg.eu/*/*.html
+// @match		http://passpix.com/images/*
+// @match		http://*.sexyimg.eu/*/*.html
 // ==/UserScript==
 
 if (typeof unsafeWindow === "undefined")
