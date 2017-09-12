@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name		Handy Image
-// @version		2017.09.09
+// @version		2017.09.11
 // @author		Owyn
 // @contributor	ubless607, bitst0rm
 // @namespace	handyimage
@@ -692,7 +692,8 @@
 // @match		http://wwxxww.ru/*.html
 // @match		http://wwxxww.ru/full/
 // @match		http://pikoclick.ru/*/*/
-// @match   		http://passpix.com/images/*
+// @match   	http://passpix.com/images/*
+// @match   	http://*.sexyimg.eu/*/*.html
 // ==/UserScript==
 
 if (typeof unsafeWindow === "undefined")
@@ -1650,6 +1651,7 @@ function makeworld()
 	case "dimtus.com":
 	case "imgcat.pw":
 	case "sexybabepics.net":
+	case "sexyimg.eu":
 		i = q('img[src*="' + iurl + '/upload/"]');
 		break;
 	case "imgboom.net":
