@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name		Handy Image
-// @version		2017.09.11
+// @version		2017.09.23
 // @author		Owyn
 // @contributor	ubless607, bitst0rm
 // @namespace	handyimage
@@ -880,7 +880,7 @@ function makeworld()
 		break;
 	case "myceleb.net":
 	case "depic.me":		
-		i = q('img[id]');
+		i = q('img#pic');
 		break;
 	case "imagebin.ca":
 		i = q('a img');
