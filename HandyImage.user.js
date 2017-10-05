@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name		Handy Image
-// @version		2017.09.23
+// @version		2017.10.05
 // @author		Owyn
 // @contributor	ubless607, bitst0rm
 // @namespace	handyimage
@@ -694,6 +694,8 @@
 // @match		http://pikoclick.ru/*/*/
 // @match		http://passpix.com/images/*
 // @match		http://*.sexyimg.eu/*/*.html
+// @match		http://*.imgseed.com/img-*.html
+// @match		http://imgoutlet.co/*.php
 // ==/UserScript==
 
 if (typeof unsafeWindow === "undefined")
@@ -1462,11 +1464,22 @@ function makeworld()
 			break;
 		}
 	case "cuteimg.cc":
-		i = q('input[type="button"]');
-		if(i)
+	case "imgoutlet.co":
+		j = true;
+		dp=true;
+		var f = document.querySelectorAll("input[type='button']")
+		if(f.length)
 		{
-			i.click();
-			break;
+			var n;
+			for(n=f.length-1; n >= 0; n--)
+			{
+				if(window.getComputedStyle(f[n]).visibility != "hidden" && f[n].offsetWidth != 0 && f[n].value.indexOf("eply") == -1 && f[n].value.indexOf("Log") == -1)
+				{
+					f[n].removeAttribute("disabled");
+					f[n].click();
+					break;
+				}
+			}
 		}
 	case "myimg.club":
 	case "imgmonkey.com":
@@ -1652,6 +1665,7 @@ function makeworld()
 	case "imgcat.pw":
 	case "sexybabepics.net":
 	case "sexyimg.eu":
+	case "imgseed.com":
 		i = q('img[src*="' + iurl + '/upload/"]');
 		break;
 	case "imgboom.net":
