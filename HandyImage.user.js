@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name		Handy Image
-// @version		2017.10.05
+// @version		2017.10.19
 // @author		Owyn
 // @contributor	ubless607, bitst0rm
 // @namespace	handyimage
@@ -696,6 +696,8 @@
 // @match		http://*.sexyimg.eu/*/*.html
 // @match		http://*.imgseed.com/img-*.html
 // @match		http://imgoutlet.co/*.php
+// @match		http://img.folluo.me/image/*
+// @match		*://imgpart.com/img-*
 // ==/UserScript==
 
 if (typeof unsafeWindow === "undefined")
@@ -1066,6 +1068,9 @@ function makeworld()
 	case "thumbsnap.com":
 		i = q('img#thepic');
 		if(i && i.parentNode.href){i.src = i.src.replace('/s/', '/i/');}
+		break;
+	case "img.folluo.me":
+		i = q('img[data-load="full"]');
 		break;
 	case "imgbox.com":
 	case "imageupper.com":
@@ -1637,6 +1642,7 @@ function makeworld()
 	case "xeimg.yt":
 	case "imgmain.com":
 	case "acidimg.cc":
+	case "imgpart.com":
 		dp=true;
 		var f = document.getElementsByTagName("input");
 		if(f.length)
