@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name		Handy Image
-// @version		2017.10.19
+// @version		2017.10.22
 // @author		Owyn
 // @contributor	ubless607, bitst0rm
 // @namespace	handyimage
@@ -698,6 +698,7 @@
 // @match		http://imgoutlet.co/*.php
 // @match		http://img.folluo.me/image/*
 // @match		*://imgpart.com/img-*
+// @match		http://picstate.com/view/full/*
 // ==/UserScript==
 
 if (typeof unsafeWindow === "undefined")
@@ -1551,6 +1552,7 @@ function makeworld()
 	case "thaisharing.online.fr":
 	case "filefap.com":
 	case "imgswift.com":
+	case "picstate.com":
 		i = q('img[src*="/files/"]');
 		break;
 	case "image18.org":
