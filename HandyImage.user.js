@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name		Handy Image
-// @version		2017.10.22
+// @version		2017.11.02
 // @author		Owyn
 // @contributor	ubless607, bitst0rm
 // @namespace	handyimage
@@ -568,6 +568,7 @@
 // @match		http://*.imgmaid.net/*
 // @match		http://*.imggold.org/*/*.html
 // @match		http://*.imgcredit.xyz/img-*
+// @match		http://*.imgcredit.xyz/p/img-*
 // @match		http://*.dimtus.com/img-*
 // @match		http://*.coreimg.net/*
 // @match		http://sfwimg.com/image/*
@@ -1668,7 +1669,6 @@ function makeworld()
 	case "imgor.net":
 	case "icezap.com":
 	case "imgtrial.com":
-	case "imgcredit.xyz":
 	case "dimtus.com":
 	case "imgcat.pw":
 	case "sexybabepics.net":
@@ -2117,6 +2117,9 @@ function makeworld()
 		case "wikimedia.org":
 			i = q('a[href*="/upload"]');
 			if(i){i.src = i.href;}
+			break;
+		case "imgcredit.xyz":
+			i = q('img[src*="/upload/"]');
 			break;
 		case "photobucket.com":
 			find_text_in_scripts('originalUrl":"', '"');
