@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name		Handy Image
-// @version		2017.11.02
+// @version		2017.11.11
 // @author		Owyn
 // @contributor	ubless607, bitst0rm
 // @namespace	handyimage
@@ -700,6 +700,7 @@
 // @match		http://img.folluo.me/image/*
 // @match		*://imgpart.com/img-*
 // @match		http://picstate.com/view/full/*
+// @match		https://jerking.empornium.ph/image/*
 // ==/UserScript==
 
 if (typeof unsafeWindow === "undefined")
@@ -832,17 +833,17 @@ function makeimage()
 	autoresize();
 }
 
-function find_text_in_scripts(a, b, o, h)
+function find_text_in_scripts(text, stopword, start_from_top, search_after_word)
 {
 	var s = document.getElementsByTagName("script");
 	for(var c=0;c<s.length;c++) 
 	{
-		if(h && s[c].innerHTML.indexOf(h) != -1){s[c].innerHTML = s[c].innerHTML.substring(0, s[c].innerHTML.indexOf(h));}
-		var start_pos = o ? s[c].innerHTML.indexOf(a) : s[c].innerHTML.lastIndexOf(a);
+		if(search_after_word && s[c].innerHTML.indexOf(search_after_word) != -1){s[c].innerHTML = s[c].innerHTML.substring(0, s[c].innerHTML.indexOf(search_after_word));}
+		var start_pos = start_from_top ? s[c].innerHTML.indexOf(text) : s[c].innerHTML.lastIndexOf(text);
 		if(start_pos == -1){continue;}
-		start_pos += a.length;
+		start_pos += text.length;
 		i = s[c];
-		i.src = decodeURIComponent(s[c].innerHTML.substring(start_pos,s[c].innerHTML.indexOf(b,start_pos)).split("\\").join("")); // split\join fix for stupidfox GreaseMonkey
+		i.src = decodeURIComponent(s[c].innerHTML.substring(start_pos,s[c].innerHTML.indexOf(stopword,start_pos)).split("\\").join("")); // split\join fix for stupidfox GreaseMonkey
 		return true;
 	}
 	return false;
@@ -1212,6 +1213,9 @@ function makeworld()
 	case "f-lite.ru":
 	case "f-picture.net":
 		find_text_in_scripts('"Url":"', '"');
+		break;
+	case "jerking.empornium.ph":
+		find_text_in_scripts('	url: "', '"', true);
 		break;
 	case "bilder-space.de":
 	case "imagesup.de":
