@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name		Handy Image
-// @version		2017.11.15
+// @version		2017.11.16
 // @author		Owyn
 // @contributor	ubless607, bitst0rm
 // @namespace	handyimage
@@ -755,7 +755,7 @@ if(document.cookie.indexOf("hji=") != -1)
 function q(s){if(document.body){return document.body.querySelector(s);}return null;}
 var cfg_direct;
 var cfg_bgclr;
-var cfg_fitWH = true;
+var cfg_fitWH;
 var cfg_fitB;
 var cfg_fitS;
 var cfg_js;
@@ -2545,10 +2545,10 @@ async function cfg()
 		+ "<br><input id='hji_cfg_save' type='button' value='Save configuration'></center>";
 		document.body.appendChild(div);
 		q("#hji_cfg_1_direct").checked = await GM.getValue("directImage");
-		q("#hji_cfg_2_bgclr").value = await GM.getValue("bgColor", "");
+		q("#hji_cfg_2_bgclr").value = await GM.getValue("bgColor", "grey");
 		q("#hji_cfg_3_fitWH").checked = await GM.getValue("fitWH", true);
-		q("#hji_cfg_4_fitB").checked = await GM.getValue("fitB");
-		q("#hji_cfg_5_fitS").checked = await GM.getValue("fitS");
+		q("#hji_cfg_4_fitB").checked = await GM.getValue("fitB", false);
+		q("#hji_cfg_5_fitS").checked = await GM.getValue("fitS", true);
 		q("#hji_cfg_6_js").value = await GM.getValue("js", "");
 		q("#hji_cfg_save").addEventListener("click", saveCfg, true);
 	}
