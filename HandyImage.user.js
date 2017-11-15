@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name		Handy Image
-// @version		2017.11.11
+// @version		2017.11.15
 // @author		Owyn
 // @contributor	ubless607, bitst0rm
 // @namespace	handyimage
@@ -11,8 +11,8 @@
 // @supportURL	https://sleazyfork.org/scripts/109-handy-image/feedback
 // @icon		http://i.imgur.com/Q5TTIjV.png
 // @run-at		document-start
-// @grant		GM_getValue
-// @grant		GM_setValue
+// @grant		GM.getValue
+// @grant		GM.setValue
 // @grant		GM_registerMenuCommand
 // @grant		GM_unregisterMenuCommand
 // @grant		unsafeWindow
@@ -380,7 +380,7 @@
 // @exclude		*://imgur.com/*,*
 // @match		http://motherless.com/*
 // @match		http://*.xpic.biz/*/view*
-// @match		http://*.tumblr.com/image/*
+// @match		*://*.tumblr.com/image/*
 // @match		http://*.imageporter.com/*
 // @match		http://*.damimage.com/img-*
 // @match		http://fapping.empornium.sx/*
@@ -517,6 +517,7 @@
 // @match		http://*.picpays.ru/*/*/
 // @match		http://*.imgclover.com/image/*
 // @match		http://*.imgz.pw/share-*
+// @match		http://*.imgz.pw/ch/image/*
 // @match		*://*.imgking.co/img*
 // @match		http://ask.fm/*/photo/original
 // @match		http://cuteimg.cc/*
@@ -816,7 +817,6 @@ function protected_createElement(el)
 
 function makeimage()
 {
-	loadCfg();
 	if(cfg_direct){unsafeWindow.location.href = i.src;return false;}
 	if(cfg_bgclr){document.body.bgColor = cfg_bgclr;}
 	document.body.style.margin = "0px";
@@ -1151,7 +1151,11 @@ function makeworld()
 	case "imgz.pw":
 	case "imgurx.net":
 		//i = q('img#iimg');
-		find_text_in_scripts("<img src='", "'");
+		if(!find_text_in_scripts("<img src='", "'"))
+		{
+			i = q('a[download]');	// imgz.pw
+			if(i){i.src = i.href;}
+		}
 		break;
 	case "amateri.cz":
 		if(find_text_in_scripts('var orig_url="', '"'))
@@ -2506,18 +2510,18 @@ function onkeydown (b)
 	}
 }
 
-function cfg()
+async function cfg()
 {
-	if (typeof GM_setValue !== "undefined")
+	if (typeof GM.setValue !== "undefined")
 	{
 		function saveCfg()
 		{
-			GM_setValue("directImage", q("#hji_cfg_1_direct").checked);
-			GM_setValue("bgColor", q("#hji_cfg_2_bgclr").value);
-			GM_setValue("fitWH", q("#hji_cfg_3_fitWH").checked);
-			GM_setValue("fitB", q("#hji_cfg_4_fitB").checked);
-			GM_setValue("fitS", q("#hji_cfg_5_fitS").checked);
-			GM_setValue("js", q("#hji_cfg_6_js").value);
+			GM.setValue("directImage", q("#hji_cfg_1_direct").checked);
+			GM.setValue("bgColor", q("#hji_cfg_2_bgclr").value);
+			GM.setValue("fitWH", q("#hji_cfg_3_fitWH").checked);
+			GM.setValue("fitB", q("#hji_cfg_4_fitB").checked);
+			GM.setValue("fitS", q("#hji_cfg_5_fitS").checked);
+			GM.setValue("js", q("#hji_cfg_6_js").value);
 			alert("Configuration Saved");
 			if(q("#hji_cfg_2_bgclr").value){document.body.bgColor = q("#hji_cfg_2_bgclr").value;}else{document.body.removeAttribute("bgColor");}
 		}
@@ -2540,29 +2544,30 @@ function cfg()
 		+ "<br><br><center>Custom JS Action:<textarea id='hji_cfg_6_js' style='margin: 0px; width: 400px; height: 50px;'></textarea>"
 		+ "<br><input id='hji_cfg_save' type='button' value='Save configuration'></center>";
 		document.body.appendChild(div);
-		q("#hji_cfg_1_direct").checked = GM_getValue("directImage");
-		q("#hji_cfg_2_bgclr").value = GM_getValue("bgColor", "");
-		q("#hji_cfg_3_fitWH").checked = GM_getValue("fitWH", true);
-		q("#hji_cfg_4_fitB").checked = GM_getValue("fitB");
-		q("#hji_cfg_5_fitS").checked = GM_getValue("fitS");
-		q("#hji_cfg_6_js").value = GM_getValue("js", "");
+		q("#hji_cfg_1_direct").checked = await GM.getValue("directImage");
+		q("#hji_cfg_2_bgclr").value = await GM.getValue("bgColor", "");
+		q("#hji_cfg_3_fitWH").checked = await GM.getValue("fitWH", true);
+		q("#hji_cfg_4_fitB").checked = await GM.getValue("fitB");
+		q("#hji_cfg_5_fitS").checked = await GM.getValue("fitS");
+		q("#hji_cfg_6_js").value = await GM.getValue("js", "");
 		q("#hji_cfg_save").addEventListener("click", saveCfg, true);
 	}
 	else
 	{
-		alert("Sorry, Chrome userscripts in native mode can't have configurations! Install TamperMonkey extension. (it's very good)");
+		alert("Sorry, Chrome userscripts in native mode can't have configurations! Install TamperMonkey (Beta) extension. (it's very good)");
 	}
 }
 
-function loadCfg()
+async function loadCfg()
 {
-	if (typeof GM_getValue !== "undefined")
+	if (typeof GM.getValue !== "undefined")
 	{
-		cfg_direct = GM_getValue("directImage");
-		cfg_bgclr = GM_getValue("bgColor");
-		cfg_fitWH = GM_getValue("fitWH", true);
-		cfg_fitB = GM_getValue("fitB");
-		cfg_fitS = GM_getValue("fitS");
-		cfg_js = GM_getValue("js");
+		cfg_direct = await GM.getValue("directImage", false);
+		cfg_bgclr = await GM.getValue("bgColor", "grey");
+		cfg_fitWH = await GM.getValue("fitWH", true);
+		cfg_fitB = await GM.getValue("fitB", false);
+		cfg_fitS = await GM.getValue("fitS", true);
+		cfg_js = await GM.getValue("js");
 	}
 }
+loadCfg();
