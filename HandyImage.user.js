@@ -2510,7 +2510,7 @@ function onkeydown (b)
 	}
 }
 
-async function cfg()
+function cfg()
 {
 	if (typeof GM.setValue !== "undefined")
 	{
@@ -2544,12 +2544,12 @@ async function cfg()
 		+ "<br><br><center>Custom JS Action:<textarea id='hji_cfg_6_js' style='margin: 0px; width: 400px; height: 50px;'></textarea>"
 		+ "<br><input id='hji_cfg_save' type='button' value='Save configuration'></center>";
 		document.body.appendChild(div);
-		q("#hji_cfg_1_direct").checked = await GM.getValue("directImage");
-		q("#hji_cfg_2_bgclr").value = await GM.getValue("bgColor", "grey");
-		q("#hji_cfg_3_fitWH").checked = await GM.getValue("fitWH", true);
-		q("#hji_cfg_4_fitB").checked = await GM.getValue("fitB", false);
-		q("#hji_cfg_5_fitS").checked = await GM.getValue("fitS", true);
-		q("#hji_cfg_6_js").value = await GM.getValue("js", "");
+		q("#hji_cfg_1_direct").checked = cfg_direct;
+		q("#hji_cfg_2_bgclr").value = cfg_bgclr;
+		q("#hji_cfg_3_fitWH").checked = cfg_fitWH;
+		q("#hji_cfg_4_fitB").checked = cfg_fitB;
+		q("#hji_cfg_5_fitS").checked = cfg_fitS;
+		q("#hji_cfg_6_js").value = cfg_js;
 		q("#hji_cfg_save").addEventListener("click", saveCfg, true);
 	}
 	else
