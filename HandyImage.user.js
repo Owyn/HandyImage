@@ -2567,7 +2567,7 @@ async function loadCfg()
 		cfg_fitWH = await GM.getValue("fitWH", true);
 		cfg_fitB = await GM.getValue("fitB", false);
 		cfg_fitS = await GM.getValue("fitS", true);
-		cfg_js = await GM.getValue("js");
+		cfg_js = await GM.getValue("js", "");
 	}
 }
 loadCfg();
