@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name		Handy Image
-// @version		2017.11.16
+// @version		2017.11.17
 // @author		Owyn
 // @contributor	ubless607, bitst0rm
 // @namespace	handyimage
@@ -818,7 +818,7 @@ function protected_createElement(el)
 function makeimage()
 {
 	if(cfg_direct){unsafeWindow.location.href = i.src;return false;}
-	if(cfg_bgclr){document.body.bgColor = cfg_bgclr;}
+	if(cfg_bgclr){document.documentElement.style.backgroundColor = cfg_bgclr;}
 	document.body.style.margin = "0px";
 	document.body.innerHTML = "<style>img { position: absolute; top: 0; right: 0; bottom: 0; left: 0; image-orientation: from-image; }</style>"; // center image
 	ws();
