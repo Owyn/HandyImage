@@ -2185,6 +2185,11 @@ function makeworld()
 	if(!j)
 	{
 		j = true;
+		if (document.title == "Attention Required! | Cloudflare")
+		{
+			console.warn("Cloudflare MITM guard page.  Stopping.");
+			return false;
+		}
 		window.addEventListener('beforescriptexecute', onscript, true);
 	}
 	//
