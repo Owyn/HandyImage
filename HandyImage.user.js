@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name		Handy Image
-// @version		2017.12.12
+// @version		2017.12.14
 // @author		Owyn
 // @contributor	ubless607, bitst0rm
 // @namespace	handyimage
@@ -66,7 +66,7 @@
 // @match		http://*.pic-money.ru/full/
 // @match		http://*.imgcandy.net/img*
 // @match		http://*.imagefolks.com/img*
-// @match		http://*.pzy.be/v*
+// @match		*://*.pzy.be/v*
 // @match		https://www.turboimagehost.com/p*
 // @match		http://*.subirimagenes.com/*.html
 // @match		http://*.screenlist.ru/details.php?image_id=*
