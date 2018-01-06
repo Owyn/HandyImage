@@ -707,6 +707,7 @@
 // @match		https://jerking.empornium.ph/image/*
 // @match		http://p0xpicmoney.ru/*/*/
 // @match		http://picker-click.ru/*/*/
+// @match		https://truepic.org/*
 // ==/UserScript==
 
 if (typeof unsafeWindow === "undefined")
@@ -1467,6 +1468,7 @@ function makeworld()
 		i = q('img[src*="/kep/"]');
 		break;
 	case "servimg.com":
+	case "truepic.org":
 		i = q('img[src*="/u/"]');
 		break;
 	case "imagearn.com":
