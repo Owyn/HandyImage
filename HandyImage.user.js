@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name		Handy Image
-// @version		2017.12.26
+// @version		2018.01.08
 // @author		Owyn
 // @contributor	ubless607, bitst0rm
 // @namespace	handyimage
@@ -793,6 +793,13 @@ function sanitize() // lol I'm such a hacker
 	{
 		clearTimeout(n);
 	}
+}
+
+function DeleteAllCookies()
+{
+	document.cookie.split(";").forEach(function(c) {
+		document.cookie = c.replace(/^ +/, "").replace(/=.*/, "=;expires=" + new Date().toUTCString() + ";path=/");
+	});
 }
 
 function onscript(e) 
@@ -2016,6 +2023,7 @@ function makeworld()
 		if(i)
 		{
 			i.click();
+			DeleteAllCookies();
 			break;
 		}
 	case "pixhost.org":
