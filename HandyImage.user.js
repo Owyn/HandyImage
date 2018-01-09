@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name		Handy Image
-// @version		2018.01.08
+// @version		2018.01.09
 // @author		Owyn
 // @contributor	ubless607, bitst0rm
 // @namespace	handyimage
@@ -1457,7 +1457,17 @@ function makeworld()
 		{
 			window.location.href = window.location.href.replace("img-","img3-");
 			break;
-		}	
+		}
+		else if (window.location.href.indexOf("/imga-u/") != -1)
+		{
+			window.location.href = window.location.href.replace("/imga-u/","/imgb-u/");
+			break;
+		}
+		else if(window.location.href.indexOf("/imgb-u/") != -1)
+		{
+			i = q('img[src*="/u/b/"]');
+			break;
+		}
 	case "freeimagehosting.net":
 	case "uploadhouse.com":
 	case "fotos-hochladen.net":
