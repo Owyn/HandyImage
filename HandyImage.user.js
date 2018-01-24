@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name		Handy Image
-// @version		2018.01.09
+// @version		2018.01.24
 // @author		Owyn
 // @contributor	ubless607, bitst0rm
 // @namespace	handyimage
@@ -482,7 +482,7 @@
 // @match		http://*.hotflick.net/u/v/?q=*
 // @match		http://*.hotflick.net/f/v/?q=*
 // @match		http://vavvi.com/images/*.html
-// @match		http://*.deviantart.com/art/*
+// @match		https://*.deviantart.com/art/*
 // @match		http://*.myceleb.net/u/v/?q=*
 // @match		http://*.imageblinks.com/img-*
 // @match		*://*.gelbooru.com/index.php?page=post&s=view&id=*
@@ -1050,7 +1050,15 @@ function makeworld()
 		find_text_in_scripts('"https_url":"', '"', false);
 		break;
 	case "artstation.com":
-		find_text_in_scripts('"image_url\\":\\"', '\\"', false);
+		j = true;
+		if(document.querySelectorAll("div.artwork").length == 1)
+		{
+			i = q('a[href*="&dl="]');
+			if(i)
+			{
+				i.src = i.href;
+			}
+		}
 		break;
 	case "pixiv.net":
 		j = true;
