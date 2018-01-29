@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name		Handy Image
-// @version		2018.01.24
+// @version		2018.01.29
 // @author		Owyn
 // @contributor	ubless607, bitst0rm
 // @namespace	handyimage
@@ -522,7 +522,6 @@
 // @match		http://*.imgz.pw/ch/image/*
 // @match		*://*.imgking.co/img*
 // @match		http://ask.fm/*/photo/original
-// @match		http://cuteimg.cc/*
 // @match		http://*.newimagepost.com/img-*
 // @match		http://*.imageho.me/img-*
 // @match		http://myimg.club/*
@@ -603,8 +602,7 @@
 // @match		http://www.pixsense.net/site/v/*
 // @match		http://www.imgsky.net/site/v/*
 // @match		http://www.imagespicy.site/site/v/*
-// @match		http://imgoutlet.com/*.php
-// @match		http://imgoutlet.com/*/*.html
+// @match		http://imgoutlet.pw/*.php
 // @match		http://*.pix.ac/image/*
 // @match		*://*.imgmak.com/image/*
 // @match		http://*.freephotohostin.com/img-*
@@ -700,7 +698,6 @@
 // @match		http://passpix.com/images/*
 // @match		http://*.sexyimg.eu/*/*.html
 // @match		http://*.imgseed.com/img-*.html
-// @match		http://imgoutlet.co/*.php
 // @match		http://img.folluo.me/image/*
 // @match		*://imgpart.com/img-*
 // @match		http://picstate.com/view/full/*
@@ -1133,10 +1130,22 @@ function makeworld()
 		}
 		break;
 	case "imagecrest.com":
-		if(window.location.href.indexOf("/verify/") != -1)
+	case "imagepearl.com":
+		i = q('#verify2');
+		if(i)
 		{
-			unsafeWindow.location.href = window.location.href.replace("/verify/","/view/");
-			i=1;
+			let w = screen.width;
+			let h = screen.height;
+			let u = q('#i').value;
+			let r = q('#r').value;
+			let xhttp = new XMLHttpRequest();
+				xhttp.onreadystatechange = function() {
+					if (xhttp.readyState == 4 && xhttp.status == 200) {
+						location.reload();
+					}
+				};
+			xhttp.open("GET", "verify.php?w=" + w + "&h=" + h + "&i=" + u + "&r=" + r + "", false);
+			xhttp.send();
 			break;
 		}
 		i = q('img#image');
@@ -1383,15 +1392,6 @@ function makeworld()
 	case "ninjaimages.com":		
 		i = q('img[onload*="scale"]');
 		break;
-	case "imagepearl.com":
-		i = q("#verify2")
-		dp=true;
-		j = true;
-		if(i) 
-		{
-			i.click();
-			break;
-		}
 	case "bild.me":
 	case "imagecarry.com":
 	case "imagedunk.com":
@@ -1513,11 +1513,16 @@ function makeworld()
 			i.submit();
 			break;
 		}
-	case "cuteimg.cc":
-	case "imgoutlet.co":
+	case "imgoutlet.pw":
 		j = true;
 		dp=true;
-		var f = document.querySelectorAll("input[type='button']")
+		i = q('img.picview');
+		if (i)
+		{
+			break;
+		}
+
+		var f = document.querySelectorAll("button[type='button']")
 		if(f.length)
 		{
 			var n;
@@ -1525,17 +1530,19 @@ function makeworld()
 			{
 				if(window.getComputedStyle(f[n]).visibility != "hidden" && f[n].offsetWidth != 0 && f[n].value.indexOf("eply") == -1 && f[n].value.indexOf("Log") == -1)
 				{
+					unsafeWindow._0x337c4b = null;
 					f[n].removeAttribute("disabled");
 					f[n].click();
+					i = 1;
 					break;
 				}
 			}
 		}
+		break;
 	case "myimg.club":
 	case "imgmonkey.com":
 	case "imgdragon.com":
 	case "imggold.org":
-	case "imgoutlet.com":
 	case "levinpic.org":
 	case "imgrock.net":
 	case "imgtown.net":
