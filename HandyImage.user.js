@@ -1530,7 +1530,6 @@ function makeworld()
 			{
 				if(window.getComputedStyle(f[n]).visibility != "hidden" && f[n].offsetWidth != 0 && f[n].value.indexOf("eply") == -1 && f[n].value.indexOf("Log") == -1)
 				{
-					unsafeWindow._0x337c4b = null;
 					f[n].removeAttribute("disabled");
 					f[n].click();
 					i = 1;
