@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name		Handy Image
-// @version		2018.01.29
+// @version		2018.02.05
 // @author		Owyn
 // @contributor	ubless607, bitst0rm
 // @namespace	handyimage
@@ -1030,9 +1030,9 @@ function makeworld()
 		break;
 	case "instagram.com":
 		j = true;
-		if(find_text_in_scripts('"shortcode_media": {"__typename": "GraphImage"'))
+		if(find_text_in_scripts('"shortcode_media":{"__typename":"GraphImage"'))
 		{
-			find_text_in_scripts('display_url": "', '"');
+			find_text_in_scripts('"display_url":"', '"');
 			if(i)
 			{
 				i.src = i.src.replace(/\/p\d+x\d+?\//, '/');
