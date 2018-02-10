@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name		Handy Image
-// @version		2018.02.05
+// @version		2018.02.10
 // @author		Owyn
 // @contributor	ubless607, bitst0rm
 // @namespace	handyimage
@@ -515,7 +515,7 @@
 // @match		http://*.imgstudio.org/img-*
 // @match		http://goimge.com/img-*
 // @match		http://*.safeimage.biz/image/*
-// @match		http://*.picclick.ru/*/*/
+// @match		http://*.imgbase.online/*/*/
 // @match		http://*.picpays.ru/*/*/
 // @match		http://*.imgclover.com/image/*
 // @match		http://*.imgz.pw/share-*
@@ -1217,7 +1217,7 @@ function makeworld()
 	case "pic-mir.ru":
 	case "payforpic.ru":
 	case "freshpics.ru":
-	case "picclick.ru":
+	case "imgbase.online":
 	case "picpays.ru":
 	case "piccash.net":
 	case "imgbase.ru":
