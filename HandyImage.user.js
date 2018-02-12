@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name		Handy Image
-// @version		2018.02.10
+// @version		2018.02.12
 // @author		Owyn
 // @contributor	ubless607, bitst0rm
 // @namespace	handyimage
@@ -410,6 +410,8 @@
 // @match		*://*.wikimedia.org/wiki/File:*.pn*
 // @match		http://*.xxxscreens.com//img-*
 // @match		http://avenuexxx.com/*-*
+// @match		http://avenuexxx.com/archives/*/*
+// @exclude		http://avenuexxx.com/archives/category/*
 // @match		http://www.bilderhoster.net/*.html
 // @match		http://*.xxxscreens.com/img-*
 // @match		http://*.imgdope.com/view*
