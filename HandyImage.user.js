@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name		Handy Image
-// @version		2018.02.12
+// @version		2018.02.18
 // @author		Owyn
 // @contributor	ubless607, bitst0rm
 // @namespace	handyimage
@@ -1346,6 +1346,7 @@ function makeworld()
 	case "greenpiccs.com":
 	case "balkanelite.org":
 	case "lostpic.net":
+	case "qrrro.com":
 		i = q('a[href*="images/"]');
 		if(i){i.src = i.href;}
 		break;
@@ -2032,7 +2033,6 @@ function makeworld()
 		i = q('img[src*="images/"]');
 		if(i){i.src = i.src.replace('2_', '');}
 		break;
-	case "qrrro.com":
 	case "imgmade.com":
 		i = q('form');
 		dp=true;
