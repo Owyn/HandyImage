@@ -1094,9 +1094,6 @@ function makeworld()
 		i = q('img#thepic');
 		if(i && i.parentNode.href){i.src = i.src.replace('/s/', '/i/');}
 		break;
-	case "img.folluo.me":
-		i = q('img[data-load="full"]');
-		break;
 	case "imgbox.com":
 	case "imageupper.com":
 	case "hotflick.net":
@@ -2136,6 +2133,7 @@ function makeworld()
 			i.src = "http://www.joblo.com/moviehotties/images/profile-gallery/orig" + window.location.href.substr(window.location.href.lastIndexOf("/"));
 		}
 		break;
+	case "img.folluo.me":
 	case "sizzlingclicks.com":
 		i = q('img[data-load="full"]');
 		break;
