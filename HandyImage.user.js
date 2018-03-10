@@ -707,6 +707,7 @@
 // @match		http://p0xpicmoney.ru/*/*/
 // @match		http://picker-click.ru/*/*/
 // @match		https://truepic.org/*
+// @match		https://www.jiopic.com/image/*
 // ==/UserScript==
 
 if (typeof unsafeWindow === "undefined")
@@ -993,6 +994,7 @@ function makeworld()
 	case "extraimage.net":
 	case "imgcloud.pw":
 	case "z4a.net":
+	case "jiopic.com":
 		i = document.querySelector('meta[property="og:image"] , [name="og:image"]');
 		if(i)
 		{
