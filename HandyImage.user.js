@@ -707,6 +707,7 @@
 // @match		http://p0xpicmoney.ru/*/*/
 // @match		http://picker-click.ru/*/*/
 // @match		https://truepic.org/*
+// @match		https://www.jiopic.com/image/*
 // ==/UserScript==
 
 if (typeof unsafeWindow === "undefined")
@@ -993,6 +994,7 @@ function makeworld()
 	case "extraimage.net":
 	case "imgcloud.pw":
 	case "z4a.net":
+	case "jiopic.com":
 		i = document.querySelector('meta[property="og:image"] , [name="og:image"]');
 		if(i)
 		{
@@ -1091,9 +1093,6 @@ function makeworld()
 	case "thumbsnap.com":
 		i = q('img#thepic');
 		if(i && i.parentNode.href){i.src = i.src.replace('/s/', '/i/');}
-		break;
-	case "img.folluo.me":
-		i = q('img[data-load="full"]');
 		break;
 	case "imgbox.com":
 	case "imageupper.com":
@@ -2134,6 +2133,7 @@ function makeworld()
 			i.src = "http://www.joblo.com/moviehotties/images/profile-gallery/orig" + window.location.href.substr(window.location.href.lastIndexOf("/"));
 		}
 		break;
+	case "img.folluo.me":
 	case "sizzlingclicks.com":
 		i = q('img[data-load="full"]');
 		break;
