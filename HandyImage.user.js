@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name		Handy Image
-// @version		2018.02.18
+// @version		2018.04.20
 // @author		Owyn
 // @contributor	ubless607, bitst0rm
 // @namespace	handyimage
@@ -573,6 +573,7 @@
 // @match		http://*.imggold.org/*/*.html
 // @match		http://*.imgcredit.xyz/img-*
 // @match		http://*.imgcredit.xyz/p/img-*
+// @match		http://*.imgcredit.xyz/image/*
 // @match		http://*.dimtus.com/img-*
 // @match		http://*.coreimg.net/*
 // @match		http://sfwimg.com/image/*
@@ -708,6 +709,9 @@
 // @match		http://picker-click.ru/*/*/
 // @match		https://truepic.org/*
 // @match		https://www.jiopic.com/image/*
+// @match		https://imx.to/img-*
+// @match		https://pixxxels.cc/image/*
+// @match		http://picpic.online/*/*/
 // ==/UserScript==
 
 if (typeof unsafeWindow === "undefined")
@@ -952,6 +956,9 @@ function makeworld()
 			i.src = i.src.replace('_800.', '.'); //img.3ezy.net
 		}
 		break;
+	case "imgcredit.xyz":
+		i = q('img[src*="/upload/"]');
+		break;
 	case "directupload.net":
 	case "bilderhoster.net":
 	case "noelshack.com":
@@ -995,6 +1002,7 @@ function makeworld()
 	case "imgcloud.pw":
 	case "z4a.net":
 	case "jiopic.com":
+	case "wwv.imgcredit.xyz":
 		i = document.querySelector('meta[property="og:image"] , [name="og:image"]');
 		if(i)
 		{
@@ -1205,6 +1213,7 @@ function makeworld()
 	case "pikoclick.ru":
 	case "p0xpicmoney.ru":
 	case "picker-click.ru":
+	case "picpic.online":
 		i = q('img[onclick*="mshow"]');
 		if(i){i.src = i.src.replace('-thumb', '');i.src = i.src.replace('img_thumb', 'img_full');}
 		break;
@@ -1856,6 +1865,7 @@ function makeworld()
 	case "pixxxels.org":
 	case "postimg.org":
 	case "postimg.cc":
+	case "pixxxels.cc":
 		i = q('a[href*="?dl="]');
 		if(i)
 		{
@@ -1967,6 +1977,7 @@ function makeworld()
 	case "imgmaid.net":
 	case "pic-maniac.com":
 	case "coreimg.net":
+	case "imx.to":
 		j = true;
 		i = q('input[type="submit"]');
 		dp=true;
@@ -2169,9 +2180,6 @@ function makeworld()
 		case "wikimedia.org":
 			i = q('a[href*="/upload"]');
 			if(i){i.src = i.href;}
-			break;
-		case "imgcredit.xyz":
-			i = q('img[src*="/upload/"]');
 			break;
 		case "photobucket.com":
 			find_text_in_scripts('originalUrl":"', '"');
