@@ -956,9 +956,6 @@ function makeworld()
 			i.src = i.src.replace('_800.', '.'); //img.3ezy.net
 		}
 		break;
-	case "imgcredit.xyz":
-		i = q('img[src*="/upload/"]');
-		break;
 	case "directupload.net":
 	case "bilderhoster.net":
 	case "noelshack.com":
@@ -1734,6 +1731,7 @@ function makeworld()
 	case "sexybabepics.net":
 	case "sexyimg.eu":
 	case "imgseed.com":
+	case "imgcredit.xyz":
 		i = q('img[src*="' + iurl + '/upload/"]');
 		break;
 	case "imgboom.net":
@@ -2180,6 +2178,9 @@ function makeworld()
 		case "wikimedia.org":
 			i = q('a[href*="/upload"]');
 			if(i){i.src = i.href;}
+			break;
+		case "imgcredit.xyz":
+			i = q('img[src*="/upload/"]');
 			break;
 		case "photobucket.com":
 			find_text_in_scripts('originalUrl":"', '"');
