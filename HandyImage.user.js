@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name		Handy Image
-// @version		2018.04.20
+// @version		2018.04.22
 // @author		Owyn
 // @contributor	ubless607, bitst0rm
 // @namespace	handyimage
@@ -528,7 +528,7 @@
 // @match		http://*.imageho.me/img-*
 // @match		http://myimg.club/*
 // @match		http://*.imgease.re/img-*
-// @match		http://www.hotimage.uk/img-*
+// @match		https://www.hotimage.uk/*mg-*
 // @match		http://imgview.net/*.php
 // @match		http://*.10.imageleon.com/i-*
 // @match		https://www.dropbox.com/s/*/*
@@ -712,6 +712,9 @@
 // @match		https://imx.to/img-*
 // @match		https://pixxxels.cc/image/*
 // @match		http://picpic.online/*/*/
+// @match		http://imgking.xyz/*.html
+// @match		http://moreimage.pw/image/*
+// @match		https://imgsha.com/i/*
 // ==/UserScript==
 
 if (typeof unsafeWindow === "undefined")
@@ -1000,6 +1003,7 @@ function makeworld()
 	case "z4a.net":
 	case "jiopic.com":
 	case "wwv.imgcredit.xyz":
+	case "moreimage.pw":
 		i = document.querySelector('meta[property="og:image"] , [name="og:image"]');
 		if(i)
 		{
@@ -1588,6 +1592,7 @@ function makeworld()
 		i = q('img[src*="img/"]'); 
 		break;
 	case "2pixxsee.ru":
+	case "imgking.xyz":
 		i = q('img[src*="/img/"]');
 		if(i){i.src = i.src.replace('p.', '.');}
 		break;
@@ -2144,6 +2149,7 @@ function makeworld()
 		break;
 	case "img.folluo.me":
 	case "sizzlingclicks.com":
+	case "imgsha.com":
 		i = q('img[data-load="full"]');
 		break;
 	default: // dynamic subdomain
