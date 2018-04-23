@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name		Handy Image
-// @version		2018.04.22
+// @version		2018.04.23
 // @author		Owyn
 // @contributor	ubless607, bitst0rm
 // @namespace	handyimage
@@ -31,7 +31,7 @@
 // @exclude		*://www.image2you.ru/cabinet/*
 // @match		http://imageban.ru/show*
 // @match		*://fastpic.ru/view*
-// @match		http://pixhost.org/show/*
+// @match		http://pixhost.to/show/*
 // @match		http://*.picpicture.com/image/*
 // @match		http://*.pic5you.ru/*/*/
 // @match		http://*.tinypic.com/view*
@@ -710,6 +710,7 @@
 // @match		https://truepic.org/*
 // @match		https://www.jiopic.com/image/*
 // @match		https://imx.to/img-*
+// @match		https://imx.to/i/*
 // @match		https://pixxxels.cc/image/*
 // @match		http://picpic.online/*/*/
 // @match		http://imgking.xyz/*.html
@@ -2065,7 +2066,7 @@ function makeworld()
 			DeleteAllCookies();
 			break;
 		}
-	case "pixhost.org":
+	case "pixhost.to":
 	case "imgtiger.com":
 	case "imgserve.net":
 	case "imgdino.com":
