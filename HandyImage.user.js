@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name		Handy Image
-// @version		2018.04.23
+// @version		2018.05.05
 // @author		Owyn
 // @contributor	ubless607, bitst0rm
 // @namespace	handyimage
@@ -716,6 +716,7 @@
 // @match		http://imgking.xyz/*.html
 // @match		http://moreimage.pw/image/*
 // @match		https://imgsha.com/i/*
+// @match		https://www.pic-upload.de/view-*/*.html
 // ==/UserScript==
 
 if (typeof unsafeWindow === "undefined")
@@ -1584,6 +1585,7 @@ function makeworld()
 	case "lostpix.com":
 	case "vvcap.com":
 	case "imgtrex.com":
+	case "pic-upload.de":
 		i = q('img[src*="/img/"]');
 		break;
 	case "imagenetz.de":
