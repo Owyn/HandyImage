@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name		Handy Image
-// @version		2018.05.05
+// @version		2018.05.11
 // @author		Owyn
 // @contributor	ubless607, bitst0rm
 // @namespace	handyimage
@@ -31,7 +31,7 @@
 // @exclude		*://www.image2you.ru/cabinet/*
 // @match		http://imageban.ru/show*
 // @match		*://fastpic.ru/view*
-// @match		http://pixhost.to/show/*
+// @match		https://pixhost.to/show/*
 // @match		http://*.picpicture.com/image/*
 // @match		http://*.pic5you.ru/*/*/
 // @match		http://*.tinypic.com/view*
@@ -657,6 +657,7 @@
 // @match		http://piccloud.ru/*.html
 // @match		http://imgbase.ru/*/*/
 // @match		http://*.sexybabepics.net/img-*.html
+// @match		http://*.sexybabepics.net/x/image/*
 // @match		http://*.imagecrest.com/verify/*
 // @match		http://*.imagecrest.com/view/*
 // @match		https://*.picz.site/img-*.html
@@ -1289,6 +1290,9 @@ function makeworld()
 			i = q('img.original');
 		}
 		break;
+	case "sexybabepics.net":
+		i = document.head.querySelector('meta[property="og:image"]');
+		if(i){i.src = i.content; break;}
 	case "picsee.net":
 		i = q('a[href*="/upload"]');
 		if(i){i.src = i.href;}
@@ -1736,7 +1740,6 @@ function makeworld()
 	case "imgtrial.com":
 	case "dimtus.com":
 	case "imgcat.pw":
-	case "sexybabepics.net":
 	case "sexyimg.eu":
 	case "imgseed.com":
 	case "imgcredit.xyz":
@@ -2183,6 +2186,9 @@ function makeworld()
 		case "imagevenue.com":
 			i = q('img[src*="/loc"]');
 			break;
+		case "sexybabepics.net":
+			i = document.head.querySelector('meta[property="og:image"]');
+			if(i){break;}
 		case "wikipedia.org":
 		case "wikimedia.org":
 			i = q('a[href*="/upload"]');
@@ -2204,7 +2210,8 @@ function makeworld()
 			i = q('img#imgElement');
 			break;
 		case "xhamster.com":
-			i = q('img#imgSized');
+			j = true;
+			i = q('img.fotorama__img');
 			break;
 		case "imagilive.com":
 			i = q('a.button');
