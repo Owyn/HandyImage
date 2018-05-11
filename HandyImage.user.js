@@ -2186,9 +2186,6 @@ function makeworld()
 		case "imagevenue.com":
 			i = q('img[src*="/loc"]');
 			break;
-		case "sexybabepics.net":
-			i = document.head.querySelector('meta[property="og:image"]');
-			if(i){break;}
 		case "wikipedia.org":
 		case "wikimedia.org":
 			i = q('a[href*="/upload"]');
