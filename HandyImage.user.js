@@ -37,7 +37,6 @@
 // @match		http://*.tinypic.com/view*
 // @match		http://radical-foto.ru/*
 // @match		http://radikal-foto.ru/*
-// @match		http://radikal.ru/*
 // @match		https://radikal.ru/*
 // @match		http://f-page.ru/*
 // @match		http://f-picture.net/*
