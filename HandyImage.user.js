@@ -31,7 +31,7 @@
 // @exclude		*://www.image2you.ru/cabinet/*
 // @match		http://imageban.ru/show*
 // @match		*://fastpic.ru/view*
-// @match		https://pixhost.to/show/*
+// @match		*://pixhost.to/show/*
 // @match		http://*.picpicture.com/image/*
 // @match		http://*.pic5you.ru/*/*/
 // @match		http://*.tinypic.com/view*
