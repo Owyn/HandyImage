@@ -718,6 +718,8 @@
 // @match		http://moreimage.pw/image/*
 // @match		https://imgsha.com/i/*
 // @match		https://www.pic-upload.de/view-*/*.html
+// @match		http://pic3you.org/*.html
+// @match		http://pic3you.org/full/
 // ==/UserScript==
 
 if (typeof unsafeWindow === "undefined")
@@ -1463,6 +1465,7 @@ function makeworld()
 	case "1pic2x.ru":
 	case "1pics1img.ru":
 	case "wwxxww.ru":
+	case "pic3you.org":		
 		var f = document.getElementsByTagName("button");
 		if(f.length)
 		{
