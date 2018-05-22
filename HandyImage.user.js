@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name		Handy Image
-// @version		2018.05.11
+// @version		2018.05.22
 // @author		Owyn
 // @contributor	ubless607, bitst0rm
 // @namespace	handyimage
@@ -720,6 +720,7 @@
 // @match		https://www.pic-upload.de/view-*/*.html
 // @match		http://pic3you.org/*.html
 // @match		http://pic3you.org/full/
+// @match		*://*.vipix.pw/images/*.html
 // ==/UserScript==
 
 if (typeof unsafeWindow === "undefined")
@@ -1364,6 +1365,7 @@ function makeworld()
 	case "balkanelite.org":
 	case "lostpic.net":
 	case "qrrro.com":
+	case "vipix.pw":
 		i = q('a[href*="images/"]');
 		if(i){i.src = i.href;}
 		break;
