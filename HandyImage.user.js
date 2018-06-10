@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name		Handy Image
-// @version		2018.05.22
+// @version		2018.06.10
 // @author		Owyn
 // @contributor	ubless607, bitst0rm
 // @namespace	handyimage
@@ -22,7 +22,7 @@
 // @match		http://www.imagebam.com/image*
 // @match		http://imgchili.net/show*
 // @match		*://imgbox.com/*
-// @match		*://imagetwist.com/*/*
+// @match		*://*.imagetwist.com/*/*
 // @match		http://*.imagevenue.com/img.php?*
 // @match		*://*.imageshack.com/i/*
 // @match		*://*.imageshack.com/f/*
@@ -2002,6 +2002,7 @@ function makeworld()
 		}
 	case "imgspice.com":
 	case "imagetwist.com":
+	case "dev.imagetwist.com":
 	case "pixroute.com":
 	case "pzy.be":
 	case "funkyimg.com":
