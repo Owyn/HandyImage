@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name		Handy Image
-// @version		2018.06.14
+// @version		2018.06.15
 // @author		Owyn
 // @contributor	ubless607, bitst0rm
 // @namespace	handyimage
@@ -1078,8 +1078,19 @@ function makeworld()
 		break;
 	case "pixiv.net":
 		j = true;
-		i = q("img.original-image");
-		if(i){i.src = i.dataset.src;}
+		i = q('img[src*="i.pximg.net/img-"]');
+		if(i)
+		{
+			if(!q('a[href*="member_illust.php?mode=manga"]'))
+			{
+				find_text_in_scripts('"original":"', '"');
+			}
+			else
+			{
+				console.warn("Manga page with multiple images, no action taken further");
+				return;
+			}
+		}
 		break;
 	case "chan.sankakucomplex.com":
 		i = q('a[itemprop="contentUrl"]');
