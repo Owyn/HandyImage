@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name		Handy Image
-// @version		2018.06.15
+// @version		2018.06.24
 // @author		Owyn
 // @contributor	ubless607, bitst0rm
 // @namespace	handyimage
@@ -1377,6 +1377,8 @@ function makeworld()
 	case "lostpic.net":
 	case "qrrro.com":
 	case "vipix.pw":
+	case "imagecurl.com":
+	case "imagecurl.org":
 		i = q('a[href*="images/"]');
 		if(i){i.src = i.href;}
 		break;
@@ -2053,8 +2055,6 @@ function makeworld()
 		i = q('img[src*="/i/"]');
 		break;
 	case "miragepics.com":
-	case "imagecurl.com":
-	case "imagecurl.org":
 		i = q('input[value*="' + iurl + '/images/"]');
 		if(i){i.src = i.value;}
 		break;
