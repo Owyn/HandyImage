@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name		Handy Image
-// @version		2018.06.24
+// @version		2018.07.02
 // @author		Owyn
 // @contributor	ubless607, bitst0rm
 // @namespace	handyimage
@@ -376,7 +376,7 @@
 // @match		http://*.244pix.com/view*
 // @match		http://*.uploadimage.ro/view*
 // @match		http://*.imgflare.com/*/*
-// @match		http://www.imagefap.com/photo/*
+// @match		https://www.imagefap.com/photo/*
 // @match		http://filefap.com/view*
 // @match		*://imgur.com/*
 // @exclude		*://imgur.com/*,*
