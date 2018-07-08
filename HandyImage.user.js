@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name		Handy Image
-// @version		2018.07.02
+// @version		2018.07.08
 // @author		Owyn
 // @contributor	ubless607, bitst0rm
 // @namespace	handyimage
@@ -721,6 +721,7 @@
 // @match		http://pic3you.org/*.html
 // @match		http://pic3you.org/full/
 // @match		*://*.vipix.pw/images/*.html
+// @match		http://*.imgchilibum.ru/v.php?id=*
 // ==/UserScript==
 
 if (typeof unsafeWindow === "undefined")
@@ -1397,6 +1398,7 @@ function makeworld()
 		if(i){i.src = i.href;}
 		break;
 	case "photosex.biz":
+	case "imgchilibum.ru":
 		i = q('img[src*="/pic"]');
 		break;
 	case "pronpic.org":
