@@ -88,9 +88,9 @@
 // @match		http://www.imagesnake.org/show*
 // @match		http://www.imagesnake.org/img*
 // @match		http://www.imagesnake.org/view*
-// @match		http://www.freebunker.com/show*
-// @match		http://www.freebunker.com/img*
-// @match		http://www.freebunker.com/view*
+// @match		https://www.freebunker.com/show*
+// @match		https://www.freebunker.com/img*
+// @match		https://www.freebunker.com/view*
 // @match		http://bayimg.com/*
 // @match		http://*.directupload.net/file*
 // @match		http://*.imagecherry.com/*
@@ -196,7 +196,7 @@
 // @match		http://zapodaj.net/*.html
 // @match		http://www.pixic.ru/view*
 // @match		http://www.imagesup.de/picture.php?code=*
-// @match		http://www.pornbus.org/show*
+// @match		https://www.pornbus.org/show*
 // @match		http://www.bilder-space.de/bild-*
 // @match		http://www.imgcarry.com/show*
 // @match		http://*.saveimg.ru/show*
@@ -427,8 +427,8 @@
 // @match		http://*.greenpiccs.com/images/*.html
 // @match		http://*.hostmat.eu/view*
 // @match		http://*.photobucket.com/user/*/media/*.htm*
-// @match		http://www.imgshots.com/img*
-// @match		http://www.imgshots.com/show/*
+// @match		https://www.imgshots.com/img*
+// @match		https://www.imgshots.com/show/*
 // @match		http://*.3xplanet.com/view*
 // @match		http://*.imgmega.com/*.html
 // @match		*://img.yt/img-*
@@ -722,6 +722,7 @@
 // @match		http://pic3you.org/full/
 // @match		*://*.vipix.pw/images/*.html
 // @match		http://*.imgchilibum.ru/v.php?id=*
+// @match		http://*.imgazure.com/*.html
 // ==/UserScript==
 
 if (typeof unsafeWindow === "undefined")
@@ -1509,7 +1510,7 @@ function makeworld()
 			window.location.href = window.location.href.replace("/imga-u/","/imgb-u/");
 			break;
 		}
-		else if(window.location.href.indexOf("/imgb-u/") != -1)
+		else // if(window.location.href.indexOf("/imgb-u/") != -1)
 		{
 			i = q('img[src*="/u/b/"]');
 			break;
@@ -1620,6 +1621,7 @@ function makeworld()
 		break;
 	case "2pixxsee.ru":
 	case "imgking.xyz":
+	case "imgazure.com":
 		i = q('img[src*="/img/"]');
 		if(i){i.src = i.src.replace('p.', '.');}
 		break;
