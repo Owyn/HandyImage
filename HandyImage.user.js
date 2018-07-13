@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name		Handy Image
-// @version		2018.07.08
+// @version		2018.07.13
 // @author		Owyn
 // @contributor	ubless607, bitst0rm
 // @namespace	handyimage
@@ -132,7 +132,7 @@
 // @match		http://*.pic4you.ru/*
 // @match		http://picload.org/view*
 // @match		http://*.thebestpichost.com/picture/*
-// @match		http://*.lostpic.net/?photo=*
+// @match		https://*.lostpic.net/image/*
 // @match		http://subefotos.com/ver/*
 // @exclude		http://subefotos.com/ver/*#codigos
 // @match		http://*.pixsor.com/share*
@@ -959,6 +959,7 @@ function makeworld()
 	case "fsfiles.org":
 	case "picpicture.com":
 	case "picpie.org":
+	case "lostpic.net":
 		//chevereto 3.x
 		i = document.head.querySelector('link[rel="image_src"]');
 		if(i)
@@ -1376,7 +1377,6 @@ function makeworld()
 	case "imgdone.com":
 	case "greenpiccs.com":
 	case "balkanelite.org":
-	case "lostpic.net":
 	case "qrrro.com":
 	case "vipix.pw":
 	case "imagecurl.com":
@@ -2217,6 +2217,14 @@ function makeworld()
 			break;
 		case "photobucket.com":
 			find_text_in_scripts('originalUrl":"', '"');
+			break;
+		case "lostpic.net":
+			//chevereto 3.x
+			i = document.head.querySelector('link[rel="image_src"]');
+			if(i)
+			{
+				i.src = i.href;
+			}
 			break;
 		case "freeamateurteens.net":
 			i = q('img[src*="images/"]');
