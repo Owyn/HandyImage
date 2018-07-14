@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name		Handy Image
-// @version		2018.07.13
+// @version		2018.07.14
 // @author		Owyn
 // @contributor	ubless607, bitst0rm
 // @namespace	handyimage
@@ -484,7 +484,7 @@
 // @match		http://*.hotflick.net/u/v/?q=*
 // @match		http://*.hotflick.net/f/v/?q=*
 // @match		http://vavvi.com/images/*.html
-// @match		https://*.deviantart.com/art/*
+// @match		https://www.deviantart.com/*/art/*
 // @match		http://*.myceleb.net/u/v/?q=*
 // @match		http://*.imageblinks.com/img-*
 // @match		*://*.gelbooru.com/index.php?page=post&s=view&id=*
@@ -2197,7 +2197,7 @@ function makeworld()
 			}
 			break;
 		case "deviantart.com":
-			if(q('div.deviation-mlt-preview'))
+			if(q('div.dev-view-deviation'))
 			{
 				i = q('a[href*="/download/"]');
 				if(i && i.href.indexOf(".zip?") == -1 && i.href.indexOf(".7z?") == -1 && i.href.indexOf(".rar?") == -1 && i.href.indexOf(".psd?") == -1 && i.href.indexOf("deviantart.com/users/outgoing?")== -1){i.src = i.href;}
