@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name		Handy Image
-// @version		2018.07.14
+// @version		2018.07.16
 // @author		Owyn
 // @contributor	ubless607, bitst0rm
 // @namespace	handyimage
@@ -2197,7 +2197,7 @@ function makeworld()
 			}
 			break;
 		case "deviantart.com":
-			if(q('div.dev-view-deviation'))
+			if(q('img.dev-content-normal'))
 			{
 				i = q('a[href*="/download/"]');
 				if(i && i.href.indexOf(".zip?") == -1 && i.href.indexOf(".7z?") == -1 && i.href.indexOf(".rar?") == -1 && i.href.indexOf(".psd?") == -1 && i.href.indexOf("deviantart.com/users/outgoing?")== -1){i.src = i.href;}
