@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name		Handy Image
-// @version		2018.07.16
+// @version		2018.07.19
 // @author		Owyn
 // @contributor	ubless607, bitst0rm
 // @namespace	handyimage
@@ -49,7 +49,7 @@
 // @match		http://*.xxxhost.me/view*
 // @match		http://*.imadul.com/?*
 // @match		*://postimg.org/image/*
-// @match		*://postimg.cc/image/
+// @match		*://postimg.cc/image/*
 // @match		http://*.niceimage.pl/*.html
 // @match		http://*.pics-money.ru/*
 // @match		http://*.freeimgup.com/*.*
@@ -723,6 +723,7 @@
 // @match		*://*.vipix.pw/images/*.html
 // @match		http://*.imgchilibum.ru/v.php?id=*
 // @match		http://*.imgazure.com/*.html
+// @match		*://*.dpic.me/*
 // ==/UserScript==
 
 if (typeof unsafeWindow === "undefined")
@@ -914,7 +915,8 @@ function makeworld()
 		i = q('img');
 		break;
 	case "myceleb.net":
-	case "depic.me":		
+	case "depic.me":
+	case "dpic.me":
 		i = q('img#pic');
 		break;
 	case "imagebin.ca":
@@ -1323,6 +1325,14 @@ function makeworld()
 		j = true;
 		i = q('a[href*="//images/"]');
 		if(i){i.src = i.href;}
+		break;
+	case "deviantart.com":
+		if(q('img.dev-content-normal'))
+		{
+			i = q('a[href*="/download/"]');
+			if(i && i.href.indexOf(".zip?") == -1 && i.href.indexOf(".7z?") == -1 && i.href.indexOf(".rar?") == -1 && i.href.indexOf(".psd?") == -1 && i.href.indexOf("deviantart.com/users/outgoing?")== -1){i.src = i.href;}
+			else{i = q('img.dev-content-full');}
+		}
 		break;
 	case "imagehost.eu":
 	case "fappic.com":
@@ -2194,14 +2204,6 @@ function makeworld()
 			else
 			{
 				i = q('img:not([src*="data:"])[id]');
-			}
-			break;
-		case "deviantart.com":
-			if(q('img.dev-content-normal'))
-			{
-				i = q('a[href*="/download/"]');
-				if(i && i.href.indexOf(".zip?") == -1 && i.href.indexOf(".7z?") == -1 && i.href.indexOf(".rar?") == -1 && i.href.indexOf(".psd?") == -1 && i.href.indexOf("deviantart.com/users/outgoing?")== -1){i.src = i.href;}
-				else{i = q('img.dev-content-full');}
 			}
 			break;
 		case "imagevenue.com":
