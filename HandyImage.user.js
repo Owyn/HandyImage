@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name		Handy Image
-// @version		2018.07.19
+// @version		2018.08.03
 // @author		Owyn
 // @contributor	ubless607, bitst0rm
 // @namespace	handyimage
@@ -223,7 +223,7 @@
 // @match		http://*.imagesup.net/* 
 // @match		http://*.superkipje.com/view*
 // @match		https://*.2i.sk/i/*
-// @match		http://imgadult.com/img-*
+// @match		https://imgadult.com/img-*
 // @match		http://imagebic.com/?v=*
 // @match		http://www.picshot.pl/public/view*
 // @match		http://*.imagesmax.de/display-*
@@ -496,7 +496,7 @@
 // @match		https://chan.sankakucomplex.com/*post/show/*
 // @match		https://yande.re/post/show/*
 // @match		http://www.zerochan.net/*
-// @match		http://*.imgrock.net/*.php
+// @match		http://*.imgrock.pw/*.php
 // @match		http://imgzap.com/view*
 // @match		http://*.funimg.net/img*
 // @match		http://*.olivepix.com/view/*
@@ -508,12 +508,12 @@
 // @match		http://picspornfree.me/img-*
 // @match		http://*.pic-you.com/p*
 // @match		http://*.image-bugs.com/*mage/*
-// @match		http://*.imgdrive.net/img-*
+// @match		https://*.imgdrive.net/img-*
 // @match		https://www.pixiv.net/member_illust.php?mode=medium&illust_id=*
 // @match		http://*.scrin.org/?v=*
 // @match		http://*.thumbnailus.com/img-*
 // @match		http://*.nimplus.com/img-*
-// @match		http://*.imgtaxi.com/img-*
+// @match		https://*.imgtaxi.com/img-*
 // @match		http://*.imgstudio.org/img-*
 // @match		http://goimge.com/img-*
 // @match		http://*.safeimage.biz/image/*
@@ -529,7 +529,7 @@
 // @match		http://myimg.club/*
 // @match		http://*.imgease.re/img-*
 // @match		https://www.hotimage.uk/*mg-*
-// @match		http://imgview.net/*.php
+// @match		http://imgview.pw/*.php
 // @match		http://*.10.imageleon.com/i-*
 // @match		https://www.dropbox.com/s/*/*
 // @match		http://imgor.net/img-*
@@ -631,7 +631,7 @@
 // @match		http://*.imgskull.com/image/*
 // @match		*://*.ninjaimages.com/*.html
 // @match		*://*.imgprime.com/img*
-// @match		http://*.imgmaze.com/*.php
+// @match		http://*.imgmaze.pw/*.php
 // @match		http://*.piccash.net/*/*/
 // @exclude		http://piccash.net/cabinets/*
 // @exclude		http://www.piccash.net/cabinets/*
@@ -668,7 +668,7 @@
 // @match		http://pixxsees.ru/*.html
 // @match		http://imgblank.com/img-*.html
 // @match		http://imgtrex.com/*/*
-// @match		http://imgwallet.com/img-*.html
+// @match		https://imgwallet.com/img-*.html
 // @match		http://2picsun.ru/full/
 // @match		http://2picsun.ru/*.html
 // @match		http://picpie.org/image/*
@@ -1563,6 +1563,9 @@ function makeworld()
 			break;
 		}
 	case "imgoutlet.pw":
+	case "imgrock.pw":
+	case "imgview.pw":
+	case "imgmaze.pw":
 		j = true;
 		dp=true;
 		i = q('img.picview');
@@ -1570,8 +1573,7 @@ function makeworld()
 		{
 			break;
 		}
-
-		var f = document.querySelectorAll("button[type='button']")
+		var f = document.querySelectorAll("[type='button']")
 		if(f.length)
 		{
 			var n;
@@ -1592,10 +1594,7 @@ function makeworld()
 	case "imgdragon.com":
 	case "imggold.org":
 	case "levinpic.org":
-	case "imgrock.net":
 	case "imgtown.net":
-	case "imgview.net":
-	case "imgmaze.com":
 	case "0img.ws":
 		j = true;
 		dp=true;
