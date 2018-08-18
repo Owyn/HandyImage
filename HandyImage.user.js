@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name		Handy Image
-// @version		2018.08.03
+// @version		2018.08.18
 // @author		Owyn
 // @contributor	ubless607, bitst0rm
 // @namespace	handyimage
@@ -788,6 +788,7 @@ var timeout = 1000;
 var FireFox = ((navigator.userAgent.indexOf('Firefox') != -1) ? true : false);
 var i;
 var j;
+var ext_list = ['webm', 'mp4', 'ogg'];
 var iurl = window.location.hostname;
 if(!iurl.indexOf("www."))
 {
@@ -1015,6 +1016,7 @@ function makeworld()
 	case "jiopic.com":
 	case "wwv.imgcredit.xyz":
 	case "moreimage.pw":
+		ext_list = []; // imagebam
 		i = document.querySelector('meta[property="og:image"] , [name="og:image"]');
 		if(i)
 		{
@@ -2305,7 +2307,6 @@ function makeworld()
 				document.replaceChild(document.importNode(document.implementation.createHTMLDocument("").documentElement, true), document.documentElement);
 			}
 		}
-		var ext_list = ['webm', 'mp4', 'ogg'];
 		if (ext_list.indexOf(i.src.split('.').pop().split('?')[0].toLowerCase()) >= 0)
 		{
 			console.warn("What we found is not an image");
