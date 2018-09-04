@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name		Handy Image
-// @version		2018.08.18
+// @version		2018.09.04
 // @author		Owyn
 // @contributor	ubless607, bitst0rm
 // @namespace	handyimage
@@ -489,7 +489,7 @@
 // @match		http://*.imageblinks.com/img-*
 // @match		*://*.gelbooru.com/index.php?page=post&s=view&id=*
 // @match		*://*.youhate.us/index.php?page=post&s=view&id=*
-// @match		http://danbooru.donmai.us/posts/*
+// @match		https://danbooru.donmai.us/posts/*
 // @match		http://konachan.com/post/show/*
 // @match		http://konachan.net/post/show/*
 // @match		https://yande.re/post/show/*
