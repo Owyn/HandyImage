@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name		Handy Image
-// @version		2018.09.11
+// @version		2018.09.20
 // @author		Owyn
 // @contributor	ubless607, bitst0rm
 // @namespace	handyimage
@@ -22,7 +22,7 @@
 // @match		http://www.imagebam.com/image*
 // @match		http://imgchili.net/show*
 // @match		*://imgbox.com/*
-// @match		*://*.imagetwist.com/*/*
+// @match		*://*.imagetwist.com/*
 // @match		http://*.imagevenue.com/img.php?*
 // @match		*://*.imageshack.com/i/*
 // @match		*://*.imageshack.com/f/*
@@ -633,8 +633,8 @@
 // @match		*://*.imgprime.com/img*
 // @match		http://*.imgmaze.pw/*.php
 // @match		*://*.piccash.net/*/*/
-// @exclude		http*://piccash.net/cabinets/*
-// @exclude		http*://www.piccash.net/cabinets/*
+// @exclude		*://piccash.net/cabinets/*
+// @exclude		*://www.piccash.net/cabinets/*
 // @match		http://imgwo.com/img-*
 // @match		http://luxpic.ru/images/*.html
 // @match		http://*.pic-images.ru/full/
