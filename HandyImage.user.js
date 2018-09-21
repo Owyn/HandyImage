@@ -40,7 +40,7 @@
 // @match		https://radikal.ru/*
 // @match		http://f-page.ru/*
 // @match		http://f-picture.net/*
-// @match		http://*.pimpandhost.com/image*
+// @match		https://*.pimpandhost.com/image*
 // @match		http://*.pixroute.com/*.html
 // @match		http://*.picforall.ru/*/*/
 // @match		*://*.imagecurl.com/view*
@@ -1301,15 +1301,8 @@ function makeworld()
 		if(i){i.src = i.href;}
 		break;
 	case "pimpandhost.com":
-		i = q('a[href*="original"]');
-		if(i)
-		{
-			i.click();
-		}
-		else
-		{
-			i = q('img.original');
-		}
+		i = q('img.normal');
+		if(i){i.src = i.src.replace('_l.jpg', '.jpg');}
 		break;
 	case "sexybabepics.net":
 		i = document.head.querySelector('meta[property="og:image"]');
