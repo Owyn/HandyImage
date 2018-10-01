@@ -795,9 +795,9 @@ if(!iurl.indexOf("www."))
 {
 	iurl = iurl.substr(4);
 }
-if(window.location.pathname.indexOf("\/\/") == 0)
+if(window.location.pathname.indexOf("//") == 0)
 {
-	iurl += "\/";
+	iurl += "/";
 }
 
 function ws()
