@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name		Handy Image
-// @version		2018.09.21
+// @version		2018.10.01
 // @author		Owyn
 // @contributor	ubless607, bitst0rm
 // @namespace	handyimage
@@ -724,6 +724,7 @@
 // @match		http://*.imgchilibum.ru/v.php?id=*
 // @match		http://*.imgazure.com/*.html
 // @match		*://*.dpic.me/*
+// @match		*://*.picmoza.com//img-*.html
 // ==/UserScript==
 
 if (typeof unsafeWindow === "undefined")
@@ -793,6 +794,10 @@ var iurl = window.location.hostname;
 if(!iurl.indexOf("www."))
 {
 	iurl = iurl.substr(4);
+}
+if(window.location.pathname.indexOf("\/\/") == 0)
+{
+	iurl += "\/";
 }
 
 function ws()
@@ -905,7 +910,7 @@ function makeworld()
 {
 	if(i){return;}
 	// per-host image detection
-	switch (iurl)
+	switch (window.location.hostname)
 	{
 	case "gist.github.com":
 		if(document.body){i=1;cfg();}break;
@@ -1741,6 +1746,7 @@ function makeworld()
 	case "imgmain.com":
 	case "acidimg.cc":
 	case "imgpart.com":
+	case "picmoza.com":
 		dp=true;
 		var f = document.getElementsByTagName("input");
 		if(f.length)
@@ -2184,7 +2190,7 @@ function makeworld()
 		i = q('img[data-load="full"]');
 		break;
 	default: // dynamic subdomain
-		switch(iurl.substr(iurl.indexOf(".")+1))
+		switch(window.location.hostname.substr(window.location.hostname.indexOf(".")+1))
 		{
 		case "tumblr.com":
 			if(FireFox)
