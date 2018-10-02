@@ -725,6 +725,7 @@
 // @match		http://*.imgazure.com/*.html
 // @match		*://*.dpic.me/*
 // @match		*://*.picmoza.com//img-*.html
+// @match		*://suckmypic.net/*
 // ==/UserScript==
 
 if (typeof unsafeWindow === "undefined")
@@ -2247,6 +2248,9 @@ function makeworld()
 			}
 			i = q('img[src*="' + iurl + '"]');
 			break;
+        case "suckmypic.net":
+            i = q('#theImage');
+            break;
 		default: // for user-added sites
 			console.warn("HJI is running on a custom website");
 			if(document.readyState != "loading" && document.images.length != 0)
