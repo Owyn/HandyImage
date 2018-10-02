@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name		Handy Image
-// @version		2018.10.01
+// @version		2018.10.02
 // @author		Owyn
 // @contributor	ubless607, bitst0rm
 // @namespace	handyimage
@@ -795,6 +795,7 @@ if(!iurl.indexOf("www."))
 {
 	iurl = iurl.substr(4);
 }
+var host = iurl;
 if(window.location.pathname.indexOf("//") == 0)
 {
 	iurl += "/";
@@ -910,7 +911,7 @@ function makeworld()
 {
 	if(i){return;}
 	// per-host image detection
-	switch (window.location.hostname)
+	switch (host)
 	{
 	case "gist.github.com":
 		if(document.body){i=1;cfg();}break;
@@ -1666,12 +1667,7 @@ function makeworld()
 		i = q('img[src*="/uploaded/"]');
 		break;
 	case "imagefap.com":
-		i = q('noscript');
-		if(i)
-		{
-			i.src = i.innerHTML.substring(i.innerHTML.indexOf("http"));
-			i.src = i.src.substring(0,i.src.indexOf('"'));
-		}
+		find_text_in_scripts('"contentUrl": "', '"');
 		break;
 	case "olivepix.com":
 		i = q('img[src*="view/"]');
@@ -2190,7 +2186,7 @@ function makeworld()
 		i = q('img[data-load="full"]');
 		break;
 	default: // dynamic subdomain
-		switch(window.location.hostname.substr(window.location.hostname.indexOf(".")+1))
+		switch(host.substr(host.indexOf(".")+1))
 		{
 		case "tumblr.com":
 			if(FireFox)
