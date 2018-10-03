@@ -2186,6 +2186,9 @@ function makeworld()
 	case "imgsha.com":
 		i = q('img[data-load="full"]');
 		break;
+	case "suckmypic.net":
+		i = q('#theImage');
+		break;
 	default: // dynamic subdomain
 		switch(host.substr(host.indexOf(".")+1))
 		{
@@ -2248,9 +2251,6 @@ function makeworld()
 			}
 			i = q('img[src*="' + iurl + '"]');
 			break;
-        case "suckmypic.net":
-            i = q('#theImage');
-            break;
 		default: // for user-added sites
 			console.warn("HJI is running on a custom website");
 			if(document.readyState != "loading" && document.images.length != 0)
