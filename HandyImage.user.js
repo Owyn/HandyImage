@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name		Handy Image
-// @version		2018.10.18
+// @version		2018.10.19
 // @author		Owyn
 // @contributor	ubless607, bitst0rm
 // @namespace	handyimage
@@ -729,6 +729,7 @@
 // @match		*://pic.hotimg.site/img-*.html
 // @match		http://*.shaggyimg.pro/*.html
 // @match		http://*.shaggyimg.pro/full/
+// @match		http://*.imgjazz.com/img-*.html
 // ==/UserScript==
 
 if (typeof unsafeWindow === "undefined")
@@ -1747,6 +1748,7 @@ function makeworld()
 	case "acidimg.cc":
 	case "imgpart.com":
 	case "picmoza.com":
+	case "imgjazz.com":
 		dp=true;
 		var f = document.getElementsByTagName("input");
 		if(f.length)
