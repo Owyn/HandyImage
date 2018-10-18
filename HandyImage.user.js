@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name		Handy Image
-// @version		2018.10.02
+// @version		2018.10.18
 // @author		Owyn
 // @contributor	ubless607, bitst0rm
 // @namespace	handyimage
@@ -726,6 +726,9 @@
 // @match		*://*.dpic.me/*
 // @match		*://*.picmoza.com//img-*.html
 // @match		*://suckmypic.net/*
+// @match		*://pic.hotimg.site/img-*.html
+// @match		http://*.shaggyimg.pro/*.html
+// @match		http://*.shaggyimg.pro/full/
 // ==/UserScript==
 
 if (typeof unsafeWindow === "undefined")
@@ -1495,7 +1498,8 @@ function makeworld()
 	case "1pic2x.ru":
 	case "1pics1img.ru":
 	case "wwxxww.ru":
-	case "pic3you.org":		
+	case "pic3you.org":
+	case "shaggyimg.pro":
 		var f = document.getElementsByTagName("button");
 		if(f.length)
 		{
@@ -1504,7 +1508,6 @@ function makeworld()
 		dp=true;
 		i = q('img[src*="/pic.jpeg"]');
 		break;
-	case "imgkings.com":
 	case "imagerar.com":
 		if(window.location.href.indexOf("img-") != -1)
 		{
@@ -1772,6 +1775,7 @@ function makeworld()
 	case "sexyimg.eu":
 	case "imgseed.com":
 	case "imgcredit.xyz":
+	case "pic.hotimg.site":
 		i = q('img[src*="' + iurl + '/upload/"]');
 		break;
 	case "imgboom.net":
@@ -1817,6 +1821,7 @@ function makeworld()
 	case "uploadimagex.com":
 	case "hostingkartinok.com":
 	case "bellazon":
+	case "imgkings.com":
 		i = q('img[src*="/upload"]');
 		break;
 	case "imgseeds.com":
