@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name		Handy Image
-// @version		2018.10.19
+// @version		2018.11.01
 // @author		Owyn
 // @contributor	ubless607, bitst0rm
 // @namespace	handyimage
@@ -730,6 +730,9 @@
 // @match		http://*.shaggyimg.pro/*.html
 // @match		http://*.shaggyimg.pro/full/
 // @match		http://*.imgjazz.com/img-*.html
+// @match		https://22pixx.xyz/i*-i/*.html
+// @match		*://imgsmarts.info/*.html
+// @match		*://imgsmarts.info/full/
 // ==/UserScript==
 
 if (typeof unsafeWindow === "undefined")
@@ -1130,6 +1133,14 @@ function makeworld()
 		if(i){window.location.href = i.value.replace('/f/', '/i/');}
 		i = q('img[data-width]');
 		break;
+	case "22pixx.xyz":
+		if(window.location.href.indexOf("/ia-i/") != -1)
+		{
+			window.location.href = window.location.href.replace('/ia-i/', '/ib-i/');
+			break;
+		}
+		i = q('img[src*="/i/"]');
+		break;
 	case "h4z.it":
 		i = document.images[2];
 		if(i){i.src = i.parentNode.href;}
@@ -1436,7 +1447,6 @@ function makeworld()
 			i.click();
 			break;
 		}
-	case "turboimagehost.com":
 	case "screenlist.ru":
 	case "picshare.geenza.com":
 	case "mojoimage.com":
@@ -1501,6 +1511,7 @@ function makeworld()
 	case "wwxxww.ru":
 	case "pic3you.org":
 	case "shaggyimg.pro":
+	case "imgsmarts.info":
 		var f = document.getElementsByTagName("button");
 		if(f.length)
 		{
@@ -2179,6 +2190,7 @@ function makeworld()
 	case "pic-upload.de":
 	case "shrani.najdi.si":
 	case "imageab.com":	
+	case "turboimagehost.com":
 		i = q('img[onclick*="(this"]');
 		break;
 	case "joblo.com":
