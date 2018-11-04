@@ -733,6 +733,7 @@
 // @match		https://22pixx.xyz/i*-i/*.html
 // @match		*://imgsmarts.info/*.html
 // @match		*://imgsmarts.info/full/
+// @match		*://www.keepimg.com/image/*
 // ==/UserScript==
 
 if (typeof unsafeWindow === "undefined")
@@ -1327,6 +1328,7 @@ function makeworld()
 		if(i){i.src = i.src.replace('_l.jpg', '.jpg');}
 		break;
 	case "sexybabepics.net":
+	case "keepimg.com":
 		i = document.head.querySelector('meta[property="og:image"]');
 		if(i){i.src = i.content; break;}
 	case "picsee.net":
