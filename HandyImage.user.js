@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name		Handy Image
-// @version		2018.11.01
+// @version		2018.11.05
 // @author		Owyn
 // @contributor	ubless607, bitst0rm
 // @namespace	handyimage
@@ -704,7 +704,7 @@
 // @match		http://*.imgseed.com/img-*.html
 // @match		http://img.folluo.me/image/*
 // @match		*://imgpart.com/img-*
-// @match		http://picstate.com/view/full/*
+// @match		https://picstate.com/view/full/*
 // @match		https://jerking.empornium.ph/image/*
 // @match		http://p0xpicmoney.ru/*/*/
 // @match		http://picker-click.ru/*/*/
@@ -1672,10 +1672,10 @@ function makeworld()
 	case "thaisharing.online.fr":
 	case "filefap.com":
 	case "imgswift.com":
-	case "picstate.com":
 		i = q('img[src*="/files/"]');
 		break;
 	case "image18.org":
+	case "picstate.com":
 		i = q('img[src*="/file/"]');
 		break;
 	case "zimagez.com":
