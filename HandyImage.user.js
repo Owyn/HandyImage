@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name		Handy Image
-// @version		2018.11.05
+// @version		2018.11.10
 // @author		Owyn
 // @contributor	ubless607, bitst0rm
 // @namespace	handyimage
@@ -132,7 +132,7 @@
 // @match		http://*.pic4you.ru/*
 // @match		http://picload.org/view*
 // @match		http://*.thebestpichost.com/picture/*
-// @match		https://*.lostpic.net/image/*
+// @match		*://*.lostpic.net/image/*
 // @match		http://subefotos.com/ver/*
 // @exclude		http://subefotos.com/ver/*#codigos
 // @match		http://*.pixsor.com/share*
