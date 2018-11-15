@@ -198,7 +198,7 @@
 // @match		http://www.imagesup.de/picture.php?code=*
 // @match		https://www.pornbus.org/show*
 // @match		http://www.bilder-space.de/bild-*
-// @match		http://www.imgcarry.com/show*
+// @match		*://www.imgcarry.com/show*
 // @match		http://*.saveimg.ru/show*
 // @match		http://www.fotos-hochladen.net/view*
 // @match		http://simplest-image-hosting.net/*
