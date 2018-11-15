@@ -82,9 +82,9 @@
 // @match		http://www.bilder-upload.eu/show*
 // @match		http://www.bilder-hochladen.net/file*
 // @match		http://www.bild.me/bild.php?*
-// @match		http://www.imagesnake.com/show*
-// @match		http://www.imagesnake.com/img*
-// @match		http://www.imagesnake.com/view*
+// @match		*://www.imagesnake.com/show*
+// @match		*://www.imagesnake.com/img*
+// @match		*://www.imagesnake.com/view*
 // @match		http://www.imagesnake.org/show*
 // @match		http://www.imagesnake.org/img*
 // @match		http://www.imagesnake.org/view*
