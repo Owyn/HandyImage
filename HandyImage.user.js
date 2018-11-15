@@ -82,9 +82,9 @@
 // @match		http://www.bilder-upload.eu/show*
 // @match		http://www.bilder-hochladen.net/file*
 // @match		http://www.bild.me/bild.php?*
-// @match		http://www.imagesnake.com/show*
-// @match		http://www.imagesnake.com/img*
-// @match		http://www.imagesnake.com/view*
+// @match		*://www.imagesnake.com/show*
+// @match		*://www.imagesnake.com/img*
+// @match		*://www.imagesnake.com/view*
 // @match		http://www.imagesnake.org/show*
 // @match		http://www.imagesnake.org/img*
 // @match		http://www.imagesnake.org/view*
@@ -730,7 +730,8 @@
 // @match		http://*.shaggyimg.pro/*.html
 // @match		http://*.shaggyimg.pro/full/
 // @match		http://*.imgjazz.com/img-*.html
-// @match		https://22pixx.xyz/i*-i/*.html
+// @match		https://22pixx.xyz/i*-*/*.html
+// @match		https://22pixx.xyz/i-*/*.html
 // @match		*://imgsmarts.info/*.html
 // @match		*://imgsmarts.info/full/
 // @match		*://www.keepimg.com/image/*
@@ -1135,12 +1136,11 @@ function makeworld()
 		i = q('img[data-width]');
 		break;
 	case "22pixx.xyz":
-		if(window.location.href.indexOf("/ia-i/") != -1)
+	        var img = window.location.href.match(/i[ab]?-([a-z].+(?:\.jpe?g|png|gif|webp))/i);
+		if(img)
 		{
-			window.location.href = window.location.href.replace('/ia-i/', '/ib-i/');
-			break;
+		   i = {src : window.location.origin + "/" + img[1]};
 		}
-		i = q('img[src*="/i/"]');
 		break;
 	case "h4z.it":
 		i = document.images[2];
