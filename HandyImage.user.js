@@ -735,6 +735,7 @@
 // @match		*://imgsmarts.info/*.html
 // @match		*://imgsmarts.info/full/
 // @match		*://www.keepimg.com/image/*
+// @match		https://ibb.co/*
 // ==/UserScript==
 
 if (typeof unsafeWindow === "undefined")
@@ -1329,6 +1330,7 @@ function makeworld()
 		break;
 	case "sexybabepics.net":
 	case "keepimg.com":
+	case "ibb.co":
 		i = document.head.querySelector('meta[property="og:image"]');
 		if(i){i.src = i.content; break;}
 	case "picsee.net":
