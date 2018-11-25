@@ -735,6 +735,7 @@
 // @match		*://imgsmarts.info/*.html
 // @match		*://imgsmarts.info/full/
 // @match		*://www.keepimg.com/image/*
+// @match		https://ibb.co/*
 // @match		http://www.imgfile.net/*
 // @match		*://*.picbaron.com/*/*.html
 // ==/UserScript==
@@ -1331,6 +1332,7 @@ function makeworld()
 		break;
 	case "sexybabepics.net":
 	case "keepimg.com":
+	case "ibb.co":
 		i = document.head.querySelector('meta[property="og:image"]');
 		if(i){i.src = i.content; break;}
 	case "picsee.net":
@@ -1826,12 +1828,8 @@ function makeworld()
 		break;
 	case "imgfile.net":
 		i = q('.timer');
-		//j = true;
 		if(i)
 		{
-			/*dp=true;
-			i.click();
-			unsafeWindow.tech_detect=true;*/
 			post("/site/get-new-redirect-link",{code:window.location.pathname.substr(1),ads_blocked:'false'});
 			break;
 		}
