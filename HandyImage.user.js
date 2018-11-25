@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name		Handy Image
-// @version		2018.11.10
+// @version		2018.11.26
 // @author		Owyn
 // @contributor	ubless607, bitst0rm
 // @namespace	handyimage
@@ -198,7 +198,7 @@
 // @match		http://www.imagesup.de/picture.php?code=*
 // @match		https://www.pornbus.org/show*
 // @match		http://www.bilder-space.de/bild-*
-// @match		*://www.imgcarry.com/show*
+// @match		http://www.imgcarry.com/show*
 // @match		http://*.saveimg.ru/show*
 // @match		http://www.fotos-hochladen.net/view*
 // @match		http://simplest-image-hosting.net/*
@@ -735,7 +735,8 @@
 // @match		*://imgsmarts.info/*.html
 // @match		*://imgsmarts.info/full/
 // @match		*://www.keepimg.com/image/*
-// @match		https://ibb.co/*
+// @match		http://www.imgfile.net/*
+// @match		*://*.picbaron.com/*/*.html
 // ==/UserScript==
 
 if (typeof unsafeWindow === "undefined")
@@ -1330,7 +1331,6 @@ function makeworld()
 		break;
 	case "sexybabepics.net":
 	case "keepimg.com":
-	case "ibb.co":
 		i = document.head.querySelector('meta[property="og:image"]');
 		if(i){i.src = i.content; break;}
 	case "picsee.net":
@@ -1617,6 +1617,7 @@ function makeworld()
 	case "levinpic.org":
 	case "imgtown.net":
 	case "0img.ws":
+	case "picbaron.com":
 		j = true;
 		dp=true;
 		var f = document.querySelectorAll("input[type='submit']")
@@ -1822,6 +1823,19 @@ function makeworld()
 			break;
 		}
 		i = q('img[src*="' + iurl + '/upload/"]');
+		break;
+	case "imgfile.net":
+		i = q('.timer');
+		//j = true;
+		if(i)
+		{
+			/*dp=true;
+			i.click();
+			unsafeWindow.tech_detect=true;*/
+			post("/site/get-new-redirect-link",{code:window.location.pathname.substr(1),ads_blocked:'false'});
+			break;
+		}
+		i = q('img[src*="data_server"]');
 		break;
 	case "picspornfree.me":
 	case "hotimage.uk":
