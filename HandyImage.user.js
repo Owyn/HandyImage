@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name		Handy Image
-// @version		2018.11.26
+// @version		2018.12.31
 // @author		Owyn
 // @contributor	ubless607, bitst0rm
 // @namespace	handyimage
@@ -738,6 +738,8 @@
 // @match		https://ibb.co/*
 // @match		http://www.imgfile.net/*
 // @match		*://*.picbaron.com/*/*.html
+// @match		http://picshost.info//img-*.html
+// @match		*://imagescanner.cc/images/*.html
 // ==/UserScript==
 
 if (typeof unsafeWindow === "undefined")
@@ -1414,6 +1416,7 @@ function makeworld()
 	case "vipix.pw":
 	case "imagecurl.com":
 	case "imagecurl.org":
+	case "imagescanner.cc":
 		i = q('a[href*="images/"]');
 		if(i){i.src = i.href;}
 		break;
@@ -1767,6 +1770,7 @@ function makeworld()
 	case "imgpart.com":
 	case "picmoza.com":
 	case "imgjazz.com":
+	case "picshost.info":
 		dp=true;
 		var f = document.getElementsByTagName("input");
 		if(f.length)
