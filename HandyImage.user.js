@@ -732,6 +732,7 @@
 // @match		http://*.imgjazz.com/img-*.html
 // @match		https://22pixx.xyz/i*-*/*.html
 // @match		https://22pixx.xyz/i-*/*.html
+// @match		https://22pixx.xyz/x-*/*.html
 // @match		*://imgsmarts.info/*.html
 // @match		*://imgsmarts.info/full/
 // @match		*://www.keepimg.com/image/*
@@ -1141,7 +1142,7 @@ function makeworld()
 		i = q('img[data-width]');
 		break;
 	case "22pixx.xyz":
-	        var img = window.location.href.match(/i[ab]?-([a-z].+(?:\.jpe?g|png|gif|webp))/i);
+	        var img = window.location.href.match(/[a-z]+-([a-z].+(?:\.jpe?g|png|gif|webp))/i);
 		if(img)
 		{
 		   i = {src : window.location.origin + "/" + img[1]};
