@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name		Handy Image
-// @version		2018.12.31
+// @version		2019.01.26
 // @author		Owyn
 // @contributor	ubless607, bitst0rm
 // @namespace	handyimage
@@ -741,6 +741,7 @@
 // @match		*://*.picbaron.com/*/*.html
 // @match		http://picshost.info//img-*.html
 // @match		*://imagescanner.cc/images/*.html
+// @match		http://batpic.com/image/*
 // ==/UserScript==
 
 if (typeof unsafeWindow === "undefined")
@@ -985,6 +986,7 @@ function makeworld()
 	case "picpicture.com":
 	case "picpie.org":
 	case "lostpic.net":
+	case "batpic.com":
 		//chevereto 3.x
 		i = document.head.querySelector('link[rel="image_src"]');
 		if(i)
@@ -1832,13 +1834,14 @@ function makeworld()
 		i = q('img[src*="' + iurl + '/upload/"]');
 		break;
 	case "imgfile.net":
-		i = q('.timer');
-		if(i)
+		i = q('button');
+		dp=true;
+		j = true;
+		if(i) 
 		{
-			post("/site/get-new-redirect-link",{code:window.location.pathname.substr(1),ads_blocked:'false'});
-			break;
+			i.click();
 		}
-		i = q('img[src*="data_server"]');
+		i = q('.big_img_box img');
 		break;
 	case "picspornfree.me":
 	case "hotimage.uk":
