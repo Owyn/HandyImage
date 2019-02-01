@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name		Handy Image
-// @version		2019.01.26
+// @version		2019.02.01
 // @author		Owyn
 // @contributor	ubless607, bitst0rm
 // @namespace	handyimage
@@ -9,7 +9,7 @@
 // @downloadURL	https://github.com/Owyn/HandyImage/raw/master/HandyImage.user.js
 // @homepage	https://sleazyfork.org/scripts/109-handy-image
 // @supportURL	https://sleazyfork.org/scripts/109-handy-image/feedback
-// @icon		http://i.imgur.com/Q5TTIjV.png
+// @icon		https://images2.imgbox.com/f0/e8/W9zirOUG_o.png
 // @run-at		document-start
 // @grant		GM.getValue
 // @grant		GM.setValue
