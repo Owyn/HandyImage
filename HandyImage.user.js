@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name		Handy Image
-// @version		2019.02.01
+// @version		2019.02.03
 // @author		Owyn
 // @contributor	ubless607, bitst0rm
 // @namespace	handyimage
@@ -1025,7 +1025,6 @@ function makeworld()
 	case "ultraimg.com":
 	case "safeimage.biz":
 	case "imagebam.com":
-	case "twitter.com":
 	case "imgextra.uk":
 	case "ss.movierls.net":
 	case "xxximagetpb.org":
@@ -1045,12 +1044,24 @@ function makeworld()
 		if(i)
 		{
 			i.src = i.content;
-			i.src = i.src.replace(':large', ':orig'); //twitter.com
 		}
 		else
 		{
 			i = q('a[download]');
 			if(i){i.src = i.href;}
+		}
+		break;
+	case "twitter.com":
+		j = true;
+		i = document.querySelector('meta[property="og:video:url"]');
+		if(!i)
+		{
+			i = document.querySelector('meta[property="og:image"]');
+			if(i)
+			{
+				i.src = i.content;
+				i.src = i.src.replace(':large', ':orig');
+			}
 		}
 		break;
 	case "imgur.com":
