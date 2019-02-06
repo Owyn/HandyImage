@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name		Handy Image
-// @version		2019.02.03
+// @version		2019.02.06
 // @author		Owyn
 // @contributor	ubless607, bitst0rm
 // @namespace	handyimage
@@ -742,6 +742,7 @@
 // @match		http://picshost.info//img-*.html
 // @match		*://imagescanner.cc/images/*.html
 // @match		http://batpic.com/image/*
+// @match		http://*.1pic.org/view/*.html
 // ==/UserScript==
 
 if (typeof unsafeWindow === "undefined")
@@ -1102,7 +1103,7 @@ function makeworld()
 		break;
 	case "flickr.com":
 	case "secure.flickr.com":
-		find_text_in_scripts('"url":"', '"', false, '"canComment"');
+		find_text_in_scripts('"displayUrl":"', '"', false, '"canComment"');
 		break;
 	case "500px.com":
 		find_text_in_scripts('"https_url":"', '"', false);
@@ -1694,6 +1695,7 @@ function makeworld()
 	case "thaisharing.online.fr":
 	case "filefap.com":
 	case "imgswift.com":
+	case "1pic.org":
 		i = q('img[src*="/files/"]');
 		break;
 	case "image18.org":
