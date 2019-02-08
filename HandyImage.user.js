@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name		Handy Image
-// @version		2019.02.06
+// @version		2019.02.08
 // @author		Owyn
 // @contributor	ubless607, bitst0rm
 // @namespace	handyimage
@@ -1464,8 +1464,10 @@ function makeworld()
 	case "imgmega.com":
 	case "pic.re":
 	case "foxyimg.link":
+	case "picbaron.com":
 		i = q('input[type="submit"]');
 		dp=true;
+		j =true;
 		if(i) 
 		{
 			i.click();
@@ -1477,7 +1479,7 @@ function makeworld()
 	case "imagecherry.com":
 	case "10.imageleon.com":
 	case "img4.imagetitan.com":
-	case "ninjaimages.com":		
+	case "ninjaimages.com":
 		i = q('img[onload*="scale"]');
 		break;
 	case "bild.me":
@@ -1637,7 +1639,6 @@ function makeworld()
 	case "levinpic.org":
 	case "imgtown.net":
 	case "0img.ws":
-	case "picbaron.com":
 		j = true;
 		dp=true;
 		var f = document.querySelectorAll("input[type='submit']")
