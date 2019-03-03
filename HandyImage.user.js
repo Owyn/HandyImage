@@ -1847,7 +1847,7 @@ function makeworld()
 		}
 		i = q('img[src*="' + iurl + '/upload/"]');
 		break;
-	case "imgfile.net":
+	case "imgsee.net":
 		i = q('button');
 		dp=true;
 		j = true;
