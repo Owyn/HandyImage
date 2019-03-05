@@ -743,6 +743,7 @@
 // @match		*://imagescanner.cc/images/*.html
 // @match		http://batpic.com/image/*
 // @match		http://*.1pic.org/view/*.html
+// @match		*://lookimg.com/image/*
 // ==/UserScript==
 
 if (typeof unsafeWindow === "undefined")
@@ -1040,8 +1041,9 @@ function makeworld()
 	case "jiopic.com":
 	case "wwv.imgcredit.xyz":
 	case "moreimage.pw":
+	case "lookimg.com":
 		ext_list = []; // imagebam
-		i = document.querySelector('meta[property="og:image"] , [name="og:image"]');
+		i = document.querySelector('meta[property="og:image"], [name="og:image"]');
 		if(i)
 		{
 			i.src = i.content;
