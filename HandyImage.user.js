@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name		Handy Image
-// @version		2019.03.03
+// @version		2019.03.10
 // @author		Owyn
 // @contributor	ubless607, bitst0rm
 // @namespace	handyimage
@@ -41,7 +41,7 @@
 // @match		http://f-page.ru/*
 // @match		http://f-picture.net/*
 // @match		https://*.pimpandhost.com/image*
-// @match		http://*.pixroute.com/*.html
+// @match		https://*.pixroute.com/*.html
 // @match		http://*.picforall.ru/*/*/
 // @match		*://*.imagecurl.com/view*
 // @match		*://*.imagecurl.org/view*
@@ -744,6 +744,7 @@
 // @match		http://batpic.com/image/*
 // @match		http://*.1pic.org/view/*.html
 // @match		*://lookimg.com/image/*
+// @match		http://*.xfap.fun/img-*.html
 // ==/UserScript==
 
 if (typeof unsafeWindow === "undefined")
@@ -1819,6 +1820,7 @@ function makeworld()
 	case "imgseed.com":
 	case "imgcredit.xyz":
 	case "pic.hotimg.site":
+	case "xfap.fun":
 		i = q('img[src*="' + iurl + '/upload/"]');
 		break;
 	case "imgboom.net":
