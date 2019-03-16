@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name		Handy Image
-// @version		2019.03.10
+// @version		2019.03.16
 // @author		Owyn
 // @contributor	ubless607, bitst0rm
 // @namespace	handyimage
@@ -54,7 +54,7 @@
 // @match		http://*.pics-money.ru/*
 // @match		http://*.freeimgup.com/*.*
 // @match		http://imgtiger.com/view*
-// @match		http://*.imgspice.com/*.html
+// @match		https://*.imgspice.com/*.html
 // @match		http://*.picage.ru/*/*
 // @match		http://*.imgserve.net/img*
 // @match		http://*.images-host.biz/*/*
@@ -745,6 +745,7 @@
 // @match		http://*.1pic.org/view/*.html
 // @match		*://lookimg.com/image/*
 // @match		http://*.xfap.fun/img-*.html
+// @match		*://*.hdmoza.com//img-*.html
 // ==/UserScript==
 
 if (typeof unsafeWindow === "undefined")
@@ -1864,6 +1865,7 @@ function makeworld()
 	case "picspornfree.me":
 	case "hotimage.uk":
 	case "xxxwebdlxxx.org":
+	case "hdmoza.com":
 		i = q('input[type="submit"]');
 		dp=true;
 		if(i) 
