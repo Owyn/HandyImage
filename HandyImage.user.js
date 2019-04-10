@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name		Handy Image
-// @version		2019.03.16
+// @version		2019.04.10
 // @author		Owyn
 // @contributor	ubless607, bitst0rm
 // @namespace	handyimage
@@ -385,7 +385,7 @@
 // @match		*://*.tumblr.com/image/*
 // @match		http://*.imageporter.com/*
 // @match		http://*.damimage.com/img-*
-// @match		http://fapping.empornium.sx/*
+// @match		https://fapping.empornium.sx/image/*
 // @match		http://*.bulkimg.info/img-*
 // @match		http://imgboxxx.com/view*
 // @match		http://*.imghere.net/view*
@@ -747,6 +747,7 @@
 // @match		http://*.xfap.fun/img-*.html
 // @match		*://*.hdmoza.com//img-*.html
 // @match		*://trans.firm.in/images/*.html
+// @match		http://*.imgtorrnt.in/view.php?id=*
 // ==/UserScript==
 
 if (typeof unsafeWindow === "undefined")
@@ -2253,6 +2254,8 @@ function makeworld()
 	case "suckmypic.net":
 		i = q('#theImage');
 		break;
+	case "imgtorrnt.in":
+		window.location.replace("https://i.imgur.com/" + window.location.href.substr(window.location.href.lastIndexOf('=') + 1));
 	case "trans.firm.in":
 		if(window.location.href.search(/\.(?:jpe?g|png|gif|webp)\.html$/i) != -1)//check whether it's a valid image url
 		{
