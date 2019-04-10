@@ -746,6 +746,7 @@
 // @match		*://lookimg.com/image/*
 // @match		http://*.xfap.fun/img-*.html
 // @match		*://*.hdmoza.com//img-*.html
+// @match		*://trans.firm.in/images/*.html
 // ==/UserScript==
 
 if (typeof unsafeWindow === "undefined")
@@ -2251,6 +2252,12 @@ function makeworld()
 		break;
 	case "suckmypic.net":
 		i = q('#theImage');
+		break;
+	case "trans.firm.in":
+		if(window.location.href.search(/\.(?:jpe?g|png|gif|webp)\.html$/i) != -1)//check whether it's a valid image url
+		{
+			i = { src :  window.location.href.replace(".html", "") };
+		}
 		break;
 	default: // dynamic subdomain
 		switch(host.substr(host.indexOf(".")+1))
