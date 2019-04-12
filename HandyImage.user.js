@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name		Handy Image
-// @version		2019.04.10
+// @version		2019.04.12
 // @author		Owyn
 // @contributor	ubless607, bitst0rm
 // @namespace	handyimage
@@ -712,7 +712,7 @@
 // @match		https://www.jiopic.com/image/*
 // @match		https://imx.to/img-*
 // @match		https://imx.to/i/*
-// @match		https://pixxxels.cc/image/*
+// @match		https://pixxxels.cc/*
 // @match		http://picpic.online/*/*/
 // @match		http://imgking.xyz/*.html
 // @match		http://moreimage.pw/image/*
@@ -748,6 +748,9 @@
 // @match		*://*.hdmoza.com//img-*.html
 // @match		*://trans.firm.in/images/*.html
 // @match		http://*.imgtorrnt.in/view.php?id=*
+// @match		https://*.dailyimages.xyz/*.html
+// @match		https://*.dailyimages.xyz/full/
+// @match		http://*.petrovixxxjav.com//img-*.html
 // ==/UserScript==
 
 if (typeof unsafeWindow === "undefined")
@@ -1544,6 +1547,7 @@ function makeworld()
 	case "pic3you.org":
 	case "shaggyimg.pro":
 	case "imgsmarts.info":
+	case "dailyimages.xyz":
 		var f = document.getElementsByTagName("button");
 		if(f.length)
 		{
@@ -1794,6 +1798,7 @@ function makeworld()
 	case "picmoza.com":
 	case "imgjazz.com":
 	case "picshost.info":
+	case "petrovixxxjav.com":
 		dp=true;
 		var f = document.getElementsByTagName("input");
 		if(f.length)
@@ -2410,12 +2415,12 @@ function changecursor()
 	{
 		if(rescaled)
 		{
-			i.style.cursor = "-moz-zoom-in";
+			i.style.cursor = "-zoom-in";
 			i.style.cursor = "-webkit-zoom-in";
 		}
 		else
 		{
-			i.style.cursor = "-moz-zoom-out";
+			i.style.cursor = "-zoom-out";
 			i.style.cursor = "-webkit-zoom-out";
 			if((i.naturalHeight / window.devicePixelRatio).toFixed() > window.innerHeight) // image pushing out-of-screen fix
 			{
@@ -2427,12 +2432,12 @@ function changecursor()
 	{
 		if(rescaled)
 		{
-			i.style.cursor = "-moz-zoom-out";
+			i.style.cursor = "-zoom-out";
 			i.style.cursor = "-webkit-zoom-out";
 		}
 		else
 		{
-			i.style.cursor = "-moz-zoom-in";
+			i.style.cursor = "-zoom-in";
 			i.style.cursor = "-webkit-zoom-in";
 		}
 	}
