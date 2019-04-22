@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name		Handy Image
-// @version		2019.04.12
+// @version		2019.04.22
 // @author		Owyn
 // @contributor	ubless607, bitst0rm
 // @namespace	handyimage
@@ -54,7 +54,7 @@
 // @match		http://*.pics-money.ru/*
 // @match		http://*.freeimgup.com/*.*
 // @match		http://imgtiger.com/view*
-// @match		https://*.imgspice.com/*.html
+// @match		https://*.imgspice.com/*/*
 // @match		http://*.picage.ru/*/*
 // @match		http://*.imgserve.net/img*
 // @match		http://*.images-host.biz/*/*
@@ -751,6 +751,7 @@
 // @match		https://*.dailyimages.xyz/*.html
 // @match		https://*.dailyimages.xyz/full/
 // @match		http://*.petrovixxxjav.com//img-*.html
+// @match		*://*.placeimg.net/img-*.html
 // ==/UserScript==
 
 if (typeof unsafeWindow === "undefined")
@@ -873,7 +874,7 @@ function protected_createElement(el)
 {
 	delete document.createElement;
 	var r = document.createElement(el);
-	unsafeWindow.document.createElement = null;
+	unsafeWindow.document.createElement = unsafeWindow.console.log;
 	return r;
 }
 
@@ -1280,7 +1281,6 @@ function makeworld()
 		}
 		break;
 	case "pixsense.net":
-	case "imgsky.net":
 	case "imagespicy.site":
 		find_text_in_scripts('"src","', '"');
 		break;
@@ -1799,6 +1799,7 @@ function makeworld()
 	case "imgjazz.com":
 	case "picshost.info":
 	case "petrovixxxjav.com":
+	case "placeimg.net":
 		dp=true;
 		var f = document.getElementsByTagName("input");
 		if(f.length)
@@ -1859,16 +1860,18 @@ function makeworld()
 		}
 		i = q('img[src*="' + iurl + '/upload/"]');
 		break;
+	case "imgsky.net":
 	case "imgsee.net":
 		i = q('button');
 		dp=true;
 		j = true;
 		if(i) 
 		{
+			console.warn(i);
 			i.click();
 		}
-		i = q('.big_img_box img');
-		break;
+		i = q('.big_img_box img[src*="http"]');
+		break; 
 	case "picspornfree.me":
 	case "hotimage.uk":
 	case "xxxwebdlxxx.org":
@@ -2415,12 +2418,12 @@ function changecursor()
 	{
 		if(rescaled)
 		{
-			i.style.cursor = "-zoom-in";
+			i.style.cursor = "zoom-in";
 			i.style.cursor = "-webkit-zoom-in";
 		}
 		else
 		{
-			i.style.cursor = "-zoom-out";
+			i.style.cursor = "zoom-out";
 			i.style.cursor = "-webkit-zoom-out";
 			if((i.naturalHeight / window.devicePixelRatio).toFixed() > window.innerHeight) // image pushing out-of-screen fix
 			{
@@ -2432,12 +2435,12 @@ function changecursor()
 	{
 		if(rescaled)
 		{
-			i.style.cursor = "-zoom-out";
+			i.style.cursor = "zoom-out";
 			i.style.cursor = "-webkit-zoom-out";
 		}
 		else
 		{
-			i.style.cursor = "-zoom-in";
+			i.style.cursor = "zoom-in";
 			i.style.cursor = "-webkit-zoom-in";
 		}
 	}
