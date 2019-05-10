@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name		Handy Image
-// @version		2019.04.22
+// @version		2019.05.10
 // @author		Owyn
 // @contributor	ubless607, bitst0rm
 // @namespace	handyimage
@@ -752,6 +752,8 @@
 // @match		https://*.dailyimages.xyz/full/
 // @match		http://*.petrovixxxjav.com//img-*.html
 // @match		*://*.placeimg.net/img-*.html
+// @match		https://subefotos.com/ver/?*
+// @match		http://*.imageshtorm.com/img-*.html
 // ==/UserScript==
 
 if (typeof unsafeWindow === "undefined")
@@ -1050,6 +1052,7 @@ function makeworld()
 	case "wwv.imgcredit.xyz":
 	case "moreimage.pw":
 	case "lookimg.com":
+	case "subefotos.com":
 		ext_list = []; // imagebam
 		i = document.querySelector('meta[property="og:image"], [name="og:image"]');
 		if(i)
@@ -1134,7 +1137,7 @@ function makeworld()
 		i = q('img[src*="i.pximg.net/img-"]');
 		if(i)
 		{
-			if(!q('a[href*="member_illust.php?mode=manga"]'))
+			if(!q('div[style*="transform: translateY(0%);"] > div > button'))
 			{
 				find_text_in_scripts('"original":"', '"');
 			}
@@ -1800,6 +1803,7 @@ function makeworld()
 	case "picshost.info":
 	case "petrovixxxjav.com":
 	case "placeimg.net":
+	case "imageshtorm.com":
 		dp=true;
 		var f = document.getElementsByTagName("input");
 		if(f.length)
