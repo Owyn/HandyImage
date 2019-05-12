@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name		Handy Image
-// @version		2019.05.10
+// @version		2019.05.12
 // @author		Owyn
 // @contributor	ubless607, bitst0rm
 // @namespace	handyimage
@@ -754,6 +754,7 @@
 // @match		*://*.placeimg.net/img-*.html
 // @match		https://subefotos.com/ver/?*
 // @match		http://*.imageshtorm.com/img-*.html
+// @match		https://*.blameless.work/img-*.html
 // ==/UserScript==
 
 if (typeof unsafeWindow === "undefined")
@@ -1108,10 +1109,6 @@ function makeworld()
 		if(find_text_in_scripts('"shortcode_media":{"__typename":"GraphImage"'))
 		{
 			find_text_in_scripts('"display_url":"', '"');
-			if(i)
-			{
-				i.src = i.src.replace(/\/p\d+x\d+?\//, '/');
-			}
 		}
 		break;
 	case "flickr.com":
@@ -1804,6 +1801,7 @@ function makeworld()
 	case "petrovixxxjav.com":
 	case "placeimg.net":
 	case "imageshtorm.com":
+	case "blameless.work":
 		dp=true;
 		var f = document.getElementsByTagName("input");
 		if(f.length)
