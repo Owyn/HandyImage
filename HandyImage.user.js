@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name		Handy Image
-// @version		2019.05.12
+// @version		2019.06.11
 // @author		Owyn
 // @contributor	ubless607, bitst0rm
 // @namespace	handyimage
@@ -755,6 +755,8 @@
 // @match		https://subefotos.com/ver/?*
 // @match		http://*.imageshtorm.com/img-*.html
 // @match		https://*.blameless.work/img-*.html
+// @match		https://trumbhost.com/images/*.html
+// @match		http://*.xxx.kodiak.top/img-*.html
 // ==/UserScript==
 
 if (typeof unsafeWindow === "undefined")
@@ -1802,6 +1804,7 @@ function makeworld()
 	case "placeimg.net":
 	case "imageshtorm.com":
 	case "blameless.work":
+	case "xxx.kodiak.top":
 		dp=true;
 		var f = document.getElementsByTagName("input");
 		if(f.length)
@@ -2217,13 +2220,13 @@ function makeworld()
 	case "youpicture.org":
 	case "vavvi.com":
 	case "imgzap.com":
-	case "imgdrive.net":
 	case "crazyimg.com":
 	case "extraimago.com":
 	case "ftop.ru":
 	case "porncomix.info":
 	case "luxpic.ru":
 	case "passpix.com":
+	case "trumbhost.com":
 		//Chevereto 2.x
 		i = q('img[src*="' + iurl + '/images/"]');
 		break;
