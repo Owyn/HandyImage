@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name		Handy Image
-// @version		2019.06.11
+// @version		2019.06.17
 // @author		Owyn
 // @contributor	ubless607, bitst0rm
 // @namespace	handyimage
@@ -722,7 +722,8 @@
 // @match		http://pic3you.org/full/
 // @match		*://*.vipix.pw/images/*.html
 // @match		http://*.imgchilibum.ru/v.php?id=*
-// @match		http://*.imgazure.com/*.html
+// @match		https://*.imgazure.com/*.html
+// @match		https://*.imgazure.com/full/
 // @match		*://*.dpic.me/*
 // @match		*://*.picmoza.com//img-*.html
 // @match		*://suckmypic.net/*
@@ -757,6 +758,8 @@
 // @match		https://*.blameless.work/img-*.html
 // @match		https://trumbhost.com/images/*.html
 // @match		http://*.xxx.kodiak.top/img-*.html
+// @match		*://*.your-pictures.net/p*/*.html
+// @match		https://*.xaoutchouc.live/img-*.html
 // ==/UserScript==
 
 if (typeof unsafeWindow === "undefined")
@@ -1550,6 +1553,7 @@ function makeworld()
 	case "shaggyimg.pro":
 	case "imgsmarts.info":
 	case "dailyimages.xyz":
+	case "imgazure.com":
 		var f = document.getElementsByTagName("button");
 		if(f.length)
 		{
@@ -1805,6 +1809,7 @@ function makeworld()
 	case "imageshtorm.com":
 	case "blameless.work":
 	case "xxx.kodiak.top":
+	case "xaoutchouc.live":
 		dp=true;
 		var f = document.getElementsByTagName("input");
 		if(f.length)
@@ -1953,6 +1958,7 @@ function makeworld()
 	case "qattach.com":
 	case "fotohelp.kz":
 	case "pic-you.com":
+	case "your-pictures.net":
 		i = q('a[href*="/di/"]');
 		if(i)
 		{
@@ -2170,8 +2176,9 @@ function makeworld()
 	case "imgwallet.com":
 		j = true;
 		i = q("a.overlay_ad_link");
-		if(i)
+		if(i && i.parentNode.style.display === "block")
 		{
+			console.warn(i);
 			i.click();
 			DeleteAllCookies();
 			break;
