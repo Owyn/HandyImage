@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name		Handy Image
-// @version		2019.06.17
+// @version		2019.06.27
 // @author		Owyn
 // @contributor	ubless607, bitst0rm
 // @namespace	handyimage
@@ -1958,7 +1958,6 @@ function makeworld()
 	case "qattach.com":
 	case "fotohelp.kz":
 	case "pic-you.com":
-	case "your-pictures.net":
 		i = q('a[href*="/di/"]');
 		if(i)
 		{
@@ -1977,6 +1976,7 @@ function makeworld()
 	case "upload.khontai.com":
 	case "image.pantyhosemania.info":
 	case "t.hogor.net":
+	case "your-pictures.net":
 		i = q('a[href*="?di="]');
 		if(i)
 		{
