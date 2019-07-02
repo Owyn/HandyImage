@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name		Handy Image
-// @version		2019.06.27
+// @version		2019.07.02
 // @author		Owyn
 // @contributor	ubless607, bitst0rm
 // @namespace	handyimage
@@ -1716,8 +1716,10 @@ function makeworld()
 		i = q('img[src*="/files/"]');
 		break;
 	case "image18.org":
-	case "picstate.com":
 		i = q('img[src*="/file"]');
+		break;
+	case "picstate.com":
+		i = q('img[src*="/fl/"]');
 		break;
 	case "zimagez.com":
 		i = q('img[src*="/full/"]');
