@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name		Handy Image
-// @version		2019.07.02
+// @version		2019.07.03
 // @author		Owyn
 // @contributor	ubless607, bitst0rm
 // @namespace	handyimage
@@ -760,6 +760,7 @@
 // @match		http://*.xxx.kodiak.top/img-*.html
 // @match		*://*.your-pictures.net/p*/*.html
 // @match		https://*.xaoutchouc.live/img-*.html
+// @match		https://*.picusha.net/?v=*
 // ==/UserScript==
 
 if (typeof unsafeWindow === "undefined")
@@ -1679,6 +1680,7 @@ function makeworld()
 	case "vvcap.com":
 	case "imgtrex.com":
 	case "pic-upload.de":
+	case "picusha.net":
 		i = q('img[src*="/img/"]');
 		break;
 	case "imagenetz.de":
