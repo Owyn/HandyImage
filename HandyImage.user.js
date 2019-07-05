@@ -892,7 +892,7 @@ function makeimage()
 	if(cfg_direct){unsafeWindow.location.href = i.src;return false;}
 	if(cfg_bgclr){document.body.bgColor = cfg_bgclr;}
 	document.body.style.margin = "0px";
-	document.body.innerHTML = "<style>img { position: absolute; top: 0; right: 0; bottom: 0; left: 0; image-orientation: from-image; }</style>"; // center image
+	document.body.innerHTML = "<style>img { position: absolute; top: 0; right: 0; bottom: 0; left: 0; image-orientation: from-image; } body { background: #0e0e0e; }</style>"; // center image
 	ws();
 	var isrc = i.src;
 	i = protected_createElement("img");
