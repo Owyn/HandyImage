@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name		Handy Image
-// @version		2019.07.03
+// @version		2019.07.11
 // @author		Owyn
 // @contributor	ubless607, bitst0rm
 // @namespace	handyimage
@@ -1214,7 +1214,6 @@ function makeworld()
 	case "imgshots.com":
 		i = q('img#img_obj');
 		break;
-	case "fastpic.ru":
 	case "abload.de":
 		i = document.body.querySelectorAll('img#image');
 		if(i)
@@ -1242,6 +1241,9 @@ function makeworld()
 			break;
 		}
 		i = q('img#image');
+		break;
+	case "fastpic.ru":
+		i = q('img[src*="/big/"]');
 		break;
 	case "bayimg.com":
 		i = q('img#mainImage');
