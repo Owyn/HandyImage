@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name		Handy Image
-// @version		2019.07.11
+// @version		2019.07.14
 // @author		Owyn
 // @contributor	ubless607, bitst0rm
 // @namespace	handyimage
@@ -1243,7 +1243,7 @@ function makeworld()
 		i = q('img#image');
 		break;
 	case "fastpic.ru":
-		i = q('img[src*="/big/"]');
+		i = q('img[src*="?noht=1"]');
 		break;
 	case "bayimg.com":
 		i = q('img#mainImage');
