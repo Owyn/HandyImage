@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name		Handy Image
-// @version		2019.07.18
+// @version		2019.07.19
 // @author		Owyn
 // @contributor	ubless607, bitst0rm
 // @namespace	handyimage
@@ -1060,6 +1060,7 @@ function makeworld()
 	case "moreimage.pw":
 	case "lookimg.com":
 	case "subefotos.com":
+	case "500px.com":
 		ext_list = []; // imagebam
 		i = document.querySelector('meta[property="og:image"], [name="og:image"]');
 		if(i)
@@ -1120,9 +1121,6 @@ function makeworld()
 	case "flickr.com":
 	case "secure.flickr.com":
 		find_text_in_scripts('"displayUrl":"', '"', false, '"canComment"');
-		break;
-	case "500px.com":
-		find_text_in_scripts('"https_url":"', '"', false);
 		break;
 	case "artstation.com":
 		j = true;
