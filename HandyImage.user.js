@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name		Handy Image
-// @version		2019.07.19
+// @version		2019.07.22
 // @author		Owyn
 // @contributor	ubless607, bitst0rm
 // @namespace	handyimage
@@ -603,7 +603,7 @@
 // @match		https://ss.movierls.net/image/*
 // @match		http://www.xxximagetpb.org/image/*
 // @match		http://www.pixsense.net/site/v/*
-// @match		http://www.imgsky.net/site/v/*
+// @match		http://www.imgsky.net/*
 // @match		http://www.imagespicy.site/site/v/*
 // @match		http://imgoutlet.pw/*.php
 // @match		http://*.pix.ac/image/*
