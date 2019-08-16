@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name		Handy Image
-// @version		2019.07.22
+// @version		2019.08.16
 // @author		Owyn
 // @contributor	ubless607, bitst0rm
 // @namespace	handyimage
@@ -380,7 +380,7 @@
 // @match		http://filefap.com/view*
 // @match		*://imgur.com/*
 // @exclude		*://imgur.com/*,*
-// @match		http://motherless.com/*
+// @match		https://motherless.com/*
 // @match		http://*.xpic.biz/*/view*
 // @match		*://*.tumblr.com/image/*
 // @match		http://*.imageporter.com/*
@@ -761,6 +761,7 @@
 // @match		*://*.your-pictures.net/p*/*.html
 // @match		https://*.xaoutchouc.live/img-*.html
 // @match		https://*.picusha.net/?v=*
+// @match		https://e621.net/post/show/*
 // ==/UserScript==
 
 if (typeof unsafeWindow === "undefined")
@@ -1369,6 +1370,10 @@ function makeworld()
 		if(i){i.src = i.content; break;}
 	case "picsee.net":
 		i = q('a[href*="/upload"]');
+		if(i){i.src = i.href;}
+		break;
+	case "e621.net":
+		i = q('a#highres');
 		if(i){i.src = i.href;}
 		break;
 	case "danbooru.donmai.us":
