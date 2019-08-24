@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name		Handy Image
-// @version		2019.08.16
+// @version		2019.08.24
 // @author		Owyn
 // @contributor	ubless607, bitst0rm
 // @namespace	handyimage
@@ -762,6 +762,7 @@
 // @match		https://*.xaoutchouc.live/img-*.html
 // @match		https://*.picusha.net/?v=*
 // @match		https://e621.net/post/show/*
+// @match		https://rule34.xxx/index.php?page=post&s=view&id=*
 // ==/UserScript==
 
 if (typeof unsafeWindow === "undefined")
@@ -1015,6 +1016,8 @@ function makeworld()
 			i.src = i.src.replace('_800.', '.'); //img.3ezy.net
 		}
 		break;
+	case "imagebam.com":
+		ext_list = [];
 	case "directupload.net":
 	case "bilderhoster.net":
 	case "noelshack.com":
@@ -1044,7 +1047,6 @@ function makeworld()
 	case "pic.xtream-reallife.de":
 	case "ultraimg.com":
 	case "safeimage.biz":
-	case "imagebam.com":
 	case "imgextra.uk":
 	case "ss.movierls.net":
 	case "xxximagetpb.org":
@@ -1062,7 +1064,7 @@ function makeworld()
 	case "lookimg.com":
 	case "subefotos.com":
 	case "500px.com":
-		ext_list = []; // imagebam
+	case "rule34.xxx":
 		i = document.querySelector('meta[property="og:image"], [name="og:image"]');
 		if(i)
 		{
