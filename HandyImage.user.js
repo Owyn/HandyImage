@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name		Handy Image
-// @version		2019.08.24
+// @version		2019.08.26
 // @author		Owyn
 // @contributor	ubless607, bitst0rm
 // @namespace	handyimage
@@ -763,6 +763,7 @@
 // @match		https://*.picusha.net/?v=*
 // @match		https://e621.net/post/show/*
 // @match		https://rule34.xxx/index.php?page=post&s=view&id=*
+// @match		https://pixs.cx/*
 // ==/UserScript==
 
 if (typeof unsafeWindow === "undefined")
@@ -1663,6 +1664,7 @@ function makeworld()
 	case "levinpic.org":
 	case "imgtown.net":
 	case "0img.ws":
+	case "pixs.cx":
 		j = true;
 		dp=true;
 		var f = document.querySelectorAll("input[type='submit']")
@@ -1728,7 +1730,7 @@ function makeworld()
 		i = q('img[src*="/file"]');
 		break;
 	case "picstate.com":
-		i = q('img[src*="/fl/"]');
+		i = q('#image_container a img');
 		break;
 	case "zimagez.com":
 		i = q('img[src*="/full/"]');
