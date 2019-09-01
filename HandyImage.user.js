@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name		Handy Image
-// @version		2019.08.26
+// @version		2019.09.01
 // @author		Owyn
 // @contributor	ubless607, bitst0rm
 // @namespace	handyimage
@@ -763,6 +763,7 @@
 // @match		https://*.picusha.net/?v=*
 // @match		https://e621.net/post/show/*
 // @match		https://rule34.xxx/index.php?page=post&s=view&id=*
+// @match		https://rule34hentai.net/post/view/*
 // @match		https://pixs.cx/*
 // ==/UserScript==
 
@@ -1142,7 +1143,7 @@ function makeworld()
 		i = q('img[src*="i.pximg.net/img-"]');
 		if(i)
 		{
-			if(!q('div[style*="transform: translateY(0%);"] > div > button'))
+			if(!q('div[aria-label="Preview"]'))
 			{
 				find_text_in_scripts('"original":"', '"');
 			}
@@ -1373,6 +1374,10 @@ function makeworld()
 		if(i){i.src = i.content; break;}
 	case "picsee.net":
 		i = q('a[href*="/upload"]');
+		if(i){i.src = i.href;}
+		break;
+	case "rule34hentai.net":
+		i = q('a[download]');
 		if(i){i.src = i.href;}
 		break;
 	case "e621.net":
