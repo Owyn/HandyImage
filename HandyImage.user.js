@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name		Handy Image
-// @version		2019.09.01
+// @version		2019.09.02
 // @author		Owyn
 // @contributor	ubless607, bitst0rm
 // @namespace	handyimage
@@ -765,6 +765,7 @@
 // @match		https://rule34.xxx/index.php?page=post&s=view&id=*
 // @match		https://rule34hentai.net/post/view/*
 // @match		https://pixs.cx/*
+// @match		*://mshelxxx.ru.com//img-*.html
 // ==/UserScript==
 
 if (typeof unsafeWindow === "undefined")
@@ -1828,6 +1829,7 @@ function makeworld()
 	case "blameless.work":
 	case "xxx.kodiak.top":
 	case "xaoutchouc.live":
+	case "mshelxxx.ru.com":
 		dp=true;
 		var f = document.getElementsByTagName("input");
 		if(f.length)
