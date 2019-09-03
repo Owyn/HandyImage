@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name		Handy Image
-// @version		2019.09.01
+// @version		2019.09.02
 // @author		Owyn
 // @contributor	ubless607, bitst0rm
 // @namespace	handyimage
@@ -470,6 +470,7 @@
 // @match		http://*.ultraimg.com/image/*
 // @match		http://demo.chevereto.com/image/*
 // @match		http://imgclick.net/*
+// @match		http://mshelxxx.ru.com/*
 // @match		http://*.gogoimage.org/img-*
 // @match		http://imgmoney.ru/*.html
 // @match		http://imgmoney.ru/full/
@@ -2156,6 +2157,16 @@ function makeworld()
             i.click();
         }
         i = q("img.pic[src*='/i/'], img.pic[src*='/img/']");
+        break;
+	case "mshelxxx.ru.com":
+        i = q("form input[type='submit'][value*='continue to image' i]");
+        j = true;
+        dp = true;
+        if(i)
+        {
+            i.click();
+        }
+        i = q("img.centred");
         break;
 	case "scrin.org":
 		i = q('a[href*="/i/"]');
