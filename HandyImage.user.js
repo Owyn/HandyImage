@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name		Handy Image
-// @version		2019.09.02
+// @version		2019.09.05
 // @author		Owyn
 // @contributor	ubless607, bitst0rm
 // @namespace	handyimage
@@ -766,6 +766,8 @@
 // @match		https://rule34hentai.net/post/view/*
 // @match		https://pixs.cx/*
 // @match		*://mshelxxx.ru.com//img-*.html
+// @match		*://www.hentai-foundry.com/pictures/*
+// @exclude		*://www.hentai-foundry.com/pictures/user/*/page/*
 // ==/UserScript==
 
 if (typeof unsafeWindow === "undefined")
@@ -1376,6 +1378,13 @@ function makeworld()
 	case "picsee.net":
 		i = q('a[href*="/upload"]');
 		if(i){i.src = i.href;}
+		break;
+	case "hentai-foundry.com":
+		i = q('.boxbody img');
+		if(i && i.onclick)
+		{
+			i.click();
+		}
 		break;
 	case "rule34hentai.net":
 		i = q('a[download]');
