@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name		Handy Image
-// @version		2019.09.05
+// @version		2019.09.07
 // @author		Owyn
 // @contributor	ubless607, bitst0rm
 // @namespace	handyimage
@@ -1123,7 +1123,9 @@ function makeworld()
 		j = true;
 		if(find_text_in_scripts('"shortcode_media":{"__typename":"GraphImage"'))
 		{
-			find_text_in_scripts('"display_url":"', '"');
+			//find_text_in_scripts('"display_url":"', '"');
+			i = document.head.querySelector('meta[property="og:image"]');
+			if(i){i.src = i.content;}
 		}
 		break;
 	case "flickr.com":
