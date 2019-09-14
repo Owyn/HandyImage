@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name		Handy Image
-// @version		2019.09.07
+// @version		2019.09.14
 // @author		Owyn
 // @contributor	ubless607, bitst0rm
 // @namespace	handyimage
@@ -768,6 +768,7 @@
 // @match		*://mshelxxx.ru.com//img-*.html
 // @match		*://www.hentai-foundry.com/pictures/*
 // @exclude		*://www.hentai-foundry.com/pictures/user/*/page/*
+// @match		*://imgcredit.xyz/image/*
 // ==/UserScript==
 
 if (typeof unsafeWindow === "undefined")
@@ -1070,6 +1071,7 @@ function makeworld()
 	case "subefotos.com":
 	case "500px.com":
 	case "rule34.xxx":
+	case "imgcredit.xyz":
 		i = document.querySelector('meta[property="og:image"], [name="og:image"]');
 		if(i)
 		{
