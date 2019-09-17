@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name		Handy Image
-// @version		2019.09.14
+// @version		2019.09.17
 // @author		Owyn
 // @contributor	ubless607, bitst0rm
 // @namespace	handyimage
@@ -38,6 +38,7 @@
 // @match		http://radical-foto.ru/*
 // @match		http://radikal-foto.ru/*
 // @match		https://radikal.ru/*
+// @exclude		https://radikal.ru/video/*
 // @match		http://f-page.ru/*
 // @match		http://f-picture.net/*
 // @match		https://*.pimpandhost.com/image*
