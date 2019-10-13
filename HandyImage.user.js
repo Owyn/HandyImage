@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name		Handy Image
-// @version		2019.09.17
+// @version		2019.10.13
 // @author		Owyn
 // @contributor	ubless607, bitst0rm
 // @namespace	handyimage
@@ -424,7 +424,7 @@
 // @match		http://*.imageshimage.com/*/*
 // @match		http://*.imgswift.com/*/*
 // @match		http://*.imageporn.eu/?v=*
-// @match		https://500px.com/photo/*
+// @match		https://*.500px.com/photo/*
 // @match		http://*.greenpiccs.com/images/*.html
 // @match		http://*.hostmat.eu/view*
 // @match		http://*.photobucket.com/user/*/media/*.htm*
@@ -1070,7 +1070,6 @@ function makeworld()
 	case "moreimage.pw":
 	case "lookimg.com":
 	case "subefotos.com":
-	case "500px.com":
 	case "rule34.xxx":
 	case "imgcredit.xyz":
 		i = document.querySelector('meta[property="og:image"], [name="og:image"]');
@@ -1622,6 +1621,10 @@ function makeworld()
 		break;
 	case "xtremeshack.com":
 		i = q('img[src*="/photos/"]');
+		break;
+	case "web.500px.com":
+		j = true;
+		i = q('img.photo-show__img[src*="_m"]');
 		break;
 	case "picturepush.com":
 		i = q('img[src*="/photo/"]');
