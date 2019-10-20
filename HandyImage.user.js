@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name		Handy Image
-// @version		2019.10.13
+// @version		2019.10.20
 // @author		Owyn
 // @contributor	ubless607, bitst0rm
 // @namespace	handyimage
@@ -2213,7 +2213,7 @@ function makeworld()
 	case "imgwallet.com":
 		j = true;
 		i = q("a.overlay_ad_link");
-		if(i && i.parentNode.style.display === "block")
+		if(i)
 		{
 			console.warn(i);
 			i.click();
