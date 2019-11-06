@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name		Handy Image
-// @version		2019.10.20
+// @version		2019.11.06
 // @author		Owyn
 // @contributor	ubless607, bitst0rm
 // @namespace	handyimage
@@ -589,7 +589,7 @@
 // @match		http://*.sendpic.org/view/*
 // @match		http://www.porncomix.info/*/*/
 // @exclude		http://www.porncomix.info/gallery/*
-// @match		http://*.picclock.ru/*/*/
+// @match		*://*.picclock.ru/*/*/
 // @match		http://*.svetmonet.ru/*.html
 // @match		http://*.svetmonet.ru/full/
 // @match		http://*.imgpix.net/*
@@ -1126,8 +1126,7 @@ function makeworld()
 		if(find_text_in_scripts('"shortcode_media":{"__typename":"GraphImage"'))
 		{
 			//find_text_in_scripts('"display_url":"', '"');
-			i = document.head.querySelector('meta[property="og:image"]');
-			if(i){i.src = i.content;}
+			i = q('img[decoding]');
 		}
 		break;
 	case "flickr.com":
