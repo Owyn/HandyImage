@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name		Handy Image
-// @version		2019.11.06
+// @version		2019.11.14
 // @author		Owyn
 // @contributor	ubless607, bitst0rm
 // @namespace	handyimage
@@ -1404,7 +1404,7 @@ function makeworld()
 	case "gelbooru.com":
 	case "youhate.us":
 		j = true;
-		i = q('a[href*="//images/"]');
+		i = q('a[href*="/images/"][style]');
 		if(i){i.src = i.href;}
 		break;
 	case "deviantart.com":
