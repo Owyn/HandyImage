@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name		Handy Image
-// @version		2019.11.15
+// @version		2019.11.16
 // @author		Owyn
 // @contributor	ubless607, bitst0rm
 // @namespace	handyimage
@@ -911,7 +911,7 @@ function makeimage()
 	i.addEventListener("click", rescale, true);
 	window.addEventListener("keydown", onkeydown, true);
 	if(dp){console.warn("you are on a double-page image hosting (probably)");window.addEventListener("beforeunload", onbeforeunload, true);}
-	autoresize();
+	if(bFocused){onfocus();}
 }
 
 function find_text_in_scripts(text, stopword, start_from_top, search_after_word)
@@ -2598,6 +2598,18 @@ var observer = new MutationObserver(function(mutations)
 	makeworld();
 });
 observer.observe(document, {subtree: true, childList: true});
+
+var bFocused = false;
+function onfocus()
+{
+	bFocused = true;
+	if(i)
+	{
+		autoresize();
+		window.removeEventListener('focus', onfocus);
+	}
+}
+window.addEventListener("focus", onfocus);
 
 // hotkeys
 if (typeof KeyEvent === "undefined")
