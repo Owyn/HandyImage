@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name		Handy Image
-// @version		2019.11.14
+// @version		2019.11.15
 // @author		Owyn
 // @contributor	ubless607, bitst0rm
 // @namespace	handyimage
@@ -834,7 +834,7 @@ var timeout = 1000;
 var FireFox = ((navigator.userAgent.indexOf('Firefox') != -1) ? true : false);
 var i;
 var j;
-var ext_list = ['webm', 'mp4', 'ogg'];
+var ext_list = ['webm', 'mp4', 'ogg', 'zip', '7z', 'rar', 'psd'];
 var iurl = window.location.hostname;
 if(!iurl.indexOf("www."))
 {
@@ -1408,11 +1408,12 @@ function makeworld()
 		if(i){i.src = i.href;}
 		break;
 	case "deviantart.com":
-		if(q('img.dev-content-normal'))
+		j = true;
+		if(q('button[aria-label="Expand"]'))
 		{
-			i = q('a[href*="/download/"]');
-			if(i && i.href.indexOf(".zip?") == -1 && i.href.indexOf(".7z?") == -1 && i.href.indexOf(".rar?") == -1 && i.href.indexOf(".psd?") == -1 && i.href.indexOf("deviantart.com/users/outgoing?")== -1){i.src = i.href;}
-			else{i = q('img.dev-content-full');}
+			i = q('a[download]');
+			if(i && i.href.indexOf("deviantart.com/users/outgoing?") == -1){i.src = i.href;}
+			else{i = document.head.querySelector('link[rel="preload"][as="image"]'); if(i){i.src = i.href;}}
 		}
 		break;
 	case "imagehost.eu":
