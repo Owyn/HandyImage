@@ -735,6 +735,7 @@
 // @match		https://22pixx.xyz/i*-*/*.html
 // @match		https://22pixx.xyz/i-*/*.html
 // @match		https://22pixx.xyz/x-*/*.html
+// @match		*://trueimg.xyz/u-*/*.html
 // @match		*://imgsmarts.info/*.html
 // @match		*://imgsmarts.info/full/
 // @match		*://www.keepimg.com/image/*
@@ -1181,6 +1182,7 @@ function makeworld()
 		i = q('img[data-width]');
 		break;
 	case "22pixx.xyz":
+	case "trueimg.xyz":
 	        var img = window.location.href.match(/[a-z]+-([a-z].+(?:\.jpe?g|png|gif|webp))/i);
 		if(img)
 		{
