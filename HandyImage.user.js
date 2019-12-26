@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name		Handy Image
-// @version		2019.11.18
+// @version		2019.12.26
 // @author		Owyn
 // @contributor	ubless607, bitst0rm
 // @namespace	handyimage
@@ -632,7 +632,7 @@
 // @match		http://*.imgskull.com/image/*
 // @match		*://*.ninjaimages.com/*.html
 // @match		*://*.imgprime.com/img*
-// @match		http://*.imgmaze.pw/*.php
+// @match		*://*.imgmaze.pw/*.php
 // @match		*://*.piccash.net/*/*/
 // @exclude		*://piccash.net/cabinets/*
 // @exclude		*://www.piccash.net/cabinets/*
@@ -742,6 +742,7 @@
 // @match		https://ibb.co/*
 // @match		http://*.imgsee.net/*
 // @match		*://*.picbaron.com/*/*.html
+// @match		*://*.imgbaron.com/*/*
 // @match		http://picshost.info//img-*.html
 // @match		*://imagescanner.cc/images/*.html
 // @match		http://batpic.com/image/*
@@ -1509,6 +1510,7 @@ function makeworld()
 	case "pic.re":
 	case "foxyimg.link":
 	case "picbaron.com":
+	case "imgbaron.com":
 		i = q('input[type="submit"]');
 		dp=true;
 		j =true;
