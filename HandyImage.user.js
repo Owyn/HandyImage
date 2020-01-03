@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name		Handy Image
-// @version		2019.12.26
+// @version		2020.01.03
 // @author		Owyn
 // @contributor	ubless607, bitst0rm
 // @namespace	handyimage
@@ -772,6 +772,7 @@
 // @match		*://www.hentai-foundry.com/pictures/*
 // @exclude		*://www.hentai-foundry.com/pictures/user/*/page/*
 // @match		*://imgcredit.xyz/image/*
+// @match		https://imgdew.pw/*.php
 // ==/UserScript==
 
 if (typeof unsafeWindow === "undefined")
@@ -1661,6 +1662,7 @@ function makeworld()
 	case "imgrock.pw":
 	case "imgview.pw":
 	case "imgmaze.pw":
+	case "imgdew.pw":
 		j = true;
 		dp=true;
 		i = q('img.picview');
