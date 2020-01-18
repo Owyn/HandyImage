@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name		Handy Image
-// @version		2020.01.03
+// @version		2020.01.18
 // @author		Owyn
 // @contributor	ubless607, bitst0rm
 // @namespace	handyimage
@@ -686,6 +686,7 @@
 // @match		http://*.2pixxsee.ru/*.html
 // @match		http://*.2pixxsee.ru/full/
 // @match		https://*.xhamster.com/photos/gallery/*/*
+// @match		https://*.xhamster.desi/photos/gallery/*/*
 // @match		http://*.imghall.com/?v=*
 // @match		https://*.acidimg.cc/img-*
 // @match		https://imgcloud.pw/image/*
@@ -1126,8 +1127,9 @@ function makeworld()
 		break;
 	case "instagram.com":
 		j = true;
-		if(find_text_in_scripts('"shortcode_media":{"__typename":"GraphImage"'))
+		if(unsafeWindow._sharedData && unsafeWindow._sharedData.entry_data.PostPage[0].graphql.shortcode_media.__typename === "GraphImage")
 		{
+			//find_text_in_scripts('"shortcode_media":{"__typename":"GraphImage"')
 			//find_text_in_scripts('"display_url":"', '"');
 			i = q('img[decoding]');
 		}
@@ -2372,6 +2374,7 @@ function makeworld()
 			i = q('img#imgElement');
 			break;
 		case "xhamster.com":
+		case "xhamster.desi":
 			j = true;
 			i = q('img.fotorama__img');
 			break;
