@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name		Handy Image
-// @version		2020.01.18
+// @version		2020.01.21
 // @author		Owyn
 // @contributor	ubless607, bitst0rm
 // @namespace	handyimage
@@ -530,7 +530,7 @@
 // @match		http://myimg.club/*
 // @match		http://*.imgease.re/img-*
 // @match		https://www.hotimage.uk/*mg-*
-// @match		http://imgview.pw/*.php
+// @match		*://imgview.pw/*.php
 // @match		http://*.10.imageleon.com/i-*
 // @match		https://www.dropbox.com/s/*/*
 // @match		http://imgor.net/img-*
