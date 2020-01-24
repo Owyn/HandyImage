@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name		Handy Image
-// @version		2020.01.21
+// @version		2020.01.24
 // @author		Owyn
 // @contributor	ubless607, bitst0rm
 // @namespace	handyimage
@@ -860,12 +860,16 @@ function ws()
 
 function sanitize() // lol I'm such a hacker
 {
+	unsafeWindow.document.createElement = unsafeWindow.console.log;
 	var lasttask = setTimeout(function() {},0);
 	for(var n = lasttask; n > 0; n--)
 	{
 		clearTimeout(n);
 	}
 }
+
+delete document.createElement; // stopped working in firefox RIP
+const protected_createElement = document.createElement.bind(document);
 
 function DeleteAllCookies()
 {
@@ -890,14 +894,6 @@ function onbeforeunload(e) // back helper
 	now.setTime(time);
 	now.toGMTString();
 	document.cookie = 'backhji=; expires=' + now.toGMTString() + '; path=/';
-}
-
-function protected_createElement(el)
-{
-	delete document.createElement;
-	var r = document.createElement(el);
-	unsafeWindow.document.createElement = unsafeWindow.console.log;
-	return r;
 }
 
 function makeimage()
@@ -1376,8 +1372,8 @@ function makeworld()
 		if(i){i.src = i.href;}
 		break;
 	case "pimpandhost.com":
-		i = q('img.normal');
-		if(i){i.src = i.src.replace('_l.jpg', '.jpg');}
+		i = q('div.main-image-wrapper');
+		if(i){i.src = i.dataset.src;}
 		break;
 	case "sexybabepics.net":
 	case "keepimg.com":
