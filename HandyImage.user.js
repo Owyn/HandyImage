@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name		Handy Image
-// @version		2020.01.24
+// @version		2020.01.31
 // @author		Owyn
 // @contributor	ubless607, bitst0rm
 // @namespace	handyimage
@@ -440,7 +440,7 @@
 // @match		http://*.sexyimg.eu/img-*
 // @match		*://*.imgseeds.com/img-*
 // @match		http://*.pronpic.org/*/*
-// @match		http://prnt.sc/*
+// @match		https://prnt.sc/*
 // @match		http://*.imgdream.net/view*
 // @match		http://*.imgtab.net/*
 // @match		http://*.kephost.com/image/*
@@ -774,6 +774,7 @@
 // @exclude		*://www.hentai-foundry.com/pictures/user/*/page/*
 // @match		*://imgcredit.xyz/image/*
 // @match		https://imgdew.pw/*.php
+// @match		*://drlink.online/*/*/
 // ==/UserScript==
 
 if (typeof unsafeWindow === "undefined")
@@ -1310,6 +1311,7 @@ function makeworld()
 	case "p0xpicmoney.ru":
 	case "picker-click.ru":
 	case "picpic.online":
+	case "drlink.online":
 		i = q('img[onclick*="mshow"]');
 		if(i){i.src = i.src.replace('-thumb', '');i.src = i.src.replace('img_thumb', 'img_full');}
 		break;
