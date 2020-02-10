@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name		Handy Image
-// @version		2020.01.31
+// @version		2020.02.10
 // @author		Owyn
 // @contributor	ubless607, bitst0rm
 // @namespace	handyimage
@@ -252,7 +252,7 @@
 // @match		http://*.hostpix.de/show.php?img*
 // @match		http://*.freeuploadimages.org/view*
 // @match		http://smages.com/?v=*
-// @match		http://*.hostingkartinok.com/show-image.php?id=*
+// @match		https://*.hostingkartinok.com/show-image.php?id=*
 // @match		http://*.4put.ru/*max*
 // @match		http://www.pictureshack.ru/view*
 // @match		http://*.host99.byethost4.com/share.php?id=*
