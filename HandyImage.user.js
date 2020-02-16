@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name		Handy Image
-// @version		2020.02.10
+// @version		2020.02.16
 // @author		Owyn
 // @contributor	ubless607, bitst0rm
 // @namespace	handyimage
@@ -95,7 +95,7 @@
 // @match		http://bayimg.com/*
 // @match		http://*.directupload.net/file*
 // @match		http://*.imagecherry.com/*
-// @match		http://funkyimg.com/view*
+// @match		https://funkyimg.com/view*
 // @match		http://*.abload.de/image.php?*
 // @match		http://*.picfox.org/share*
 // @match		http://*.pixup.us/img-*
