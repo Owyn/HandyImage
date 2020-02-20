@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name		Handy Image
-// @version		2020.02.16
+// @version		2020.02.20
 // @author		Owyn
 // @contributor	ubless607, bitst0rm
 // @namespace	handyimage
@@ -1124,9 +1124,8 @@ function makeworld()
 		break;
 	case "instagram.com":
 		j = true;
-		if(unsafeWindow._sharedData && unsafeWindow._sharedData.entry_data.PostPage[0].graphql.shortcode_media.__typename === "GraphImage")
+		if(find_text_in_scripts('"shortcode_media":{"__typename":"GraphImage"', '"', false))
 		{
-			//find_text_in_scripts('"shortcode_media":{"__typename":"GraphImage"')
 			//find_text_in_scripts('"display_url":"', '"');
 			i = q('img[decoding]');
 		}
