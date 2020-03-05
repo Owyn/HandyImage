@@ -1,5 +1,5 @@
 <h3>Features</h3>
-<p>This script opens fullsized image right after page load in <strong>many image hosting sites</strong> skipping all the annoying stuff like ads, link code etc and <strong>disabling</strong> any kind of <strong>pop-ups</strong>. (script for images opened directly in browser can be found <a href=https://greasyfork.org/scripts/110-center-image>here</a>)</p>
+<p>This script opens fullsized image right after page load in <strong>many image hosting sites</strong> skipping all the annoying stuff like ads, link code etc and <strong>disabling</strong> any kind of <strong>pop-ups</strong>. (script for images opened directly in browser can be found <a href=https://github.com/Owyn/Center_Image>here</a>)</p>
 
 <ul><li><strong>Hotkeys</strong> - very handy ones</li>
 <li><strong>fullsizing</strong> image to its original size when opened, <strong>nothing else</strong> than image</li>
