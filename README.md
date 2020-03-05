@@ -24,7 +24,7 @@
 <img src=https://upload.wikimedia.org/wikipedia/commons/thumb/e/e7/Mozilla_Firefox_3.5_logo_256.png/90px-Mozilla_Firefox_3.5_logo_256.png>
 
 <h3>How to request a new imagehost support or fix for old one</h3>
-<p>Please, if you would like to request a new site or report a non-working one, please, remember to write at least ONE image URL where the script should work, then head right to <strong><a href="https://greasyfork.org/scripts/109-handy-image/feedback">Feedback section</a></strong>.</p>
+<p>Please, if you would like to request a new site or report a non-working one, please, remember to write at least ONE image URL where the script should work, then head right to <strong><a href="https://github.com/Owyn/HandyImage/issues">Feedback section</a></strong>.</p>
 
 <p>In the topic title, write "fix" if the site is already on the list or "add" if it is a new request, and the domain (eg: add googleimagehost.com)</p>
 
