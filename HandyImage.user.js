@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name		Handy Image
-// @version		2020.03.04
+// @version		2020.03.10
 // @author		Owyn
 // @contributor	ubless607, bitst0rm
 // @namespace	handyimage
@@ -924,7 +924,7 @@ function find_text_in_scripts(text, stopword, start_from_top, search_after_word)
 		var start_pos = start_from_top ? s[c].innerHTML.indexOf(text) : s[c].innerHTML.lastIndexOf(text);
 		if(start_pos == -1){continue;}
 		start_pos += text.length;
-		i = s[c];
+		i = protected_createElement("img");
 		i.src = decodeURIComponent(s[c].innerHTML.substring(start_pos,s[c].innerHTML.indexOf(stopword,start_pos)).split("\\").join("")); // split\join fix for stupidfox GreaseMonkey
 		return true;
 	}
