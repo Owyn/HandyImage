@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name		Handy Image
-// @version		2020.03.10
+// @version		2020.03.20
 // @author		Owyn
 // @contributor	ubless607, bitst0rm
 // @namespace	handyimage
@@ -765,7 +765,7 @@
 // @match		*://*.your-pictures.net/p*/*.html
 // @match		https://*.xaoutchouc.live/img-*.html
 // @match		https://*.picusha.net/?v=*
-// @match		https://e621.net/post/show/*
+// @match		https://e621.net/posts/*
 // @match		https://rule34.xxx/index.php?page=post&s=view&id=*
 // @match		https://rule34hentai.net/post/view/*
 // @match		https://pixs.cx/*
@@ -1397,7 +1397,8 @@ function makeworld()
 		if(i){i.src = i.href;}
 		break;
 	case "e621.net":
-		i = q('a#highres');
+		j = true;
+		i = q('div#image-download-link a');
 		if(i){i.src = i.href;}
 		break;
 	case "danbooru.donmai.us":
