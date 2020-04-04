@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name		Handy Image
-// @version		2020.03.20
+// @version		2020.04.04
 // @author		Owyn
 // @contributor	ubless607, bitst0rm
 // @namespace	handyimage
@@ -470,7 +470,7 @@
 // @match		http://pic.xtream-reallife.de/image/*
 // @match		http://*.ultraimg.com/image/*
 // @match		http://demo.chevereto.com/image/*
-// @match		http://imgclick.net/*
+// @match		*://imgclick.net/*/*
 // @match		http://*.gogoimage.org/img-*
 // @match		http://imgmoney.ru/*.html
 // @match		http://imgmoney.ru/full/
