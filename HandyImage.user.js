@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name		Handy Image
-// @version		2020.04.04
+// @version		2020.04.14
 // @author		Owyn
 // @contributor	ubless607, bitst0rm
 // @namespace	handyimage
@@ -510,7 +510,7 @@
 // @match		http://*.pic-you.com/p*
 // @match		http://*.image-bugs.com/*mage/*
 // @match		https://*.imgdrive.net/img-*
-// @match		https://www.pixiv.net/member_illust.php?mode=medium&illust_id=*
+// @match		https://www.pixiv.net/*/artworks/*
 // @match		http://*.scrin.org/?v=*
 // @match		http://*.thumbnailus.com/img-*
 // @match		http://*.nimplus.com/img-*
