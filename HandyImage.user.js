@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name		Handy Image
-// @version		2020.04.14
+// @version		2020.04.16
 // @author		Owyn
 // @contributor	ubless607, bitst0rm
 // @namespace	handyimage
@@ -775,6 +775,7 @@
 // @match		*://imgcredit.xyz/image/*
 // @match		https://imgdew.pw/*.php
 // @match		*://drlink.online/*/*/
+// @match		https://savepice.ru/full/*.html
 // ==/UserScript==
 
 if (typeof unsafeWindow === "undefined")
@@ -1942,6 +1943,7 @@ function makeworld()
 	case "hostingkartinok.com":
 	case "bellazon":
 	case "imgkings.com":
+	case "savepice.ru":
 		i = q('img[src*="/upload"]');
 		break;
 	case "imgseeds.com":
