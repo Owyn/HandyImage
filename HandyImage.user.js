@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name		Handy Image
-// @version		2020.04.16
+// @version		2020.04.21
 // @author		Owyn
 // @contributor	ubless607, bitst0rm
 // @namespace	handyimage
@@ -379,8 +379,9 @@
 // @match		http://*.imgflare.com/*/*
 // @match		https://www.imagefap.com/photo/*
 // @match		http://filefap.com/view*
-// @match		*://imgur.com/*
+// @match		*://*.imgur.com/*
 // @exclude		*://imgur.com/*,*
+// @exclude		*://*.imgur.com/*,*
 // @match		https://motherless.com/*
 // @match		http://*.xpic.biz/*/view*
 // @match		*://*.tumblr.com/image/*
@@ -1097,6 +1098,10 @@ function makeworld()
 				i.src = i.src.replace(':large', ':orig');
 			}
 		}
+		break;
+	case "m.imgur.com":
+		j = true;
+		i = q('img.Image');
 		break;
 	case "imgur.com":
 		j = true;
