@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name		Handy Image
-// @version		2020.04.21
+// @version		2020.04.30
 // @author		Owyn
 // @contributor	ubless607, bitst0rm
 // @namespace	handyimage
@@ -777,6 +777,7 @@
 // @match		https://imgdew.pw/*.php
 // @match		*://drlink.online/*/*/
 // @match		https://savepice.ru/full/*.html
+// @match		https://kropic.com/*/*.html
 // ==/UserScript==
 
 if (typeof unsafeWindow === "undefined")
@@ -1700,6 +1701,7 @@ function makeworld()
 	case "imgtown.net":
 	case "0img.ws":
 	case "pixs.cx":
+	case "kropic.com":
 		j = true;
 		dp=true;
 		var f = document.querySelectorAll("input[type='submit']")
