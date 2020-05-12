@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name		Handy Image
-// @version		2020.04.30
+// @version		2020.05.12
 // @author		Owyn
 // @contributor	ubless607, bitst0rm
 // @namespace	handyimage
@@ -778,6 +778,7 @@
 // @match		*://drlink.online/*/*/
 // @match		https://savepice.ru/full/*.html
 // @match		https://kropic.com/*/*.html
+// @match		http://*.imgzong.xyz/*
 // ==/UserScript==
 
 if (typeof unsafeWindow === "undefined")
@@ -870,10 +871,40 @@ function sanitize() // lol I'm such a hacker
 	{
 		clearTimeout(n);
 	}
+	removeAllListeners();
 }
 
 delete document.createElement; // stopped working in firefox RIP
 const protected_createElement = document.createElement.bind(document);
+
+var _eventHandlers = {}; // somewhere global
+var origAdd = document.addEventListener;
+
+function protected_addEventListener (event, handler, capture = false)
+{
+	//console.error(event);
+	if (!(event in _eventHandlers)) {
+		_eventHandlers[event] = [];
+	}
+	_eventHandlers[event].push({ node: this, handler: handler, capture: capture });
+	return origAdd.call(this, event, handler, capture);
+}
+
+function removeAllListeners ()
+{
+	//console.warn(_eventHandlers);
+	for(let event in _eventHandlers)
+	{
+		_eventHandlers[event].forEach(({ node, handler, capture }) => node.removeEventListener(event, handler, capture));
+		delete _eventHandlers[event];
+	}
+}
+
+unsafeWindow.addEventListener = protected_addEventListener;
+unsafeWindow.document.addEventListener = protected_addEventListener;
+/*unsafeWindow.Element.prototype.addEventListener=protected_addEventListener;
+unsafeWindow.HTMLDocument.prototype.addEventListener=protected_addEventListener;
+unsafeWindow.Window.prototype.addEventListener=protected_addEventListener;*/
 
 function DeleteAllCookies()
 {
@@ -1923,6 +1954,7 @@ function makeworld()
 		break;
 	case "imgsky.net":
 	case "imgsee.net":
+	case "imgzong.xyz":
 		i = q('button');
 		dp=true;
 		j = true;
