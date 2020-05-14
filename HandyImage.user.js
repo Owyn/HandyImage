@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name		Handy Image
-// @version		2020.05.12
+// @version		2020.05.14
 // @author		Owyn
 // @contributor	ubless607, bitst0rm
 // @namespace	handyimage
@@ -23,7 +23,7 @@
 // @match		http://imgchili.net/show*
 // @match		*://imgbox.com/*
 // @match		*://*.imagetwist.com/*
-// @match		http://*.imagevenue.com/img.php?*
+// @match		http://*.imagevenue.com/view/o/?i=*
 // @match		*://*.imageshack.com/i/*
 // @match		*://*.imageshack.com/f/*
 // @match		*://*.image2you.ru/*/*/
