@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name		Handy Image
-// @version		2020.05.14
+// @version		2020.05.15
 // @author		Owyn
 // @contributor	ubless607, bitst0rm
 // @namespace	handyimage
@@ -877,7 +877,7 @@ function sanitize() // lol I'm such a hacker
 delete document.createElement; // stopped working in firefox RIP
 const protected_createElement = document.createElement.bind(document);
 
-var _eventHandlers = {}; // somewhere global
+var _eventHandlers = {};
 var origAdd = document.addEventListener;
 
 function protected_addEventListener (event, handler, capture = false)
@@ -900,11 +900,21 @@ function removeAllListeners ()
 	}
 }
 
+function onVisibilityChange()
+{
+	if (document.visibilityState === 'visible')
+	{
+		if(i)
+		{
+			autoresize();
+			document.removeEventListener('visibilitychange', onVisibilityChange);
+		}
+	}
+}
+document.addEventListener("visibilitychange", onVisibilityChange);
+
 unsafeWindow.addEventListener = protected_addEventListener;
 unsafeWindow.document.addEventListener = protected_addEventListener;
-/*unsafeWindow.Element.prototype.addEventListener=protected_addEventListener;
-unsafeWindow.HTMLDocument.prototype.addEventListener=protected_addEventListener;
-unsafeWindow.Window.prototype.addEventListener=protected_addEventListener;*/
 
 function DeleteAllCookies()
 {
@@ -2645,19 +2655,6 @@ var observer = new MutationObserver(function(mutations)
 	makeworld();
 });
 observer.observe(document, {subtree: true, childList: true});
-
-function onVisibilityChange()
-{
-	if (document.visibilityState === 'visible')
-	{
-		if(i)
-		{
-			autoresize();
-			document.removeEventListener('visibilitychange', onVisibilityChange);
-		}
-	}
-}
-document.addEventListener("visibilitychange", onVisibilityChange);
 
 // hotkeys
 if (typeof KeyEvent === "undefined")
