@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name		Handy Image
-// @version		2020.05.15
+// @version		2020.05.16
 // @author		Owyn
 // @contributor	ubless607, bitst0rm
 // @namespace	handyimage
@@ -781,6 +781,8 @@
 // @match		http://*.imgzong.xyz/*
 // ==/UserScript==
 
+"use strict";
+
 if (typeof unsafeWindow === "undefined")
 {
 	unsafeWindow = window;
@@ -866,8 +868,8 @@ function ws()
 function sanitize() // lol I'm such a hacker
 {
 	unsafeWindow.document.createElement = unsafeWindow.console.log;
-	var lasttask = setTimeout(function() {},0);
-	for(var n = lasttask; n > 0; n--)
+	let lasttask = setTimeout(function() {},0);
+	for(let n = lasttask; n > 0; n--)
 	{
 		clearTimeout(n);
 	}
@@ -930,11 +932,11 @@ function onscript(e)
 	e.stopPropagation();
 }
 
-function onbeforeunload(e) // back helper
+function onbeforeunload() // back helper
 {
 	//console.warn("setting hji cookie before unloading page");
-	var now = new Date();
-	var time = now.getTime();
+	let now = new Date();
+	let time = now.getTime();
 	time += 2000; // 2 sec to help quit double-pages
 	now.setTime(time);
 	now.toGMTString();
@@ -943,12 +945,13 @@ function onbeforeunload(e) // back helper
 
 function makeimage()
 {
-	if(cfg_direct){unsafeWindow.location.href = i.src;return false;}
+	if(typeof cfg_js !== "string") {setTimeout(function() { makeimage(); }, 11); return false;} // lets wait for stupd async
+	if(cfg_direct === true){unsafeWindow.location.href = i.src;return false;}
 	if(cfg_bgclr){document.body.bgColor = cfg_bgclr;}
 	document.body.style.margin = "0px";
 	document.body.innerHTML = "<style>img { position: absolute; top: 0; right: 0; bottom: 0; left: 0; image-orientation: from-image; }</style>"; // center image
 	ws();
-	var isrc = i.src;
+	let isrc = i.src;
 	i = protected_createElement("img");
 	i.src = isrc;
 	i.style.margin = "auto"; // center image
@@ -961,11 +964,11 @@ function makeimage()
 
 function find_text_in_scripts(text, stopword, start_from_top, search_after_word)
 {
-	var s = document.getElementsByTagName("script");
-	for(var c=0;c<s.length;c++)
+	let s = document.getElementsByTagName("script");
+	for(let c=0;c<s.length;c++)
 	{
 		if(search_after_word && s[c].innerHTML.indexOf(search_after_word) != -1){s[c].innerHTML = s[c].innerHTML.substring(0, s[c].innerHTML.indexOf(search_after_word));}
-		var start_pos = start_from_top ? s[c].innerHTML.indexOf(text) : s[c].innerHTML.lastIndexOf(text);
+		let start_pos = start_from_top ? s[c].innerHTML.indexOf(text) : s[c].innerHTML.lastIndexOf(text);
 		if(start_pos == -1){continue;}
 		start_pos += text.length;
 		i = protected_createElement("img");
@@ -978,14 +981,14 @@ function find_text_in_scripts(text, stopword, start_from_top, search_after_word)
 function post(path, params, method)
 {
 	method = method || "post";
-	var form = protected_createElement("form");
+	let form = protected_createElement("form");
 	form.setAttribute("method", method);
 	form.setAttribute("action", path);
-	for(var key in params)
+	for(let key in params)
 	{
 		if(params.hasOwnProperty(key))
 		{
-			var hiddenField = protected_createElement("input");
+			let hiddenField = protected_createElement("input");
 			hiddenField.setAttribute("type", "hidden");
 			hiddenField.setAttribute("name", key);
 			hiddenField.setAttribute("value", params[key]);
@@ -999,6 +1002,7 @@ function post(path, params, method)
 
 function makeworld()
 {
+	let f;
 	if(i){return;}
 	// per-host image detection
 	switch (host)
@@ -1150,8 +1154,8 @@ function makeworld()
 		i = document.head.querySelector('meta[property="og:image"]');
 		if(i)
 		{
-			var f = document.head.querySelector('meta[property="og:url"]');
-			var v = document.head.querySelector('meta[property="og:video"]');
+			f = document.head.querySelector('meta[property="og:url"]');
+			let v = document.head.querySelector('meta[property="og:video"]');
 			if((f && (f.content.indexOf("/a/") != -1 || f.content.indexOf("/gallery/") != -1) ) || i.content.indexOf("/images/logo") != -1)
 			{
 				return;
@@ -1217,7 +1221,7 @@ function makeworld()
 		}
 		break;
 	case "bcy.net":
-		var f = document.querySelectorAll("img.detail_clickable")
+		f = document.querySelectorAll("img.detail_clickable");
 		if(f.length == 1)
 		{
 			i = f[0];
@@ -1231,10 +1235,10 @@ function makeworld()
 		break;
 	case "22pixx.xyz":
 	case "trueimg.xyz":
-	        var img = window.location.href.match(/[a-z]+-([a-z].+(?:\.jpe?g|png|gif|webp))/i);
-		if(img)
+		f = window.location.href.match(/[a-z]+-([a-z].+(?:\.jpe?g|png|gif|webp))/i);
+		if(f)
 		{
-		   i = {src : window.location.origin + "/" + img[1]};
+			i = {src : window.location.origin + "/" + f[1]};
 		}
 		break;
 	case "h4z.it":
@@ -1391,11 +1395,11 @@ function makeworld()
 		if(i){i.src = i.src.replace('/thumbnails/', '/images/');
 		i.src = i.src.replace('/tn-', '/');
 		i.src = i.src.replace('/mid/', '/wz/');
-		var fn = q('div.alert.alert-info.nomargin.photo_name span');
-		if(fn)
+		f = q('div.alert.alert-info.nomargin.photo_name span');
+		if(f)
 		{
-			var url = i.src;
-			i.src = url.substring(0,url.lastIndexOf('/')+1) + fn.textContent + url.substring(url.lastIndexOf('.'));
+			let url = i.src;
+			i.src = url.substring(0,url.lastIndexOf('/')+1) + f.textContent + url.substring(url.lastIndexOf('.'));
 		}}
 		break;
 	case "radikal.ru":
@@ -1635,7 +1639,7 @@ function makeworld()
 	case "imgsmarts.info":
 	case "dailyimages.xyz":
 	case "imgazure.com":
-		var f = document.getElementsByTagName("button");
+		f = document.getElementsByTagName("button");
 		if(f.length)
 		{
 			f[f.length-1].click();
@@ -1718,10 +1722,10 @@ function makeworld()
 		{
 			break;
 		}
-		var f = document.querySelectorAll("[type='button']")
+		f = document.querySelectorAll("[type='button']");
 		if(f.length)
 		{
-			var n;
+			let n;
 			for(n=f.length-1; n >= 0; n--)
 			{
 				if(window.getComputedStyle(f[n]).visibility != "hidden" && f[n].offsetWidth != 0 && f[n].value.indexOf("eply") == -1 && f[n].value.indexOf("Log") == -1)
@@ -1745,10 +1749,10 @@ function makeworld()
 	case "kropic.com":
 		j = true;
 		dp=true;
-		var f = document.querySelectorAll("input[type='submit']")
+		f = document.querySelectorAll("input[type='submit']");
 		if(f.length)
 		{
-			var n;
+			let n;
 			for(n=f.length-1; n >= 0; n--)
 			{
 				if(window.getComputedStyle(f[n]).visibility != "hidden" && f[n].offsetWidth != 0 && f[n].value.indexOf("eply") == -1 && f[n].value.indexOf("Log") == -1)
@@ -1903,7 +1907,7 @@ function makeworld()
 	case "xaoutchouc.live":
 	case "mshelxxx.ru.com":
 		dp=true;
-		var f = document.getElementsByTagName("input");
+		f = document.getElementsByTagName("input");
 		if(f.length)
 		{
 			f[f.length-1].removeAttribute("disabled");
@@ -2441,8 +2445,8 @@ function makeworld()
 			console.warn("HJI is running on a custom website");
 			if(document.readyState != "loading" && document.images.length != 0)
 			{
-				var b = 0;
-				for(var n = 0; n < document.images.length; n++)
+				let b = 0;
+				for(let n = 0; n < document.images.length; n++)
 				{
 					if(document.images[n].width == 0 && !document.images[n].complete) // not started loading
 					{
@@ -2557,7 +2561,7 @@ function rescale(event)
 	if(rescaled)
 	{
 		rescaled = false;
-		var scale,ex,ey;
+		let scale,ex,ey;
 		if(event)
 		{
 			if (typeof event.y === "undefined") // Firefox
@@ -2613,13 +2617,13 @@ function autoresize()
 {
 	if(i.naturalWidth)
 	{
-		var title = i.src.substr(i.src.lastIndexOf("/")+1);
+		let title = i.src.substr(i.src.lastIndexOf("/")+1);
 		if(title.indexOf("?") != -1)
 		{
 			title = title.substr(0, title.indexOf("?"));
 		}
 		document.title = title + " (" + i.naturalWidth + "x" + i.naturalHeight + ")"; // title
-		var link = protected_createElement('link');
+		let link = protected_createElement('link');
 		link.type = 'image/x-icon';
 		link.rel = 'shortcut icon';
 		link.href = i.src;
@@ -2650,7 +2654,7 @@ function autoresize()
 	}
 }
 
-var observer = new MutationObserver(function(mutations)
+var observer = new MutationObserver(function()
 {
 	makeworld();
 });
@@ -2700,7 +2704,7 @@ function cancelEvent(a)
 
 function scroll_space(a, b)
 {
-	var by = Math.round((b ? window.innerHeight : window.innerWidth) * 0.50 * (a ? -1 : 1));
+	let by = Math.round((b ? window.innerHeight : window.innerWidth) * 0.50 * (a ? -1 : 1));
 	if(!b)
 	{
 		window.scrollBy(0, by);
@@ -2713,7 +2717,7 @@ function scroll_space(a, b)
 
 function onkeydown (b)
 {
-	var a = (window.event) ? b.keyCode : b.which;
+	let a = (window.event) ? b.keyCode : b.which;
 
 	if(b.ctrlKey && a == KeyEvent.DOM_VK_S)
 	{
@@ -2734,7 +2738,7 @@ function onkeydown (b)
 		return;
 	}
 
-	var by = Math.round(window.innerHeight * 0.10);
+	let by = Math.round(window.innerHeight * 0.10);
 
 	switch (a)
 	{
@@ -2818,7 +2822,7 @@ function cfg()
 		document.head.innerHTML = "";
 		document.body.innerHTML = "";
 		ws();
-		var div = protected_createElement("div");
+		let div = protected_createElement("div");
 		div.style.margin = "11% auto";
 		div.style.width = "444px";
 		div.style.border = "solid 1px black";
@@ -2848,15 +2852,29 @@ function cfg()
 
 if (typeof GM === 'undefined') // PRE GM4
 {
+	console.warn("using synchronous GM setting loading");
 	GM = {};
 	GM.getValue = GM_getValue;
 	GM.setValue = GM_setValue;
 }
 
+function loadCfg() // placeholder, gets redifined below in eval
+{
+	if (typeof GM.getValue !== "undefined")
+	{
+		cfg_direct = GM.getValue("directImage", false);
+		cfg_bgclr = GM.getValue("bgColor", "grey");
+		cfg_fitWH = GM.getValue("fitWH", true);
+		cfg_fitB = GM.getValue("fitB", false);
+		cfg_fitS = GM.getValue("fitS", true);
+		cfg_js = GM.getValue("js", "");
+	}
+}
+
 try
 {
 	eval(
-	'async function loadCfg()'+
+	'loadCfg = async function ()'+
 	'{'+
 		'if (typeof GM.getValue !== "undefined")'+
 		'{'+
@@ -2873,18 +2891,6 @@ try
 catch(e) // PRE FireFox 53
 {
 	console.warn("Handy Image: Your browser is too old, please update it.");
-	function loadCfg()
-	{
-		if (typeof GM.getValue !== "undefined")
-		{
-			cfg_direct = GM.getValue("directImage", false);
-			cfg_bgclr = GM.getValue("bgColor", "grey");
-			cfg_fitWH = GM.getValue("fitWH", true);
-			cfg_fitB = GM.getValue("fitB", false);
-			cfg_fitS = GM.getValue("fitS", true);
-			cfg_js = GM.getValue("js", "");
-		}
-	}
 }
 
 loadCfg();
