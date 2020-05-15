@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name		Handy Image
-// @version		2020.05.16
+// @version		2020.05.17
 // @author		Owyn
 // @contributor	ubless607, bitst0rm
 // @namespace	handyimage
@@ -382,6 +382,7 @@
 // @match		*://*.imgur.com/*
 // @exclude		*://imgur.com/*,*
 // @exclude		*://*.imgur.com/*,*
+// @exclude		*://*.imgur.com/*.gifv
 // @match		https://motherless.com/*
 // @match		http://*.xpic.biz/*/view*
 // @match		*://*.tumblr.com/image/*
