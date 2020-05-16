@@ -2896,7 +2896,7 @@ catch(e) // PRE FireFox 53
 	console.warn("Handy Image: Your browser is very very old, please update it.");
 }
 
-if (typeof GM.getValue !== "undefined")
+if (typeof GM !== "undefined" && typeof GM.getValue !== "undefined")
 {
 	loadCfg();
 }
