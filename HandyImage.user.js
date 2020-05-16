@@ -833,11 +833,11 @@ if(document.cookie.indexOf("hji=") != -1)
 //else{	console.warn("no hji cookie found");}
 
 function q(s){if(document.body){return document.body.querySelector(s);}return null;}
-var cfg_direct;
-var cfg_bgclr;
-var cfg_fitWH;
-var cfg_fitB;
-var cfg_fitS;
+var cfg_direct = false;
+var cfg_bgclr ="grey";
+var cfg_fitWH = true;
+var cfg_fitB = false;
+var cfg_fitS = true;
 var cfg_js;
 var dp = false;
 var rescaled = false;
@@ -2853,23 +2853,28 @@ function cfg()
 
 if (typeof GM === 'undefined') // PRE GM4
 {
-	console.warn("using synchronous GM setting loading");
-	GM = {};
-	GM.getValue = GM_getValue;
-	GM.setValue = GM_setValue;
+	if (typeof GM_getValue !== "undefined")
+	{
+		console.warn("using synchronous GM setting loading");
+		var GM = {};
+		GM.getValue = GM_getValue;
+		GM.setValue = GM_setValue;
+	}
+	else
+	{
+		cfg_js = "";
+		console.warn("no script manager found - using default settings mode");
+	}
 }
 
 function loadCfg() // placeholder, gets redifined below in eval
 {
-	if (typeof GM.getValue !== "undefined")
-	{
-		cfg_direct = GM.getValue("directImage", false);
-		cfg_bgclr = GM.getValue("bgColor", "grey");
-		cfg_fitWH = GM.getValue("fitWH", true);
-		cfg_fitB = GM.getValue("fitB", false);
-		cfg_fitS = GM.getValue("fitS", true);
-		cfg_js = GM.getValue("js", "");
-	}
+	cfg_direct = GM.getValue("directImage", false);
+	cfg_bgclr = GM.getValue("bgColor", "grey");
+	cfg_fitWH = GM.getValue("fitWH", true);
+	cfg_fitB = GM.getValue("fitB", false);
+	cfg_fitS = GM.getValue("fitS", true);
+	cfg_js = GM.getValue("js", "");
 }
 
 try
@@ -2877,21 +2882,21 @@ try
 	eval(
 	'loadCfg = async function ()'+
 	'{'+
-		'if (typeof GM.getValue !== "undefined")'+
-		'{'+
-			'cfg_direct = await GM.getValue("directImage", false);'+
-			'cfg_bgclr = await GM.getValue("bgColor", "grey");'+
-			'cfg_fitWH = await GM.getValue("fitWH", true);'+
-			'cfg_fitB = await GM.getValue("fitB", false);'+
-			'cfg_fitS = await GM.getValue("fitS", true);'+
-			'cfg_js = await GM.getValue("js", "");'+
-		'}'+
+		'cfg_direct = await GM.getValue("directImage", false);'+
+		'cfg_bgclr = await GM.getValue("bgColor", "grey");'+
+		'cfg_fitWH = await GM.getValue("fitWH", true);'+
+		'cfg_fitB = await GM.getValue("fitB", false);'+
+		'cfg_fitS = await GM.getValue("fitS", true);'+
+		'cfg_js = await GM.getValue("js", "");'+
 	'}'
 	);
 }
 catch(e) // PRE FireFox 53
 {
-	console.warn("Handy Image: Your browser is too old, please update it.");
+	console.warn("Handy Image: Your browser is very very old, please update it.");
 }
 
-loadCfg();
+if (typeof GM.getValue !== "undefined")
+{
+	loadCfg();
+}
