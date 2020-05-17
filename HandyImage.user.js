@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name		Handy Image
-// @version		2020.05.17
+// @version		2020.05.18
 // @author		Owyn
 // @contributor	ubless607, bitst0rm
 // @namespace	handyimage
@@ -2856,7 +2856,7 @@ if (typeof GM === 'undefined') // PRE GM4
 	if (typeof GM_getValue !== "undefined")
 	{
 		console.warn("using synchronous GM setting loading");
-		var GM = {};
+		window.GM = {};
 		GM.getValue = GM_getValue;
 		GM.setValue = GM_setValue;
 	}
