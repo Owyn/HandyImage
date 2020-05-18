@@ -130,7 +130,6 @@ geekpics.in
 gelbooru.com
 ghanaimages.co
 gifyu.com
-gist.github.com
 gogoimage.org
 goimge.com
 greenpiccs.com
