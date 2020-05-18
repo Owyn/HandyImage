@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name		Handy Image
-// @version		2020.05.18
+// @version		2020.05.19
 // @author		Owyn
 // @contributor	ubless607, bitst0rm
 // @namespace	handyimage
@@ -889,7 +889,7 @@ function protected_addEventListener (event, handler, capture = false)
 	if (!(event in _eventHandlers)) {
 		_eventHandlers[event] = [];
 	}
-	_eventHandlers[event].push({ node: this, handler: handler, capture: capture });
+	_eventHandlers[event].push({ node: this || window, handler: handler, capture: capture });
 	return origAdd.call(this, event, handler, capture);
 }
 
