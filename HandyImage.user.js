@@ -1831,7 +1831,7 @@ function makeworld()
 	case "imgking.co":
 		i = q('img[src*="uploads/"]');
 		if(i)	break;
-			if(window.location.href.indexOf("imgs") != -1)
+		if(window.location.href.indexOf("imgs") != -1)
 		{
 			window.location.href = window.location.href.replace("imgs","imgv");
 			break;
