@@ -589,8 +589,9 @@
 // @match		*://*.imgkings.com/img*
 // @match		http://*.imagerar.com/img*
 // @match		http://*.sendpic.org/view/*
-// @match		http://www.porncomix.info/*/*/
-// @exclude		http://www.porncomix.info/gallery/*
+// @match		http*://www.porncomix.info/*/*/
+// @exclude		http*://www.porncomix.info/gallery/*
+// @exclude             http*://www.porncomix.info/artist/*
 // @match		*://*.picclock.ru/*/*/
 // @match		http://*.svetmonet.ru/*.html
 // @match		http://*.svetmonet.ru/full/
