@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name		Handy Image
-// @version		2020.05.19
+// @version		2020.05.20
 // @author		Owyn
 // @contributor	ubless607, bitst0rm
 // @namespace	handyimage
@@ -411,7 +411,7 @@
 // @match		*://*.wikipedia.org/wiki/*:*.png
 // @match		*://*.wikimedia.org/wiki/File:*.jp*
 // @match		*://*.wikimedia.org/wiki/File:*.pn*
-// @match		http://*.xxxscreens.com//img-*
+// @match		*://*.xxxscreens.com/img-*
 // @match		http://avenuexxx.com/*-*
 // @match		http://avenuexxx.com/archives/*/*
 // @exclude		http://avenuexxx.com/archives/category/*
@@ -591,7 +591,7 @@
 // @match		http://*.sendpic.org/view/*
 // @match		http*://www.porncomix.info/*/*/
 // @exclude		http*://www.porncomix.info/gallery/*
-// @exclude             http*://www.porncomix.info/artist/*
+// @exclude		http*://www.porncomix.info/artist/*
 // @match		*://*.picclock.ru/*/*/
 // @match		http://*.svetmonet.ru/*.html
 // @match		http://*.svetmonet.ru/full/
@@ -1831,7 +1831,7 @@ function makeworld()
 	case "imgking.co":
 		i = q('img[src*="uploads/"]');
 		if(i)	break;
-        	if(window.location.href.indexOf("imgs") != -1)
+			if(window.location.href.indexOf("imgs") != -1)
 		{
 			window.location.href = window.location.href.replace("imgs","imgv");
 			break;
