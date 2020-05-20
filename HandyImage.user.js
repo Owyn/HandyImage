@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name		Handy Image
-// @version		2020.05.20
+// @version		2020.05.21
 // @author		Owyn
 // @contributor	ubless607, bitst0rm
 // @namespace	handyimage
@@ -589,9 +589,9 @@
 // @match		*://*.imgkings.com/img*
 // @match		http://*.imagerar.com/img*
 // @match		http://*.sendpic.org/view/*
-// @match		http*://www.porncomix.info/*/*/
-// @exclude		http*://www.porncomix.info/gallery/*
-// @exclude		http*://www.porncomix.info/artist/*
+// @match		*://www.porncomix.info/*/*/
+// @exclude		*://www.porncomix.info/gallery/*
+// @exclude		*://www.porncomix.info/artist/*
 // @match		*://*.picclock.ru/*/*/
 // @match		http://*.svetmonet.ru/*.html
 // @match		http://*.svetmonet.ru/full/
