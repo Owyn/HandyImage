@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name		Handy Image
-// @version		2020.05.21
+// @version		2020.05.22
 // @author		Owyn
 // @contributor	ubless607, bitst0rm
 // @namespace	handyimage
@@ -1467,11 +1467,45 @@ function makeworld()
 		break;
 	case "deviantart.com":
 		j = true;
-		if(q('button[aria-label="Expand"]'))
+		if(q('button[aria-label="Expand"]')) // page loaded enough
 		{
 			i = q('a[download]');
-			if(i && i.href.indexOf("deviantart.com/users/outgoing?") == -1){i.src = i.href;}
-			else{i = document.head.querySelector('link[rel="preload"][as="image"]'); if(i){i.src = i.href;}}
+			if(i && i.href.indexOf("deviantart.com/users/outgoing?") == -1){i.src = i.href;console.log("found download link");}
+			else
+			{
+				if(parseInt(window.location.pathname.substring(window.location.pathname.lastIndexOf("-")+1)) <= 790677560) // max resolution hax (available only for old images - sadly)
+				{
+					i = document.head.querySelector('link[rel="preload"][as="image"]');
+					if(i)
+					{
+						i.src = i.href;
+						f = i.src.search(/\/f\/[^\/]+\/[^\/]+/);
+						if(f !== -1)
+						{
+							i.src = i.src.substring(0,f+i.src.match(/\/f\/[^\/]+\/[^\/]+/)[0].length);
+						}
+						i.src = i.src.replace('/f/', '/intermediary/f/');
+						console.log("hacked image resolution to maximum");
+					}
+				}
+				else
+				{
+					i = q('div[role="dialog"] div img'); // zoomed in
+					if(i)
+					{
+						console.log("found zoomed-in image");
+						f = i.src.match(/,q_\d\d,/);
+						if(f !== null)
+						{
+							i.src = i.src.replace(f[0], ',q_100,'); // max quality hax
+							console.log("hacked image quality to maximum (but not resolution)");
+						}
+						break;
+					}
+					i = q('div[data-hook="art_stage"] div div div img'); // not zoomed in yet
+					if(i){console.log("found un-zoomed image, clicked it");i.click();i=null;break;}
+				}
+			}
 		}
 		break;
 	case "imagehost.eu":
