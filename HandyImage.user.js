@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name		Handy Image
-// @version		2020.05.22
+// @version		2020.05.23
 // @author		Owyn
 // @contributor	ubless607, bitst0rm
 // @namespace	handyimage
@@ -878,7 +878,6 @@ function sanitize() // lol I'm such a hacker
 	removeAllListeners();
 }
 
-delete document.createElement; // stopped working in firefox RIP
 const protected_createElement = document.createElement.bind(document);
 
 var _eventHandlers = {};
