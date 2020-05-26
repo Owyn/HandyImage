@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name		Handy Image
-// @version		2020.05.23
+// @version		2020.05.26
 // @author		Owyn
 // @contributor	ubless607, bitst0rm
 // @namespace	handyimage
@@ -23,7 +23,7 @@
 // @match		http://imgchili.net/show*
 // @match		*://imgbox.com/*
 // @match		*://*.imagetwist.com/*
-// @match		http://*.imagevenue.com/view/o/?i=*
+// @match		http://*.imagevenue.com/*
 // @match		*://*.imageshack.com/i/*
 // @match		*://*.imageshack.com/f/*
 // @match		*://*.image2you.ru/*/*/
@@ -1438,6 +1438,9 @@ function makeworld()
 		i = q('a[href*="/upload"]');
 		if(i){i.src = i.href;}
 		break;
+	case "imagevenue.com":
+		i = q('img[style*="max-width:"]');
+		break;
 	case "hentai-foundry.com":
 		i = q('.boxbody img');
 		if(i && i.onclick)
@@ -2429,9 +2432,6 @@ function makeworld()
 			{
 				i = q('img:not([src*="data:"])[id]');
 			}
-			break;
-		case "imagevenue.com":
-			i = q('img[src*="/loc"]');
 			break;
 		case "wikipedia.org":
 		case "wikimedia.org":
