@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name		Handy Image
-// @version		2020.06.18
+// @version		2020.06.20
 // @author		Owyn
 // @contributor	ubless607, bitst0rm
 // @namespace	handyimage
@@ -781,6 +781,7 @@
 // @match		https://savepice.ru/full/*.html
 // @match		https://kropic.com/*/*.html
 // @match		http://*.imgzong.xyz/*
+// @match		https://www.furaffinity.net/view/*/
 // ==/UserScript==
 
 "use strict";
@@ -847,7 +848,7 @@ var timeout = 1000;
 var FireFox = ((navigator.userAgent.indexOf('Firefox') != -1) ? true : false);
 var i;
 var j;
-var ext_list = ['webm', 'mp4', 'ogg', 'zip', '7z', 'rar', 'psd'];
+var ext_list = ['webm', 'mp4', 'ogg', 'zip', '7z', 'rar', 'psd', 'swf', 'doc', 'rtf', 'pdf'];
 var iurl = window.location.hostname;
 if(!iurl.indexOf("www."))
 {
@@ -1509,6 +1510,10 @@ function makeworld()
 				}
 			}
 		}
+		break;
+	case "furaffinity.net":
+		i = q('div.download a');
+		if(i){i.src = i.href;}
 		break;
 	case "imagehost.eu":
 	case "fappic.com":
