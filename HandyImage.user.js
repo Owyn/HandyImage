@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name		Handy Image
-// @version		2020.06.20
+// @version		2020.07.02
 // @author		Owyn
 // @contributor	ubless607, bitst0rm
 // @namespace	handyimage
@@ -1722,7 +1722,7 @@ function makeworld()
 	case "xtremeshack.com":
 		i = q('img[src*="/photos/"]');
 		break;
-	case "web.500px.com":
+	case "500px.com":
 		j = true;
 		i = q('img.photo-show__img[src*="_m"]');
 		break;
