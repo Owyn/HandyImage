@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name		Handy Image
-// @version		2020.07.02
+// @version		2020.07.04
 // @author		Owyn
 // @contributor	ubless607, bitst0rm
 // @namespace	handyimage
@@ -499,7 +499,7 @@
 // @match		https://chan.sankakucomplex.com/*post/show/*
 // @match		https://yande.re/post/show/*
 // @match		http://www.zerochan.net/*
-// @match		http://*.imgrock.pw/*.php
+// @match		https://*.imgrock.pw/*.php
 // @match		http://imgzap.com/view*
 // @match		http://*.funimg.net/img*
 // @match		http://*.olivepix.com/view/*
