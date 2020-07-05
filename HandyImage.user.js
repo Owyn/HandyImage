@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name		Handy Image
-// @version		2020.07.04
+// @version		2020.07.05
 // @author		Owyn
 // @contributor	ubless607, bitst0rm
 // @namespace	handyimage
@@ -75,7 +75,7 @@
 // @match		http://imgmade.com/images*
 // @match		http://www.pic-upload.de/view*
 // @match		http://picshare.geenza.com/pics*
-// @match		http://www.imgbabes.com/*/*.htm*
+// @match		https://www.imgbabes.com/*/*.htm*
 // @match		http://ibunker.us/f*
 // @match		http://ichan.org/image.php?path=*
 // @match		http://*.imagearn.com/*
@@ -376,7 +376,7 @@
 // @match		http://*.pic-mir.ru/*/*
 // @match		http://*.244pix.com/view*
 // @match		http://*.uploadimage.ro/view*
-// @match		http://*.imgflare.com/*/*
+// @match		https://*.imgflare.com/*/*
 // @match		https://www.imagefap.com/photo/*
 // @match		http://filefap.com/view*
 // @match		*://*.imgur.com/*
@@ -1831,14 +1831,19 @@ function makeworld()
 		break;
 	case "imgbabes.com":
 	case "imgflare.com":
-		i = q('input[onclick*="Decode"]');
+		i = q('input[type="submit"]');
 		dp=true;
-		j = true;
+		j=true;
 		if(i)
 		{
 			i.click();
-			break;
+			i=null;
 		}
+		else
+		{
+			i = q('img[src*="i.php?"]');
+		}
+		break;
 	case "xxxhost.me":
 	case "bilder-hochladen.net":
 	case "dumpt.com":
