@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name		Handy Image
-// @version		2020.07.05
+// @version		2020.07.06
 // @author		Owyn
 // @contributor	ubless607, bitst0rm
 // @namespace	handyimage
@@ -409,8 +409,8 @@
 // @match		http://*.imgshow.me/*
 // @match		*://*.wikipedia.org/wiki/*:*.jp*
 // @match		*://*.wikipedia.org/wiki/*:*.png
-// @match		*://*.wikimedia.org/wiki/File:*.jp*
-// @match		*://*.wikimedia.org/wiki/File:*.pn*
+// @match		*://*.wikimedia.org/wiki/*:*.jp*
+// @match		*://*.wikimedia.org/wiki/*:*.pn*
 // @match		*://*.xxxscreens.com/img-*
 // @match		http://avenuexxx.com/*-*
 // @match		http://avenuexxx.com/archives/*/*
