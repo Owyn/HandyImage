@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name		Handy Image
-// @version		2020.07.06
+// @version		2020.07.07
 // @author		Owyn
 // @contributor	ubless607, bitst0rm
 // @namespace	handyimage
@@ -747,6 +747,7 @@
 // @match		http://*.imgsee.net/*
 // @match		*://*.picbaron.com/*/*.html
 // @match		*://*.imgbaron.com/*/*
+// @match		https://kvador.com/*/*.html
 // @match		http://picshost.info//img-*.html
 // @match		*://imagescanner.cc/images/*.html
 // @match		http://batpic.com/image/*
@@ -1607,6 +1608,7 @@ function makeworld()
 	case "foxyimg.link":
 	case "picbaron.com":
 	case "imgbaron.com":
+	case "kvador.com":
 		i = q('input[type="submit"]');
 		dp=true;
 		j =true;
