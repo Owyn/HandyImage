@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name		Handy Image
-// @version		2020.07.12
+// @version		2020.07.26
 // @author		Owyn
 // @contributor	ubless607, bitst0rm
 // @namespace	handyimage
@@ -385,7 +385,8 @@
 // @exclude		*://*.imgur.com/*.gifv
 // @match		https://motherless.com/*
 // @match		http://*.xpic.biz/*/view*
-// @match		*://*.tumblr.com/image/*
+// @match		https://*.tumblr.com/image/*
+// @match		https://*.media.tumblr.com/*/*.*
 // @match		http://*.imageporter.com/*
 // @match		http://*.damimage.com/img-*
 // @match		https://fapping.empornium.sx/image/*
@@ -2432,17 +2433,15 @@ function makeworld()
 		switch(host.substr(host.indexOf(".")+1))
 		{
 		case "tumblr.com":
-			if(FireFox)
+		case "media.tumblr.com":
+			i = document.querySelector('meta[property="og:image"]');
+			if(i)
 			{
-				i = q('img[data-src]');
-				if(i)
-				{
-					i.src = i.dataset.src;
-				}
+				i.src = i.content;
 			}
 			else
 			{
-				i = q('img:not([src*="data:"])[id]');
+				i = document.querySelector('div#base-container > div > div > div > div > img');
 			}
 			break;
 		case "wikipedia.org":
