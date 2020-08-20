@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name		Handy Image
-// @version		2020.07.26
+// @version		2020.08.21
 // @author		Owyn
 // @contributor	ubless607, bitst0rm
 // @namespace	handyimage
@@ -386,7 +386,7 @@
 // @match		https://motherless.com/*
 // @match		http://*.xpic.biz/*/view*
 // @match		https://*.tumblr.com/image/*
-// @match		https://*.media.tumblr.com/*/*.*
+// @match		https://*.media.tumblr.com/*.*
 // @match		http://*.imageporter.com/*
 // @match		http://*.damimage.com/img-*
 // @match		https://fapping.empornium.sx/image/*
