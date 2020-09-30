@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name		Handy Image
-// @version		2020.08.21
+// @version		2020.09.30
 // @author		Owyn
 // @contributor	ubless607, bitst0rm
 // @namespace	handyimage
@@ -784,6 +784,7 @@
 // @match		https://kropic.com/*/*.html
 // @match		http://*.imgzong.xyz/*
 // @match		https://www.furaffinity.net/view/*/
+// @match		http://imageking.xyz/*
 // ==/UserScript==
 
 "use strict";
@@ -2020,12 +2021,12 @@ function makeworld()
 	case "imgsky.net":
 	case "imgsee.net":
 	case "imgzong.xyz":
+	case "imageking.xyz":
 		i = q('button');
 		dp=true;
 		j = true;
 		if(i)
 		{
-			console.warn(i);
 			i.click();
 		}
 		i = q('.big_img_box img[src*="http"]');
