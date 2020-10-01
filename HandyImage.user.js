@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name		Handy Image
-// @version		2020.09.30
+// @version		2020.10.01
 // @author		Owyn
 // @contributor	ubless607, bitst0rm
 // @namespace	handyimage
@@ -689,6 +689,7 @@
 // @match		http://imgcach.ru/*/*/
 // @match		http://*.2pixxsee.ru/*.html
 // @match		http://*.2pixxsee.ru/full/
+// @match		https://*.xhamster3.com/photos/gallery/*/*
 // @match		https://*.xhamster.com/photos/gallery/*/*
 // @match		https://*.xhamster.desi/photos/gallery/*/*
 // @match		http://*.imghall.com/?v=*
@@ -2422,6 +2423,12 @@ function makeworld()
 	case "suckmypic.net":
 		i = q('#theImage');
 		break;
+	case "xhamster.com":
+	case "xhamster.desi":
+	case "xhamster3.com":
+		j = true;
+		i = q('img.fotorama__img');
+		break;
 	case "imgtorrnt.in":
 		window.location.replace("https://i.imgur.com/" + window.location.href.substr(window.location.href.lastIndexOf('=') + 1));
 	case "trans.firm.in":
@@ -2472,11 +2479,6 @@ function makeworld()
 			break;
 		case "tinypic.com":
 			i = q('img#imgElement');
-			break;
-		case "xhamster.com":
-		case "xhamster.desi":
-			j = true;
-			i = q('img.fotorama__img');
 			break;
 		case "imagilive.com":
 			i = q('a.button');
