@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name		Handy Image
-// @version		2020.10.01
+// @version		2020.10.10
 // @author		Owyn
 // @contributor	ubless607, bitst0rm
 // @namespace	handyimage
@@ -2440,6 +2440,12 @@ function makeworld()
 	default: // dynamic subdomain
 		switch(host.substr(host.indexOf(".")+1))
 		{
+		case "xhamster.com":
+		case "xhamster.desi":
+		case "xhamster3.com":
+			j = true;
+			i = q('img.fotorama__img');
+			break;
 		case "tumblr.com":
 		case "media.tumblr.com":
 			i = document.querySelector('meta[property="og:image"]');
