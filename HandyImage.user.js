@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name		Handy Image
-// @version		2020.10.10
+// @version		2020.10.15
 // @author		Owyn
 // @contributor	ubless607, bitst0rm
 // @namespace	handyimage
@@ -786,6 +786,7 @@
 // @match		http://*.imgzong.xyz/*
 // @match		https://www.furaffinity.net/view/*/
 // @match		http://imageking.xyz/*
+// @match		http://imgxx.xyz/*
 // ==/UserScript==
 
 "use strict";
@@ -2023,6 +2024,7 @@ function makeworld()
 	case "imgsee.net":
 	case "imgzong.xyz":
 	case "imageking.xyz":
+	case "imgxx.xyz":
 		i = q('button');
 		dp=true;
 		j = true;
