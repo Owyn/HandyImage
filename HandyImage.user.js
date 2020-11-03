@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name		Handy Image
-// @version		2020.11.03
+// @version		2020.11.04
 // @author		Owyn
 // @contributor	ubless607, bitst0rm
 // @namespace	handyimage
@@ -31,6 +31,7 @@
 // @exclude		*://www.image2you.ru/cabinet/*
 // @match		https://imageban.ru/show*
 // @match		*://fastpic.ru/view*
+// @match		*://fastpic.ru/fullview*
 // @match		*://pixhost.to/show/*
 // @match		http://*.picpicture.com/image/*
 // @match		http://*.pic5you.ru/*/*/
@@ -566,7 +567,7 @@
 // @match		http://*.imageab.com/image/*
 // @match		http://*.erimge.com/img-*
 // @match		http://*.imgtrial.com/img-*
-// @match		http://imgtown.net/*.php
+// @match		https://imgtown.net/*.php
 // @match		http://ameblo.jp/*/image-*
 // @match		http://*.loftlm.ru/img-*
 // @match		http://*.imgdragon.com/*/*.html
@@ -610,7 +611,7 @@
 // @match		http://www.pixsense.net/site/v/*
 // @match		http://www.imgsky.net/*
 // @match		http://www.imagespicy.site/site/v/*
-// @match		http://imgoutlet.pw/*.php
+// @match		https://imgoutlet.pw/*.php
 // @match		http://*.pix.ac/image/*
 // @match		*://*.imgmak.com/image/*
 // @match		http://*.freephotohostin.com/img-*
@@ -1317,7 +1318,7 @@ function makeworld()
 		i = q('img#image');
 		break;
 	case "fastpic.ru":
-		i = q('#picContainer a img');
+		i = q('img[src*="/big/"]');
 		break;
 	case "bayimg.com":
 		i = q('img#mainImage');
@@ -2542,7 +2543,7 @@ function makeworld()
 		window.addEventListener('beforescriptexecute', onscript, true);
 	}
 	//
-	if(i && i.src)
+	if(i && i.getAttribute("src"))
 	{
 		observer.disconnect();
 		function clr_pgn()
