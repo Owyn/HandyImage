@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name		Handy Image
-// @version		2020.10.20
+// @version		2020.11.03
 // @author		Owyn
 // @contributor	ubless607, bitst0rm
 // @namespace	handyimage
@@ -790,6 +790,7 @@
 // @match		http://imgxx.xyz/*
 // @match		http://imgao.xyz/*
 // @match		http://imgweng.xyz/*
+// @match		https://*.imgsto.com/*/*.html
 // ==/UserScript==
 
 "use strict";
@@ -2288,6 +2289,7 @@ function makeworld()
 		break;
 	case "imguniversal.com":
 	case "imgclick.net": // no submits
+	case "imgsto.com":
         i = q("form input[type='submit'][value*='continue to image' i]");
         j = true;
         dp = true;
