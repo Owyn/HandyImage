@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name		Handy Image
-// @version		2020.11.04
+// @version		2020.11.05
 // @author		Owyn
 // @contributor	ubless607, bitst0rm
 // @namespace	handyimage
@@ -1772,8 +1772,12 @@ function makeworld()
 		j = true;
 		dp=true;
 		i = q('img.picview');
-		if (i)
+		if(i)
 		{
+			if(!i.getAttribute("src") || !i.getAttribute("src").length)
+			{
+				i = null;
+			}
 			break;
 		}
 		f = document.querySelectorAll("[type='button']");
@@ -2543,7 +2547,7 @@ function makeworld()
 		window.addEventListener('beforescriptexecute', onscript, true);
 	}
 	//
-	if(i && i.getAttribute("src"))
+	if(i && i.src)
 	{
 		observer.disconnect();
 		function clr_pgn()
