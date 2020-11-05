@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name		Handy Image
-// @version		2020.11.05
+// @version		2020.11.06
 // @author		Owyn
 // @contributor	ubless607, bitst0rm
 // @namespace	handyimage
@@ -422,7 +422,7 @@
 // @match		http://*.imgdope.com/view*
 // @match		http://*.imagehost.eu/*
 // @match		http://*.aveimage.com/view*
-// @match		http://*.fappic.com/*
+// @match		*://*.fappic.com/*
 // @match		http://*.imagenimage.com/*/*
 // @match		http://*.adultur.com/img-*
 // @match		http://*.imageshimage.com/*/*
@@ -1526,7 +1526,6 @@ function makeworld()
 		if(i){i.src = i.href;}
 		break;
 	case "imagehost.eu":
-	case "fappic.com":
 		i = q('a#image');
 		if(i){i.src = i.href;}
 		break;
@@ -2295,6 +2294,7 @@ function makeworld()
 	case "imguniversal.com":
 	case "imgclick.net": // no submits
 	case "imgsto.com":
+	case "fappic.com":
         i = q("form input[type='submit'][value*='continue to image' i]");
         j = true;
         dp = true;
