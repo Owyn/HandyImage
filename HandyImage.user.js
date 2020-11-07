@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name		Handy Image
-// @version		2020.11.06
+// @version		2020.11.07
 // @author		Owyn
 // @contributor	ubless607, bitst0rm
 // @namespace	handyimage
@@ -792,6 +792,7 @@
 // @match		http://imgao.xyz/*
 // @match		http://imgweng.xyz/*
 // @match		https://*.imgsto.com/*/*.html
+// @match		https://*.pics4you.net/*/*.html
 // ==/UserScript==
 
 "use strict";
@@ -1617,6 +1618,7 @@ function makeworld()
 	case "picbaron.com":
 	case "imgbaron.com":
 	case "kvador.com":
+	case "pics4you.net":
 		i = q('input[type="submit"]');
 		dp=true;
 		j =true;
