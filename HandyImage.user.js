@@ -793,6 +793,7 @@
 // @match		http://imgweng.xyz/*
 // @match		https://*.imgsto.com/*/*.html
 // @match		https://*.pics4you.net/*/*.html
+// @match		https://vipr.im/*
 // ==/UserScript==
 
 "use strict";
@@ -2512,6 +2513,15 @@ function makeworld()
 			}
 			i = q('img[src*="' + iurl + '"]');
 			break;
+		case "vipr.im":
+			j = true;
+			i = q("a.ddownloader");
+			if(i)
+			{
+				i.src = i.href;
+				break;
+			}
+		    break;
 		default: // for user-added sites
 			console.warn("HJI is running on a custom website");
 			if(document.readyState != "loading" && document.images.length != 0)
