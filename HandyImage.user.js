@@ -2518,7 +2518,7 @@ function makeworld()
 			i = q("a.ddownloader");
 			if(i)
 			{
-				i.click();
+				i.src = i.href;
 				break;
 			}
 		    break;
