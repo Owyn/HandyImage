@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name		Handy Image
-// @version		2020.11.18
+// @version		2020.12.05
 // @author		Owyn
 // @contributor	ubless607, bitst0rm
 // @namespace	handyimage
@@ -559,6 +559,7 @@
 // @match		http://*.imgsmile.com/?v=*
 // @match		http://*.balkanelite.org/MultiHoster/view*
 // @match		https://twitter.com/*/photo/*
+// @match		https://twitter.com/*/status/*
 // @match		http://*.icezap.com/img-*
 // @match		*://*.rapidimg.net/img-*
 // @match		http://foxyimg.link/*
@@ -1151,11 +1152,12 @@ function makeworld()
 		i = document.querySelector('meta[property="og:video:url"]');
 		if(!i)
 		{
-			i = document.querySelector('meta[property="og:image"]');
+			i = q('img[src*="twimg.com/media/"]');
 			if(i)
 			{
-				i.src = i.content;
-				i.src = i.src.replace(':large', ':orig');
+				i.src = i.src.substring(0, i.src.indexOf("&name=")) + '&name=orig' ;
+				i.src = i.src.replace('=medium', '=orig');
+				i.src = i.src.replace('=large', '=orig');
 			}
 		}
 		break;
