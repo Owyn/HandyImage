@@ -1156,8 +1156,6 @@ function makeworld()
 			if(i)
 			{
 				i.src = i.src.substring(0, i.src.indexOf("&name=")) + '&name=orig' ;
-				i.src = i.src.replace('=medium', '=orig');
-				i.src = i.src.replace('=large', '=orig');
 			}
 		}
 		break;
