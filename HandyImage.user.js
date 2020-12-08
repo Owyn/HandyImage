@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name		Handy Image
-// @version		2020.12.05
+// @version		2020.12.08
 // @author		Owyn
 // @contributor	ubless607, bitst0rm
 // @namespace	handyimage
@@ -1155,7 +1155,7 @@ function makeworld()
 			i = q('img[src*="twimg.com/media/"]');
 			if(i)
 			{
-				i.src = i.src.substring(0, i.src.indexOf("&name=")) + '&name=orig' ;
+				i.src = i.src.substring(0, i.src.indexOf("&name=")) + '&name=orig';
 			}
 		}
 		break;
@@ -1213,18 +1213,18 @@ function makeworld()
 		break;
 	case "pixiv.net":
 		j = true;
-		i = q('img[src*="i.pximg.net/img-"]');
-		if(i)
+		if(!q('div[aria-label="Preview"]'))
 		{
-			if(!q('div[aria-label="Preview"]'))
+			i = q('a[href*="/img-original/"]');
+			if(i) 
 			{
-				find_text_in_scripts('"original":"', '"');
+				i.src = i.href;
 			}
-			else
-			{
-				console.warn("Manga page with multiple images, no action taken further");
-				return;
-			}
+		}
+		else
+		{
+			console.warn("Manga page with multiple images, no action taken further");
+			return;
 		}
 		break;
 	case "chan.sankakucomplex.com":
