@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name		Handy Image
-// @version		2020.12.08
+// @version		2020.12.04
 // @author		Owyn
 // @contributor	ubless607, bitst0rm
 // @namespace	handyimage
@@ -691,6 +691,7 @@
 // @match		http://imgcach.ru/*/*/
 // @match		http://*.2pixxsee.ru/*.html
 // @match		http://*.2pixxsee.ru/full/
+// @match		https://*.xhamster4.com/photos/gallery/*/*
 // @match		https://*.xhamster3.com/photos/gallery/*/*
 // @match		https://*.xhamster.com/photos/gallery/*/*
 // @match		https://*.xhamster.desi/photos/gallery/*/*
@@ -2443,8 +2444,9 @@ function makeworld()
 	case "xhamster.com":
 	case "xhamster.desi":
 	case "xhamster3.com":
+	case "xhamster4.com":
 		j = true;
-		i = q('img.fotorama__img');
+		i = q('div.fotorama__active>img.fotorama__img');
 		break;
 	case "imgtorrnt.in":
 		window.location.replace("https://i.imgur.com/" + window.location.href.substr(window.location.href.lastIndexOf('=') + 1));
@@ -2460,8 +2462,9 @@ function makeworld()
 		case "xhamster.com":
 		case "xhamster.desi":
 		case "xhamster3.com":
+		case "xhamster4.com":
 			j = true;
-			i = q('img.fotorama__img');
+			i = q('div.fotorama__active>img.fotorama__img');
 			break;
 		case "tumblr.com":
 		case "media.tumblr.com":
