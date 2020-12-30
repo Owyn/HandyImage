@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name		Handy Image
-// @version		2020.12.04
+// @version		2020.12.30
 // @author		Owyn
 // @contributor	ubless607, bitst0rm
 // @namespace	handyimage
@@ -885,10 +885,10 @@ function ws()
 function sanitize() // lol I'm such a hacker
 {
 	unsafeWindow.document.createElement = unsafeWindow.console.log;
-	let lasttask = setTimeout(function() {},0);
+	let lasttask = unsafeWindow.setTimeout(function() {},0);
 	for(let n = lasttask; n > 0; n--)
 	{
-		clearTimeout(n);
+		unsafeWindow.clearTimeout(n);
 	}
 	removeAllListeners();
 }
