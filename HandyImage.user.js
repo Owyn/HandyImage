@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name		Handy Image
-// @version		2020.12.30
+// @version		2021.01.08
 // @author		Owyn
 // @contributor	ubless607, bitst0rm
 // @namespace	handyimage
@@ -793,6 +793,8 @@
 // @match		http://imgxx.xyz/*
 // @match		http://imgao.xyz/*
 // @match		http://imgweng.xyz/*
+// @match		http://imgkes.xyz/*
+// @match		http://imgair.net/*
 // @match		https://*.imgsto.com/*/*.html
 // @match		https://*.pics4you.net/*/*.html
 // @match		https://vipr.im/*
@@ -2039,6 +2041,8 @@ function makeworld()
 	case "imgxx.xyz":
 	case "imgao.xyz":
 	case "imgweng.xyz":
+	case "imgkes.xyz":
+	case "imgair.net":
 		i = q('button');
 		dp=true;
 		j = true;
