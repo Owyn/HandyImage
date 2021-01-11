@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name		Handy Image
-// @version		2021.01.09
+// @version		2021.01.11
 // @author		Owyn
 // @contributor	ubless607, bitst0rm
 // @namespace	handyimage
@@ -694,7 +694,7 @@
 // @match		https://*.xhamster3.com/photos/gallery/*/*
 // @match		https://*.xhamster.com/photos/gallery/*/*
 // @match		https://*.xhamster.desi/photos/gallery/*/*
-// @exclude		/^https://(.*\.)?xhamster3?\.(com|desi)/photos/gallery/.*/\d{1,3}$/
+// @exclude		/^https://(.*\.)?xhamster(3|4)?\.(com|desi)/photos/gallery/.*/\d{1,3}$/
 // @match		http://*.imghall.com/?v=*
 // @match		https://*.acidimg.cc/img-*
 // @match		https://imgcloud.pw/image/*
