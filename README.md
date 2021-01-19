@@ -17,11 +17,11 @@
 <li><strong>ctrl+space</strong> and <strong>ctrl+shift+space</strong> - simular to scroll of spacebar but horizontally</li>
 <li><strong>P</strong> \ <strong>menu item</strong> in (tamper\grease)monkey icon - open configuration menu</li>
 <li><strong>R</strong> - reload page with script disabled (to see comments etc)</li>
+<li><strong>ctrl + S</strong> - save image (same as when you right click the image and press save as)(you have to press it twice in Chrome)</li>
 </ul>
 
 <h3>Supported browsers:</h3>
-<img src=https://upload.wikimedia.org/wikipedia/en/thumb/d/d0/Chrome_Logo.svg/90px-Chrome_Logo.svg.png>
-<img src=https://upload.wikimedia.org/wikipedia/commons/thumb/e/e7/Mozilla_Firefox_3.5_logo_256.png/90px-Mozilla_Firefox_3.5_logo_256.png>
+<img src=https://upload.wikimedia.org/wikipedia/commons/thumb/a/a5/Google_Chrome_icon_%28September_2014%29.svg/180px-Google_Chrome_icon_%28September_2014%29.svg.png><img src=https://upload.wikimedia.org/wikipedia/commons/thumb/e/e7/Mozilla_Firefox_3.5_logo_256.png/180px-Mozilla_Firefox_3.5_logo_256.png>
 
 <h3>How to request a new imagehost support or fix for old one</h3>
 <p>Please, if you would like to request a new site or report a non-working one, please, remember to write at least ONE image URL where the script should work, then head right to <strong><a href="https://github.com/Owyn/HandyImage/issues">Feedback section</a></strong>.</p>
