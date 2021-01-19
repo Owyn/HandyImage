@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name		Handy Image
-// @version		2021.01.11
+// @version		2021.01.19
 // @author		Owyn
 // @contributor	ubless607, bitst0rm
 // @namespace	handyimage
@@ -825,29 +825,34 @@ if(document.referrer)
 {
 	if(document.referrer.lastIndexOf(window.location.hostname) != -1 && document.referrer.lastIndexOf(window.location.hostname) +1 == document.referrer.length - window.location.hostname.length)
 	{
-		console.warn("you have just uploaded a picture, haven't you?");
+		console.warn("Handy Image: userscript stopped itself from running INTENTIONALLY: cuz your previous page is websites mainpage so you probably have just uploaded a picture yourself");
 		return false;
 	}
 }
-if(document.cookie.indexOf("hji=") != -1)
+if(sessionStorage.length)
 {
-	if(document.cookie.indexOf("hji=" + window.location.href) != -1)
+	if(sessionStorage.hji)
 	{
-		console.warn("you just don't want the script to run now, do you?");
-		document.cookie = "hji=; expires=Thu, 01 Jan 1970 00:00:01 GMT;";
-		return false;
+		if(sessionStorage.hji.indexOf(window.location.href) != -1) // check address in case page failed to load b4
+		{
+			console.warn("Handy Image: userscript stopped itself from running INTENTIONALLY");
+			sessionStorage.removeItem("hji");
+			return false;
+		}
+		sessionStorage.removeItem("hji");
 	}
-	else if(document.cookie.indexOf("backhji=") != -1)
+	else if(sessionStorage.hji_back)
 	{
-		console.warn("you have found a time machine, now you are traveling back in history");
-		window.history.go(-1);
-		document.cookie = "hji=; expires=Thu, 01 Jan 1970 00:00:01 GMT;";
-		return false;
+		if(Date.now() < parseInt(sessionStorage.hji_back)) // 2 sec not yet passed
+		{
+			console.warn("Handy Image: userscript now helps you go to previous page automatically");
+			sessionStorage.removeItem("hji_back");
+			window.history.go(-1);
+			return false;
+		}
+		sessionStorage.removeItem("hji_back");
 	}
-	console.warn("found a weird cookie, let's eat it");
-	document.cookie = "hji=; expires=Thu, 01 Jan 1970 00:00:01 GMT;"; // stealth mode
 }
-//else{	console.warn("no hji cookie found");}
 
 function q(s){if(document.body){return document.body.querySelector(s);}return null;}
 var cfg_direct = false;
@@ -951,13 +956,7 @@ function onscript(e)
 
 function onbeforeunload() // back helper
 {
-	//console.warn("setting hji cookie before unloading page");
-	let now = new Date();
-	let time = now.getTime();
-	time += 2000; // 2 sec to help quit double-pages
-	now.setTime(time);
-	now.toGMTString();
-	document.cookie = 'backhji=; expires=' + now.toGMTString() + '; path=/';
+	sessionStorage.hji_back = Date.now() + 2000; // 2 sec to help back from double-pages
 }
 
 function makeimage()
@@ -2813,7 +2812,7 @@ function onkeydown (b)
 		{
 			a = protected_createElement("a");
 			a.href = i.src;
-			a.download = ""; // HTML5
+			a.download = ""; // HTML5 // auto-click works in FF now but not in Chrome
 			document.body.appendChild(a);
 			a.click();
 			document.body.removeChild(a);
@@ -2874,7 +2873,7 @@ function onkeydown (b)
 	case KeyEvent.DOM_VK_R:
 		if(!b.ctrlKey)
 		{
-			document.cookie= "hji=" + window.location.href;
+			sessionStorage.hji = window.location.href;
 			window.location.reload();
 			cancelEvent(b);
 		}
