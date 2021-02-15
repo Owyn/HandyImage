@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name		Handy Image
-// @version		2021.01.19
+// @version		2021.02.15
 // @author		Owyn
 // @contributor	ubless607, bitst0rm
 // @namespace	handyimage
@@ -797,6 +797,8 @@
 // @match		https://*.imgsto.com/*/*.html
 // @match		https://*.pics4you.net/*/*.html
 // @match		https://vipr.im/*
+// @match		https://*.imgbros.xyz/image/*
+// @match		https://*.trans.firm.in/img-*.html
 // ==/UserScript==
 
 "use strict";
@@ -1972,6 +1974,7 @@ function makeworld()
 	case "xxx.kodiak.top":
 	case "xaoutchouc.live":
 	case "mshelxxx.ru.com":
+	case "trans.firm.in":
 		dp=true;
 		f = document.getElementsByTagName("input");
 		if(f.length)
@@ -2403,6 +2406,7 @@ function makeworld()
 	case "luxpic.ru":
 	case "passpix.com":
 	case "trumbhost.com":
+	case "imgbros.xyz":
 		//Chevereto 2.x
 		i = q('img[src*="' + iurl + '/images/"]');
 		break;
