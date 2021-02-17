@@ -30,3 +30,7 @@
 
 <em>* But keep in mind that when requesting nameless non-popular image hosting google knows not much about you'd have to provide a reason for adding it - a website url which uses that hosting a lot for images</em>
 <br><em>** Or if you are a developer yourself and would like to help add new hosts, you can <a href="https://github.com/Owyn/HandyImage/blob/master/Tutorial:%20adding%20new%20imagehosts%20support.md">submit code edits</a> at <a href="https://github.com/Owyn/HandyImage">GitHub page</a>
+
+<h3>If the userscript runs on a page incorrectly:</h3>
+<p>Try disabling your ADBlocker for that site - occasionally it might prevent not only ads but this script as well from working there
+</p>
