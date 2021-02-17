@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name		Handy Image
-// @version		2021.02.15
+// @version		2021.02.17
 // @author		Owyn
 // @contributor	ubless607, bitst0rm
 // @namespace	handyimage
@@ -799,6 +799,8 @@
 // @match		https://vipr.im/*
 // @match		https://*.imgbros.xyz/image/*
 // @match		https://*.trans.firm.in/img-*.html
+// @match		https://*.imgdawgknuttz.com/img-*.html
+// @match		https://*.xxxwebdlxxx.top/img-*.html
 // ==/UserScript==
 
 "use strict";
@@ -1975,6 +1977,8 @@ function makeworld()
 	case "xaoutchouc.live":
 	case "mshelxxx.ru.com":
 	case "trans.firm.in":
+	case "xxxwebdlxxx.top":
+	case "imgdawgknuttz.com":
 		dp=true;
 		f = document.getElementsByTagName("input");
 		if(f.length)
