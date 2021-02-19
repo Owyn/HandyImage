@@ -1916,14 +1916,6 @@ function makeworld()
 			window.location.href = i.src;
 			break;
 		}
-	case "imgadult.com":
-		j = true;
-		i = q('a.overlay_ad_link');
-		if(i)
-		{
-			i.click();
-			break;
-		}
 	case "imagefolks.com":
 	case "imgcandy.net":
 	case "imageteam.org":
@@ -2349,11 +2341,13 @@ function makeworld()
 			i.submit();
 			break;
 		}
+	case "imgadult.com":
 	case "imgdrive.net":
 	case "imgtaxi.com":
 	case "imgwallet.com":
+		window.adbctipops = window.ctipops = [];
 		j = true;
-		i = q("a.overlay_ad_link");
+		i = q('a.overlay_ad_link');
 		if(i)
 		{
 			i.click();
