@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name		Handy Image
-// @version		2021.02.17
+// @version		2021.02.20
 // @author		Owyn
 // @contributor	ubless607, bitst0rm
 // @namespace	handyimage
@@ -690,6 +690,7 @@
 // @match		http://imgcach.ru/*/*/
 // @match		http://*.2pixxsee.ru/*.html
 // @match		http://*.2pixxsee.ru/full/
+// @match		https://*.xhamster11.com/photos/gallery/*/*
 // @match		https://*.xhamster4.com/photos/gallery/*/*
 // @match		https://*.xhamster3.com/photos/gallery/*/*
 // @match		https://*.xhamster.com/photos/gallery/*/*
@@ -801,6 +802,8 @@
 // @match		https://*.trans.firm.in/img-*.html
 // @match		https://*.imgdawgknuttz.com/img-*.html
 // @match		https://*.xxxwebdlxxx.top/img-*.html
+// @match		https://*.olarixas.xyz/img-*.html
+// @match		https://*.beautifulero.com/img-*.html
 // ==/UserScript==
 
 "use strict";
@@ -1979,6 +1982,8 @@ function makeworld()
 	case "trans.firm.in":
 	case "xxxwebdlxxx.top":
 	case "imgdawgknuttz.com":
+	case "olarixas.xyz":
+	case "beautifulero.com":
 		dp=true;
 		f = document.getElementsByTagName("input");
 		if(f.length)
