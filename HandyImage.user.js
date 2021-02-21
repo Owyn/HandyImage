@@ -804,6 +804,15 @@
 // @match		https://*.xxxwebdlxxx.top/img-*.html
 // @match		https://*.olarixas.xyz/img-*.html
 // @match		https://*.beautifulero.com/img-*.html
+// @match		https://imgtown.pw/*.php
+// @match		http://imgkoi.xyz/*
+// @match		https://imagehaha.com/*/*
+// @match		https://picshick.com/*/*
+// @match		https://imgsen.com/*/*.html
+// @match		https://premalo.com/*/*.html
+// @match		https://picdollar.com/*/*.html
+// @match		https://fotokiz.com/*/*.html
+// @match		https://silverpic.com/*/*.html
 // ==/UserScript==
 
 "use strict";
@@ -1779,6 +1788,7 @@ function makeworld()
 	case "imgview.pw":
 	case "imgmaze.pw":
 	case "imgdew.pw":
+	case "imgtown.pw":
 		j = true;
 		dp=true;
 		i = q('img.picview');
@@ -2053,6 +2063,7 @@ function makeworld()
 	case "imgweng.xyz":
 	case "imgkes.xyz":
 	case "imgair.net":
+	case "imgkoi.xyz":
 		i = q('button');
 		dp=true;
 		j = true;
@@ -2307,12 +2318,19 @@ function makeworld()
 	case "imagedax.net":
 	case "pornimagex.com":
 	case "sendpic.org":
+	case "imagehaha.com":
+	case "picshick.com":
 		i = q('img[src*="/i/"]');
 		break;
 	case "imguniversal.com":
 	case "imgclick.net": // no submits
 	case "imgsto.com":
 	case "fappic.com":
+	case "imgsen.com":
+	case "premalo.com":
+	case "picdollar.com":
+	case "fotokiz.com":
+	case "silverpic.com":
         i = q("form input[type='submit'][value*='continue to image' i]");
         j = true;
         dp = true;
