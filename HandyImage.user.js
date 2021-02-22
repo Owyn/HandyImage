@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name		Handy Image
-// @version		2021.02.20
+// @version		2021.02.22
 // @author		Owyn
 // @contributor	ubless607, bitst0rm
 // @namespace	handyimage
@@ -1755,6 +1755,22 @@ function makeworld()
 	case "500px.com":
 		j = true;
 		i = q('img.photo-show__img[src*="_m"]');
+		if (i) {
+		    var m = i.src.match('/photo/(\\d+)/');
+		    if (m) {
+		        var xhttp = new XMLHttpRequest();
+		        xhttp.open('GET', 'https://api.500px.com/v1/photos?ids=' + m[1] + '&image_size=4096');
+		        xhttp.onload = function() {
+		            if (xhttp.status == 200) {
+		                try {
+		                    i.src = JSON.parse(xhttp.response)['photos'][m[1]]['images'][0]['url'];
+		                    console.log("hacked image resolution to maximum");
+		                } catch (e) {console.warn(e);}
+		            }
+		        }
+		        xhttp.send();
+		    }
+		}
 		break;
 	case "picturepush.com":
 		i = q('img[src*="/photo/"]');
