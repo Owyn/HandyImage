@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name		Handy Image
-// @version		2021.03.06
+// @version		2021.03.09
 // @author		Owyn
 // @contributor	ubless607, bitst0rm
 // @namespace	handyimage
@@ -916,7 +916,7 @@ function sanitize() // lol I'm such a hacker
 	removeAllListeners();
 }
 
-const protected_createElement = document.createElement.bind(document);
+const protected_createElement = Document.prototype.createElement.bind(document);
 
 var _eventHandlers = {};
 var origAdd = document.addEventListener;
