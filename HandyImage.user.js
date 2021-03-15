@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name		Handy Image
-// @version		2021.03.09
+// @version		2021.03.15
 // @author		Owyn
 // @contributor	ubless607, bitst0rm
 // @namespace	handyimage
@@ -814,6 +814,7 @@
 // @match		https://fotokiz.com/*/*.html
 // @match		https://silverpic.com/*/*.html
 // @match		http://imglin.xyz/*
+// @match		https://picrok.com/*.php
 // ==/UserScript==
 
 "use strict";
@@ -1806,6 +1807,7 @@ function makeworld()
 	case "imgmaze.pw":
 	case "imgdew.pw":
 	case "imgtown.pw":
+	case "picrok.com":
 		j = true;
 		dp=true;
 		i = q('img.picview');
