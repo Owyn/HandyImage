@@ -752,6 +752,7 @@
 // @match		https://ibb.co/*
 // @match		http://*.imgsee.net/*
 // @match		*://*.picbaron.com/*/*.html
+// @match		*://*.crownimg.com/*/*.html*
 // @match		*://*.imgbaron.com/*/*
 // @match		https://kvador.com/*/*.html
 // @match		http://picshost.info//img-*.html
@@ -1640,6 +1641,15 @@ function makeworld()
 	case "kvador.com":
 	case "pics4you.net":
 		i = q('input[type="submit"]');
+		dp=true;
+		j =true;
+		if(i)
+		{
+			i.click();
+			break;
+		}
+	case "crownimg.com":
+        	i = q('button');
 		dp=true;
 		j =true;
 		if(i)
