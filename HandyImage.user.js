@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name		Handy Image
-// @version		2021.03.15
+// @version		2021.03.17
 // @author		Owyn
 // @contributor	ubless607, bitst0rm
 // @namespace	handyimage
@@ -818,6 +818,8 @@
 // @match		https://silverpic.com/*/*.html
 // @match		http://imglin.xyz/*
 // @match		https://picrok.com/*.php
+// @match		*://*.crownimg.com/*/*.html*
+// @match		http://imgtigr.xyz/*
 // ==/UserScript==
 
 "use strict";
@@ -1844,6 +1846,15 @@ function makeworld()
 			}
 		}
 		break;
+	case "crownimg.com":
+        i = q('button');
+		dp=true;
+		j =true;
+		if(i)
+		{
+			i.click();
+			break;
+		}
 	case "myimg.club":
 	case "imgmonkey.com":
 	case "imgdragon.com":
@@ -2093,6 +2104,7 @@ function makeworld()
 	case "imgair.net":
 	case "imgkoi.xyz":
 	case "imglin.xyz":
+	case "imgtigr.xyz":
 		i = q('button');
 		dp=true;
 		j = true;
