@@ -535,6 +535,7 @@
 // @match		http://*.imgease.re/img-*
 // @match		https://www.hotimage.uk/*mg-*
 // @match		*://imgview.pw/*.php
+// @match		*://imgviu.com/*.php
 // @match		http://*.10.imageleon.com/i-*
 // @match		https://www.dropbox.com/s/*/*
 // @match		http://imgor.net/img-*
@@ -612,6 +613,7 @@
 // @match		http://www.imgsky.net/*
 // @match		http://www.imagespicy.site/site/v/*
 // @match		https://imgoutlet.pw/*.php
+// @match		https://outletpic.com/*.php
 // @match		http://*.pix.ac/image/*
 // @match		*://*.imgmak.com/image/*
 // @match		http://*.freephotohostin.com/img-*
@@ -638,6 +640,7 @@
 // @match		*://*.ninjaimages.com/*.html
 // @match		*://*.imgprime.com/img*
 // @match		*://*.imgmaze.pw/*.php
+// @match		*://*.mazpic.com/*.php
 // @match		*://*.piccash.net/*/*/
 // @exclude		*://piccash.net/cabinets/*
 // @exclude		*://www.piccash.net/cabinets/*
@@ -1808,6 +1811,9 @@ function makeworld()
 	case "imgdew.pw":
 	case "imgtown.pw":
 	case "picrok.com":
+	case "outletpic.com":
+	case "imgviu.com":
+	case "mazpic.com":
 		j = true;
 		dp=true;
 		i = q('img.picview');
@@ -1820,6 +1826,9 @@ function makeworld()
 			break;
 		}
 		f = document.querySelectorAll("[type='button']");
+		if (!f.length) {
+		    f = document.querySelectorAll("button"); // new hosts using html5 button
+		}
 		if(f.length)
 		{
 			let n;
