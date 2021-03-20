@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name		Handy Image
-// @version		2021.03.17
+// @version		2021.03.20
 // @author		Owyn
 // @contributor	ubless607, bitst0rm
 // @namespace	handyimage
@@ -820,6 +820,8 @@
 // @match		https://picrok.com/*.php
 // @match		*://*.crownimg.com/*/*.html*
 // @match		http://imgtigr.xyz/*
+// @match		http://imgkr.xyz/*
+// @match		*://*.xxxwebdlxxx.org/img-*.html
 // ==/UserScript==
 
 "use strict";
@@ -2063,6 +2065,7 @@ function makeworld()
 	case "imgcredit.xyz":
 	case "pic.hotimg.site":
 	case "xfap.fun":
+	case "xxxwebdlxxx.org":
 		i = q('img[src*="' + iurl + '/upload/"]');
 		break;
 	case "imgboom.net":
@@ -2105,6 +2108,7 @@ function makeworld()
 	case "imgkoi.xyz":
 	case "imglin.xyz":
 	case "imgtigr.xyz":
+	case "imgkr.xyz":
 		i = q('button');
 		dp=true;
 		j = true;
