@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name		Handy Image
-// @version		2021.03.20
+// @version		2021.03.24
 // @author		Owyn
 // @contributor	ubless607, bitst0rm
 // @namespace	handyimage
@@ -693,12 +693,13 @@
 // @match		http://imgcach.ru/*/*/
 // @match		http://*.2pixxsee.ru/*.html
 // @match		http://*.2pixxsee.ru/full/
+// @match		https://*.xhamster19.com/photos/gallery/*/*
 // @match		https://*.xhamster11.com/photos/gallery/*/*
 // @match		https://*.xhamster4.com/photos/gallery/*/*
 // @match		https://*.xhamster3.com/photos/gallery/*/*
 // @match		https://*.xhamster.com/photos/gallery/*/*
 // @match		https://*.xhamster.desi/photos/gallery/*/*
-// @exclude		/^https://(.*\.)?xhamster(3|4)?\.(com|desi)/photos/gallery/.*/\d{1,3}$/
+// @exclude		/^https://(.*\.)?xhamster(\d{1,2})?\.(com|desi)/photos/gallery/.*/\d{1,3}$/
 // @match		http://*.imghall.com/?v=*
 // @match		https://*.acidimg.cc/img-*
 // @match		https://imgcloud.pw/image/*
@@ -2523,6 +2524,8 @@ function makeworld()
 	case "xhamster.desi":
 	case "xhamster3.com":
 	case "xhamster4.com":
+	case "xhamster11.com":
+	case "xhamster19.com":
 		j = true;
 		i = q('div.fotorama__active>img.fotorama__img');
 		break;
@@ -2541,6 +2544,8 @@ function makeworld()
 		case "xhamster.desi":
 		case "xhamster3.com":
 		case "xhamster4.com":
+		case "xhamster11.com":
+		case "xhamster19.com":
 			j = true;
 			i = q('div.fotorama__active>img.fotorama__img');
 			break;
@@ -2805,14 +2810,22 @@ function autoresize()
 		}
 		if(cfg_js){eval(cfg_js);}
 	}
-	else
+	else // onloadstart event for images doesn't work in Chrome in 2020 kek (bug)
 	{
 		ARC++;
-		if(ARC == 25 || ARC == 250 || ARC == 750)
+		if(ARC < 1000)
 		{
-			i.src = i.src; // lol fix
+			if(ARC == 30 || ARC == 300 || ARC == 999) // about 0.5sec, 5sec, 15sec
+			{
+				i.src = i.src; // lol fix
+				console.warn("HJI: Trying to reload the image, " + ARC);
+			}
+			setTimeout(function() { autoresize(); }, 10);
 		}
-		setTimeout(function() { autoresize(); }, 10);
+		else
+		{
+			console.warn("HJI: Gave up trying to reload the image, it is broken");
+		}
 	}
 }
 
