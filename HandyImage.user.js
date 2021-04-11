@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name		Handy Image
-// @version		2021.04.07
+// @version		2021.04.11
 // @author		Owyn
 // @contributor	ubless607, bitst0rm
 // @namespace	handyimage
@@ -958,11 +958,11 @@ function onVisibilityChange()
 		if(i)
 		{
 			autoresize();
-			document.removeEventListener('visibilitychange', onVisibilityChange);
+			window.removeEventListener('visibilitychange', onVisibilityChange);
 		}
 	}
 }
-document.addEventListener("visibilitychange", onVisibilityChange);
+window.addEventListener("visibilitychange", onVisibilityChange);
 
 unsafeWindow.addEventListener = protected_addEventListener;
 unsafeWindow.document.addEventListener = protected_addEventListener;
@@ -2659,7 +2659,7 @@ function makeworld()
 				delete document.write;
 				document.write('<html><head></head><body></body></html>');
 				document.close();
-				document.addEventListener("visibilitychange", onVisibilityChange);
+				window.addEventListener("visibilitychange", onVisibilityChange); // window works but not unSafewindow
 			}
 			else
 			{
