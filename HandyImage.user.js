@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name		Handy Image
-// @version		2021.04.11
+// @version		2021.04.12
 // @author		Owyn
 // @contributor	ubless607, bitst0rm
 // @namespace	handyimage
@@ -633,7 +633,6 @@
 // @match		http://*.imgpics.nl/img-*
 // @match		http://*.imagexxx18.com/image/*
 // @match		http://*.imagepics.xyz/img-*
-// @match		*://*.imagesouls.net/img*
 // @match		*://postto.me/*
 // @match		http://*.imgskull.xyz/image/*
 // @match		http://*.imgskull.com/image/*
@@ -1953,25 +1952,26 @@ function makeworld()
 		i = q('img[src*="view/"]');
 		break;
 	case "imgking.co":
+	case "imgkings.com":
+		console.error("img kings");
 		i = q('img[src*="uploads/"]');
 		if(i)	break;
-		if(window.location.href.indexOf("imgs") != -1)
-		{
-			window.location.href = window.location.href.replace("imgs","imgv");
-			break;
-		}
-		if(window.location.href.indexOf("img3") != -1)
-		{
-			window.location.href = window.location.href.replace("img3","img4");
-			break;
-		}
-	case "imagesouls.net":
-	case "funimg.net":
 		if(find_text_in_scripts('linkid="', '"', false))
 		{
 			window.location.href = i.src;
 			break;
 		}
+		else if(window.location.href.indexOf("imgs") != -1) // not sure if needed anymore
+		{
+			window.location.href = window.location.href.replace("imgs","imgv");
+			break;
+		}
+		else if(window.location.href.indexOf("img3") != -1) // not sure if needed anymore
+		{
+			window.location.href = window.location.href.replace("img3","img4");
+			break;
+		}
+		break;
 	case "imgadult.com":
 		j = true;
 		i = q('a.overlay_ad_link');
@@ -2137,7 +2137,6 @@ function makeworld()
 	case "uploadimagex.com":
 	case "hostingkartinok.com":
 	case "bellazon":
-	case "imgkings.com":
 	case "savepice.ru":
 		i = q('img[src*="/upload"]');
 		break;
