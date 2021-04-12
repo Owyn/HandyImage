@@ -503,7 +503,6 @@
 // @match		http://www.zerochan.net/*
 // @match		https://*.imgrock.pw/*.php
 // @match		http://imgzap.com/view*
-// @match		http://*.funimg.net/img*
 // @match		http://*.olivepix.com/view/*
 // @match		http://*.ocaload.com/img-*
 // @match		http://*.imghit.com/img-*
@@ -1953,7 +1952,6 @@ function makeworld()
 		break;
 	case "imgking.co":
 	case "imgkings.com":
-		console.error("img kings");
 		i = q('img[src*="uploads/"]');
 		if(i)	break;
 		if(find_text_in_scripts('linkid="', '"', false))
