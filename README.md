@@ -1,8 +1,8 @@
 <h3>Features</h3>
-<p>This script opens fullsized image right after page load in <strong>many image hosting sites</strong> skipping all the annoying stuff like ads, link code etc and <strong>disabling</strong> any kind of <strong>pop-ups</strong>. (script for images opened directly in browser can be found <a href=https://github.com/Owyn/Center_Image>here</a>)</p>
+<p>This script leaves just the image (largest available version) on pages of <strong>many image hosting sites</strong> skipping all the annoying stuff like ads, "continue to image" etc and <strong>disabling</strong> any kind of <strong>pop-ups</strong>. (script for images opened directly in browser can be found <a href=https://github.com/Owyn/Center_Image>here</a> - if you like centering of image, autoresize and hotkeys)</p>
 
 <ul><li><strong>Hotkeys</strong> - very handy ones</li>
-<li><strong>fullsizing</strong> image to its original size when opened, <strong>nothing else</strong> than image</li>
+<li><strong>fullsizing</strong> image to its largest available version when opened, <strong>nothing else</strong> than image</li>
 <li><strong>autofit</strong> to screen big images by default (larger than screen both vertically and horizontally)</li>
 <li><strong>address</strong> of page doesn't change so you still can copy\share it</li>
 <li><strong>image centering</strong> (like in firefox) - pretty usefull on wide monitors</li>
