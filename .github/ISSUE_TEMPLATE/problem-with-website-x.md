@@ -1,7 +1,7 @@
 ---
-name: problem with website X
-about: Report about some website stopping working
-title: problem with website X
+name: [BUG\REQUEST] support for website X
+about: Report about some website stopping working or request new website support
+title: support for website X
 labels: ''
 assignees: ''
 
@@ -9,4 +9,4 @@ assignees: ''
 
 **Example links to pages with an image: **
 
--
+-  
