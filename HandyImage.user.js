@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name		Handy Image
-// @version		2021.04.12
+// @version		2021.05.04
 // @author		Owyn
 // @contributor	ubless607, bitst0rm
 // @namespace	handyimage
@@ -43,7 +43,7 @@
 // @match		http://f-page.ru/*
 // @match		http://f-picture.net/*
 // @match		https://*.pimpandhost.com/image*
-// @match		https://*.pixroute.com/*.html
+// @match		https://*.pixroute.com/*/*
 // @match		http://*.picforall.ru/*/*/
 // @match		*://*.imagecurl.com/view*
 // @match		*://*.imagecurl.org/view*
