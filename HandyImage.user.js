@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name		Handy Image
-// @version		2021.05.04
+// @version		2021.05.05
 // @author		Owyn
 // @contributor	ubless607, bitst0rm
 // @namespace	handyimage
@@ -19,7 +19,7 @@
 // @grant		GM_setValue
 // @grant		unsafeWindow
 // @match		https://gist.github.com/Owyn/8553d7953d948228e312
-// @match		http://www.imagebam.com/image*
+// @match		https://www.imagebam.com/image/*
 // @match		http://imgchili.net/show*
 // @match		*://imgbox.com/*
 // @match		*://*.imagetwist.com/*
@@ -1114,7 +1114,12 @@ function makeworld()
 		}
 		break;
 	case "imagebam.com":
-		ext_list = [];
+		i = q("a i.fa-download");
+		if(i)
+		{
+			i.src = i.parentNode.href;
+		}
+		break;
 	case "directupload.net":
 	case "bilderhoster.net":
 	case "noelshack.com":
@@ -1497,7 +1502,7 @@ function makeworld()
 		if(i){i.src = i.href;}
 		break;
 	case "danbooru.donmai.us":
-		i = q('a[href*="/data/"]');
+		i = q('a[download]');
 		if(i){i.src = i.href;}
 		break;
 	case "gelbooru.com":
@@ -2666,6 +2671,7 @@ function makeworld()
 		if (ext_list.indexOf(i.src.split('.').pop().split('?')[0].toLowerCase()) >= 0)
 		{
 			console.warn("What we found is not an image");
+			i = null;
 			return false;
 		}
 		clr_pgn();
