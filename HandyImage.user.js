@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name		Handy Image
-// @version		2021.05.05
+// @version		2021.05.06
 // @author		Owyn
 // @contributor	ubless607, bitst0rm
 // @namespace	handyimage
@@ -1118,6 +1118,11 @@ function makeworld()
 		if(i)
 		{
 			i.src = i.parentNode.href;
+		}
+		else
+		{
+			i = q("div.container.ads h2 a");
+			if(i){i.click();}
 		}
 		break;
 	case "directupload.net":
