@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name		Handy Image
-// @version		2021.05.06
+// @version		2021.05.07
 // @author		Owyn
 // @contributor	ubless607, bitst0rm
 // @namespace	handyimage
@@ -20,6 +20,7 @@
 // @grant		unsafeWindow
 // @match		https://gist.github.com/Owyn/8553d7953d948228e312
 // @match		https://www.imagebam.com/image/*
+// @match		https://www.imagebam.com/view/*
 // @match		http://imgchili.net/show*
 // @match		*://imgbox.com/*
 // @match		*://*.imagetwist.com/*
