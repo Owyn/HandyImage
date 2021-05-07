@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name		Handy Image
-// @version		2021.05.07
+// @version		2021.05.08
 // @author		Owyn
 // @contributor	ubless607, bitst0rm
 // @namespace	handyimage
@@ -744,7 +744,7 @@
 // @match		*://pic.hotimg.site/img-*.html
 // @match		http://*.shaggyimg.pro/*.html
 // @match		http://*.shaggyimg.pro/full/
-// @match		http://*.imgjazz.com/img-*.html
+// @match		https://*.imgjazz.xyz/img-*.html
 // @match		https://22pixx.xyz/i*-*/*.html
 // @match		https://22pixx.xyz/i-*/*.html
 // @match		https://22pixx.xyz/x-*/*.html
@@ -2032,7 +2032,7 @@ function makeworld()
 	case "acidimg.cc":
 	case "imgpart.com":
 	case "picmoza.com":
-	case "imgjazz.com":
+	case "imgjazz.xyz":
 	case "picshost.info":
 	case "petrovixxxjav.com":
 	case "placeimg.net":
