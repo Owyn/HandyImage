@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name		Handy Image
-// @version		2021.05.08
+// @version		2021.05.17
 // @author		Owyn
 // @contributor	ubless607, bitst0rm
 // @namespace	handyimage
@@ -823,6 +823,7 @@
 // @match		http://imgkr.xyz/*
 // @match		*://*.xxxwebdlxxx.org/img-*.html
 // @match		http://imgbird.xyz/*
+// @match		https://*.pornhd720p.com//img-*.html
 // ==/UserScript==
 
 "use strict";
@@ -2046,6 +2047,7 @@ function makeworld()
 	case "imgdawgknuttz.com":
 	case "olarixas.xyz":
 	case "beautifulero.com":
+	case "pornhd720p.com":
 		dp=true;
 		f = document.getElementsByTagName("input");
 		if(f.length)
