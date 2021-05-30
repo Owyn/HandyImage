@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name		Handy Image
-// @version		2021.05.19
+// @version		2021.05.30
 // @author		Owyn
 // @contributor	ubless607, bitst0rm
 // @namespace	handyimage
@@ -170,7 +170,7 @@
 // @match		http://*.pixelup.net/image*
 // @match		http://*.picsee.net/*
 // @match		http://www.fotosik.pl/pokaz_obrazek/pelny*
-// @match		http://*.depic.me/*
+// @match		https://*.depic.me/*
 // @match		http://www.xup.in/dl*
 // @match		http://*.hotchyx.com/d*
 // @match		http://*.imageupper.com/i/*
