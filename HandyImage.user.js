@@ -825,6 +825,7 @@
 // @match		http://imgbird.xyz/*
 // @match		https://*.pornhd720p.com//img-*.html
 // @match		http://imgwewo.xyz/*
+// @match		*://www.imgbox.eu/image/*
 // ==/UserScript==
 
 "use strict";
@@ -1175,6 +1176,7 @@ function makeworld()
 	case "subefotos.com":
 	case "rule34.xxx":
 	case "imgcredit.xyz":
+	case "imgbox.eu":
 		i = document.querySelector('meta[property="og:image"], [name="og:image"]');
 		if(i)
 		{
