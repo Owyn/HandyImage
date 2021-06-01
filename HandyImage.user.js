@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name		Handy Image
-// @version		2021.05.30
+// @version		2021.06.01
 // @author		Owyn
 // @contributor	ubless607, bitst0rm
 // @namespace	handyimage
@@ -825,7 +825,7 @@
 // @match		http://imgbird.xyz/*
 // @match		https://*.pornhd720p.com//img-*.html
 // @match		http://imgwewo.xyz/*
-// @match		*://www.imgbox.eu/image/*
+// @match		https://*.imgbox.eu/image/*
 // ==/UserScript==
 
 "use strict";
@@ -1004,7 +1004,7 @@ function makeimage()
 	i.addEventListener("click", rescale, true);
 	window.addEventListener("keydown", onkeydown, true);
 	if(dp){console.warn("you are on a double-page image hosting (probably)");window.addEventListener("beforeunload", onbeforeunload, true);}
-	onVisibilityChange();
+	onVisibilityChange(); // if tab is already active when opening image
 }
 
 function find_text_in_scripts(text, stopword, start_from_top, search_after_word)
@@ -1053,7 +1053,7 @@ function makeworld()
 	switch (host)
 	{
 	case "gist.github.com":
-		if(document.body){i=1;cfg();}break;
+		if(document.body){i=1;cfg();}return;
 	case "simplest-image-hosting.net":
 	case "hostimage.ru":
 	case "imgchili.net":
@@ -1523,7 +1523,7 @@ function makeworld()
 		break;
 	case "deviantart.com":
 		j = true;
-		if(q('button[aria-label="Expand"]')) // page loaded enough
+		if(q('div[role="complementary"]')) // page loaded enough
 		{
 			i = q('a[download]');
 			if(i && i.href.indexOf("deviantart.com/users/outgoing?") == -1){i.src = i.href;console.log("found download link");}
@@ -2832,12 +2832,12 @@ function autoresize()
 		ARC++;
 		if(ARC < 1000)
 		{
-			if(ARC == 30 || ARC == 300 || ARC == 999) // about 0.5sec, 5sec, 15sec
+			if(ARC == 75 || ARC == 300 || ARC == 999) // about 1sec, 5sec, 15sec
 			{
 				i.src = i.src; // lol fix
 				console.warn("HJI: Trying to reload the image, " + ARC);
 			}
-			setTimeout(function() { autoresize(); }, 10);
+			unsafeWindow.setTimeout(autoresize, 10);
 		}
 		else
 		{
