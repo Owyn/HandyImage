@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name		Handy Image
-// @version		2021.06.01
+// @version		2021.06.12
 // @author		Owyn
 // @contributor	ubless607, bitst0rm
 // @namespace	handyimage
@@ -826,6 +826,7 @@
 // @match		https://*.pornhd720p.com//img-*.html
 // @match		http://imgwewo.xyz/*
 // @match		https://*.imgbox.eu/image/*
+// @match		https://*.rintor.space/image/*
 // ==/UserScript==
 
 "use strict";
@@ -1177,6 +1178,7 @@ function makeworld()
 	case "rule34.xxx":
 	case "imgcredit.xyz":
 	case "imgbox.eu":
+	case "rintor.space":
 		i = document.querySelector('meta[property="og:image"], [name="og:image"]');
 		if(i)
 		{
@@ -1257,7 +1259,7 @@ function makeworld()
 		if(!q('div[aria-label="Preview"]'))
 		{
 			i = q('a[href*="/img-original/"]');
-			if(i) 
+			if(i)
 			{
 				i.src = i.href;
 			}
