@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name		Handy Image
-// @version		2021.06.12
+// @version		2021.06.18
 // @author		Owyn
 // @contributor	ubless607, bitst0rm
 // @namespace	handyimage
@@ -827,6 +827,7 @@
 // @match		http://imgwewo.xyz/*
 // @match		https://*.imgbox.eu/image/*
 // @match		https://*.rintor.space/image/*
+// @match		http://imgirx.xyz/*
 // ==/UserScript==
 
 "use strict";
@@ -1259,7 +1260,7 @@ function makeworld()
 		if(!q('div[aria-label="Preview"]'))
 		{
 			i = q('a[href*="/img-original/"]');
-			if(i)
+			if(i) 
 			{
 				i.src = i.href;
 			}
@@ -2129,6 +2130,7 @@ function makeworld()
 	case "imgkr.xyz":
 	case "imgbird.xyz":
 	case "imgwewo.xyz":
+	case "imgirx.xyz":
 		i = q('button');
 		dp=true;
 		j = true;
