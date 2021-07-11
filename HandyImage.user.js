@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name		Handy Image
-// @version		2021.06.26
+// @version		2021.07.11
 // @author		Owyn
 // @contributor	ubless607, bitst0rm
 // @namespace	handyimage
@@ -829,6 +829,7 @@
 // @match		https://*.rintor.space/image/*
 // @match		http://imgirx.xyz/*
 // @match		http://*.imgalor.xyz/*
+// @match		http://imgjut.buzz/*
 // ==/UserScript==
 
 "use strict";
@@ -2133,6 +2134,7 @@ function makeworld()
 	case "imgwewo.xyz":
 	case "imgirx.xyz":
 	case "imgalor.xyz":
+	case "imgjut.buzz":
 		i = q('button');
 		dp=true;
 		j = true;
