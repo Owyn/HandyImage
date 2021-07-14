@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name		Handy Image
-// @version		2021.07.11
+// @version		2021.07.14
 // @author		Owyn
 // @contributor	ubless607, bitst0rm
 // @namespace	handyimage
@@ -830,6 +830,7 @@
 // @match		http://imgirx.xyz/*
 // @match		http://*.imgalor.xyz/*
 // @match		http://imgjut.buzz/*
+// @match		http://imgtrw.buzz/*
 // ==/UserScript==
 
 "use strict";
@@ -2135,6 +2136,7 @@ function makeworld()
 	case "imgirx.xyz":
 	case "imgalor.xyz":
 	case "imgjut.buzz":
+	case "imgtrw.buzz":
 		i = q('button');
 		dp=true;
 		j = true;
