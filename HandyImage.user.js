@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name		Handy Image
-// @version		2021.07.14
+// @version		2021.07.22
 // @author		Owyn
 // @contributor	ubless607, bitst0rm
 // @namespace	handyimage
@@ -112,7 +112,7 @@
 // @match		https://*.imagedecode.com/img-*
 // @match		http://*.imagefruit.com/img*
 // @match		http://*.imagefruit.com/show*
-// @match		http://*.miragepics.com/view*
+// @match		https://*.miragepics.com/view*
 // @match		http://*.freeimagehosting.net/*
 // @match		http://*.keptarolo.hu/*
 // @match		http://www.uploadhouse.com/view*
@@ -831,6 +831,8 @@
 // @match		http://*.imgalor.xyz/*
 // @match		http://imgjut.buzz/*
 // @match		http://imgtrw.buzz/*
+// @match		http://imglina.xyz/*
+// @match		http://imgveni.xyz/*
 // ==/UserScript==
 
 "use strict";
@@ -2137,6 +2139,8 @@ function makeworld()
 	case "imgalor.xyz":
 	case "imgjut.buzz":
 	case "imgtrw.buzz":
+	case "imgveni.xyz":
+	case "imglina.xyz":
 		i = q('button');
 		dp=true;
 		j = true;
