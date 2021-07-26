@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name		Handy Image
-// @version		2021.07.22
+// @version		2021.07.26
 // @author		Owyn
 // @contributor	ubless607, bitst0rm
 // @namespace	handyimage
@@ -385,6 +385,7 @@
 // @exclude		*://imgur.com/*,*
 // @exclude		*://*.imgur.com/*,*
 // @exclude		*://*.imgur.com/*.gifv
+// @exclude		*://*.imgur.com/all*
 // @match		https://motherless.com/*
 // @match		http://*.xpic.biz/*/view*
 // @match		https://*.tumblr.com/image/*
@@ -833,6 +834,7 @@
 // @match		http://imgtrw.buzz/*
 // @match		http://imglina.xyz/*
 // @match		http://imgveni.xyz/*
+// @match		http://imgkuiw.xyz/*
 // ==/UserScript==
 
 "use strict";
@@ -2141,6 +2143,7 @@ function makeworld()
 	case "imgtrw.buzz":
 	case "imgveni.xyz":
 	case "imglina.xyz":
+	case "imgkuiw.xyz":
 		i = q('button');
 		dp=true;
 		j = true;
