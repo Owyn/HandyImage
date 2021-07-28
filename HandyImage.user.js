@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name		Handy Image
-// @version		2021.07.26
+// @version		2021.07.28
 // @author		Owyn
 // @contributor	ubless607, bitst0rm
 // @namespace	handyimage
@@ -33,6 +33,7 @@
 // @match		https://imageban.ru/show*
 // @match		*://fastpic.ru/view*
 // @match		*://fastpic.ru/fullview*
+// @match		https://fastpic.org/view/*
 // @match		*://pixhost.to/show/*
 // @match		http://*.picpicture.com/image/*
 // @match		http://*.pic5you.ru/*/*/
