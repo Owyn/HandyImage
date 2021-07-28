@@ -1372,6 +1372,7 @@ function makeworld()
 		i = q('img#image');
 		break;
 	case "fastpic.ru":
+	case "fastpic.org":
 		i = q('img[src*="/big/"]');
 		break;
 	case "bayimg.com":
