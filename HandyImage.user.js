@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name		Handy Image
-// @version		2021.08.06
+// @version		2021.08.07
 // @author		Owyn
 // @contributor	ubless607, bitst0rm
 // @namespace	handyimage
@@ -2832,7 +2832,7 @@ function autoresize()
 		link.type = 'image/x-icon';
 		link.rel = 'shortcut icon';
 		link.href = i.src;
-		document.getElementsByTagName('head')[0].appendChild(link);
+		document.head.appendChild(link);
 		rescaled = true;rescale(0); // to original size in pixels
 		if(cfg_fitWH && i.height > window.innerHeight && i.width > window.innerWidth) // both scrollbars
 		{
