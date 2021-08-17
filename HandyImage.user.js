@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name		Handy Image
-// @version		2021.08.07
+// @version		2021.08.17
 // @author		Owyn
 // @contributor	ubless607, bitst0rm
 // @namespace	handyimage
@@ -2262,6 +2262,7 @@ function makeworld()
 	case "postimg.org":
 	case "postimg.cc":
 	case "pixxxels.cc":
+		j = true;
 		i = q('a[href*="?dl="]');
 		if(i)
 		{
