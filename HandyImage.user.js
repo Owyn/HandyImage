@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name		Handy Image
-// @version		2021.08.17
+// @version		2021.08.19
 // @author		Owyn
 // @contributor	ubless607, bitst0rm
 // @namespace	handyimage
@@ -837,6 +837,7 @@
 // @match		http://imgveni.xyz/*
 // @match		http://imgkuiw.xyz/*
 // @match		http://imgwang.buzz/*
+// @match		https://imgbb.com/*
 // ==/UserScript==
 
 "use strict";
@@ -1189,6 +1190,7 @@ function makeworld()
 	case "imgcredit.xyz":
 	case "imgbox.eu":
 	case "rintor.space":
+	case "imgbb.com":
 		i = document.querySelector('meta[property="og:image"], [name="og:image"]');
 		if(i)
 		{
