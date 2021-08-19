@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name		Handy Image
-// @version		2021.08.19
+// @version		2021.08.20
 // @author		Owyn
 // @contributor	ubless607, bitst0rm
 // @namespace	handyimage
@@ -164,7 +164,7 @@
 // @match		http://*.imgsin.com/view*
 // @match		http://*.imagenetz.de/*
 // @match		http://pix.toile-libre.org/?img*
-// @match		http://www.servimg.com/image*
+// @match		https://servimg.com/view/*
 // @match		http://*.upix.me/files/*
 // @match		http://*.upix.me/i/v/?q=*
 // @match		http://*.pixelup.net/image*
@@ -1191,6 +1191,7 @@ function makeworld()
 	case "imgbox.eu":
 	case "rintor.space":
 	case "imgbb.com":
+	case "servimg.com":
 		i = document.querySelector('meta[property="og:image"], [name="og:image"]');
 		if(i)
 		{
@@ -1817,7 +1818,6 @@ function makeworld()
 	case "keptarolo.hu":
 		i = q('img[src*="/kep/"]');
 		break;
-	case "servimg.com":
 	case "truepic.org":
 		i = q('img[src*="/u/"]');
 		break;
