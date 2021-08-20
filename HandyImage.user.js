@@ -2558,6 +2558,9 @@ function makeworld()
 	case "imgsha.com":
 		i = q('img[data-load="full"]');
 		break;
+	case "vfl.ru":
+		i = q('img[src*="/ii/"]');
+		break;
 	case "suckmypic.net":
 		i = q('#theImage');
 		break;
@@ -2623,9 +2626,6 @@ function makeworld()
 			break;
 		case "freeamateurteens.net":
 			i = q('img[src*="images/"]');
-			break;
-		case "vfl.ru":
-			i = q('img[src*="/ii/"]');
 			break;
 		case "otofotki.pl":
 			i = q('img[src*="/obrazki/"]');
