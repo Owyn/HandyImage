@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name		Handy Image
-// @version		2021.08.20
+// @version		2021.08.21
 // @author		Owyn
 // @contributor	ubless607, bitst0rm
 // @namespace	handyimage
@@ -838,6 +838,7 @@
 // @match		http://imgkuiw.xyz/*
 // @match		http://imgwang.buzz/*
 // @match		https://imgbb.com/*
+// @match		https://vfl.ru/fotos/*.html
 // ==/UserScript==
 
 "use strict";
@@ -2543,6 +2544,7 @@ function makeworld()
 	case "shrani.najdi.si":
 	case "imageab.com":
 	case "turboimagehost.com":
+	case "vfl.ru":
 		i = q('img[onclick*="(this"]');
 		break;
 	case "joblo.com":
