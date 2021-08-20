@@ -2544,7 +2544,6 @@ function makeworld()
 	case "shrani.najdi.si":
 	case "imageab.com":
 	case "turboimagehost.com":
-	case "vfl.ru":
 		i = q('img[onclick*="(this"]');
 		break;
 	case "joblo.com":
@@ -2624,6 +2623,9 @@ function makeworld()
 			break;
 		case "freeamateurteens.net":
 			i = q('img[src*="images/"]');
+			break;
+		case "vfl.ru":
+			i = q('img[src*="/ii/"]');
 			break;
 		case "otofotki.pl":
 			i = q('img[src*="/obrazki/"]');
