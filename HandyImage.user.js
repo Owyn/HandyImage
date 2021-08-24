@@ -111,8 +111,8 @@
 // @match		http://*.picturedip.com/*/*
 // @match		http://*.croftimage.com/img-*
 // @match		https://*.imagedecode.com/img-*
-// @match		http://*.imagefruit.com/img*
-// @match		http://*.imagefruit.com/show*
+// @match		https://*.imagefruit.com/img*
+// @match		https://*.imagefruit.com/show*
 // @match		https://*.miragepics.com/view*
 // @match		http://*.freeimagehosting.net/*
 // @match		http://*.keptarolo.hu/*
