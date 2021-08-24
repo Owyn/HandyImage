@@ -838,7 +838,8 @@
 // @match		http://imgkuiw.xyz/*
 // @match		http://imgwang.buzz/*
 // @match		https://imgbb.com/*
-// @match		https://vfl.ru/fotos/*.html
+// @match		*://vfl.ru/fotos/*.html
+// @match		https://*.imgstar.eu/*/*.html
 // ==/UserScript==
 
 "use strict";
@@ -1897,6 +1898,7 @@ function makeworld()
 	case "0img.ws":
 	case "pixs.cx":
 	case "kropic.com":
+	case "imgstar.eu":
 		j = true;
 		dp=true;
 		f = document.querySelectorAll("input[type='submit']");
