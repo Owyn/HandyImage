@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name		Handy Image
-// @version		2021.08.21
+// @version		2021.08.26
 // @author		Owyn
 // @contributor	ubless607, bitst0rm
 // @namespace	handyimage
@@ -164,7 +164,7 @@
 // @match		http://*.imgsin.com/view*
 // @match		http://*.imagenetz.de/*
 // @match		http://pix.toile-libre.org/?img*
-// @match		https://servimg.com/view/*
+// @match		*://servimg.com/view/*
 // @match		http://*.upix.me/files/*
 // @match		http://*.upix.me/i/v/?q=*
 // @match		http://*.pixelup.net/image*
@@ -903,9 +903,12 @@ var cfg_bgclr ="grey";
 var cfg_fitWH = true;
 var cfg_fitB = false;
 var cfg_fitS = true;
+var cfg_fitOS = true;
 var cfg_js;
 var dp = false;
-var rescaled = false;
+let orgImgWidth;
+let orgImgHeight;
+var rescaled = 0;
 var tb;
 var timeout = 1000;
 var FireFox = ((navigator.userAgent.indexOf('Firefox') != -1) ? true : false);
@@ -1798,20 +1801,20 @@ function makeworld()
 		j = true;
 		i = q('img.photo-show__img[src*="_m"]');
 		if (i) {
-		    var m = i.src.match('/photo/(\\d+)/');
-		    if (m) {
-		        var xhttp = new XMLHttpRequest();
-		        xhttp.open('GET', 'https://api.500px.com/v1/photos?ids=' + m[1] + '&image_size=4096');
-		        xhttp.onload = function() {
-		            if (xhttp.status == 200) {
-		                try {
-		                    i.src = JSON.parse(xhttp.response)['photos'][m[1]]['images'][0]['url'];
-		                    console.log("hacked image resolution to maximum");
-		                } catch (e) {console.warn(e);}
-		            }
-		        }
-		        xhttp.send();
-		    }
+			var m = i.src.match('/photo/(\\d+)/');
+			if (m) {
+				var xhttp = new XMLHttpRequest();
+				xhttp.open('GET', 'https://api.500px.com/v1/photos?ids=' + m[1] + '&image_size=4096');
+				xhttp.onload = function() {
+					if (xhttp.status == 200) {
+						try {
+						i.src = JSON.parse(xhttp.response)['photos'][m[1]]['images'][0]['url'];
+							console.log("hacked image resolution to maximum");
+						} catch (e) {console.warn(e);}
+					}
+				}
+				xhttp.send();
+			}
 		}
 		break;
 	case "picturepush.com":
@@ -1863,7 +1866,7 @@ function makeworld()
 		}
 		f = document.querySelectorAll("[type='button']");
 		if (!f.length) {
-		    f = document.querySelectorAll("button"); // new hosts using html5 button
+			f = document.querySelectorAll("button"); // new hosts using html5 button
 		}
 		if(f.length)
 		{
@@ -1881,7 +1884,7 @@ function makeworld()
 		}
 		break;
 	case "crownimg.com":
-        i = q('button');
+		i = q('button');
 		dp=true;
 		j =true;
 		if(i)
@@ -2420,15 +2423,15 @@ function makeworld()
 	case "picdollar.com":
 	case "fotokiz.com":
 	case "silverpic.com":
-        i = q("form input[type='submit'][value*='continue to image' i]");
-        j = true;
-        dp = true;
-        if(i)
-        {
-            i.click();
-        }
-        i = q("img.pic[src*='/i/'], img.pic[src*='/img/']");
-        break;
+		i = q("form input[type='submit'][value*='continue to image' i]");
+		j = true;
+		dp = true;
+		if(i)
+		{
+			i.click();
+		}
+		i = q("img.pic[src*='/i/'], img.pic[src*='/img/']");
+		break;
 	case "scrin.org":
 		i = q('a[href*="/i/"]');
 		if(i)
@@ -2653,7 +2656,7 @@ function makeworld()
 				i.src = i.href;
 				break;
 			}
-		    break;
+			break;
 		default: // for user-added sites
 			console.warn("HJI is running on a custom website");
 			if(document.readyState != "loading" && document.images.length != 0)
@@ -2731,106 +2734,109 @@ function makeworld()
 	}
 }
 
-function changecursor()
+function rescale(event)
 {
-	i.style.margin = "auto";
-	if(!rescaled && (((i.naturalHeight / window.devicePixelRatio).toFixed() == window.innerHeight && (i.naturalWidth / window.devicePixelRatio).toFixed() <= window.innerWidth) || ((i.naturalHeight / window.devicePixelRatio).toFixed() <= window.innerHeight && (i.naturalWidth / window.devicePixelRatio).toFixed() == window.innerWidth))) // one img dimension is equal to screen and other is the same or less than the screen
+	let previW = i.width;
+	let previH = i.height;
+	document.body.style.overflowX = '';
+	document.body.style.overflowY = '';
+	if(rescaled === 0) // to original
 	{
-		i.style.cursor = "";
-	}
-	else if((i.naturalHeight / window.devicePixelRatio).toFixed() > window.innerHeight || (i.naturalWidth / window.devicePixelRatio).toFixed() > window.innerWidth) // at least one img dimenion is bigger than the screen
-	{
-		if(rescaled)
+		rescaled = 1;
+		i.style.width = orgImgWidth + "px";
+		i.style.height = orgImgHeight + "px";
+		if(orgImgWidth == window.innerWidth || orgImgHeight == window.innerHeight)
 		{
-			i.style.cursor = "zoom-in";
-			i.style.cursor = "-webkit-zoom-in";
+			i.style.cursor = "";
+		}
+		else if (orgImgWidth > window.innerWidth && orgImgHeight > window.innerHeight)
+		{
+			i.style.cursor = "zoom-out";
 		}
 		else
 		{
-			i.style.cursor = "zoom-out";
-			i.style.cursor = "-webkit-zoom-out";
-			if((i.naturalHeight / window.devicePixelRatio).toFixed() > window.innerHeight) // image pushing out-of-screen fix
-			{
-				i.style.margin = "0px auto";
-			}
+			i.style.cursor = "zoom-in";
 		}
 	}
 	else
 	{
-		if(rescaled)
+		let sidesCMP;
+		if(rescaled === 1) // fill
 		{
+			sidesCMP = (orgImgWidth / orgImgHeight) < (window.innerWidth / window.innerHeight);
+			rescaled = 2;
 			i.style.cursor = "zoom-out";
-			i.style.cursor = "-webkit-zoom-out";
 		}
-		else
+		else // fit
 		{
+			sidesCMP = (orgImgWidth / orgImgHeight) > (window.innerWidth / window.innerHeight);
+			rescaled = 0;
 			i.style.cursor = "zoom-in";
-			i.style.cursor = "-webkit-zoom-in";
 		}
-	}
-}
-
-function rescale(event)
-{
-	if(rescaled)
-	{
-		rescaled = false;
-		let scale,ex,ey;
-		if(event)
+		
+		if(orgImgWidth != window.innerWidth && orgImgHeight != window.innerHeight)
 		{
-			if (typeof event.y === "undefined") // Firefox
+			if(sidesCMP)
 			{
-				ex = event.clientX;
-				ey = event.clientY;
+				i.style.width = "100%";
+				i.style.height = "";
+				document.body.style.overflowX = 'hidden'; // more browser bugs more workarounds
 			}
 			else
 			{
-				ex = event.x;
-				ey = event.y;
+				i.style.height = "100%";
+				i.style.width = "";
+				document.body.style.overflowY = 'hidden'; // more browser bugs more workarounds
 			}
-			ex -= i.offsetLeft;
-			ey -= i.offsetTop;
-			scale = Math.min((window.innerWidth / (i.naturalWidth / window.devicePixelRatio).toFixed()), (window.innerHeight / (i.naturalHeight / window.devicePixelRatio).toFixed()));
 		}
-		i.style.width = (i.naturalWidth / window.devicePixelRatio).toFixed() + "px";
-		i.style.height = (i.naturalHeight / window.devicePixelRatio).toFixed() + "px";
-		changecursor();
-		if(event)
+		else
 		{
-			window.scrollTo(ex / scale - window.innerWidth / 2, ey / scale - window.innerHeight / 2);
+			i.style.cursor = "";
 		}
+	}
+	
+	if(i.height > window.innerHeight) // image pushing out-of-screen browser bug fix
+	{
+		i.style.margin = "0px auto";
 	}
 	else
 	{
-		i.style.width = (i.naturalWidth / window.devicePixelRatio).toFixed() + "px";
-		i.style.height = (i.naturalHeight / window.devicePixelRatio).toFixed() + "px";
-		if((i.naturalWidth / window.devicePixelRatio).toFixed() != window.innerWidth)
-		{
-			i.style.width = window.innerWidth + "px";
-			i.style.height = "";
-			rescaled = true;
-		}
+		i.style.margin = "auto";
+	}
 
-		if((i.height > window.innerHeight) || (i.width > window.innerWidth))
+	if(event) // mouse click
+	{
+		let scale,ex,ey;
+		if (typeof event.y === "undefined") // Firefox
 		{
-			i.style.width = (i.naturalWidth / window.devicePixelRatio).toFixed() + "px";
-			i.style.height = (i.naturalHeight / window.devicePixelRatio).toFixed() + "px";
-			if((i.naturalHeight / window.devicePixelRatio).toFixed() != window.innerHeight)
-			{
-				i.style.height = window.innerHeight + "px";
-				i.style.width = "";
-				rescaled = true;
-			}
+			ex = event.clientX;
+			ey = event.clientY;
 		}
-		changecursor();
+		else
+		{
+			ex = event.x;
+			ey = event.y;
+		}
+		ex -= i.offsetLeft;
+		ey -= i.offsetTop;
+		scale = Math.min((window.innerWidth / i.width), (window.innerHeight / i.height));
+		window.scrollTo((ex / scale) - (window.innerWidth / 2), (ey / scale) - (window.innerHeight / 2));
+	}
+	else // keep scroll progress for Q hotkey
+	{
+		window.scrollTo((i.height / previH) * Math.round(scrollX), (i.width / previW) * Math.round(scrollY));
 	}
 }
 
 var ARC = 0;
 function autoresize()
 {
-	if(i.naturalWidth)
+	if(i.height)
 	{
+		orgImgWidth = Math.round(i.naturalWidth / window.devicePixelRatio);
+		orgImgHeight = Math.round(i.naturalHeight / window.devicePixelRatio);
+		i.style.width = orgImgWidth + "px";
+		i.style.height = orgImgHeight + "px";
 		let title = i.src.substr(i.src.lastIndexOf("/")+1);
 		if(title.indexOf("?") != -1)
 		{
@@ -2842,19 +2848,25 @@ function autoresize()
 		link.rel = 'shortcut icon';
 		link.href = i.src;
 		document.head.appendChild(link);
-		rescaled = true;rescale(0); // to original size in pixels
-		if(cfg_fitWH && i.height > window.innerHeight && i.width > window.innerWidth) // both scrollbars
+		//rescaled = 0;rescale(0); // to original size in pixels
+		let InitRescale = false;
+		if(cfg_fitWH && orgImgHeight > window.innerHeight && orgImgWidth > window.innerWidth) // both scrollbars
 		{
-			rescale(0);
+			InitRescale = true;
 		}
-		else if(cfg_fitB && (i.height > window.innerHeight || i.width > window.innerWidth)) // one scrollbar
+		else if(cfg_fitB && (orgImgHeight > window.innerHeight || orgImgWidth > window.innerWidth)) // one scrollbar
 		{
-			rescale(0);
+			InitRescale = true;
 		}
-		else if(cfg_fitS && i.height <= window.innerHeight && i.width <= window.innerWidth) // no scrollbars
+		else if(cfg_fitS && orgImgHeight <= window.innerHeight && orgImgWidth <= window.innerWidth) // no scrollbars
 		{
-			rescale(0);
+			InitRescale = true;
 		}
+		if(InitRescale)
+		{
+			rescaled = cfg_fitOS ? 1 : 2;
+		}
+		rescale(0);
 		if(cfg_js){eval(cfg_js);}
 	}
 	else // onloadstart event for images doesn't work in Chrome in 2020 kek (bug)
@@ -3035,6 +3047,7 @@ function cfg()
 			GM.setValue("fitWH", q("#hji_cfg_3_fitWH").checked);
 			GM.setValue("fitB", q("#hji_cfg_4_fitB").checked);
 			GM.setValue("fitS", q("#hji_cfg_5_fitS").checked);
+			GM.setValue("fitOS", q("#hji_cfg_7_fitOS").checked);
 			GM.setValue("js", q("#hji_cfg_6_js").value);
 			alert("Configuration Saved");
 			if(q("#hji_cfg_2_bgclr").value){document.body.bgColor = q("#hji_cfg_2_bgclr").value;}else{document.body.removeAttribute("bgColor");}
@@ -3051,7 +3064,7 @@ function cfg()
 		div.style.background = "silver";
 		div.innerHTML = "<b><center>Configuration</center></b><br><input id='hji_cfg_1_direct' type='checkbox'> Open images directly with browser"
 		+ "<br><br><input id='hji_cfg_2_bgclr' type='text' size='6'> Background color (empty = default)"
-		+ "<br><br>Fit to window images:"
+		+ "<br><br>Fit to window images:" + " ( Fill to window instead <input id='hji_cfg_7_fitOS' type='checkbox'> )"
 		+ "<br><br><input id='hji_cfg_3_fitWH' type='checkbox'> Larger than window both vertically and horizontally"
 		+ "<br><br><input id='hji_cfg_4_fitB' type='checkbox'> Larger than window either vertically or horizontally"
 		+ "<br><br><input id='hji_cfg_5_fitS' type='checkbox'> Smaller than window"
@@ -3063,6 +3076,7 @@ function cfg()
 		q("#hji_cfg_3_fitWH").checked = cfg_fitWH;
 		q("#hji_cfg_4_fitB").checked = cfg_fitB;
 		q("#hji_cfg_5_fitS").checked = cfg_fitS;
+		q("#hji_cfg_7_fitOS").checked = cfg_fitOS;
 		q("#hji_cfg_6_js").value = cfg_js;
 		q("#hji_cfg_save").addEventListener("click", saveCfg, true);
 	}
@@ -3088,6 +3102,7 @@ if (typeof GM === 'undefined') // GM3 or native
 			cfg_fitWH = GM.getValue("fitWH", true);
 			cfg_fitB = GM.getValue("fitB", false);
 			cfg_fitS = GM.getValue("fitS", true);
+			cfg_fitOS = GM.getValue("fitOS", true);
 			cfg_js = GM.getValue("js", "");
 		}
 		loadCfg();
@@ -3107,6 +3122,7 @@ else
 		cfg_fitWH = await GM.getValue("fitWH", true);
 		cfg_fitB = await GM.getValue("fitB", false);
 		cfg_fitS = await GM.getValue("fitS", true);
+		cfg_fitOS = await GM.getValue("fitOS", true);
 		cfg_js = await GM.getValue("js", "");
 	}
 	loadCfg();
