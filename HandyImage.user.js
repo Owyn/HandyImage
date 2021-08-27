@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name		Handy Image
-// @version		2021.08.26
+// @version		2021.08.27
 // @author		Owyn
 // @contributor	ubless607, bitst0rm
 // @namespace	handyimage
@@ -2734,18 +2734,11 @@ function makeworld()
 	}
 }
 
-function rescale(event)
+function changeCursor()
 {
-	let previW = i.width;
-	let previH = i.height;
-	document.body.style.overflowX = '';
-	document.body.style.overflowY = '';
-	if(rescaled === 0) // to original
+	if(rescaled === 1) // original
 	{
-		rescaled = 1;
-		i.style.width = orgImgWidth + "px";
-		i.style.height = orgImgHeight + "px";
-		if(orgImgWidth == window.innerWidth || orgImgHeight == window.innerHeight)
+		if(orgImgWidth == window.innerWidth && orgImgHeight == window.innerHeight) // perfect fit, can't resize
 		{
 			i.style.cursor = "";
 		}
@@ -2758,55 +2751,21 @@ function rescale(event)
 			i.style.cursor = "zoom-in";
 		}
 	}
-	else
+	else if(rescaled === 2) // fill
 	{
-		let sidesCMP;
-		if(rescaled === 1) // fill
-		{
-			sidesCMP = (orgImgWidth / orgImgHeight) < (window.innerWidth / window.innerHeight);
-			rescaled = 2;
-			i.style.cursor = "zoom-out";
-		}
-		else // fit
-		{
-			sidesCMP = (orgImgWidth / orgImgHeight) > (window.innerWidth / window.innerHeight);
-			rescaled = 0;
-			i.style.cursor = "zoom-in";
-		}
-		
-		if(orgImgWidth != window.innerWidth && orgImgHeight != window.innerHeight)
-		{
-			if(sidesCMP)
-			{
-				i.style.width = "100%";
-				i.style.height = "";
-				document.body.style.overflowX = 'hidden'; // more browser bugs more workarounds
-			}
-			else
-			{
-				i.style.height = "100%";
-				i.style.width = "";
-				document.body.style.overflowY = 'hidden'; // more browser bugs more workarounds
-			}
-		}
-		else
-		{
-			i.style.cursor = "";
-		}
+		i.style.cursor = "zoom-out";
 	}
-	
-	if(i.height > window.innerHeight) // image pushing out-of-screen browser bug fix
+	else // if(rescaled === 0) // fit
 	{
-		i.style.margin = "0px auto";
+		i.style.cursor = "zoom-in";
 	}
-	else
-	{
-		i.style.margin = "auto";
-	}
+}
 
+function rescale(event)
+{
+	let scale,ex,ey;
 	if(event) // mouse click
 	{
-		let scale,ex,ey;
 		if (typeof event.y === "undefined") // Firefox
 		{
 			ex = event.clientX;
@@ -2819,7 +2778,65 @@ function rescale(event)
 		}
 		ex -= i.offsetLeft;
 		ey -= i.offsetTop;
-		scale = Math.min((window.innerWidth / i.width), (window.innerHeight / i.height));
+	}
+
+	let previW = i.width;
+	let previH = i.height;
+	document.body.style.overflowX = '';
+	document.body.style.overflowY = '';
+	if(rescaled === 0) // to original
+	{
+		rescaled = 1;
+		i.style.width = orgImgWidth + "px";
+		i.style.height = orgImgHeight + "px";
+	}
+	else
+	{
+		let sidesCMP;
+		if(rescaled === 1) // fill
+		{
+			sidesCMP = (orgImgWidth / orgImgHeight) < (window.innerWidth / window.innerHeight);
+			rescaled = 2;
+		}
+		else if(!(orgImgWidth == window.innerWidth && orgImgHeight <= window.innerHeight || orgImgHeight == window.innerHeight && orgImgWidth <= window.innerWidth)) // fit (if not already fit)
+		{
+			sidesCMP = (orgImgWidth / orgImgHeight) > (window.innerWidth / window.innerHeight);
+			rescaled = 0;
+		}
+		else
+		{
+			rescaled = 0;
+			rescale(0);
+			return;
+		}
+
+		if(sidesCMP)
+		{
+			i.style.width = "100%";
+			i.style.height = "";
+			document.body.style.overflowX = 'hidden'; // we don't need unscrollable scrollbars if they appear
+		}
+		else
+		{
+			i.style.height = "100%";
+			i.style.width = "";
+			document.body.style.overflowY = 'hidden'; // we don't need unscrollable scrollbars if they appear
+		}
+	}
+	changeCursor();
+	
+	if(i.height > window.innerHeight) // image pushing out-of-screen browser bug fix
+	{
+		i.style.margin = "0px auto";
+	}
+	else
+	{
+		i.style.margin = "auto";
+	}
+
+	scale = Math.min((window.innerWidth / i.width), (window.innerHeight / i.height));
+	if(event) // mouse click
+	{
 		window.scrollTo((ex / scale) - (window.innerWidth / 2), (ey / scale) - (window.innerHeight / 2));
 	}
 	else // keep scroll progress for Q hotkey
