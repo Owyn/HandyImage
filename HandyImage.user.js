@@ -2803,10 +2803,10 @@ function rescale(event)
 			sidesCMP = (orgImgWidth / orgImgHeight) > (window.innerWidth / window.innerHeight);
 			rescaled = 0;
 		}
-		else
+		else // skip fit, go original
 		{
 			rescaled = 0;
-			rescale(0);
+			rescale(event);
 			return;
 		}
 
