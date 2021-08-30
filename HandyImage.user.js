@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name		Handy Image
-// @version		2021.08.27
+// @version		2021.08.30
 // @author		Owyn
 // @contributor	ubless607, bitst0rm
 // @namespace	handyimage
@@ -903,7 +903,7 @@ var cfg_bgclr ="grey";
 var cfg_fitWH = true;
 var cfg_fitB = false;
 var cfg_fitS = true;
-var cfg_fitOS = true;
+var cfg_fitOS = false;
 var cfg_js;
 var dp = false;
 let orgImgWidth;
@@ -3119,7 +3119,7 @@ if (typeof GM === 'undefined') // GM3 or native
 			cfg_fitWH = GM.getValue("fitWH", true);
 			cfg_fitB = GM.getValue("fitB", false);
 			cfg_fitS = GM.getValue("fitS", true);
-			cfg_fitOS = GM.getValue("fitOS", true);
+			cfg_fitOS = GM.getValue("fitOS", false);
 			cfg_js = GM.getValue("js", "");
 		}
 		loadCfg();
@@ -3139,7 +3139,7 @@ else
 		cfg_fitWH = await GM.getValue("fitWH", true);
 		cfg_fitB = await GM.getValue("fitB", false);
 		cfg_fitS = await GM.getValue("fitS", true);
-		cfg_fitOS = await GM.getValue("fitOS", true);
+		cfg_fitOS = await GM.getValue("fitOS", false);
 		cfg_js = await GM.getValue("js", "");
 	}
 	loadCfg();
