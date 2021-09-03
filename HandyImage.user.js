@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name		Handy Image
-// @version		2021.08.30
+// @version		2021.09.03
 // @author		Owyn
 // @contributor	ubless607, bitst0rm
 // @namespace	handyimage
@@ -2860,12 +2860,13 @@ function autoresize()
 			title = title.substr(0, title.indexOf("?"));
 		}
 		document.title = title + " (" + i.naturalWidth + "x" + i.naturalHeight + ")"; // title
-		let link = protected_createElement('link');
-		link.type = 'image/x-icon';
-		link.rel = 'shortcut icon';
-		link.href = i.src;
-		document.head.appendChild(link);
-		//rescaled = 0;rescale(0); // to original size in pixels
+		if(i.src.indexOf(".gif") === -1) // big lag for big animated favicons
+		{
+			let link = protected_createElement('link');
+			link.rel = 'icon';
+			link.href = i.src;
+			document.head.appendChild(link);
+		}
 		let InitRescale = false;
 		if(cfg_fitWH && orgImgHeight > window.innerHeight && orgImgWidth > window.innerWidth) // both scrollbars
 		{
