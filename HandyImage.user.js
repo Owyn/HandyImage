@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name		Handy Image
-// @version		2021.09.04
+// @version		2021.09.08
 // @author		Owyn
 // @contributor	ubless607, bitst0rm
 // @namespace	handyimage
@@ -585,7 +585,6 @@
 // @match		http://*.dimtus.com/img-*
 // @match		http://*.coreimg.net/*
 // @match		http://sfwimg.com/image/*
-// @match		http://*.imgtiger.org/*/*
 // @match		http://*.img3x.com/image/*
 // @match		http://*.imguniversal.com/*
 // @match		http://*.imagepearl.com/view/*
@@ -840,6 +839,8 @@
 // @match		https://imgbb.com/*
 // @match		*://vfl.ru/fotos/*.html
 // @match		https://*.imgstar.eu/*/*.html
+// @match		https://dewimg.com/*.php
+// @match		https://pictwn.com/*.php
 // ==/UserScript==
 
 "use strict";
@@ -1836,12 +1837,22 @@ function makeworld()
 	case "hostingpics.net":
 		i = q('img[src*="pics/"]');
 		break;
-	case "imgtiger.org":
-		i = q('form');
-		if(i)
+	case "dewimg.com":
+		j = true;
+		f = document.querySelectorAll("input[type='submit']");
+		if(f.length)
 		{
-			i.submit();
-			break;
+			let n;
+			for(n=f.length-1; n >= 0; n--)
+			{
+				if(window.getComputedStyle(f[n]).visibility != "hidden" && f[n].offsetWidth != 0 && f[n].value.indexOf("eply") == -1 && f[n].value.indexOf("Log") == -1)
+				{
+					f[n].removeAttribute("disabled");
+					f[n].click();
+					i = 1;
+					return;
+				}
+			}
 		}
 	case "imgoutlet.pw":
 	case "imgrock.pw":
@@ -1853,6 +1864,7 @@ function makeworld()
 	case "outletpic.com":
 	case "imgviu.com":
 	case "mazpic.com":
+	case "pictwn.com":
 		j = true;
 		dp=true;
 		i = q('img.picview');
