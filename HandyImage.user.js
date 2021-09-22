@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name		Handy Image
-// @version		2021.09.08
+// @version		2021.09.22
 // @author		Owyn
 // @contributor	ubless607, bitst0rm
 // @namespace	handyimage
@@ -207,7 +207,7 @@
 // @match		http://www.fotos-hochladen.net/view*
 // @match		http://simplest-image-hosting.net/*
 // @match		http://jpegbay.com/gallery/*.html
-// @match		http://www.hostpic.org/view*
+// @match		https://www.hostpic.org/view*
 // @match		*://imagik.fr/image/*
 // @match		http://www.image-load.net/show*
 // @match		http://*.sxpics.nl/img-*
