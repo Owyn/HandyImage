@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name		Handy Image
-// @version		2021.10.02
+// @version		2021.10.21
 // @author		Owyn
 // @contributor	ubless607, bitst0rm
 // @namespace	handyimage
@@ -842,6 +842,7 @@
 // @match		https://dewimg.com/*.php
 // @match		https://pictwn.com/*.php
 // @match		https://comment-cdn.9gag.com/image?*
+// @match		https://t.me/*/*
 // ==/UserScript==
 
 "use strict";
@@ -2581,6 +2582,21 @@ function makeworld()
 		break;
 	case "suckmypic.net":
 		i = q('#theImage');
+		break;
+	case "t.me":
+		j = true;
+		if(document.querySelector("body.body_widget_post"))
+		{
+			i = q('.tgme_widget_message_photo_wrap[style*="/file/"]');
+			if(i)
+			{
+				i.src = i.style.backgroundImage.slice(4, -1).replace(/"/g, "");
+				if(window.self !== window.top)
+				{
+					window.top.location.href = window.self.location.href;
+				}
+			}
+		}
 		break;
 	case "comment-cdn.9gag.com":
 		i = q('img');
