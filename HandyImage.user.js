@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name		Handy Image
-// @version		2021.10.21
+// @version		2021.10.22
 // @author		Owyn
 // @contributor	ubless607, bitst0rm
 // @namespace	handyimage
@@ -843,6 +843,7 @@
 // @match		https://pictwn.com/*.php
 // @match		https://comment-cdn.9gag.com/image?*
 // @match		https://t.me/*/*
+// @match		https://telegram.me/*/*
 // ==/UserScript==
 
 "use strict";
@@ -2584,6 +2585,7 @@ function makeworld()
 		i = q('#theImage');
 		break;
 	case "t.me":
+	case "telegram.me":
 		j = true;
 		if(document.querySelector("body.body_widget_post"))
 		{
