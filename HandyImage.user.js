@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name		Handy Image
-// @version		2021.10.22
+// @version		2021.10.23
 // @author		Owyn
 // @contributor	ubless607, bitst0rm
 // @namespace	handyimage
@@ -1214,15 +1214,12 @@ function makeworld()
 		break;
 	case "twitter.com":
 		j = true;
-		//i = document.querySelector('meta[property="og:video:url"]');
-		//if(!i)
-		//{
-			i = q('img[src*="twimg.com/media/"]');
-			if(i)
-			{
-				i.src = i.src.substring(0, i.src.indexOf("&name=")) + '&name=orig';
-			}
-		//}
+		history.replaceState = console.log;
+		i = q('a[href*="/photo/' + Number(window.location.href.at(-1)) + '"] img');
+		if(i)
+		{
+			i.src = i.src.substring(0, i.src.indexOf("&name=")) + '&name=orig';
+		}
 		break;
 	case "m.imgur.com":
 		j = true;
