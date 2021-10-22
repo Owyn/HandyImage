@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name		Handy Image
-// @version		2021.10.23
+// @version		2021.10.24
 // @author		Owyn
 // @contributor	ubless607, bitst0rm
 // @namespace	handyimage
@@ -2586,9 +2586,10 @@ function makeworld()
 		j = true;
 		if(document.querySelector("body.body_widget_post"))
 		{
-			i = q('.tgme_widget_message_photo_wrap[style*="/file/"]');
-			if(i)
+			f = document.querySelectorAll('.tgme_widget_message_photo_wrap[style*="/file/"]');
+			if(f.length === 1)
 			{
+				i = f[0];
 				i.src = i.style.backgroundImage.slice(4, -1).replace(/"/g, "");
 				if(window.self !== window.top)
 				{
