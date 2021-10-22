@@ -1214,7 +1214,7 @@ function makeworld()
 		break;
 	case "twitter.com":
 		j = true;
-		history.replaceState = console.log;
+		unsafeWindow.history.replaceState = unsafeWindow.console.log;
 		i = q('a[href*="/photo/' + Number(window.location.href.at(-1)) + '"] img');
 		if(i)
 		{
