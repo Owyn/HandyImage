@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name		Handy Image
-// @version		2021.10.28
+// @version		2021.10.30
 // @author		Owyn
 // @contributor	ubless607, bitst0rm
 // @namespace	handyimage
@@ -845,6 +845,8 @@
 // @match		https://t.me/*/*
 // @match		https://telegram.me/*/*
 // @match		*://piccy.info/view3/*/*/
+// @match		http://imgmeno.buzz/*
+// @match		https://*.pics4upload.com/*/*.html
 // ==/UserScript==
 
 "use strict";
@@ -2169,6 +2171,7 @@ function makeworld()
 	case "imglina.xyz":
 	case "imgkuiw.xyz":
 	case "imgwang.buzz":
+	case "imgmeno.buzz":
 		i = q('button');
 		dp=true;
 		j = true;
@@ -2436,6 +2439,7 @@ function makeworld()
 	case "picdollar.com":
 	case "fotokiz.com":
 	case "silverpic.com":
+	case "pics4upload.com":
 		i = q("form input[type='submit'][value*='continue to image' i]");
 		j = true;
 		dp = true;
