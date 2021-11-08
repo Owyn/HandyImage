@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name		Handy Image
-// @version		2021.11.05
+// @version		2021.11.08
 // @author		Owyn
 // @contributor	ubless607, bitst0rm
 // @namespace	handyimage
@@ -1787,7 +1787,7 @@ function makeworld()
 			window.location.href = window.location.href.replace("/imga-u/","/imgb-u/");
 			break;
 		}
-		else // if(window.location.href.indexOf("/imgb-u/") != -1)
+		else if(window.location.href.indexOf("/imgb-u/") != -1)
 		{
 			i = q('img[src*="/u/b/"]');
 			break;
