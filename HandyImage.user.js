@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name		Handy Image
-// @version		2021.11.11
+// @version		2021.11.12
 // @author		Owyn
 // @contributor	ubless607, bitst0rm
 // @namespace	handyimage
@@ -849,6 +849,7 @@
 // @match		https://*.pics4upload.com/*/*.html
 // @match		http://imgpekele.buzz/*
 // @match		http://imglqw.buzz/*
+// @match		http://imgyng.buzz/*
 // ==/UserScript==
 
 "use strict";
@@ -2176,6 +2177,7 @@ function makeworld()
 	case "imgmeno.buzz":
 	case "imgpekele.buzz":
 	case "imglqw.buzz":
+	case "imgyng.buzz":
 		i = q('button');
 		dp=true;
 		j = true;
