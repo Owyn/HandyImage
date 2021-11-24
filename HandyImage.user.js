@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name		Handy Image
-// @version		2021.11.12
+// @version		2021.11.24
 // @author		Owyn
 // @contributor	ubless607, bitst0rm
 // @namespace	handyimage
@@ -850,6 +850,8 @@
 // @match		http://imgpekele.buzz/*
 // @match		http://imglqw.buzz/*
 // @match		http://imgyng.buzz/*
+// @match		http://imgbbd.buzz/*
+// @match		https://picmoney.org/image/*
 // ==/UserScript==
 
 "use strict";
@@ -1207,6 +1209,7 @@ function makeworld()
 	case "rintor.space":
 	case "imgbb.com":
 	case "servimg.com":
+	case "picmoney.org":
 		i = document.querySelector('meta[property="og:image"], [name="og:image"]');
 		if(i)
 		{
@@ -2178,6 +2181,7 @@ function makeworld()
 	case "imgpekele.buzz":
 	case "imglqw.buzz":
 	case "imgyng.buzz":
+	case "imgbbd.buzz":
 		i = q('button');
 		dp=true;
 		j = true;
