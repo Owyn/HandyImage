@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name		Handy Image
-// @version		2021.11.24
+// @version		2021.11.28
 // @author		Owyn
 // @contributor	ubless607, bitst0rm
 // @namespace	handyimage
@@ -852,6 +852,7 @@
 // @match		http://imgyng.buzz/*
 // @match		http://imgbbd.buzz/*
 // @match		https://picmoney.org/image/*
+// @match		*://skrinshoter.ru/s/*/*
 // ==/UserScript==
 
 "use strict";
@@ -1210,6 +1211,7 @@ function makeworld()
 	case "imgbb.com":
 	case "servimg.com":
 	case "picmoney.org":
+	case "skrinshoter.ru":
 		i = document.querySelector('meta[property="og:image"], [name="og:image"]');
 		if(i)
 		{
