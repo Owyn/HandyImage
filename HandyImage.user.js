@@ -3191,7 +3191,12 @@ function cfg()
 			alert("Configuration Saved");
 			if(q("#hji_cfg_2_bgclr").value){document.body.bgColor = q("#hji_cfg_2_bgclr").value;}else{document.body.removeAttribute("bgColor");}
 		}
-		if(i && i.src){i.removeEventListener("click", rescale, true);i.removeEventListener("auxclick", rescale, true);}
+		if(i && i.src)
+		{
+			i.removeEventListener("click", rescale, true);
+			i.removeEventListener("auxclick", rescale, true);
+			i.removeEventListener("mousedown", mousedown, true);
+		}
 		window.removeEventListener("keydown", onkeydown, true);
 		document.head.innerHTML = "";
 		document.body.innerHTML = "";
