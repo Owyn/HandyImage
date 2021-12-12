@@ -14,6 +14,7 @@
 <ul>
 <li><strong>WASD</strong> \ <strong>arrows</strong> \ <strong>num4862</strong> - scroll image to right\left\top\bottom accordingly</li>
 <li><strong>Q</strong> \ <strong>num5</strong> \ <strong>click on image</strong> - resize image from full-window-size to original and vica versa</li>
+<li><strong>Tab</strong> \ <strong>Enter</strong> \ <strong>Middle Mouse Click on image</strong> - resize image to fill the window with it or return it to original</li>
 <li><strong>ctrl+space</strong> and <strong>ctrl+shift+space</strong> - simular to scroll of spacebar but horizontally</li>
 <li><strong>P</strong> \ <strong>menu item</strong> in (tamper\grease)monkey icon - open configuration menu</li>
 <li><strong>R</strong> - reload page with script disabled (to see comments etc)</li>
