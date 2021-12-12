@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name		Handy Image
-// @version		2021.11.28
+// @version		2021.12.12
 // @author		Owyn
 // @contributor	ubless607, bitst0rm
 // @namespace	handyimage
@@ -1032,6 +1032,8 @@ function makeimage()
 	i.style.margin = "auto"; // center image
 	document.body.appendChild(i);
 	i.addEventListener("click", rescale, true);
+	i.addEventListener("auxclick", rescale, true);
+	i.addEventListener("mousedown", mousedown, true);
 	window.addEventListener("keydown", onkeydown, true);
 	if(dp){console.warn("you are on a double-page image hosting (probably)");window.addEventListener("beforeunload", onbeforeunload, true);}
 	onVisibilityChange(); // if tab is already active when opening image
@@ -2791,13 +2793,13 @@ function makeworld()
 
 function changeCursor()
 {
-	if(rescaled === 1) // original
+	if(rescaled === 0) // original
 	{
-		if(orgImgWidth == window.innerWidth && orgImgHeight == window.innerHeight) // perfect fit, can't resize
+		if(orgImgWidth == window.innerWidth || orgImgHeight == window.innerHeight) // perfect fit, can't resize
 		{
 			i.style.cursor = "";
 		}
-		else if (orgImgWidth > window.innerWidth && orgImgHeight > window.innerHeight)
+		else if (orgImgWidth > window.innerWidth || orgImgHeight > window.innerHeight)
 		{
 			i.style.cursor = "zoom-out";
 		}
@@ -2808,17 +2810,58 @@ function changeCursor()
 	}
 	else if(rescaled === 2) // fill
 	{
-		i.style.cursor = "zoom-out";
+		if(orgImgWidth == window.innerWidth && orgImgHeight == window.innerHeight) // perfect fit, can't resize
+		{
+			i.style.cursor = "";
+		}
+		else if (orgImgWidth > i.width)
+		{
+			i.style.cursor = "zoom-in";
+		}
+		else
+		{
+			i.style.cursor = "zoom-out";
+		}
 	}
-	else // if(rescaled === 0) // fit
+	else // if(rescaled === 1) // fit
 	{
-		i.style.cursor = "zoom-in";
+		if(orgImgWidth == window.innerWidth || orgImgHeight == window.innerHeight) // perfect fit, can't resize
+		{
+			i.style.cursor = "";
+		}
+		else if (orgImgWidth > i.width)
+		{
+			i.style.cursor = "zoom-in";
+		}
+		else
+		{
+			i.style.cursor = "zoom-out";
+		}
+	}
+
+	if(i.height > window.innerHeight) // image pushing out-of-screen browser bug fix
+	{
+		i.style.margin = "0px auto";
+	}
+	else
+	{
+		i.style.margin = "auto";
 	}
 }
 
-function rescale(event)
+function mousedown(event) // chrome scroll-wheel
 {
-	let scale,ex,ey;
+	if(event.which === 2) // middle mouse
+	{
+		event.preventDefault();
+		event.stopPropagation();
+		return;
+	}
+}
+
+function rescale(event, fill)
+{
+	let ex,ey;
 	if(event) // mouse click
 	{
 		if (typeof event.y === "undefined") // Firefox
@@ -2833,38 +2876,59 @@ function rescale(event)
 		}
 		ex -= i.offsetLeft;
 		ey -= i.offsetTop;
+		if(event.which === 2) // middle mouse
+		{
+			fill = true;
+			event.preventDefault();
+			event.stopPropagation();
+		}
+		else if(event.which === 3) // right mouse
+		{
+			return;
+		}
 	}
 
-	let previW = i.width;
-	let previH = i.height;
 	document.body.style.overflowX = '';
 	document.body.style.overflowY = '';
-	if(rescaled === 0) // to original
+
+	let scrollMax_Y = window.scrollMaxY || ((document.body.scrollHeight || document.documentElement.scrollHeight)- document.documentElement.clientHeight);
+	let scrollMax_X = window.scrollMaxX || ((document.body.scrollWidth || document.documentElement.scrollWidth)- document.documentElement.clientWidth);
+
+	let scrollProgressY = window.pageYOffset / scrollMax_Y; //window.scrollY / window.scrollMaxY; // in Firefox
+	let scrollProgressX = window.pageXOffset / scrollMax_X; //window.scrollX / window.scrollMaxX;
+
+	let sidesCMP;
+	if(fill)
 	{
-		rescaled = 1;
-		i.style.width = orgImgWidth + "px";
-		i.style.height = orgImgHeight + "px";
-	}
-	else
-	{
-		let sidesCMP;
-		if(rescaled === 1) // fill
+		if(rescaled === 2) // to original
+		{
+			rescaled = 0;
+			i.style.width = orgImgWidth + "px";
+			i.style.height = orgImgHeight + "px";
+		}
+		else // fill
 		{
 			sidesCMP = (orgImgWidth / orgImgHeight) < (window.innerWidth / window.innerHeight);
 			rescaled = 2;
 		}
-		else if(!(orgImgWidth == window.innerWidth && orgImgHeight <= window.innerHeight || orgImgHeight == window.innerHeight && orgImgWidth <= window.innerWidth)) // fit (if not already fit)
+	}
+	else
+	{
+		if(rescaled != 0) // to original
+		{
+			rescaled = 0;
+			i.style.width = orgImgWidth + "px";
+			i.style.height = orgImgHeight + "px";
+		}
+		else // fit
 		{
 			sidesCMP = (orgImgWidth / orgImgHeight) > (window.innerWidth / window.innerHeight);
-			rescaled = 0;
+			rescaled = 1;
 		}
-		else // skip fit, go original
-		{
-			rescaled = 0;
-			rescale(event);
-			return;
-		}
+	}
 
+	if(rescaled != 0)
+	{
 		if(sidesCMP)
 		{
 			i.style.width = "100%";
@@ -2878,25 +2942,20 @@ function rescale(event)
 			document.body.style.overflowY = 'hidden'; // we don't need unscrollable scrollbars if they appear
 		}
 	}
-	changeCursor();
-	
-	if(i.height > window.innerHeight) // image pushing out-of-screen browser bug fix
-	{
-		i.style.margin = "0px auto";
-	}
-	else
-	{
-		i.style.margin = "auto";
-	}
 
-	scale = Math.min((window.innerWidth / i.width), (window.innerHeight / i.height));
-	if(event) // mouse click
+	changeCursor();
+
+	if(event && !fill) // left mouse click
 	{
+		let scale = Math.min((window.innerWidth / i.width), (window.innerHeight / i.height));
 		window.scrollTo((ex / scale) - (window.innerWidth / 2), (ey / scale) - (window.innerHeight / 2));
 	}
-	else // keep scroll progress for Q hotkey
+	else // keep percentage scroll progress for KB hotkeys
 	{
-		window.scrollTo((i.height / previH) * Math.round(scrollX), (i.width / previW) * Math.round(scrollY));
+		scrollMax_Y = window.scrollMaxY || ((document.body.scrollHeight || document.documentElement.scrollHeight)- document.documentElement.clientHeight);
+		scrollMax_X = window.scrollMaxX || ((document.body.scrollWidth || document.documentElement.scrollWidth)- document.documentElement.clientWidth);
+
+		window.scrollTo(Math.round(scrollProgressX * scrollMax_X), Math.round(scrollProgressY * scrollMax_Y));
 	}
 }
 
@@ -2934,9 +2993,12 @@ function autoresize()
 		}
 		if(InitRescale)
 		{
-			rescaled = cfg_fitOS ? 1 : 2;
+			rescale(null, cfg_fitOS ? true : false);
 		}
-		rescale(0);
+		else
+		{
+			changeCursor();
+		}
 		if(cfg_js){eval(cfg_js);}
 	}
 	else // onloadstart event for images doesn't work in Chrome in 2020 kek (bug)
@@ -2985,7 +3047,9 @@ if (typeof KeyEvent === "undefined")
 		DOM_VK_NUMPAD5: 101,
 		DOM_VK_NUMPAD6: 102,
 		DOM_VK_NUMPAD8: 104,
-		DOM_VK_F5: 116
+		DOM_VK_F5: 116,
+		DOM_VK_TAB: 9,
+		DOM_VK_ENTER: 13
 	};
 }
 
@@ -3072,9 +3136,14 @@ function onkeydown (b)
 		scroll_space(b.shiftKey, b.ctrlKey);
 		cancelEvent(b);
 		break;
+	case KeyEvent.DOM_VK_TAB:
+	case KeyEvent.DOM_VK_ENTER:
+		rescale(null, true);
+		cancelEvent(b);
+		break;
 	case KeyEvent.DOM_VK_Q:
 	case KeyEvent.DOM_VK_NUMPAD5:
-		rescale(0);
+		rescale(null, false);
 		cancelEvent(b);
 		break;
 	case KeyEvent.DOM_VK_P:
@@ -3122,7 +3191,7 @@ function cfg()
 			alert("Configuration Saved");
 			if(q("#hji_cfg_2_bgclr").value){document.body.bgColor = q("#hji_cfg_2_bgclr").value;}else{document.body.removeAttribute("bgColor");}
 		}
-		if(i && i.src){i.removeEventListener("click", rescale, true);}
+		if(i && i.src){i.removeEventListener("click", rescale, true);i.removeEventListener("auxclick", rescale, true);}
 		window.removeEventListener("keydown", onkeydown, true);
 		document.head.innerHTML = "";
 		document.body.innerHTML = "";
@@ -3131,6 +3200,7 @@ function cfg()
 		div.style.margin = "11% auto";
 		div.style.width = "444px";
 		div.style.border = "solid 1px black";
+		div.style.color = "black";
 		div.style.background = "silver";
 		div.innerHTML = "<b><center>Configuration</center></b><br><input id='hji_cfg_1_direct' type='checkbox'> Open images directly with browser"
 		+ "<br><br><input id='hji_cfg_2_bgclr' type='text' size='6'> Background color (empty = default)"
