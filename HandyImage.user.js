@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name		Handy Image
-// @version		2021.12.12
+// @version		2021.12.13
 // @author		Owyn
 // @contributor	ubless607, bitst0rm
 // @namespace	handyimage
@@ -2894,8 +2894,10 @@ function rescale(event, fill)
 	let scrollMax_Y = window.scrollMaxY || ((document.body.scrollHeight || document.documentElement.scrollHeight)- document.documentElement.clientHeight);
 	let scrollMax_X = window.scrollMaxX || ((document.body.scrollWidth || document.documentElement.scrollWidth)- document.documentElement.clientWidth);
 
-	let scrollProgressY = window.pageYOffset / scrollMax_Y; //window.scrollY / window.scrollMaxY; // in Firefox
-	let scrollProgressX = window.pageXOffset / scrollMax_X; //window.scrollX / window.scrollMaxX;
+	let scrollProgressY = window.pageYOffset / scrollMax_Y;
+	let scrollProgressX = window.pageXOffset / scrollMax_X;
+
+	let unFilling = false;
 
 	let sidesCMP;
 	if(fill)
@@ -2916,6 +2918,7 @@ function rescale(event, fill)
 	{
 		if(rescaled != 0) // to original
 		{
+			if(rescaled === 2) {unFilling = true;}
 			rescaled = 0;
 			i.style.width = orgImgWidth + "px";
 			i.style.height = orgImgHeight + "px";
@@ -2945,7 +2948,7 @@ function rescale(event, fill)
 
 	changeCursor();
 
-	if(event && !fill) // left mouse click
+	if(event && (!unFilling && (!fill || (fill && (!scrollMax_Y && !scrollMax_X))))) // left mouse click (fill-click with no scrollbars and not left click after middle click - else preserve scroll percentage)
 	{
 		let scale = Math.min((window.innerWidth / i.width), (window.innerHeight / i.height));
 		window.scrollTo((ex / scale) - (window.innerWidth / 2), (ey / scale) - (window.innerHeight / 2));
