@@ -5,8 +5,6 @@
 // @contributor	ubless607, bitst0rm
 // @namespace	handyimage
 // @description	Shows just fullsize Image with hotkeys & without pop-ups on many image-hosting sites
-// @updateURL	https://github.com/Owyn/HandyImage/raw/master/HandyImage.user.js
-// @downloadURL	https://github.com/Owyn/HandyImage/raw/master/HandyImage.user.js
 // @homepage	https://github.com/Owyn/HandyImage
 // @supportURL	https://github.com/Owyn/HandyImage/issues
 // @icon		https://images2.imgbox.com/f0/e8/W9zirOUG_o.png
@@ -851,6 +849,7 @@
 // @match		http://imglqw.buzz/*
 // @match		http://imgyng.buzz/*
 // @match		http://imgbbd.buzz/*
+// @match		http://imgwia.buzz/*
 // @match		https://picmoney.org/image/*
 // @match		*://skrinshoter.ru/s/*/*
 // ==/UserScript==
@@ -2186,6 +2185,7 @@ function makeworld()
 	case "imglqw.buzz":
 	case "imgyng.buzz":
 	case "imgbbd.buzz":
+	case "imgwia.buzz":
 		i = q('button');
 		dp=true;
 		j = true;
