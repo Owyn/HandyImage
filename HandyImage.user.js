@@ -851,6 +851,8 @@
 // @match		http://imglqw.buzz/*
 // @match		http://imgyng.buzz/*
 // @match		http://imgbbd.buzz/*
+// @match		http://imgwia.buzz/*
+// @match		http://imgkoc.buzz/*
 // @match		https://picmoney.org/image/*
 // @match		*://skrinshoter.ru/s/*/*
 // ==/UserScript==
@@ -2186,6 +2188,8 @@ function makeworld()
 	case "imglqw.buzz":
 	case "imgyng.buzz":
 	case "imgbbd.buzz":
+	case "imgwia.buzz":
+	case "imgkoc.buzz":
 		i = q('button');
 		dp=true;
 		j = true;
