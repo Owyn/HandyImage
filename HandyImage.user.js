@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name		Handy Image
-// @version		2021.12.16
+// @version		2021.12.17
 // @author		Owyn
 // @contributor	ubless607, bitst0rm
 // @namespace	handyimage
@@ -848,6 +848,8 @@
 // @match		http://imglqw.buzz/*
 // @match		http://imgyng.buzz/*
 // @match		http://imgbbd.buzz/*
+// @match		http://imgwia.buzz/*
+// @match		http://imgkoc.buzz/*
 // @match		https://picmoney.org/image/*
 // @match		*://skrinshoter.ru/s/*/*
 // ==/UserScript==
@@ -2179,6 +2181,8 @@ function makeworld()
 	case "imglqw.buzz":
 	case "imgyng.buzz":
 	case "imgbbd.buzz":
+	case "imgwia.buzz":
+	case "imgkoc.buzz":
 		i = q('button');
 		dp=true;
 		j = true;
