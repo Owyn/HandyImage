@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name		Handy Image
-// @version		2021.12.13
+// @version		2021.12.16
 // @author		Owyn
 // @contributor	ubless607, bitst0rm
 // @namespace	handyimage
@@ -382,11 +382,8 @@
 // @match		https://*.imgflare.com/*/*
 // @match		https://www.imagefap.com/photo/*
 // @match		http://filefap.com/view*
-// @match		*://*.imgur.com/*
-// @exclude		*://imgur.com/*,*
-// @exclude		*://*.imgur.com/*,*
-// @exclude		*://*.imgur.com/*.gifv
-// @exclude		*://*.imgur.com/all*
+// @match		https://imgur.com/*
+// @match		https://m.imgur.com/*
 // @match		https://motherless.com/*
 // @match		http://*.xpic.biz/*/view*
 // @match		https://*.tumblr.com/image/*
@@ -851,8 +848,6 @@
 // @match		http://imglqw.buzz/*
 // @match		http://imgyng.buzz/*
 // @match		http://imgbbd.buzz/*
-// @match		http://imgwia.buzz/*
-// @match		http://imgkoc.buzz/*
 // @match		https://picmoney.org/image/*
 // @match		*://skrinshoter.ru/s/*/*
 // ==/UserScript==
@@ -1242,22 +1237,18 @@ function makeworld()
 		break;
 	case "imgur.com":
 		j = true;
-		i = document.head.querySelector('meta[property="og:image"]');
-		if(i)
+		f = document.querySelectorAll(".image-placeholder,.post-image-placeholder,.image.post-image > img"); // for beta and non-beta
+		if(f.length)
 		{
-			f = document.head.querySelector('meta[property="og:url"]');
-			let v = document.head.querySelector('meta[property="og:video"]');
-			if((f && (f.content.indexOf("/a/") != -1 || f.content.indexOf("/gallery/") != -1) ) || i.content.indexOf("/images/logo") != -1)
+			if(f.length != 1)
 			{
+				console.log("Handy Image: userscript stopped itself from running INTENTIONALLY, - it is not just a single image on a page");
+				i = 1;
 				return;
-			}
-			else if(v)
-			{
-				i.src = v.content.replace('.mp4', '.gif');
 			}
 			else
 			{
-				i.src = i.content;i.src = i.src.split('?')[0];
+				i = f[0];
 			}
 		}
 		break;
@@ -2188,8 +2179,6 @@ function makeworld()
 	case "imglqw.buzz":
 	case "imgyng.buzz":
 	case "imgbbd.buzz":
-	case "imgwia.buzz":
-	case "imgkoc.buzz":
 		i = q('button');
 		dp=true;
 		j = true;
