@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name		Handy Image
-// @version		2021.12.17
+// @version		2021.12.27
 // @author		Owyn
 // @contributor	ubless607, bitst0rm
 // @namespace	handyimage
@@ -852,6 +852,7 @@
 // @match		http://imgkoc.buzz/*
 // @match		https://picmoney.org/image/*
 // @match		*://skrinshoter.ru/s/*/*
+// @match		https://photo-screen.ru/i/*
 // ==/UserScript==
 
 "use strict";
@@ -2439,6 +2440,7 @@ function makeworld()
 	case "sendpic.org":
 	case "imagehaha.com":
 	case "picshick.com":
+	case "photo-screen.ru":
 		i = q('img[src*="/i/"]');
 		break;
 	case "imguniversal.com":
