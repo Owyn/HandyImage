@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name		Handy Image
-// @version		2021.12.27
+// @version		2022.01.01
 // @author		Owyn
 // @contributor	ubless607, bitst0rm
 // @namespace	handyimage
@@ -1024,7 +1024,7 @@ function makeimage()
 	if(cfg_direct === true){unsafeWindow.location.href = i.src;return false;}
 	if(cfg_bgclr){document.body.bgColor = cfg_bgclr;}
 	document.body.style.margin = "0px";
-	document.body.innerHTML = "<style>img { position: absolute; top: 0; right: 0; bottom: 0; left: 0; image-orientation: from-image; }</style>"; // center image
+	document.body.innerHTML = "<style>img { position: absolute; top: 0; right: 0; bottom: 0; left: 0; image-orientation: from-image; background-color: "+cfg_bgclr+";}</style>"; // center image
 	ws();
 	let isrc = i.src;
 	i = protected_createElement("img");
@@ -2934,13 +2934,13 @@ function rescale(event, fill)
 		if(sidesCMP)
 		{
 			i.style.width = "100%";
-			i.style.height = "";
+			i.style.height = "auto";
 			document.body.style.overflowX = 'hidden'; // we don't need unscrollable scrollbars if they appear
 		}
 		else
 		{
 			i.style.height = "100%";
-			i.style.width = "";
+			i.style.width = "auto";
 			document.body.style.overflowY = 'hidden'; // we don't need unscrollable scrollbars if they appear
 		}
 	}
