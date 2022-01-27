@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name		Handy Image
-// @version		2022.01.18
+// @version		2022.01.27
 // @author		Owyn
 // @contributor	ubless607, bitst0rm
 // @namespace	handyimage
@@ -661,7 +661,7 @@
 // @match		http://picpower.ru/*.html
 // @match		http://piccloud.ru/full/
 // @match		http://piccloud.ru/*.html
-// @match		http://imgbase.ru/*/*/
+// @match		https://imgbase.ru/*/*/
 // @match		http://*.sexybabepics.net/img-*.html
 // @match		http://*.sexybabepics.net/x/image/*
 // @match		http://*.imagecrest.com/verify/*
