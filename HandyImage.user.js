@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name		Handy Image
-// @version		2022.01.27
+// @version		2022.01.31
 // @author		Owyn
 // @contributor	ubless607, bitst0rm
 // @namespace	handyimage
@@ -987,7 +987,7 @@ function onVisibilityChange()
 {
 	if (document.visibilityState === 'visible')
 	{
-		if(i)
+		if(i && i.src)
 		{
 			autoresize();
 			window.removeEventListener('visibilitychange', onVisibilityChange);
@@ -1261,10 +1261,20 @@ function makeworld()
 		break;
 	case "instagram.com":
 		j = true;
-		if(find_text_in_scripts('"shortcode_media":{"__typename":"GraphImage"', '"', false))
+		// find_text_in_scripts('"url":"', '"', false, '"image_versions2"')
+		if(q("header"))
 		{
-			//find_text_in_scripts('"display_url":"', '"');
-			i = q('img[decoding]');
+			f = document.querySelectorAll("div[role=button] > div > div img")
+			if(f.length === 1)
+			{
+				i = f[0];
+			}
+			else
+			{
+				console.log("Handy Image: userscript didn't find a single image to fullsize");
+				i = 1;
+				return;
+			}
 		}
 		break;
 	case "flickr.com":
