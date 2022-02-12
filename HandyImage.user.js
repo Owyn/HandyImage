@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name		Handy Image
-// @version		2022.01.31
+// @version		2022.02.02
 // @author		Owyn
 // @contributor	ubless607, bitst0rm
 // @namespace	handyimage
@@ -1575,14 +1575,25 @@ function makeworld()
 					i = document.head.querySelector('link[rel="preload"][as="image"]');
 					if(i)
 					{
-						i.src = i.href;
-						f = i.src.search(/\/f\/[^\/]+\/[^\/]+/);
-						if(f !== -1)
+						i = q('img[src="' + i.href + '"]'); // need to check its cursor now
+						if(i)
 						{
-							i.src = i.src.substring(0,f+i.src.match(/\/f\/[^\/]+\/[^\/]+/)[0].length);
+							if(getComputedStyle(i).cursor === "zoom-in")
+							{
+								f = i.src.search(/\/f\/[^\/]+\/[^\/]+/); // no idea what this code was for
+								if(f !== -1)
+								{
+									i.src = i.src.substring(0,f+i.src.match(/\/f\/[^\/]+\/[^\/]+/)[0].length);
+								}
+								//
+								i.src = i.src.replace('/f/', '/intermediary/f/');
+								console.log("hacked image resolution to maximum");
+							}
+							else
+							{
+								console.log("found very old and small image - no higher resolution to look for")
+							}
 						}
-						i.src = i.src.replace('/f/', '/intermediary/f/');
-						console.log("hacked image resolution to maximum");
 					}
 				}
 				else
