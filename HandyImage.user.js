@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name		Handy Image
-// @version		2022.02.02
+// @version		2022.02.20
 // @author		Owyn
 // @contributor	ubless607, bitst0rm
 // @namespace	handyimage
@@ -494,6 +494,7 @@
 // @match		http://*.imageblinks.com/img-*
 // @match		*://*.gelbooru.com/index.php?page=post&s=view&id=*
 // @match		*://*.youhate.us/index.php?page=post&s=view&id=*
+// @match		https://safebooru.org/index.php?page=post&s=view&id=*
 // @match		https://danbooru.donmai.us/posts/*
 // @match		http://konachan.com/post/show/*
 // @match		http://konachan.net/post/show/*
@@ -1558,6 +1559,7 @@ function makeworld()
 		break;
 	case "gelbooru.com":
 	case "youhate.us":
+	case "safebooru.org":
 		j = true;
 		i = q('a[href*="/images/"][style]');
 		if(i){i.src = i.href;}
