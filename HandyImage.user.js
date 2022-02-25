@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name		Handy Image
-// @version		2022.02.20
+// @version		2022.02.25
 // @author		Owyn
 // @contributor	ubless607, bitst0rm
 // @namespace	handyimage
@@ -1151,6 +1151,7 @@ function makeworld()
 		}
 		break;
 	case "imagebam.com":
+		j = true;
 		i = q("a i.fa-download");
 		if(i)
 		{
@@ -1158,8 +1159,8 @@ function makeworld()
 		}
 		else
 		{
-			i = q("div.container.ads h2 a");
-			if(i){i.click();}
+			i = q("#continue a");
+			if(i && i.parentNode.style.display !== "none"){i.click();}
 		}
 		break;
 	case "directupload.net":
