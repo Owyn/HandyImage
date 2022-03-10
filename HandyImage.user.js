@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name		Handy Image
-// @version		2022.03.11
+// @version		2022.03.12
 // @author		Owyn
 // @contributor	ubless607, bitst0rm
 // @namespace	handyimage
@@ -1216,6 +1216,7 @@ function makeworld()
 	case "servimg.com":
 	case "picmoney.org":
 	case "skrinshoter.ru":
+	case "imgmak.com":
 		i = document.querySelector('meta[property="og:image"], [name="og:image"]');
 		if(i)
 		{
@@ -2407,7 +2408,6 @@ function makeworld()
 	case "fileaimage.com":
 	case "picturescream.com":
 	case "all-poster.ru":
-	case "imgmak.com":
 	case "extraimage.net":
 	case "imagexxx18.com":
 	case "imgvisits.com":
