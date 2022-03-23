@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name		Handy Image
-// @version		2022.03.12
+// @version		2022.03.23
 // @author		Owyn
 // @contributor	ubless607, bitst0rm
 // @namespace	handyimage
@@ -854,6 +854,7 @@
 // @match		https://picmoney.org/image/*
 // @match		*://skrinshoter.ru/s/*/*
 // @match		https://photo-screen.ru/i/*
+// @match		https://postlmg.cc/*
 // ==/UserScript==
 
 "use strict";
@@ -1527,6 +1528,9 @@ function makeworld()
 	case "pimpandhost.com":
 		i = q('div.main-image-wrapper');
 		if(i){i.src = i.dataset.src;}
+		break;
+	case "postlmg.cc":
+		i = q('img#main-image');
 		break;
 	case "sexybabepics.net":
 	case "keepimg.com":
