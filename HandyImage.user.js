@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name		Handy Image
-// @version		2022.03.23
+// @version		2022.03.28
 // @author		Owyn
 // @contributor	ubless607, bitst0rm
 // @namespace	handyimage
@@ -855,6 +855,7 @@
 // @match		*://skrinshoter.ru/s/*/*
 // @match		https://photo-screen.ru/i/*
 // @match		https://postlmg.cc/*
+// @match		https://pasteboard.co/*
 // ==/UserScript==
 
 "use strict";
@@ -1536,6 +1537,9 @@ function makeworld()
 	case "keepimg.com":
 	case "ibb.co":
 		i = document.head.querySelector('meta[property="og:image"]');
+		if(i){i.src = i.content; break;}
+	case "pasteboard.co":
+		i = document.head.querySelector('meta[name="twitter:image"]');
 		if(i){i.src = i.content; break;}
 	case "picsee.net":
 		i = q('a[href*="/upload"]');
