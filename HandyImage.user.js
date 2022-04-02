@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name		Handy Image
-// @version		2022.03.28
+// @version		2022.04.02
 // @author		Owyn
 // @contributor	ubless607, bitst0rm
 // @namespace	handyimage
@@ -856,6 +856,7 @@
 // @match		https://photo-screen.ru/i/*
 // @match		https://postlmg.cc/*
 // @match		https://pasteboard.co/*
+// @match		https://*.picklik.ru/image/*
 // ==/UserScript==
 
 "use strict";
@@ -1219,6 +1220,7 @@ function makeworld()
 	case "picmoney.org":
 	case "skrinshoter.ru":
 	case "imgmak.com":
+	case "picklik.ru":
 		i = document.querySelector('meta[property="og:image"], [name="og:image"]');
 		if(i)
 		{
