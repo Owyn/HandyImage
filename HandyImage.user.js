@@ -857,6 +857,7 @@
 // @match		https://postlmg.cc/*
 // @match		https://pasteboard.co/*
 // @match		https://*.picklik.ru/image/*
+// @match		https://*.jpg.church/img/*
 // ==/UserScript==
 
 "use strict";
@@ -1221,6 +1222,7 @@ function makeworld()
 	case "skrinshoter.ru":
 	case "imgmak.com":
 	case "picklik.ru":
+	case "jpg.church":
 		i = document.querySelector('meta[property="og:image"], [name="og:image"]');
 		if(i)
 		{
