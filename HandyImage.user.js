@@ -1222,7 +1222,7 @@ function makeworld()
 	case "skrinshoter.ru":
 	case "imgmak.com":
 	case "picklik.ru":
-  case "jpg.church":
+	case "jpg.church":
 		i = document.querySelector('meta[property="og:image"], [name="og:image"]');
 		if(i)
 		{
