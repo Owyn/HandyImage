@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name		Handy Image
-// @version		2022.04.02
+// @version		2022.04.04
 // @author		Owyn
 // @contributor	ubless607, bitst0rm
 // @namespace	handyimage
@@ -154,7 +154,7 @@
 // @match		http://sharenxs.com/view*
 // @match		http://sharenxs.com/gallery/*/*
 // @match		http://img4.imagetitan.com/img*
-// @match		http://*.imagenpic.com/*
+// @match		*://*.imagenpic.com/*
 // @match		http://*.stuffed.ru/images*
 // @match		http://*.wstaw.org/w/*
 // @match		http://www.imagesocket.com/photos*
