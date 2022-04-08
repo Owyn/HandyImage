@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name		Handy Image
-// @version		2022.04.04
+// @version		2022.04.08
 // @author		Owyn
 // @contributor	ubless607, bitst0rm
 // @namespace	handyimage
@@ -1303,18 +1303,22 @@ function makeworld()
 		break;
 	case "pixiv.net":
 		j = true;
-		if(!q('div[aria-label="Preview"]'))
+		i = document.head.querySelector('meta[name="preload-data"]');
+		if (i)
 		{
-			i = q('a[href*="/img-original/"]');
-			if(i) 
+			let a = JSON.parse(i.getAttribute('content')).illust;
+			let b = a[Object.keys(a)[0]];
+			if(b.pageCount !== 1)
 			{
-				i.src = i.href;
+				console.warn("Manga page with multiple images, no action taken further");
+				return;
 			}
-		}
-		else
-		{
-			console.warn("Manga page with multiple images, no action taken further");
-			return;
+			else if(b.illustType == 2)
+			{
+				console.warn("Animated ugoira image found, no action taken further");
+				return;
+			}
+			i.src = b.urls.original;
 		}
 		break;
 	case "chan.sankakucomplex.com":
