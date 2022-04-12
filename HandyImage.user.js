@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name		Handy Image
-// @version		2022.04.08
+// @version		2022.04.12
 // @author		Owyn
 // @contributor	ubless607, bitst0rm
 // @namespace	handyimage
@@ -425,7 +425,7 @@
 // @match		*://*.fappic.com/*
 // @match		http://*.imagenimage.com/*/*
 // @match		http://*.adultur.com/img-*
-// @match		http://*.imageshimage.com/*/*
+// @match		https://*.imageshimage.com/*/*
 // @match		http://*.imgswift.com/*/*
 // @match		http://*.imageporn.eu/?v=*
 // @match		https://*.500px.com/photo/*
