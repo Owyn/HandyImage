@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name		Handy Image
-// @version		2022.04.17
+// @version		2022.04.22
 // @author		Owyn
 // @contributor	ubless607, bitst0rm
 // @namespace	handyimage
@@ -1293,13 +1293,11 @@ function makeworld()
 		break;
 	case "artstation.com":
 		j = true;
-		if(document.querySelectorAll("div.artwork").length == 1)
+		f = document.querySelectorAll('a[href*="&dl="]')
+		if(f.length === 1)
 		{
-			i = q('a[href*="&dl="]');
-			if(i)
-			{
-				i.src = i.href;
-			}
+			i = f[0];
+			i.src = i.href;
 		}
 		break;
 	case "pixiv.net":
@@ -2836,7 +2834,7 @@ function changeCursor()
 {
 	if(rescaled === 0) // original
 	{
-		if(orgImgWidth == window.innerWidth || orgImgHeight == window.innerHeight) // perfect fit, can't resize
+		if((orgImgWidth == window.innerWidth && orgImgHeight <= window.innerHeight) || (orgImgWidth <= window.innerWidth && orgImgHeight == window.innerHeight)) // perfect fit on one side, can't resize
 		{
 			i.style.cursor = "";
 		}
@@ -2866,7 +2864,7 @@ function changeCursor()
 	}
 	else // if(rescaled === 1) // fit
 	{
-		if(orgImgWidth == window.innerWidth || orgImgHeight == window.innerHeight) // perfect fit, can't resize
+		if((orgImgWidth == window.innerWidth && orgImgHeight <= window.innerHeight) || (orgImgWidth <= window.innerWidth && orgImgHeight == window.innerHeight)) // perfect fit on one side, can't resize
 		{
 			i.style.cursor = "";
 		}
