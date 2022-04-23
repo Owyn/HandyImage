@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name		Handy Image
-// @version		2022.04.22
+// @version		2022.04.23
 // @author		Owyn
 // @contributor	ubless607, bitst0rm
 // @namespace	handyimage
@@ -3004,7 +3004,7 @@ function rescale(event, fill)
 var ARC = 0;
 function autoresize()
 {
-	if(i.height)
+	if(i.naturalHeight)
 	{
 		orgImgWidth = Math.round(i.naturalWidth / window.devicePixelRatio);
 		orgImgHeight = Math.round(i.naturalHeight / window.devicePixelRatio);
