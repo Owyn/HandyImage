@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name		Handy Image
-// @version		2022.04.23
+// @version		2022.04.27
 // @author		Owyn
 // @contributor	ubless607, bitst0rm
 // @namespace	handyimage
@@ -859,6 +859,7 @@
 // @match		https://pasteboard.co/*
 // @match		https://*.picklik.ru/image/*
 // @match		https://*.jpg.church/img/*
+// @match		https://rule34.us/index.php?r=posts/view&id=*
 // ==/UserScript==
 
 "use strict";
@@ -1562,17 +1563,19 @@ function makeworld()
 			i.click();
 		}
 		break;
+	case "rule34.us":
+		j = true;
+		i = q('a[href*="/images/"]');
+		if(i){i.src = i.href;}
+		break;
 	case "rule34hentai.net":
+	case "danbooru.donmai.us":
 		i = q('a[download]');
 		if(i){i.src = i.href;}
 		break;
 	case "e621.net":
 		j = true;
 		i = q('div#image-download-link a');
-		if(i){i.src = i.href;}
-		break;
-	case "danbooru.donmai.us":
-		i = q('a[download]');
 		if(i){i.src = i.href;}
 		break;
 	case "gelbooru.com":
