@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name		Handy Image
-// @version		2022.04.27
+// @version		2022.05.07
 // @author		Owyn
 // @contributor	ubless607, bitst0rm
 // @namespace	handyimage
@@ -860,6 +860,7 @@
 // @match		https://*.picklik.ru/image/*
 // @match		https://*.jpg.church/img/*
 // @match		https://rule34.us/index.php?r=posts/view&id=*
+// @match		https://*.imghub.ru/i/*
 // ==/UserScript==
 
 "use strict";
@@ -1225,6 +1226,7 @@ function makeworld()
 	case "imgmak.com":
 	case "picklik.ru":
 	case "jpg.church":
+	case "imghub.ru":
 		i = document.querySelector('meta[property="og:image"], [name="og:image"]');
 		if(i)
 		{
@@ -1966,7 +1968,6 @@ function makeworld()
 	case "0img.ws":
 	case "pixs.cx":
 	case "kropic.com":
-	case "imgstar.eu":
 		j = true;
 		dp=true;
 		f = document.querySelectorAll("input[type='submit']");
@@ -2496,6 +2497,7 @@ function makeworld()
 	case "fotokiz.com":
 	case "silverpic.com":
 	case "pics4upload.com":
+	case "imgstar.eu":
 		i = q("form input[type='submit'][value*='continue to image' i]");
 		j = true;
 		dp = true;
