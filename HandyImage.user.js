@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name		Handy Image
-// @version		2022.05.07
+// @version		2022.05.17
 // @author		Owyn
 // @contributor	ubless607, bitst0rm
 // @namespace	handyimage
@@ -599,7 +599,6 @@
 // @match		http://*.svetmonet.ru/*.html
 // @match		http://*.svetmonet.ru/full/
 // @match		http://*.imgpix.net/*
-// @match		https://*.imgzulu.com/img-*
 // @match		http://*.freeimagehostin.com/img-*
 // @match		http://www.mixbase.net/gallery/image.*
 // @match		https://www.adultimages.xyz/*/image*.html
@@ -2052,7 +2051,6 @@ function makeworld()
 	case "olivepix.com":
 		i = q('img[src*="view/"]');
 		break;
-	case "imgking.co":
 	case "imgkings.com":
 		i = q('img[src*="uploads/"]');
 		if(i)	break;
@@ -2189,12 +2187,10 @@ function makeworld()
 		}
 		i = q('img[src*="' + iurl + '/upload/"].centred');
 		break;
-	case "imgzulu.com":
-		i = q('button[type="submit"]');
-		dp=true;
-		if(i)
+	case "imgking.co":
+		if(window.location.href.indexOf("img-") != -1)
 		{
-			i.click();
+			window.location.href = window.location.href.replace("img-","img2-");
 			break;
 		}
 		i = q('img[src*="' + iurl + '/upload/"]');
