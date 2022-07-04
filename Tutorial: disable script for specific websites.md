@@ -1,22 +1,10 @@
-for **TamperMonkey** (Chrome):
+for **TamperMonkey** extension (available for Firefox && Chrome and all others Chromium-based browsers):
 
-1)  
-![](http://i.imgur.com/2SQDXMc.png)  
-then click the name of userscript (HandyImage)
+1)  click the TamperMonkey extension icon
+2)  click the arrow next to the userscript (HandyImage)
 
-2)  
-![](http://i.imgur.com/OCO5Tsv.png)
+![](https://user-images.githubusercontent.com/1309656/157714102-b181bdc2-db8a-4eb3-86d3-b472b011ab43.png)
 
-(or enter website manually)  
-  
+3)  choose "exclude site"
 
-for **GreaseMonkey** (FireFox):
-
-1)  
-![](http://i.imgur.com/ZLX4S3A.png)  
-then click the options button of userscript (HandyImage)
-
-2)  
-![](http://i.imgur.com/KYdFeIr.png)  
-you can only enter website manually in GreaseMonkey.  
-*make two entries as shown if you want it to exclude both main domain and all subdomains (and `www.` one)
+![](https://user-images.githubusercontent.com/1309656/157713453-ff6b9b2c-5048-4640-a3b2-20b72d15278e.png)

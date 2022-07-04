@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name		Handy Image
-// @version		2021.12.13
+// @version		2022.05.17
 // @author		Owyn
 // @contributor	ubless607, bitst0rm
 // @namespace	handyimage
@@ -34,6 +34,7 @@
 // @match		*://fastpic.ru/view*
 // @match		*://fastpic.ru/fullview*
 // @match		https://fastpic.org/view/*
+// @match		https://fastpic.org/fullview/*
 // @match		*://pixhost.to/show/*
 // @match		http://*.picpicture.com/image/*
 // @match		http://*.pic5you.ru/*/*/
@@ -119,7 +120,7 @@
 // @match		http://www.uploadhouse.com/view*
 // @match		http://*.dumpt.com/img/view*
 // @match		http://imagezilla.net/show/*
-// @match		http://*.imageup.ru/img*
+// @match		https://*.imageup.ru/img*
 // @match		http://*.casimages.com/photos/*/*/*
 // @match		http://*.casimages.com/img*
 // @match		http://*.cyberpics.net/p*
@@ -154,7 +155,7 @@
 // @match		http://sharenxs.com/view*
 // @match		http://sharenxs.com/gallery/*/*
 // @match		http://img4.imagetitan.com/img*
-// @match		http://*.imagenpic.com/*
+// @match		*://*.imagenpic.com/*
 // @match		http://*.stuffed.ru/images*
 // @match		http://*.wstaw.org/w/*
 // @match		http://www.imagesocket.com/photos*
@@ -382,11 +383,8 @@
 // @match		https://*.imgflare.com/*/*
 // @match		https://www.imagefap.com/photo/*
 // @match		http://filefap.com/view*
-// @match		*://*.imgur.com/*
-// @exclude		*://imgur.com/*,*
-// @exclude		*://*.imgur.com/*,*
-// @exclude		*://*.imgur.com/*.gifv
-// @exclude		*://*.imgur.com/all*
+// @match		https://imgur.com/*
+// @match		https://m.imgur.com/*
 // @match		https://motherless.com/*
 // @match		http://*.xpic.biz/*/view*
 // @match		https://*.tumblr.com/image/*
@@ -428,7 +426,7 @@
 // @match		*://*.fappic.com/*
 // @match		http://*.imagenimage.com/*/*
 // @match		http://*.adultur.com/img-*
-// @match		http://*.imageshimage.com/*/*
+// @match		https://*.imageshimage.com/*/*
 // @match		http://*.imgswift.com/*/*
 // @match		http://*.imageporn.eu/?v=*
 // @match		https://*.500px.com/photo/*
@@ -497,6 +495,7 @@
 // @match		http://*.imageblinks.com/img-*
 // @match		*://*.gelbooru.com/index.php?page=post&s=view&id=*
 // @match		*://*.youhate.us/index.php?page=post&s=view&id=*
+// @match		https://safebooru.org/index.php?page=post&s=view&id=*
 // @match		https://danbooru.donmai.us/posts/*
 // @match		http://konachan.com/post/show/*
 // @match		http://konachan.net/post/show/*
@@ -600,7 +599,6 @@
 // @match		http://*.svetmonet.ru/*.html
 // @match		http://*.svetmonet.ru/full/
 // @match		http://*.imgpix.net/*
-// @match		https://*.imgzulu.com/img-*
 // @match		http://*.freeimagehostin.com/img-*
 // @match		http://www.mixbase.net/gallery/image.*
 // @match		https://www.adultimages.xyz/*/image*.html
@@ -664,7 +662,7 @@
 // @match		http://picpower.ru/*.html
 // @match		http://piccloud.ru/full/
 // @match		http://piccloud.ru/*.html
-// @match		http://imgbase.ru/*/*/
+// @match		https://imgbase.ru/*/*/
 // @match		http://*.sexybabepics.net/img-*.html
 // @match		http://*.sexybabepics.net/x/image/*
 // @match		http://*.imagecrest.com/verify/*
@@ -855,6 +853,13 @@
 // @match		http://imgkoc.buzz/*
 // @match		https://picmoney.org/image/*
 // @match		*://skrinshoter.ru/s/*/*
+// @match		https://photo-screen.ru/i/*
+// @match		https://postlmg.cc/*
+// @match		https://pasteboard.co/*
+// @match		https://*.picklik.ru/image/*
+// @match		https://*.jpg.church/img/*
+// @match		https://rule34.us/index.php?r=posts/view&id=*
+// @match		https://*.imghub.ru/i/*
 // ==/UserScript==
 
 "use strict";
@@ -989,7 +994,7 @@ function onVisibilityChange()
 {
 	if (document.visibilityState === 'visible')
 	{
-		if(i)
+		if(i && i.src)
 		{
 			autoresize();
 			window.removeEventListener('visibilitychange', onVisibilityChange);
@@ -1026,7 +1031,7 @@ function makeimage()
 	if(cfg_direct === true){unsafeWindow.location.href = i.src;return false;}
 	if(cfg_bgclr){document.body.bgColor = cfg_bgclr;}
 	document.body.style.margin = "0px";
-	document.body.innerHTML = "<style>img { position: absolute; top: 0; right: 0; bottom: 0; left: 0; image-orientation: from-image; }</style>"; // center image
+	document.body.innerHTML = "<style>img { position: absolute; top: 0; right: 0; bottom: 0; left: 0; image-orientation: from-image; background-color: "+cfg_bgclr+";}</style>"; // center image
 	ws();
 	let isrc = i.src;
 	i = protected_createElement("img");
@@ -1152,6 +1157,7 @@ function makeworld()
 		}
 		break;
 	case "imagebam.com":
+		j = true;
 		i = q("a i.fa-download");
 		if(i)
 		{
@@ -1159,8 +1165,8 @@ function makeworld()
 		}
 		else
 		{
-			i = q("div.container.ads h2 a");
-			if(i){i.click();}
+			i = q("#continue a");
+			if(i && i.parentNode.style.display !== "none"){i.click();}
 		}
 		break;
 	case "directupload.net":
@@ -1216,6 +1222,10 @@ function makeworld()
 	case "servimg.com":
 	case "picmoney.org":
 	case "skrinshoter.ru":
+	case "imgmak.com":
+	case "picklik.ru":
+	case "jpg.church":
+	case "imghub.ru":
 		i = document.querySelector('meta[property="og:image"], [name="og:image"]');
 		if(i)
 		{
@@ -1242,22 +1252,18 @@ function makeworld()
 		break;
 	case "imgur.com":
 		j = true;
-		i = document.head.querySelector('meta[property="og:image"]');
-		if(i)
+		f = document.querySelectorAll(".image-placeholder,.post-image-placeholder,.image.post-image > img"); // for beta and non-beta
+		if(f.length)
 		{
-			f = document.head.querySelector('meta[property="og:url"]');
-			let v = document.head.querySelector('meta[property="og:video"]');
-			if((f && (f.content.indexOf("/a/") != -1 || f.content.indexOf("/gallery/") != -1) ) || i.content.indexOf("/images/logo") != -1)
+			if(f.length != 1)
 			{
+				console.log("Handy Image: userscript stopped itself from running INTENTIONALLY, - it is not just a single image on a page");
+				i = 1;
 				return;
-			}
-			else if(v)
-			{
-				i.src = v.content.replace('.mp4', '.gif');
 			}
 			else
 			{
-				i.src = i.content;i.src = i.src.split('?')[0];
+				i = f[0];
 			}
 		}
 		break;
@@ -1267,10 +1273,20 @@ function makeworld()
 		break;
 	case "instagram.com":
 		j = true;
-		if(find_text_in_scripts('"shortcode_media":{"__typename":"GraphImage"', '"', false))
+		// find_text_in_scripts('"url":"', '"', false, '"image_versions2"')
+		if(q("header"))
 		{
-			//find_text_in_scripts('"display_url":"', '"');
-			i = q('img[decoding]');
+			f = document.querySelectorAll("div[role=button] > div > div img")
+			if(f.length === 1)
+			{
+				i = f[0];
+			}
+			else
+			{
+				console.log("Handy Image: userscript didn't find a single image to fullsize");
+				i = 1;
+				return;
+			}
 		}
 		break;
 	case "flickr.com":
@@ -1279,29 +1295,31 @@ function makeworld()
 		break;
 	case "artstation.com":
 		j = true;
-		if(document.querySelectorAll("div.artwork").length == 1)
+		f = document.querySelectorAll('a[href*="&dl="]')
+		if(f.length === 1)
 		{
-			i = q('a[href*="&dl="]');
-			if(i)
-			{
-				i.src = i.href;
-			}
+			i = f[0];
+			i.src = i.href;
 		}
 		break;
 	case "pixiv.net":
 		j = true;
-		if(!q('div[aria-label="Preview"]'))
+		i = document.head.querySelector('meta[name="preload-data"]');
+		if (i)
 		{
-			i = q('a[href*="/img-original/"]');
-			if(i) 
+			let a = JSON.parse(i.getAttribute('content')).illust;
+			let b = a[Object.keys(a)[0]];
+			if(b.pageCount !== 1)
 			{
-				i.src = i.href;
+				console.warn("Manga page with multiple images, no action taken further");
+				return;
 			}
-		}
-		else
-		{
-			console.warn("Manga page with multiple images, no action taken further");
-			return;
+			else if(b.illustType == 2)
+			{
+				console.warn("Animated ugoira image found, no action taken further");
+				return;
+			}
+			i.src = b.urls.original;
 		}
 		break;
 	case "chan.sankakucomplex.com":
@@ -1377,6 +1395,7 @@ function makeworld()
 		break;
 	case "imagecrest.com":
 	case "imagepearl.com":
+	case "imageup.ru":
 		i = q('#verify2');
 		if(i)
 		{
@@ -1520,10 +1539,16 @@ function makeworld()
 		i = q('div.main-image-wrapper');
 		if(i){i.src = i.dataset.src;}
 		break;
+	case "postlmg.cc":
+		i = q('img#main-image');
+		break;
 	case "sexybabepics.net":
 	case "keepimg.com":
 	case "ibb.co":
 		i = document.head.querySelector('meta[property="og:image"]');
+		if(i){i.src = i.content; break;}
+	case "pasteboard.co":
+		i = document.head.querySelector('meta[name="twitter:image"]');
 		if(i){i.src = i.content; break;}
 	case "picsee.net":
 		i = q('a[href*="/upload"]');
@@ -1539,7 +1564,13 @@ function makeworld()
 			i.click();
 		}
 		break;
+	case "rule34.us":
+		j = true;
+		i = q('a[href*="/images/"]');
+		if(i){i.src = i.href;}
+		break;
 	case "rule34hentai.net":
+	case "danbooru.donmai.us":
 		i = q('a[download]');
 		if(i){i.src = i.href;}
 		break;
@@ -1548,12 +1579,9 @@ function makeworld()
 		i = q('div#image-download-link a');
 		if(i){i.src = i.href;}
 		break;
-	case "danbooru.donmai.us":
-		i = q('a[download]');
-		if(i){i.src = i.href;}
-		break;
 	case "gelbooru.com":
 	case "youhate.us":
+	case "safebooru.org":
 		j = true;
 		i = q('a[href*="/images/"][style]');
 		if(i){i.src = i.href;}
@@ -1571,14 +1599,25 @@ function makeworld()
 					i = document.head.querySelector('link[rel="preload"][as="image"]');
 					if(i)
 					{
-						i.src = i.href;
-						f = i.src.search(/\/f\/[^\/]+\/[^\/]+/);
-						if(f !== -1)
+						i = q('img[src="' + i.href + '"]'); // need to check its cursor now
+						if(i)
 						{
-							i.src = i.src.substring(0,f+i.src.match(/\/f\/[^\/]+\/[^\/]+/)[0].length);
+							if(getComputedStyle(i).cursor === "zoom-in")
+							{
+								f = i.src.search(/\/f\/[^\/]+\/[^\/]+/); // no idea what this code was for
+								if(f !== -1)
+								{
+									i.src = i.src.substring(0,f+i.src.match(/\/f\/[^\/]+\/[^\/]+/)[0].length);
+								}
+								//
+								i.src = i.src.replace('/f/', '/intermediary/f/');
+								console.log("hacked image resolution to maximum");
+							}
+							else
+							{
+								console.log("found very old and small image - no higher resolution to look for")
+							}
 						}
-						i.src = i.src.replace('/f/', '/intermediary/f/');
-						console.log("hacked image resolution to maximum");
 					}
 				}
 				else
@@ -1602,6 +1641,7 @@ function makeworld()
 		}
 		break;
 	case "furaffinity.net":
+		j = true;
 		i = q('div.download a');
 		if(i){i.src = i.href;}
 		break;
@@ -1724,7 +1764,6 @@ function makeworld()
 	case "yankoimages.net":
 	case "picturedip.com":
 	case "imagezilla.net":
-	case "imageup.ru":
 	case "hotchyx.com":
 	case "imagehousing.com":
 	case "cubeupload.com":
@@ -1928,7 +1967,6 @@ function makeworld()
 	case "0img.ws":
 	case "pixs.cx":
 	case "kropic.com":
-	case "imgstar.eu":
 		j = true;
 		dp=true;
 		f = document.querySelectorAll("input[type='submit']");
@@ -2013,7 +2051,6 @@ function makeworld()
 	case "olivepix.com":
 		i = q('img[src*="view/"]');
 		break;
-	case "imgking.co":
 	case "imgkings.com":
 		i = q('img[src*="uploads/"]');
 		if(i)	break;
@@ -2150,12 +2187,10 @@ function makeworld()
 		}
 		i = q('img[src*="' + iurl + '/upload/"].centred');
 		break;
-	case "imgzulu.com":
-		i = q('button[type="submit"]');
-		dp=true;
-		if(i)
+	case "imgking.co":
+		if(window.location.href.indexOf("img-") != -1)
 		{
-			i.click();
+			window.location.href = window.location.href.replace("img-","img2-");
 			break;
 		}
 		i = q('img[src*="' + iurl + '/upload/"]');
@@ -2388,7 +2423,6 @@ function makeworld()
 	case "fileaimage.com":
 	case "picturescream.com":
 	case "all-poster.ru":
-	case "imgmak.com":
 	case "extraimage.net":
 	case "imagexxx18.com":
 	case "imgvisits.com":
@@ -2446,6 +2480,7 @@ function makeworld()
 	case "sendpic.org":
 	case "imagehaha.com":
 	case "picshick.com":
+	case "photo-screen.ru":
 		i = q('img[src*="/i/"]');
 		break;
 	case "imguniversal.com":
@@ -2458,6 +2493,7 @@ function makeworld()
 	case "fotokiz.com":
 	case "silverpic.com":
 	case "pics4upload.com":
+	case "imgstar.eu":
 		i = q("form input[type='submit'][value*='continue to image' i]");
 		j = true;
 		dp = true;
@@ -2799,7 +2835,7 @@ function changeCursor()
 {
 	if(rescaled === 0) // original
 	{
-		if(orgImgWidth == window.innerWidth || orgImgHeight == window.innerHeight) // perfect fit, can't resize
+		if((orgImgWidth == window.innerWidth && orgImgHeight <= window.innerHeight) || (orgImgWidth <= window.innerWidth && orgImgHeight == window.innerHeight)) // perfect fit on one side, can't resize
 		{
 			i.style.cursor = "";
 		}
@@ -2829,7 +2865,7 @@ function changeCursor()
 	}
 	else // if(rescaled === 1) // fit
 	{
-		if(orgImgWidth == window.innerWidth || orgImgHeight == window.innerHeight) // perfect fit, can't resize
+		if((orgImgWidth == window.innerWidth && orgImgHeight <= window.innerHeight) || (orgImgWidth <= window.innerWidth && orgImgHeight == window.innerHeight)) // perfect fit on one side, can't resize
 		{
 			i.style.cursor = "";
 		}
@@ -2939,13 +2975,13 @@ function rescale(event, fill)
 		if(sidesCMP)
 		{
 			i.style.width = "100%";
-			i.style.height = "";
+			i.style.height = "auto";
 			document.body.style.overflowX = 'hidden'; // we don't need unscrollable scrollbars if they appear
 		}
 		else
 		{
 			i.style.height = "100%";
-			i.style.width = "";
+			i.style.width = "auto";
 			document.body.style.overflowY = 'hidden'; // we don't need unscrollable scrollbars if they appear
 		}
 	}
@@ -2969,7 +3005,7 @@ function rescale(event, fill)
 var ARC = 0;
 function autoresize()
 {
-	if(i.height)
+	if(i.naturalHeight)
 	{
 		orgImgWidth = Math.round(i.naturalWidth / window.devicePixelRatio);
 		orgImgHeight = Math.round(i.naturalHeight / window.devicePixelRatio);
