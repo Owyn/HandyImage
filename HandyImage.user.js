@@ -851,7 +851,7 @@
 // @match		http://imgbbd.buzz/*
 // @match		http://imgwia.buzz/*
 // @match		http://imgkoc.buzz/*
-// @match               http://imgowk.buzz/*
+// @match		http://imgowk.buzz/*
 // @match		https://picmoney.org/image/*
 // @match		*://skrinshoter.ru/s/*/*
 // @match		https://photo-screen.ru/i/*
