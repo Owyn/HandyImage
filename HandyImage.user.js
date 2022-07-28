@@ -865,6 +865,7 @@
 // @match		https://*.jpg.church/img/*
 // @match		https://rule34.us/index.php?r=posts/view&id=*
 // @match		https://*.imghub.ru/i/*
+// @match		https://imgeza.buzz/*
 // ==/UserScript==
 
 "use strict";
