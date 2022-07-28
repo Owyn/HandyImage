@@ -2236,6 +2236,7 @@ function makeworld()
 	case "imgoiu.buzz":
 	case "imgbew.buzz":
 	case "imguo.buzz":
+	case "imgeza.buzz":
 		i = q('button');
 		dp=true;
 		j = true;
