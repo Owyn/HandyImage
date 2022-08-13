@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name		Handy Image
-// @version		2022.07.26
+// @version		2022.08.13
 // @author		Owyn
 // @contributor	ubless607, bitst0rm
 // @namespace	handyimage
@@ -450,7 +450,7 @@
 // @match		http://*.imgtab.net/*
 // @match		http://*.kephost.com/image/*
 // @match		http://i.ruspotting.net/image/*
-// @match		http://*.gifyu.com/image/*
+// @match		https://*.gifyu.com/image/*
 // @match		https://*.picr.ws/image/*
 // @match		https://www.linkmypic.com/image/*
 // @match		http://celebimg.com/image/*
