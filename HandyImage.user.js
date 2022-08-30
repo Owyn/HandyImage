@@ -866,6 +866,7 @@
 // @match		https://rule34.us/index.php?r=posts/view&id=*
 // @match		https://*.imghub.ru/i/*
 // @match		https://imgeza.buzz/*
+// @match		http://mrlzqoe.buzz/*
 // ==/UserScript==
 
 "use strict";
@@ -2237,6 +2238,7 @@ function makeworld()
 	case "imgbew.buzz":
 	case "imguo.buzz":
 	case "imgeza.buzz":
+	case "mrlzqoe.buzz":
 		i = q('button');
 		dp=true;
 		j = true;
