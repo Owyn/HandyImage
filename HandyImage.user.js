@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name		Handy Image
-// @version		2022.08.13
+// @version		2022.10.01
 // @author		Owyn
 // @contributor	ubless607, bitst0rm
 // @namespace	handyimage
@@ -561,6 +561,7 @@
 // @match		http://*.imgsmile.com/?v=*
 // @match		http://*.balkanelite.org/MultiHoster/view*
 // @match		https://twitter.com/*/photo/*
+// @match		https://mobile.twitter.com/*/photo/*
 // @match		http://*.icezap.com/img-*
 // @match		*://*.rapidimg.net/img-*
 // @match		http://foxyimg.link/*
@@ -867,6 +868,7 @@
 // @match		https://*.imghub.ru/i/*
 // @match		https://imgeza.buzz/*
 // @match		http://mrlzqoe.buzz/*
+// @match		https://radikal.host/i/*
 // ==/UserScript==
 
 "use strict";
@@ -1233,6 +1235,7 @@ function makeworld()
 	case "picklik.ru":
 	case "jpg.church":
 	case "imghub.ru":
+	case "radikal.host":
 		i = document.querySelector('meta[property="og:image"], [name="og:image"]');
 		if(i)
 		{
@@ -1244,6 +1247,7 @@ function makeworld()
 			if(i){i.src = i.href;}
 		}
 		break;
+	case "mobile.twitter.com":
 	case "twitter.com":
 		j = true;
 		unsafeWindow.history.replaceState = unsafeWindow.console.log;
