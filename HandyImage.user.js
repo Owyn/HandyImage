@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name		Handy Image
-// @version		2022.10.01
+// @version		2022.10.04
 // @author		Owyn
 // @contributor	ubless607, bitst0rm
 // @namespace	handyimage
@@ -435,7 +435,7 @@
 // @match		http://*.photobucket.com/user/*/media/*.htm*
 // @match		https://www.imgshots.com/img*
 // @match		https://www.imgshots.com/show/*
-// @match		http://*.3xplanet.com/view*
+// @match		https://*.3xplanet.com/view*
 // @match		http://*.imgmega.com/*.html
 // @match		*://img.yt/img-*
 // @match		http://*.payforpic.ru/*/*/
@@ -1764,6 +1764,7 @@ function makeworld()
 	case "10.imageleon.com":
 	case "img4.imagetitan.com":
 	case "ninjaimages.com":
+	case "3xplanet.com":
 		i = q('img[onload*="scale"]');
 		break;
 	case "bild.me":
@@ -2280,9 +2281,6 @@ function makeworld()
 		}
 	case "imghit.com":
 		i = q('img[alt="image"]');
-		break;
-	case "3xplanet.com":
-		i = q('img[alt="picContent"]');
 		break;
 	case "subirimagenes.com":
 		i = q('input[type="submit"]');
