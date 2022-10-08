@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name		Handy Image
-// @version		2022.10.04
+// @version		2022.10.08
 // @author		Owyn
 // @contributor	ubless607, bitst0rm
 // @namespace	handyimage
@@ -1263,7 +1263,7 @@ function makeworld()
 		break;
 	case "imgur.com":
 		j = true;
-		f = document.querySelectorAll(".image-placeholder,.post-image-placeholder,.image.post-image > img"); // for beta and non-beta
+		f = document.querySelectorAll(".image-placeholder:not([src*='maxwidth=']),.post-image-placeholder,.image.post-image > img"); // for beta and non-beta
 		if(f.length)
 		{
 			if(f.length != 1)
