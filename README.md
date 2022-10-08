@@ -23,7 +23,7 @@
 
 <h3>Supported browsers:</h3>
 <img src=https://upload.wikimedia.org/wikipedia/commons/thumb/a/a5/Google_Chrome_icon_%28September_2014%29.svg/180px-Google_Chrome_icon_%28September_2014%29.svg.png><img src=https://upload.wikimedia.org/wikipedia/commons/thumb/e/e7/Mozilla_Firefox_3.5_logo_256.png/180px-Mozilla_Firefox_3.5_logo_256.png>
-You need a userscript manager to install and use the script, e.g. <a href="https://www.tampermonkey.net/">TamperMonkey</a>
+You need a userscript manager to install and use the script, e.g. <a href="https://violentmonkey.github.io/">ViolentMonkey</a> or <a href="https://www.tampermonkey.net/">TamperMonkey</a>
 
 <h3>How to request a new imagehost support or fix for old one</h3>
 <p>Please, if you would like to request a new site or report a non-working one, please, remember to write at least ONE image URL where the script should work, then head right to <strong><a href="https://github.com/Owyn/HandyImage/issues">Feedback section</a></strong>.</p>
