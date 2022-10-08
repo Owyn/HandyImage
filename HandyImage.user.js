@@ -1263,7 +1263,7 @@ function makeworld()
 		break;
 	case "imgur.com":
 		j = true;
-		f = document.querySelectorAll(".image-placeholder:not([src*='maxwidth=']),.post-image-placeholder,.image.post-image > img"); // for beta and non-beta
+		f = document.querySelectorAll(".image-placeholder:not([src*='maxwidth=']),.post-image-placeholder:not([src*='maxwidth=']),.image.post-image > img:not([src*='maxwidth='])"); // for beta and non-beta
 		if(f.length)
 		{
 			if(f.length != 1)
