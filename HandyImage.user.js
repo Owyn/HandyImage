@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name		Handy Image
-// @version		2022.10.09
+// @version		2022.10.10
 // @author		Owyn
 // @contributor	ubless607, bitst0rm
 // @namespace	handyimage
@@ -1263,7 +1263,7 @@ function makeworld()
 		break;
 	case "imgur.com":
 		j = true;
-		f = document.querySelectorAll(".image-placeholder:not([src*='maxwidth=']),.post-image-placeholder:not([src*='maxwidth=']),.image.post-image > img:not([src*='maxwidth='])"); // for beta and non-beta
+		f = document.querySelectorAll(".image-placeholder,.post-image-placeholder,.image.post-image > img"); // for beta and non-beta
 		if(f.length)
 		{
 			if(f.length != 1)
@@ -1275,6 +1275,12 @@ function makeworld()
 			else
 			{
 				i = f[0];
+				let fi;
+				if((fi = i.src.indexOf("_d.webp")) != -1)
+				{
+					i.src = i.src.substr(0, fi) + ".jpg"; // png files will be named jpg too here
+					console.log("Handy Image: imgur replaced a LQ preview image with original one");
+				}
 			}
 		}
 		break;
