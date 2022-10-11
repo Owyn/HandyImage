@@ -18,12 +18,12 @@
 <li><strong>ctrl+space</strong> and <strong>ctrl+shift+space</strong> - simular to scroll of spacebar but horizontally</li>
 <li><strong>P</strong> \ <strong>menu item</strong> in (tamper\grease)monkey icon - open configuration menu</li>
 <li><strong>R</strong> - reload page with script disabled (to see comments etc)</li>
-<li><strong>ctrl + S</strong> - save image (same as when you right click the image and press save as)(you have to press it twice in Chrome)</li>
+<li><strong>ctrl + S</strong> - save image (same as when you right click the image and press save as), on booru sites it automatically puts artist and character tags into saved filename, you can also autosave your favorite tags of choice in names, use custom JS setting for that, e.g. put <code>grab_fav_tags = ['solo', 'animal ears', 'horse']</code> at top there</li>
 </ul>
 
 <h3>Supported browsers:</h3>
 <img src=https://upload.wikimedia.org/wikipedia/commons/thumb/a/a5/Google_Chrome_icon_%28September_2014%29.svg/180px-Google_Chrome_icon_%28September_2014%29.svg.png><img src=https://upload.wikimedia.org/wikipedia/commons/thumb/e/e7/Mozilla_Firefox_3.5_logo_256.png/180px-Mozilla_Firefox_3.5_logo_256.png>
-You need a userscript manager to install and use the script, e.g. <a href="https://www.tampermonkey.net/">TamperMonkey</a>
+You need a userscript manager to install and use the script, e.g. <a href="https://www.tampermonkey.net/">TamperMonkey</a> (might not work in other less-pupular and less-maintained ones)
 
 <h3>How to request a new imagehost support or fix for old one</h3>
 <p>Please, if you would like to request a new site or report a non-working one, please, remember to write at least ONE image URL where the script should work, then head right to <strong><a href="https://github.com/Owyn/HandyImage/issues">Feedback section</a></strong>.</p>
