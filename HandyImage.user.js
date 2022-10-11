@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name		Handy Image
-// @version		2022.10.10
+// @version		2022.10.11
 // @author		Owyn
 // @contributor	ubless607, bitst0rm
 // @namespace	handyimage
@@ -17,6 +17,7 @@
 // @grant		GM_unregisterMenuCommand
 // @grant		GM_getValue
 // @grant		GM_setValue
+// @grant		GM_download
 // @grant		unsafeWindow
 // @match		https://gist.github.com/Owyn/8553d7953d948228e312
 // @match		https://www.imagebam.com/image/*
@@ -943,6 +944,7 @@ var timeout = 1000;
 var FireFox = ((navigator.userAgent.indexOf('Firefox') != -1) ? true : false);
 var i;
 var j;
+var filename = "";
 var ext_list = ['webm', 'mp4', 'ogg', 'zip', '7z', 'rar', 'psd', 'swf', 'doc', 'rtf', 'pdf'];
 var iurl = window.location.hostname;
 if(!iurl.indexOf("www."))
@@ -1223,7 +1225,6 @@ function makeworld()
 	case "moreimage.pw":
 	case "lookimg.com":
 	case "subefotos.com":
-	case "rule34.xxx":
 	case "imgcredit.xyz":
 	case "imgbox.eu":
 	case "rintor.space":
@@ -1343,6 +1344,7 @@ function makeworld()
 		i = q('a[itemprop="contentUrl"]');
 		if(i)
 		{
+			use_booru_tags_in_dl_filename();
 			i.src = i.href;
 		}
 		break;
@@ -1581,27 +1583,28 @@ function makeworld()
 			i.click();
 		}
 		break;
+	case "rule34.xxx":
 	case "rule34.us":
 		j = true;
 		i = q('a[href*="/images/"]');
-		if(i){i.src = i.href;}
+		if(i){use_booru_tags_in_dl_filename(); i.src = i.href;}
 		break;
 	case "rule34hentai.net":
 	case "danbooru.donmai.us":
 		i = q('a[download]');
-		if(i){i.src = i.href;}
+		if(i){use_booru_tags_in_dl_filename(); i.src = i.href;}
 		break;
 	case "e621.net":
 		j = true;
 		i = q('div#image-download-link a');
-		if(i){i.src = i.href;}
+		if(i){use_booru_tags_in_dl_filename(); i.src = i.href;}
 		break;
 	case "gelbooru.com":
 	case "youhate.us":
 	case "safebooru.org":
 		j = true;
 		i = q('a[href*="/images/"][style]');
-		if(i){i.src = i.href;}
+		if(i){use_booru_tags_in_dl_filename(); i.src = i.href;}
 		break;
 	case "deviantart.com":
 		j = true;
@@ -2820,10 +2823,10 @@ function makeworld()
 		{
 			unsafeWindow.open = null;
 			unsafeWindow.onbeforeunload = null;
-			if(!FireFox)
+			if(!FireFox && !filename)
 			{
 				delete document.write;
-				document.write('<html><head></head><body></body></html>');
+				document.write('<html><head></head><body></body></html>'); // this kills GM_download in Chrome
 				document.close();
 				window.addEventListener("visibilitychange", onVisibilityChange); // window works but not unSafewindow
 			}
@@ -2851,6 +2854,51 @@ function makeworld()
 		if(tb){clearTimeout(tb);}
 		tb = setTimeout(function() { console.warn("Didnt find image, waited " + timeout + " ms to try again. page: " + window.location.href); tb=0; timeout*=2; i=0; makeworld(); }, timeout);
 	}
+}
+
+var grab_fav_tags = []; // set in Custom JS
+function use_booru_tags_in_dl_filename()
+{
+	let artist = document.querySelectorAll(".tag-type-artist > a, .artist-tag > a, a.search-tag[itemprop='author']");
+	for(let n = 0; n < artist.length; n++)
+	{
+		if(artist[n].text == "?") continue;
+		filename = "by " + artist[n].text.replaceAll(" ", "_") + " " + filename;
+	}
+
+	let character = document.querySelectorAll(".tag-type-character > a, .character-tag > a, .character-tag-list a.search-tag");
+	for(let n = 0; n < character.length; n++)
+	{
+		if(character[n].text == "?") continue;
+		filename = character[n].text.replaceAll(" ", "_") + " " + filename;
+	}
+
+	/*if(character.length === 0)
+	{
+		let franchise = document.querySelectorAll(".tag-type-copyright > a, .copyright-tag > a, .copyright-tag-list a.search-tag");
+		for(let n = 0; n < franchise.length; n++)
+		{
+			if(franchise[n].text == "?") continue;
+			filename = franchise[n].text.replaceAll(" ", "_") + " " + filename;
+			break; // just one cuz else it'd get long
+		}
+	}*/
+
+	if(cfg_js && cfg_js.indexOf("grab_fav_tags") != -1) {grab_fav_tags = cfg_js.substring(cfg_js.indexOf("[")+1,cfg_js.indexOf("]")).replaceAll(" ", "").replaceAll("_", " ").replaceAll(/\n/g, '').replaceAll("'", "").replaceAll('"','').split(",");} // load custom tags // also bypass CSP
+	console.info(grab_fav_tags);
+	if(grab_fav_tags.length)
+	{
+		let general_tags = document.querySelectorAll(".tag-type-general > a, .general-tag > a, .general-tag-list > .tag-type-0 > a.search-tag, a.search-tag");
+		for(let n = 0; n < general_tags.length; n++)
+		{
+			if(general_tags[n].text == "?") continue;
+			if(grab_fav_tags.indexOf(general_tags[n].text) != -1)
+			{
+				filename = general_tags[n].text.replaceAll(" ", "_") + " " +filename;
+			}
+		}
+	}
+	filename = filename.replaceAll("_(", " ("); // but not the space before franchise
 }
 
 function changeCursor()
@@ -3038,7 +3086,9 @@ function autoresize()
 		{
 			title = title.substr(0, title.indexOf("?"));
 		}
+		title = decodeURIComponent(title);
 		document.title = title + " (" + i.naturalWidth + "x" + i.naturalHeight + ")"; // title
+		filename = filename + title;
 		/*let link = protected_createElement('link');
 		link.rel = 'icon';
 		link.href = i.src;
@@ -3157,12 +3207,14 @@ function onkeydown (b)
 		cancelEvent(b);
 		if(i)
 		{
-			a = protected_createElement("a");
-			a.href = i.src;
-			a.download = ""; // HTML5 // auto-click works in FF now but not in Chrome
-			document.body.appendChild(a);
-			a.click();
-			document.body.removeChild(a);
+			let details = {	url: i.src,
+							name: filename,
+							saveAs: true}
+			console.log('downloading...');
+	        details.onload = () => { console.log('download complete'); };
+	        details.ontimeout = () => { console.error('download timeout'); };
+	        details.onerror = (error, errorDetails) => { console.error('download failed', error, errorDetails); };
+	        GM_download(details);
 		}
 		return;
 	}
