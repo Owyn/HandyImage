@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name		Handy Image
-// @version		2022.10.11
+// @version		2022.10.12
 // @author		Owyn
 // @contributor	ubless607, bitst0rm
 // @namespace	handyimage
@@ -3208,6 +3208,7 @@ function onkeydown (b)
 		if(i)
 		{
 			let details = {	url: i.src,
+							headers: {'Referer': unsafeWindow.location.href},
 							name: filename,
 							saveAs: true}
 			console.log('downloading...');
