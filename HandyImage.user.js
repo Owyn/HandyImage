@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name		Handy Image
-// @version		2022.10.12
+// @version		2022.10.15
 // @author		Owyn
 // @contributor	ubless607, bitst0rm
 // @namespace	handyimage
@@ -1008,11 +1008,11 @@ function onVisibilityChange()
 		if(i && i.src)
 		{
 			autoresize();
-			window.removeEventListener('visibilitychange', onVisibilityChange);
+			unsafeWindow.removeEventListener('visibilitychange', onVisibilityChange);
 		}
 	}
 }
-window.addEventListener("visibilitychange", onVisibilityChange);
+unsafeWindow.addEventListener("visibilitychange", onVisibilityChange);
 
 unsafeWindow.addEventListener = protected_addEventListener;
 unsafeWindow.document.addEventListener = protected_addEventListener;
@@ -1052,8 +1052,8 @@ function makeimage()
 	i.addEventListener("click", rescale, true);
 	i.addEventListener("auxclick", rescale, true);
 	i.addEventListener("mousedown", mousedown, true);
-	window.addEventListener("keydown", onkeydown, true);
-	if(dp){console.warn("you are on a double-page image hosting (probably)");window.addEventListener("beforeunload", onbeforeunload, true);}
+	unsafeWindow.addEventListener("keydown", onkeydown, true);
+	if(dp){console.warn("you are on a double-page image hosting (probably)");unsafeWindow.addEventListener("beforeunload", onbeforeunload, true);}
 	onVisibilityChange(); // if tab is already active when opening image
 }
 
@@ -2813,7 +2813,7 @@ function makeworld()
 			console.warn("Cloudflare MITM guard page.  Stopping.");
 			return false;
 		}
-		window.addEventListener('beforescriptexecute', onscript, true);
+		unsafeWindow.addEventListener('beforescriptexecute', onscript, true);
 	}
 	//
 	if(i && i.src)
@@ -2845,7 +2845,7 @@ function makeworld()
 		ws();
 		document.head.innerHTML = "";
 		sanitize();
-		window.removeEventListener('beforescriptexecute', onscript, true);
+		unsafeWindow.removeEventListener('beforescriptexecute', onscript, true);
 		makeimage();
 	}
 	else // try again
@@ -3284,11 +3284,11 @@ function onkeydown (b)
 		}
 		else
 		{
-			window.removeEventListener("beforeunload", onbeforeunload, true);
+			unsafeWindow.removeEventListener("beforeunload", onbeforeunload, true);
 		}
 		break;
 	case KeyEvent.DOM_VK_F5:
-		window.removeEventListener("beforeunload", onbeforeunload, true);
+		unsafeWindow.removeEventListener("beforeunload", onbeforeunload, true);
 		break;
 	}
 }
@@ -3315,7 +3315,7 @@ function cfg()
 			i.removeEventListener("auxclick", rescale, true);
 			i.removeEventListener("mousedown", mousedown, true);
 		}
-		window.removeEventListener("keydown", onkeydown, true);
+		unsafeWindow.removeEventListener("keydown", onkeydown, true);
 		document.head.innerHTML = "";
 		document.body.innerHTML = "";
 		ws();
