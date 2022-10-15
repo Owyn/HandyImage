@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name		Handy Image
-// @version		2022.10.15
+// @version		2022.10.16
 // @author		Owyn
 // @contributor	ubless607, bitst0rm
 // @namespace	handyimage
@@ -1007,8 +1007,8 @@ function onVisibilityChange()
 	{
 		if(i && i.src)
 		{
-			autoresize();
 			unsafeWindow.removeEventListener('visibilitychange', onVisibilityChange);
+			autoresize();
 		}
 	}
 }
