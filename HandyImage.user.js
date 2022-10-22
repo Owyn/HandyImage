@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name		Handy Image
-// @version		2022.10.16
+// @version		2022.10.22
 // @author		Owyn
 // @contributor	ubless607, bitst0rm
 // @namespace	handyimage
@@ -3207,6 +3207,7 @@ function onkeydown (b)
 		cancelEvent(b);
 		if(i)
 		{
+			filename = filename.replace(/[/\\?%*:|"<>]/g, '_'); // characters you can't use in filenames
 			let details = {	url: i.src,
 							headers: {'Referer': unsafeWindow.location.href},
 							name: filename,
