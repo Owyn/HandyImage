@@ -798,7 +798,7 @@
 // @match		http://imgao.xyz/*
 // @match		http://imgweng.xyz/*
 // @match		http://imgkes.xyz/*
-// @match		http://imgair.net/*
+// @match		*://imgair.net/*
 // @match		https://*.imgsto.com/*/*.html
 // @match		https://*.pics4you.net/*/*.html
 // @match		https://vipr.im/*
