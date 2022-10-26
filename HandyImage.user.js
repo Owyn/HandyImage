@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name		Handy Image
-// @version		2022.10.22
+// @version		2022.10.25
 // @author		Owyn
 // @contributor	ubless607, bitst0rm
 // @namespace	handyimage
@@ -798,7 +798,7 @@
 // @match		http://imgao.xyz/*
 // @match		http://imgweng.xyz/*
 // @match		http://imgkes.xyz/*
-// @match		*://imgair.net/*
+// @match		https://imgair.net/*
 // @match		https://*.imgsto.com/*/*.html
 // @match		https://*.pics4you.net/*/*.html
 // @match		https://vipr.im/*
@@ -2888,7 +2888,7 @@ function use_booru_tags_in_dl_filename()
 	console.info(grab_fav_tags);
 	if(grab_fav_tags.length)
 	{
-		let general_tags = document.querySelectorAll(".tag-type-general > a, .general-tag > a, .general-tag-list > .tag-type-0 > a.search-tag, a.search-tag");
+		let general_tags = document.querySelectorAll(".tag-type-general > a, .tag-type-genre > a, .general-tag > a, .general-tag-list > .tag-type-0 > a.search-tag, a.search-tag");
 		for(let n = 0; n < general_tags.length; n++)
 		{
 			if(general_tags[n].text == "?") continue;
