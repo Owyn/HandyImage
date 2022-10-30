@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name		Handy Image
-// @version		2022.10.25
+// @version		2022.10.30
 // @author		Owyn
 // @contributor	ubless607, bitst0rm
 // @namespace	handyimage
@@ -19,6 +19,7 @@
 // @grant		GM_setValue
 // @grant		GM_download
 // @grant		unsafeWindow
+// @sandbox		JavaScript
 // @match		https://gist.github.com/Owyn/8553d7953d948228e312
 // @match		https://www.imagebam.com/image/*
 // @match		https://www.imagebam.com/view/*
@@ -945,7 +946,9 @@ var FireFox = ((navigator.userAgent.indexOf('Firefox') != -1) ? true : false);
 var i;
 var j;
 var filename = "";
-var ext_list = ['webm', 'mp4', 'ogg', 'zip', '7z', 'rar', 'psd', 'swf', 'doc', 'rtf', 'pdf'];
+var is_video = false;
+var ext_list_not_image = ['zip', '7z', 'rar', 'psd', 'swf', 'doc', 'rtf', 'pdf'];
+var ext_list_video = ['webm', 'mp4', 'avi', 'flv', 'ogg'];
 var iurl = window.location.hostname;
 if(!iurl.indexOf("www."))
 {
@@ -1042,16 +1045,24 @@ function makeimage()
 	if(cfg_direct === true){unsafeWindow.location.href = i.src;return false;}
 	if(cfg_bgclr){document.body.bgColor = cfg_bgclr;}
 	document.body.style.margin = "0px";
-	document.body.innerHTML = "<style>img { position: absolute; top: 0; right: 0; bottom: 0; left: 0; image-orientation: from-image; background-color: "+cfg_bgclr+";}</style>"; // center image
+	document.body.innerHTML = "<style>" + (is_video? "video" : "img") +" { position: absolute; top: 0; right: 0; bottom: 0; left: 0; image-orientation: from-image; background-color: "+cfg_bgclr+";}</style>"; // center image
 	ws();
 	let isrc = i.src;
-	i = protected_createElement("img");
+	i = protected_createElement(is_video? "video" : "img");
 	i.src = isrc;
 	i.style.margin = "auto"; // center image
 	document.body.appendChild(i);
-	i.addEventListener("click", rescale, true);
-	i.addEventListener("auxclick", rescale, true);
-	i.addEventListener("mousedown", mousedown, true);
+	if(!is_video)
+	{
+		i.addEventListener("click", rescale, true);
+		i.addEventListener("auxclick", rescale, true);
+		i.addEventListener("mousedown", mousedown, true);
+	}
+	else
+	{
+		i.controls = true;
+		i.loop = true;
+	}
 	unsafeWindow.addEventListener("keydown", onkeydown, true);
 	if(dp){console.warn("you are on a double-page image hosting (probably)");unsafeWindow.addEventListener("beforeunload", onbeforeunload, true);}
 	onVisibilityChange(); // if tab is already active when opening image
@@ -2835,7 +2846,12 @@ function makeworld()
 				document.replaceChild(document.importNode(document.implementation.createHTMLDocument("").documentElement, true), document.documentElement);
 			}
 		}
-		if (ext_list.indexOf(i.src.split('.').pop().split('?')[0].toLowerCase()) >= 0)
+		if (ext_list_video.indexOf(i.src.split('.').pop().split('?')[0].toLowerCase()) >= 0)
+		{
+			console.warn("Found a video");
+			is_video = true;
+		}
+		else if (ext_list_not_image.indexOf(i.src.split('.').pop().split('?')[0].toLowerCase()) >= 0)
 		{
 			console.warn("What we found is not an image");
 			i = null;
@@ -2903,6 +2919,8 @@ function use_booru_tags_in_dl_filename()
 
 function changeCursor()
 {
+	if(is_video) return;
+
 	if(rescaled === 0) // original
 	{
 		if((orgImgWidth == window.innerWidth && orgImgHeight <= window.innerHeight) || (orgImgWidth <= window.innerWidth && orgImgHeight == window.innerHeight)) // perfect fit on one side, can't resize
@@ -3075,10 +3093,10 @@ function rescale(event, fill)
 var ARC = 0;
 function autoresize()
 {
-	if(i.naturalHeight)
+	if((!is_video && i.naturalHeight) || i.videoHeight)
 	{
-		orgImgWidth = Math.round(i.naturalWidth / window.devicePixelRatio);
-		orgImgHeight = Math.round(i.naturalHeight / window.devicePixelRatio);
+		orgImgWidth = Math.round((is_video ? i.videoWidth : i.naturalWidth) / window.devicePixelRatio);
+		orgImgHeight = Math.round((is_video ? i.videoHeight : i.naturalHeight) / window.devicePixelRatio);
 		i.style.width = orgImgWidth + "px";
 		i.style.height = orgImgHeight + "px";
 		let title = i.src.substr(i.src.lastIndexOf("/")+1);
@@ -3087,7 +3105,14 @@ function autoresize()
 			title = title.substr(0, title.indexOf("?"));
 		}
 		title = decodeURIComponent(title);
-		document.title = title + " (" + i.naturalWidth + "x" + i.naturalHeight + ")"; // title
+		if(is_video)
+		{
+			document.title = title + " (" + i.videoWidth + "x" + i.videoHeight + ")";
+		}
+		else
+		{
+			document.title = title + " (" + i.naturalWidth + "x" + i.naturalHeight + ")";
+		}
 		filename = filename + title;
 		/*let link = protected_createElement('link');
 		link.rel = 'icon';
@@ -3252,7 +3277,18 @@ function onkeydown (b)
 		cancelEvent(b);
 		break;
 	case KeyEvent.DOM_VK_SPACE:
-		scroll_space(b.shiftKey, b.ctrlKey);
+		if(!is_video)
+		{
+			scroll_space(b.shiftKey, b.ctrlKey);
+		}
+		else if(i.paused || i.ended)
+		{
+			i.play();
+		}
+		else
+		{
+			i.pause();
+		}
 		cancelEvent(b);
 		break;
 	case KeyEvent.DOM_VK_TAB:
