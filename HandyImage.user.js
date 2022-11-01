@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name		Handy Image
-// @version		2022.10.30
+// @version		2022.11.01
 // @author		Owyn
 // @contributor	ubless607, bitst0rm
 // @namespace	handyimage
@@ -2919,6 +2919,15 @@ function use_booru_tags_in_dl_filename()
 
 function changeCursor()
 {
+	if(i.height > window.innerHeight) // image pushing out-of-screen browser bug fix
+	{
+		i.style.margin = "0px auto";
+	}
+	else
+	{
+		i.style.margin = "auto";
+	}
+
 	if(is_video) return;
 
 	if(rescaled === 0) // original
@@ -2965,15 +2974,6 @@ function changeCursor()
 		{
 			i.style.cursor = "zoom-out";
 		}
-	}
-
-	if(i.height > window.innerHeight) // image pushing out-of-screen browser bug fix
-	{
-		i.style.margin = "0px auto";
-	}
-	else
-	{
-		i.style.margin = "auto";
 	}
 }
 
