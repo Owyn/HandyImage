@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name		Handy Image
-// @version		2022.11.01
+// @version		2022.11.03
 // @author		Owyn
 // @contributor	ubless607, bitst0rm
 // @namespace	handyimage
@@ -940,12 +940,13 @@ var dp = false;
 let orgImgWidth;
 let orgImgHeight;
 var rescaled = 0;
-var tb;
+var tb = 0;
 var timeout = 1000;
 var FireFox = ((navigator.userAgent.indexOf('Firefox') != -1) ? true : false);
 var i;
 var j;
 var filename = "";
+var skip_by = 5;
 var is_video = false;
 var ext_list_not_image = ['zip', '7z', 'rar', 'psd', 'swf', 'doc', 'rtf', 'pdf'];
 var ext_list_video = ['webm', 'mp4', 'avi', 'flv', 'ogg'];
@@ -974,7 +975,10 @@ function sanitize() // lol I'm such a hacker
 	let lasttask = unsafeWindow.setTimeout(function() {},0);
 	for(let n = lasttask; n > 0; n--)
 	{
-		unsafeWindow.clearTimeout(n);
+		if(n !== tb)
+		{
+			unsafeWindow.clearTimeout(n);
+		}
 	}
 	removeAllListeners();
 }
@@ -2899,22 +2903,32 @@ function use_booru_tags_in_dl_filename()
 			break; // just one cuz else it'd get long
 		}
 	}*/
+	let general_tags = document.querySelectorAll(".tag-type-general > a, .tag-type-genre > a, .general-tag > a, .general-tag-list > .tag-type-0 > a.search-tag, a.search-tag");
 
-	if(cfg_js && cfg_js.indexOf("grab_fav_tags") != -1) {grab_fav_tags = cfg_js.substring(cfg_js.indexOf("[")+1,cfg_js.indexOf("]")).replaceAll(" ", "").replaceAll("_", " ").replaceAll(/\n/g, '').replaceAll("'", "").replaceAll('"','').split(",");} // load custom tags // also bypass CSP
-	console.info(grab_fav_tags);
-	if(grab_fav_tags.length)
+	function do_grab_fav_tags()
 	{
-		let general_tags = document.querySelectorAll(".tag-type-general > a, .tag-type-genre > a, .general-tag > a, .general-tag-list > .tag-type-0 > a.search-tag, a.search-tag");
-		for(let n = 0; n < general_tags.length; n++)
+		if(typeof cfg_js !== "string")
 		{
-			if(general_tags[n].text == "?") continue;
-			if(grab_fav_tags.indexOf(general_tags[n].text) != -1)
+			console.info("waiting for async setting loading of cfg_js: " + (typeof cfg_js));
+			tb = unsafeWindow.setTimeout(do_grab_fav_tags, 2); // unsafeWindow or the timeoutID gonna be wrong
+			return;
+		}
+		if(cfg_js && cfg_js.indexOf("grab_fav_tags") != -1) {grab_fav_tags = cfg_js.substring(cfg_js.indexOf("[")+1,cfg_js.indexOf("]")).replaceAll(" ", "").replaceAll("_", " ").replaceAll(/\n/g, '').replaceAll("'", "").replaceAll('"','').split(",");} // load custom tags // also bypass CSP
+		console.info(grab_fav_tags);
+		if(grab_fav_tags.length)
+		{
+			for(let n = 0; n < general_tags.length; n++)
 			{
-				filename = general_tags[n].text.replaceAll(" ", "_") + " " +filename;
+				if(general_tags[n].text == "?") continue;
+				if(grab_fav_tags.indexOf(general_tags[n].text) != -1)
+				{
+					filename = general_tags[n].text.replaceAll(" ", "_") + " " +filename;
+				}
 			}
 		}
+		filename = filename.replaceAll("_(", " ("); // but not the space before franchise
 	}
-	filename = filename.replaceAll("_(", " ("); // but not the space before franchise
+	do_grab_fav_tags();
 }
 
 function changeCursor()
@@ -3257,14 +3271,28 @@ function onkeydown (b)
 	case KeyEvent.DOM_VK_RIGHT:
 	case KeyEvent.DOM_VK_D:
 	case KeyEvent.DOM_VK_NUMPAD6:
-		window.scrollBy(by, 0);
-		cancelEvent(b);
+		if(!is_video)
+		{
+			window.scrollBy(by, 0);
+			cancelEvent(b);
+		}
+		else
+		{
+			i.currentTime += skip_by;
+		}
 		break;
 	case KeyEvent.DOM_VK_LEFT:
 	case KeyEvent.DOM_VK_A:
 	case KeyEvent.DOM_VK_NUMPAD4:
-		window.scrollBy(by * -1, 0);
-		cancelEvent(b);
+		if(!is_video)
+		{
+			window.scrollBy(by * -1, 0);
+			cancelEvent(b);
+		}
+		else
+		{
+			i.currentTime -= skip_by;
+		}
 		break;
 	case KeyEvent.DOM_VK_W:
 	case KeyEvent.DOM_VK_NUMPAD8:
