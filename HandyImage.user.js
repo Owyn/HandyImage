@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name		Handy Image
-// @version		2022.11.03
+// @version		2022.11.04
 // @author		Owyn
 // @contributor	ubless607, bitst0rm
 // @namespace	handyimage
@@ -503,6 +503,7 @@
 // @match		http://konachan.net/post/show/*
 // @match		https://yande.re/post/show/*
 // @match		https://chan.sankakucomplex.com/*post/show/*
+// @match		https://idol.sankakucomplex.com/*post/show/*
 // @match		https://yande.re/post/show/*
 // @match		http://www.zerochan.net/*
 // @match		https://*.imgrock.pw/*.php
@@ -1355,6 +1356,7 @@ function makeworld()
 			i.src = b.urls.original;
 		}
 		break;
+	case "idol.sankakucomplex.com":
 	case "chan.sankakucomplex.com":
 		i = q('a[itemprop="contentUrl"]');
 		if(i)
