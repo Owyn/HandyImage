@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name		Handy Image
-// @version		2022.11.04
+// @version		2022.11.05
 // @author		Owyn
 // @contributor	ubless607, bitst0rm
 // @namespace	handyimage
@@ -2935,7 +2935,7 @@ function use_booru_tags_in_dl_filename()
 
 function changeCursor()
 {
-	if(i.height > window.innerHeight) // image pushing out-of-screen browser bug fix
+	if(i.scrollHeight > window.innerHeight) // image pushing out-of-screen browser bug fix
 	{
 		i.style.margin = "0px auto";
 	}
