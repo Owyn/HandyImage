@@ -34,14 +34,14 @@ You need a userscript manager to install and use the script, e.g. <a href="https
 <br><em>** Or if you are a developer yourself and would like to help add new hosts, you can <a href="https://github.com/Owyn/HandyImage/blob/master/Tutorial:%20adding%20new%20imagehosts%20support.md">submit code edits</a> at <a href="https://github.com/Owyn/HandyImage">GitHub page</a></em>
 
 <br>
-<h3>If the userscript runs on a page incorrectly:</h3>
+<h3>If the userscript fails for some website:</h3>
 <p>Try disabling your ADBlocker for that site - occasionally it might prevent not only ads but this script as well from working there
 </p>
+<img src=https://user-images.githubusercontent.com/1309656/199995950-68fdb2c3-d11c-4b2a-ac34-a6e969b893cb.png>
+
 
 <br>
 <h3>If you see a placeholder instead of an image:</h3>
 <p>Try disabling your Tracking Protection \ other Privacy extensions for that site - that is the reason why:
-  
-<img src=https://user-images.githubusercontent.com/1309656/199995080-a2d4d769-3ae9-44da-9ea6-87504ef74bbe.png>
-
 </p>
+<img src=https://user-images.githubusercontent.com/1309656/199995080-a2d4d769-3ae9-44da-9ea6-87504ef74bbe.png>
