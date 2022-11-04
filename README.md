@@ -37,3 +37,11 @@ You need a userscript manager to install and use the script, e.g. <a href="https
 <h3>If the userscript runs on a page incorrectly:</h3>
 <p>Try disabling your ADBlocker for that site - occasionally it might prevent not only ads but this script as well from working there
 </p>
+
+<br>
+<h3>If you see a placeholder instead of an image:</h3>
+<p>Try disabling your Tracking Protection \ other Privacy extensions for that site - that is the reason why:
+  
+<img src=https://user-images.githubusercontent.com/1309656/199995080-a2d4d769-3ae9-44da-9ea6-87504ef74bbe.png>
+
+</p>
