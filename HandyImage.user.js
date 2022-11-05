@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name		Handy Image
-// @version		2022.11.05
+// @version		2022.11.06
 // @author		Owyn
 // @contributor	ubless607, bitst0rm
 // @namespace	handyimage
@@ -20,7 +20,6 @@
 // @grant		GM_download
 // @grant		unsafeWindow
 // @sandbox		JavaScript
-// @match		https://gist.github.com/Owyn/8553d7953d948228e312
 // @match		https://www.imagebam.com/image/*
 // @match		https://www.imagebam.com/view/*
 // @match		http://imgchili.net/show*
@@ -946,6 +945,7 @@ var timeout = 1000;
 var FireFox = ((navigator.userAgent.indexOf('Firefox') != -1) ? true : false);
 var i;
 var j;
+var bStopScripts = false;
 var filename = "";
 var skip_by = 5;
 var is_video = false;
@@ -1071,6 +1071,7 @@ function makeimage()
 	unsafeWindow.addEventListener("keydown", onkeydown, true);
 	if(dp){console.warn("you are on a double-page image hosting (probably)");unsafeWindow.addEventListener("beforeunload", onbeforeunload, true);}
 	onVisibilityChange(); // if tab is already active when opening image
+	if (typeof GM_registerMenuCommand !== "undefined") {GM_registerMenuCommand("Handy Image Download image", download_image, "N");}
 }
 
 function find_text_in_scripts(text, stopword, start_from_top, search_after_word)
@@ -1118,8 +1119,6 @@ function makeworld()
 	// per-host image detection
 	switch (host)
 	{
-	case "gist.github.com":
-		if(document.body){i=1;cfg();}return;
 	case "simplest-image-hosting.net":
 	case "hostimage.ru":
 	case "imgchili.net":
@@ -2831,6 +2830,7 @@ function makeworld()
 			return false;
 		}
 		unsafeWindow.addEventListener('beforescriptexecute', onscript, true);
+		if(!FireFox) {bStopScripts = true;}
 	}
 	//
 	if(i && i.src)
@@ -2840,17 +2840,7 @@ function makeworld()
 		{
 			unsafeWindow.open = null;
 			unsafeWindow.onbeforeunload = null;
-			if(!FireFox && !filename)
-			{
-				delete document.write;
-				document.write('<html><head></head><body></body></html>'); // this kills GM_download in Chrome
-				document.close();
-				window.addEventListener("visibilitychange", onVisibilityChange); // window works but not unSafewindow
-			}
-			else
-			{
-				document.replaceChild(document.importNode(document.implementation.createHTMLDocument("").documentElement, true), document.documentElement);
-			}
+			document.replaceChild(document.importNode(document.implementation.createHTMLDocument("").documentElement, true), document.documentElement);
 		}
 		if (ext_list_video.indexOf(i.src.split('.').pop().split('?')[0].toLowerCase()) >= 0)
 		{
@@ -3176,9 +3166,25 @@ function autoresize()
 	}
 }
 
-var observer = new MutationObserver(function()
-{
+var observer = new MutationObserver((mutations) => {
+
 	makeworld();
+
+	if(bStopScripts) // Chrome handmade NoScript
+	{
+		for (const m of mutations)
+		{
+            for (const n of m.addedNodes)
+            {
+            	if(n.tagName === "SCRIPT")
+            	{
+            		//console.info("Script was stopped from loading: ", n);
+            		n.textContent = "";
+                    n.remove();
+            	}
+            }
+        }
+	}
 });
 observer.observe(document, {subtree: true, childList: true});
 
@@ -3239,6 +3245,23 @@ function scroll_space(a, b)
 	}
 }
 
+function download_image()
+{
+	if(i && i.src)
+	{
+		filename = filename.replace(/[/\\?%*:|"<>]/g, '_'); // characters you can't use in filenames
+		let details = {	url: i.src,
+						headers: {'Referer': unsafeWindow.location.href},
+						name: filename,
+						saveAs: true}
+		console.log('downloading: ' + filename + " from: " + i.src);
+        details.onload = () => { console.log('download complete'); };
+        details.ontimeout = () => { console.error('download timeout'); };
+        details.onerror = (error, errorDetails) => { console.error('download failed', error, errorDetails); };
+        GM_download(details);
+	}
+}
+
 function onkeydown (b)
 {
 	let a = (window.event) ? b.keyCode : b.which;
@@ -3246,19 +3269,7 @@ function onkeydown (b)
 	if(b.ctrlKey && a == KeyEvent.DOM_VK_S)
 	{
 		cancelEvent(b);
-		if(i)
-		{
-			filename = filename.replace(/[/\\?%*:|"<>]/g, '_'); // characters you can't use in filenames
-			let details = {	url: i.src,
-							headers: {'Referer': unsafeWindow.location.href},
-							name: filename,
-							saveAs: true}
-			console.log('downloading...');
-	        details.onload = () => { console.log('download complete'); };
-	        details.ontimeout = () => { console.error('download timeout'); };
-	        details.onerror = (error, errorDetails) => { console.error('download failed', error, errorDetails); };
-	        GM_download(details);
-		}
+		download_image();
 		return;
 	}
 	if (b.altKey || b.metaKey || (b.ctrlKey && a != KeyEvent.DOM_VK_SPACE && a != KeyEvent.DOM_VK_F5 && a != KeyEvent.DOM_VK_R))
@@ -3332,14 +3343,7 @@ function onkeydown (b)
 		cancelEvent(b);
 		break;
 	case KeyEvent.DOM_VK_P:
-		if(i && !FireFox) // Chrome nosave bug
-		{
-			window.location.href = "https://gist.github.com/Owyn/8553d7953d948228e312";
-		}
-		else
-		{
-			cfg();
-		}
+		cfg();
 		cancelEvent(b);
 		break;
 	case KeyEvent.DOM_VK_R:
