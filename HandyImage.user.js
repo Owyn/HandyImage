@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name		Handy Image
-// @version		2022.11.06
+// @version		2022.11.07
 // @author		Owyn
 // @contributor	ubless607, bitst0rm
 // @namespace	handyimage
@@ -941,6 +941,7 @@ let orgImgWidth;
 let orgImgHeight;
 var rescaled = 0;
 var tb = 0;
+var tg = 0;
 var timeout = 1000;
 var FireFox = ((navigator.userAgent.indexOf('Firefox') != -1) ? true : false);
 var i;
@@ -976,7 +977,7 @@ function sanitize() // lol I'm such a hacker
 	let lasttask = unsafeWindow.setTimeout(function() {},0);
 	for(let n = lasttask; n > 0; n--)
 	{
-		if(n !== tb)
+		if(n !== tg)
 		{
 			unsafeWindow.clearTimeout(n);
 		}
@@ -1046,7 +1047,7 @@ function onbeforeunload() // back helper
 
 function makeimage()
 {
-	if(typeof cfg_js !== "string") {setTimeout(function() { makeimage(); }, 11); return false;} // lets wait for stupd async
+	if(typeof cfg_js !== "string") {setTimeout(function() { makeimage(); }, 2); return false;} // lets wait for stupd async // might get erased by Sanitize func, not sure
 	if(cfg_direct === true){unsafeWindow.location.href = i.src;return false;}
 	if(cfg_bgclr){document.body.bgColor = cfg_bgclr;}
 	document.body.style.margin = "0px";
@@ -2833,6 +2834,7 @@ function makeworld()
 		if(!FireFox) {bStopScripts = true;}
 	}
 	//
+	if(tb){unsafeWindow.clearTimeout(tb);}
 	if(i && i.src)
 	{
 		observer.disconnect();
@@ -2863,8 +2865,7 @@ function makeworld()
 	else // try again
 	{
 		//console.warn("Didnt find image, trying again in " + timeout + " ms");
-		if(tb){clearTimeout(tb);}
-		tb = setTimeout(function() { console.warn("Didnt find image, waited " + timeout + " ms to try again. page: " + window.location.href); tb=0; timeout*=2; i=0; makeworld(); }, timeout);
+		tb = unsafeWindow.setTimeout(function() { console.warn("Didnt find image, waited " + timeout + " ms to try again. page: " + window.location.href); tb=0; timeout*=2; i=0; makeworld(); }, timeout);
 	}
 }
 
@@ -2902,7 +2903,7 @@ function use_booru_tags_in_dl_filename()
 		if(typeof cfg_js !== "string")
 		{
 			console.info("waiting for async setting loading of cfg_js: " + (typeof cfg_js));
-			tb = unsafeWindow.setTimeout(do_grab_fav_tags, 2); // unsafeWindow or the timeoutID gonna be wrong
+			tg = unsafeWindow.setTimeout(do_grab_fav_tags, 2); // unsafeWindow or the timeoutID gonna be wrong
 			return;
 		}
 		if(cfg_js && cfg_js.indexOf("grab_fav_tags") != -1) {grab_fav_tags = cfg_js.substring(cfg_js.indexOf("[")+1,cfg_js.indexOf("]")).replaceAll(" ", "").replaceAll("_", " ").replaceAll(/\n/g, '').replaceAll("'", "").replaceAll('"','').split(",");} // load custom tags // also bypass CSP
