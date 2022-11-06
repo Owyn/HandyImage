@@ -1035,7 +1035,7 @@ function DeleteAllCookies()
 
 function onscript(e)
 {
-	//console.warn( "STOPPED: " + e.target.src + e.target.innerHTML);
+	//console.info( "STOPPED: " + e.target.src + e.target.innerHTML);
 	e.preventDefault();
 	e.stopPropagation();
 }
@@ -1047,7 +1047,7 @@ function onbeforeunload() // back helper
 
 function makeimage()
 {
-	if(typeof cfg_js !== "string") {setTimeout(function() { makeimage(); }, 2); return false;} // lets wait for stupd async // might get erased by Sanitize func, not sure
+	if(typeof cfg_js !== "string") { console.log("waiting for settings to load to makeimage()"); setTimeout(function() { makeimage(); }, 2); return false;} // lets wait for stupd async
 	if(cfg_direct === true){unsafeWindow.location.href = i.src;return false;}
 	if(cfg_bgclr){document.body.bgColor = cfg_bgclr;}
 	document.body.style.margin = "0px";
@@ -2902,12 +2902,12 @@ function use_booru_tags_in_dl_filename()
 	{
 		if(typeof cfg_js !== "string")
 		{
-			console.info("waiting for async setting loading of cfg_js: " + (typeof cfg_js));
+			console.log("waiting for async setting loading of cfg_js: " + (typeof cfg_js));
 			tg = unsafeWindow.setTimeout(do_grab_fav_tags, 2); // unsafeWindow or the timeoutID gonna be wrong
 			return;
 		}
 		if(cfg_js && cfg_js.indexOf("grab_fav_tags") != -1) {grab_fav_tags = cfg_js.substring(cfg_js.indexOf("[")+1,cfg_js.indexOf("]")).replaceAll(" ", "").replaceAll("_", " ").replaceAll(/\n/g, '').replaceAll("'", "").replaceAll('"','').split(",");} // load custom tags // also bypass CSP
-		console.info(grab_fav_tags);
+		console.log(grab_fav_tags);
 		if(grab_fav_tags.length)
 		{
 			for(let n = 0; n < general_tags.length; n++)
