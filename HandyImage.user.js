@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name		Handy Image
-// @version		2022.11.07
+// @version		2022.11.18
 // @author		Owyn
 // @contributor	ubless607, bitst0rm
 // @namespace	handyimage
@@ -951,7 +951,7 @@ var filename = "";
 var skip_by = 5;
 var is_video = false;
 var ext_list_not_image = ['zip', '7z', 'rar', 'psd', 'swf', 'doc', 'rtf', 'pdf'];
-var ext_list_video = ['webm', 'mp4', 'avi', 'flv', 'ogg'];
+var ext_list_video = ['webm', 'mp4', 'm4v', 'avi', 'flv', 'ogg'];
 var iurl = window.location.hostname;
 if(!iurl.indexOf("www."))
 {
@@ -974,12 +974,12 @@ function ws()
 function sanitize() // lol I'm such a hacker
 {
 	unsafeWindow.document.createElement = unsafeWindow.console.log;
-	let lasttask = unsafeWindow.setTimeout(function() {},0);
+	let lasttask = window.setTimeout(function() {},0);
 	for(let n = lasttask; n > 0; n--)
 	{
-		if(n !== tg)
+		if(n !== tg) // unsafeWindow.clear can't clear window.tasks set in the userscript but lets be safe
 		{
-			unsafeWindow.clearTimeout(n);
+			unsafeWindow.clearTimeout(n); // only unsafeWindow has access to clear page tasks
 		}
 	}
 	removeAllListeners();
@@ -1016,12 +1016,12 @@ function onVisibilityChange()
 	{
 		if(i && i.src)
 		{
-			unsafeWindow.removeEventListener('visibilitychange', onVisibilityChange);
+			window.removeEventListener('visibilitychange', onVisibilityChange);
 			autoresize();
 		}
 	}
 }
-unsafeWindow.addEventListener("visibilitychange", onVisibilityChange);
+window.addEventListener("visibilitychange", onVisibilityChange);
 
 unsafeWindow.addEventListener = protected_addEventListener;
 unsafeWindow.document.addEventListener = protected_addEventListener;
@@ -1047,7 +1047,7 @@ function onbeforeunload() // back helper
 
 function makeimage()
 {
-	if(typeof cfg_js !== "string") { console.log("waiting for settings to load to makeimage()"); setTimeout(function() { makeimage(); }, 2); return false;} // lets wait for stupd async
+	if(typeof cfg_js !== "string") { console.log("waiting for settings to load to makeimage()"); window.setTimeout(function() { makeimage(); }, 2); return false;} // lets wait for stupd async
 	if(cfg_direct === true){unsafeWindow.location.href = i.src;return false;}
 	if(cfg_bgclr){document.body.bgColor = cfg_bgclr;}
 	document.body.style.margin = "0px";
@@ -1069,8 +1069,8 @@ function makeimage()
 		i.controls = true;
 		i.loop = true;
 	}
-	unsafeWindow.addEventListener("keydown", onkeydown, true);
-	if(dp){console.warn("you are on a double-page image hosting (probably)");unsafeWindow.addEventListener("beforeunload", onbeforeunload, true);}
+	window.addEventListener("keydown", onkeydown, true);
+	if(dp){console.warn("you are on a double-page image hosting (probably)");window.addEventListener("beforeunload", onbeforeunload, true);}
 	onVisibilityChange(); // if tab is already active when opening image
 	if (typeof GM_registerMenuCommand !== "undefined") {GM_registerMenuCommand("Handy Image Download image", download_image, "N");}
 }
@@ -2830,11 +2830,11 @@ function makeworld()
 			console.warn("Cloudflare MITM guard page.  Stopping.");
 			return false;
 		}
-		unsafeWindow.addEventListener('beforescriptexecute', onscript, true);
+		window.addEventListener('beforescriptexecute', onscript, true);
 		if(!FireFox) {bStopScripts = true;}
 	}
 	//
-	if(tb){unsafeWindow.clearTimeout(tb);}
+	if(tb){window.clearTimeout(tb);}
 	if(i && i.src)
 	{
 		observer.disconnect();
@@ -2859,13 +2859,13 @@ function makeworld()
 		ws();
 		document.head.innerHTML = "";
 		sanitize();
-		unsafeWindow.removeEventListener('beforescriptexecute', onscript, true);
+		window.removeEventListener('beforescriptexecute', onscript, true);
 		makeimage();
 	}
 	else // try again
 	{
 		//console.warn("Didnt find image, trying again in " + timeout + " ms");
-		tb = unsafeWindow.setTimeout(function() { console.warn("Didnt find image, waited " + timeout + " ms to try again. page: " + window.location.href); tb=0; timeout*=2; i=0; makeworld(); }, timeout);
+		tb = window.setTimeout(function() { console.warn("Didnt find image, waited " + timeout + " ms to try again. page: " + window.location.href); tb=0; timeout*=2; i=0; makeworld(); }, timeout);
 	}
 }
 
@@ -2903,7 +2903,7 @@ function use_booru_tags_in_dl_filename()
 		if(typeof cfg_js !== "string")
 		{
 			console.log("waiting for async setting loading of cfg_js: " + (typeof cfg_js));
-			tg = unsafeWindow.setTimeout(do_grab_fav_tags, 2); // unsafeWindow or the timeoutID gonna be wrong
+			tg = window.setTimeout(do_grab_fav_tags, 2);
 			return;
 		}
 		if(cfg_js && cfg_js.indexOf("grab_fav_tags") != -1) {grab_fav_tags = cfg_js.substring(cfg_js.indexOf("[")+1,cfg_js.indexOf("]")).replaceAll(" ", "").replaceAll("_", " ").replaceAll(/\n/g, '').replaceAll("'", "").replaceAll('"','').split(",");} // load custom tags // also bypass CSP
@@ -3158,7 +3158,7 @@ function autoresize()
 				i.src = i.src; // lol fix
 				console.warn("HJI: Trying to reload the image, " + ARC);
 			}
-			unsafeWindow.setTimeout(autoresize, 10);
+			window.setTimeout(autoresize, 10);
 		}
 		else
 		{
@@ -3252,7 +3252,7 @@ function download_image()
 	{
 		filename = filename.replace(/[/\\?%*:|"<>]/g, '_'); // characters you can't use in filenames
 		let details = {	url: i.src,
-						headers: {'Referer': unsafeWindow.location.href},
+						headers: {'Referer': window.location.href},
 						name: filename,
 						saveAs: true}
 		console.log('downloading: ' + filename + " from: " + i.src);
@@ -3356,11 +3356,11 @@ function onkeydown (b)
 		}
 		else
 		{
-			unsafeWindow.removeEventListener("beforeunload", onbeforeunload, true);
+			window.removeEventListener("beforeunload", onbeforeunload, true);
 		}
 		break;
 	case KeyEvent.DOM_VK_F5:
-		unsafeWindow.removeEventListener("beforeunload", onbeforeunload, true);
+		window.removeEventListener("beforeunload", onbeforeunload, true);
 		break;
 	}
 }
@@ -3387,24 +3387,20 @@ function cfg()
 			i.removeEventListener("auxclick", rescale, true);
 			i.removeEventListener("mousedown", mousedown, true);
 		}
-		unsafeWindow.removeEventListener("keydown", onkeydown, true);
+		window.removeEventListener("keydown", onkeydown, true);
 		document.head.innerHTML = "";
 		document.body.innerHTML = "";
 		ws();
 		let div = protected_createElement("div");
-		div.style.margin = "11% auto";
-		div.style.width = "444px";
-		div.style.border = "solid 1px black";
-		div.style.color = "black";
-		div.style.background = "silver";
+		div.style = "margin: auto; width: fit-content; height: fit-content; border: 1px solid black; color: black; background: silver; position: absolute; top: 0; right: 0; bottom: 0; left: 0;";
 		div.innerHTML = "<b><center>Configuration</center></b><br><input id='hji_cfg_1_direct' type='checkbox'> Open images directly with browser"
-		+ "<br><br><input id='hji_cfg_2_bgclr' type='text' size='6'> Background color (empty = default)"
+		+ "<br><br><input id='hji_cfg_2_bgclr' style='color: inherit; background: gainsboro;' type='text' size='6'> Background color (empty = default)"
 		+ "<br><br>Fit to window images:" + " ( Fill to window instead <input id='hji_cfg_7_fitOS' type='checkbox'> )"
 		+ "<br><br><input id='hji_cfg_3_fitWH' type='checkbox'> Larger than window both vertically and horizontally"
 		+ "<br><br><input id='hji_cfg_4_fitB' type='checkbox'> Larger than window either vertically or horizontally"
 		+ "<br><br><input id='hji_cfg_5_fitS' type='checkbox'> Smaller than window"
-		+ "<br><br><center>Custom JS Action:<textarea id='hji_cfg_6_js' style='margin: 0px; width: 400px; height: 50px;'></textarea>"
-		+ "<br><input id='hji_cfg_save' type='button' value='Save configuration'></center>";
+		+ "<br><br><center>Custom JS Action:<br><textarea id='hji_cfg_6_js' style='margin: 0px; width: 400px; height: 50px; color: inherit; background: gainsboro;'></textarea>"
+		+ "<br><input id='hji_cfg_save' style='color: inherit; background: gainsboro;' type='button' value='Save configuration'></center>";
 		document.body.appendChild(div);
 		q("#hji_cfg_1_direct").checked = cfg_direct;
 		q("#hji_cfg_2_bgclr").value = cfg_bgclr;
