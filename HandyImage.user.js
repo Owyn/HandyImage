@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name		Handy Image
-// @version		2022.11.18
+// @version		2022.11.20
 // @author		Owyn
 // @contributor	ubless607, bitst0rm
 // @namespace	handyimage
@@ -264,7 +264,7 @@
 // @match		http://*.eazypics.net/share*
 // @match		http://xtupload.com/share.php?id=*
 // @match		http://t.williamgates.net/share*
-// @match		http://photosex.biz/v.php?id=*
+// @match		*://photosex.biz/v.php?id=*
 // @match		http://*.imageteam.org/img-*
 // @match		http://*.hostimage.ru/photo*
 // @match		http://www.loaditup.de/*.html
