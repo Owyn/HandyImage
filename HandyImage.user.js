@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name		Handy Image
-// @version		2022.11.20
+// @version		2022.11.24
 // @author		Owyn
 // @contributor	ubless607, bitst0rm
 // @namespace	handyimage
@@ -1022,9 +1022,11 @@ function onVisibilityChange()
 	}
 }
 window.addEventListener("visibilitychange", onVisibilityChange);
-
+if(!FireFox) // temporary broken, TamperMonkey dev promised to fix later
+{
 unsafeWindow.addEventListener = protected_addEventListener;
 unsafeWindow.document.addEventListener = protected_addEventListener;
+}
 
 function DeleteAllCookies()
 {
