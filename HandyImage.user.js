@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name		Handy Image
-// @version		2022.11.24
+// @version		2022.11.26
 // @author		Owyn
 // @contributor	ubless607, bitst0rm
 // @namespace	handyimage
@@ -936,6 +936,7 @@ var cfg_fitB = false;
 var cfg_fitS = true;
 var cfg_fitOS = false;
 var cfg_js;
+var cfg_vol = "0.5";
 var dp = false;
 let orgImgWidth;
 let orgImgHeight;
@@ -1068,6 +1069,8 @@ function makeimage()
 	}
 	else
 	{
+		i.volume = cfg_vol;
+		i.addEventListener("volumechange", onvolumechange, true);
 		i.controls = true;
 		i.loop = true;
 	}
@@ -2926,6 +2929,11 @@ function use_booru_tags_in_dl_filename()
 	do_grab_fav_tags();
 }
 
+function onvolumechange()
+{
+	GM.setValue("vid_volume", (i.muted? "0" : i.volume));
+}
+
 function changeCursor()
 {
 	if(i.scrollHeight > window.innerHeight) // image pushing out-of-screen browser bug fix
@@ -3437,6 +3445,7 @@ if (typeof GM === 'undefined') // GM3 or native
 			cfg_fitS = GM.getValue("fitS", true);
 			cfg_fitOS = GM.getValue("fitOS", false);
 			cfg_js = GM.getValue("js", "");
+			cfg_vol = GM.getValue("vid_volume", "0.5");
 		}
 		loadCfg();
 	}
@@ -3457,6 +3466,7 @@ else
 		cfg_fitS = await GM.getValue("fitS", true);
 		cfg_fitOS = await GM.getValue("fitOS", false);
 		cfg_js = await GM.getValue("js", "");
+		cfg_vol = await GM.getValue("vid_volume", "0.5");
 	}
 	loadCfg();
 }
