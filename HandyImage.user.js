@@ -1608,7 +1608,7 @@ function makeworld()
 	case "rule34.xxx":
 	case "rule34.us":
 		j = true;
-		i = q('a[href*="/images/"]');
+		i = q('a[href*="/images/"][href*="' + host + '/"]');
 		if(i){use_booru_tags_in_dl_filename(); i.src = i.href;}
 		break;
 	case "rule34hentai.net":
