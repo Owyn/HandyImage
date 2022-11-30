@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name		Handy Image
-// @version		2022.11.26
+// @version		2022.11.27
 // @author		Owyn
 // @contributor	ubless607, bitst0rm
 // @namespace	handyimage
@@ -1054,7 +1054,7 @@ function makeimage()
 	if(cfg_direct === true){unsafeWindow.location.href = i.src;return false;}
 	if(cfg_bgclr){document.body.bgColor = cfg_bgclr;}
 	document.body.style.margin = "0px";
-	document.body.innerHTML = "<style>" + (is_video? "video" : "img") +" { position: absolute; top: 0; right: 0; bottom: 0; left: 0; image-orientation: from-image; background-color: "+cfg_bgclr+";}</style>"; // center image
+	document.body.innerHTML = "<style>" + (is_video? "video" : "img") +" { position: absolute; top: 0; right: 0; bottom: 0; left: 0; image-orientation: from-image; background-color: "+cfg_bgclr+"; max-width: unset; max-height: unset;}</style>"; // center image
 	ws();
 	let isrc = i.src;
 	i = protected_createElement(is_video? "video" : "img");
