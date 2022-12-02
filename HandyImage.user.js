@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name		Handy Image
-// @version		2022.11.27
+// @version		2022.12.02
 // @author		Owyn
 // @contributor	ubless607, bitst0rm
 // @namespace	handyimage
@@ -949,6 +949,7 @@ var i;
 var j;
 var bStopScripts = false;
 var filename = "";
+var filename_ext = "";
 var skip_by = 5;
 var is_video = false;
 var ext_list_not_image = ['zip', '7z', 'rar', 'psd', 'swf', 'doc', 'rtf', 'pdf'];
@@ -1277,6 +1278,8 @@ function makeworld()
 		if(i)
 		{
 			i.src = i.src.substring(0, i.src.indexOf("&name=")) + '&name=orig';
+			filename = "by " + document.head.querySelector('meta[property="og:title"]').content;
+			filename_ext = i.src.substring(i.src.indexOf("format=")+7 ,i.src.indexOf("&"));
 		}
 		break;
 	case "m.imgur.com":
@@ -1359,6 +1362,7 @@ function makeworld()
 				return;
 			}
 			i.src = b.urls.original;
+			filename = b.extraData.meta.twitter.description;
 		}
 		break;
 	case "idol.sankakucomplex.com":
@@ -1679,6 +1683,10 @@ function makeworld()
 					i = q('div[data-hook="art_stage"] div div div img'); // not zoomed in yet
 					if(i){console.log("found un-zoomed image, clicked it");i.click();i=null;break;}
 				}
+			}
+			if(i)
+			{
+				filename = document.title.replace(" on DeviantArt","");
 			}
 		}
 		break;
@@ -3130,7 +3138,9 @@ function autoresize()
 		{
 			document.title = title + " (" + i.naturalWidth + "x" + i.naturalHeight + ")";
 		}
-		filename = filename + title;
+		if(filename && filename.lastIndexOf(" ") != filename.length-1) {filename += " ";}
+		if(filename_ext) {filename_ext = "." + filename_ext;}
+		filename = filename + title + filename_ext;
 		/*let link = protected_createElement('link');
 		link.rel = 'icon';
 		link.href = i.src;
