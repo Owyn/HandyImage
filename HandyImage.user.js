@@ -871,7 +871,7 @@
 // @match		https://imgeza.buzz/*
 // @match		http://mrlzqoe.buzz/*
 // @match		https://radikal.host/i/*
-// @match       	https://www.slowpic.xyz//*
+// @match       	https://*.slowpic.xyz//*
 // ==/UserScript==
 
 "use strict";
