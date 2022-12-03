@@ -871,6 +871,7 @@
 // @match		https://imgeza.buzz/*
 // @match		http://mrlzqoe.buzz/*
 // @match		https://radikal.host/i/*
+// @match       	https://*.slowpic.xyz//img-*.html
 // ==/UserScript==
 
 "use strict";
@@ -1462,6 +1463,7 @@ function makeworld()
 		break;
 	case "fastpic.ru":
 	case "fastpic.org":
+	case "slowpic.xyz":
 		i = q('img[src*="/big/"]');
 		break;
 	case "bayimg.com":
