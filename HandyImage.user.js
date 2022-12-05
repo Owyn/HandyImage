@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name		Handy Image
-// @version		2022.12.02
+// @version		2022.12.05
 // @author		Owyn
 // @contributor	ubless607, bitst0rm
 // @namespace	handyimage
@@ -871,7 +871,8 @@
 // @match		https://imgeza.buzz/*
 // @match		http://mrlzqoe.buzz/*
 // @match		https://radikal.host/i/*
-// @match       	https://*.slowpic.xyz//img-*.html
+// @match		https://*.slowpic.xyz//img-*.html
+// @match		https://yapx.ru/*/*
 // ==/UserScript==
 
 "use strict";
@@ -891,9 +892,10 @@ if(window.location.href.lastIndexOf(window.location.hostname) + window.location.
 	console.warn("we are on website's main page, aren't we?");
 	return false;
 }
-if (document.images.length == 1 && document.images[0].src == window.location.href)
+let type = document.contentType.substring(0,document.contentType.indexOf("/"));
+if (type === "image" || type === "video")
 {
-	console.warn("handy isn't needed for directly opened images");
+	console.warn("Handy isn't needed for directly opened images or videos (if you want it this way - use CenterImage userscript");
 	return false;
 }
 if(document.referrer)
@@ -903,6 +905,11 @@ if(document.referrer)
 		console.warn("Handy Image: userscript stopped itself from running INTENTIONALLY: cuz your previous page is websites mainpage so you probably have just uploaded a picture yourself");
 		return false;
 	}
+}
+if (document.title == "Attention Required! | Cloudflare")
+{
+	console.warn("Cloudflare MITM guard page.  Stopping.");
+	return false;
 }
 if(sessionStorage.length)
 {
@@ -953,6 +960,7 @@ var filename = "";
 var filename_ext = "";
 var skip_by = 5;
 var is_video = false;
+var is_gallery = false;
 var ext_list_not_image = ['zip', '7z', 'rar', 'psd', 'swf', 'doc', 'rtf', 'pdf'];
 var ext_list_video = ['webm', 'mp4', 'm4v', 'avi', 'flv', 'ogg'];
 var iurl = window.location.hostname;
@@ -1294,9 +1302,7 @@ function makeworld()
 		{
 			if(f.length != 1)
 			{
-				console.log("Handy Image: userscript stopped itself from running INTENTIONALLY, - it is not just a single image on a page");
-				i = 1;
-				return;
+				is_gallery = true;
 			}
 			else
 			{
@@ -1326,9 +1332,7 @@ function makeworld()
 			}
 			else
 			{
-				console.log("Handy Image: userscript didn't find a single image to fullsize");
-				i = 1;
-				return;
+				is_gallery = true;
 			}
 		}
 		break;
@@ -2691,6 +2695,26 @@ function makeworld()
 	case "imgsha.com":
 		i = q('img[data-load="full"]');
 		break;
+	case "yapx.ru":
+		j = true;
+		if(q("footer"))
+		{
+			f = document.body.querySelectorAll("[data-gallery-index]");
+			if(f.length === 1)
+			{
+				//i = f[0];
+				i = document.head.querySelector('meta[property="og:image:secure_url"]');
+				if(i)
+				{
+					i.src = i.content;
+				}
+			}
+			else
+			{
+				is_gallery = true;
+			}
+		}
+		break;
 	case "vfl.ru":
 		i = q('img[src*="/ii/"]');
 		break;
@@ -2840,17 +2864,18 @@ function makeworld()
 	if(!j)
 	{
 		j = true;
-		if (document.title == "Attention Required! | Cloudflare")
-		{
-			console.warn("Cloudflare MITM guard page.  Stopping.");
-			return false;
-		}
 		window.addEventListener('beforescriptexecute', onscript, true);
 		if(!FireFox) {bStopScripts = true;}
 	}
 	//
 	if(tb){window.clearTimeout(tb);}
-	if(i && i.src)
+	if(is_gallery)
+	{
+		console.log("Handy Image: userscript stopped itself INTENTIONALLY, - cuz it is not just a single image on the page to fullsize but a gallery");
+		observer.disconnect();
+		return;
+	}
+	if(i && (i.src || i.firstElementChild && i.firstElementChild.nodeName === "SOURCE" && (i.src = i.firstElementChild.src)))
 	{
 		observer.disconnect();
 		function clr_pgn()
@@ -2859,14 +2884,14 @@ function makeworld()
 			unsafeWindow.onbeforeunload = null;
 			document.replaceChild(document.importNode(document.implementation.createHTMLDocument("").documentElement, true), document.documentElement);
 		}
-		if (ext_list_video.indexOf(i.src.split('.').pop().split('?')[0].toLowerCase()) >= 0)
+		if (i.nodeName === "VIDEO" || ext_list_video.indexOf(i.src.split('.').pop().split('?')[0].toLowerCase()) >= 0)
 		{
-			console.warn("Found a video");
+			console.log("Found a video");
 			is_video = true;
 		}
 		else if (ext_list_not_image.indexOf(i.src.split('.').pop().split('?')[0].toLowerCase()) >= 0)
 		{
-			console.warn("What we found is not an image");
+			console.warn("What we found is not an image or a video");
 			i = null;
 			return false;
 		}
