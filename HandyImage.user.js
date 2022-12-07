@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name		Handy Image
-// @version		2022.12.05
+// @version		2022.12.07
 // @author		Owyn
 // @contributor	ubless607, bitst0rm
 // @namespace	handyimage
@@ -383,6 +383,7 @@
 // @match		http://*.uploadimage.ro/view*
 // @match		https://*.imgflare.com/*/*
 // @match		https://www.imagefap.com/photo/*
+// @match		https://www.imagefap.com/video.php?vid=*
 // @match		http://filefap.com/view*
 // @match		https://imgur.com/*
 // @match		https://m.imgur.com/*
@@ -1083,6 +1084,7 @@ function makeimage()
 		i.addEventListener("volumechange", onvolumechange, true);
 		i.controls = true;
 		i.loop = true;
+		i.preload = "auto";
 	}
 	window.addEventListener("keydown", onkeydown, true);
 	if(dp){console.warn("you are on a double-page image hosting (probably)");window.addEventListener("beforeunload", onbeforeunload, true);}
@@ -2103,7 +2105,9 @@ function makeworld()
 		i = q('img[src*="/uploaded/"]');
 		break;
 	case "imagefap.com":
-		find_text_in_scripts('"contentUrl": "', '"');
+		j = true;
+		//find_text_in_scripts('"contentUrl": "', '"');
+		i = q('#slideshow img[src*="/full/"],#video-html5_html5_api');
 		break;
 	case "olivepix.com":
 		i = q('img[src*="view/"]');
