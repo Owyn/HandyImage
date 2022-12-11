@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name		Handy Image
-// @version		2022.12.07
+// @version		2022.12.11
 // @author		Owyn
 // @contributor	ubless607, bitst0rm
 // @namespace	handyimage
@@ -1369,7 +1369,8 @@ function makeworld()
 				return;
 			}
 			i.src = b.urls.original;
-			filename = b.extraData.meta.twitter.description;
+			filename = b.title + " by " + b.userName;
+			b.tags.tags.forEach(el => filename = filename + " " + el.tag);
 		}
 		break;
 	case "idol.sankakucomplex.com":
