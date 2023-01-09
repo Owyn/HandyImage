@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name		Handy Image
-// @version		2022.12.11
+// @version		2023.01.09
 // @author		Owyn
 // @contributor	ubless607, bitst0rm
 // @namespace	handyimage
@@ -794,7 +794,7 @@
 // @match		https://savepice.ru/full/*.html
 // @match		https://kropic.com/*/*.html
 // @match		http://*.imgzong.xyz/*
-// @match		https://www.furaffinity.net/view/*/
+// @match		https://www.furaffinity.net/view/*
 // @match		http://imageking.xyz/*
 // @match		http://imgxx.xyz/*
 // @match		http://imgao.xyz/*
@@ -874,6 +874,7 @@
 // @match		https://radikal.host/i/*
 // @match		https://*.slowpic.xyz//img-*.html
 // @match		https://yapx.ru/*/*
+// @match		https://imgpukxxr.site/*
 // ==/UserScript==
 
 "use strict";
@@ -1519,6 +1520,9 @@ function makeworld()
 	case "pixsense.net":
 	case "imagespicy.site":
 		find_text_in_scripts('"src","', '"');
+		break;
+	case "imgpukxxr.site":
+		find_text_in_scripts('.src = "', '"');
 		break;
 	case "pix-x.net":
 	case "picclock.ru":
