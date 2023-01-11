@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name		Handy Image
-// @version		2023.01.09
+// @version		2023.01.11
 // @author		Owyn
 // @contributor	ubless607, bitst0rm
 // @namespace	handyimage
@@ -875,6 +875,7 @@
 // @match		https://*.slowpic.xyz//img-*.html
 // @match		https://yapx.ru/*/*
 // @match		https://imgpukxxr.site/*
+// @match		https://realbooru.com/index.php?page=post&s=view&id=*
 // ==/UserScript==
 
 "use strict";
@@ -1624,6 +1625,7 @@ function makeworld()
 		break;
 	case "rule34.xxx":
 	case "rule34.us":
+	case "realbooru.com":
 		j = true;
 		i = q('a[href*="/images/"][href*="' + host + '/"]');
 		if(i){use_booru_tags_in_dl_filename(); i.src = i.href;}
@@ -2921,14 +2923,14 @@ function makeworld()
 var grab_fav_tags = []; // set in Custom JS
 function use_booru_tags_in_dl_filename()
 {
-	let artist = document.querySelectorAll(".tag-type-artist > a, .artist-tag > a, a.search-tag[itemprop='author']");
+	let artist = document.querySelectorAll(".tag-type-artist > a, .artist-tag > a, a.search-tag[itemprop='author'], a.model");
 	for(let n = 0; n < artist.length; n++)
 	{
 		if(artist[n].text == "?") continue;
 		filename = "by " + artist[n].text.replaceAll(" ", "_") + " " + filename;
 	}
 
-	let character = document.querySelectorAll(".tag-type-character > a, .character-tag > a, .character-tag-list a.search-tag");
+	let character = document.querySelectorAll(".tag-type-character > a, .character-tag > a, .character-tag-list a.search-tag, a.character");
 	for(let n = 0; n < character.length; n++)
 	{
 		if(character[n].text == "?") continue;
@@ -2945,7 +2947,7 @@ function use_booru_tags_in_dl_filename()
 			break; // just one cuz else it'd get long
 		}
 	}*/
-	let general_tags = document.querySelectorAll(".tag-type-general > a, .tag-type-genre > a, .general-tag > a, .general-tag-list > .tag-type-0 > a.search-tag, a.search-tag");
+	let general_tags = document.querySelectorAll(".tag-type-general > a, .tag-type-genre > a, .general-tag > a, .general-tag-list > .tag-type-0 > a.search-tag, a.search-tag, div#tagLink > a");
 
 	function do_grab_fav_tags()
 	{
