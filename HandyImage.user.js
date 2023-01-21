@@ -876,6 +876,7 @@
 // @match		https://yapx.ru/*/*
 // @match		https://imgpukxxr.site/*
 // @match		https://realbooru.com/index.php?page=post&s=view&id=*
+// @match		*://imgutkr.store/*
 // ==/UserScript==
 
 "use strict";
@@ -2300,6 +2301,7 @@ function makeworld()
 	case "imguo.buzz":
 	case "imgeza.buzz":
 	case "mrlzqoe.buzz":
+	case "imgutkr.store":
 		i = q('button');
 		dp=true;
 		j = true;
