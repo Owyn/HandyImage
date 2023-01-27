@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name		Handy Image
-// @version		2023.01.11
+// @version		2023.01.27
 // @author		Owyn
 // @contributor	ubless607, bitst0rm
 // @namespace	handyimage
@@ -877,6 +877,7 @@
 // @match		https://imgpukxxr.site/*
 // @match		https://realbooru.com/index.php?page=post&s=view&id=*
 // @match		*://imgutkr.store/*
+// @match		*://imghhr.online/*
 // ==/UserScript==
 
 "use strict";
@@ -2302,6 +2303,7 @@ function makeworld()
 	case "imgeza.buzz":
 	case "mrlzqoe.buzz":
 	case "imgutkr.store":
+	case "imghhr.online":
 		i = q('button');
 		dp=true;
 		j = true;
