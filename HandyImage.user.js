@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name		Handy Image
-// @version		2023.01.28
+// @version		2023.02.02
 // @author		Owyn
 // @contributor	ubless607, bitst0rm
 // @namespace	handyimage
@@ -904,7 +904,7 @@ if (type === "image" || type === "video")
 	console.warn("Handy isn't needed for directly opened images or videos (if you want it this way - use CenterImage userscript");
 	return false;
 }
-if(document.referrer)
+if(history.length !== 1 && document.referrer)
 {
 	if(document.referrer.lastIndexOf(window.location.hostname) != -1 && document.referrer.lastIndexOf(window.location.hostname) +1 == document.referrer.length - window.location.hostname.length)
 	{
@@ -2853,24 +2853,29 @@ function makeworld()
 			}
 			break;
 		default: // for user-added sites
+			j = true;
 			console.warn("HJI is running on a custom website");
-			if(document.readyState != "loading" && document.images.length != 0)
+
+			if(document.readyState != "loading") // DOM loaded
 			{
-				let b = 0;
-				for(let n = 0; n < document.images.length; n++)
+				f = document.querySelectorAll("img");
+				if(f.length != 0)
 				{
-					if(document.images[n].width == 0 && !document.images[n].complete) // not started loading
+					let b = 0;
+					for(let n = 0; n < f.length; n++)
 					{
-						b = -1;
-						break;
+						if(f[n].naturalWidth == 0 && !f[n].complete) // not yet loaded
+						{
+							b = -1;
+							break;
+						}
+						else if(f[n].naturalWidth * f[n].naturalHeight > f[b].naturalWidth * f[b].naturalHeight)
+						{
+							b = n;
+						}
 					}
-					else if(document.images[n].width * document.images[n].height > document.images[b].width * document.images[b].height)
-					{
-						b = n;
-					}
+					if(b != -1){i = f[b]; console.warn("HJI is running on a custom website, showing biggest image");}
 				}
-				i = document.images[b];
-				if(i){console.warn("HJI is running on a custom website, showing biggest image");}
 			}
 			break;
 		}
