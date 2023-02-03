@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name		Handy Image
-// @version		2023.02.03
+// @version		2023.02.04
 // @author		Owyn
 // @contributor	ubless607, bitst0rm
 // @namespace	handyimage
@@ -2795,11 +2795,19 @@ function makeworld()
 			break;
 		case "tumblr.com":
 		case "media.tumblr.com":
-			f = document.querySelectorAll('meta[property="og:image"]');
+			f = document.head.querySelectorAll('meta[property="og:image"]');
 			if(f.length === 1)
 			{
-				i = f[0];
-				i.src = f[0].content;
+				i = document.head.querySelector('meta[property="og:video"]');
+				if(!i)
+				{
+					i = f[0];
+					i.src = f[0].content;
+				}
+				else
+				{
+					i.src = i.content;
+				}
 			}
 			else if(f.length > 1)
 			{
