@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name		Handy Image
-// @version		2023.02.04
+// @version		2023.02.05
 // @author		Owyn
 // @contributor	ubless607, bitst0rm
 // @namespace	handyimage
@@ -879,6 +879,7 @@
 // @match		*://imgutkr.store/*
 // @match		*://imghhr.online/*
 // @match		*://imglaiw.store/*
+// @match		https://meetimgz.com/*.php
 // ==/UserScript==
 
 "use strict";
@@ -1988,6 +1989,7 @@ function makeworld()
 	case "imgviu.com":
 	case "mazpic.com":
 	case "pictwn.com":
+	case "meetimgz.com":
 		j = true;
 		dp=true;
 		i = q('img.picview');
