@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name		Handy Image
-// @version		2023.02.05
+// @version		2023.02.11
 // @author		Owyn
 // @contributor	ubless607, bitst0rm
 // @namespace	handyimage
@@ -880,6 +880,7 @@
 // @match		*://imghhr.online/*
 // @match		*://imglaiw.store/*
 // @match		https://meetimgz.com/*.php
+// @match		*://imgvue.online/*
 // ==/UserScript==
 
 "use strict";
@@ -2308,6 +2309,7 @@ function makeworld()
 	case "imgutkr.store":
 	case "imghhr.online":
 	case "imglaiw.store":
+	case "imgvue.online":
 		i = q('button');
 		dp=true;
 		j = true;
