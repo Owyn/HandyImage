@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name		Handy Image
-// @version		2023.02.11
+// @version		2023.02.12
 // @author		Owyn
 // @contributor	ubless607, bitst0rm
 // @namespace	handyimage
@@ -387,6 +387,7 @@
 // @match		http://filefap.com/view*
 // @match		https://imgur.com/*
 // @match		https://m.imgur.com/*
+// @match		https://i.imgur.com/*.gifv
 // @match		https://motherless.com/*
 // @match		http://*.xpic.biz/*/view*
 // @match		https://*.tumblr.com/image/*
@@ -1298,6 +1299,13 @@ function makeworld()
 			i.src = i.src.substring(0, i.src.indexOf("&name=")) + '&name=orig';
 			filename = "by " + document.head.querySelector('meta[property="og:title"]').content;
 			filename_ext = i.src.substring(i.src.indexOf("format=")+7 ,i.src.indexOf("&"));
+		}
+		break;
+	case "i.imgur.com":
+		i = document.head.querySelector('meta[property="og:video"]');
+		if(i)
+		{
+			i.src = i.content;
 		}
 		break;
 	case "m.imgur.com":
