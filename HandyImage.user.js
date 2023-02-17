@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name		Handy Image
-// @version		2023.02.14
+// @version		2023.02.17
 // @author		Owyn
 // @contributor	ubless607, bitst0rm
 // @namespace	handyimage
@@ -447,7 +447,7 @@
 // @match		http://*.freshpics.ru/*/*/
 // @match		http://*.sexyimg.eu/img-*
 // @match		*://*.imgseeds.com/img-*
-// @match		http://*.pronpic.org/*/*
+// @match		https://*.pronpic.org/*/*
 // @match		https://prnt.sc/*
 // @match		http://*.imgdream.net/view*
 // @match		http://*.imgtab.net/*
@@ -883,6 +883,7 @@
 // @match		https://meetimgz.com/*.php
 // @match		*://imgvue.online/*
 // @match		*://imgxgf.store/*
+// @match		*://imgbibam.online/*
 // ==/UserScript==
 
 "use strict";
@@ -2320,6 +2321,7 @@ function makeworld()
 	case "imglaiw.store":
 	case "imgvue.online":
 	case "imgxgf.store":
+	case "imgbibam.online":
 		i = q('button');
 		dp=true;
 		j = true;
