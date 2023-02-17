@@ -447,7 +447,7 @@
 // @match		http://*.freshpics.ru/*/*/
 // @match		http://*.sexyimg.eu/img-*
 // @match		*://*.imgseeds.com/img-*
-// @match		http://*.pronpic.org/*/*
+// @match		https://*.pronpic.org/*/*
 // @match		https://prnt.sc/*
 // @match		http://*.imgdream.net/view*
 // @match		http://*.imgtab.net/*
