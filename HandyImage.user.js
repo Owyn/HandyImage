@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name		Handy Image
-// @version		2023.02.17
+// @version		2023.02.18
 // @author		Owyn
 // @contributor	ubless607, bitst0rm
 // @namespace	handyimage
@@ -884,6 +884,7 @@
 // @match		*://imgvue.online/*
 // @match		*://imgxgf.store/*
 // @match		*://imgbibam.online/*
+// @match		https://imgsh.net/a/*
 // ==/UserScript==
 
 "use strict";
@@ -1280,6 +1281,7 @@ function makeworld()
 	case "jpg.church":
 	case "imghub.ru":
 	case "radikal.host":
+	case "imgsh.net":
 		i = document.querySelector('meta[property="og:image"], [name="og:image"]');
 		if(i)
 		{
