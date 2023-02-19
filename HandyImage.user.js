@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name		Handy Image
-// @version		2023.02.18
+// @version		2023.02.19
 // @author		Owyn
 // @contributor	ubless607, bitst0rm
 // @namespace	handyimage
@@ -1073,7 +1073,7 @@ function onbeforeunload() // back helper
 function makeimage()
 {
 	if(typeof cfg_js !== "string") { console.log("waiting for settings to load to makeimage()"); window.setTimeout(function() { makeimage(); }, 2); return false;} // lets wait for stupd async
-	if(cfg_direct === true){window.location.href = i.src;return false;}
+	if(cfg_direct === true){let a = document.createElement('a'); a.setAttribute('href',i.src); a.click(); return false;}
 	if(cfg_bgclr){document.body.bgColor = cfg_bgclr;}
 	document.body.style.margin = "0px";
 	document.body.innerHTML = "<style>" + (is_video? "video" : "img") +" { position: absolute; top: 0; right: 0; bottom: 0; left: 0; image-orientation: from-image; background-color: "+cfg_bgclr+"; max-width: unset; max-height: unset;}</style>"; // center image
