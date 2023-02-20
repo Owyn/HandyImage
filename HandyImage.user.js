@@ -3493,7 +3493,7 @@ function cfg()
 		ws();
 		let div = protected_createElement("div");
 		div.style = "margin: auto; width: fit-content; height: fit-content; border: 1px solid black; color: black; background: silver; position: absolute; top: 0; right: 0; bottom: 0; left: 0;";
-		div.innerHTML = "<b><center>Configuration</center></b><br><input id='hji_cfg_1_direct' type='checkbox'> Open images directly with browser"
+		div.innerHTML = "<b><center>Configuration</center></b><br><input id='hji_cfg_1_direct' type='checkbox'> Open images directly with browser (disables Handy)"
 		+ "<br><br><input id='hji_cfg_2_bgclr' style='color: inherit; background: gainsboro;' type='text' size='6'> Background color (empty = default)"
 		+ "<br><br>Fit to window images:" + " ( Fill to window instead <input id='hji_cfg_7_fitOS' type='checkbox'> )"
 		+ "<br><br><input id='hji_cfg_3_fitWH' type='checkbox'> Larger than window both vertically and horizontally"
