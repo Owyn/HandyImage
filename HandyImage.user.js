@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name		Handy Image
-// @version		2023.03.04
+// @version		2023.03.08
 // @author		Owyn
 // @contributor	ubless607, bitst0rm
 // @namespace	handyimage
@@ -888,6 +888,7 @@
 // @match		*://imgqaz.online/*
 // @match		*://imgurt.online/*
 // @match		https://jpg.fish/img/*
+// @match		*://imgwxr.online/*
 // ==/UserScript==
 
 "use strict";
@@ -2330,6 +2331,7 @@ function makeworld()
 	case "imgbibam.online":
 	case "imgqaz.online":
 	case "imgurt.online":
+	case "imgwxr.online":
 		i = q('button');
 		dp=true;
 		j = true;
