@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name		Handy Image
-// @version		2023.03.11
+// @version		2023.03.18
 // @author		Owyn
 // @contributor	ubless607, bitst0rm
 // @namespace	handyimage
@@ -2897,25 +2897,34 @@ function makeworld()
 			j = true;
 			console.warn("HJI is running on a custom website");
 
-			if(document.readyState != "loading") // DOM loaded
+			if(document.readyState !== "loading") // DOM loaded
 			{
 				f = document.querySelectorAll("img");
-				if(f.length != 0)
+				if(f.length !== 0)
 				{
 					let b = 0;
 					for(let n = 0; n < f.length; n++)
 					{
 						if(f[n].naturalWidth == 0 && !f[n].complete) // not yet loaded
 						{
-							b = -1;
-							break;
+							if(timeout < 4000) 
+							{
+								console.warn("waiting for this image to start loading to see its size and compare with others: ", f[n]);
+								b = -1;
+								break;
+							}
+							else // waited for 3+ sec, that's enough
+							{
+								console.warn("skipping broken images");
+								continue; // skip the broken image
+							}
 						}
-						else if(f[n].naturalWidth * f[n].naturalHeight > f[b].naturalWidth * f[b].naturalHeight)
+						else if(f[n].naturalWidth * f[n].naturalHeight >= f[b].naturalWidth * f[b].naturalHeight)
 						{
 							b = n;
 						}
 					}
-					if(b != -1){i = f[b]; console.warn("HJI is running on a custom website, showing biggest image");}
+					if(b !== -1){i = f[b]; console.warn("showing biggest image");}
 				}
 			}
 			break;
