@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name		Handy Image
-// @version		2023.03.18
+// @version		2023.03.27
 // @author		Owyn
 // @contributor	ubless607, bitst0rm
 // @namespace	handyimage
@@ -890,6 +890,7 @@
 // @match		https://jpg.fish/img/*
 // @match		*://imgwxr.online/*
 // @match		*://imgyre.online/*
+// @match		https://pixl.li/image/*
 // ==/UserScript==
 
 "use strict";
@@ -1288,6 +1289,7 @@ function makeworld()
 	case "radikal.host":
 	case "imgsh.net":
 	case "jpg.fish":
+	case "pixl.li":
 		i = document.querySelector('meta[property="og:image"], [name="og:image"]');
 		if(i)
 		{
