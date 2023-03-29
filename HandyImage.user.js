@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name		Handy Image
-// @version		2023.03.27
+// @version		2023.03.29
 // @author		Owyn
 // @contributor	ubless607, bitst0rm
 // @namespace	handyimage
@@ -891,6 +891,8 @@
 // @match		*://imgwxr.online/*
 // @match		*://imgyre.online/*
 // @match		https://pixl.li/image/*
+// @match		https://pixlev.store/*
+// @match		https://pixmax.store/*
 // ==/UserScript==
 
 "use strict";
@@ -1542,6 +1544,10 @@ function makeworld()
 		{
 			i.src = i.src.replace('http://www.amateri.cz/orig.php?&img=', 'http://img2.amateri.cz/users/');
 		}
+		break;
+	case "pixlev.store":
+	case "pixmax.store":
+		find_text_in_scripts('").src = "', '"')
 		break;
 	case "pixsense.net":
 	case "imagespicy.site":
@@ -2909,7 +2915,7 @@ function makeworld()
 					{
 						if(f[n].naturalWidth == 0 && !f[n].complete) // not yet loaded
 						{
-							if(timeout < 4000) 
+							if(timeout < 4000)
 							{
 								console.warn("waiting for this image to start loading to see its size and compare with others: ", f[n]);
 								b = -1;
