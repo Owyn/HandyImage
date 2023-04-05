@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name		Handy Image
-// @version		2023.03.29
+// @version		2023.04.04
 // @author		Owyn
 // @contributor	ubless607, bitst0rm
 // @namespace	handyimage
@@ -1547,6 +1547,7 @@ function makeworld()
 		break;
 	case "pixlev.store":
 	case "pixmax.store":
+	case "imgair.net":
 		find_text_in_scripts('").src = "', '"')
 		break;
 	case "pixsense.net":
@@ -2303,7 +2304,6 @@ function makeworld()
 	case "imgao.xyz":
 	case "imgweng.xyz":
 	case "imgkes.xyz":
-	case "imgair.net":
 	case "imgkoi.xyz":
 	case "imglin.xyz":
 	case "imgtigr.xyz":
