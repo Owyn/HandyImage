@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name		Handy Image
-// @version		2023.04.04
+// @version		2023.04.05
 // @author		Owyn
 // @contributor	ubless607, bitst0rm
 // @namespace	handyimage
@@ -893,6 +893,7 @@
 // @match		https://pixl.li/image/*
 // @match		https://pixlev.store/*
 // @match		https://pixmax.store/*
+// @match		https://imgxqy.online/*
 // ==/UserScript==
 
 "use strict";
@@ -1548,6 +1549,7 @@ function makeworld()
 	case "pixlev.store":
 	case "pixmax.store":
 	case "imgair.net":
+	case "imgxqy.online":
 		find_text_in_scripts('").src = "', '"')
 		break;
 	case "pixsense.net":
