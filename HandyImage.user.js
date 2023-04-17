@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name		Handy Image
-// @version		2023.04.05
+// @version		2023.04.17
 // @author		Owyn
 // @contributor	ubless607, bitst0rm
 // @namespace	handyimage
@@ -568,7 +568,6 @@
 // @match		https://mobile.twitter.com/*/photo/*
 // @match		http://*.icezap.com/img-*
 // @match		*://*.rapidimg.net/img-*
-// @match		http://foxyimg.link/*
 // @match		http://*.imgtornado.com/img-*
 // @match		http://*.daily-img.com/image/*
 // @match		http://*.imageab.com/image/*
@@ -1832,14 +1831,12 @@ function makeworld()
 		break;
 	case "imgmega.com":
 	case "pic.re":
-	case "foxyimg.link":
 	case "picbaron.com":
 	case "imgbaron.com":
 	case "kvador.com":
 	case "pics4you.net":
 		i = q('input[type="submit"]');
 		dp=true;
-		j =true;
 		if(i)
 		{
 			i.click();
@@ -2611,7 +2608,6 @@ function makeworld()
 	case "pics4upload.com":
 	case "imgstar.eu":
 		i = q("form input[type='submit'][value*='continue to image' i]");
-		j = true;
 		dp = true;
 		if(i)
 		{
