@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name		Handy Image
-// @version		2023.04.17
+// @version		2023.04.18
 // @author		Owyn
 // @contributor	ubless607, bitst0rm
 // @namespace	handyimage
@@ -1669,7 +1669,6 @@ function makeworld()
 		if(i){use_booru_tags_in_dl_filename(); i.src = i.href;}
 		break;
 	case "e621.net":
-		j = true;
 		i = q('div#image-download-link a');
 		if(i){use_booru_tags_in_dl_filename(); i.src = i.href;}
 		break;
