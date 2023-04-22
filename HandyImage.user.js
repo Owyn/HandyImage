@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name		Handy Image
-// @version		2023.04.18
+// @version		2023.04.22
 // @author		Owyn
 // @contributor	ubless607, bitst0rm
 // @namespace	handyimage
@@ -893,6 +893,7 @@
 // @match		https://pixlev.store/*
 // @match		https://pixmax.store/*
 // @match		https://imgxqy.online/*
+// @match		https://skr.sh/*
 // ==/UserScript==
 
 "use strict";
@@ -1292,6 +1293,7 @@ function makeworld()
 	case "imgsh.net":
 	case "jpg.fish":
 	case "pixl.li":
+	case "skr.sh":
 		i = document.querySelector('meta[property="og:image"], [name="og:image"]');
 		if(i)
 		{
