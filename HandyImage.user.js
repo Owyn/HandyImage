@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name		Handy Image
-// @version		2023.04.22
+// @version		2023.05.01
 // @author		Owyn
 // @contributor	ubless607, bitst0rm
 // @namespace	handyimage
@@ -1658,9 +1658,17 @@ function makeworld()
 			i.click();
 		}
 		break;
+	case "realbooru.com":
+		i = q('img#image');
+		if(!i)
+		{
+			i = q('video#gelcomVideoPlayer');
+			if(i && i.currentSrc){i.src = i.currentSrc;}
+		}
+		if(i){use_booru_tags_in_dl_filename(); }
+		break;
 	case "rule34.xxx":
 	case "rule34.us":
-	case "realbooru.com":
 		j = true;
 		i = q('a[href*="/images/"][href*="' + host + '/"]');
 		if(i){use_booru_tags_in_dl_filename(); i.src = i.href;}
