@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name		Handy Image
-// @version		2023.05.01
+// @version		2023.05.08
 // @author		Owyn
 // @contributor	ubless607, bitst0rm
 // @namespace	handyimage
@@ -894,6 +894,7 @@
 // @match		https://pixmax.store/*
 // @match		https://imgxqy.online/*
 // @match		https://skr.sh/*
+// @match		https://i.redd.it/*
 // ==/UserScript==
 
 "use strict";
@@ -1171,6 +1172,10 @@ function makeworld()
 	case "imagebin.ca":
 		i = q('a img');
 		if(i){i.src = i.parentNode.href;}
+		break;
+	case "i.redd.it":
+		i = q('faceplate-img');
+		if(i){i.src = i.getAttribute("src");}
 		break;
 	case "savepic.org":
 	case "savepic.ru":
