@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name		Handy Image
-// @version		2023.05.08
+// @version		2023.05.10
 // @author		Owyn
 // @contributor	ubless607, bitst0rm
 // @namespace	handyimage
@@ -3045,7 +3045,7 @@ function use_booru_tags_in_dl_filename()
 			for(let n = 0; n < general_tags.length; n++)
 			{
 				if(general_tags[n].text == "?") continue;
-				if(grab_fav_tags.indexOf(general_tags[n].text) != -1)
+				if(grab_fav_tags.indexOf(general_tags[n].text.replaceAll("_", " ")) != -1)
 				{
 					filename = general_tags[n].text.replaceAll(" ", "_") + " " +filename;
 				}
