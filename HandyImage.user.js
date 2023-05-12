@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name		Handy Image
-// @version		2023.05.10
+// @version		2023.05.12
 // @author		Owyn
 // @contributor	ubless607, bitst0rm
 // @namespace	handyimage
@@ -1174,7 +1174,7 @@ function makeworld()
 		if(i){i.src = i.parentNode.href;}
 		break;
 	case "i.redd.it":
-		i = q('faceplate-img');
+		i = q('faceplate-img, img');
 		if(i){i.src = i.getAttribute("src");}
 		break;
 	case "savepic.org":
