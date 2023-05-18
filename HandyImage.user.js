@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name		Handy Image
-// @version		2023.05.17
+// @version		2023.05.18
 // @author		Owyn
 // @contributor	ubless607, bitst0rm
 // @namespace	handyimage
@@ -895,7 +895,7 @@
 // @match		https://imgxqy.online/*
 // @match		https://skr.sh/*
 // @match		https://i.redd.it/*
-// @match		https://vsco.co/uumutcaan/media/*
+// @match		https://vsco.co/*/media/*
 // ==/UserScript==
 
 "use strict";
