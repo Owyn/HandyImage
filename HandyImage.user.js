@@ -1300,7 +1300,6 @@ function makeworld()
 	case "jpg.fish":
 	case "pixl.li":
 	case "skr.sh":
-	case "vsco.co":
 		i = document.querySelector('meta[property="og:image"], [name="og:image"]');
 		if(i)
 		{
@@ -1310,6 +1309,13 @@ function makeworld()
 		{
 			i = q('a[download]');
 			if(i){i.src = i.href;}
+		}
+		break;
+	case "vsco.co":
+		i = document.querySelector('meta[property="og:image"]');
+		if(i)
+		{
+			i.src = i.content.substring(0, i.content.indexOf("?"));
 		}
 		break;
 	case "mobile.twitter.com":
