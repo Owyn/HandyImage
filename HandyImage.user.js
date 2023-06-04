@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name		Handy Image
-// @version		2023.05.18
+// @version		2023.06.04
 // @author		Owyn
 // @contributor	ubless607, bitst0rm
 // @namespace	handyimage
@@ -896,6 +896,7 @@
 // @match		https://skr.sh/*
 // @match		https://i.redd.it/*
 // @match		https://vsco.co/*/media/*
+// @match		https://www.gettyimages.com/detail*photo*
 // ==/UserScript==
 
 "use strict";
@@ -1620,6 +1621,10 @@ function makeworld()
 			i.src = url.substring(0,url.lastIndexOf('/')+1) + f.textContent + url.substring(url.lastIndexOf('.'));
 		}}
 		break;
+	case "gettyimages.com":
+		j = true;
+		i = protected_createElement("img");
+		i.src ="https://media.gettyimages.com/photos/-id"+ window.location.pathname.substring(window.location.pathname.lastIndexOf("/")+1) +"?s=2048x2048&w=5";
 	case "radikal.ru":
 	case "radical-foto.ru":
 	case "radikal-foto.ru":
