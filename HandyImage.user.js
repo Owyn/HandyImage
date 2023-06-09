@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name		Handy Image
-// @version		2023.06.09
+// @version		2023.06.10
 // @author		Owyn
 // @contributor	ubless607, bitst0rm
 // @namespace	handyimage
@@ -898,6 +898,8 @@
 // @match		https://i.redd.it/*
 // @match		https://vsco.co/*/media/*
 // @match		https://www.gettyimages.com/detail*photo*
+// @match		https://jpg.pet/img/*
+// @match		https://imgnmh.cfd/*
 // ==/UserScript==
 
 "use strict";
@@ -1302,6 +1304,7 @@ function makeworld()
 	case "jpg.fish":
 	case "pixl.li":
 	case "skr.sh":
+	case "jpg.pet":
 		i = document.querySelector('meta[property="og:image"], [name="og:image"]');
 		if(i)
 		{
@@ -1566,6 +1569,7 @@ function makeworld()
 	case "pixmax.store":
 	case "imgair.net":
 	case "imgxqy.online":
+	case "imgnmh.cfd":
 		find_text_in_scripts('").src = "', '"')
 		break;
 	case "pixsense.net":
