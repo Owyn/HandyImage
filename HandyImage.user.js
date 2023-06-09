@@ -439,6 +439,7 @@
 // @match		https://www.imgshots.com/img*
 // @match		https://www.imgshots.com/show/*
 // @match		https://*.3xplanet.com/view*
+// @match		https://*.3xplanet.net/view*
 // @match		http://*.imgmega.com/*.html
 // @match		*://img.yt/img-*
 // @match		http://*.payforpic.ru/*/*/
@@ -1877,6 +1878,7 @@ function makeworld()
 	case "img4.imagetitan.com":
 	case "ninjaimages.com":
 	case "3xplanet.com":
+	case "3xplanet.net":
 		i = q('img[onload*="scale"]');
 		break;
 	case "bild.me":
