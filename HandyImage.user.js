@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name		Handy Image
-// @version		2023.06.10
+// @version		2023.06.11
 // @author		Owyn
 // @contributor	ubless607, bitst0rm
 // @namespace	handyimage
@@ -900,6 +900,7 @@
 // @match		https://www.gettyimages.com/detail*photo*
 // @match		https://jpg.pet/img/*
 // @match		https://imgnmh.cfd/*
+// @match		https://im.ge/i/*
 // ==/UserScript==
 
 "use strict";
@@ -1305,6 +1306,7 @@ function makeworld()
 	case "pixl.li":
 	case "skr.sh":
 	case "jpg.pet":
+	case "im.ge":
 		i = document.querySelector('meta[property="og:image"], [name="og:image"]');
 		if(i)
 		{
