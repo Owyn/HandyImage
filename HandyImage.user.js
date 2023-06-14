@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name		Handy Image
-// @version		2023.06.11
+// @version		2023.06.14
 // @author		Owyn
 // @contributor	ubless607, bitst0rm
 // @namespace	handyimage
@@ -901,6 +901,7 @@
 // @match		https://jpg.pet/img/*
 // @match		https://imgnmh.cfd/*
 // @match		https://im.ge/i/*
+// @match		https://piczel.tv/gallery/image/*
 // ==/UserScript==
 
 "use strict";
@@ -1400,6 +1401,26 @@ function makeworld()
 		{
 			i = f[0];
 			i.src = i.href;
+		}
+		break;
+	case "piczel.tv":
+		j = true;
+		f = document.querySelector("a.GalleryImage_SingleTag");
+		if(f)
+		{
+			i = q('a[href*="/gallery_image/"]');
+			if(i)
+			{
+				if(i.parentNode.previousSibling === null)
+				{
+					filename = f.parentNode.textContent.substring(1);
+					i.src = i.href;
+				}
+				else
+				{
+					is_gallery = true;
+				}
+			}
 		}
 		break;
 	case "pixiv.net":
