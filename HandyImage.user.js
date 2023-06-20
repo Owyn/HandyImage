@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name		Handy Image
-// @version		2023.06.14
+// @version		2023.06.20
 // @author		Owyn
 // @contributor	ubless607, bitst0rm
 // @namespace	handyimage
@@ -902,6 +902,7 @@
 // @match		https://imgnmh.cfd/*
 // @match		https://im.ge/i/*
 // @match		https://piczel.tv/gallery/image/*
+// @match		https://www.redgifs.com/watch/*
 // ==/UserScript==
 
 "use strict";
@@ -1339,7 +1340,8 @@ function makeworld()
 		}
 		break;
 	case "i.imgur.com":
-		i = document.head.querySelector('meta[property="og:video"]');
+	case "redgifs.com":
+		i = document.head.querySelector('meta[property="og:video"],meta[property="og:image:secure_url"]');
 		if(i)
 		{
 			i.src = i.content;
@@ -3046,14 +3048,14 @@ function makeworld()
 var grab_fav_tags = []; // set in Custom JS
 function use_booru_tags_in_dl_filename()
 {
-	let artist = document.querySelectorAll(".tag-type-artist > a, .artist-tag > a, a.search-tag[itemprop='author'], a.model");
+	let artist = document.querySelectorAll(".tag-type-artist a:not([href*='/books?'])[href*='tags='], .artist-tag > a, a.search-tag[itemprop='author'], a.model");
 	for(let n = 0; n < artist.length; n++)
 	{
 		if(artist[n].text == "?") continue;
 		filename = "by " + artist[n].text.replaceAll(" ", "_") + " " + filename;
 	}
 
-	let character = document.querySelectorAll(".tag-type-character > a, .character-tag > a, .character-tag-list a.search-tag, a.character");
+	let character = document.querySelectorAll(".tag-type-character a:not([href*='/books?'])[href*='tags='], .character-tag > a, .character-tag-list a.search-tag, a.character");
 	for(let n = 0; n < character.length; n++)
 	{
 		if(character[n].text == "?") continue;
@@ -3070,7 +3072,7 @@ function use_booru_tags_in_dl_filename()
 			break; // just one cuz else it'd get long
 		}
 	}*/
-	let general_tags = document.querySelectorAll(".tag-type-general > a, .tag-type-genre > a, .general-tag > a, .general-tag-list > .tag-type-0 > a.search-tag, a.search-tag, div#tagLink > a");
+	let general_tags = document.querySelectorAll(".tag-type-general > a:not([href*='/books?'])[href*='tags='], .tag-type-genre > a, .general-tag > a, .general-tag-list > .tag-type-0 > a.search-tag, a.search-tag, div#tagLink > a");
 
 	function do_grab_fav_tags()
 	{
