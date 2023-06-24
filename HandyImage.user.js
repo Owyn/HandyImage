@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name		Handy Image
-// @version		2023.06.20
+// @version		2023.06.24
 // @author		Owyn
 // @contributor	ubless607, bitst0rm
 // @namespace	handyimage
@@ -896,6 +896,7 @@
 // @match		https://imgxqy.online/*
 // @match		https://skr.sh/*
 // @match		https://i.redd.it/*
+// @match		https://preview.redd.it/*
 // @match		https://vsco.co/*/media/*
 // @match		https://www.gettyimages.com/detail*photo*
 // @match		https://jpg.pet/img/*
@@ -1182,6 +1183,7 @@ function makeworld()
 		if(i){i.src = i.parentNode.href;}
 		break;
 	case "i.redd.it":
+	case "preview.redd.it":
 		i = q('faceplate-img, img');
 		if(i){i.src = i.getAttribute("src");}
 		break;
