@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name		Handy Image
-// @version		2023.06.24
+// @version		2023.06.25
 // @author		Owyn
 // @contributor	ubless607, bitst0rm
 // @namespace	handyimage
@@ -2049,7 +2049,10 @@ function makeworld()
 		i = q('img[src*="pics/"]');
 		break;
 	case "dewimg.com":
+	case "outletpic.com":
+	case "subirimagenes.com":
 		j = true;
+		dp = true;
 		f = document.querySelectorAll("input[type='submit']");
 		if(f.length)
 		{
@@ -2065,6 +2068,8 @@ function makeworld()
 				}
 			}
 		}
+		i = q('img[onload*="scale"]');
+		break;
 	case "imgoutlet.pw":
 	case "imgrock.pw":
 	case "imgview.pw":
@@ -2072,7 +2077,6 @@ function makeworld()
 	case "imgdew.pw":
 	case "imgtown.pw":
 	case "picrok.com":
-	case "outletpic.com":
 	case "imgviu.com":
 	case "mazpic.com":
 	case "pictwn.com":
@@ -2438,16 +2442,6 @@ function makeworld()
 		}
 	case "imghit.com":
 		i = q('img[alt="image"]');
-		break;
-	case "subirimagenes.com":
-		i = q('input[type="submit"]');
-		dp=true;
-		if(i)
-		{
-			i.click();
-			break;
-		}
-		i = q('img[onclick*="scale"]');
 		break;
 	case "image-share.com":
 	case "xpic.biz":
