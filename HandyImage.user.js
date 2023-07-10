@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name		Handy Image
-// @version		2023.06.26
+// @version		2023.07.10
 // @author		Owyn
 // @contributor	ubless607, bitst0rm
 // @namespace	handyimage
@@ -3070,7 +3070,7 @@ function use_booru_tags_in_dl_filename()
 			break; // just one cuz else it'd get long
 		}
 	}*/
-	let general_tags = document.querySelectorAll(".tag-type-general > a:not([href*='/books?'])[href*='tags='], .tag-type-genre > a, .general-tag > a, .general-tag-list > .tag-type-0 > a.search-tag, a.search-tag, div#tagLink > a");
+	let general_tags = document.querySelectorAll(".tag-type-general a:not([href*='/books?'])[href*='tags='], .tag-type-genre > a, .general-tag > a, .general-tag-list > .tag-type-0 > a.search-tag, a.search-tag, div#tagLink > a");
 
 	function do_grab_fav_tags()
 	{
