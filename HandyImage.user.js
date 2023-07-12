@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name		Handy Image
-// @version		2023.07.10
+// @version		2023.07.12
 // @author		Owyn
 // @contributor	ubless607, bitst0rm
 // @namespace	handyimage
@@ -900,6 +900,7 @@
 // @match		https://vsco.co/*/media/*
 // @match		https://www.gettyimages.com/detail*photo*
 // @match		https://jpg.pet/img/*
+// @match		https://jpeg.pet/img/*
 // @match		https://imgnmh.cfd/*
 // @match		https://im.ge/i/*
 // @match		https://piczel.tv/gallery/image/*
@@ -1311,6 +1312,7 @@ function makeworld()
 	case "pixl.li":
 	case "skr.sh":
 	case "jpg.pet":
+	case "jpeg.pet":
 	case "im.ge":
 	case "screencast.com":
 		i = document.querySelector('meta[property="og:image"], [name="og:image"]');
