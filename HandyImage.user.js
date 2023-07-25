@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name		Handy Image
-// @version		2023.07.12
+// @version		2023.07.25
 // @author		Owyn
 // @contributor	ubless607, bitst0rm
 // @namespace	handyimage
@@ -906,6 +906,7 @@
 // @match		https://piczel.tv/gallery/image/*
 // @match		https://www.redgifs.com/watch/*
 // @match		https://www.screencast.com/t/*
+// @match		https://slushe.com/galleries/*.html
 // ==/UserScript==
 
 "use strict";
@@ -1705,7 +1706,13 @@ function makeworld()
 	case "imagevenue.com":
 		i = q('img[style*="max-width:"]');
 		break;
+	case "slushe.com":
+		j = true;
+		if(q('footer')){ i = q('img.big-photo'); }
+		if(i){use_booru_tags_in_dl_filename(); }
+		break;
 	case "hentai-foundry.com":
+		j = true;
 		i = q('.boxbody img');
 		if(i && i.onclick)
 		{
@@ -3048,7 +3055,7 @@ function makeworld()
 var grab_fav_tags = []; // set in Custom JS
 function use_booru_tags_in_dl_filename()
 {
-	let artist = document.querySelectorAll(".tag-type-artist a:not([href*='/books?'])[href*='tags='], .artist-tag > a, a.search-tag[itemprop='author'], a.model");
+	let artist = document.querySelectorAll(".tag-type-artist a:not([href*='/books?'])[href*='tags='], .artist-tag > a, a.search-tag[itemprop='author'], a.model, .user-info-box .username > a");
 	for(let n = 0; n < artist.length; n++)
 	{
 		if(artist[n].text == "?") continue;
@@ -3072,7 +3079,7 @@ function use_booru_tags_in_dl_filename()
 			break; // just one cuz else it'd get long
 		}
 	}*/
-	let general_tags = document.querySelectorAll(".tag-type-general a:not([href*='/books?'])[href*='tags='], .tag-type-genre > a, .general-tag > a, .general-tag-list > .tag-type-0 > a.search-tag, a.search-tag, div#tagLink > a");
+	let general_tags = document.querySelectorAll(".tag-type-general a:not([href*='/books?'])[href*='tags='], .tag-type-genre > a, .general-tag > a, .general-tag-list > .tag-type-0 > a.search-tag, a.search-tag, div#tagLink > a,.tags-list a");
 
 	function do_grab_fav_tags()
 	{
