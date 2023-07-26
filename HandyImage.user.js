@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name		Handy Image
-// @version		2023.07.26
+// @version		2023.07.27
 // @author		Owyn
 // @contributor	ubless607, bitst0rm
 // @namespace	handyimage
@@ -905,6 +905,7 @@
 // @match		https://im.ge/i/*
 // @match		https://piczel.tv/gallery/image/*
 // @match		https://www.redgifs.com/watch/*
+// @match		https://v3.redgifs.com/watch/*
 // @match		https://www.screencast.com/t/*
 // @match		https://slushe.com/galleries/*.html
 // ==/UserScript==
@@ -1239,7 +1240,7 @@ function makeworld()
 		}
 		break;
 	case "imagebam.com":
-		j = true;
+		//j = true;
 		i = q("a i.fa-download");
 		if(i)
 		{
@@ -1248,7 +1249,15 @@ function makeworld()
 		else
 		{
 			i = q("#continue a");
-			if(i && i.parentNode.style.display !== "none"){i.click();}
+			if(i)
+			{
+				let expires = '';
+	            let date = new Date();
+	            date.setTime(date.getTime() + (6 * 60 * 60 * 1000));
+	            expires = "; expires=" + date.toUTCString();
+	            document.cookie = "nsfw_inter=1" + expires + "; path=/";
+				i.click();
+			}
 		}
 		break;
 	case "directupload.net":
@@ -1348,6 +1357,7 @@ function makeworld()
 		break;
 	case "i.imgur.com":
 	case "redgifs.com":
+	case "v3.redgifs.com":
 		i = document.head.querySelector('meta[property="og:video"],meta[property="og:image:secure_url"]');
 		if(i)
 		{
