@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name		Handy Image
-// @version		2023.07.25
+// @version		2023.07.26
 // @author		Owyn
 // @contributor	ubless607, bitst0rm
 // @namespace	handyimage
@@ -1704,7 +1704,7 @@ function makeworld()
 		if(i){i.src = i.href;}
 		break;
 	case "imagevenue.com":
-		i = q('img[style*="max-width:"]');
+		i = q('img#main-image');
 		break;
 	case "slushe.com":
 		j = true;
