@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name		Handy Image
-// @version		2023.07.27
+// @version		2023.07.28
 // @author		Owyn
 // @contributor	ubless607, bitst0rm
 // @namespace	handyimage
@@ -9,7 +9,7 @@
 // @downloadURL	https://github.com/Owyn/HandyImage/raw/master/HandyImage.user.js
 // @homepage	https://github.com/Owyn/HandyImage
 // @supportURL	https://github.com/Owyn/HandyImage/issues
-// @icon		https://images2.imgbox.com/f0/e8/W9zirOUG_o.png
+// @icon		https://u.cubeupload.com/Owyn/W9zirOUGo1.png
 // @run-at		document-start
 // @grant		GM.getValue
 // @grant		GM.setValue
@@ -288,7 +288,7 @@
 // @match		http://*.ximg.co.uk/view*
 // @match		http://sl-images.ath.cx/view*
 // @match		http://*.picatom.com/*
-// @match		http://www.picshare.ru/view*
+// @match		https://*.picshare.ru/image/*
 // @match		http://*.pikczery.pl/view*
 // @match		http://*.imghost.pl/index.php?id=*
 // @match		http://*.udostepniaj.pl/view*
@@ -1325,6 +1325,7 @@ function makeworld()
 	case "jpeg.pet":
 	case "im.ge":
 	case "screencast.com":
+	case "picshare.ru":
 		i = document.querySelector('meta[property="og:image"], [name="og:image"]');
 		if(i)
 		{
@@ -2023,7 +2024,6 @@ function makeworld()
 	case "freeimagehosting.net":
 	case "uploadhouse.com":
 	case "fotos-hochladen.net":
-	case "picshare.ru":
 	case "imgtab.net":
 		i = q('img[src*="uploads/"]');
 		break;
