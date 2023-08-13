@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name		Handy Image
-// @version		2023.07.28
+// @version		2023.08.13
 // @author		Owyn
 // @contributor	ubless607, bitst0rm
 // @namespace	handyimage
@@ -888,6 +888,7 @@
 // @match		*://imgqaz.online/*
 // @match		*://imgurt.online/*
 // @match		https://jpg.fish/img/*
+// @match		https://jpg1.su/img/*
 // @match		*://imgwxr.online/*
 // @match		*://imgyre.online/*
 // @match		https://pixl.li/image/*
@@ -1326,6 +1327,7 @@ function makeworld()
 	case "im.ge":
 	case "screencast.com":
 	case "picshare.ru":
+	case "jpg1.su":
 		i = document.querySelector('meta[property="og:image"], [name="og:image"]');
 		if(i)
 		{
