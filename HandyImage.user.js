@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name		Handy Image
-// @version		2023.08.13
+// @version		2023.08.25
 // @author		Owyn
 // @contributor	ubless607, bitst0rm
 // @namespace	handyimage
@@ -1329,6 +1329,7 @@ function makeworld()
 	case "screencast.com":
 	case "picshare.ru":
 	case "jpg1.su":
+	case 'img.trafficimage.club':
 		i = document.querySelector('meta[property="og:image"], [name="og:image"]');
 		if(i)
 		{
@@ -2891,12 +2892,6 @@ function makeworld()
 		if(window.location.href.search(/\.(?:jpe?g|png|gif|webp)\.html$/i) != -1)//check whether it's a valid image url
 		{
 			i = { src :  window.location.href.replace(".html", "") };
-		}
-		break;
-	case 'img.trafficimage.club':
-		i = q('div#image-viewer-container>img');
-		if(/\.md\.jpg$/.test(i.src)) {
-			i.src = i.src.replace(/\.md\.jpg$/,'.jpg');
 		}
 		break;
 	default: // dynamic subdomain
