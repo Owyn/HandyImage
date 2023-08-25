@@ -909,6 +909,7 @@
 // @match		https://v3.redgifs.com/watch/*
 // @match		https://www.screencast.com/t/*
 // @match		https://slushe.com/galleries/*.html
+// @match		https://img.trafficimage.club/image/*
 // ==/UserScript==
 
 "use strict";
@@ -2890,6 +2891,12 @@ function makeworld()
 		if(window.location.href.search(/\.(?:jpe?g|png|gif|webp)\.html$/i) != -1)//check whether it's a valid image url
 		{
 			i = { src :  window.location.href.replace(".html", "") };
+		}
+		break;
+	case 'img.trafficimage.club':
+		i = q('div#image-viewer-container>img');
+		if(/\.md\.jpg$/.test(i.src)) {
+			i.src = i.src.replace(/\.md\.jpg$/,'.jpg');
 		}
 		break;
 	default: // dynamic subdomain
