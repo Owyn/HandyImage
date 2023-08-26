@@ -910,6 +910,7 @@
 // @match		https://www.screencast.com/t/*
 // @match		https://slushe.com/galleries/*.html
 // @match		https://img.trafficimage.club/image/*
+// @match		https://pacific.picturedent.org/image/*
 // ==/UserScript==
 
 "use strict";
@@ -2619,6 +2620,7 @@ function makeworld()
 	case "imagexxx18.com":
 	case "imgvisits.com":
 	case "imghall.com":
+	case "picturedent.org":
 		i = q('img[src*="/images/"]');
 		break;
 	case "intergranada.com":
