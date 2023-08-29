@@ -910,8 +910,7 @@
 // @match		https://www.screencast.com/t/*
 // @match		https://slushe.com/galleries/*.html
 // @match		https://img.trafficimage.club/image/*
-// @match		https://picturedent.org/image/*
-// @match		https://pacific.picturedent.org/image/*
+// @match		https://*.picturedent.org/image/*
 // ==/UserScript==
 
 "use strict";
