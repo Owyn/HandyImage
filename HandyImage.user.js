@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name		Handy Image
-// @version		2023.08.25
+// @version		2023.08.29
 // @author		Owyn
 // @contributor	ubless607, bitst0rm
 // @namespace	handyimage
@@ -898,6 +898,7 @@
 // @match		https://skr.sh/*
 // @match		https://i.redd.it/*
 // @match		https://preview.redd.it/*
+// @match		https://www.reddit.com/media?url=*
 // @match		https://vsco.co/*/media/*
 // @match		https://www.gettyimages.com/detail*photo*
 // @match		https://jpg.pet/img/*
