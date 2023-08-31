@@ -752,6 +752,7 @@
 // @match		https://22pixx.xyz/i*-*/*.html
 // @match		https://22pixx.xyz/i-*/*.html
 // @match		https://22pixx.xyz/x-*/*.html
+// @match		https://22pixx.xyz/y-*/*.html
 // @match		*://trueimg.xyz/u-*/*.html
 // @match		*://imgsmarts.info/*.html
 // @match		*://imgsmarts.info/full/
