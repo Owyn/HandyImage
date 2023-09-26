@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name		Handy Image
-// @version		2023.09.23
+// @version		2023.09.26
 // @author		Owyn
 // @contributor	ubless607, bitst0rm
 // @namespace	handyimage
@@ -550,7 +550,7 @@
 // @match		https://*.imgmonkey.com/*/*.html
 // @match		http://*.fapat.me/img-*
 // @match		http://photo.weibo.com/*/large/photo_id/*
-// @match		http://*.crazyimg.com/images/*.html
+// @match		https://*.crazyimg.com/images/*.html
 // @match		http://imgbe.com/img-*
 // @match		https://*.imgextra.uk/image/*
 // @match		http://*.extraimago.com/image/*
