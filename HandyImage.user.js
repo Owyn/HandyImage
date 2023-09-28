@@ -915,6 +915,7 @@
 // @match		https://slushe.com/galleries/*.html
 // @match		https://img.trafficimage.club/image/*
 // @match		https://*.picturedent.org/image/*
+// @match		https://pig69.com/*
 // ==/UserScript==
 
 "use strict";
