@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name		Handy Image
-// @version		2023.10.09
+// @version		2023.10.11
 // @author		Owyn
 // @contributor	ubless607, bitst0rm
 // @namespace	handyimage
@@ -917,6 +917,7 @@
 // @match		https://*.picturedent.org/image/*
 // @match		https://pig69.com/upload/*
 // @match		https://javball.com/upload/*
+// @match		https://idol69.net/upload/*
 // ==/UserScript==
 
 "use strict";
@@ -1340,6 +1341,7 @@ function makeworld()
 	case 'img.trafficimage.club':
 	case 'pig69.com':
 	case 'javball.com':
+	case 'idol69.net':
 		i = document.querySelector('meta[property="og:image"], [name="og:image"]');
 		if(i)
 		{
