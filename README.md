@@ -23,6 +23,7 @@
 
 <h3>Supported browsers:</h3>
 <img src=https://upload.wikimedia.org/wikipedia/commons/thumb/a/a5/Google_Chrome_icon_%28September_2014%29.svg/180px-Google_Chrome_icon_%28September_2014%29.svg.png><img src=https://github.com/Owyn/Universal_Dark_Theme/assets/1309656/0d2c7e4a-4038-4c06-96a8-505a36c9d625> 
+
 You need a userscript manager to install and use the script, e.g. <a href="https://www.tampermonkey.net/">TamperMonkey</a> (might not work in other less-pupular and less-maintained ones)
 
 <h3>How to request a new imagehost support or fix for old one</h3>
