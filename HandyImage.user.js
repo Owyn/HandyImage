@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name		Handy Image
-// @version		2023.10.11
+// @version		2023.10.17
 // @author		Owyn
 // @contributor	ubless607, bitst0rm
 // @namespace	handyimage
@@ -18,6 +18,7 @@
 // @grant		GM_getValue
 // @grant		GM_setValue
 // @grant		GM_download
+// @grant		GM_addElement
 // @grant		unsafeWindow
 // @sandbox		JavaScript
 // @match		https://www.imagebam.com/image/*
@@ -25,7 +26,7 @@
 // @match		http://imgchili.net/show*
 // @match		*://imgbox.com/*
 // @match		*://*.imagetwist.com/*
-// @match               *://imagexport.com/*
+// @match		*://imagexport.com/*
 // @match		https://*.imagevenue.com/*
 // @match		*://*.imageshack.com/i/*
 // @match		*://*.imageshack.com/f/*
@@ -918,9 +919,12 @@
 // @match		https://pig69.com/upload/*
 // @match		https://javball.com/upload/*
 // @match		https://idol69.net/upload/*
+// @match		https://picqaxs.cfd/*
 // ==/UserScript==
 
 "use strict";
+
+console.debug("HandyImage Script running");
 
 if (typeof unsafeWindow === "undefined")
 {
@@ -1029,8 +1033,8 @@ function ws()
 
 function sanitize() // lol I'm such a hacker
 {
-	unsafeWindow.document.createElement = unsafeWindow.console.log;
-	let lasttask = window.setTimeout(function() {},0);
+	unsafeWindow.document.createElement = unsafeWindow.console.debug;
+	let lasttask = unsafeWindow.setTimeout(function() {},0);
 	for(let n = lasttask; n > 0; n--)
 	{
 		if(n !== tg) // unsafeWindow.clear can't clear window.tasks set in the userscript but lets be safe
@@ -1038,7 +1042,8 @@ function sanitize() // lol I'm such a hacker
 			unsafeWindow.clearTimeout(n); // only unsafeWindow has access to clear page tasks
 		}
 	}
-	removeAllListeners();
+	if(!FireFox) {removeAllListeners();}
+	else if (unsafeWindow.removeAllListeners !== undefined) {unsafeWindow.removeAllListeners();}
 }
 
 const protected_createElement = Document.prototype.createElement.bind(document);
@@ -1048,7 +1053,6 @@ var origAdd = document.addEventListener;
 
 function protected_addEventListener (event, handler, capture = false)
 {
-	//console.error(event);
 	if (!(event in _eventHandlers)) {
 		_eventHandlers[event] = [];
 	}
@@ -1058,7 +1062,6 @@ function protected_addEventListener (event, handler, capture = false)
 
 function removeAllListeners ()
 {
-	//console.warn(_eventHandlers);
 	for(let event in _eventHandlers)
 	{
 		_eventHandlers[event].forEach(({ node, handler, capture }) => node.removeEventListener(event, handler, capture));
@@ -1078,10 +1081,40 @@ function onVisibilityChange()
 	}
 }
 window.addEventListener("visibilitychange", onVisibilityChange);
-if(!FireFox) // temporary broken, TamperMonkey dev promised to fix later
+if(!FireFox) // temporary broken in FF, TamperMonkey dev promised to fix later
 {
-unsafeWindow.addEventListener = protected_addEventListener;
-unsafeWindow.document.addEventListener = protected_addEventListener;
+	unsafeWindow.addEventListener = protected_addEventListener;
+	unsafeWindow.document.addEventListener = protected_addEventListener;
+	unsafeWindow.document.documentElement.addEventListener = protected_addEventListener;
+}
+else
+{
+	GM_addElement(document.documentElement, 'script', {textContent: `
+		var _eventHandlers = {};
+		var origAdd = document.addEventListener;
+
+		function protected_addEventListener (event, handler, capture = false)
+		{
+			if (!(event in _eventHandlers)) {
+				_eventHandlers[event] = [];
+			}
+			_eventHandlers[event].push({ node: this || window, handler: handler, capture: capture });
+			return origAdd.call(this, event, handler, capture);
+		}
+
+		window.addEventListener = protected_addEventListener;
+		document.addEventListener = protected_addEventListener;
+		document.documentElement.addEventListener = protected_addEventListener;
+
+		function removeAllListeners ()
+		{
+			for(let event in _eventHandlers)
+			{
+				_eventHandlers[event].forEach(({ node, handler, capture }) => node.removeEventListener(event, handler, capture));
+				delete _eventHandlers[event];
+			}
+		}
+		`});
 }
 
 function DeleteAllCookies()
@@ -1093,7 +1126,7 @@ function DeleteAllCookies()
 
 function onscript(e)
 {
-	//console.info( "STOPPED: " + e.target.src + e.target.innerHTML);
+	//console.debug( "STOPPED: " + e.target.src + e.target.innerHTML);
 	e.preventDefault();
 	e.stopPropagation();
 }
@@ -2442,6 +2475,7 @@ function makeworld()
 	case "imgurt.online":
 	case "imgwxr.online":
 	case "imgyre.online":
+	case "picqaxs.cfd":
 		i = q('button');
 		dp=true;
 		j = true;
@@ -3066,10 +3100,10 @@ function makeworld()
 			i = null;
 			return false;
 		}
-		clr_pgn();
 		ws();
-		document.head.innerHTML = "";
 		sanitize();
+		clr_pgn();
+		document.head.innerHTML = "";
 		window.removeEventListener('beforescriptexecute', onscript, true);
 		makeimage();
 	}
@@ -3397,7 +3431,7 @@ var observer = new MutationObserver((mutations) => {
             {
             	if(n.tagName === "SCRIPT")
             	{
-            		//console.info("Script was stopped from loading: ", n);
+            		//console.debug("Script was stopped from loading: ", n);
             		n.textContent = "";
                     n.remove();
             	}
