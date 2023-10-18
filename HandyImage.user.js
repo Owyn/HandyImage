@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name		Handy Image
-// @version		2023.10.17
+// @version		2023.10.18
 // @author		Owyn
 // @contributor	ubless607, bitst0rm
 // @namespace	handyimage
@@ -991,7 +991,7 @@ function sanitize() // lol I'm such a hacker
 		}
 	}
 	if(!FireFox) {removeAllListeners();}
-	else if (unsafeWindow.removeAllListeners !== undefined) {unsafeWindow.removeAllListeners();}
+	else if (typeof unsafeWindow.removeAllListeners !== "undefined") {unsafeWindow.removeAllListeners();}
 }
 
 const protected_createElement = Document.prototype.createElement.bind(document);
@@ -1035,7 +1035,7 @@ if(!FireFox) // temporary broken in FF, TamperMonkey dev promised to fix later
 	unsafeWindow.document.addEventListener = protected_addEventListener;
 	unsafeWindow.document.documentElement.addEventListener = protected_addEventListener;
 }
-else
+else if (typeof GM_addElement !== "undefined")
 {
 	GM_addElement(document.documentElement, 'script', {textContent: `
 		var _eventHandlers = {};
