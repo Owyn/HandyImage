@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name		Handy Image
-// @version		2023.10.18
+// @version		2023.10.23
 // @author		Owyn
 // @contributor	ubless607, bitst0rm
 // @namespace	handyimage
@@ -868,6 +868,7 @@
 // @match		https://javball.com/upload/*
 // @match		https://idol69.net/upload/*
 // @match		https://picqaxs.cfd/*
+// @match		https://www.zupimages.net/viewer.php?id=*
 // ==/UserScript==
 
 "use strict";
@@ -1192,6 +1193,9 @@ function makeworld()
 		break;
 	case "awesomescreenshot.com":
 		i = q('img#screenshot');
+		break;
+	case "zupimages.net":
+		i = q('img#img_size');
 		break;
 	case "dropbox.com":
 		j = true;
