@@ -871,6 +871,7 @@
 // @match		https://www.zupimages.net/viewer.php?id=*
 // @match		https://porn4f.com/upload/*
 // @match		https://ovabee.com/upload/*
+// @match		https://ai18.pics/upload/*
 // ==/UserScript==
 
 "use strict";
@@ -1326,6 +1327,7 @@ function makeworld()
 	case 'idol69.net':
 	case 'porn4f.com':
 	case 'ovabee.com':
+	case 'ai18.pics':
 		i = document.querySelector('meta[property="og:image"], [name="og:image"]');
 		if(i)
 		{
