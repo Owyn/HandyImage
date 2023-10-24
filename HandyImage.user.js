@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name		Handy Image
-// @version		2023.10.23
+// @version		2023.10.24
 // @author		Owyn
 // @contributor	ubless607, bitst0rm
 // @namespace	handyimage
@@ -869,6 +869,8 @@
 // @match		https://idol69.net/upload/*
 // @match		https://picqaxs.cfd/*
 // @match		https://www.zupimages.net/viewer.php?id=*
+// @match		https://porn4f.com/upload/*
+// @match		https://ovabee.com/upload/*
 // ==/UserScript==
 
 "use strict";
@@ -1322,6 +1324,8 @@ function makeworld()
 	case 'pig69.com':
 	case 'javball.com':
 	case 'idol69.net':
+	case 'porn4f.com':
+	case 'ovabee.com':
 		i = document.querySelector('meta[property="og:image"], [name="og:image"]');
 		if(i)
 		{
