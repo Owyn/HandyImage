@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name		Handy Image
-// @version		2023.10.24
+// @version		2023.10.30
 // @author		Owyn
 // @contributor	ubless607, bitst0rm
 // @namespace	handyimage
@@ -872,6 +872,7 @@
 // @match		https://porn4f.com/upload/*
 // @match		https://ovabee.com/upload/*
 // @match		https://ai18.pics/upload/*
+// @match		https://paste.pics/*
 // ==/UserScript==
 
 "use strict";
@@ -1328,6 +1329,7 @@ function makeworld()
 	case 'porn4f.com':
 	case 'ovabee.com':
 	case 'ai18.pics':
+	case "paste.pics":
 		i = document.querySelector('meta[property="og:image"], [name="og:image"]');
 		if(i)
 		{
