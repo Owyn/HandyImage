@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name		Handy Image
-// @version		2023.10.30
+// @version		2023.10.31
 // @author		Owyn
 // @contributor	ubless607, bitst0rm
 // @namespace	handyimage
@@ -486,7 +486,7 @@
 // @match		http://konachan.com/post/show/*
 // @match		http://konachan.net/post/show/*
 // @match		https://yande.re/post/show/*
-// @match		https://chan.sankakucomplex.com/*post/show/*
+// @match		https://chan.sankakucomplex.com/*posts/show/*
 // @match		https://idol.sankakucomplex.com/*post/show/*
 // @match		https://yande.re/post/show/*
 // @match		http://www.zerochan.net/*
