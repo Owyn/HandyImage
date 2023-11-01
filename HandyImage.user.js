@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name		Handy Image
-// @version		2023.10.31
+// @version		2023.11.01
 // @author		Owyn
 // @contributor	ubless607, bitst0rm
 // @namespace	handyimage
@@ -873,6 +873,8 @@
 // @match		https://ovabee.com/upload/*
 // @match		https://ai18.pics/upload/*
 // @match		https://paste.pics/*
+// @match		https://cnxx.me/upload/*
+// @match		https://cnpics.org/upload/*
 // ==/UserScript==
 
 "use strict";
@@ -1330,6 +1332,8 @@ function makeworld()
 	case 'ovabee.com':
 	case 'ai18.pics':
 	case "paste.pics":
+	case 'cnxx.me':
+	case 'cnpics.org':
 		i = document.querySelector('meta[property="og:image"], [name="og:image"]');
 		if(i)
 		{
