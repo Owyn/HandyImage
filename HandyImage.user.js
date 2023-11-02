@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name		Handy Image
-// @version		2023.11.01
+// @version		2023.11.02
 // @author		Owyn
 // @contributor	ubless607, bitst0rm
 // @namespace	handyimage
@@ -841,6 +841,7 @@
 // @match		https://jpg.fish/img/*
 // @match		https://jpg1.su/img/*
 // @match		https://jpg2.su/img/*
+// @match		https://jpg3.su/img/*
 // @match		*://imgwxr.online/*
 // @match		*://imgyre.online/*
 // @match		https://pixl.li/image/*
@@ -1324,6 +1325,7 @@ function makeworld()
 	case "picshare.ru":
 	case "jpg1.su":
 	case "jpg2.su":
+	case "jpg3.su":
 	case 'img.trafficimage.club':
 	case 'pig69.com':
 	case 'javball.com':
