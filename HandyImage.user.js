@@ -2942,7 +2942,7 @@ function makeworld()
 			break;
 		case "vipr.im":
 			j = true;
-			i = q("a.ddownloader");
+			i = q("a.ddownloader[download]");
 			if(i)
 			{
 				i.src = i.href;
