@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name		Handy Image
-// @version		2023.11.06
+// @version		2023.11.21
 // @author		Owyn
 // @contributor	ubless607, bitst0rm
 // @namespace	handyimage
@@ -2864,6 +2864,14 @@ function makeworld()
 		{
 			i = { src :  window.location.href.replace(".html", "") };
 		}
+	case "vipr.im":
+		j = true;
+		i = q("a.ddownloader[download]");
+		if(i)
+		{
+			i.src = i.href;
+			break;
+		}
 		break;
 	default: // dynamic subdomain
 		switch(host.substr(host.indexOf(".")+1))
@@ -2940,14 +2948,6 @@ function makeworld()
 			}
 			i = q('img[src*="' + iurl + '"]');
 			break;
-		case "vipr.im":
-			j = true;
-			i = q("a.ddownloader[download]");
-			if(i)
-			{
-				i.src = i.href;
-				break;
-			}
 			break;
 		default: // for user-added sites
 			j = true;
