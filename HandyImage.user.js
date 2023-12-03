@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name		Handy Image
-// @version		2023.11.21
+// @version		2023.12.03
 // @author		Owyn
 // @contributor	ubless607, bitst0rm
 // @namespace	handyimage
@@ -876,6 +876,9 @@
 // @match		https://paste.pics/*
 // @match		https://cnxx.me/upload/*
 // @match		https://cnpics.org/upload/*
+// @match		https://picvvvd.sbs/*
+// @match		https://civitai.com/images/*
+// @match		https://civitai.com/posts/*
 // ==/UserScript==
 
 "use strict";
@@ -1352,6 +1355,14 @@ function makeworld()
 		if(i)
 		{
 			i.src = i.content.substring(0, i.content.indexOf("?"));
+		}
+		break;
+	case "civitai.com":
+		j = true;
+		i = document.querySelector('meta[property="og:image"], [name="og:image"]');
+		if(i)
+		{
+			i.src = i.content.replace("width=1200","width=3840"); // 4k
 		}
 		break;
 	case "mobile.twitter.com":
@@ -2412,6 +2423,7 @@ function makeworld()
 	case "imgwxr.online":
 	case "imgyre.online":
 	case "picqaxs.cfd":
+	case "picvvvd.sbs":
 		i = q('button');
 		dp=true;
 		j = true;
