@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name		Handy Image
-// @version		2023.12.03
+// @version		2023.12.19
 // @author		Owyn
 // @contributor	ubless607, bitst0rm
 // @namespace	handyimage
@@ -2041,7 +2041,7 @@ function makeworld()
 		break;
 	case "500px.com":
 		j = true;
-		i = q('img.photo-show__img[src*="_m"]');
+		i = q('#copyrightTooltipContainer img');
 		if (i) {
 			var m = i.src.match('/photo/(\\d+)/');
 			if (m) {
