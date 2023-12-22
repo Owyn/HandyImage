@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name		Handy Image
-// @version		2023.12.19
+// @version		2023.12.22
 // @author		Owyn
 // @contributor	ubless607, bitst0rm
 // @namespace	handyimage
@@ -879,6 +879,7 @@
 // @match		https://picvvvd.sbs/*
 // @match		https://civitai.com/images/*
 // @match		https://civitai.com/posts/*
+// @match		https://cosplay18.pics/upload/*
 // ==/UserScript==
 
 "use strict";
@@ -1339,6 +1340,7 @@ function makeworld()
 	case "paste.pics":
 	case 'cnxx.me':
 	case 'cnpics.org':
+	case 'cosplay18.pics":
 		i = document.querySelector('meta[property="og:image"], [name="og:image"]');
 		if(i)
 		{
