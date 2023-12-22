@@ -1340,7 +1340,7 @@ function makeworld()
 	case "paste.pics":
 	case 'cnxx.me':
 	case 'cnpics.org':
-	case 'cosplay18.pics":
+	case 'cosplay18.pics':
 		i = document.querySelector('meta[property="og:image"], [name="og:image"]');
 		if(i)
 		{
