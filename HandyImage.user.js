@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name		Handy Image
-// @version		2023.12.22
+// @version		2023.12.27
 // @author		Owyn
 // @contributor	ubless607, bitst0rm
 // @namespace	handyimage
@@ -761,6 +761,7 @@
 // @match		http://imgweng.xyz/*
 // @match		http://imgkes.xyz/*
 // @match		https://imgair.net/*
+// @match		https://imgtgd.shop/*
 // @match		https://*.imgsto.com/*/*.html
 // @match		https://*.pics4you.net/*/*.html
 // @match		https://vipr.im/*
@@ -889,6 +890,7 @@ console.debug("HandyImage Script running");
 if (typeof unsafeWindow === "undefined")
 {
 	unsafeWindow = window;
+	console.warn("unsafeWindow missing");
 }
 
 if (typeof GM_registerMenuCommand !== "undefined")
@@ -993,17 +995,16 @@ function ws()
 
 function sanitize() // lol I'm such a hacker
 {
-	unsafeWindow.document.createElement = unsafeWindow.console.debug;
+	if(!FireFox) {removeAllListeners();}
+	else if (typeof unsafeWindow.removeAllListeners !== "undefined") {unsafeWindow.removeAllListeners();}
 	let lasttask = unsafeWindow.setTimeout(function() {},0);
 	for(let n = lasttask; n > 0; n--)
 	{
-		if(n !== tg) // unsafeWindow.clear can't clear window.tasks set in the userscript but lets be safe
-		{
+		//if(n !== tg) // unsafeWindow.clear can't clear window.tasks set in the userscript but lets be safe
+		//{
 			unsafeWindow.clearTimeout(n); // only unsafeWindow has access to clear page tasks
-		}
+		//}
 	}
-	if(!FireFox) {removeAllListeners();}
-	else if (typeof unsafeWindow.removeAllListeners !== "undefined") {unsafeWindow.removeAllListeners();}
 }
 
 const protected_createElement = Document.prototype.createElement.bind(document);
@@ -1631,17 +1632,13 @@ function makeworld()
 			i.src = i.src.replace('http://www.amateri.cz/orig.php?&img=', 'http://img2.amateri.cz/users/');
 		}
 		break;
+	case "imgtgd.shop":
+		j = true;
 	case "pixlev.store":
 	case "pixmax.store":
 	case "imgair.net":
 	case "imgxqy.online":
 	case "imgnmh.cfd":
-		find_text_in_scripts('").src = "', '"')
-		break;
-	case "pixsense.net":
-	case "imagespicy.site":
-		find_text_in_scripts('"src","', '"');
-		break;
 	case "imgpukxxr.site":
 		find_text_in_scripts('.src = "', '"');
 		break;
@@ -3023,8 +3020,11 @@ function makeworld()
 		function clr_pgn()
 		{
 			unsafeWindow.open = null;
+			unsafeWindow.onload = null;
 			unsafeWindow.onbeforeunload = null;
 			document.replaceChild(document.importNode(document.implementation.createHTMLDocument("").documentElement, true), document.documentElement);
+			unsafeWindow.document.createElement = unsafeWindow.console.debug;
+			document.head.innerHTML = "";
 		}
 		if (i.nodeName === "VIDEO" || ext_list_video.indexOf(i.src.split('.').pop().split('?')[0].toLowerCase()) >= 0)
 		{
@@ -3040,7 +3040,6 @@ function makeworld()
 		ws();
 		sanitize();
 		clr_pgn();
-		document.head.innerHTML = "";
 		window.removeEventListener('beforescriptexecute', onscript, true);
 		makeimage();
 	}
