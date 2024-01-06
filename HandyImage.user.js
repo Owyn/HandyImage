@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name		Handy Image
-// @version		2023.12.27
+// @version		2024.01.06
 // @author		Owyn
 // @contributor	ubless607, bitst0rm
 // @namespace	handyimage
@@ -843,6 +843,7 @@
 // @match		https://jpg1.su/img/*
 // @match		https://jpg2.su/img/*
 // @match		https://jpg3.su/img/*
+// @match		https://jpg4.su/img/*
 // @match		*://imgwxr.online/*
 // @match		*://imgyre.online/*
 // @match		https://pixl.li/image/*
@@ -881,6 +882,7 @@
 // @match		https://civitai.com/images/*
 // @match		https://civitai.com/posts/*
 // @match		https://cosplay18.pics/upload/*
+// @match		https://*.mjj.today/i/*
 // ==/UserScript==
 
 "use strict";
@@ -1331,6 +1333,7 @@ function makeworld()
 	case "jpg1.su":
 	case "jpg2.su":
 	case "jpg3.su":
+	case "jpg4.su":
 	case 'img.trafficimage.club':
 	case 'pig69.com':
 	case 'javball.com':
@@ -1342,6 +1345,7 @@ function makeworld()
 	case 'cnxx.me':
 	case 'cnpics.org':
 	case 'cosplay18.pics':
+	case 'mjj.today':
 		i = document.querySelector('meta[property="og:image"], [name="og:image"]');
 		if(i)
 		{
