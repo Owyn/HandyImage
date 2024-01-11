@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name		Handy Image
-// @version		2024.01.06
+// @version		2024.01.11
 // @author		Owyn
 // @contributor	ubless607, bitst0rm
 // @namespace	handyimage
@@ -490,7 +490,6 @@
 // @match		https://idol.sankakucomplex.com/*post/show/*
 // @match		https://yande.re/post/show/*
 // @match		http://www.zerochan.net/*
-// @match		https://*.imgrock.pw/*.php
 // @match		http://imgzap.com/view*
 // @match		http://*.olivepix.com/view/*
 // @match		http://*.ocaload.com/img-*
@@ -521,8 +520,6 @@
 // @match		http://*.imageho.me/img-*
 // @match		http://myimg.club/*
 // @match		https://www.hotimage.uk/*mg-*
-// @match		*://imgview.pw/*.php
-// @match		*://imgviu.com/*.php
 // @match		http://*.10.imageleon.com/i-*
 // @match		https://www.dropbox.com/s/*/*
 // @match		http://imgor.net/img-*
@@ -597,7 +594,6 @@
 // @match		http://www.pixsense.net/site/v/*
 // @match		http://www.imgsky.net/*
 // @match		http://www.imagespicy.site/site/v/*
-// @match		https://imgoutlet.pw/*.php
 // @match		https://outletpic.com/*.php
 // @match		http://*.pix.ac/image/*
 // @match		*://*.imgmak.com/image/*
@@ -622,8 +618,6 @@
 // @match		http://*.imgskull.com/image/*
 // @match		*://*.ninjaimages.com/*.html
 // @match		*://*.imgprime.com/img*
-// @match		*://*.imgmaze.pw/*.php
-// @match		*://*.mazpic.com/*.php
 // @match		*://*.piccash.net/*/*/
 // @exclude		*://piccash.net/cabinets/*
 // @exclude		*://www.piccash.net/cabinets/*
@@ -749,7 +743,6 @@
 // @match		*://www.hentai-foundry.com/pictures/*
 // @exclude		*://www.hentai-foundry.com/pictures/user/*/page/*
 // @match		*://imgcredit.xyz/image/*
-// @match		https://imgdew.pw/*.php
 // @match		*://drlink.online/*/*/
 // @match		https://savepice.ru/full/*.html
 // @match		https://kropic.com/*/*.html
@@ -769,7 +762,6 @@
 // @match		https://*.imgdawgknuttz.com/img-*.html
 // @match		https://*.xxxwebdlxxx.top/img-*.html
 // @match		https://*.olarixas.xyz/img-*.html
-// @match		https://imgtown.pw/*.php
 // @match		http://imgkoi.xyz/*
 // @match		https://imagehaha.com/*/*
 // @match		https://picshick.com/*/*
@@ -779,7 +771,6 @@
 // @match		https://fotokiz.com/*/*.html
 // @match		https://silverpic.com/*/*.html
 // @match		http://imglin.xyz/*
-// @match		https://picrok.com/*.php
 // @match		*://*.crownimg.com/*/*.html*
 // @match		http://imgkr.xyz/*
 // @match		*://*.xxxwebdlxxx.org/img-*.html
@@ -2082,7 +2073,6 @@ function makeworld()
 		i = q('img[src*="pics/"]');
 		break;
 	case "dewimg.com":
-	case "outletpic.com":
 	case "subirimagenes.com":
 		j = true;
 		dp = true;
@@ -2103,47 +2093,6 @@ function makeworld()
 		}
 		i = q('img[onload*="scale"]');
 		break;
-	case "imgoutlet.pw":
-	case "imgrock.pw":
-	case "imgview.pw":
-	case "imgmaze.pw":
-	case "imgdew.pw":
-	case "imgtown.pw":
-	case "picrok.com":
-	case "imgviu.com":
-	case "mazpic.com":
-	case "pictwn.com":
-	case "meetimgz.com":
-		j = true;
-		dp=true;
-		i = q('img.picview');
-		if(i)
-		{
-			if(!i.getAttribute("src") || !i.getAttribute("src").length)
-			{
-				i = null;
-			}
-			break;
-		}
-		f = document.querySelectorAll("[type='button']");
-		if (!f.length) {
-			f = document.querySelectorAll("button"); // new hosts using html5 button
-		}
-		if(f.length)
-		{
-			let n;
-			for(n=f.length-1; n >= 0; n--)
-			{
-				if(window.getComputedStyle(f[n]).visibility != "hidden" && f[n].offsetWidth != 0 && f[n].value.indexOf("eply") == -1 && f[n].value.indexOf("Log") == -1)
-				{
-					f[n].removeAttribute("disabled");
-					f[n].click();
-					i = 1;
-					break;
-				}
-			}
-		}
-		break;
 	case "crownimg.com":
 		i = q('button');
 		dp=true;
@@ -2161,6 +2110,9 @@ function makeworld()
 	case "imgtown.net":
 	case "pixs.cx":
 	case "kropic.com":
+	case "outletpic.com":
+	case "pictwn.com":
+	case "meetimgz.com":
 		j = true;
 		dp=true;
 		f = document.querySelectorAll("input[type='submit']");
@@ -2171,7 +2123,7 @@ function makeworld()
 			{
 				if(window.getComputedStyle(f[n]).visibility != "hidden" && f[n].offsetWidth != 0 && f[n].value.indexOf("eply") == -1 && f[n].value.indexOf("Log") == -1)
 				{
-					f[n].removeAttribute("disabled");
+					//f[n].removeAttribute("disabled"); ok, let's wait
 					f[n].click();
 					break;
 				}
