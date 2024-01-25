@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name		Handy Image
-// @version		2024.01.11
+// @version		2024.01.25
 // @author		Owyn
 // @contributor	ubless607, bitst0rm
 // @namespace	handyimage
@@ -50,7 +50,7 @@
 // @match		http://f-picture.net/*
 // @match		https://*.pimpandhost.com/image*
 // @match		https://*.pixroute.com/*/*
-// @match		http://*.picforall.ru/*/*/
+// @match		https://*.picforall.ru/*/*/
 // @match		*://*.imagecurl.com/view*
 // @match		*://*.imagecurl.org/view*
 // @match		http://*.euro-pic.eu/*share*
@@ -874,6 +874,7 @@
 // @match		https://civitai.com/posts/*
 // @match		https://cosplay18.pics/upload/*
 // @match		https://*.mjj.today/i/*
+// @match		https://adult-images.ru/*/*/
 // ==/UserScript==
 
 "use strict";
@@ -1650,6 +1651,7 @@ function makeworld()
 	case "pic5you.ru":
 	case "pic4you.ru":
 	case "picforall.ru":
+	case "adult-images.ru":
 	case "picage.ru":
 	case "images-host.biz":
 	case "pic-mir.ru":
