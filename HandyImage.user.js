@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name		Handy Image
-// @version		2024.01.25
+// @version		2024.01.28
 // @author		Owyn
 // @contributor	ubless607, bitst0rm
 // @namespace	handyimage
@@ -875,6 +875,7 @@
 // @match		https://cosplay18.pics/upload/*
 // @match		https://*.mjj.today/i/*
 // @match		https://adult-images.ru/*/*/
+// @match		https://imgfoto.host/i/*
 // ==/UserScript==
 
 "use strict";
@@ -1338,6 +1339,7 @@ function makeworld()
 	case 'cnpics.org':
 	case 'cosplay18.pics':
 	case 'mjj.today':
+	case "imgfoto.host":
 		i = document.querySelector('meta[property="og:image"], [name="og:image"]');
 		if(i)
 		{
