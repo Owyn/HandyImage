@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name		Handy Image
-// @version		2024.01.28
+// @version		2024.01.31
 // @author		Owyn
 // @contributor	ubless607, bitst0rm
 // @namespace	handyimage
@@ -1007,7 +1007,7 @@ const protected_createElement = Document.prototype.createElement.bind(document);
 var _eventHandlers = {};
 var origAdd = document.addEventListener;
 
-function protected_addEventListener (event, handler, capture = false)
+function wrapper_addEventListener (event, handler, capture = false)
 {
 	if (!(event in _eventHandlers)) {
 		_eventHandlers[event] = [];
@@ -1039,17 +1039,17 @@ function onVisibilityChange()
 window.addEventListener("visibilitychange", onVisibilityChange);
 if(!FireFox) // temporary broken in FF, TamperMonkey dev promised to fix later
 {
-	unsafeWindow.addEventListener = protected_addEventListener;
-	unsafeWindow.document.addEventListener = protected_addEventListener;
-	unsafeWindow.document.documentElement.addEventListener = protected_addEventListener;
+	unsafeWindow.addEventListener = wrapper_addEventListener;
+	unsafeWindow.document.addEventListener = wrapper_addEventListener;
+	unsafeWindow.document.documentElement.addEventListener = wrapper_addEventListener;
 }
-else if (typeof GM_addElement !== "undefined")
+else
 {
 	GM_addElement(document.documentElement, 'script', {textContent: `
 		var _eventHandlers = {};
 		var origAdd = document.addEventListener;
 
-		function protected_addEventListener (event, handler, capture = false)
+		function wrapper_addEventListener (event, handler, capture = false)
 		{
 			if (!(event in _eventHandlers)) {
 				_eventHandlers[event] = [];
@@ -1058,9 +1058,9 @@ else if (typeof GM_addElement !== "undefined")
 			return origAdd.call(this, event, handler, capture);
 		}
 
-		window.addEventListener = protected_addEventListener;
-		document.addEventListener = protected_addEventListener;
-		document.documentElement.addEventListener = protected_addEventListener;
+		window.addEventListener = wrapper_addEventListener;
+		document.addEventListener = wrapper_addEventListener;
+		document.documentElement.addEventListener = wrapper_addEventListener;
 
 		function removeAllListeners ()
 		{
@@ -1071,6 +1071,16 @@ else if (typeof GM_addElement !== "undefined")
 			}
 		}
 		`});
+}
+
+if (typeof GM_addElement === "undefined")
+{
+	window.GM_addElement = function GM_addElement(node, type, content)
+	{
+		let el = protected_createElement(type);
+		el.textContent = content.textContent;
+		node.appendChild(el);
+	}
 }
 
 function DeleteAllCookies()
@@ -1098,7 +1108,8 @@ function makeimage()
 	if(cfg_direct === true){let a = protected_createElement('a'); a.setAttribute('href',i.src); a.click(); return false;}
 	if(cfg_bgclr){document.body.bgColor = cfg_bgclr;}
 	document.body.style.margin = "0px";
-	document.body.innerHTML = "<style>" + (is_video? "video" : "img") +" { position: absolute; top: 0; right: 0; bottom: 0; left: 0; image-orientation: from-image; background-color: "+cfg_bgclr+"; max-width: unset; max-height: unset;}</style>"; // center image
+	let css = (is_video? "video" : "img") +" { position: absolute; top: 0; right: 0; bottom: 0; left: 0; image-orientation: from-image; background-color: "+cfg_bgclr+"; max-width: unset; max-height: unset; }";
+	GM_addElement(document.documentElement, 'style', {textContent: css});
 	ws();
 	let isrc = i.src;
 	i = protected_createElement(is_video? "video" : "img");
