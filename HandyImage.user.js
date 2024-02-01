@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name		Handy Image
-// @version		2024.02.01
+// @version		2024.02.02
 // @author		Owyn
 // @contributor	ubless607, bitst0rm
 // @namespace	handyimage
@@ -1038,12 +1038,12 @@ function onVisibilityChange()
 }
 window.addEventListener("visibilitychange", onVisibilityChange);
 
-let AddElementToPage = typeof GM_addElement !== "undefined" ? GM_addElement : function GM_addElement(node, type, content)
+const AddElementToPage = typeof GM_addElement === "function" ? GM_addElement : function (node, type, content)
 {
 	let el = protected_createElement(type);
 	el.textContent = content.textContent;
 	node.appendChild(el);
-};
+}; // stupid adGuard
 
 if(!FireFox) // temporary broken in FF, TamperMonkey dev promised to fix later
 {
