@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name		Handy Image
-// @version		2024.02.02
+// @version		2024.02.05
 // @author		Owyn
 // @contributor	ubless607, bitst0rm
 // @namespace	handyimage
@@ -876,6 +876,7 @@
 // @match		https://*.mjj.today/i/*
 // @match		https://adult-images.ru/*/*/
 // @match		https://imgfoto.host/i/*
+// @match		https://picabox.ru/pic/*
 // ==/UserScript==
 
 "use strict";
@@ -1158,7 +1159,7 @@ function post(path, params, method)
 	form.setAttribute("action", path);
 	for(let key in params)
 	{
-		if(params.hasOwnProperty(key))
+		if(params.hasOwn(key)) // hasOwnProperty
 		{
 			let hiddenField = protected_createElement("input");
 			hiddenField.setAttribute("type", "hidden");
@@ -1263,10 +1264,10 @@ function makeworld()
 			if(i)
 			{
 				let expires = '';
-	            let date = new Date();
-	            date.setTime(date.getTime() + (6 * 60 * 60 * 1000));
-	            expires = "; expires=" + date.toUTCString();
-	            document.cookie = "nsfw_inter=1" + expires + "; path=/";
+				let date = new Date();
+				date.setTime(date.getTime() + (6 * 60 * 60 * 1000));
+				expires = "; expires=" + date.toUTCString();
+				document.cookie = "nsfw_inter=1" + expires + "; path=/";
 				i.click();
 			}
 		}
@@ -1349,6 +1350,7 @@ function makeworld()
 	case 'cosplay18.pics':
 	case 'mjj.today':
 	case "imgfoto.host":
+	case "picabox.ru":
 		i = document.querySelector('meta[property="og:image"], [name="og:image"]');
 		if(i)
 		{
@@ -2928,7 +2930,6 @@ function makeworld()
 			}
 			i = q('img[src*="' + iurl + '"]');
 			break;
-			break;
 		default: // for user-added sites
 			j = true;
 			console.warn("HJI is running on a custom website");
@@ -3334,12 +3335,12 @@ var observer = new MutationObserver((mutations) => {
 		{
             for (const n of m.addedNodes)
             {
-            	if(n.tagName === "SCRIPT")
-            	{
-            		//console.debug("Script was stopped from loading: ", n);
-            		n.textContent = "";
+				if(n.tagName === "SCRIPT")
+				{
+					//console.debug("Script was stopped from loading: ", n);
+					n.textContent = "";
                     n.remove();
-            	}
+				}
             }
         }
 	}
