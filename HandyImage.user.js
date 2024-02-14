@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name		Handy Image
-// @version		2024.02.05
+// @version		2024.02.14
 // @author		Owyn
 // @contributor	ubless607, bitst0rm
 // @namespace	handyimage
@@ -952,6 +952,7 @@ var cfg_fitS = true;
 var cfg_fitOS = false;
 var cfg_js;
 var cfg_vol = "0.5";
+var referrer_policy = "no-referrer-when-downgrade";
 var dp = false;
 let orgImgWidth;
 let orgImgHeight;
@@ -991,8 +992,7 @@ function ws()
 
 function sanitize() // lol I'm such a hacker
 {
-	if(!FireFox) {removeAllListeners();}
-	else if (typeof unsafeWindow.removeAllListeners !== "undefined") {unsafeWindow.removeAllListeners();}
+	removeAllListeners();
 	let lasttask = unsafeWindow.setTimeout(function() {},0);
 	for(let n = lasttask; n > 0; n--)
 	{
@@ -1004,21 +1004,41 @@ function sanitize() // lol I'm such a hacker
 }
 
 const protected_createElement = Document.prototype.createElement.bind(document);
+function protected_addEventListener (el, event, handler, capture = false)
+{
+	let func = FireFox ? Document.prototype.addEventListener : origAdd; // FF needs script's one
+	return func.call(el, event, handler, capture);
+}
 
 var _eventHandlers = {};
-var origAdd = document.addEventListener;
+var origAdd = unsafeWindow.Element.prototype.addEventListener; // page's one
+if(FireFox && typeof exportFunction === "function")
+{
+	wrapper_addEventListener = exportFunction(wrapper_addEventListener, unsafeWindow); // TM magic
+}
+// addEventListener inside userscript's `window` doesn't change
+unsafeWindow.Window.prototype.addEventListener = wrapper_addEventListener;
+unsafeWindow.Document.prototype.addEventListener = wrapper_addEventListener;
+unsafeWindow.Element.prototype.addEventListener = wrapper_addEventListener;
 
 function wrapper_addEventListener (event, handler, capture = false)
 {
-	if (!(event in _eventHandlers)) {
-		_eventHandlers[event] = [];
+	//if (typeof _eventHandlers === "undefined") unsafeWindow._eventHandlers = {};
+	if (bStopScripts)
+	{
+		console.debug("HJI: stopped 1 addEventListener: " + event);
+		return null;
 	}
-	_eventHandlers[event].push({ node: this || window, handler: handler, capture: capture });
+	if (!(event in _eventHandlers))	_eventHandlers[event] = [];
+
+	_eventHandlers[event].push({ node: this || unsafeWindow, handler: handler, capture: capture });
+	console.debug("HJI: wrapped 1 addEventListener: " + event + ", "+ Object.keys(_eventHandlers).length);
 	return origAdd.call(this, event, handler, capture);
 }
 
 function removeAllListeners ()
 {
+	console.debug("HJI: removed "+ Object.keys(_eventHandlers).length + " event listeners: " + Object.keys(_eventHandlers));
 	for(let event in _eventHandlers)
 	{
 		_eventHandlers[event].forEach(({ node, handler, capture }) => node.removeEventListener(event, handler, capture));
@@ -1046,42 +1066,6 @@ const AddElementToPage = typeof GM_addElement === "function" ? GM_addElement : f
 	node.appendChild(el);
 }; // stupid adGuard
 
-if(!FireFox) // temporary broken in FF, TamperMonkey dev promised to fix later
-{
-	unsafeWindow.addEventListener = wrapper_addEventListener;
-	unsafeWindow.document.addEventListener = wrapper_addEventListener;
-	unsafeWindow.document.documentElement.addEventListener = wrapper_addEventListener;
-}
-else
-{
-	AddElementToPage(document.documentElement, 'script', {textContent: `
-		var _eventHandlers = {};
-		var origAdd = document.addEventListener;
-
-		function wrapper_addEventListener (event, handler, capture = false)
-		{
-			if (!(event in _eventHandlers)) {
-				_eventHandlers[event] = [];
-			}
-			_eventHandlers[event].push({ node: this || window, handler: handler, capture: capture });
-			return origAdd.call(this, event, handler, capture);
-		}
-
-		window.addEventListener = wrapper_addEventListener;
-		document.addEventListener = wrapper_addEventListener;
-		document.documentElement.addEventListener = wrapper_addEventListener;
-
-		function removeAllListeners ()
-		{
-			for(let event in _eventHandlers)
-			{
-				_eventHandlers[event].forEach(({ node, handler, capture }) => node.removeEventListener(event, handler, capture));
-				delete _eventHandlers[event];
-			}
-		}
-		`});
-}
-
 function DeleteAllCookies()
 {
 	document.cookie.split(";").forEach(function(c) {
@@ -1092,6 +1076,7 @@ function DeleteAllCookies()
 function onscript(e)
 {
 	//console.debug( "STOPPED: " + e.target.src + e.target.innerHTML);
+	console.debug( "HJI: onscript stopped 1 script from loading");
 	e.preventDefault();
 	e.stopPropagation();
 }
@@ -1117,14 +1102,14 @@ function makeimage()
 	document.body.appendChild(i);
 	if(!is_video)
 	{
-		i.addEventListener("click", rescale, true);
-		i.addEventListener("auxclick", rescale, true);
-		i.addEventListener("mousedown", mousedown, true);
+		protected_addEventListener(i, "click", rescale, true);
+		protected_addEventListener(i, "auxclick", rescale, true);
+		protected_addEventListener(i, "mousedown", mousedown, true);
 	}
 	else
 	{
 		i.volume = cfg_vol;
-		i.addEventListener("volumechange", onvolumechange, true);
+		protected_addEventListener(i, "volumechange", onvolumechange, true);
 		i.controls = true;
 		i.loop = true;
 		i.preload = "auto";
@@ -1159,7 +1144,7 @@ function post(path, params, method)
 	form.setAttribute("action", path);
 	for(let key in params)
 	{
-		if(params.hasOwn(key)) // hasOwnProperty
+		if(Object.hasOwn(params, key)) // hasOwnProperty
 		{
 			let hiddenField = protected_createElement("input");
 			hiddenField.setAttribute("type", "hidden");
@@ -1505,6 +1490,7 @@ function makeworld()
 		{
 			use_booru_tags_in_dl_filename();
 			i.src = i.href;
+			referrer_policy = "no-referrer";
 		}
 		break;
 	case "bcy.net":
@@ -2973,8 +2959,8 @@ function makeworld()
 	if(!j)
 	{
 		j = true;
-		window.addEventListener('beforescriptexecute', onscript, true);
-		if(!FireFox) {bStopScripts = true;}
+		window.addEventListener('beforescriptexecute', onscript, true); // useless, but let it be
+		bStopScripts = true; // actually better than the event above, blocks more stuff for some reason
 	}
 	//
 	if(tb){window.clearTimeout(tb);}
@@ -2994,7 +2980,7 @@ function makeworld()
 			unsafeWindow.onbeforeunload = null;
 			document.replaceChild(document.importNode(document.implementation.createHTMLDocument("").documentElement, true), document.documentElement);
 			unsafeWindow.document.createElement = unsafeWindow.console.debug;
-			document.head.innerHTML = "";
+			document.head.innerHTML = '<meta name="referrer" content="'+referrer_policy+'">';
 		}
 		if (i.nodeName === "VIDEO" || ext_list_video.indexOf(i.src.split('.').pop().split('?')[0].toLowerCase()) >= 0)
 		{
@@ -3058,7 +3044,7 @@ function use_booru_tags_in_dl_filename()
 			return;
 		}
 		if(cfg_js && cfg_js.indexOf("grab_fav_tags") != -1) {grab_fav_tags = cfg_js.substring(cfg_js.indexOf("[")+1,cfg_js.indexOf("]")).replaceAll(" ", "").replaceAll("_", " ").replaceAll(/\n/g, '').replaceAll("'", "").replaceAll('"','').split(",");} // load custom tags // also bypass CSP
-		console.log(grab_fav_tags);
+		console.debug("your favorite tags: "+ grab_fav_tags);
 		if(grab_fav_tags.length)
 		{
 			for(let n = 0; n < general_tags.length; n++)
@@ -3304,9 +3290,10 @@ function autoresize()
 		{
 			changeCursor();
 		}
+		bStopScripts = false; // should be safe now, right?
 		if(cfg_js){eval(cfg_js);}
 	}
-	else // onloadstart event for images doesn't work in Chrome in 2020 kek (bug)
+	else // no onloadstart event for images, sadge
 	{
 		ARC++;
 		if(ARC < 1000)
@@ -3337,7 +3324,8 @@ var observer = new MutationObserver((mutations) => {
             {
 				if(n.tagName === "SCRIPT")
 				{
-					//console.debug("Script was stopped from loading: ", n);
+					//console.debug("HJI: Script was stopped from loading: ", n);
+					console.debug( "HJI: stopped 1 script from loading ");
 					n.textContent = "";
                     n.remove();
 				}
