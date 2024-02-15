@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name		Handy Image
-// @version		2024.02.14
+// @version		2024.02.15
 // @author		Owyn
 // @contributor	ubless607, bitst0rm
 // @namespace	handyimage
@@ -377,7 +377,6 @@
 // @match		http://filefap.com/view*
 // @match		https://imgur.com/*
 // @match		https://m.imgur.com/*
-// @match		https://i.imgur.com/*.gifv
 // @match		https://motherless.com/*
 // @match		https://*.tumblr.com/image/*
 // @match		https://*.media.tumblr.com/*.*
@@ -952,7 +951,7 @@ var cfg_fitS = true;
 var cfg_fitOS = false;
 var cfg_js;
 var cfg_vol = "0.5";
-var referrer_policy = "no-referrer-when-downgrade";
+var referrer_policy = "strict-origin-when-cross-origin"; // default browser behavior
 var dp = false;
 let orgImgWidth;
 let orgImgHeight;
@@ -1092,7 +1091,7 @@ function makeimage()
 	if(cfg_direct === true){let a = protected_createElement('a'); a.setAttribute('href',i.src); a.click(); return false;}
 	if(cfg_bgclr){document.body.bgColor = cfg_bgclr;}
 	document.body.style.margin = "0px";
-	let css = (is_video? "video" : "img") +" { position: absolute; top: 0; right: 0; bottom: 0; left: 0; image-orientation: from-image; background-color: "+cfg_bgclr+"; max-width: unset; max-height: unset; }";
+	let css = (is_video? "video" : "img") +" { position: absolute; top: 0; right: 0; bottom: 0; left: 0; outline: none; image-orientation: from-image; background-color: "+cfg_bgclr+"; max-width: unset; max-height: unset; }";
 	AddElementToPage(document.documentElement, 'style', {textContent: css});
 	ws();
 	let isrc = i.src;
@@ -1100,6 +1099,7 @@ function makeimage()
 	i.src = isrc;
 	i.style.margin = "auto"; // center image
 	document.body.appendChild(i);
+	i.focus(); // so volume built-in hotkeys would work
 	if(!is_video)
 	{
 		protected_addEventListener(i, "click", rescale, true);
@@ -1117,7 +1117,11 @@ function makeimage()
 	window.addEventListener("keydown", onkeydown, true);
 	if(dp){console.warn("you are on a double-page image hosting (probably)");window.addEventListener("beforeunload", onbeforeunload, true);}
 	onVisibilityChange(); // if tab is already active when opening image
-	if (typeof GM_registerMenuCommand !== "undefined") {GM_registerMenuCommand("Handy Image Download image", download_image, "N");}
+	if (typeof GM_registerMenuCommand !== "undefined")
+	{
+		GM_registerMenuCommand("Handy Image Download image", download_image, "N");
+		GM_registerMenuCommand("Handy Image Re-Load page normally", () => {sessionStorage.hji = window.location.href; window.location.reload();}, "R");
+	}
 }
 
 function find_text_in_scripts(text, stopword, start_from_top, search_after_word)
@@ -1374,14 +1378,10 @@ function makeworld()
 			filename_ext = i.src.substring(i.src.indexOf("format=")+7 ,i.src.indexOf("&"));
 		}
 		break;
-	case "i.imgur.com":
 	case "redgifs.com":
 	case "v3.redgifs.com":
-		i = document.head.querySelector('meta[property="og:video"],meta[property="og:image:secure_url"]');
-		if(i)
-		{
-			i.src = i.content;
-		}
+		j = true;
+		i = q('video, img.ImageGif-Thumbnail');
 		break;
 	case "m.imgur.com":
 		j = true;
@@ -2972,6 +2972,7 @@ function makeworld()
 	}
 	if(i && i.src)
 	{
+		bStopScripts = true; // in case JS was allowed before
 		observer.disconnect();
 		function clr_pgn()
 		{
