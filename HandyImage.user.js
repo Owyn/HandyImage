@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name		Handy Image
-// @version		2024.02.15
+// @version		2024.02.16
 // @author		Owyn
 // @contributor	ubless607, bitst0rm
 // @namespace	handyimage
@@ -21,6 +21,8 @@
 // @grant		GM_addElement
 // @grant		unsafeWindow
 // @sandbox		JavaScript
+// @compatible	Chrome
+// @compatible	Firefox
 // @match		https://www.imagebam.com/image/*
 // @match		https://www.imagebam.com/view/*
 // @match		http://imgchili.net/show*
@@ -1003,10 +1005,10 @@ function sanitize() // lol I'm such a hacker
 }
 
 const protected_createElement = Document.prototype.createElement.bind(document);
+protected_addEventListener.originalF = Element.prototype.addEventListener;
 function protected_addEventListener (el, event, handler, capture = false)
 {
-	let func = FireFox ? Document.prototype.addEventListener : origAdd; // FF needs script's one
-	return func.call(el, event, handler, capture);
+	return protected_addEventListener.originalF.call(el, event, handler, capture);
 }
 
 var _eventHandlers = {};
