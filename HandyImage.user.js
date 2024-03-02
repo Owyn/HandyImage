@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name		Handy Image
-// @version		2024.02.16
+// @version		2024.03.02
 // @author		Owyn
 // @contributor	ubless607, bitst0rm
 // @namespace	handyimage
@@ -878,6 +878,7 @@
 // @match		https://adult-images.ru/*/*/
 // @match		https://imgfoto.host/i/*
 // @match		https://picabox.ru/pic/*
+// @match		https://snipboard.io/*
 // ==/UserScript==
 
 "use strict";
@@ -1079,7 +1080,7 @@ function onscript(e)
 	//console.debug( "STOPPED: " + e.target.src + e.target.innerHTML);
 	console.debug( "HJI: onscript stopped 1 script from loading");
 	e.preventDefault();
-	e.stopPropagation();
+	e.stopImmediatePropagation();
 }
 
 function onbeforeunload() // back helper
@@ -1106,7 +1107,7 @@ function makeimage()
 	{
 		protected_addEventListener(i, "click", rescale, true);
 		protected_addEventListener(i, "auxclick", rescale, true);
-		protected_addEventListener(i, "mousedown", mousedown, true);
+		protected_addEventListener(i, "mousedown", mousedown, true); // chrome old fix - still needed
 	}
 	else
 	{
@@ -1342,6 +1343,7 @@ function makeworld()
 	case 'mjj.today':
 	case "imgfoto.host":
 	case "picabox.ru":
+	case "snipboard.io":
 		i = document.querySelector('meta[property="og:image"], [name="og:image"]');
 		if(i)
 		{
@@ -3134,7 +3136,7 @@ function mousedown(event) // chrome scroll-wheel
 	if(event.which === 2) // middle mouse
 	{
 		event.preventDefault();
-		event.stopPropagation();
+		event.stopImmediatePropagation();
 		return;
 	}
 }
@@ -3160,7 +3162,7 @@ function rescale(event, fill)
 		{
 			fill = true;
 			event.preventDefault();
-			event.stopPropagation();
+			event.stopImmediatePropagation();
 		}
 		else if(event.which === 3) // right mouse
 		{
@@ -3371,6 +3373,10 @@ function cancelEvent(a)
 	if (a.stopPropagation)
 	{
 		a.stopPropagation();
+	}
+	if (a.stopImmediatePropagation)
+	{
+		a.stopImmediatePropagation();
 	}
 	if (a.preventDefault)
 	{
