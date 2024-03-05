@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name		Handy Image
-// @version		2024.03.02
+// @version		2024.03.05
 // @author		Owyn
 // @contributor	ubless607, bitst0rm
 // @namespace	handyimage
@@ -848,6 +848,7 @@
 // @match		https://www.reddit.com/media?url=*
 // @match		https://vsco.co/*/media/*
 // @match		https://www.gettyimages.com/detail*photo*
+// @match		https://www.gettyimages.com/detail*video*
 // @match		https://jpg.pet/img/*
 // @match		https://jpeg.pet/img/*
 // @match		https://imgnmh.cfd/*
@@ -1127,7 +1128,7 @@ function makeimage()
 	}
 }
 
-function find_text_in_scripts(text, stopword, start_from_top, search_after_word)
+function find_text_in_scripts(text, stopword, start_from_top = null, search_after_word = null, content_type = "img")
 {
 	let s = document.getElementsByTagName("script");
 	for(let c=0;c<s.length;c++)
@@ -1136,8 +1137,12 @@ function find_text_in_scripts(text, stopword, start_from_top, search_after_word)
 		let start_pos = start_from_top ? s[c].innerHTML.indexOf(text) : s[c].innerHTML.lastIndexOf(text);
 		if(start_pos == -1){continue;}
 		start_pos += text.length;
-		i = protected_createElement("img");
-		i.src = decodeURIComponent(s[c].innerHTML.substring(start_pos,s[c].innerHTML.indexOf(stopword,start_pos)).split("\\").join("")); // split\join fix for stupidfox GreaseMonkey
+		let found_content = s[c].innerHTML.substring(start_pos,s[c].innerHTML.indexOf(stopword,start_pos));
+		found_content = JSON.parse('"' + found_content.replace('"', '\\"') + '"'); // unescape it
+		found_content = decodeURIComponent(found_content);
+		i = protected_createElement(content_type);
+		i.src = found_content;
+		console.debug("found url in the script: " + found_content);
 		return true;
 	}
 	return false;
@@ -1688,8 +1693,8 @@ function makeworld()
 		break;
 	case "gettyimages.com":
 		j = true;
-		i = protected_createElement("img");
-		i.src ="https://media.gettyimages.com/photos/-id"+ window.location.pathname.substring(window.location.pathname.lastIndexOf("/")+1) +"?s=2048x2048&w=5";
+		find_text_in_scripts('"largeMainImageURL":"', '"') || find_text_in_scripts('"filmCompUrl":"', '"',null,null,"video");
+		break;
 	case "radikal.ru":
 	case "radical-foto.ru":
 	case "radikal-foto.ru":
