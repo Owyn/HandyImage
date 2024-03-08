@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name		Handy Image
-// @version		2024.03.05
+// @version		2024.03.08
 // @author		Owyn
 // @contributor	ubless607, bitst0rm
 // @namespace	handyimage
@@ -880,6 +880,8 @@
 // @match		https://imgfoto.host/i/*
 // @match		https://picabox.ru/pic/*
 // @match		https://snipboard.io/*
+// @match		https://www.seaart.ai/explore/detail/*
+// @match		https://tensor.art/images/*
 // ==/UserScript==
 
 "use strict";
@@ -1349,6 +1351,7 @@ function makeworld()
 	case "imgfoto.host":
 	case "picabox.ru":
 	case "snipboard.io":
+	case "seaart.ai":
 		i = document.querySelector('meta[property="og:image"], [name="og:image"]');
 		if(i)
 		{
@@ -1373,6 +1376,14 @@ function makeworld()
 		if(i)
 		{
 			i.src = i.content.replace("width=1200","width=3840"); // 4k
+		}
+		break;
+	case "tensor.art":
+		j = true;
+		i = document.querySelector('meta[property="og:image"], [name="og:image"]');
+		if(i)
+		{
+			i.src = i.content.replace("w=600","w=3840"); // 4k (if available)
 		}
 		break;
 	case "mobile.twitter.com":
