@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name		Handy Image
-// @version		2024.03.08
+// @version		2024.03.09
 // @author		Owyn
 // @contributor	ubless607, bitst0rm
 // @namespace	handyimage
@@ -3423,7 +3423,7 @@ function download_image()
 	{
 		filename = filename.replace(/[/\\?%*:|"<>]/g, '_'); // characters you can't use in filenames
 		let details = {	url: i.src,
-						headers: {'Referer': window.location.href},
+						headers: referrer_policy != "no-referrer" ? {'Referer': window.location.href} : {}, // doesn't fully follow the page's referer policy but ok
 						name: filename,
 						saveAs: true}
 		console.log('downloading: ' + filename + " from: " + i.src);
