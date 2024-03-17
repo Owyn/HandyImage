@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name		Handy Image
-// @version		2024.03.09
+// @version		2024.03.17
 // @author		Owyn
 // @contributor	ubless607, bitst0rm
 // @namespace	handyimage
@@ -820,6 +820,7 @@
 // @match		https://*.slowpic.xyz//img-*.html
 // @match		https://yapx.ru/*/*
 // @match		https://imgpukxxr.site/*
+// @match		https://picngt.shop/*
 // @match		https://realbooru.com/index.php?page=post&s=view&id=*
 // @match		*://imgutkr.store/*
 // @match		*://imghhr.online/*
@@ -1655,6 +1656,7 @@ function makeworld()
 	case "imgxqy.online":
 	case "imgnmh.cfd":
 	case "imgpukxxr.site":
+	case "picngt.shop":
 		find_text_in_scripts('.src = "', '"');
 		break;
 	case "pix-x.net":
