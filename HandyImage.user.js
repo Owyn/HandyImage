@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name		Handy Image
-// @version		2024.03.17
+// @version		2024.03.18
 // @author		Owyn
 // @contributor	ubless607, bitst0rm
 // @namespace	handyimage
@@ -738,7 +738,7 @@
 // @match		https://*.picusha.net/?v=*
 // @match		https://e621.net/posts/*
 // @match		https://rule34.xxx/index.php?page=post&s=view&id=*
-// @match		https://rule34hentai.net/post/view/*
+// @match		https://*.rule34hentai.net/post/view/*
 // @match		https://pixs.cx/*
 // @match		*://mshelxxx.ru.com//img-*.html
 // @match		*://www.hentai-foundry.com/pictures/*
