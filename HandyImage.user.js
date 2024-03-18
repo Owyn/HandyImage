@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name		Handy Image
-// @version		2024.03.18
+// @version		2024.03.19
 // @author		Owyn
 // @contributor	ubless607, bitst0rm
 // @namespace	handyimage
@@ -1857,7 +1857,7 @@ function makeworld()
 	case "furaffinity.net":
 		j = true;
 		i = q('div.download a');
-		if(i){i.src = i.href;}
+		if(i){i.src = i.href; filename = document.title;}
 		break;
 	case "imagehost.eu":
 		i = q('a#image');
