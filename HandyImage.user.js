@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name		Handy Image
-// @version		2024.03.19
+// @version		2024.03.24
 // @author		Owyn
 // @contributor	ubless607, bitst0rm
 // @namespace	handyimage
@@ -970,6 +970,7 @@ var FireFox = ((navigator.userAgent.indexOf('Firefox') != -1) ? true : false);
 var i;
 var j;
 var bStopScripts = false;
+var bUseCustomFilename = true;
 var filename = "";
 var filename_ext = "";
 var skip_by = 5;
@@ -1096,22 +1097,41 @@ function makeimage()
 {
 	if(typeof cfg_js !== "string") { console.log("waiting for settings to load to makeimage()"); window.setTimeout(function() { makeimage(); }, 2); return false;} // lets wait for stupd async
 	if(cfg_direct === true){let a = protected_createElement('a'); a.setAttribute('href',i.src); a.click(); return false;}
-	if(cfg_bgclr){document.body.bgColor = cfg_bgclr;}
-	document.body.style.margin = "0px";
-	let css = (is_video? "video" : "img") +" { position: absolute; top: 0; right: 0; bottom: 0; left: 0; outline: none; image-orientation: from-image; background-color: "+cfg_bgclr+"; max-width: unset; max-height: unset; }";
+	let css 
+ = `:root, body
+{
+	height: 100%;
+	width: 100%;
+	margin: 0px;
+	display: grid;
+}
+img, video
+{
+	margin: auto;
+	outline: none;
+	max-width: unset;
+	max-height: unset;
+	image-orientation: from-image;
+}
+video::-webkit-media-controls-panel
+{
+	background-image: linear-gradient(transparent, transparent) !important;
+}
+:root, body, img, video
+{
+	min-width: 0px;
+	min-height: 0px;
+	background-color: ${cfg_bgclr};
+}`; // don't mind the broken identation, multiline string demands it
 	AddElementToPage(document.documentElement, 'style', {textContent: css});
 	ws();
 	let isrc = i.src;
 	i = protected_createElement(is_video? "video" : "img");
 	i.src = isrc;
-	i.style.margin = "auto"; // center image
 	document.body.appendChild(i);
-	i.focus(); // so volume built-in hotkeys would work
 	if(!is_video)
 	{
 		protected_addEventListener(i, "click", rescale, true);
-		protected_addEventListener(i, "auxclick", rescale, true);
-		protected_addEventListener(i, "mousedown", mousedown, true); // chrome old fix - still needed
 	}
 	else
 	{
@@ -1120,10 +1140,13 @@ function makeimage()
 		i.controls = true;
 		i.loop = true;
 		i.preload = "auto";
+		i.focus(); // so video volume built-in hotkeys would work (until you unfocus it)
 	}
+	protected_addEventListener(i, "auxclick", rescale, true);
+	protected_addEventListener(i, "mousedown", mousedown, true); // chrome old fix - still needed
 	window.addEventListener("keydown", onkeydown, true);
-	if(dp){console.warn("you are on a double-page image hosting (probably)");window.addEventListener("beforeunload", onbeforeunload, true);}
 	onVisibilityChange(); // if tab is already active when opening image
+	if(dp){console.warn("you are on a double-page image hosting (probably)");window.addEventListener("beforeunload", onbeforeunload, true);}
 	if (typeof GM_registerMenuCommand !== "undefined")
 	{
 		GM_registerMenuCommand("Handy Image Download image", download_image, "N");
@@ -1779,6 +1802,11 @@ function makeworld()
 		j = true;
 		i = q('a[href*="/images/"][href*="' + host + '/"]');
 		if(i){use_booru_tags_in_dl_filename(); i.src = i.href;}
+		break;
+	case "rule34.paheal.net":
+		j = true;
+		bUseCustomFilename = false;
+		i = q('#main_image');
 		break;
 	case "rule34hentai.net":
 	case "danbooru.donmai.us":
@@ -3091,14 +3119,14 @@ function onvolumechange()
 
 function changeCursor()
 {
-	if(i.scrollHeight > window.innerHeight) // image pushing out-of-screen browser bug fix
+	/*if(i.scrollHeight > window.innerHeight) // image pushing out-of-screen browser fix
 	{
 		i.style.margin = "0px auto";
 	}
 	else
 	{
 		i.style.margin = "auto";
-	}
+	}*/
 
 	if(is_video) return;
 
@@ -3191,10 +3219,10 @@ function rescale(event, fill)
 	document.body.style.overflowX = '';
 	document.body.style.overflowY = '';
 
-	let scrollMax_Y = window.scrollMaxY || ((document.body.scrollHeight || document.documentElement.scrollHeight)- document.documentElement.clientHeight);
+	let scrollMax_Y = window.scrollMaxY || ((document.body.scrollHeight || document.documentElement.scrollHeight)- document.documentElement.clientHeight); // for later: use window.visualViewport.height instead of clientHeight or window.innerHeight to get the window size without scrollbars
 	let scrollMax_X = window.scrollMaxX || ((document.body.scrollWidth || document.documentElement.scrollWidth)- document.documentElement.clientWidth);
 
-	let scrollProgressY = window.pageYOffset / scrollMax_Y;
+	let scrollProgressY = window.pageYOffset / scrollMax_Y; // for later: change pageYOffset to window.visualViewport.pageLeft
 	let scrollProgressX = window.pageXOffset / scrollMax_X;
 
 	let unFilling = false;
@@ -3359,9 +3387,9 @@ var observer = new MutationObserver((mutations) => {
 observer.observe(document, {subtree: true, childList: true});
 
 // hotkeys
-if (typeof KeyEvent === "undefined")
+if (typeof KeyEvent === "undefined") // only defined in FireFox
 {
-	var KeyEvent = {
+	window.KeyEvent = {
 		DOM_VK_SPACE: 32,
 		DOM_VK_LEFT: 37,
 		DOM_VK_UP: 38,
@@ -3374,6 +3402,8 @@ if (typeof KeyEvent === "undefined")
 		DOM_VK_R: 82,
 		DOM_VK_S: 83,
 		DOM_VK_W: 87,
+		DOM_VK_M: 77,
+		DOM_VK_F: 70,
 		DOM_VK_NUMPAD2: 98,
 		DOM_VK_NUMPAD4: 100,
 		DOM_VK_NUMPAD5: 101,
@@ -3425,9 +3455,9 @@ function download_image()
 	{
 		filename = filename.replace(/[/\\?%*:|"<>]/g, '_'); // characters you can't use in filenames
 		let details = {	url: i.src,
-						headers: referrer_policy != "no-referrer" ? {'Referer': window.location.href} : {}, // doesn't fully follow the page's referer policy but ok
-						name: filename,
-						saveAs: true}
+						headers: referrer_policy !== "no-referrer" ? {'Referer': window.location.href} : {}, // doesn't fully follow the page's referer policy but ok
+						name: bUseCustomFilename !== false ? filename : null,
+						saveAs: true };
 		console.log('downloading: ' + filename + " from: " + i.src);
         details.onload = () => { console.log('download complete'); };
         details.ontimeout = () => { console.error('download timeout'); };
@@ -3506,6 +3536,14 @@ function onkeydown (b)
 		}
 		cancelEvent(b);
 		break;
+	case KeyEvent.DOM_VK_M:
+		i.muted = !i.muted;
+		cancelEvent(b);
+		break;
+	case KeyEvent.DOM_VK_F:
+		i.requestFullscreen();
+		cancelEvent(b);
+		break;
 	case KeyEvent.DOM_VK_TAB:
 	case KeyEvent.DOM_VK_ENTER:
 		rescale(null, true);
@@ -3552,7 +3590,7 @@ function cfg()
 			GM.setValue("fitOS", q("#hji_cfg_7_fitOS").checked);
 			GM.setValue("js", q("#hji_cfg_6_js").value);
 			alert("Configuration Saved");
-			if(q("#hji_cfg_2_bgclr").value){document.body.bgColor = q("#hji_cfg_2_bgclr").value;}else{document.body.removeAttribute("bgColor");}
+			if(q("#hji_cfg_2_bgclr").value){document.body.style.backgroundColor = q("#hji_cfg_2_bgclr").value;}else{document.body.style.backgroundColor = "";}
 		}
 		if(i && i.src)
 		{
