@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name		Handy Image
-// @version		2024.03.26
+// @version		2024.03.27
 // @author		Owyn
 // @contributor	ubless607, bitst0rm
 // @namespace	handyimage
@@ -1057,6 +1057,7 @@ function onVisibilityChange()
 {
 	if (document.visibilityState === 'visible')
 	{
+		onWindowResize(); // gives 0 if not visible
 		if(i && i.src)
 		{
 			window.removeEventListener('visibilitychange', onVisibilityChange);
@@ -1147,7 +1148,6 @@ video::-webkit-media-controls-panel
 	window.addEventListener("keydown", onkeydown, true);
 	onVisibilityChange(); // if tab is already active when opening image
 	window.visualViewport.addEventListener("resize", onWindowResize);
-	onWindowResize();
 	if(dp){console.warn("you are on a double-page image hosting (probably)");window.addEventListener("beforeunload", onbeforeunload, true);}
 	if (typeof GM_registerMenuCommand !== "undefined")
 	{
