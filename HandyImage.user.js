@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name		Handy Image
-// @version		2024.03.24
+// @version		2024.03.26
 // @author		Owyn
 // @contributor	ubless607, bitst0rm
 // @namespace	handyimage
@@ -1146,6 +1146,8 @@ video::-webkit-media-controls-panel
 	protected_addEventListener(i, "mousedown", mousedown, true); // chrome old fix - still needed
 	window.addEventListener("keydown", onkeydown, true);
 	onVisibilityChange(); // if tab is already active when opening image
+	window.visualViewport.addEventListener("resize", onWindowResize);
+	onWindowResize();
 	if(dp){console.warn("you are on a double-page image hosting (probably)");window.addEventListener("beforeunload", onbeforeunload, true);}
 	if (typeof GM_registerMenuCommand !== "undefined")
 	{
@@ -3119,7 +3121,7 @@ function onvolumechange()
 
 function changeCursor()
 {
-	/*if(i.scrollHeight > window.innerHeight) // image pushing out-of-screen browser fix
+	/*if(i.scrollHeight > iViewHeight) // image pushing out-of-screen browser fix
 	{
 		i.style.margin = "0px auto";
 	}
@@ -3132,11 +3134,11 @@ function changeCursor()
 
 	if(rescaled === 0) // original
 	{
-		if((orgImgWidth == window.innerWidth && orgImgHeight <= window.innerHeight) || (orgImgWidth <= window.innerWidth && orgImgHeight == window.innerHeight)) // perfect fit on one side, can't resize
-		{
+		if((orgImgWidth == iViewWidth && orgImgHeight <= iViewHeight) || (orgImgWidth <= iViewWidth && orgImgHeight == iViewHeight)) // perfect fit on one side, can't resize
+		{ // with zoom there might be a 1 pixel difference and it's not a matter of rounding, e.g. image is 501.03 width and the window is 501.55 width so there won't be a perfect fit even tho both the image and your screen (window) are 1920px wide
 			i.style.cursor = "";
 		}
-		else if (orgImgWidth > window.innerWidth || orgImgHeight > window.innerHeight)
+		else if (orgImgWidth > iViewWidth || orgImgHeight > iViewHeight)
 		{
 			i.style.cursor = "zoom-out";
 		}
@@ -3147,7 +3149,7 @@ function changeCursor()
 	}
 	else if(rescaled === 2) // fill
 	{
-		if(orgImgWidth == window.innerWidth && orgImgHeight == window.innerHeight) // perfect fit, can't resize
+		if(orgImgWidth == iViewWidth && orgImgHeight == iViewHeight) // perfect fit, can't resize
 		{
 			i.style.cursor = "";
 		}
@@ -3162,7 +3164,7 @@ function changeCursor()
 	}
 	else // if(rescaled === 1) // fit
 	{
-		if((orgImgWidth == window.innerWidth && orgImgHeight <= window.innerHeight) || (orgImgWidth <= window.innerWidth && orgImgHeight == window.innerHeight)) // perfect fit on one side, can't resize
+		if((orgImgWidth == iViewWidth && orgImgHeight <= iViewHeight) || (orgImgWidth <= iViewWidth && orgImgHeight == iViewHeight)) // perfect fit on one side, can't resize
 		{
 			i.style.cursor = "";
 		}
@@ -3187,48 +3189,46 @@ function mousedown(event) // chrome scroll-wheel
 	}
 }
 
-function rescale(event, fill)
+let iViewHeight;
+let iViewWidth;
+
+function onWindowResize()
 {
-	let ex,ey;
-	if(event) // mouse click
+	iViewHeight = Math.round(window.visualViewport.height);
+	iViewWidth = Math.round(window.visualViewport.width);
+}
+
+function rescale(oEvent, bFill)
+{
+	let iClick_H, iClick_V;
+	if(oEvent) // mouse click
 	{
-		if (typeof event.y === "undefined") // Firefox
-		{
-			ex = event.clientX;
-			ey = event.clientY;
-		}
-		else
-		{
-			ex = event.x;
-			ey = event.y;
-		}
-		ex -= i.offsetLeft;
-		ey -= i.offsetTop;
-		if(event.which === 2) // middle mouse
-		{
-			fill = true;
-			event.preventDefault();
-			event.stopImmediatePropagation();
-		}
-		else if(event.which === 3) // right mouse
+		if(oEvent.which === 3) // right mouse
 		{
 			return;
 		}
+		else if(oEvent.which === 2) // middle mouse
+		{
+			bFill = true;
+			oEvent.preventDefault(); // drag scroll
+			oEvent.stopImmediatePropagation();
+		}
+		iClick_H = oEvent.clientX - i.offsetLeft;
+		iClick_V = oEvent.clientY - i.offsetTop;
 	}
+	//let unFilling = false;
+	//document.body.style.overflowX = '';
+	//document.body.style.overflowY = '';
+	//let iScrollMax_V = document.documentElement.scrollHeight - iViewHeight; // FireFox (only) has window.scrollMaxY
+	//let iScrollMax_H = document.documentElement.scrollWidth - iViewWidth;
 
-	document.body.style.overflowX = '';
-	document.body.style.overflowY = '';
+	let iImgPrevWidth = i.width;
+	let iImgPrevHeight = i.height;
+	let iPrevScroll_V = Math.round(window.visualViewport.pageTop);
+	let iPrevScroll_H = Math.round(window.visualViewport.pageLeft);
 
-	let scrollMax_Y = window.scrollMaxY || ((document.body.scrollHeight || document.documentElement.scrollHeight)- document.documentElement.clientHeight); // for later: use window.visualViewport.height instead of clientHeight or window.innerHeight to get the window size without scrollbars
-	let scrollMax_X = window.scrollMaxX || ((document.body.scrollWidth || document.documentElement.scrollWidth)- document.documentElement.clientWidth);
-
-	let scrollProgressY = window.pageYOffset / scrollMax_Y; // for later: change pageYOffset to window.visualViewport.pageLeft
-	let scrollProgressX = window.pageXOffset / scrollMax_X;
-
-	let unFilling = false;
-
-	let sidesCMP;
-	if(fill)
+	let bSidesCMP;
+	if(bFill)
 	{
 		if(rescaled === 2) // to original
 		{
@@ -3238,7 +3238,7 @@ function rescale(event, fill)
 		}
 		else // fill
 		{
-			sidesCMP = (orgImgWidth / orgImgHeight) < (window.innerWidth / window.innerHeight);
+			bSidesCMP = (orgImgWidth / orgImgHeight) < (iViewWidth / iViewHeight);
 			rescaled = 2;
 		}
 	}
@@ -3246,47 +3246,49 @@ function rescale(event, fill)
 	{
 		if(rescaled != 0) // to original
 		{
-			if(rescaled === 2) {unFilling = true;}
+			//if(rescaled === 2) {unFilling = true;}
 			rescaled = 0;
 			i.style.width = orgImgWidth + "px";
 			i.style.height = orgImgHeight + "px";
 		}
 		else // fit
 		{
-			sidesCMP = (orgImgWidth / orgImgHeight) > (window.innerWidth / window.innerHeight);
+			bSidesCMP = (orgImgWidth / orgImgHeight) > (iViewWidth / iViewHeight);
 			rescaled = 1;
 		}
 	}
 
 	if(rescaled != 0)
 	{
-		if(sidesCMP)
+		if(bSidesCMP)
 		{
 			i.style.width = "100%";
 			i.style.height = "auto";
-			document.body.style.overflowX = 'hidden'; // we don't need unscrollable scrollbars if they appear
+			//document.body.style.overflowX = 'hidden'; // we don't need unscrollable scrollbars if they appear
 		}
 		else
 		{
 			i.style.height = "100%";
 			i.style.width = "auto";
-			document.body.style.overflowY = 'hidden'; // we don't need unscrollable scrollbars if they appear
+			//document.body.style.overflowY = 'hidden'; // we don't need unscrollable scrollbars if they appear
 		}
 	}
 
 	changeCursor();
-
-	if(event && (!unFilling && (!fill || (fill && (!scrollMax_Y && !scrollMax_X))))) // left mouse click (fill-click with no scrollbars and not left click after middle click - else preserve scroll percentage)
-	{
-		let scale = Math.min((window.innerWidth / i.width), (window.innerHeight / i.height));
-		window.scrollTo((ex / scale) - (window.innerWidth / 2), (ey / scale) - (window.innerHeight / 2));
+	let iNewToOldImgScale_H = i.width / iImgPrevWidth;
+	let iNewToOldImgScale_V = i.height / iImgPrevHeight;
+	iClick_H *= iNewToOldImgScale_H;
+	iClick_V *= iNewToOldImgScale_V;
+	iPrevScroll_H *= iNewToOldImgScale_H;
+	iPrevScroll_V *= iNewToOldImgScale_V;
+	
+	if(oEvent)
+	{ // scroll to the place our mouse was on the image (including scroll progress) (that place will now be in the top left corner) then try to shift it back to under the mouse cursor (if there is enough space)
+		window.scrollTo(iClick_H + iPrevScroll_H - oEvent.clientX, iClick_V + iPrevScroll_V - oEvent.clientY);
 	}
 	else // keep percentage scroll progress for KB hotkeys
-	{
-		scrollMax_Y = window.scrollMaxY || ((document.body.scrollHeight || document.documentElement.scrollHeight)- document.documentElement.clientHeight);
-		scrollMax_X = window.scrollMaxX || ((document.body.scrollWidth || document.documentElement.scrollWidth)- document.documentElement.clientWidth);
-
-		window.scrollTo(Math.round(scrollProgressX * scrollMax_X), Math.round(scrollProgressY * scrollMax_Y));
+	{ // the top pixel of the image which is seen is the same after resizing so we can't keep the scrool at the max bottom - it's a feature, not a bug
+		window.scrollTo(iPrevScroll_H, iPrevScroll_V);
 	}
 }
 
@@ -3321,15 +3323,15 @@ function autoresize()
 		link.href = i.src;
 		document.head.appendChild(link);*/ // big lag in general from this feature
 		let InitRescale = false;
-		if(cfg_fitWH && orgImgHeight > window.innerHeight && orgImgWidth > window.innerWidth) // both scrollbars
+		if(cfg_fitWH && orgImgHeight > iViewHeight && orgImgWidth > iViewWidth) // both scrollbars
 		{
 			InitRescale = true;
 		}
-		else if(cfg_fitB && (orgImgHeight > window.innerHeight || orgImgWidth > window.innerWidth)) // one scrollbar
+		else if(cfg_fitB && (orgImgHeight > iViewHeight || orgImgWidth > iViewWidth)) // one scrollbar
 		{
 			InitRescale = true;
 		}
-		else if(cfg_fitS && orgImgHeight <= window.innerHeight && orgImgWidth <= window.innerWidth) // no scrollbars
+		else if(cfg_fitS && orgImgHeight <= iViewHeight && orgImgWidth <= iViewWidth) // no scrollbars
 		{
 			InitRescale = true;
 		}
@@ -3359,6 +3361,7 @@ function autoresize()
 		else
 		{
 			console.warn("HJI: Gave up trying to reload the image, it is broken");
+			i.onload = autoresize; // not really gave up
 		}
 	}
 }
@@ -3438,7 +3441,7 @@ function cancelEvent(a)
 
 function scroll_space(a, b)
 {
-	let by = Math.round((b ? window.innerHeight : window.innerWidth) * 0.50 * (a ? -1 : 1));
+	let by = Math.round((b ? iViewHeight : iViewWidth) * 0.50 * (a ? -1 : 1));
 	if(!b)
 	{
 		window.scrollBy(0, by);
@@ -3481,7 +3484,7 @@ function onkeydown (b)
 		return;
 	}
 
-	let by = Math.round(window.innerHeight * 0.10);
+	let by = Math.round(iViewHeight * 0.10);
 
 	switch (a)
 	{
