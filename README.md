@@ -18,7 +18,12 @@
 <li><strong>ctrl+space</strong> and <strong>ctrl+shift+space</strong> - simular to scroll of spacebar but horizontally</li>
 <li><strong>P</strong> \ <strong>menu item</strong> in (tamper\grease)monkey icon - open configuration menu</li>
 <li><strong>R</strong> - reload page with script disabled (to see comments etc)</li>
-<li><strong>ctrl + S</strong> - save image (same as when you right click the image and press save as), on booru sites it automatically puts artist and character tags into saved filename, you can also autosave your favorite tags of choice in names, use custom JS setting for that, e.g. put <code>grab_fav_tags = ['solo', 'animal ears', 'horse']</code> at top there</li>
+<li><strong>F</strong> - fullscreen mode (for videos)</li>
+<li><strong>M</strong> - mute audio (for videos)</li>
+<li><strong>ctrl + S</strong> - save image\video (same as when you right click the image and press save as),<br>
+on booru sites it automatically puts artist and character tags into saved filename, you can also autosave your favorite tags of choice in names, use custom JS setting for that, e.g. put <code>grab_fav_tags = ['solo', 'animal_ears', 'horse']</code> at top there,<br>
+to have the "save as" dialogue where you choose or correct the filename yourself instead of having the file downloaded right away - you have to set <code>download mode</code> to <code>Browser API</code> in TM -> dashboard -> settings: 
+<img src=https://github.com/Owyn/HandyImage/assets/1309656/2419da42-9a5c-4200-bb9c-aa02e0616632></li>
 </ul>
 
 <h3>Supported browsers:</h3>
