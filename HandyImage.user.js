@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name		Handy Image
-// @version		2024.03.27
+// @version		2024.03.29
 // @author		Owyn
 // @contributor	ubless607, bitst0rm
 // @namespace	handyimage
@@ -9,7 +9,7 @@
 // @downloadURL	https://github.com/Owyn/HandyImage/raw/master/HandyImage.user.js
 // @homepage	https://github.com/Owyn/HandyImage
 // @supportURL	https://github.com/Owyn/HandyImage/issues
-// @icon		https://u.cubeupload.com/Owyn/W9zirOUGo1.png
+// @icon		https://i.ibb.co/znz0hry/W9zir-OUGo1.png
 // @run-at		document-start
 // @grant		GM.getValue
 // @grant		GM.setValue
@@ -1057,15 +1057,14 @@ function onVisibilityChange()
 {
 	if (document.visibilityState === 'visible')
 	{
-		onWindowResize(); // gives 0 if not visible
 		if(i && i.src)
 		{
 			window.removeEventListener('visibilitychange', onVisibilityChange);
+			onWindowResize();
 			autoresize();
 		}
 	}
 }
-window.addEventListener("visibilitychange", onVisibilityChange);
 
 const AddElementToPage = typeof GM_addElement === "function" ? GM_addElement : function (node, type, content)
 {
@@ -1146,8 +1145,9 @@ video::-webkit-media-controls-panel
 	protected_addEventListener(i, "auxclick", rescale, true);
 	protected_addEventListener(i, "mousedown", mousedown, true); // chrome old fix - still needed
 	window.addEventListener("keydown", onkeydown, true);
+	window.addEventListener("resize", onWindowResize);
+	window.addEventListener("visibilitychange", onVisibilityChange);
 	onVisibilityChange(); // if tab is already active when opening image
-	window.visualViewport.addEventListener("resize", onWindowResize);
 	if(dp){console.warn("you are on a double-page image hosting (probably)");window.addEventListener("beforeunload", onbeforeunload, true);}
 	if (typeof GM_registerMenuCommand !== "undefined")
 	{
@@ -3194,8 +3194,10 @@ let iViewWidth;
 
 function onWindowResize()
 {
-	iViewHeight = Math.round(window.visualViewport.height);
-	iViewWidth = Math.round(window.visualViewport.width);
+	iViewHeight = window.innerHeight; //Math.round(window.visualViewport.height);
+	iViewWidth = window.innerWidth; //Math.round(window.visualViewport.width);
+	//console.debug("not including scrollbar: iViewHeight: " + window.visualViewport.height + ", iViewWidth:" +window.visualViewport.width );
+	//console.debug("including scrollbar: iViewHeight: " + window.innerHeight + ", iViewWidth:" +window.innerWidth );
 }
 
 function rescale(oEvent, bFill)
@@ -3606,15 +3608,15 @@ function cfg()
 		document.body.innerHTML = "";
 		ws();
 		let div = protected_createElement("div");
-		div.style = "margin: auto; width: fit-content; height: fit-content; border: 1px solid black; color: black; background: silver; position: absolute; top: 0; right: 0; bottom: 0; left: 0;";
+		div.style = "margin: auto; width: fit-content; height: fit-content; border: 2px solid black; color: white; background: #5a5757; position: absolute; inset: 0;"; // chrome "force dark mode" ignores our colors and just makes text white... great
 		div.innerHTML = "<b><center>Configuration</center></b><br><input id='hji_cfg_1_direct' type='checkbox'> Open images directly with browser (disables Handy)"
-		+ "<br><br><input id='hji_cfg_2_bgclr' style='color: inherit; background: gainsboro;' type='text' size='6'> Background color (empty = default)"
+		+ "<br><br><input id='hji_cfg_2_bgclr' style='color: inherit; background: inherit;' type='text' size='6'> Background color (empty = default)"
 		+ "<br><br>Fit to window images:" + " ( Fill to window instead <input id='hji_cfg_7_fitOS' type='checkbox'> )"
 		+ "<br><br><input id='hji_cfg_3_fitWH' type='checkbox'> Larger than window both vertically and horizontally"
 		+ "<br><br><input id='hji_cfg_4_fitB' type='checkbox'> Larger than window either vertically or horizontally"
 		+ "<br><br><input id='hji_cfg_5_fitS' type='checkbox'> Smaller than window"
-		+ "<br><br><center>Custom JS Action:<br><textarea id='hji_cfg_6_js' style='margin: 0px; width: 400px; height: 50px; color: inherit; background: gainsboro;'></textarea>"
-		+ "<br><input id='hji_cfg_save' style='color: inherit; background: gainsboro;' type='button' value='Save configuration'></center>";
+		+ "<br><br><center>Custom JS Action:<br><textarea id='hji_cfg_6_js' style='margin: 0px; width: 400px; height: 50px; color: inherit; background: inherit;'></textarea>"
+		+ "<br><input id='hji_cfg_save' style='color: inherit; background: inherit;' type='button' value='Save configuration'></center>";
 		document.body.appendChild(div);
 		q("#hji_cfg_1_direct").checked = cfg_direct;
 		q("#hji_cfg_2_bgclr").value = cfg_bgclr;
