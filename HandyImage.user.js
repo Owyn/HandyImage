@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name		Handy Image
-// @version		2024.03.29
+// @version		2024.04.07
 // @author		Owyn
 // @contributor	ubless607, bitst0rm
 // @namespace	handyimage
@@ -883,6 +883,7 @@
 // @match		https://snipboard.io/*
 // @match		https://www.seaart.ai/explore/detail/*
 // @match		https://tensor.art/images/*
+// @match		https://freeimage.host/i/*
 // ==/UserScript==
 
 "use strict";
@@ -1378,6 +1379,7 @@ function makeworld()
 	case "picabox.ru":
 	case "snipboard.io":
 	case "seaart.ai":
+	case "freeimage.host":
 		i = document.querySelector('meta[property="og:image"], [name="og:image"]');
 		if(i)
 		{
