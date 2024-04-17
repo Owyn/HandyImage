@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name		Handy Image
-// @version		2024.04.07
+// @version		2024.04.17
 // @author		Owyn
 // @contributor	ubless607, bitst0rm
 // @namespace	handyimage
@@ -1429,7 +1429,7 @@ function makeworld()
 	case "redgifs.com":
 	case "v3.redgifs.com":
 		j = true;
-		i = q('video, img.ImageGif-Thumbnail');
+		i = q('video.isLoaded, img.ImageGif-Thumbnail');
 		break;
 	case "m.imgur.com":
 		j = true;
