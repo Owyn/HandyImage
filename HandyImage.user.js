@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name		Handy Image
-// @version		2024.04.17
+// @version		2024.04.18
 // @author		Owyn
 // @contributor	ubless607, bitst0rm
 // @namespace	handyimage
@@ -1429,7 +1429,7 @@ function makeworld()
 	case "redgifs.com":
 	case "v3.redgifs.com":
 		j = true;
-		i = q('video.isLoaded, img.ImageGif-Thumbnail');
+		i = q('video:not([src*="blob:"]), img.ImageGif-Thumbnail');
 		break;
 	case "m.imgur.com":
 		j = true;
@@ -3202,6 +3202,8 @@ function onWindowResize()
 	//console.debug("including scrollbar: iViewHeight: " + window.innerHeight + ", iViewWidth:" +window.innerWidth );
 }
 
+let bZoomCenterOnCursor = true; // setting to change in custom JS
+
 function rescale(oEvent, bFill)
 {
 	let iClick_H, iClick_V;
@@ -3287,8 +3289,15 @@ function rescale(oEvent, bFill)
 	iPrevScroll_V *= iNewToOldImgScale_V;
 	
 	if(oEvent)
-	{ // scroll to the place our mouse was on the image (including scroll progress) (that place will now be in the top left corner) then try to shift it back to under the mouse cursor (if there is enough space)
-		window.scrollTo(iClick_H + iPrevScroll_H - oEvent.clientX, iClick_V + iPrevScroll_V - oEvent.clientY);
+	{
+		if(bZoomCenterOnCursor)
+		{ // scroll to the place our mouse was on the image (including scroll progress) (that place will now be in the top left corner) then try to shift it back to under the mouse cursor (if there is enough space)
+			window.scrollTo(iClick_H + iPrevScroll_H - oEvent.clientX, iClick_V + iPrevScroll_V - oEvent.clientY);
+		}
+		else
+		{ // scroll to the place our mouse was on the image (including scroll progress) (that place will now be in the top left corner) then try to shift it to the center of the screen (if there is enough space)
+			window.scrollTo(iClick_H + iPrevScroll_H - iViewWidth / 2, iClick_V + iPrevScroll_V - iViewHeight / 2);
+		}
 	}
 	else // keep percentage scroll progress for KB hotkeys
 	{ // the top pixel of the image which is seen is the same after resizing so we can't keep the scrool at the max bottom - it's a feature, not a bug
