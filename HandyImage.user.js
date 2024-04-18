@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name		Handy Image
-// @version		2024.04.18
+// @version		2024.04.19
 // @author		Owyn
 // @contributor	ubless607, bitst0rm
 // @namespace	handyimage
@@ -3136,11 +3136,11 @@ function changeCursor()
 
 	if(rescaled === 0) // original
 	{
-		if((orgImgWidth == iViewWidth && orgImgHeight <= iViewHeight) || (orgImgWidth <= iViewWidth && orgImgHeight == iViewHeight)) // perfect fit on one side, can't resize
+		if((orgImgWidth == viewWidth && orgImgHeight <= viewHeight) || (orgImgWidth <= viewWidth && orgImgHeight == viewHeight)) // perfect fit on one side, can't resize
 		{ // with zoom there might be a 1 pixel difference and it's not a matter of rounding, e.g. image is 501.03 width and the window is 501.55 width so there won't be a perfect fit even tho both the image and your screen (window) are 1920px wide
 			i.style.cursor = "";
 		}
-		else if (orgImgWidth > iViewWidth || orgImgHeight > iViewHeight)
+		else if (orgImgWidth > viewWidth || orgImgHeight > viewHeight)
 		{
 			i.style.cursor = "zoom-out";
 		}
@@ -3151,11 +3151,11 @@ function changeCursor()
 	}
 	else if(rescaled === 2) // fill
 	{
-		if(orgImgWidth == iViewWidth && orgImgHeight == iViewHeight) // perfect fit, can't resize
+		if(orgImgWidth == viewWidth && orgImgHeight == viewHeight) // perfect fit, can't resize
 		{
 			i.style.cursor = "";
 		}
-		else if (orgImgWidth > i.width)
+		else if (orgImgWidth > i.scrollWidth)
 		{
 			i.style.cursor = "zoom-in";
 		}
@@ -3166,11 +3166,11 @@ function changeCursor()
 	}
 	else // if(rescaled === 1) // fit
 	{
-		if((orgImgWidth == iViewWidth && orgImgHeight <= iViewHeight) || (orgImgWidth <= iViewWidth && orgImgHeight == iViewHeight)) // perfect fit on one side, can't resize
+		if((orgImgWidth == viewWidth && orgImgHeight <= viewHeight) || (orgImgWidth <= viewWidth && orgImgHeight == viewHeight)) // perfect fit on one side, can't resize
 		{
 			i.style.cursor = "";
 		}
-		else if (orgImgWidth > i.width)
+		else if (orgImgWidth > i.scrollWidth)
 		{
 			i.style.cursor = "zoom-in";
 		}
@@ -3191,22 +3191,22 @@ function mousedown(event) // chrome scroll-wheel
 	}
 }
 
-let iViewHeight;
-let iViewWidth;
+let viewHeight;
+let viewWidth;
 
 function onWindowResize()
 {
-	iViewHeight = window.innerHeight; //Math.round(window.visualViewport.height);
-	iViewWidth = window.innerWidth; //Math.round(window.visualViewport.width);
+	viewHeight = window.innerHeight; //Math.round(window.visualViewport.height);
+	viewWidth = window.innerWidth; //Math.round(window.visualViewport.width);
 	//console.debug("not including scrollbar: iViewHeight: " + window.visualViewport.height + ", iViewWidth:" +window.visualViewport.width );
 	//console.debug("including scrollbar: iViewHeight: " + window.innerHeight + ", iViewWidth:" +window.innerWidth );
 }
 
 let bZoomCenterOnCursor = true; // setting to change in custom JS
 
-function rescale(oEvent, bFill)
+function rescale(oEvent, isFilling)
 {
-	let iClick_H, iClick_V;
+	let click_X, click_Y;
 	if(oEvent) // mouse click
 	{
 		if(oEvent.which === 3) // right mouse
@@ -3215,12 +3215,12 @@ function rescale(oEvent, bFill)
 		}
 		else if(oEvent.which === 2) // middle mouse
 		{
-			bFill = true;
+			isFilling = true;
 			oEvent.preventDefault(); // drag scroll
 			oEvent.stopImmediatePropagation();
 		}
-		iClick_H = oEvent.clientX - i.offsetLeft;
-		iClick_V = oEvent.clientY - i.offsetTop;
+		click_X = oEvent.clientX - i.offsetLeft;
+		click_Y = oEvent.clientY - i.offsetTop;
 	}
 	//let unFilling = false;
 	//document.body.style.overflowX = '';
@@ -3228,13 +3228,13 @@ function rescale(oEvent, bFill)
 	//let iScrollMax_V = document.documentElement.scrollHeight - iViewHeight; // FireFox (only) has window.scrollMaxY
 	//let iScrollMax_H = document.documentElement.scrollWidth - iViewWidth;
 
-	let iImgPrevWidth = i.width;
-	let iImgPrevHeight = i.height;
-	let iPrevScroll_V = Math.round(window.visualViewport.pageTop);
-	let iPrevScroll_H = Math.round(window.visualViewport.pageLeft);
+	let imgPrevWidth = i.scrollWidth;
+	let imgPrevHeight = i.scrollHeight;
+	let prevScroll_Y = Math.round(window.visualViewport.pageTop);
+	let prevScroll_X = Math.round(window.visualViewport.pageLeft);
 
 	let bSidesCMP;
-	if(bFill)
+	if(isFilling)
 	{
 		if(rescaled === 2) // to original
 		{
@@ -3244,7 +3244,7 @@ function rescale(oEvent, bFill)
 		}
 		else // fill
 		{
-			bSidesCMP = (orgImgWidth / orgImgHeight) < (iViewWidth / iViewHeight);
+			bSidesCMP = (orgImgWidth / orgImgHeight) < (viewWidth / viewHeight);
 			rescaled = 2;
 		}
 	}
@@ -3259,7 +3259,7 @@ function rescale(oEvent, bFill)
 		}
 		else // fit
 		{
-			bSidesCMP = (orgImgWidth / orgImgHeight) > (iViewWidth / iViewHeight);
+			bSidesCMP = (orgImgWidth / orgImgHeight) > (viewWidth / viewHeight);
 			rescaled = 1;
 		}
 	}
@@ -3281,27 +3281,27 @@ function rescale(oEvent, bFill)
 	}
 
 	changeCursor();
-	let iNewToOldImgScale_H = i.width / iImgPrevWidth;
-	let iNewToOldImgScale_V = i.height / iImgPrevHeight;
-	iClick_H *= iNewToOldImgScale_H;
-	iClick_V *= iNewToOldImgScale_V;
-	iPrevScroll_H *= iNewToOldImgScale_H;
-	iPrevScroll_V *= iNewToOldImgScale_V;
+	let newToOldImgScale_X = i.scrollWidth / imgPrevWidth;
+	let newToOldImgScale_Y = i.scrollHeight / imgPrevHeight;
+	click_X *= newToOldImgScale_X;
+	click_Y *= newToOldImgScale_Y;
+	prevScroll_X *= newToOldImgScale_X;
+	prevScroll_Y *= newToOldImgScale_Y;
 	
 	if(oEvent)
 	{
 		if(bZoomCenterOnCursor)
 		{ // scroll to the place our mouse was on the image (including scroll progress) (that place will now be in the top left corner) then try to shift it back to under the mouse cursor (if there is enough space)
-			window.scrollTo(iClick_H + iPrevScroll_H - oEvent.clientX, iClick_V + iPrevScroll_V - oEvent.clientY);
+			window.scrollTo(click_X + prevScroll_X - oEvent.clientX, click_Y + prevScroll_Y - oEvent.clientY);
 		}
 		else
 		{ // scroll to the place our mouse was on the image (including scroll progress) (that place will now be in the top left corner) then try to shift it to the center of the screen (if there is enough space)
-			window.scrollTo(iClick_H + iPrevScroll_H - iViewWidth / 2, iClick_V + iPrevScroll_V - iViewHeight / 2);
+			window.scrollTo(click_X + prevScroll_X - viewWidth / 2, click_Y + prevScroll_Y - viewHeight / 2);
 		}
 	}
 	else // keep percentage scroll progress for KB hotkeys
 	{ // the top pixel of the image which is seen is the same after resizing so we can't keep the scrool at the max bottom - it's a feature, not a bug
-		window.scrollTo(iPrevScroll_H, iPrevScroll_V);
+		window.scrollTo(prevScroll_X, prevScroll_Y);
 	}
 }
 
@@ -3336,15 +3336,15 @@ function autoresize()
 		link.href = i.src;
 		document.head.appendChild(link);*/ // big lag in general from this feature
 		let InitRescale = false;
-		if(cfg_fitWH && orgImgHeight > iViewHeight && orgImgWidth > iViewWidth) // both scrollbars
+		if(cfg_fitWH && orgImgHeight > viewHeight && orgImgWidth > viewWidth) // both scrollbars
 		{
 			InitRescale = true;
 		}
-		else if(cfg_fitB && (orgImgHeight > iViewHeight || orgImgWidth > iViewWidth)) // one scrollbar
+		else if(cfg_fitB && (orgImgHeight > viewHeight || orgImgWidth > viewWidth)) // one scrollbar
 		{
 			InitRescale = true;
 		}
-		else if(cfg_fitS && orgImgHeight <= iViewHeight && orgImgWidth <= iViewWidth) // no scrollbars
+		else if(cfg_fitS && orgImgHeight <= viewHeight && orgImgWidth <= viewWidth) // no scrollbars
 		{
 			InitRescale = true;
 		}
@@ -3454,7 +3454,7 @@ function cancelEvent(a)
 
 function scroll_space(a, b)
 {
-	let by = Math.round((b ? iViewHeight : iViewWidth) * 0.50 * (a ? -1 : 1));
+	let by = Math.round((b ? viewHeight : viewWidth) * 0.50 * (a ? -1 : 1));
 	if(!b)
 	{
 		window.scrollBy(0, by);
@@ -3497,7 +3497,7 @@ function onkeydown (b)
 		return;
 	}
 
-	let by = Math.round(iViewHeight * 0.10);
+	let by = Math.round(viewHeight * 0.10);
 
 	switch (a)
 	{
