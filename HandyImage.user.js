@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name		Handy Image
-// @version		2024.04.19
+// @version		2024.05.13
 // @author		Owyn
 // @contributor	ubless607, bitst0rm
 // @namespace	handyimage
@@ -884,6 +884,7 @@
 // @match		https://www.seaart.ai/explore/detail/*
 // @match		https://tensor.art/images/*
 // @match		https://freeimage.host/i/*
+// @match		https://rule34.paheal.net/post/view/*
 // ==/UserScript==
 
 "use strict";
@@ -920,7 +921,7 @@ if(history.length !== 1 && document.referrer)
 		return false;
 	}
 }
-if (document.title == "Attention Required! | Cloudflare")
+if (document.title == "Attention Required! | Cloudflare" || document.title == "Just a moment...")
 {
 	console.warn("Cloudflare MITM guard page.  Stopping.");
 	return false;
