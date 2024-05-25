@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name		Handy Image
-// @version		2024.05.13
+// @version		2024.05.25
 // @author		Owyn
 // @contributor	ubless607, bitst0rm
 // @namespace	handyimage
@@ -546,6 +546,8 @@
 // @match		http://*.balkanelite.org/MultiHoster/view*
 // @match		https://twitter.com/*/photo/*
 // @match		https://mobile.twitter.com/*/photo/*
+// @match		https://x.com/*/photo/*
+// @match		https://mobile.x.com/*/photo/*
 // @match		http://*.icezap.com/img-*
 // @match		*://*.rapidimg.net/img-*
 // @match		http://*.imgtornado.com/img-*
@@ -1417,6 +1419,8 @@ function makeworld()
 		break;
 	case "mobile.twitter.com":
 	case "twitter.com":
+	case "mobile.x.com":
+	case "x.com":
 		j = true;
 		unsafeWindow.history.replaceState = unsafeWindow.console.log;
 		i = q('a[href*="/photo/' + Number(window.location.href.at(-1)) + '"] img');
