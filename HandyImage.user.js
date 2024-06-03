@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name		Handy Image
-// @version		2024.05.25
+// @version		2024.06.03
 // @author		Owyn
 // @contributor	ubless607, bitst0rm
 // @namespace	handyimage
@@ -887,6 +887,7 @@
 // @match		https://tensor.art/images/*
 // @match		https://freeimage.host/i/*
 // @match		https://rule34.paheal.net/post/view/*
+// @match		https://imgjjtr.sbs/*
 // ==/UserScript==
 
 "use strict";
@@ -2439,6 +2440,7 @@ function makeworld()
 	case "imgyre.online":
 	case "picqaxs.cfd":
 	case "picvvvd.sbs":
+	case "imgjjtr.sbs":
 		i = q('button');
 		dp=true;
 		j = true;
