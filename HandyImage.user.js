@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name		Handy Image
-// @version		2024.06.03
+// @version		2024.06.04
 // @author		Owyn
 // @contributor	ubless607, bitst0rm
 // @namespace	handyimage
@@ -888,6 +888,7 @@
 // @match		https://freeimage.host/i/*
 // @match		https://rule34.paheal.net/post/view/*
 // @match		https://imgjjtr.sbs/*
+// @match		https://tezzpic.com/*.php
 // ==/UserScript==
 
 "use strict";
@@ -2135,6 +2136,7 @@ function makeworld()
 		break;
 	case "dewimg.com":
 	case "subirimagenes.com":
+	case "tezzpic.com":
 		j = true;
 		dp = true;
 		f = document.querySelectorAll("input[type='submit']");
