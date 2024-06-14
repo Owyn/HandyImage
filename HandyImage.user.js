@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name		Handy Image
-// @version		2024.06.04
+// @version		2024.06.14
 // @author		Owyn
 // @contributor	ubless607, bitst0rm
 // @namespace	handyimage
@@ -3107,14 +3107,14 @@ function use_booru_tags_in_dl_filename()
 			tg = window.setTimeout(do_grab_fav_tags, 2);
 			return;
 		}
-		if(cfg_js && cfg_js.indexOf("grab_fav_tags") != -1) {grab_fav_tags = cfg_js.substring(cfg_js.indexOf("[")+1,cfg_js.indexOf("]")).replaceAll(" ", "").replaceAll("_", " ").replaceAll(/\n/g, '').replaceAll("'", "").replaceAll('"','').split(",");} // load custom tags // also bypass CSP
+		if(cfg_js && cfg_js.indexOf("grab_fav_tags") != -1) {grab_fav_tags = cfg_js.substring(cfg_js.indexOf("[")+1,cfg_js.indexOf("]")).replaceAll(" ", "").replaceAll("_", " ").replaceAll(/\n/g, '').replaceAll("'", "").replaceAll('"','').toLowerCase().split(",");} // load custom tags // also bypass CSP
 		console.debug("your favorite tags: "+ grab_fav_tags);
 		if(grab_fav_tags.length)
 		{
 			for(let n = 0; n < general_tags.length; n++)
 			{
 				if(general_tags[n].text == "?") continue;
-				if(grab_fav_tags.indexOf(general_tags[n].text.replaceAll("_", " ")) != -1)
+				if(grab_fav_tags.indexOf(general_tags[n].text.toLowerCase().replaceAll("_", " ")) != -1)
 				{
 					filename = general_tags[n].text.replaceAll(" ", "_") + " " +filename;
 				}
