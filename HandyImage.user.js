@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name		Handy Image
-// @version		2024.06.14
+// @version		2024.06.17
 // @author		Owyn
 // @contributor	ubless607, bitst0rm
 // @namespace	handyimage
@@ -857,8 +857,6 @@
 // @match		https://imgnmh.cfd/*
 // @match		https://im.ge/i/*
 // @match		https://piczel.tv/gallery/image/*
-// @match		https://www.redgifs.com/watch/*
-// @match		https://v3.redgifs.com/watch/*
 // @match		https://www.screencast.com/t/*
 // @match		https://slushe.com/galleries/*.html
 // @match		https://img.trafficimage.club/image/*
@@ -1103,7 +1101,7 @@ function makeimage()
 {
 	if(typeof cfg_js !== "string") { console.log("waiting for settings to load to makeimage()"); window.setTimeout(function() { makeimage(); }, 2); return false;} // lets wait for stupd async
 	if(cfg_direct === true){let a = protected_createElement('a'); a.setAttribute('href',i.src); a.click(); return false;}
-	let css 
+	let css
  = `:root, body
 {
 	height: 100%;
@@ -1432,11 +1430,6 @@ function makeworld()
 			filename = "by " + document.head.querySelector('meta[property="og:title"]').content;
 			filename_ext = i.src.substring(i.src.indexOf("format=")+7 ,i.src.indexOf("&"));
 		}
-		break;
-	case "redgifs.com":
-	case "v3.redgifs.com":
-		j = true;
-		i = q('video:not([src*="blob:"]), img.ImageGif-Thumbnail');
 		break;
 	case "m.imgur.com":
 		j = true;
@@ -3296,7 +3289,7 @@ function rescale(oEvent, isFilling)
 	click_Y *= newToOldImgScale_Y;
 	prevScroll_X *= newToOldImgScale_X;
 	prevScroll_Y *= newToOldImgScale_Y;
-	
+
 	if(oEvent)
 	{
 		if(bZoomCenterOnCursor)
