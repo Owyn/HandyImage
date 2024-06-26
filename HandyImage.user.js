@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name		Handy Image
-// @version		2024.06.17
+// @version		2024.06.26
 // @author		Owyn
 // @contributor	ubless607, bitst0rm
 // @namespace	handyimage
@@ -395,6 +395,7 @@
 // @match		http://awesomescreenshot.com/*
 // @match		https://www.flickr.com/photos/*/*/
 // @exclude		https://www.flickr.com/photos/*/galleries/*
+// @exclude		https://www.flickr.com/photos/*/albums/*
 // @exclude		https://www.flickr.com/photos/sets/*
 // @exclude		https://www.flickr.com/photos/tags/*
 // @exclude		https://www.flickr.com/photos/page*
@@ -1101,7 +1102,7 @@ function makeimage()
 {
 	if(typeof cfg_js !== "string") { console.log("waiting for settings to load to makeimage()"); window.setTimeout(function() { makeimage(); }, 2); return false;} // lets wait for stupd async
 	if(cfg_direct === true){let a = protected_createElement('a'); a.setAttribute('href',i.src); a.click(); return false;}
-	let css
+	let css 
  = `:root, body
 {
 	height: 100%;
@@ -1478,7 +1479,7 @@ function makeworld()
 		break;
 	case "flickr.com":
 	case "secure.flickr.com":
-		find_text_in_scripts('"displayUrl":"', '"', false, '"canComment"');
+		find_text_in_scripts('"displayUrl":"', '"', false, '"o":');
 		break;
 	case "artstation.com":
 		j = true;
@@ -3289,7 +3290,7 @@ function rescale(oEvent, isFilling)
 	click_Y *= newToOldImgScale_Y;
 	prevScroll_X *= newToOldImgScale_X;
 	prevScroll_Y *= newToOldImgScale_Y;
-
+	
 	if(oEvent)
 	{
 		if(bZoomCenterOnCursor)
