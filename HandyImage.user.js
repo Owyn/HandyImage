@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name		Handy Image
-// @version		2024.06.26
+// @version		2024.07.10
 // @author		Owyn
 // @contributor	ubless607, bitst0rm
 // @namespace	handyimage
@@ -888,6 +888,7 @@
 // @match		https://rule34.paheal.net/post/view/*
 // @match		https://imgjjtr.sbs/*
 // @match		https://tezzpic.com/*.php
+// @match		https://clip2net.com/s/*
 // ==/UserScript==
 
 "use strict";
@@ -1384,6 +1385,7 @@ function makeworld()
 	case "snipboard.io":
 	case "seaart.ai":
 	case "freeimage.host":
+	case "clip2net.com":
 		i = document.querySelector('meta[property="og:image"], [name="og:image"]');
 		if(i)
 		{
