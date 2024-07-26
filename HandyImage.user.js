@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name		Handy Image
-// @version		2024.07.10
+// @version		2024.07.26
 // @author		Owyn
 // @contributor	ubless607, bitst0rm
 // @namespace	handyimage
@@ -606,7 +606,7 @@
 // @match		http://*.levinpic.org/*.html
 // @match		https://www.sparrowpics.com/image/*
 // @match		http://*.imgmax.com/image/*
-// @match		http://lostpix.com/?v=*
+// @match		https://lostpix.com/?v=*
 // @match		https://extraimago.com/image/*
 // @match		http://www.joblo.com/hollywood-celebrities/hottie-profile/*/image-gallery/*.jpg
 // @match		*://extraimage.net/image/
@@ -1910,6 +1910,7 @@ function makeworld()
 		if(i){i.src = i.href;}
 		break;
 	case "imageshost.ru":
+	case "lostpix.com":
 		i = q('a[href*="/img/"]');
 		if(i){i.src = i.href;}
 		break;
@@ -2192,7 +2193,6 @@ function makeworld()
 	case "thebestpichost.com":
 	case "ifotos.pl":
 	case "subeimagenes.com":
-	case "lostpix.com":
 	case "vvcap.com":
 	case "imgtrex.com":
 	case "pic-upload.de":
