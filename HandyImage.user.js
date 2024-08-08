@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name		Handy Image
-// @version		2024.08.02
+// @version		2024.08.08
 // @author		Owyn
 // @contributor	ubless607, bitst0rm
 // @namespace	handyimage
@@ -885,7 +885,6 @@
 // @match		https://www.seaart.ai/explore/detail/*
 // @match		https://tensor.art/images/*
 // @match		https://freeimage.host/i/*
-// @match		https://rule34.paheal.net/post/view/*
 // @match		https://imgjjtr.sbs/*
 // @match		https://tezzpic.com/*.php
 // @match		https://clip2net.com/s/*
@@ -1810,11 +1809,12 @@ function makeworld()
 		i = q('a[href*="/images/"][href*="' + host + '/"]');
 		if(i){use_booru_tags_in_dl_filename(); i.src = i.href;}
 		break;
-	case "rule34.paheal.net":
-		j = true;
-		bUseCustomFilename = false;
-		i = q('#main_image');
-		break;
+	// case "rule34.paheal.net":
+	// 	j = true;
+	// 	bUseCustomFilename = false; // broken currently, again
+	// 	i = q('#main_image');
+	// 	if(i && i.currentSrc){i.src = i.currentSrc;}
+	// 	break;
 	case "rule34hentai.net":
 	case "danbooru.donmai.us":
 		i = q('a[download]');
