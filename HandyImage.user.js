@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name		Handy Image
-// @version		2024.08.08
+// @version		2024.08.20
 // @author		Owyn
 // @contributor	ubless607, bitst0rm
 // @namespace	handyimage
@@ -1282,25 +1282,7 @@ function makeworld()
 		}
 		break;
 	case "imagebam.com":
-		//j = true;
-		i = q("a i.fa-download");
-		if(i)
-		{
-			i.src = i.parentNode.href;
-		}
-		else
-		{
-			i = q("#continue a");
-			if(i)
-			{
-				let expires = '';
-				let date = new Date();
-				date.setTime(date.getTime() + (6 * 60 * 60 * 1000));
-				expires = "; expires=" + date.toUTCString();
-				document.cookie = "nsfw_inter=1" + expires + "; path=/";
-				i.click();
-			}
-		}
+		i = q("img.main-image");
 		break;
 	case "directupload.net":
 	case "bilderhoster.net":
