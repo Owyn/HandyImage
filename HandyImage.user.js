@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name		Handy Image
-// @version		2024.08.21
+// @version		2024.08.25
 // @author		Owyn
 // @contributor	ubless607, bitst0rm
 // @namespace	handyimage
@@ -380,6 +380,7 @@
 // @match		https://imgur.com/*
 // @match		https://m.imgur.com/*
 // @exclude		https://imgur.com/a/*
+// @exclude		https://m.imgur.com/a/*
 // @match		https://motherless.com/*
 // @match		https://*.tumblr.com/image/*
 // @match		https://*.media.tumblr.com/*.*
@@ -841,6 +842,7 @@
 // @match		https://jpg2.su/img/*
 // @match		https://jpg3.su/img/*
 // @match		https://jpg4.su/img/*
+// @match		https://jpg5.su/img/*
 // @match		*://imgwxr.online/*
 // @match		*://imgyre.online/*
 // @match		https://pixl.li/image/*
@@ -1350,6 +1352,7 @@ function makeworld()
 	case "jpg2.su":
 	case "jpg3.su":
 	case "jpg4.su":
+	case "jpg5.su":
 	case 'img.trafficimage.club':
 	case 'pig69.com':
 	case 'javball.com':
