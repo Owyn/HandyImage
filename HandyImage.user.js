@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name		Handy Image
-// @version		2024.08.25
+// @version		2024.08.26
 // @author		Owyn
 // @contributor	ubless607, bitst0rm
 // @namespace	handyimage
@@ -1285,6 +1285,17 @@ function makeworld()
 		}
 		break;
 	case "imagebam.com":
+		i = q("#continue a");
+		if(i)
+		{
+			let expires = '';
+			let date = new Date();
+			date.setTime(date.getTime() + (6 * 60 * 60 * 1000));
+			expires = "; expires=" + date.toUTCString();
+			document.cookie = "nsfw_inter=1" + expires + "; path=/";
+			i.click();
+			break
+		}
 		i = q("img.main-image");
 		break;
 	case "directupload.net":
