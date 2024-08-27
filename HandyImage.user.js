@@ -891,7 +891,7 @@
 // @match		https://imgjjtr.sbs/*
 // @match		https://tezzpic.com/*.php
 // @match		https://clip2net.com/s/*
-// @match		https://4fuk.me/*
+// @match		https://4fuk.me/upload/*
 // ==/UserScript==
 
 "use strict";
