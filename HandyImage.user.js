@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name		Handy Image
-// @version		2024.08.27
+// @version		2024.09.01
 // @author		Owyn
 // @contributor	ubless607, bitst0rm
 // @namespace	handyimage
@@ -3234,8 +3234,8 @@ function rescale(oEvent, isFilling)
 
 	let imgPrevWidth = i.scrollWidth;
 	let imgPrevHeight = i.scrollHeight;
-	let prevScroll_Y = Math.round(window.visualViewport.pageTop);
-	let prevScroll_X = Math.round(window.visualViewport.pageLeft);
+	let prevScroll_Y = Math.round(window.visualViewport.pageTop || window.scrollY); // for Firefox 90 and below which has no visualViewport yet
+	let prevScroll_X = Math.round(window.visualViewport.pageLeft || window.scrollX);
 
 	let bSidesCMP;
 	if(isFilling)
