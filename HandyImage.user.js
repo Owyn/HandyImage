@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name		Handy Image
-// @version		2024.09.01
+// @version		2024.09.13
 // @author		Owyn
 // @contributor	ubless607, bitst0rm
 // @namespace	handyimage
@@ -3195,6 +3195,15 @@ function mousedown(event) // chrome scroll-wheel
 	}
 }
 
+// Firefox 90- support
+if(typeof window.visualViewport === "undefined")
+{
+	window.visualViewport = {
+		get pageTop(){return window.scrollY},
+        get pageLeft(){return window.scrollX}
+	};
+}
+
 let viewHeight;
 let viewWidth;
 
@@ -3234,8 +3243,8 @@ function rescale(oEvent, isFilling)
 
 	let imgPrevWidth = i.scrollWidth;
 	let imgPrevHeight = i.scrollHeight;
-	let prevScroll_Y = Math.round(window.visualViewport.pageTop || window.scrollY); // for Firefox 90 and below which has no visualViewport yet
-	let prevScroll_X = Math.round(window.visualViewport.pageLeft || window.scrollX);
+	let prevScroll_Y = Math.round(window.visualViewport.pageTop);
+	let prevScroll_X = Math.round(window.visualViewport.pageLeft);
 
 	let bSidesCMP;
 	if(isFilling)
