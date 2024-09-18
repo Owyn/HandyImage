@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name		Handy Image
-// @version		2024.09.15
+// @version		2024.09.18
 // @author		Owyn
 // @contributor	ubless607, bitst0rm
 // @namespace	handyimage
@@ -894,6 +894,7 @@
 // @match		https://4fuk.me/upload/*
 // @match		https://555fap.com/upload/*
 // @match		https://kin8-av.com/upload/*
+// @match		https://javsunday.com/upload/*
 // ==/UserScript==
 
 "use strict";
@@ -1388,6 +1389,7 @@ function makeworld()
 	case "4fuk.me":
 	case "555fap.com":
 	case "kin8-av.com":
+	case "javsunday.com":
 		i = document.querySelector('meta[property="og:image"], [name="og:image"]');
 		if(i)
 		{
