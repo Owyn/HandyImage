@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name		Handy Image
-// @version		2024.09.18
+// @version		2024.10.05
 // @author		Owyn
 // @contributor	ubless607, bitst0rm
 // @namespace	handyimage
@@ -395,7 +395,7 @@
 // @match		http://*.imgdone.com/view*
 // @match		https://*.2i.cz/i/*
 // @match		http://awesomescreenshot.com/*
-// @match		https://www.flickr.com/photos/*/*/
+// @match		https://www.flickr.com/photos/*/*
 // @exclude		https://www.flickr.com/photos/*/galleries/*
 // @exclude		https://www.flickr.com/photos/*/albums/*
 // @exclude		https://www.flickr.com/photos/sets/*
