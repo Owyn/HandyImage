@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name		Handy Image
-// @version		2024.10.05
+// @version		2024.10.10
 // @author		Owyn
 // @contributor	ubless607, bitst0rm
 // @namespace	handyimage
@@ -491,7 +491,7 @@
 // @match		http://konachan.net/post/show/*
 // @match		https://yande.re/post/show/*
 // @match		https://chan.sankakucomplex.com/*posts/*
-// @match		https://idol.sankakucomplex.com/*post/show/*
+// @match		https://idol.sankakucomplex.com/*posts/*
 // @match		https://yande.re/post/show/*
 // @match		http://www.zerochan.net/*
 // @match		http://imgzap.com/view*
@@ -3074,7 +3074,7 @@ function makeworld()
 var grab_fav_tags = []; // set in Custom JS
 function use_booru_tags_in_dl_filename()
 {
-	let artist = document.querySelectorAll(".tag-type-artist a:not([href*='/books?'])[href*='tags='], .artist-tag > a, a.search-tag[itemprop='author'], a.model, .user-info-box .username > a");
+	let artist = document.querySelectorAll(".tag-type-artist a:not([href*='/books?'])[href*='tags='],.tag-type-idol a:not([href*='/books?'])[href*='tags='], .artist-tag > a, a.search-tag[itemprop='author'], a.model, .user-info-box .username > a");
 	for(let n = 0; n < artist.length; n++)
 	{
 		if(artist[n].text == "?") continue;
