@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name		Handy Image
-// @version		2024.10.10
+// @version		2024.10.17
 // @author		Owyn
 // @contributor	ubless607, bitst0rm
 // @namespace	handyimage
@@ -1430,7 +1430,7 @@ function makeworld()
 	case "x.com":
 		j = true;
 		unsafeWindow.history.replaceState = unsafeWindow.console.log;
-		i = q('a[href*="/photo/' + Number(window.location.href.at(-1)) + '"] img');
+		i = q('a[href*="'+window.location.href.match("status\/([^\/]+)")[1]+'/photo/' + Number(window.location.href.at(-1)) + '"] img');
 		if(i)
 		{
 			i.src = i.src.substring(0, i.src.indexOf("&name=")) + '&name=orig';
