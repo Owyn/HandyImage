@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name		Handy Image
-// @version		2024.10.17
+// @version		2024.10.23
 // @author		Owyn
 // @contributor	ubless607, bitst0rm
 // @namespace	handyimage
@@ -395,7 +395,7 @@
 // @match		http://*.imgdone.com/view*
 // @match		https://*.2i.cz/i/*
 // @match		http://awesomescreenshot.com/*
-// @match		https://www.flickr.com/photos/*/*
+// @match		https://www.flickr.com/photos/*/*/*
 // @exclude		https://www.flickr.com/photos/*/galleries/*
 // @exclude		https://www.flickr.com/photos/*/albums/*
 // @exclude		https://www.flickr.com/photos/sets/*
@@ -1485,7 +1485,7 @@ function makeworld()
 		break;
 	case "flickr.com":
 	case "secure.flickr.com":
-		find_text_in_scripts('"displayUrl":"', '"', false, '"o":');
+		find_text_in_scripts('"descendingSizes":[{"displayUrl":"', '"', false, '');
 		break;
 	case "artstation.com":
 		j = true;
