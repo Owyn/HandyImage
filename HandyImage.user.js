@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name		Handy Image
-// @version		2024.10.23
+// @version		2024.10.24
 // @author		Owyn
 // @contributor	ubless607, bitst0rm
 // @namespace	handyimage
@@ -895,6 +895,8 @@
 // @match		https://555fap.com/upload/*
 // @match		https://kin8-av.com/upload/*
 // @match		https://javsunday.com/upload/*
+// @match		https://*.redgifs.com/watch/*
+// @match		https://*.redgifs.com/ifr/*
 // ==/UserScript==
 
 "use strict";
@@ -943,7 +945,7 @@ if(sessionStorage.length)
 		if(sessionStorage.hji.indexOf(window.location.href) != -1) // check address in case page failed to load b4
 		{
 			console.warn("Handy Image: userscript stopped itself from running INTENTIONALLY");
-			sessionStorage.removeItem("hji");
+			setTimeout(function() {sessionStorage.removeItem("hji");},1000); // for frames
 			return false;
 		}
 		sessionStorage.removeItem("hji");
@@ -1495,6 +1497,41 @@ function makeworld()
 			i = f[0];
 			i.src = i.href;
 		}
+		break;
+	case "redgifs.com":
+		if(!j) // once
+		{
+			console.debug("HJI: setting up wrapper_JSON_parse");
+			let wrapper_JSON_parse = function (json, ...args)
+			{
+				if (typeof json === 'string' && json.includes('"gif":') && document.head && !document.head.querySelector('link[rel="handy_image"]'))
+				{
+					const parsed = wrapper_JSON_parse.originalF(json, ...args);
+					let link = protected_createElement('link');
+					link.rel = 'handy_image';
+					link.href = parsed.gif.urls.hd || parsed.gif.urls.sd;
+					document.head.appendChild(link);
+					console.debug("found redgifs url: " + link.href);
+					console.debug(parsed.gif.urls);
+					filename = "by " + parsed.gif.userName + " - " + parsed.gif.niches.join(" ") + " - " + parsed.gif.tags.join(" ");
+					unsafeWindow.JSON.parse = wrapper_JSON_parse.originalF; // doesn't work for some reason
+					return parsed;
+				}
+				return wrapper_JSON_parse.originalF(json, ...args);
+			}
+			if(FireFox && typeof exportFunction === "function")
+			{
+				wrapper_JSON_parse = exportFunction(wrapper_JSON_parse, unsafeWindow); // TM magic
+			}
+			wrapper_JSON_parse.originalF = unsafeWindow.JSON.parse;
+			unsafeWindow.JSON.parse = wrapper_JSON_parse;
+		}
+		else if(document.head)
+		{
+			i = document.head.querySelector('link[rel="handy_image"]');
+			if(i) i.src = i.href;
+		}
+		j = true;
 		break;
 	case "piczel.tv":
 		j = true;
