@@ -896,7 +896,6 @@
 // @match		https://kin8-av.com/upload/*
 // @match		https://javsunday.com/upload/*
 // @match		https://*.redgifs.com/watch/*
-// @match		https://*.redgifs.com/ifr/*
 // ==/UserScript==
 
 "use strict";
