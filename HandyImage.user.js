@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name		Handy Image
-// @version		2024.10.24
+// @version		2024.11.10
 // @author		Owyn
 // @contributor	ubless607, bitst0rm
 // @namespace	handyimage
@@ -402,7 +402,7 @@
 // @exclude		https://www.flickr.com/photos/tags/*
 // @exclude		https://www.flickr.com/photos/page*
 // @exclude		https://www.flickr.com/photos/with*
-// @exclude		https://www.flickr.com/photos/favorites*
+// @exclude		https://www.flickr.com/photos*favorites*
 // @match		http://www.amateri.cz/g*/*
 // @match		*://*.wikipedia.org/wiki/*:*.jp*
 // @match		*://*.wikipedia.org/wiki/*:*.png
