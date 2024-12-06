@@ -896,6 +896,7 @@
 // @match		https://kin8-av.com/upload/*
 // @match		https://javsunday.com/upload/*
 // @match		https://*.redgifs.com/watch/*
+// @match		https://hentaipig.com/upload/*
 // ==/UserScript==
 
 "use strict";
@@ -1391,6 +1392,7 @@ function makeworld()
 	case "555fap.com":
 	case "kin8-av.com":
 	case "javsunday.com":
+	case "hentaipig.com":
 		i = document.querySelector('meta[property="og:image"], [name="og:image"]');
 		if(i)
 		{
