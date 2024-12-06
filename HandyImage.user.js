@@ -896,6 +896,7 @@
 // @match		https://kin8-av.com/upload/*
 // @match		https://javsunday.com/upload/*
 // @match		https://*.redgifs.com/watch/*
+// @match		https://hentaicovid.com/uploads/*
 // @match		https://hentaipig.com/upload/*
 // ==/UserScript==
 
@@ -1393,6 +1394,7 @@ function makeworld()
 	case "kin8-av.com":
 	case "javsunday.com":
 	case "hentaipig.com":
+	case "hentaicovid.com":
 		i = document.querySelector('meta[property="og:image"], [name="og:image"]');
 		if(i)
 		{
