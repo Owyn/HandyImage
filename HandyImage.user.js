@@ -1392,6 +1392,7 @@ function makeworld()
 	case "555fap.com":
 	case "kin8-av.com":
 	case "javsunday.com":
+	case "hentaipig.com":
 		i = document.querySelector('meta[property="og:image"], [name="og:image"]');
 		if(i)
 		{
