@@ -896,6 +896,7 @@
 // @match		https://kin8-av.com/upload/*
 // @match		https://javsunday.com/upload/*
 // @match		https://*.redgifs.com/watch/*
+// @match		https://hentaicovid.com/uploads/*
 // ==/UserScript==
 
 "use strict";
