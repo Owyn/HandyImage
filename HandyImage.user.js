@@ -3148,7 +3148,7 @@ function use_booru_tags_in_dl_filename()
 			tg = window.setTimeout(do_grab_fav_tags, 2);
 			return;
 		}
-		if(cfg_js && cfg_js.indexOf("grab_fav_tags") != -1) {grab_fav_tags = cfg_js.substring(cfg_js.indexOf("[")+1,cfg_js.indexOf("]")).replaceAll(" ", "").replaceAll("_", " ").replaceAll(/\n/g, '').replaceAll("'", "").replaceAll('"','').toLowerCase().split(",");} // load custom tags // also bypass CSP
+		if(cfg_js && cfg_js.indexOf("grab_fav_tags") != -1) {grab_fav_tags = cfg_js.substring(cfg_js.indexOf("[")+1,cfg_js.indexOf("]")).replaceAll(" ", "").replaceAll("_", " ").replaceAll(/\n/g, '').replaceAll(/(?<!\\)'/g, "").replaceAll("\\'","'").replaceAll('"','').toLowerCase().split(",");} // load custom tags // also bypass CSP
 		console.debug("your favorite tags: "+ grab_fav_tags);
 		if(grab_fav_tags.length)
 		{
