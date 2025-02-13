@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name		Handy Image
-// @version		2024.12.06
+// @version		2025.02.13
 // @author		Owyn
 // @contributor	ubless607, bitst0rm
 // @namespace	handyimage
@@ -979,7 +979,6 @@ let orgImgWidth;
 let orgImgHeight;
 var rescaled = 0;
 var tb = 0;
-var tg = 0;
 var timeout = 1000;
 var FireFox = ((navigator.userAgent.indexOf('Firefox') != -1) ? true : false);
 var i;
@@ -1110,7 +1109,7 @@ function onbeforeunload() // back helper
 
 function makeimage()
 {
-	if(typeof cfg_js !== "string") { console.log("waiting for settings to load to makeimage()"); window.setTimeout(function() { makeimage(); }, 2); return false;} // lets wait for stupd async
+	if(typeof cfg_js !== "string") { console.log("waiting for settings to load to makeimage()"); if(!loadCfg_callbacks.includes(makeimage)){loadCfg_callbacks.push(makeimage);} return false;} // lets wait for stupd async
 	if(cfg_direct === true){let a = protected_createElement('a'); a.setAttribute('href',i.src); a.click(); return false;}
 	let css 
  = `:root, body
@@ -3139,31 +3138,36 @@ function use_booru_tags_in_dl_filename()
 		}
 	}*/
 	let general_tags = document.querySelectorAll(".tag-link, .tag-type-general a:not([href*='/books?'])[href*='tags='], .tag-type-genre > a, .general-tag > a, .general-tag-list > .tag-type-0 > a.search-tag, a.search-tag, div#tagLink > a,.tags-list a");
+	let general_tags_text = [];
+	for(let n = 0; n < general_tags.length; n++)
+	{
+		general_tags_text.push(general_tags[n].text);
+	}
 
-	function do_grab_fav_tags()
+	function process_grabbed_tags()
 	{
 		if(typeof cfg_js !== "string")
 		{
 			console.log("waiting for async setting loading of cfg_js: " + (typeof cfg_js));
-			tg = window.setTimeout(do_grab_fav_tags, 2);
+			if(!loadCfg_callbacks.includes(process_grabbed_tags)){loadCfg_callbacks.push(process_grabbed_tags);}
 			return;
 		}
 		if(cfg_js && cfg_js.indexOf("grab_fav_tags") != -1) {grab_fav_tags = cfg_js.substring(cfg_js.indexOf("[")+1,cfg_js.indexOf("]")).replaceAll(" ", "").replaceAll("_", " ").replaceAll(/\n/g, '').replaceAll(/(?<!\\)'/g, "").replaceAll("\\'","'").replaceAll('"','').toLowerCase().split(",");} // load custom tags // also bypass CSP
 		console.debug("your favorite tags: "+ grab_fav_tags);
 		if(grab_fav_tags.length)
 		{
-			for(let n = 0; n < general_tags.length; n++)
+			for(let n = 0; n < general_tags_text.length; n++)
 			{
-				if(general_tags[n].text == "?") continue;
-				if(grab_fav_tags.indexOf(general_tags[n].text.toLowerCase().replaceAll("_", " ")) != -1)
+				if(general_tags_text[n] == "?") continue;
+				if(grab_fav_tags.indexOf(general_tags_text[n].toLowerCase().replaceAll("_", " ")) != -1)
 				{
-					filename = general_tags[n].text.replaceAll(" ", "_") + " " +filename;
+					filename = general_tags_text[n].replaceAll(" ", "_") + " " +filename;
 				}
 			}
 		}
 		filename = filename.replaceAll("_(", " ("); // but not the space before franchise
 	}
-	do_grab_fav_tags();
+	process_grabbed_tags();
 }
 
 function onvolumechange()
@@ -3704,6 +3708,7 @@ function cfg()
 }
 
 var loadCfg;
+var loadCfg_callbacks = [];
 if (typeof GM === 'undefined') // GM3 or native
 {
 	if (typeof GM_getValue !== "undefined")
@@ -3724,6 +3729,7 @@ if (typeof GM === 'undefined') // GM3 or native
 			cfg_vol = GM.getValue("vid_volume", "0.5");
 		}
 		loadCfg();
+		loadCfg_callbacks.forEach(function(item) {item()}); // likely not needed here
 	}
 	else
 	{
@@ -3735,14 +3741,20 @@ else
 {
 	loadCfg = async function ()
 	{
-		cfg_direct = await GM.getValue("directImage", false);
-		cfg_bgclr = await GM.getValue("bgColor", "grey");
-		cfg_fitWH = await GM.getValue("fitWH", true);
-		cfg_fitB = await GM.getValue("fitB", false);
-		cfg_fitS = await GM.getValue("fitS", true);
-		cfg_fitOS = await GM.getValue("fitOS", false);
-		cfg_js = await GM.getValue("js", "");
-		cfg_vol = await GM.getValue("vid_volume", "0.5");
+	Promise.all([
+		GM.getValue("directImage", false).then( function(result) { cfg_direct = result; } , console.error),
+		GM.getValue("bgColor", "grey").then( function(result) { cfg_bgclr = result; } , console.error),
+		GM.getValue("fitWH", true).then( function(result) { cfg_fitWH = result; } , console.error),
+		GM.getValue("fitB", false).then( function(result) { cfg_fitB = result; } , console.error),
+		GM.getValue("fitS", true).then( function(result) { cfg_fitS = result; } , console.error),
+		GM.getValue("fitOS", false).then( function(result) { cfg_fitOS = result; } , console.error),
+		GM.getValue("js", "").then( function(result) { cfg_js = result; } , console.error),
+		GM.getValue("vid_volume", "0.5").then( function(result) { cfg_vol = result; } , console.error)
+	]).then(
+		function() { console.debug("GM settings loaded"); loadCfg_callbacks.forEach(function(item) {item()}); },
+		function(error) { console.error("GM settings NOT loaded: " + error); loadCfg_callbacks.forEach(function(item) {item()}); }
+		);
 	}
+	console.debug("GM settings started loading")
 	loadCfg();
 }
