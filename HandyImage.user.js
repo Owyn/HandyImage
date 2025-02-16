@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name		Handy Image
-// @version		2025.02.13
+// @version		2025.02.16
 // @author		Owyn
 // @contributor	ubless607, bitst0rm
 // @namespace	handyimage
@@ -542,6 +542,7 @@
 // @match		http://*.img24.org/full/
 // @match		http://*.pic-maniac.com/*
 // @match		https://*.instagram.com/p/*
+// @match		https://*.instagram.com/*/p/*
 // @exclude		https://instagram.com/p/*/embed/*
 // @exclude		https://*.instagram.com/p/*/embed/*
 // @match		http://*.imgsay.com/?v=*
@@ -1474,12 +1475,13 @@ function makeworld()
 	case "instagram.com":
 		j = true;
 		// find_text_in_scripts('"url":"', '"', false, '"image_versions2"')
-		if(q("header"))
+		if(q('canvas')) // comments' avatar
 		{
-			f = document.querySelectorAll("div[role=button] > div > div img")
+			f = document.querySelectorAll("div[role=button] > div > div img");
 			if(f.length === 1)
 			{
 				i = f[0];
+				filename = "by " + document.querySelector('meta[property="og:title"]').content;
 			}
 			else
 			{
@@ -3066,7 +3068,7 @@ function makeworld()
 		bStopScripts = true; // actually better than the event above, blocks more stuff for some reason
 	}
 	//
-	if(tb){window.clearTimeout(tb);}
+	if(tb){clearTimeout(tb);}
 	if(is_gallery)
 	{
 		console.log("Handy Image: userscript stopped itself INTENTIONALLY, - cuz it is not just a single image on the page to fullsize but a gallery");
@@ -3106,7 +3108,7 @@ function makeworld()
 	else // try again
 	{
 		//console.warn("Didnt find image, trying again in " + timeout + " ms");
-		tb = window.setTimeout(function() { console.warn("Didnt find image, waited " + timeout + " ms to try again. page: " + window.location.href); tb=0; timeout*=2; i=0; makeworld(); }, timeout);
+		tb = setTimeout(function() { console.warn("Didnt find image, waited " + timeout + " ms to try again. page: " + window.location.href); tb=0; timeout*=2; i=0; makeworld(); }, timeout);
 	}
 }
 
@@ -3420,7 +3422,12 @@ function autoresize()
 			changeCursor();
 		}
 		bStopScripts = false; // should be safe now, right?
-		if(cfg_js){eval(cfg_js);}
+		if(cfg_js)
+		{
+			try {
+			eval(cfg_js);
+			} catch (e) {console.warn(e);} // CSP
+		}
 	}
 	else // no onloadstart event for images, sadge
 	{
