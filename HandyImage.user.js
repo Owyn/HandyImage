@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name		Handy Image
-// @version		2025.02.16
+// @version		2025.02.28
 // @author		Owyn
 // @contributor	ubless607, bitst0rm
 // @namespace	handyimage
@@ -838,11 +838,6 @@
 // @match		https://imgsh.net/a/*
 // @match		*://imgqaz.online/*
 // @match		*://imgurt.online/*
-// @match		https://jpg.fish/img/*
-// @match		https://jpg1.su/img/*
-// @match		https://jpg2.su/img/*
-// @match		https://jpg3.su/img/*
-// @match		https://jpg4.su/img/*
 // @match		https://jpg5.su/img/*
 // @match		*://imgwxr.online/*
 // @match		*://imgyre.online/*
@@ -1358,7 +1353,6 @@ function makeworld()
 	case "imghub.ru":
 	case "radikal.host":
 	case "imgsh.net":
-	case "jpg.fish":
 	case "pixl.li":
 	case "skr.sh":
 	case "jpg.pet":
@@ -1366,11 +1360,6 @@ function makeworld()
 	case "im.ge":
 	case "screencast.com":
 	case "picshare.ru":
-	case "jpg1.su":
-	case "jpg2.su":
-	case "jpg3.su":
-	case "jpg4.su":
-	case "jpg5.su":
 	case 'img.trafficimage.club':
 	case 'pig69.com':
 	case 'javball.com':
@@ -1792,6 +1781,7 @@ function makeworld()
 		find_text_in_scripts('"Url":"', '"');
 		break;
 	case "jerking.empornium.ph":
+	case "jpg5.su":
 		find_text_in_scripts('	url: "', '"', true);
 		break;
 	case "bilder-space.de":
