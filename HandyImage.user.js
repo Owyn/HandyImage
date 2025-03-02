@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name		Handy Image
-// @version		2025.02.28
+// @version		2025.03.02
 // @author		Owyn
 // @contributor	ubless607, bitst0rm
 // @namespace	handyimage
@@ -516,8 +516,6 @@
 // @match		http://*.imgbase.online/*/*/
 // @match		http://*.picpays.ru/*/*/
 // @match		http://*.imgclover.com/image/*
-// @match		http://*.imgz.pw/share-*
-// @match		http://*.imgz.pw/ch/image/*
 // @match		*://*.imgking.co/img*
 // @match		http://ask.fm/*/photo/original
 // @match		http://*.newimagepost.com/img-*
@@ -1166,21 +1164,36 @@ video::-webkit-media-controls-panel
 	}
 }
 
-function find_text_in_scripts(text, stopword, start_from_top = null, search_after_word = null, content_type = "img")
+function find_text_in_scripts(text, stopword, start_from_top = false, search_after_word = null, content_type = "img")
 {
-	let s = document.getElementsByTagName("script");
-	for(let c=0;c<s.length;c++)
+	let scripts = document.getElementsByTagName("script");
+	const searchFunc = start_from_top ? String.prototype.indexOf : String.prototype.lastIndexOf;
+	for(let n = 0; n < scripts.length; n++)
 	{
-		if(search_after_word && s[c].innerHTML.indexOf(search_after_word) != -1){s[c].innerHTML = s[c].innerHTML.substring(0, s[c].innerHTML.indexOf(search_after_word));}
-		let start_pos = start_from_top ? s[c].innerHTML.indexOf(text) : s[c].innerHTML.lastIndexOf(text);
-		if(start_pos == -1){continue;}
-		start_pos += text.length;
-		let found_content = s[c].innerHTML.substring(start_pos,s[c].innerHTML.indexOf(stopword,start_pos));
+		let foundIdx;
+		if(search_after_word)
+		{
+			foundIdx = searchFunc.call(scripts[n].innerHTML, search_after_word);
+			if(foundIdx === -1)
+			{
+				foundIdx = undefined;
+				console.debug("find_text_in_scripts(): NOT found search_after_word: ");
+				continue; // the word MUST be present
+			}
+			else
+			{
+				console.debug("find_text_in_scripts(): found search_after_word at: " + foundIdx);
+			}
+		}
+		let found_start_pos = searchFunc.call(scripts[n].innerHTML, text, foundIdx);
+		if(found_start_pos == -1){continue;} // text not found in this <script>, try next?
+		found_start_pos += text.length;
+		let found_content = scripts[n].innerHTML.substring(found_start_pos, scripts[n].innerHTML.indexOf(stopword, found_start_pos));
 		found_content = JSON.parse('"' + found_content.replace('"', '\\"') + '"'); // unescape it
 		found_content = decodeURIComponent(found_content);
 		i = protected_createElement(content_type);
 		i.src = found_content;
-		console.debug("found url in the script: " + found_content);
+		console.debug("find_text_in_scripts(): found this url: " + found_content);
 		return true;
 	}
 	return false;
@@ -1697,7 +1710,6 @@ function makeworld()
 	case "eazypics.net":
 	case "xtupload.com":
 	case "t.williamgates.net":
-	case "imgz.pw":
 	case "imgurx.net":
 		//i = q('img#iimg');
 		if(!find_text_in_scripts("<img src='", "'"))
@@ -1781,8 +1793,12 @@ function makeworld()
 		find_text_in_scripts('"Url":"', '"');
 		break;
 	case "jerking.empornium.ph":
-	case "jpg5.su":
 		find_text_in_scripts('	url: "', '"', true);
+		break;
+	case "jpg5.su":
+		j = true;
+		i = q('a[download][href*=\\/]');
+		if(i) i.src = i.href;
 		break;
 	case "bilder-space.de":
 	case "imagesup.de":
