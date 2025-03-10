@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name		Handy Image
-// @version		2025.03.02
+// @version		2025.03.10
 // @author		Owyn
 // @contributor	ubless607, bitst0rm
 // @namespace	handyimage
@@ -892,6 +892,8 @@
 // @match		https://*.redgifs.com/watch/*
 // @match		https://hentaicovid.com/uploads/*
 // @match		https://hentaipig.com/upload/*
+// @match		https://fikfok.net/upload/*
+// @match		https://image.javbee.me/*
 // ==/UserScript==
 
 "use strict";
@@ -1397,6 +1399,8 @@ function makeworld()
 	case "javsunday.com":
 	case "hentaipig.com":
 	case "hentaicovid.com":
+	case "fikfok.net":
+	case "image.javbee.me":
 		i = document.querySelector('meta[property="og:image"], [name="og:image"]');
 		if(i)
 		{
