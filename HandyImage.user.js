@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name		Handy Image
-// @version		2025.03.10
+// @version		2025.03.27
 // @author		Owyn
 // @contributor	ubless607, bitst0rm
 // @namespace	handyimage
@@ -894,6 +894,8 @@
 // @match		https://hentaipig.com/upload/*
 // @match		https://fikfok.net/upload/*
 // @match		https://image.javbee.me/*
+// @match		https://pixeldrain.com/u/*
+// @match		https://getapic.me/v/*
 // ==/UserScript==
 
 "use strict";
@@ -1401,6 +1403,7 @@ function makeworld()
 	case "hentaicovid.com":
 	case "fikfok.net":
 	case "image.javbee.me":
+	case "pixeldrain.com":
 		i = document.querySelector('meta[property="og:image"], [name="og:image"]');
 		if(i)
 		{
@@ -1477,6 +1480,10 @@ function makeworld()
 	case "ameblo.jp":
 		j = true;
 		i = q('img#imgItem');
+		break;
+	case "getapic.me":
+		i = q('small > a');
+		i.src = i.href;
 		break;
 	case "instagram.com":
 		j = true;
