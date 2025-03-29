@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name		Handy Image
-// @version		2025.03.27
+// @version		2025.03.29
 // @author		Owyn
 // @contributor	ubless607, bitst0rm
 // @namespace	handyimage
@@ -1403,7 +1403,6 @@ function makeworld()
 	case "hentaicovid.com":
 	case "fikfok.net":
 	case "image.javbee.me":
-	case "pixeldrain.com":
 		i = document.querySelector('meta[property="og:image"], [name="og:image"]');
 		if(i)
 		{
@@ -1832,10 +1831,12 @@ function makeworld()
 	case "sexybabepics.net":
 	case "keepimg.com":
 	case "ibb.co":
-		i = document.head.querySelector('meta[property="og:image"]');
+		i = document.head?.querySelector('meta[property="og:image"]');
 		if(i){i.src = i.content; break;}
+	case "pixeldrain.com":
+		j = true;
 	case "pasteboard.co":
-		i = document.head.querySelector('meta[name="twitter:image"]');
+		i = document.head?.querySelector('meta[name="twitter:image"]');
 		if(i){i.src = i.content; break;}
 	case "picsee.net":
 		i = q('a[href*="/upload"]');
