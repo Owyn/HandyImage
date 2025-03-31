@@ -896,6 +896,9 @@
 // @match		https://image.javbee.me/*
 // @match		https://pixeldrain.com/u/*
 // @match		https://getapic.me/v/*
+// @match		https://3minx.com/upload/*
+// @match		https://sweetie-fox.com/upload/*
+// @match		https://porn4f.org/upload/*
 // ==/UserScript==
 
 "use strict";
