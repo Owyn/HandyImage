@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name		Handy Image
-// @version		2025.03.29
+// @version		2025.04.06
 // @author		Owyn
 // @contributor	ubless607, bitst0rm
 // @namespace	handyimage
@@ -546,10 +546,7 @@
 // @match		http://*.imgsay.com/?v=*
 // @match		http://*.imgsmile.com/?v=*
 // @match		http://*.balkanelite.org/MultiHoster/view*
-// @match		https://twitter.com/*/photo/*
-// @match		https://mobile.twitter.com/*/photo/*
-// @match		https://x.com/*/photo/*
-// @match		https://mobile.x.com/*/photo/*
+// @match		https://*.x.com/*/photo/*
 // @match		http://*.icezap.com/img-*
 // @match		*://*.rapidimg.net/img-*
 // @match		http://*.imgtornado.com/img-*
@@ -899,6 +896,8 @@
 // @match		https://3minx.com/upload/*
 // @match		https://sweetie-fox.com/upload/*
 // @match		https://porn4f.org/upload/*
+// @match		https://pixai.art/artwork/*
+// @match		https://pixai.art/video/*
 // ==/UserScript==
 
 "use strict";
@@ -1440,8 +1439,6 @@ function makeworld()
 			i.src = i.content.replace("w=600","w=3840"); // 4k (if available)
 		}
 		break;
-	case "mobile.twitter.com":
-	case "twitter.com":
 	case "mobile.x.com":
 	case "x.com":
 		j = true;
@@ -1960,6 +1957,15 @@ function makeworld()
 		j = true;
 		i = q('div.download a');
 		if(i){i.src = i.href; filename = document.title;}
+		break;
+	case "pixai.art":
+		j = true;
+		i = q('.object-contain');
+		if(!filename)
+		{
+			filename = document.title;
+			filename_ext = document.URL.indexOf("video") != -1 ? "mp4" : "webp";
+		}
 		break;
 	case "imagehost.eu":
 		i = q('a#image');
