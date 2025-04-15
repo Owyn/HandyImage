@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name		Handy Image
-// @version		2025.04.06
+// @version		2025.04.15
 // @author		Owyn
 // @contributor	ubless607, bitst0rm
 // @namespace	handyimage
@@ -1885,6 +1885,7 @@ function makeworld()
 		if(i){use_booru_tags_in_dl_filename(); i.src = i.href;}
 		break;
 	case "e621.net":
+		j = true;
 		i = q('div#image-download-link a');
 		if(i){use_booru_tags_in_dl_filename(); i.src = i.href;}
 		break;
@@ -3142,18 +3143,20 @@ function makeworld()
 var grab_fav_tags = []; // set in Custom JS
 function use_booru_tags_in_dl_filename()
 {
-	let artist = document.querySelectorAll(".tag-type-artist a:not([href*='/books?'])[href*='tags='],.tag-type-idol a:not([href*='/books?'])[href*='tags='], .artist-tag > a, a.search-tag[itemprop='author'], a.model, .user-info-box .username > a");
+	let artist = document.querySelectorAll(".tag-type-artist a:not([href*='/books?'])[href*='tags='],.tag-type-idol a:not([href*='/books?'])[href*='tags='], .artist-tag > a, a.search-tag[itemprop='author'], a.model, .user-info-box .username > a, .tag-artist");
 	for(let n = 0; n < artist.length; n++)
 	{
-		if(artist[n].text == "?") continue;
-		filename = "by " + artist[n].text.replaceAll(" ", "_") + " " + filename;
+		if(artist[n]?.text == "?") continue;
+		if(artist[n].dataset?.name) {filename = "by " + artist[n].dataset.name + " " + filename;}
+		else {filename = "by " + artist[n].text.replaceAll(" ", "_") + " " + filename;}
 	}
 
-	let character = document.querySelectorAll(".tag-type-character a:not([href*='/books?'])[href*='tags='], .character-tag > a, .character-tag-list a.search-tag, a.character");
+	let character = document.querySelectorAll(".tag-type-character a:not([href*='/books?'])[href*='tags='], .character-tag > a, .character-tag-list a.search-tag, a.character, .tag-character");
 	for(let n = 0; n < character.length; n++)
 	{
-		if(character[n].text == "?") continue;
-		filename = character[n].text.replaceAll(" ", "_") + " " + filename;
+		if(character[n]?.text == "?") continue;
+		if(character[n].dataset?.name) {filename = character[n].dataset.name + " " + filename;}
+		else {filename = character[n].text.replaceAll(" ", "_") + " " + filename;}
 	}
 
 	/*if(character.length === 0)
@@ -3166,11 +3169,11 @@ function use_booru_tags_in_dl_filename()
 			break; // just one cuz else it'd get long
 		}
 	}*/
-	let general_tags = document.querySelectorAll(".tag-link, .tag-type-general a:not([href*='/books?'])[href*='tags='], .tag-type-genre > a, .general-tag > a, .general-tag-list > .tag-type-0 > a.search-tag, a.search-tag, div#tagLink > a,.tags-list a");
+	let general_tags = document.querySelectorAll(".tag-link, .tag-type-general a:not([href*='/books?'])[href*='tags='], .tag-type-genre > a, .general-tag > a, .general-tag-list > .tag-type-0 > a.search-tag, a.search-tag, div#tagLink > a,.tags-list a, .tag-list-item");
 	let general_tags_text = [];
 	for(let n = 0; n < general_tags.length; n++)
 	{
-		general_tags_text.push(general_tags[n].text);
+		general_tags_text.push(general_tags[n]?.text || general_tags[n].dataset?.name);
 	}
 
 	function process_grabbed_tags()
