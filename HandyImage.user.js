@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name		Handy Image
-// @version		2025.04.15
+// @version		2025.04.16
 // @author		Owyn
 // @contributor	ubless607, bitst0rm
 // @namespace	handyimage
@@ -1572,7 +1572,7 @@ function makeworld()
 	case "pixiv.net":
 		j = true;
 		i = document.head.querySelector('meta[name="preload-data"]');
-		if (i)
+		if (i) // this still works for when you are not logged in
 		{
 			let a = JSON.parse(i.getAttribute('content')).illust;
 			let b = a[Object.keys(a)[0]];
@@ -1589,6 +1589,25 @@ function makeworld()
 			i.src = b.urls.original;
 			filename = b.title + " by " + b.userName;
 			b.tags.tags.forEach(el => filename = filename + " " + el.tag);
+		}
+		else if ((i = q('a[href*="/img-original/"]')))
+		{
+			if (q('[aria-label="Preview"]')) // is a manga with multiple pages
+			{
+				console.warn("Manga page with multiple images, no action taken further");
+				i = null;
+				return;
+			}
+			else
+			{
+				i.src = i.href;
+			}
+		}
+		else if(q('canvas')) // animation ugoira
+		{
+			console.warn("Animated ugoira image found, no action taken further");
+			i = null;
+			return;
 		}
 		break;
 	case "idol.sankakucomplex.com":
