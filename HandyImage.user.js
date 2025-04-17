@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name		Handy Image
-// @version		2025.04.16
+// @version		2025.04.17
 // @author		Owyn
 // @contributor	ubless607, bitst0rm
 // @namespace	handyimage
@@ -1595,18 +1595,18 @@ function makeworld()
 			if (q('[aria-label="Preview"]')) // is a manga with multiple pages
 			{
 				console.warn("Manga page with multiple images, no action taken further");
-				i = null;
 				return;
 			}
 			else
 			{
 				i.src = i.href;
+				let k = document.head.querySelector('meta[property="twitter:description"]');
+				if(k) { filename = k.content; }
 			}
 		}
 		else if(q('canvas')) // animation ugoira
 		{
 			console.warn("Animated ugoira image found, no action taken further");
-			i = null;
 			return;
 		}
 		break;
