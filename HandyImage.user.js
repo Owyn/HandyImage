@@ -9,7 +9,7 @@
 // @downloadURL	https://github.com/Owyn/HandyImage/raw/master/HandyImage.user.js
 // @homepage	https://github.com/Owyn/HandyImage
 // @supportURL	https://github.com/Owyn/HandyImage/issues
-// @icon		https://i.ibb.co/znz0hry/W9zir-OUGo1.png
+// @icon		https://i.ibb.co/Xk4vsrTT/Handy.png
 // @run-at		document-start
 // @grant		GM.getValue
 // @grant		GM.setValue
