@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name		Handy Image
-// @version		2025.04.17
+// @version		2025.04.20
 // @author		Owyn
 // @contributor	ubless607, bitst0rm
 // @namespace	handyimage
@@ -1439,6 +1439,14 @@ function makeworld()
 			i.src = i.content.replace("w=600","w=3840"); // 4k (if available)
 		}
 		break;
+	case "pixeldrain.com":
+		j = true;
+		i = document.head.querySelector('meta[property="og:image:secure_url"]');
+		if(i)
+		{
+			i.src = i.content;
+		}
+		break;
 	case "mobile.x.com":
 	case "x.com":
 		j = true;
@@ -1852,8 +1860,6 @@ function makeworld()
 	case "ibb.co":
 		i = document.head?.querySelector('meta[property="og:image"]');
 		if(i){i.src = i.content; break;}
-	case "pixeldrain.com":
-		j = true;
 	case "pasteboard.co":
 		i = document.head?.querySelector('meta[name="twitter:image"]');
 		if(i){i.src = i.content; break;}
