@@ -898,6 +898,9 @@
 // @match		https://porn4f.org/upload/*
 // @match		https://pixai.art/artwork/*
 // @match		https://pixai.art/video/*
+// @match		https://image.javbee.vip/*
+// @match		https://fc2ppv.stream/upload/*
+// @match		https://blackwidof.org/upload/*
 // ==/UserScript==
 
 "use strict";
