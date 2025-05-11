@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name		Handy Image
-// @version		2025.04.20
+// @version		2025.05.11
 // @author		Owyn
 // @contributor	ubless607, bitst0rm
 // @namespace	handyimage
@@ -887,6 +887,7 @@
 // @match		https://kin8-av.com/upload/*
 // @match		https://javsunday.com/upload/*
 // @match		https://*.redgifs.com/watch/*
+// @match		https://*.redgifs.com/gifs/*
 // @match		https://hentaicovid.com/uploads/*
 // @match		https://hentaipig.com/upload/*
 // @match		https://fikfok.net/upload/*
@@ -901,6 +902,7 @@
 // @match		https://image.javbee.vip/*
 // @match		https://fc2ppv.stream/upload/*
 // @match		https://blackwidof.org/upload/*
+// @match		https://iimg.su/i/*
 // ==/UserScript==
 
 "use strict";
@@ -2123,6 +2125,7 @@ function makeworld()
 	case "root-space.eu":
 	case "mepic.ru":
 	case "postto.me":
+	case "iimg.su":
 		i = q('img[src*="' + iurl + '"]');
 		break;
 	case "ask.fm":
