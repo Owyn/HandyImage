@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name		Handy Image
-// @version		2025.05.11
+// @version		2025.05.12
 // @author		Owyn
 // @contributor	ubless607, bitst0rm
 // @namespace	handyimage
@@ -903,6 +903,7 @@
 // @match		https://fc2ppv.stream/upload/*
 // @match		https://blackwidof.org/upload/*
 // @match		https://iimg.su/i/*
+// @match		https://radikal.cloud/i/*
 // ==/UserScript==
 
 "use strict";
@@ -1410,6 +1411,7 @@ function makeworld()
 	case "hentaicovid.com":
 	case "fikfok.net":
 	case "image.javbee.me":
+	case "radikal.cloud":
 		i = document.querySelector('meta[property="og:image"], [name="og:image"]');
 		if(i)
 		{
