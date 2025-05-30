@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name		Handy Image
-// @version		2025.05.17
+// @version		2025.05.30
 // @author		Owyn
 // @contributor	ubless607, bitst0rm
 // @namespace	handyimage
@@ -2966,17 +2966,22 @@ function makeworld()
 	case "t.me":
 	case "telegram.me":
 		j = true;
+		if(window.self !== window.top)
+		{
+			console.log("HJI: - stopped cuz running in an embedded frame");
+			return;
+		}
 		if(document.querySelector("body.body_widget_post"))
 		{
-			f = document.querySelectorAll('.tgme_widget_message_photo_wrap[style*="/file/"]');
+			f = document.querySelectorAll('.tgme_widget_message_photo_wrap[style*="/file/"], i[style*="/file/"]'); // photos and videos
 			if(f.length === 1)
 			{
 				i = f[0];
 				i.src = i.style.backgroundImage.slice(4, -1).replace(/"/g, "");
-				if(window.self !== window.top)
-				{
-					window.top.location.href = window.self.location.href;
-				}
+			}
+			else(f.length > 1)
+			{
+				is_gallery = true;
 			}
 		}
 		break;
