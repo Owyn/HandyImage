@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name		Handy Image
-// @version		2025.05.30
+// @version		2025.06.03
 // @author		Owyn
 // @contributor	ubless607, bitst0rm
 // @namespace	handyimage
@@ -905,6 +905,7 @@
 // @match		https://iimg.su/i/*
 // @match		https://radikal.cloud/i/*
 // @match		https://hamster.is/image/*
+// @match		https://coomimgs.net/image/*
 // ==/UserScript==
 
 "use strict";
@@ -1414,6 +1415,7 @@ function makeworld()
 	case "image.javbee.me":
 	case "radikal.cloud":
 	case "hamster.is":
+	case "coomimgs.net":
 		i = document.querySelector('meta[property="og:image"], [name="og:image"]');
 		if(i)
 		{
