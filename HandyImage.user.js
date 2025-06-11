@@ -906,6 +906,20 @@
 // @match		https://radikal.cloud/i/*
 // @match		https://hamster.is/image/*
 // @match		https://coomimgs.net/image/*
+// @match		https://javring.com/upload/*
+// @match		https://xcamcovid.com/upload/*
+// @match		https://javtele.net/upload/*
+// @match		https://hentai4f.com/upload/*
+// @match		https://porn-pig.com/upload/*
+// @match		https://kin8-jav.com/upload/*
+// @match		https://cn-av.com/upload/*
+// @match		https://anime-jav.com/upload/*
+// @match		https://chinese-pics.com/upload/*
+// @match		https://kr-av.com/upload/*
+// @match		https://xxpics.org/upload/*
+// @match		https://hentaixnx.com/upload/*
+// @match		https://hentai-sub.com/upload/*
+// @match		https://cosplay-xxx.com/upload/*
 // ==/UserScript==
 
 "use strict";
