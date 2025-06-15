@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name		Handy Image
-// @version		2025.06.03
+// @version		2025.06.15
 // @author		Owyn
 // @contributor	ubless607, bitst0rm
 // @namespace	handyimage
@@ -3203,7 +3203,7 @@ function use_booru_tags_in_dl_filename()
 	for(let n = 0; n < artist.length; n++)
 	{
 		if(artist[n]?.text == "?") continue;
-		if(artist[n].dataset?.name) {filename = "by " + artist[n].dataset.name + " " + filename;}
+		if(artist[n].dataset?.name) {filename = "by " + decodeURIComponent(artist[n].dataset.name).replaceAll(" ", "_") + " " + filename;}
 		else {filename = "by " + artist[n].text.replaceAll(" ", "_") + " " + filename;}
 	}
 
@@ -3211,7 +3211,7 @@ function use_booru_tags_in_dl_filename()
 	for(let n = 0; n < character.length; n++)
 	{
 		if(character[n]?.text == "?") continue;
-		if(character[n].dataset?.name) {filename = character[n].dataset.name + " " + filename;}
+		if(character[n].dataset?.name) {filename = decodeURIComponent(character[n].dataset.name).replaceAll(" ", "_") + " " + filename;}
 		else {filename = character[n].text.replaceAll(" ", "_") + " " + filename;}
 	}
 
