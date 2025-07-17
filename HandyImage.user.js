@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name		Handy Image
-// @version		2025.06.15
+// @version		2025.07.17
 // @author		Owyn
 // @contributor	ubless607, bitst0rm
 // @namespace	handyimage
@@ -834,6 +834,7 @@
 // @match		*://imgqaz.online/*
 // @match		*://imgurt.online/*
 // @match		https://jpg5.su/img/*
+// @match		https://jpg6.su/img/*
 // @match		*://imgwxr.online/*
 // @match		*://imgyre.online/*
 // @match		https://pixl.li/image/*
@@ -1858,6 +1859,7 @@ function makeworld()
 		find_text_in_scripts('	url: "', '"', true);
 		break;
 	case "jpg5.su":
+	case "jpg6.su":	
 		j = true;
 		i = q('a[download][href*=\\/]');
 		if(i) i.src = i.href;
