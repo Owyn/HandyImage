@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name		Handy Image
-// @version		2025.07.17
+// @version		2025.07.19
 // @author		Owyn
 // @contributor	ubless607, bitst0rm
 // @namespace	handyimage
@@ -921,6 +921,7 @@
 // @match		https://hentaixnx.com/upload/*
 // @match		https://hentai-sub.com/upload/*
 // @match		https://cosplay-xxx.com/upload/*
+// @match		https://www.weasyl.com/*/submissions/*
 // ==/UserScript==
 
 "use strict";
@@ -1933,6 +1934,7 @@ function makeworld()
 	// 	break;
 	case "rule34hentai.net":
 	case "danbooru.donmai.us":
+	case "weasyl.com":
 		i = q('a[download]');
 		if(i){use_booru_tags_in_dl_filename(); i.src = i.href;}
 		break;
@@ -3227,7 +3229,7 @@ function use_booru_tags_in_dl_filename()
 			break; // just one cuz else it'd get long
 		}
 	}*/
-	let general_tags = document.querySelectorAll(".tag-link, .tag-type-general a:not([href*='/books?'])[href*='tags='], .tag-type-genre > a, .general-tag > a, .general-tag-list > .tag-type-0 > a.search-tag, a.search-tag, div#tagLink > a,.tags-list a, .tag-list-item");
+	let general_tags = document.querySelectorAll(".tag-link, .tag-type-general a:not([href*='/books?'])[href*='tags='], .tag-type-genre > a, .general-tag > a, .general-tag-list > .tag-type-0 > a.search-tag, a.search-tag, div#tagLink > a,.tags-list a, .tag-list-item, a.tag");
 	let general_tags_text = [];
 	for(let n = 0; n < general_tags.length; n++)
 	{
