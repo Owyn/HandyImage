@@ -1921,6 +1921,7 @@ function makeworld()
 		if(i){use_booru_tags_in_dl_filename(); }
 		break;
 	case "rule34.xxx":
+		sessionStorage.setItem("lastRefresh", Date.now()); // fix to keep 'R' hotkey working
 	case "rule34.us":
 		j = true;
 		i = q('a[href*="/images/"][href*="' + host + '/"]');
