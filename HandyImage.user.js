@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name		Handy Image
-// @version		2025.07.19
+// @version		2025.07.24
 // @author		Owyn
 // @contributor	ubless607, bitst0rm
 // @namespace	handyimage
@@ -3230,7 +3230,7 @@ function use_booru_tags_in_dl_filename()
 			break; // just one cuz else it'd get long
 		}
 	}*/
-	let general_tags = document.querySelectorAll(".tag-link, .tag-type-general a:not([href*='/books?'])[href*='tags='], .tag-type-genre > a, .general-tag > a, .general-tag-list > .tag-type-0 > a.search-tag, a.search-tag, div#tagLink > a,.tags-list a, .tag-list-item, a.tag");
+	let general_tags = document.querySelectorAll(".tag-link, .tag-type-general a:not([href*='/books?'])[href*='tags='], .tag-type-metadata a:not([href*='/books?'])[href*='tags='], .tag-type-genre > a, .general-tag > a, .general-tag-list > .tag-type-0 > a.search-tag, a.search-tag, div#tagLink > a,.tags-list a, .tag-list-item, a.tag");
 	let general_tags_text = [];
 	for(let n = 0; n < general_tags.length; n++)
 	{
