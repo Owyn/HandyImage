@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name		Handy Image
-// @version		2025.07.24
+// @version		2025.08.09
 // @author		Owyn
 // @contributor	ubless607, bitst0rm
 // @namespace	handyimage
@@ -3116,32 +3116,48 @@ function makeworld()
 
 			if(document.readyState !== "loading") // DOM loaded
 			{
-				f = document.querySelectorAll("img");
+				f = document.querySelectorAll("img,video");
 				if(f.length !== 0)
 				{
-					let b = 0;
+					let biggest = 0;
+					let num_of_broken = 0;
 					for(let n = 0; n < f.length; n++)
 					{
-						if(f[n].naturalWidth == 0 && !f[n].complete) // not yet loaded
+						if(!f[n].naturalWidth) // not yet loaded // && !f[n].complete
 						{
-							if(timeout < 4000)
+							if(f[n].videoHeight) // or is it?
 							{
-								console.warn("waiting for this image to start loading to see its size and compare with others: ", f[n]);
-								b = -1;
-								break;
+								f[n].naturalWidth = f[n].videoWidth;
+								f[n].naturalHeight = f[n].videoHeight;
+								if(!f[n].src) f[n].src = f[n].currentSrc;
 							}
-							else // waited for 3+ sec, that's enough
+							else
 							{
-								console.warn("skipping broken images");
-								continue; // skip the broken image
+								if(timeout < 4000)
+								{
+									console.warn("waiting for this image to start loading to see its size and compare with others: ", f[n].src);
+									biggest = -1;
+									break;
+								}
+								else // waited for 3+ sec, that's enough
+								{
+									console.warn("skipping broken image: " + (f[n].src || f[n]));
+									num_of_broken++;
+									continue; // skip the broken image
+								}
 							}
 						}
-						else if(f[n].naturalWidth * f[n].naturalHeight >= f[b].naturalWidth * f[b].naturalHeight)
+						else if(f[n].naturalWidth * f[n].naturalHeight >= f[biggest].naturalWidth * f[biggest].naturalHeight)
 						{
-							b = n;
+							biggest = n;
 						}
 					}
-					if(b !== -1){i = f[b]; console.warn("showing biggest image");}
+					if (num_of_broken > f.length / 2 && timeout < 5000)
+					{
+						console.warn("too many broken images: " + num_of_broken + " out of " + f.length + ", lets wait a bit more...");
+						break
+					}
+					if(biggest !== -1){i = f[biggest]; console.warn("showing biggest image/video: ", i.src);}
 				}
 			}
 			break;
