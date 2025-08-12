@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name		Handy Image
-// @version		2025.08.09
+// @version		2025.08.12
 // @author		Owyn
 // @contributor	ubless607, bitst0rm
 // @namespace	handyimage
@@ -3250,7 +3250,7 @@ function use_booru_tags_in_dl_filename()
 	let general_tags_text = [];
 	for(let n = 0; n < general_tags.length; n++)
 	{
-		general_tags_text.push(general_tags[n]?.text || general_tags[n].dataset?.name);
+		general_tags_text.push(general_tags[n]?.text || general_tags[n].dataset?.name || "no_tag");
 	}
 
 	function process_grabbed_tags()
