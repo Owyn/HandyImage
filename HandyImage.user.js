@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name		Handy Image
-// @version		2025.08.12
+// @version		2025.08.15
 // @author		Owyn
 // @contributor	ubless607, bitst0rm
 // @namespace	handyimage
@@ -1941,7 +1941,7 @@ function makeworld()
 		break;
 	case "e621.net":
 		j = true;
-		i = q('div#image-download-link a');
+		i = q('section#post-options a[href*=http]');
 		if(i){use_booru_tags_in_dl_filename(); i.src = i.href;}
 		break;
 	case "gelbooru.com":
