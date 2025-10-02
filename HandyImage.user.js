@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name		Handy Image
-// @version		2025.08.15
+// @version		2025.10.02
 // @author		Owyn
 // @contributor	ubless607, bitst0rm
 // @namespace	handyimage
@@ -922,6 +922,7 @@
 // @match		https://hentai-sub.com/upload/*
 // @match		https://cosplay-xxx.com/upload/*
 // @match		https://www.weasyl.com/*/submissions/*
+// @match		https://ltdfoto.ru/image/*
 // ==/UserScript==
 
 "use strict";
@@ -1432,6 +1433,7 @@ function makeworld()
 	case "radikal.cloud":
 	case "hamster.is":
 	case "coomimgs.net":
+	case "ltdfoto.ru":
 		i = document.querySelector('meta[property="og:image"], [name="og:image"]');
 		if(i)
 		{
