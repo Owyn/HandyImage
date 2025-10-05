@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name		Handy Image
-// @version		2025.10.02
+// @version		2025.10.05
 // @author		Owyn
 // @contributor	ubless607, bitst0rm
 // @namespace	handyimage
@@ -1338,7 +1338,7 @@ function makeworld()
 			let date = new Date();
 			date.setTime(date.getTime() + (6 * 60 * 60 * 1000));
 			expires = "; expires=" + date.toUTCString();
-			document.cookie = "nsfw_inter=1" + expires + "; path=/";
+			document.cookie = "sfw_inter=1" + expires + "; path=/";
 			i.click();
 			break
 		}
