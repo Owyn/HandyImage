@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name		Handy Image
-// @version		2025.10.16
+// @version		2025.10.24
 // @author		Owyn
 // @contributor	ubless607, bitst0rm
 // @namespace	handyimage
@@ -759,6 +759,7 @@
 // @match		https://imgtgd.shop/*
 // @match		https://*.imgsto.com/*/*.html
 // @match		https://*.pics4you.net/*/*.html
+// @match		https://*.pics4you.org/*/*.html
 // @match		https://vipr.im/*
 // @match		https://*.trans.firm.in/img-*.html
 // @match		https://*.imgdawgknuttz.com/img-*.html
@@ -772,6 +773,7 @@
 // @match		https://picdollar.com/*/*.html
 // @match		https://fotokiz.com/*/*.html
 // @match		https://silverpic.com/*/*.html
+// @match		https://silverpic.net/*/*.html
 // @match		http://imglin.xyz/*
 // @match		*://*.crownimg.com/*/*.html*
 // @match		http://imgkr.xyz/*
@@ -2117,6 +2119,7 @@ function makeworld()
 	case "imgbaron.com":
 	case "kvador.com":
 	case "pics4you.net":
+	case "pics4you.org":
 		i = q('input[type="submit"]');
 		dp=true;
 		if(i)
@@ -2822,6 +2825,7 @@ function makeworld()
 	case "picdollar.com":
 	case "fotokiz.com":
 	case "silverpic.com":
+	case "silverpic.net":
 	case "pics4upload.com":
 	case "imgstar.eu":
 		i = q("form input[type='submit'][value*='continue to image' i]");
