@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name		Handy Image
-// @version		2025.11.03
+// @version		2025.12.07
 // @author		Owyn
 // @contributor	ubless607, bitst0rm
 // @namespace	handyimage
@@ -927,6 +927,9 @@
 // @match		https://cosplay-xxx.com/upload/*
 // @match		https://www.weasyl.com/*/submissions/*
 // @match		https://ltdfoto.ru/image/*
+// @match		https://imgouhmde.sbs/*
+// @match		https://vgy.me/u/*
+// @match		https://gyazo.com/*
 // ==/UserScript==
 
 "use strict";
@@ -1326,6 +1329,7 @@ function makeworld()
 	case "picpie.org":
 	case "lostpic.net":
 	case "batpic.com":
+	case "gyazo.com":
 		//chevereto 3.x
 		i = document.head.querySelector('link[rel="image_src"]');
 		if(i)
@@ -1439,6 +1443,7 @@ function makeworld()
 	case "hamster.is":
 	case "coomimgs.net":
 	case "ltdfoto.ru":
+	case "vgy.me":
 		i = document.querySelector('meta[property="og:image"], [name="og:image"]');
 		if(i)
 		{
@@ -1804,6 +1809,7 @@ function makeworld()
 	case "imgnmh.cfd":
 	case "imgpukxxr.site":
 	case "picngt.shop":
+	case "imgouhmde.sbs":
 		find_text_in_scripts('.src = "', '"');
 		break;
 	case "pix-x.net":
