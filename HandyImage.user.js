@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name		Handy Image
-// @version		2025.12.07
+// @version		2026.01.09
 // @author		Owyn
 // @contributor	ubless607, bitst0rm
 // @namespace	handyimage
@@ -1445,6 +1445,7 @@ function makeworld()
 	case "coomimgs.net":
 	case "ltdfoto.ru":
 	case "vgy.me":
+	case "hamsterimg.net":
 		i = document.querySelector('meta[property="og:image"], [name="og:image"]');
 		if(i)
 		{
