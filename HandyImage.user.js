@@ -910,6 +910,7 @@
 // @match		https://iimg.su/i/*
 // @match		https://radikal.cloud/i/*
 // @match		https://hamster.is/image/*
+// @match		https://hamsterimg.net/image/*
 // @match		https://coomimgs.net/image/*
 // @match		https://javring.com/upload/*
 // @match		https://xcamcovid.com/upload/*
