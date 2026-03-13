@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name		Handy Image
-// @version		2026.01.09
+// @version		2026.03.13
 // @author		Owyn
 // @contributor	ubless607, bitst0rm
 // @namespace	handyimage
@@ -2016,7 +2016,8 @@ function makeworld()
 						}
 						break;
 					}
-					i = q('div[data-hook="art_stage"] div div div img'); // not zoomed in yet
+					//i = q('div[data-hook="art_stage"] div div div img'); // not zoomed in yet - old
+					i = q('div > div > [typeof="ImageObject"] > img'); // not zoomed in yet
 					if(i){console.log("found un-zoomed image, clicked it");i.click();i=null;break;}
 				}
 			}
