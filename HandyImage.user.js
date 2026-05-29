@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name		Handy Image
-// @version		2026.03.13
+// @version		2026.05.29
 // @author		Owyn
 // @contributor	ubless607, bitst0rm
 // @namespace	handyimage
@@ -931,6 +931,7 @@
 // @match		https://imgouhmde.sbs/*
 // @match		https://vgy.me/u/*
 // @match		https://gyazo.com/*
+// @match		https://picturelol.com/*/*
 // ==/UserScript==
 
 "use strict";
@@ -2827,6 +2828,7 @@ function makeworld()
 	case "imagehaha.com":
 	case "picshick.com":
 	case "photo-screen.ru":
+	case "picturelol.com":
 		i = q('img[src*="/i/"]');
 		break;
 	case "imguniversal.com":
