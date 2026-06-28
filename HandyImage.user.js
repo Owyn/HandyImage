@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name		Handy Image
-// @version		2026.05.29
+// @version		2026.06.28
 // @author		Owyn
 // @contributor	ubless607, bitst0rm
 // @namespace	handyimage
@@ -932,6 +932,7 @@
 // @match		https://vgy.me/u/*
 // @match		https://gyazo.com/*
 // @match		https://picturelol.com/*/*
+// @match		https://goonbox.cr/img/*
 // ==/UserScript==
 
 "use strict";
@@ -1355,6 +1356,8 @@ function makeworld()
 		}
 		i = q("img.main-image");
 		break;
+	case "goonbox.cr":
+		j = true;
 	case "directupload.net":
 	case "bilderhoster.net":
 	case "noelshack.com":
