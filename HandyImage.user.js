@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name		Handy Image
-// @version		2026.06.28
+// @version		2026.06.30
 // @author		Owyn
 // @contributor	ubless607, bitst0rm
 // @namespace	handyimage
@@ -933,6 +933,8 @@
 // @match		https://gyazo.com/*
 // @match		https://picturelol.com/*/*
 // @match		https://goonbox.cr/img/*
+// @match		https://amaleaked.pk/media/image/*
+// @match		https://amaleaked.pk/media/video/*
 // ==/UserScript==
 
 "use strict";
@@ -1333,6 +1335,7 @@ function makeworld()
 	case "lostpic.net":
 	case "batpic.com":
 	case "gyazo.com":
+	case "amaleaked.pk":
 		//chevereto 3.x
 		i = document.head.querySelector('link[rel="image_src"]');
 		if(i)
