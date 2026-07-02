@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name		Handy Image
-// @version		2026.06.30
+// @version		2026.07.02
 // @author		Owyn
 // @contributor	ubless607, bitst0rm
 // @namespace	handyimage
@@ -41,6 +41,7 @@
 // @match		https://fastpic.org/view/*
 // @match		https://fastpic.org/fullview/*
 // @match		*://pixhost.to/show/*
+// @match		*://pixhost.cc/show/*
 // @match		http://*.picpicture.com/image/*
 // @match		http://*.pic5you.ru/*/*/
 // @match		http://*.tinypic.com/view*
@@ -2900,6 +2901,7 @@ function makeworld()
 			break;
 		}
 	case "pixhost.to":
+	case "pixhost.cc":
 	case "imgtiger.com":
 	case "imgserve.net":
 	case "imgdino.com":
