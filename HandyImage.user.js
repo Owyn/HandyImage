@@ -1,5 +1,5 @@
 // ==UserScript==
-// @name		Handy Image
+// @name		Handy Imagev3
 // @version		2026.08.07
 // @author		Owyn
 // @contributor	ubless607, bitst0rm
@@ -1155,7 +1155,7 @@ function makeimage()
 {
 	if(typeof cfg_js !== "string") { console.log("waiting for settings to load to makeimage()"); if(!loadCfg_callbacks.includes(makeimage)){loadCfg_callbacks.push(makeimage);} return false;} // lets wait for stupd async
 	if(cfg_direct === true){let a = protected_createElement('a'); a.setAttribute('href',i.src); a.click(); return false;}
-	let css 
+	let css
  = `:root, body
 {
 	height: 100%;
@@ -1461,18 +1461,6 @@ function makeworld()
 	case "vgy.me":
 	case "hamsterimg.net":
 	case "shotcan.com":
-	case "imagepond.net":
-		i = document.querySelector('meta[property="og:image"], [name="og:image"]');
-		if(i)
-		{
-			i.src = i.content;
-		}
-		else
-		{
-			i = q('a[download]');
-			if(i){i.src = i.href;}
-		}
-		break;
 	case "vsco.co":
 		i = document.querySelector('meta[property="og:image"]');
 		if(i)
@@ -1776,7 +1764,7 @@ function makeworld()
 		j = true;
 	case "slowpic.xyz":
 		i = q('img[src*="/big/"]');
-		if(!i) 
+		if(!i)
 		{
 			i = q('a[href*="&dl=1"]');
 			if(i){i.src = i.href;}
@@ -3155,6 +3143,19 @@ function makeworld()
 			}
 			i = q('img[src*="' + iurl + '"]');
 			break;
+	  case "imagepond.net":
+		        // skip videos – only handle real images
+		        if (document.head.querySelector('meta[property="og:type"][content*="video"]') ||
+		            document.head.querySelector('meta[property="og:video"]'))
+		        {
+			          break;
+		        }
+		        i = document.querySelector('meta[property="og:image"], [name="og:image"]');
+		        if (i)
+		        {
+			          i.src = i.content;
+		        }
+		        break;
 		default: // for user-added sites
 			j = true;
 			console.warn("HJI is running on a custom website");
@@ -3504,7 +3505,7 @@ function rescale(oEvent, isFilling)
 	click_Y *= newToOldImgScale_Y;
 	prevScroll_X *= newToOldImgScale_X;
 	prevScroll_Y *= newToOldImgScale_Y;
-	
+
 	if(oEvent)
 	{
 		if(bZoomCenterOnCursor)
