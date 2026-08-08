@@ -939,6 +939,9 @@
 // @match		https://shotcan.com/image/*
 // @match		https://*.thirstpics.cc/p/*
 // @match		https://*.thirstpics.cc/v/*
+// @match		https://*.imagepond.net/i/*
+// @match		https://*.imagepond.net/img/*
+// @match		https://*.imagepond.net/image/*
 // ==/UserScript==
 
 "use strict";
@@ -1458,6 +1461,7 @@ function makeworld()
 	case "vgy.me":
 	case "hamsterimg.net":
 	case "shotcan.com":
+	case "imagepond.net":
 		i = document.querySelector('meta[property="og:image"], [name="og:image"]');
 		if(i)
 		{
