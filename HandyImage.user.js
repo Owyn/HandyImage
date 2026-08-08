@@ -937,6 +937,8 @@
 // @match		https://amaleaked.pk/media/image/*
 // @match		https://amaleaked.pk/media/video/*
 // @match		https://shotcan.com/image/*
+// @match		https://*.thirstpics.cc/p/*
+// @match		https://*.thirstpics.cc/v/*
 // ==/UserScript==
 
 "use strict";
@@ -2844,6 +2846,7 @@ function makeworld()
 	case "picshick.com":
 	case "photo-screen.ru":
 	case "picturelol.com":
+	case "thirstpics.cc":
 		i = q('img[src*="/i/"]');
 		break;
 	case "imguniversal.com":
