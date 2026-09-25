@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name		Handy Image
-// @version		2026.09.11
+// @version		2026.09.25
 // @author		Owyn
 // @contributor	ubless607, bitst0rm
 // @namespace	handyimage
@@ -1251,8 +1251,9 @@ function find_text_in_scripts(text, stopword, start_from_top = false, search_aft
 		if(found_start_pos == -1){continue;} // text not found in this <script>, try next?
 		found_start_pos += text.length;
 		let found_content = scripts[n].innerHTML.substring(found_start_pos, scripts[n].innerHTML.indexOf(stopword, found_start_pos));
-		found_content = JSON.parse('"' + found_content.replace('"', '\\"') + '"'); // unescape it
-		found_content = decodeURIComponent(found_content);
+		console.debug("find_text_in_scripts(): found this url RAW: " + found_content);
+		found_content = JSON.parse('"' + found_content.replaceAll('"', '\\"') + '"'); // eccape & unescape it (why? - can't remember. Can urls have " in em? - Not rly")
+		found_content = decodeURIComponent(found_content); // %20 -> ' '
 		i = protected_createElement(content_type);
 		i.src = found_content;
 		console.debug("find_text_in_scripts(): found this url: " + found_content);
@@ -1785,7 +1786,12 @@ function makeworld()
 		break;
 	case "fastpic.ru":
 	case "fastpic.org":
-		//j = true;
+		i = q('template');
+		if(i && i.content.firstChild)
+		{
+			i = i.content.firstChild;
+		}
+		break;
 	case "slowpic.xyz":
 		i = q('img[src*="/big/"]');
 		if(!i) 
@@ -3261,8 +3267,10 @@ function makeworld()
 			unsafeWindow.open = null;
 			unsafeWindow.onload = null;
 			unsafeWindow.onbeforeunload = null;
+			try{
 			unsafeWindow.onclick = null;
 			unsafeWindow.document.onclick = null;
+			}catch(e){console.debug("Stopped stupid uBlock from ruining things (even when it's disabled)");}
 			document.replaceChild(document.importNode(document.implementation.createHTMLDocument("").documentElement, true), document.documentElement);
 			unsafeWindow.document.createElement = unsafeWindow.console.debug;
 			document.head.innerHTML = '<meta name="referrer" content="'+referrer_policy+'">';
