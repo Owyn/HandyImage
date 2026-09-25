@@ -27,7 +27,9 @@ to have the "save as" dialogue where you choose or correct the filename yourself
 </ul>
 
 <h3>Supported browsers:</h3>
-<img src=https://upload.wikimedia.org/wikipedia/commons/thumb/a/a5/Google_Chrome_icon_%28September_2014%29.svg/180px-Google_Chrome_icon_%28September_2014%29.svg.png><img src=https://github.com/Owyn/Universal_Dark_Theme/assets/1309656/0d2c7e4a-4038-4c06-96a8-505a36c9d625> 
+<img width="128" height="128" alt="Chrome" src="https://github.com/user-attachments/assets/7c5aed3d-9945-4c15-a769-9997b9730a6a" />
+<img width="128" height="128" alt="Firefox" src="https://github.com/user-attachments/assets/999bf8f6-d336-48a9-88c9-2b09a6e24ee9" />
+
 
 You need a userscript manager to install and use the script, e.g. <a href="https://www.tampermonkey.net/">TamperMonkey</a> (might not work in other less-pupular and less-maintained ones)
 
