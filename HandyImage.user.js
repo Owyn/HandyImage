@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name		Handy Image
-// @version		2026.09.25
+// @version		2026.10.06
 // @author		Owyn
 // @contributor	ubless607, bitst0rm
 // @namespace	handyimage
@@ -855,8 +855,6 @@
 // @match		https://pixmax.store/*
 // @match		https://imgxqy.online/*
 // @match		https://skr.sh/*
-// @match		https://i.redd.it/*
-// @match		https://preview.redd.it/*
 // @match		https://www.reddit.com/media?url=*
 // @match		https://vsco.co/*/media/*
 // @match		https://www.gettyimages.com/detail*photo*
@@ -1306,11 +1304,6 @@ function makeworld()
 		i = q('a img');
 		if(i){i.src = i.parentNode.href;}
 		break;
-	case "i.redd.it":
-	case "preview.redd.it":
-		i = q('faceplate-img, img');
-		if(i){i.src = i.getAttribute("src");}
-		break;
 	case "savepic.org":
 	case "savepic.ru":
 		i = q('a img:not([src*="/images/"])');
@@ -1484,6 +1477,14 @@ function makeworld()
 		{
 			i = q('a[download]');
 			if(i){i.src = i.href;}
+		}
+		break;
+	case "reddit.com":
+		i = document.querySelector('meta[property="og:image"], [name="og:image"]');
+		if(i)
+		{
+			cfg_direct = false; // the website disallows opening images directly
+			i.src = i.content.replace('preview.redd.it', 'i.redd.it'); // HD img if you click the img without zooming first (image name is preserved that way btw)
 		}
 		break;
 	case "vsco.co":
@@ -1790,6 +1791,17 @@ function makeworld()
 		if(i && i.content.firstChild)
 		{
 			i = i.content.firstChild;
+		}
+		else
+		{
+			i = q('p + p > a[class]');
+			if(i) 
+			{
+				console.debug("clicked Continue to Image for fastpic: ", i);
+				i.click();
+				i = null;
+				return false;
+			}
 		}
 		break;
 	case "slowpic.xyz":
