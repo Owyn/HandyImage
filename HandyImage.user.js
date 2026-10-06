@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name		Handy Image
-// @version		2026.10.06
+// @version		2026.10.07
 // @author		Owyn
 // @contributor	ubless607, bitst0rm
 // @namespace	handyimage
@@ -3591,6 +3591,7 @@ function autoresize()
 			title = title.substr(0, title.indexOf("?"));
 		}
 		title = decodeURIComponent(title);
+		i.alt = title; // for download managers like DownThemAll
 		if(is_video)
 		{
 			document.title = title + " (" + i.videoWidth + "x" + i.videoHeight + ")";
