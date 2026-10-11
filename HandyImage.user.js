@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name		Handy Image
-// @version		2026.10.07
+// @version		2026.10.10
 // @author		Owyn
 // @contributor	ubless607, bitst0rm
 // @namespace	handyimage
@@ -1212,6 +1212,7 @@ video::-webkit-media-controls-panel
 	}
 	protected_addEventListener(i, "auxclick", rescale, true);
 	protected_addEventListener(i, "mousedown", mousedown, true); // chrome old fix - still needed
+	window.addEventListener("mousemove", drag);
 	window.addEventListener("keydown", onkeydown, true);
 	window.addEventListener("resize", onWindowResize);
 	window.addEventListener("visibilitychange", onVisibilityChange);
@@ -3443,8 +3444,50 @@ function changeCursor()
 	}
 }
 
-function mousedown(event) // chrome scroll-wheel
+let startX = 0;
+let startY = 0;
+let scrollStartX = 0;
+let scrollStartY = 0;
+let isDragging = false;
+function drag(event)
 {
+	if (!isDragging) return;
+	if (i.style.cursor !== "grabbing") i.style.cursor = 'grabbing';
+	let deltaX = event.clientX - startX;
+	let deltaY = event.clientY - startY;
+	let newScrollX = scrollStartX - deltaX;
+	let newScrollY = scrollStartY - deltaY;
+	//console.debug("drag: startX: " + startX + ", deltaX: " + deltaX + ", startY: " + startY + ", deltaY: " + deltaY +", event.clientX: " + event.clientX + ", event.clientY: " + event.clientY);
+	//console.debug("drag: scrollStartX: " + scrollStartX + ", newScrollX: " + newScrollX + ", scrollStartY: " + scrollStartY + ", newScrollY: " + newScrollY);
+	// Check if the image is being dragged outside the document's borders so it doesn't get sticky - ok, it didn't help - so let's call the stickiness a feature
+	/*if (newScrollX < 0) {
+		newScrollX = 0;
+	} else if (newScrollX > i.scrollWidth) {
+		newScrollX = i.scrollWidth;
+	}
+	if (newScrollY < 0) {
+		newScrollY = 0;
+	} else if (newScrollY > i.scrollHeight) {
+		newScrollY = i.scrollHeight;
+	}*/
+	document.documentElement.scrollLeft = newScrollX;
+	document.documentElement.scrollTop = newScrollY;
+}
+
+function mousedown(event) // drag-scroll & chrome scroll-wheel fix
+{
+	if (event.which === 1 && !event.shiftKey && !event.ctrlKey && !event.altKey)
+	{
+		event.preventDefault();
+		event.stopImmediatePropagation();
+		startX = event.clientX;
+		startY = event.clientY;
+		scrollStartX = document.documentElement.scrollLeft;
+		scrollStartY = document.documentElement.scrollTop;
+		isDragging = true;
+		//console.debug("mouse DOWN: scrollStartX: " + scrollStartX + ", document.documentElement.scrollLeft: " + document.documentElement.scrollLeft + ", scrollStartY: " + scrollStartY + ", document.documentElement.scrollTop: " + document.documentElement.scrollTop);
+		return false;
+	}
 	if(event.which === 2) // middle mouse
 	{
 		event.preventDefault();
@@ -3489,6 +3532,16 @@ function rescale(oEvent, isFilling)
 			isFilling = true;
 			oEvent.preventDefault(); // drag scroll
 			oEvent.stopImmediatePropagation();
+		}
+		else if (oEvent.which === 1)
+		{
+			isDragging = false; 
+			if (Math.abs(startX - oEvent.clientX) > 2 || Math.abs(startY - oEvent.clientY) > 2) // left mouse with drag shouldn't rescale + 2- pixel drags are considered accidents
+			{
+				//console.debug("rescale DRAG END: scrollStartX: " + scrollStartX + ", document.documentElement.scrollLeft: " + document.documentElement.scrollLeft + ", scrollStartY: " + scrollStartY + ", document.documentElement.scrollTop: " + document.documentElement.scrollTop);
+				changeCursor();
+				return;
+			}
 		}
 		click_X = oEvent.clientX - i.offsetLeft;
 		click_Y = oEvent.clientY - i.offsetTop;
