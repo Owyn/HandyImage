@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name		Handy Image
-// @version		2026.10.10
+// @version		2026.10.13
 // @author		Owyn
 // @contributor	ubless607, bitst0rm
 // @namespace	handyimage
@@ -1212,6 +1212,7 @@ video::-webkit-media-controls-panel
 	}
 	protected_addEventListener(i, "auxclick", rescale, true);
 	protected_addEventListener(i, "mousedown", mousedown, true); // chrome old fix - still needed
+	window.addEventListener("wheel", mousewheel, { passive: false });
 	window.addEventListener("mousemove", drag);
 	window.addEventListener("keydown", onkeydown, true);
 	window.addEventListener("resize", onWindowResize);
@@ -3496,6 +3497,27 @@ function mousedown(event) // drag-scroll & chrome scroll-wheel fix
 	}
 }
 
+let iZoomFactor = 10; // 10%
+function mousewheel (event)
+{
+	if(!event.ctrlKey) return;
+	event.preventDefault();
+
+	const imgPrevWidth = i.scrollWidth;
+	const imgPrevHeight = i.scrollHeight;
+	const imgPrevOffsetLeft = i.offsetLeft;
+	const imgPrevOffsetTop = i.offsetTop;
+	const prevScroll_Y = document.documentElement.scrollTop;
+	const prevScroll_X = document.documentElement.scrollLeft;
+
+	// scrolling down (event.deltaY > 0) makes the image smaller
+	const factor = event.deltaY > 0 ? (100 - iZoomFactor) : (100 + iZoomFactor);
+	i.style.width = `${(imgPrevWidth * factor) / 100}px`;
+	i.style.height = `${(imgPrevHeight * factor) / 100}px`;
+
+	preserve_scroll_pos_on_img_resize(imgPrevWidth, imgPrevHeight, imgPrevOffsetLeft, imgPrevOffsetTop, prevScroll_X, prevScroll_Y, event.clientX, event.clientY);
+}
+
 // Firefox 90- support
 if(typeof window.visualViewport === "undefined")
 {
@@ -3520,7 +3542,6 @@ let bZoomCenterOnCursor = true; // setting to change in custom JS
 
 function rescale(oEvent, isFilling)
 {
-	let click_X, click_Y;
 	if(oEvent) // mouse click
 	{
 		if(oEvent.which === 3) // right mouse
@@ -3543,8 +3564,6 @@ function rescale(oEvent, isFilling)
 				return;
 			}
 		}
-		click_X = oEvent.clientX - i.offsetLeft;
-		click_Y = oEvent.clientY - i.offsetTop;
 	}
 	//let unFilling = false;
 	//document.body.style.overflowX = '';
@@ -3554,8 +3573,10 @@ function rescale(oEvent, isFilling)
 
 	let imgPrevWidth = i.scrollWidth;
 	let imgPrevHeight = i.scrollHeight;
-	let prevScroll_Y = Math.round(window.visualViewport.pageTop);
-	let prevScroll_X = Math.round(window.visualViewport.pageLeft);
+	let imgPrevOffsetLeft = i.offsetLeft;
+	let imgPrevOffsetTop = i.offsetTop;
+	let prevScroll_Y = document.documentElement.scrollTop; //Math.round(window.visualViewport.pageTop); // why use Viewport? hmmm, can't remember, but we probably shouldn't cuz it's affected by pinch-zoom
+	let prevScroll_X = document.documentElement.scrollLeft; //Math.round(window.visualViewport.pageLeft);
 
 	let bSidesCMP;
 	if(isFilling)
@@ -3603,24 +3624,28 @@ function rescale(oEvent, isFilling)
 			//document.body.style.overflowY = 'hidden'; // we don't need unscrollable scrollbars if they appear
 		}
 	}
+	preserve_scroll_pos_on_img_resize(imgPrevWidth, imgPrevHeight, imgPrevOffsetLeft, imgPrevOffsetTop, prevScroll_X, prevScroll_Y, oEvent?.clientX, oEvent?.clientY, bZoomCenterOnCursor);
+}
 
+function preserve_scroll_pos_on_img_resize(imgPrevWidth, imgPrevHeight, imgPrevOffsetLeft, imgPrevOffsetTop, prevScroll_X, prevScroll_Y, click_X, click_Y, zoomCenterOnCursor = true)
+{
 	changeCursor();
-	let newToOldImgScale_X = i.scrollWidth / imgPrevWidth;
-	let newToOldImgScale_Y = i.scrollHeight / imgPrevHeight;
-	click_X *= newToOldImgScale_X;
-	click_Y *= newToOldImgScale_Y;
+	const newToOldImgScale_X = i.scrollWidth / imgPrevWidth;
+	const newToOldImgScale_Y = i.scrollHeight / imgPrevHeight;
 	prevScroll_X *= newToOldImgScale_X;
 	prevScroll_Y *= newToOldImgScale_Y;
 	
-	if(oEvent)
+	if(click_Y !== undefined)
 	{
-		if(bZoomCenterOnCursor)
+		const new_click_X = (click_X - imgPrevOffsetLeft) * newToOldImgScale_X;
+		const new_click_Y = (click_Y - imgPrevOffsetTop) * newToOldImgScale_Y;
+		if(zoomCenterOnCursor)
 		{ // scroll to the place our mouse was on the image (including scroll progress) (that place will now be in the top left corner) then try to shift it back to under the mouse cursor (if there is enough space)
-			window.scrollTo(click_X + prevScroll_X - oEvent.clientX, click_Y + prevScroll_Y - oEvent.clientY);
+			window.scrollTo(new_click_X + prevScroll_X - click_X, new_click_Y + prevScroll_Y - click_Y);
 		}
 		else
 		{ // scroll to the place our mouse was on the image (including scroll progress) (that place will now be in the top left corner) then try to shift it to the center of the screen (if there is enough space)
-			window.scrollTo(click_X + prevScroll_X - viewWidth / 2, click_Y + prevScroll_Y - viewHeight / 2);
+			window.scrollTo(new_click_X + prevScroll_X - viewWidth / 2, new_click_Y + prevScroll_Y - viewHeight / 2);
 		}
 	}
 	else // keep percentage scroll progress for KB hotkeys
@@ -4019,7 +4044,7 @@ else
 		GM.getValue("vid_volume", "0.5").then( function(result) { cfg_vol = result; } , console.error)
 	]).then(
 		function() { console.debug("GM settings loaded"); loadCfg_callbacks.forEach(function(item) {item()}); },
-		function(error) { console.error("GM settings NOT loaded: " + error); loadCfg_callbacks.forEach(function(item) {item()}); }
+		function(error) { console.error("GM settings NOT loaded: ", error); loadCfg_callbacks.forEach(function(item) {item()}); }
 		);
 	}
 	console.debug("GM settings started loading")
