@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name		Handy Image
-// @version		2026.10.13
+// @version		2026.10.14
 // @author		Owyn
 // @contributor	ubless607, bitst0rm
 // @namespace	handyimage
@@ -1014,6 +1014,7 @@ if(sessionStorage.length)
 
 function q(s){if(document.body){return document.body.querySelector(s);}return null;}
 var cfg_direct = false;
+var cfg_wheel_noctrl = false;
 var cfg_bgclr ="grey";
 var cfg_fitWH = true;
 var cfg_fitB = false;
@@ -3498,9 +3499,30 @@ function mousedown(event) // drag-scroll & chrome scroll-wheel fix
 }
 
 let iZoomFactor = 10; // 10%
+let sZoomScrollHehavior = "smooth";
 function mousewheel (event)
 {
-	if(!event.ctrlKey) return;
+	if(!cfg_wheel_noctrl && !event.ctrlKey) return;
+	else if(cfg_wheel_noctrl && event.ctrlKey) // do normal scroll if you hold Ctrl
+	{
+		const scrollData = { // copy
+			deltaX: event.deltaX,
+			deltaY: event.deltaY,
+			shiftKey: event.shiftKey,
+			deltaMode: event.deltaMode
+		};
+		let multiplier = 1;
+		if (scrollData.deltaMode === 1) multiplier = getLineHeight(document.documentElement); // Convert Lines to Pixels
+		if (scrollData.deltaMode === 2) multiplier = window.innerHeight; // Convert Pages to Pixels
+		//console.debug("dispatching new event: delta X, Y, multiplier: ", scrollData, multiplier, " a copy of :", event);
+		window.scrollBy({
+			left: scrollData.shiftKey ? scrollData.deltaY * multiplier : scrollData.deltaX * multiplier,
+			top: scrollData.shiftKey ? scrollData.deltaX * multiplier : scrollData.deltaY * multiplier,
+			behavior: sZoomScrollHehavior
+		});
+		event.preventDefault(); // no zoom
+		return false;
+	}
 	event.preventDefault();
 
 	const imgPrevWidth = i.scrollWidth;
@@ -3516,6 +3538,16 @@ function mousewheel (event)
 	i.style.height = `${(imgPrevHeight * factor) / 100}px`;
 
 	preserve_scroll_pos_on_img_resize(imgPrevWidth, imgPrevHeight, imgPrevOffsetLeft, imgPrevOffsetTop, prevScroll_X, prevScroll_Y, event.clientX, event.clientY);
+}
+
+function getLineHeight(element) {
+	const computed = window.getComputedStyle(element || document.body);
+	const lh = computed.lineHeight;
+
+	if (lh === 'normal' || !lh.includes('px')) {
+		return parseFloat(computed.fontSize) * 1.2 || 18;
+	}
+	return parseFloat(lh);
 }
 
 // Firefox 90- support
@@ -3954,6 +3986,7 @@ function cfg()
 		function saveCfg()
 		{
 			GM.setValue("directImage", q("#hji_cfg_1_direct").checked);
+			GM.setValue("wheel_noctrl", q("#hji_cfg_0_wheel_noctrl").checked);
 			GM.setValue("bgColor", q("#hji_cfg_2_bgclr").value);
 			GM.setValue("fitWH", q("#hji_cfg_3_fitWH").checked);
 			GM.setValue("fitB", q("#hji_cfg_4_fitB").checked);
@@ -3970,21 +4003,25 @@ function cfg()
 			i.removeEventListener("mousedown", mousedown, true);
 		}
 		window.removeEventListener("keydown", onkeydown, true);
+		window.removeEventListener("wheel", mousewheel, { passive: false });
+		window.removeEventListener("mousemove", drag);
 		document.head.innerHTML = "";
 		document.body.innerHTML = "";
 		ws();
 		let div = protected_createElement("div");
-		div.style = "margin: auto; width: fit-content; height: fit-content; border: 2px solid black; color: white; background: #5a5757; position: absolute; inset: 0;"; // chrome "force dark mode" ignores our colors and just makes text white... great
+		div.style = "margin: auto; width: fit-content; height: fit-content; border: 2px solid black; color: white; background: #5a5757; position: absolute; inset: 0; font-size: 20px;"; // chrome "force dark mode" ignores our colors and just makes text white... great
 		div.innerHTML = "<b><center>Configuration</center></b><br><input id='hji_cfg_1_direct' type='checkbox'> Open images directly with browser (disables Handy)"
+		+ "<br><br><input id='hji_cfg_0_wheel_noctrl' type='checkbox'> Mouse wheel zooms w/o ctrl (ctrl+wheel for normal scroll)"
 		+ "<br><br><input id='hji_cfg_2_bgclr' style='color: inherit; background: inherit;' type='text' size='6'> Background color (empty = default)"
 		+ "<br><br>Fit to window images:" + " ( Fill to window instead <input id='hji_cfg_7_fitOS' type='checkbox'> )"
 		+ "<br><br><input id='hji_cfg_3_fitWH' type='checkbox'> Larger than window both vertically and horizontally"
 		+ "<br><br><input id='hji_cfg_4_fitB' type='checkbox'> Larger than window either vertically or horizontally"
 		+ "<br><br><input id='hji_cfg_5_fitS' type='checkbox'> Smaller than window"
-		+ "<br><br><center>Custom JS Action:<br><textarea id='hji_cfg_6_js' style='margin: 0px; width: 400px; height: 50px; color: inherit; background: inherit;'></textarea>"
+		+ "<br><br><center>Custom JS Action:<br><textarea id='hji_cfg_6_js' style='margin: 0px; width: 520px; height: 100px; color: inherit; background: inherit;'></textarea>"
 		+ "<br><input id='hji_cfg_save' style='color: inherit; background: inherit;' type='button' value='Save configuration'></center>";
 		document.body.appendChild(div);
 		q("#hji_cfg_1_direct").checked = cfg_direct;
+		q("#hji_cfg_0_wheel_noctrl").checked = cfg_wheel_noctrl;
 		q("#hji_cfg_2_bgclr").value = cfg_bgclr;
 		q("#hji_cfg_3_fitWH").checked = cfg_fitWH;
 		q("#hji_cfg_4_fitB").checked = cfg_fitB;
@@ -4012,6 +4049,7 @@ if (typeof GM === 'undefined') // GM3 or native
 		loadCfg = function()
 		{
 			cfg_direct = GM.getValue("directImage", false);
+			cfg_wheel_noctrl = GM.getValue("wheel_noctrl", false);
 			cfg_bgclr = GM.getValue("bgColor", "grey");
 			cfg_fitWH = GM.getValue("fitWH", true);
 			cfg_fitB = GM.getValue("fitB", false);
@@ -4035,6 +4073,7 @@ else
 	{
 	Promise.all([
 		GM.getValue("directImage", false).then( function(result) { cfg_direct = result; } , console.error),
+		GM.getValue("wheel_noctrl", false).then( function(result) { cfg_wheel_noctrl = result; } , console.error),
 		GM.getValue("bgColor", "grey").then( function(result) { cfg_bgclr = result; } , console.error),
 		GM.getValue("fitWH", true).then( function(result) { cfg_fitWH = result; } , console.error),
 		GM.getValue("fitB", false).then( function(result) { cfg_fitB = result; } , console.error),
