@@ -1,14 +1,19 @@
 <h3>Features</h3>
-<p>This script leaves just the image (largest available version) on pages of <strong>many image hosting sites</strong> skipping all the annoying stuff like ads, "continue to image" etc and <strong>disabling</strong> any kind of <strong>pop-ups</strong>. (script for images opened directly in browser can be found <a href=https://github.com/Owyn/Center_Image>here</a> - if you like centering of image, autoresize and hotkeys)</p>
+<p>This script leaves just the image\video (largest available version) on pages of <strong>many image hosting sites</strong> skipping all the annoying stuff like ads, "continue to image" etc and <strong>disabling</strong> any kind of <strong>pop-ups</strong>. (script for images opened directly in browser can be found <a href=https://github.com/Owyn/Center_Image>here</a> - does the same things as this script but for directly opened images (e.g. via "open image in a new tab"))</p>
 
-<ul><li><strong>Hotkeys</strong> - very handy ones</li>
-<li><strong>fullsizing</strong> image to its largest available version when opened, <strong>nothing else</strong> than image</li>
-<li><strong>autofit</strong> to screen big images by default (larger than screen both vertically and horizontally)</li>
-<li><strong>address</strong> of page doesn't change so you still can copy\share it</li>
-<li><strong>image centering</strong> (like in firefox) - pretty usefull on wide monitors</li>
-<li><strong>configurable</strong> - choose background color and what images to fit to screen when opened, or run your js</a></li>
-<li><strong>fast</strong> - does its job before page loads its resources (or run JavaScripts in FireFox)</li>
+<ul><li><strong>Hotkeys</strong> - very handy ones (e.g. - rescale image to screen or to fill it from the inside)</li>
+<li><strong>clean</strong> shows just an empty page with an image or video in its <strong>largest available version</strong> when opened</li>
+<li><strong>fights Ads</strong> - Automatically handles "Continue to image" buttons, tries to stop all the javascripts, pop-ups, event listeners, delayed tasks and other tricks on the page </li>
+<li><strong>autofit</strong> to screen big or small images (optionally)</li>
+<li><strong>configurable</strong> - choose background color and what images to fit to screen when opened, or run your own js code addons, you can even make the script run on any website url pattern and it'd choose the biggest images on the page to fullsize there without the script needing to directly add support for that website</li>
+<li><strong>fast</strong> - does its job as soon as the needed element (image) is loaded into the page and usually before other resources are loaded, also uses optimal ways to find the image - CSS paths and uses Page Mutation Observer instead of tasks to make it lightweight</li>
 <li><strong>fail-safe</strong> - if it didn't find image to fullsize - it won't do anything to mess the page up and will try again in few sec.</li></ul>
+
+<h3>Mouse Features</h3>
+<ul>
+<li><strong>Drag-scroll</strong> - scroll image by dragging it with left mouse button</li>
+<li><strong>Wheel-zoom</strong> - zoom the image with ctrl+wheel (or without ctrl with an option)</li>
+</ul>
 
 <h3>Hotkeys</h3>
 <ul>
@@ -38,18 +43,18 @@ You need a userscript manager to install and use the script, e.g. <a href="https
 
 <p>In the topic title, write "fix" if the site is already on the list or "add" if it is a new request, and the domain (eg: add googleimagehost.com)</p>
 
-<em>* But keep in mind that when requesting nameless non-popular image hosting google knows not much about you'd have to provide a reason for adding it - a website url which uses that hosting a lot for images</em>
+<em>* But keep in mind that when requesting nameless non-popular image hosting google knows not much about you'd have to provide a reason for adding it (cuz one guy was requesting tons of noname websites for no reason at all...) - a website url which uses that hosting a lot for images</em>
 <br><em>** Or if you are a developer yourself and would like to help add new hosts, you can <a href="https://github.com/Owyn/HandyImage/blob/master/Tutorial:%20adding%20new%20imagehosts%20support.md">submit code edits</a> at <a href="https://github.com/Owyn/HandyImage">GitHub page</a></em>
 
 <br>
 <h3>If the userscript fails for some website:</h3>
-<p>Try disabling your ADBlocker for that site - occasionally it might prevent not only ads but this script as well from working there
+<p>Try disabling your ADBlocker for that site - <b>very rarely</b> it might prevent not only ads but this script as well from working there (such thing was happening in the past, but nowadays I haven't encountered it with uBlock - but just so you know)
 </p>
 <img src=https://user-images.githubusercontent.com/1309656/199995950-68fdb2c3-d11c-4b2a-ac34-a6e969b893cb.png>
 
 
 <br>
 <h3>If you see a placeholder instead of an image:</h3>
-<p>Try disabling your Tracking Protection \ other Privacy extensions for that site - that is the reason why:
+<p>Try disabling your Tracking Protection \ other Privacy extensions for that site - that could be the reason why (<b>happened only for one site for me, but just so you know</b>):
 </p>
 <img src=https://user-images.githubusercontent.com/1309656/199995080-a2d4d769-3ae9-44da-9ea6-87504ef74bbe.png>
