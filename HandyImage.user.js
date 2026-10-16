@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name		Handy Image
-// @version		2026.10.14
+// @version		2026.10.16
 // @author		Owyn
 // @contributor	ubless607, bitst0rm
 // @namespace	handyimage
@@ -946,6 +946,8 @@
 // @match		https://*.thirstpics.cc/p/*
 // @match		https://*.thirstpics.cc/v/*
 // @match		https://www.imagepond.net/i/*
+// @match		https://pixho.st/show/*
+// @match		https://img4k.net/image/*
 // ==/UserScript==
 
 "use strict";
@@ -1471,6 +1473,7 @@ function makeworld()
 	case "hamsterimg.net":
 	case "shotcan.com":
 	case "imagepond.net":
+	case "img4k.net":
 		i = document.querySelector('meta[property="og:image"], [name="og:image"]');
 		if(i)
 		{
@@ -1481,6 +1484,10 @@ function makeworld()
 			i = q('a[download]');
 			if(i){i.src = i.href;}
 		}
+		break;
+	case "pixho.st":
+		i = document.head.querySelector('link[rel="preload"][as="image"]');
+		if(i) i.src = i.href;
 		break;
 	case "reddit.com":
 		i = document.querySelector('meta[property="og:image"], [name="og:image"]');
