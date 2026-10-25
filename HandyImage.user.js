@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name		Handy Image
-// @version		2026.10.24
+// @version		2026.10.25
 // @author		Owyn
 // @contributor	ubless607, bitst0rm
 // @namespace	handyimage
@@ -948,6 +948,7 @@
 // @match		https://www.imagepond.net/i/*
 // @match		https://pixho.st/show/*
 // @match		https://img4k.net/image/*
+// @match		https://imgpv.com/*/*.html
 // ==/UserScript==
 
 "use strict";
@@ -2944,6 +2945,9 @@ function makeworld()
 			i.click();
 		}
 		i = q("img.pic[src*='/i/'], img.pic[src*='/img/']");
+		break;
+	case "imgpv.com":
+		i = q("img.pic");
 		break;
 	case "scrin.org":
 		i = q('a[href*="/i/"]');
