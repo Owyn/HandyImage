@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name		Handy Image
-// @version		2026.10.16
+// @version		2026.10.24
 // @author		Owyn
 // @contributor	ubless607, bitst0rm
 // @namespace	handyimage
@@ -1472,7 +1472,6 @@ function makeworld()
 	case "vgy.me":
 	case "hamsterimg.net":
 	case "shotcan.com":
-	case "imagepond.net":
 	case "img4k.net":
 		i = document.querySelector('meta[property="og:image"], [name="og:image"]');
 		if(i)
@@ -1483,6 +1482,27 @@ function makeworld()
 		{
 			i = q('a[download]');
 			if(i){i.src = i.href;}
+		}
+		break;
+	case "imagepond.net":
+		// Prefer og:video for actual video files; fall back to og:image (thumbnail for videos, full image otherwise)
+		i = document.querySelector('meta[property="og:video"]');
+		if(i)
+		{
+			i.src = i.content;
+		}
+		else
+		{
+			i = document.querySelector('meta[property="og:image"], [name="og:image"]');
+			if(i)
+			{
+				i.src = i.content;
+			}
+			else
+			{
+				i = q('a[download]');
+				if(i){i.src = i.href;}
+			}
 		}
 		break;
 	case "pixho.st":
