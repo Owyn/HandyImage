@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name		Handy Image
-// @version		2026.10.25
+// @version		2026.10.27
 // @author		Owyn
 // @contributor	ubless607, bitst0rm
 // @namespace	handyimage
@@ -1515,7 +1515,7 @@ function makeworld()
 		if(i)
 		{
 			cfg_direct = false; // the website disallows opening images directly
-			i.src = i.content.replace('preview.redd.it', 'i.redd.it'); // HD img if you click the img without zooming first (image name is preserved that way btw)
+			i.src = i.content.replace('//preview.redd.it', '//i.redd.it'); // HD img if you click the img without zooming first (image name is preserved that way btw)
 		}
 		break;
 	case "vsco.co":
