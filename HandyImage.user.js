@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name		Handy Image
-// @version		2026.10.27
+// @version		2026.11.08
 // @author		Owyn
 // @contributor	ubless607, bitst0rm
 // @namespace	handyimage
@@ -1491,6 +1491,7 @@ function makeworld()
 		if(i)
 		{
 			i.src = i.content;
+			is_video = true; // force video mode (URL ends in /direct, no file extension)
 		}
 		else
 		{
